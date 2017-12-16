@@ -1,0 +1,31 @@
+{
+    "name": "jolicode/slack-php-api",
+    "description": "An up to date PHP client for Slack's API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Loïck Piera",
+            "email": "pyrech@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JoliCode\\Slack\\Api\\": "generated/",
+            "JoliCode\\Slack\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">= 7.1",
+        "jane-php/json-schema-runtime": "^4.0",
+        "jane-php/open-api-runtime": "^4.0",
+        "php-http/client-implementation": "*",
+        "php-http/client-common": "^1.7"
+    },
+    "require-dev": {
+        "jane-php/jane-php": "^4.0",
+        "php-http/curl-client": "^1.7",
+        "guzzlehttp/psr7": "^1.4",
+        "friendsofphp/php-cs-fixer": "^2.13"
+    }
+}
