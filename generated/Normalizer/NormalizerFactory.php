@@ -363,6 +363,7 @@ class NormalizerFactory
         $normalizers[] = new UsersInfoGetResponse200Normalizer();
         $normalizers[] = new UsersInfoGetResponsedefaultNormalizer();
         $normalizers[] = new UsersListGetResponse200Normalizer();
+        $normalizers[] = new UsersListGetResponse200ResponseMetadataNormalizer();
         $normalizers[] = new UsersListGetResponsedefaultNormalizer();
         $normalizers[] = new UsersLookupByEmailGetResponse200Normalizer();
         $normalizers[] = new UsersLookupByEmailGetResponsedefaultNormalizer();

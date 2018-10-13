@@ -21330,6 +21330,20 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "response_metadata": {
+                                    "properties": {
+                                        "next_cursor": {
+                                            "type": "string",
+                                            "x-examples": [
+                                                "dXNlcjpVMEc5V0ZYTlo="
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "next_cursor"
+                                    ],
+                                    "type": "object"
                                 }
                             },
                             "required": [

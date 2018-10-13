@@ -60,6 +60,10 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
+        if (property_exists($data, 'response_metadata')) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\UsersListGetResponse200ResponseMetadata', 'json', $context));
+            unset($data->{'response_metadata'});
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
                 $object[$key] = $value_1;
@@ -84,6 +88,9 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
+        }
+        if (null !== $object->getResponseMetadata()) {
+            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
