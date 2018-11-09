@@ -15,6 +15,11 @@
             "JoliCode\\Slack\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "JoliCode\\Slack\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">= 7.1",
         "jane-php/json-schema-runtime": "^4.0",
@@ -26,6 +31,7 @@
         "jane-php/jane-php": "^4.0",
         "php-http/curl-client": "^1.7",
         "guzzlehttp/psr7": "^1.4",
-        "friendsofphp/php-cs-fixer": "^2.13"
+        "friendsofphp/php-cs-fixer": "^2.13",
+        "symfony/phpunit-bridge": "^4.1"
     }
 }
