@@ -34,8 +34,10 @@ Then, use the factory that is provided to create the client:
 ```php
 $client = JoliCode\Slack\ClientFactory::create($yourToken);
 
-$client->apiTest(); // $client contains all the methods to interact with the API
+$client->usersList(); // $client contains all the methods to interact with the API
 ```
+
+Want more example or documentation? See the [documentation](doc/index.md).
 
 ## Troubleshoots
 
@@ -56,6 +58,19 @@ Then regenerate the SDK:
 ```bash
 vendor/bin/jane-openapi generate -c .jane-openapi.php
 ```
+
+## Further documentation
+
+You can see the current and past versions using one of the following:
+
+* the `git tag` command
+* the [releases page on Github](https://github.com/jolicode/slack-php-api/releases)
+* the file listing the [changes between versions](CHANGELOG.md)
+
+And finally some meta documentation:
+
+* [versioning and branching models](VERSIONING.md)
+* [contribution instructions](CONTRIBUTING.md)
 
 ## License
 

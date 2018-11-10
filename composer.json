@@ -1,6 +1,7 @@
 {
     "name": "jolicode/slack-php-api",
     "description": "An up to date PHP client for Slack's API",
+    "keywords": ["slack", "slackapi", "api", "client", "openapi", "swagger", "sdk"],
     "type": "library",
     "license": "MIT",
     "authors": [
