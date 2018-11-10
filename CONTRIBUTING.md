@@ -11,6 +11,7 @@ Everybody should be able to help. Here's how you can do it:
 Here's some tips to make you the best contributor ever:
 
 * [Rules](#rules)
+* [Green tests](#green-tests)
 * [Standard code](#standard-code)
 * [Keeping your fork up-to-date](#keeping-your-fork-up-to-date)
 
@@ -21,6 +22,8 @@ before maintainers accept and merge your work.
 
 * You MUST follow the [PSR-1](http://www.php-fig.org/psr/1/) and
 [PSR-2](http://www.php-fig.org/psr/2/) (see [Rules](#rules)).
+* You MUST run the test suite (see [Green tests](#green-tests)).
+* You MUST write (or update) unit tests.
 * You SHOULD write documentation.
 
 Please, write [commit messages that make
@@ -39,6 +42,14 @@ which gives the context and/or explains why you are creating it.
 
 Your work will then be reviewed as soon as possible (suggestions about some
 changes, improvements or alternatives may be given).
+
+## Green tests
+
+Run the tests using the following script:
+
+```shell
+make test
+```
 
 ## Standard code
 

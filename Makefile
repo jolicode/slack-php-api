@@ -4,6 +4,9 @@ cs: ## Fix CS violations
 cs_dry_run: ## Display CS violations without fixing it
 	./vendor/bin/php-cs-fixer fix --verbose --dry-run
 
+test: ## Run test suite
+	./vendor/bin/simple-phpunit
+
 .PHONY: help
 
 help: ## Display this help
