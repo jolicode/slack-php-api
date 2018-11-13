@@ -32,32 +32,25 @@ Checkout Slack's documentation about [all differents kind of tokens](https://api
 Then, use the factory that is provided to create the client:
 
 ```php
+// $client contains all the methods to interact with the API
 $client = JoliCode\Slack\ClientFactory::create($yourToken);
 
-$client->usersList(); // $client contains all the methods to interact with the API
+$user = $client->usersInfo()->getUser();
+
+dump($user);
 ```
+
+<p align="center">
+  <img src="doc/images/model-sample.png" alt="Sample user object" />
+<p>
 
 Want more example or documentation? See the [documentation](doc/index.md).
 
 ## Troubleshoots
 
-Got some problems using this library? Need a missing feature? 
-Do not hesitate to [open an issue](https://github.com/jolicode/slack-php-api/issues) and share it with us.
-
-## Updating the SDK
-
-Run the following command to retrieve the latest API spec (beware to not remove
-local modifications):
-
-```bash
-curl https://api.slack.com/specs/openapi/v2/slack_web.json -o resources/slack-openapi.json
-```
-
-Then regenerate the SDK:
-
-```bash
-vendor/bin/jane-openapi generate -c .jane-openapi.php
-```
+Got some problems using this library? Need a missing feature?
+Do not hesitate to [open an issue](https://github.com/jolicode/slack-php-api/issues)
+and share it with us.
 
 ## Further documentation
 
@@ -74,4 +67,5 @@ And finally some meta documentation:
 
 ## License
 
-This library is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This library is licensed under the MIT License - see the [LICENSE](LICENSE.md)
+file for details.
