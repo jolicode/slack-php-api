@@ -35,7 +35,7 @@ Then, use the factory that is provided to create the client:
 // $client contains all the methods to interact with the API
 $client = JoliCode\Slack\ClientFactory::create($yourToken);
 
-$user = $client->usersInfo()->getUser();
+$user = $client->usersInfo(['user' => 'U123AZER'])->getUser();
 
 dump($user);
 ```
