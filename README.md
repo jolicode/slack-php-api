@@ -32,31 +32,40 @@ Checkout Slack's documentation about [all differents kind of tokens](https://api
 Then, use the factory that is provided to create the client:
 
 ```php
+// $client contains all the methods to interact with the API
 $client = JoliCode\Slack\ClientFactory::create($yourToken);
 
-$client->apiTest(); // $client contains all the methods to interact with the API
+$user = $client->usersInfo()->getUser();
+
+dump($user);
 ```
+
+<p align="center">
+  <img src="doc/images/model-sample.png" alt="Sample user object" />
+<p>
+
+Want more example or documentation? See the [documentation](doc/index.md).
 
 ## Troubleshoots
 
-Got some problems using this library? Need a missing feature? 
-Do not hesitate to [open an issue](https://github.com/jolicode/slack-php-api/issues) and share it with us.
+Got some problems using this library? Need a missing feature?
+Do not hesitate to [open an issue](https://github.com/jolicode/slack-php-api/issues)
+and share it with us.
 
-## Updating the SDK
+## Further documentation
 
-Run the following command to retrieve the latest API spec (beware to not remove
-local modifications):
+You can see the current and past versions using one of the following:
 
-```bash
-curl https://api.slack.com/specs/openapi/v2/slack_web.json -o resources/slack-openapi.json
-```
+* the `git tag` command
+* the [releases page on Github](https://github.com/jolicode/slack-php-api/releases)
+* the file listing the [changes between versions](CHANGELOG.md)
 
-Then regenerate the SDK:
+And finally some meta documentation:
 
-```bash
-vendor/bin/jane-openapi generate -c .jane-openapi.php
-```
+* [versioning and branching models](VERSIONING.md)
+* [contribution instructions](CONTRIBUTING.md)
 
 ## License
 
-This library is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This library is licensed under the MIT License - see the [LICENSE](LICENSE.md)
+file for details.
