@@ -36,6 +36,7 @@ PHP doc to know which option you can provide to each method:
 //...
 
 $members = $client->usersList(['limit' => 100])->getMembers();
+```
 
 ## Concrete examples
 
