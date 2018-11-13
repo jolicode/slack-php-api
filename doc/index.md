@@ -45,8 +45,6 @@ Here is some examples of library's usages:
 - [Posting a message in a Slack channel](examples/posting-message.php);
 - [Retrieving the users in a Slack workspace](examples/retrieve-users.php);
 
-```
-
 ## Bypassing the incomplete API specification
 
 Slack's OpenAPI spec is not 100% complete yet hence our generated client may
