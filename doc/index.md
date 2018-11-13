@@ -2,7 +2,7 @@
 
 ## Hunder the hood
 
-This library mostly contains code generated automatically from the official
+This library mostly contains automatically generated code  from the official
 Slack OpenAPI spec.
 
 The library provides three kind of PHP classes:
