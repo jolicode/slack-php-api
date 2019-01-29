@@ -68,6 +68,14 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $object->setImageWidth($data->{'image_width'});
             unset($data->{'image_width'});
         }
+        if (property_exists($data, 'title')) {
+            $object->setTitle($data->{'title'});
+            unset($data->{'title'});
+        }
+        if (property_exists($data, 'pretext')) {
+            $object->setPretext($data->{'pretext'});
+            unset($data->{'pretext'});
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', $key)) {
                 $object[$key] = $value;
@@ -97,6 +105,12 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         }
         if (null !== $object->getImageWidth()) {
             $data->{'image_width'} = $object->getImageWidth();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
+        }
+        if (null !== $object->getPretext()) {
+            $data->{'pretext'} = $object->getPretext();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {

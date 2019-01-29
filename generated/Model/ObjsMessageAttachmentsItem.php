@@ -38,6 +38,48 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     protected $imageWidth;
 
     /**
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * @var string
+     */
+    protected $pretext;
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPretext()
+    {
+        return $this->pretext;
+    }
+
+    /**
+     * @param string $pretext
+     */
+    public function setPretext($pretext)
+    {
+        $this->pretext = $pretext;
+    }
+
+    /**
      * @return string
      */
     public function getFallback(): ?string
