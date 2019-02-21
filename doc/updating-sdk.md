@@ -19,6 +19,7 @@ Most of the times, examples inside the spec are correct and we just miss propert
 So we patch the schema with what we can see in the official documentation via the patch command.
 
 ```bash
+curl https://api.slack.com/specs/openapi/v2/slack_web.json -o resources/slack-openapi.json
 rm resources/slack-openapi-patched.json
 cp resources/slack-openapi.json resources/slack-openapi-patched.json
 patch -p0 < resources/patches/*.patch
