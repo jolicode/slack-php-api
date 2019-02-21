@@ -1967,6 +1967,9 @@
                 "a11y_animations": {
                     "type": "boolean"
                 },
+                "a11y_font_size": {
+                    "type": "string"
+                },
                 "all_channels_loud": {
                     "type": "boolean"
                 },
@@ -2040,9 +2043,6 @@
                     "type": "integer"
                 },
                 "email_developer": {
-                    "type": "boolean"
-                },
-                "email_changelog": {
                     "type": "boolean"
                 },
                 "email_misc": {
@@ -2125,6 +2125,9 @@
                 },
                 "frecency_jumper": {
                     "type": "string"
+                },
+                "full_text_extracts": {
+                    "type": "boolean"
                 },
                 "fuller_timestamps": {
                     "type": "boolean"
@@ -6732,6 +6735,12 @@
                         "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.",
                         "in": "formData",
                         "name": "attachments",
+                        "type": "string"
+                    },
+                    {
+                        "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
+                        "in": "formData",
+                        "name": "blocks",
                         "type": "string"
                     },
                     {
@@ -21327,6 +21336,20 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "response_metadata": {
+                                    "properties": {
+                                        "next_cursor": {
+                                            "type": "string",
+                                            "x-examples": [
+                                                "dXNlcjpVMEc5V0ZYTlo="
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "next_cursor"
+                                    ],
+                                    "type": "object"
                                 }
                             },
                             "required": [
