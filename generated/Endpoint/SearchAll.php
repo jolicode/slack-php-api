@@ -74,7 +74,7 @@ class SearchAll extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\SearchAllGetResponse200|\JoliCode\Slack\Api\Model\SearchAllGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\SearchAllGetResponse200|\JoliCode\Slack\Api\Model\SearchAllGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

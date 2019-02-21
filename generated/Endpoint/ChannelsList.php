@@ -70,7 +70,7 @@ class ChannelsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsListGetResponse200|\JoliCode\Slack\Api\Model\ChannelsListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsListGetResponse200|\JoliCode\Slack\Api\Model\ChannelsListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

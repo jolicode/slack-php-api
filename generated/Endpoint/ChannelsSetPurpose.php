@@ -81,7 +81,7 @@ class ChannelsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsSetPurposePostResponse200|\JoliCode\Slack\Api\Model\ChannelsSetPurposePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsSetPurposePostResponse200|\JoliCode\Slack\Api\Model\ChannelsSetPurposePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -66,7 +66,7 @@ class AppsPermissionsRequest extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

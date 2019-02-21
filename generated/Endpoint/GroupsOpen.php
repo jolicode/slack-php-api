@@ -17,7 +17,7 @@ class GroupsOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param array $formParameters {
      *
-     *     @var string $channel private channel to open.
+     *     @var string $channel Private channel to open.
      * }
      *
      * @param array $headerParameters {
@@ -79,7 +79,7 @@ class GroupsOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsOpenPostResponse200|\JoliCode\Slack\Api\Model\GroupsOpenPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsOpenPostResponse200|\JoliCode\Slack\Api\Model\GroupsOpenPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -18,7 +18,7 @@ class ChannelsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @param array $formParameters {
      *
      *     @var string $user user to invite to channel
-     *     @var string $channel channel to invite user to.
+     *     @var string $channel Channel to invite user to.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class ChannelsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsInvitePostResponse200|\JoliCode\Slack\Api\Model\ChannelsInvitePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsInvitePostResponse200|\JoliCode\Slack\Api\Model\ChannelsInvitePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

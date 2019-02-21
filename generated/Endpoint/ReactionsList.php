@@ -70,7 +70,7 @@ class ReactionsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ReactionsListGetResponse200|\JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ReactionsListGetResponse200|\JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

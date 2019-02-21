@@ -66,7 +66,7 @@ class MigrationExchange extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

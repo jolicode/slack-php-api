@@ -18,7 +18,7 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
      * @param array $formParameters {
      *
      *     @var float $ts timestamp of the most recently seen message
-     *     @var string $channel direct message channel to set reading cursor in.
+     *     @var string $channel Direct message channel to set reading cursor in.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ImMarkPostResponse200|\JoliCode\Slack\Api\Model\ImMarkPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ImMarkPostResponse200|\JoliCode\Slack\Api\Model\ImMarkPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

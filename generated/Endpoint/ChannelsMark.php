@@ -18,7 +18,7 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @param array $formParameters {
      *
      *     @var float $ts timestamp of the most recently seen message
-     *     @var string $channel channel to set reading cursor in.
+     *     @var string $channel Channel to set reading cursor in.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsMarkPostResponse200|\JoliCode\Slack\Api\Model\ChannelsMarkPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsMarkPostResponse200|\JoliCode\Slack\Api\Model\ChannelsMarkPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

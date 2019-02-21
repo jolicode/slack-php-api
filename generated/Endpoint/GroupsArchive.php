@@ -79,7 +79,7 @@ class GroupsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsArchivePostResponse200|\JoliCode\Slack\Api\Model\GroupsArchivePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsArchivePostResponse200|\JoliCode\Slack\Api\Model\GroupsArchivePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

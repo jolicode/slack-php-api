@@ -74,7 +74,7 @@ class SearchFiles extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\SearchFilesGetResponse200|\JoliCode\Slack\Api\Model\SearchFilesGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\SearchFilesGetResponse200|\JoliCode\Slack\Api\Model\SearchFilesGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

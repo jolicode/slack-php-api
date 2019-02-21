@@ -21,7 +21,7 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *     @var string $file_comment file comment to remove reaction from
      *     @var float $timestamp timestamp of the message to remove reaction from
      *     @var string $file file to remove reaction from
-     *     @var string $channel channel where the message to remove reaction from was posted.
+     *     @var string $channel Channel where the message to remove reaction from was posted.
      * }
      *
      * @param array $headerParameters {
@@ -87,7 +87,7 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200|\JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200|\JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -81,7 +81,7 @@ class GroupsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsSetTopicPostResponse200|\JoliCode\Slack\Api\Model\GroupsSetTopicPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsSetTopicPostResponse200|\JoliCode\Slack\Api\Model\GroupsSetTopicPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

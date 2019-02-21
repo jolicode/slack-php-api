@@ -18,7 +18,7 @@ class FilesCommentsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @param array $formParameters {
      *
      *     @var string $comment text of the comment to add
-     *     @var string $file file to add a comment to.
+     *     @var string $file File to add a comment to.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class FilesCommentsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\FilesCommentsAddPostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsAddPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\FilesCommentsAddPostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsAddPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -81,7 +81,7 @@ class ChannelsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsCreatePostResponse200|\JoliCode\Slack\Api\Model\ChannelsCreatePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsCreatePostResponse200|\JoliCode\Slack\Api\Model\ChannelsCreatePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

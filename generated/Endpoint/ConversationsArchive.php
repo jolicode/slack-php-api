@@ -79,7 +79,7 @@ class ConversationsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200|\JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200|\JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

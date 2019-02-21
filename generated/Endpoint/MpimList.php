@@ -62,7 +62,7 @@ class MpimList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\MpimListGetResponse200|\JoliCode\Slack\Api\Model\MpimListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\MpimListGetResponse200|\JoliCode\Slack\Api\Model\MpimListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

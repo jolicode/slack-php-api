@@ -70,7 +70,7 @@ class ConversationsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ConversationsListGetResponse200|\JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ConversationsListGetResponse200|\JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

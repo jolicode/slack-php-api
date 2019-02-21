@@ -79,7 +79,7 @@ class GroupsLeave extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsLeavePostResponse200|\JoliCode\Slack\Api\Model\GroupsLeavePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsLeavePostResponse200|\JoliCode\Slack\Api\Model\GroupsLeavePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

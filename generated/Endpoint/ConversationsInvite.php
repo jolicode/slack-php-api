@@ -18,7 +18,7 @@ class ConversationsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      * @param array $formParameters {
      *
      *     @var string $users A comma separated list of user IDs. Up to 30 users may be listed.
-     *     @var string $channel the ID of the public or private channel to invite user(s) to.
+     *     @var string $channel The ID of the public or private channel to invite user(s) to.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class ConversationsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200|\JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200|\JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

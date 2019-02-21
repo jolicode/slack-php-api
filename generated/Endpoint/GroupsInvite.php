@@ -18,7 +18,7 @@ class GroupsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @param array $formParameters {
      *
      *     @var string $user user to invite
-     *     @var string $channel private channel to invite user to.
+     *     @var string $channel Private channel to invite user to.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class GroupsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsInvitePostResponse200|\JoliCode\Slack\Api\Model\GroupsInvitePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsInvitePostResponse200|\JoliCode\Slack\Api\Model\GroupsInvitePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

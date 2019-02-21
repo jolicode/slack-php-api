@@ -21,7 +21,7 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *     @var string $file_comment file comment to add reaction to
      *     @var float $timestamp timestamp of the message to add reaction to
      *     @var string $file file to add reaction to
-     *     @var string $channel channel where the message to add reaction to was posted.
+     *     @var string $channel Channel where the message to add reaction to was posted.
      * }
      *
      * @param array $headerParameters {
@@ -87,7 +87,7 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ReactionsAddPostResponse200|\JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ReactionsAddPostResponse200|\JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

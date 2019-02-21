@@ -19,7 +19,7 @@ class MpimReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      *     @var float $thread_ts unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `mpim:history`
-     *     @var string $channel multiparty direct message channel to fetch thread from.
+     *     @var string $channel Multiparty direct message channel to fetch thread from.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -66,7 +66,7 @@ class MpimReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\MpimRepliesGetResponse200|\JoliCode\Slack\Api\Model\MpimRepliesGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\MpimRepliesGetResponse200|\JoliCode\Slack\Api\Model\MpimRepliesGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

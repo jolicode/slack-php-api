@@ -62,7 +62,7 @@ class AuthTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\AuthTestGetResponse200|\JoliCode\Slack\Api\Model\AuthTestGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\AuthTestGetResponse200|\JoliCode\Slack\Api\Model\AuthTestGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

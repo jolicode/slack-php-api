@@ -18,7 +18,7 @@ class UsergroupsDisable extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * @param array $formParameters {
      *
      *     @var bool $include_count include the number of users in the User Group
-     *     @var string $usergroup the encoded ID of the User Group to disable.
+     *     @var string $usergroup The encoded ID of the User Group to disable.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class UsergroupsDisable extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class PinsListGetResponse200Item0 extends \ArrayObject
 {
     /**
-     * @var object[]|object[]|object[]
+     * @var PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]
      */
     protected $items;
     /**
@@ -22,7 +22,7 @@ class PinsListGetResponse200Item0 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return object[]|object[]|object[]
+     * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]
      */
     public function getItems()
     {
@@ -30,7 +30,7 @@ class PinsListGetResponse200Item0 extends \ArrayObject
     }
 
     /**
-     * @param object[]|object[]|object[] $items
+     * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[] $items
      *
      * @return self
      */

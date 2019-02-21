@@ -20,7 +20,7 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *     @var string $file_comment file comment to add star to
      *     @var float $timestamp timestamp of the message to add star to
      *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
-     *     @var string $file file to add star to.
+     *     @var string $file File to add star to.
      * }
      *
      * @param array $headerParameters {
@@ -85,7 +85,7 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\StarsAddPostResponse200|\JoliCode\Slack\Api\Model\StarsAddPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\StarsAddPostResponse200|\JoliCode\Slack\Api\Model\StarsAddPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

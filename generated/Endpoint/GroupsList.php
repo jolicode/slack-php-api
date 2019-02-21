@@ -19,7 +19,7 @@ class GroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      *     @var bool $exclude_members Exclude the `members` from each `group`
      *     @var string $token Authentication token. Requires scope: `groups:read`
-     *     @var bool $exclude_archived don't return archived private channels.
+     *     @var bool $exclude_archived Don't return archived private channels.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -66,7 +66,7 @@ class GroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsListGetResponse200|\JoliCode\Slack\Api\Model\GroupsListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsListGetResponse200|\JoliCode\Slack\Api\Model\GroupsListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

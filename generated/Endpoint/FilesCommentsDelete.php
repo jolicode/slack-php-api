@@ -18,7 +18,7 @@ class FilesCommentsDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      * @param array $formParameters {
      *
      *     @var string $id the comment to delete
-     *     @var string $file file to delete a comment from.
+     *     @var string $file File to delete a comment from.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class FilesCommentsDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

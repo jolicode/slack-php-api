@@ -70,7 +70,7 @@ class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsersListGetResponse200|\JoliCode\Slack\Api\Model\UsersListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsersListGetResponse200|\JoliCode\Slack\Api\Model\UsersListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

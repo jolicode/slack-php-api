@@ -83,7 +83,7 @@ class ConversationsOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200|\JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200|\JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

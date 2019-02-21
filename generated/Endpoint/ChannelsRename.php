@@ -83,7 +83,7 @@ class ChannelsRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsRenamePostResponse200|\JoliCode\Slack\Api\Model\ChannelsRenamePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsRenamePostResponse200|\JoliCode\Slack\Api\Model\ChannelsRenamePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
