@@ -1,6 +1,6 @@
 # Changes between versions
 
-## 1.1 (unreleased)
+## 1.1 (2019-02-21)
 
 * Add support for Slack Blocks in chat.postMessage and better patch support for specification
 
