@@ -22,7 +22,7 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *     @var float $timestamp timestamp of the message to get reactions for
      *     @var string $token Authentication token. Requires scope: `reactions:read`
      *     @var string $file file to get reactions for
-     *     @var string $channel channel where the message to get reactions for was posted.
+     *     @var string $channel Channel where the message to get reactions for was posted.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -72,7 +72,7 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

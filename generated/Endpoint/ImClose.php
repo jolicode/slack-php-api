@@ -17,7 +17,7 @@ class ImClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      *
      * @param array $formParameters {
      *
-     *     @var string $channel direct message channel to close.
+     *     @var string $channel Direct message channel to close.
      * }
      *
      * @param array $headerParameters {
@@ -79,7 +79,7 @@ class ImClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ImClosePostResponse200|\JoliCode\Slack\Api\Model\ImClosePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ImClosePostResponse200|\JoliCode\Slack\Api\Model\ImClosePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

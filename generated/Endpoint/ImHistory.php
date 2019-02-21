@@ -23,7 +23,7 @@ class ImHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *     @var string $token Authentication token. Requires scope: `im:history`
      *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel direct message channel to fetch history for
-     *     @var float $latest end of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -74,7 +74,7 @@ class ImHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ImHistoryGetResponse200|\JoliCode\Slack\Api\Model\ImHistoryGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ImHistoryGetResponse200|\JoliCode\Slack\Api\Model\ImHistoryGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

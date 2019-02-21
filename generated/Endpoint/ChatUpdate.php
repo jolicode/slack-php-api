@@ -23,7 +23,7 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
      *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var bool $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
-     *     @var string $channel channel containing the message to be updated.
+     *     @var string $channel Channel containing the message to be updated.
      * }
      *
      * @param array $headerParameters {
@@ -91,7 +91,7 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChatUpdatePostResponse200|\JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200|\JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

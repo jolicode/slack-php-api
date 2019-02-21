@@ -18,7 +18,7 @@ class UsergroupsEnable extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @param array $formParameters {
      *
      *     @var bool $include_count include the number of users in the User Group
-     *     @var string $usergroup the encoded ID of the User Group to enable.
+     *     @var string $usergroup The encoded ID of the User Group to enable.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class UsergroupsEnable extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

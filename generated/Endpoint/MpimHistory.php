@@ -23,7 +23,7 @@ class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *     @var string $token Authentication token. Requires scope: `mpim:history`
      *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel multiparty direct message to fetch history for
-     *     @var float $latest end of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -74,7 +74,7 @@ class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\MpimHistoryGetResponse200|\JoliCode\Slack\Api\Model\MpimHistoryGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\MpimHistoryGetResponse200|\JoliCode\Slack\Api\Model\MpimHistoryGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

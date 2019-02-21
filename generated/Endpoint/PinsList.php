@@ -18,7 +18,7 @@ class PinsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * @param array $queryParameters {
      *
      *     @var string $token Authentication token. Requires scope: `pins:read`
-     *     @var string $channel channel to get pinned items for.
+     *     @var string $channel Channel to get pinned items for.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -64,7 +64,7 @@ class PinsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\PinsListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\PinsListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

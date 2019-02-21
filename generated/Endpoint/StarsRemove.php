@@ -20,7 +20,7 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *     @var string $file_comment file comment to remove star from
      *     @var float $timestamp timestamp of the message to remove star from
      *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
-     *     @var string $file file to remove star from.
+     *     @var string $file File to remove star from.
      * }
      *
      * @param array $headerParameters {
@@ -85,7 +85,7 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\StarsRemovePostResponse200|\JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\StarsRemovePostResponse200|\JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -17,7 +17,7 @@ class ConversationsClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @param array $formParameters {
      *
-     *     @var string $channel conversation to close.
+     *     @var string $channel Conversation to close.
      * }
      *
      * @param array $headerParameters {
@@ -79,7 +79,7 @@ class ConversationsClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ConversationsClosePostResponse200|\JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200|\JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

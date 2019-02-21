@@ -20,7 +20,7 @@ class UsergroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *     @var bool $include_users include the list of users for each User Group
      *     @var string $token Authentication token. Requires scope: `usergroups:read`
      *     @var bool $include_count include the number of users in each User Group
-     *     @var bool $include_disabled include disabled User Groups.
+     *     @var bool $include_disabled Include disabled User Groups.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -68,7 +68,7 @@ class UsergroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsergroupsListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

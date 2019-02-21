@@ -19,7 +19,7 @@ class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      *     @var string $token Authentication token. Requires scope: `usergroups:read`
      *     @var bool $include_disabled allow results that involve disabled User Groups
-     *     @var string $usergroup the encoded ID of the User Group to update.
+     *     @var string $usergroup The encoded ID of the User Group to update.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -66,7 +66,7 @@ class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

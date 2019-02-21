@@ -24,10 +24,6 @@ class UsersListGetResponse200 extends \ArrayObject
      * @var bool
      */
     protected $ok;
-    /**
-     * @var UsersListGetResponse200ResponseMetadata
-     */
-    protected $responseMetadata;
 
     /**
      * @return int
@@ -85,26 +81,6 @@ class UsersListGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
-
-        return $this;
-    }
-
-    /**
-     * @return UsersListGetResponse200ResponseMetadata
-     */
-    public function getResponseMetadata(): ?UsersListGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    /**
-     * @param UsersListGetResponse200ResponseMetadata $responseMetadata
-     *
-     * @return self
-     */
-    public function setResponseMetadata(?UsersListGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

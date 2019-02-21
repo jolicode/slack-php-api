@@ -21,7 +21,7 @@ class OauthAccess extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *     @var string $code the `code` param returned via the OAuth callback
      *     @var bool $single_channel request the user to add your app only to a single channel
      *     @var string $client_id issued when you created your application
-     *     @var string $redirect_uri this must match the originally submitted URI (if one was sent).
+     *     @var string $redirect_uri This must match the originally submitted URI (if one was sent).
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -70,7 +70,7 @@ class OauthAccess extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\OauthAccessGetResponse200|\JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\OauthAccessGetResponse200|\JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

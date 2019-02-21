@@ -18,7 +18,7 @@ class ChannelsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @param array $formParameters {
      *
      *     @var string $user user to remove from channel
-     *     @var string $channel channel to remove user from.
+     *     @var string $channel Channel to remove user from.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class ChannelsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsKickPostResponse200|\JoliCode\Slack\Api\Model\ChannelsKickPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsKickPostResponse200|\JoliCode\Slack\Api\Model\ChannelsKickPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -66,7 +66,7 @@ class ImList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ImListGetResponse200|\JoliCode\Slack\Api\Model\ImListGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ImListGetResponse200|\JoliCode\Slack\Api\Model\ImListGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

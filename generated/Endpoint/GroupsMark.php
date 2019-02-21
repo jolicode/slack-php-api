@@ -18,7 +18,7 @@ class GroupsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $formParameters {
      *
      *     @var float $ts timestamp of the most recently seen message
-     *     @var string $channel private channel to set reading cursor in.
+     *     @var string $channel Private channel to set reading cursor in.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class GroupsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsMarkPostResponse200|\JoliCode\Slack\Api\Model\GroupsMarkPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsMarkPostResponse200|\JoliCode\Slack\Api\Model\GroupsMarkPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

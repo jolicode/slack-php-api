@@ -19,7 +19,7 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      *     @var bool $include_count include the number of users in the User Group
      *     @var string $users a comma separated string of encoded user IDs that represent the entire list of users for the User Group
-     *     @var string $usergroup the encoded ID of the User Group to update.
+     *     @var string $usergroup The encoded ID of the User Group to update.
      * }
      *
      * @param array $headerParameters {
@@ -83,7 +83,7 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

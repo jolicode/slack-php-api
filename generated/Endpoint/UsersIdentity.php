@@ -62,7 +62,7 @@ class UsersIdentity extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -19,7 +19,7 @@ class ChatDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      *     @var bool $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
      *     @var float $ts timestamp of the message to be deleted
-     *     @var string $channel channel containing the message to be deleted.
+     *     @var string $channel Channel containing the message to be deleted.
      * }
      *
      * @param array $headerParameters {
@@ -83,7 +83,7 @@ class ChatDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChatDeletePostResponse200|\JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChatDeletePostResponse200|\JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -18,7 +18,7 @@ class GroupsCreateChild extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * @param array $formParameters {
      *
      *     @var string $token Authentication token. Requires scope: `groups:write`
-     *     @var string $channel private channel to clone and archive.
+     *     @var string $channel Private channel to clone and archive.
      * }
      */
     public function __construct(array $formParameters = [])
@@ -64,7 +64,7 @@ class GroupsCreateChild extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsCreateChildPostResponse200|\JoliCode\Slack\Api\Model\GroupsCreateChildPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsCreateChildPostResponse200|\JoliCode\Slack\Api\Model\GroupsCreateChildPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

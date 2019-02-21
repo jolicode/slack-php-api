@@ -23,7 +23,7 @@ class ChannelsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *     @var string $token Authentication token. Requires scope: `channels:history`
      *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel channel to fetch history for
-     *     @var float $latest end of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -74,7 +74,7 @@ class ChannelsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChannelsHistoryGetResponse200|\JoliCode\Slack\Api\Model\ChannelsHistoryGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChannelsHistoryGetResponse200|\JoliCode\Slack\Api\Model\ChannelsHistoryGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

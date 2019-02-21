@@ -18,7 +18,7 @@ class TeamProfileGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @param array $queryParameters {
      *
      *     @var string $token Authentication token. Requires scope: `users.profile:read`
-     *     @var string $visibility filter by visibility.
+     *     @var string $visibility Filter by visibility.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -64,7 +64,7 @@ class TeamProfileGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200|\JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200|\JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

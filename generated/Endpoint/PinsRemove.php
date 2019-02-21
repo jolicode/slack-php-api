@@ -20,7 +20,7 @@ class PinsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *     @var string $file_comment file comment to un-pin
      *     @var float $timestamp timestamp of the message to un-pin
      *     @var string $file file to un-pin
-     *     @var string $channel channel where the item is pinned to.
+     *     @var string $channel Channel where the item is pinned to.
      * }
      *
      * @param array $headerParameters {
@@ -85,7 +85,7 @@ class PinsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\PinsRemovePostResponse200|\JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\PinsRemovePostResponse200|\JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

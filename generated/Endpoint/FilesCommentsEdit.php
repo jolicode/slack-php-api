@@ -19,7 +19,7 @@ class FilesCommentsEdit extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      *     @var string $comment text of the comment to edit
      *     @var string $id the comment to edit
-     *     @var string $file file containing the comment to edit.
+     *     @var string $file File containing the comment to edit.
      * }
      *
      * @param array $headerParameters {
@@ -83,7 +83,7 @@ class FilesCommentsEdit extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\FilesCommentsEditPostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsEditPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\FilesCommentsEditPostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsEditPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

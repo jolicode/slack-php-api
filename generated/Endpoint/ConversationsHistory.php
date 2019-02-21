@@ -23,7 +23,7 @@ class ConversationsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
      *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel conversation ID to fetch history for
-     *     @var float $latest end of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -74,7 +74,7 @@ class ConversationsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200|\JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200|\JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

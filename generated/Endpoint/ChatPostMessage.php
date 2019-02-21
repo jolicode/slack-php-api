@@ -20,6 +20,7 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
      *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead. Provide no more than 40,000 characters or [risk truncation](/changelog/2018-04-truncating-really-long-messages).
      *     @var bool $unfurl_media pass false to disable unfurling of media content
@@ -69,12 +70,13 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['username', 'thread_ts', 'attachments', 'unfurl_links', 'text', 'unfurl_media', 'parse', 'as_user', 'mrkdwn', 'icon_emoji', 'link_names', 'icon_url', 'channel', 'reply_broadcast']);
+        $optionsResolver->setDefined(['username', 'thread_ts', 'attachments', 'blocks', 'unfurl_links', 'text', 'unfurl_media', 'parse', 'as_user', 'mrkdwn', 'icon_emoji', 'link_names', 'icon_url', 'channel', 'reply_broadcast']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('username', ['string']);
         $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
+        $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('unfurl_links', ['bool']);
         $optionsResolver->setAllowedTypes('text', ['string']);
         $optionsResolver->setAllowedTypes('unfurl_media', ['bool']);
@@ -105,7 +107,7 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -6738,6 +6738,12 @@
                         "type": "string"
                     },
                     {
+                        "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
+                        "in": "formData",
+                        "name": "blocks",
+                        "type": "string"
+                    },
+                    {
                         "description": "Pass true to enable unfurling of primarily text-based content.",
                         "in": "formData",
                         "name": "unfurl_links",

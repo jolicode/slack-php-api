@@ -18,7 +18,7 @@ class GroupsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $formParameters {
      *
      *     @var string $user user to remove from private channel
-     *     @var string $channel private channel to remove user from.
+     *     @var string $channel Private channel to remove user from.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class GroupsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\GroupsKickPostResponse200|\JoliCode\Slack\Api\Model\GroupsKickPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\GroupsKickPostResponse200|\JoliCode\Slack\Api\Model\GroupsKickPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

@@ -20,7 +20,7 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      *     @var string $file_comment file comment to pin
      *     @var float $timestamp timestamp of the message to pin
      *     @var string $file file to pin
-     *     @var string $channel channel to pin the item in.
+     *     @var string $channel Channel to pin the item in.
      * }
      *
      * @param array $headerParameters {
@@ -85,7 +85,7 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\PinsAddPostResponse200|\JoliCode\Slack\Api\Model\PinsAddPostResponsedefault
+     * @return \JoliCode\Slack\Api\Model\PinsAddPostResponse200|\JoliCode\Slack\Api\Model\PinsAddPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

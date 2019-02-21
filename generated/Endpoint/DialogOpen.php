@@ -18,7 +18,7 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $queryParameters {
      *
      *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
-     *     @var string $trigger_id exchange a trigger to post to the user.
+     *     @var string $trigger_id Exchange a trigger to post to the user.
      * }
      *
      * @param array $headerParameters {
@@ -81,7 +81,7 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\DialogOpenGetResponse200|\JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\DialogOpenGetResponse200|\JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {

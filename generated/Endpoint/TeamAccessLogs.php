@@ -20,7 +20,7 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *     @var string $count
      *     @var string $token Authentication token. Requires scope: `admin`
      *     @var string $page
-     *     @var int $before end of time range of logs to include in results (inclusive).
+     *     @var int $before End of time range of logs to include in results (inclusive).
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -68,7 +68,7 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * {@inheritdoc}
      *
      *
-     * @return null|\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200|\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault
+     * @return \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200|\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
     {
