@@ -36,7 +36,7 @@ git diff resources/slack-openapi-patched.json > resources/patches/00-description
 Then make sure the patch headers are like this:
 
 ```plain
---- resources/slack-openapi.json 2019-02-21 14:14:33.020307516 +0100
+--- resources/slack-openapi-patched.json 2019-02-21 14:14:33.020307516 +0100
 +++ resources/slack-openapi-patched.json 2019-02-21 14:14:56.296475732 +0100
 ```
 
