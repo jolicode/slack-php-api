@@ -17,6 +17,10 @@ class PrefsPrefs extends \ArrayObject
      */
     protected $a11yAnimations;
     /**
+     * @var string
+     */
+    protected $a11yFontSize;
+    /**
      * @var bool
      */
     protected $allChannelsLoud;
@@ -116,10 +120,6 @@ class PrefsPrefs extends \ArrayObject
      * @var bool
      */
     protected $emailDeveloper;
-    /**
-     * @var bool
-     */
-    protected $emailChangelog;
     /**
      * @var bool
      */
@@ -228,6 +228,10 @@ class PrefsPrefs extends \ArrayObject
      * @var string
      */
     protected $frecencyJumper;
+    /**
+     * @var bool
+     */
+    protected $fullTextExtracts;
     /**
      * @var bool
      */
@@ -870,6 +874,26 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
+     * @return string
+     */
+    public function getA11yFontSize(): ?string
+    {
+        return $this->a11yFontSize;
+    }
+
+    /**
+     * @param string $a11yFontSize
+     *
+     * @return self
+     */
+    public function setA11yFontSize(?string $a11yFontSize): self
+    {
+        $this->a11yFontSize = $a11yFontSize;
+
+        return $this;
+    }
+
+    /**
      * @return bool
      */
     public function getAllChannelsLoud(): ?bool
@@ -1365,26 +1389,6 @@ class PrefsPrefs extends \ArrayObject
     public function setEmailDeveloper(?bool $emailDeveloper): self
     {
         $this->emailDeveloper = $emailDeveloper;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getEmailChangelog(): ?bool
-    {
-        return $this->emailChangelog;
-    }
-
-    /**
-     * @param bool $emailChangelog
-     *
-     * @return self
-     */
-    public function setEmailChangelog(?bool $emailChangelog): self
-    {
-        $this->emailChangelog = $emailChangelog;
 
         return $this;
     }
@@ -1922,6 +1926,26 @@ class PrefsPrefs extends \ArrayObject
     public function setFrecencyJumper(?string $frecencyJumper): self
     {
         $this->frecencyJumper = $frecencyJumper;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getFullTextExtracts(): ?bool
+    {
+        return $this->fullTextExtracts;
+    }
+
+    /**
+     * @param bool $fullTextExtracts
+     *
+     * @return self
+     */
+    public function setFullTextExtracts(?bool $fullTextExtracts): self
+    {
+        $this->fullTextExtracts = $fullTextExtracts;
 
         return $this;
     }

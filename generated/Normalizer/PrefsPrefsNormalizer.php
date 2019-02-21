@@ -48,6 +48,10 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setA11yAnimations($data->{'a11y_animations'});
             unset($data->{'a11y_animations'});
         }
+        if (property_exists($data, 'a11y_font_size')) {
+            $object->setA11yFontSize($data->{'a11y_font_size'});
+            unset($data->{'a11y_font_size'});
+        }
         if (property_exists($data, 'all_channels_loud')) {
             $object->setAllChannelsLoud($data->{'all_channels_loud'});
             unset($data->{'all_channels_loud'});
@@ -147,10 +151,6 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'email_developer')) {
             $object->setEmailDeveloper($data->{'email_developer'});
             unset($data->{'email_developer'});
-        }
-        if (property_exists($data, 'email_changelog')) {
-            $object->setEmailChangelog($data->{'email_changelog'});
-            unset($data->{'email_changelog'});
         }
         if (property_exists($data, 'email_misc')) {
             $object->setEmailMisc($data->{'email_misc'});
@@ -259,6 +259,10 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
         if (property_exists($data, 'frecency_jumper')) {
             $object->setFrecencyJumper($data->{'frecency_jumper'});
             unset($data->{'frecency_jumper'});
+        }
+        if (property_exists($data, 'full_text_extracts')) {
+            $object->setFullTextExtracts($data->{'full_text_extracts'});
+            unset($data->{'full_text_extracts'});
         }
         if (property_exists($data, 'fuller_timestamps')) {
             $object->setFullerTimestamps($data->{'fuller_timestamps'});
@@ -895,6 +899,9 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getA11yAnimations()) {
             $data->{'a11y_animations'} = $object->getA11yAnimations();
         }
+        if (null !== $object->getA11yFontSize()) {
+            $data->{'a11y_font_size'} = $object->getA11yFontSize();
+        }
         if (null !== $object->getAllChannelsLoud()) {
             $data->{'all_channels_loud'} = $object->getAllChannelsLoud();
         }
@@ -969,9 +976,6 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getEmailDeveloper()) {
             $data->{'email_developer'} = $object->getEmailDeveloper();
-        }
-        if (null !== $object->getEmailChangelog()) {
-            $data->{'email_changelog'} = $object->getEmailChangelog();
         }
         if (null !== $object->getEmailMisc()) {
             $data->{'email_misc'} = $object->getEmailMisc();
@@ -1051,6 +1055,9 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getFrecencyJumper()) {
             $data->{'frecency_jumper'} = $object->getFrecencyJumper();
+        }
+        if (null !== $object->getFullTextExtracts()) {
+            $data->{'full_text_extracts'} = $object->getFullTextExtracts();
         }
         if (null !== $object->getFullerTimestamps()) {
             $data->{'fuller_timestamps'} = $object->getFullerTimestamps();
