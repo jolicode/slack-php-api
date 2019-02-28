@@ -1,0 +1,20 @@
+diff --git a/resources/slack-openapi-patched.json b/resources/slack-openapi-patched.json
+index c5fa09e..68885bb 100644
+--- a/resources/slack-openapi-patched.json
++++ b/resources/slack-openapi-patched.json
+@@ -7106,7 +7106,7 @@
+                         "description": "Timestamp of the message to be updated.",
+                         "in": "formData",
+                         "name": "ts",
+-                        "type": "number"
++                        "type": "string"
+                     },
+                     {
+                         "description": "Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).",
+@@ -22212,4 +22212,4 @@
+         }
+     },
+     "swagger": "2.0"
+-}
+\ No newline at end of file
++}
