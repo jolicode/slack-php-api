@@ -1,8 +1,8 @@
 # Changes between versions
 
-## To be released
+## 1.1.1 (2019-03-10)
 
-* Support HTTPlug 2
+* Add support for HTTPlug 2
 
 ## 1.1 (2019-02-21)
 
