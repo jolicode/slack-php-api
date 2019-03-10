@@ -26,7 +26,7 @@
         "jane-php/json-schema-runtime": "^4.0",
         "jane-php/open-api-runtime": "^4.0",
         "php-http/client-implementation": "*",
-        "php-http/client-common": "^1.7"
+        "php-http/client-common": "^1.7 || 2.0"
     },
     "require-dev": {
         "jane-php/jane-php": "^4.0",
