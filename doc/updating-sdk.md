@@ -46,5 +46,5 @@ When the versioned spec has been updated, we need to run Jane to regenerate the
 SDK:
 
 ```bash
-vendor/bin/jane-openapi generate -c .jane-openapi.php
+vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
 ```
