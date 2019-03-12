@@ -4,6 +4,9 @@ cs: ## Fix CS violations
 cs_dry_run: ## Display CS violations without fixing it
 	./vendor/bin/php-cs-fixer fix --verbose --dry-run
 
+spec_diff: ## detect diff between spec and SDK
+	CI_TEST=1 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php && diff generated_ci generated
+
 test: ## Run test suite
 	./vendor/bin/simple-phpunit
 
