@@ -42,6 +42,7 @@ class NormalizerFactory
         $normalizers[] = new ObjsInvitingUserNormalizer();
         $normalizers[] = new ObjsMessageNormalizer();
         $normalizers[] = new ObjsMessageAttachmentsItemNormalizer();
+        $normalizers[] = new ObjsMessageAttachmentsItemFieldsItemNormalizer();
         $normalizers[] = new ObjsMessageIconsNormalizer();
         $normalizers[] = new ObjsMessageRepliesItemNormalizer();
         $normalizers[] = new ObjsPagingNormalizer();

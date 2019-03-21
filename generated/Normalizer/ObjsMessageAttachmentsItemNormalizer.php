@@ -48,29 +48,69 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $object->setFallback($data->{'fallback'});
             unset($data->{'fallback'});
         }
-        if (property_exists($data, 'id')) {
-            $object->setId($data->{'id'});
-            unset($data->{'id'});
+        if (property_exists($data, 'color')) {
+            $object->setColor($data->{'color'});
+            unset($data->{'color'});
         }
-        if (property_exists($data, 'image_bytes')) {
-            $object->setImageBytes($data->{'image_bytes'});
-            unset($data->{'image_bytes'});
+        if (property_exists($data, 'pretext')) {
+            $object->setPretext($data->{'pretext'});
+            unset($data->{'pretext'});
         }
-        if (property_exists($data, 'image_height')) {
-            $object->setImageHeight($data->{'image_height'});
-            unset($data->{'image_height'});
+        if (property_exists($data, 'author_name')) {
+            $object->setAuthorName($data->{'author_name'});
+            unset($data->{'author_name'});
+        }
+        if (property_exists($data, 'author_link')) {
+            $object->setAuthorLink($data->{'author_link'});
+            unset($data->{'author_link'});
+        }
+        if (property_exists($data, 'author_icon')) {
+            $object->setAuthorIcon($data->{'author_icon'});
+            unset($data->{'author_icon'});
+        }
+        if (property_exists($data, 'title')) {
+            $object->setTitle($data->{'title'});
+            unset($data->{'title'});
+        }
+        if (property_exists($data, 'title_link')) {
+            $object->setTitleLink($data->{'title_link'});
+            unset($data->{'title_link'});
+        }
+        if (property_exists($data, 'text')) {
+            $object->setText($data->{'text'});
+            unset($data->{'text'});
+        }
+        if (property_exists($data, 'fields')) {
+            $values = [];
+            foreach ($data->{'fields'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
+            }
+            $object->setFields($values);
+            unset($data->{'fields'});
         }
         if (property_exists($data, 'image_url')) {
             $object->setImageUrl($data->{'image_url'});
             unset($data->{'image_url'});
         }
-        if (property_exists($data, 'image_width')) {
-            $object->setImageWidth($data->{'image_width'});
-            unset($data->{'image_width'});
+        if (property_exists($data, 'thumb_url')) {
+            $object->setThumbUrl($data->{'thumb_url'});
+            unset($data->{'thumb_url'});
         }
-        foreach ($data as $key => $value) {
+        if (property_exists($data, 'footer')) {
+            $object->setFooter($data->{'footer'});
+            unset($data->{'footer'});
+        }
+        if (property_exists($data, 'footer_icon')) {
+            $object->setFooterIcon($data->{'footer_icon'});
+            unset($data->{'footer_icon'});
+        }
+        if (property_exists($data, 'ts')) {
+            $object->setTs($data->{'ts'});
+            unset($data->{'ts'});
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -83,24 +123,55 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getFallback()) {
             $data->{'fallback'} = $object->getFallback();
         }
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+        if (null !== $object->getColor()) {
+            $data->{'color'} = $object->getColor();
         }
-        if (null !== $object->getImageBytes()) {
-            $data->{'image_bytes'} = $object->getImageBytes();
+        if (null !== $object->getPretext()) {
+            $data->{'pretext'} = $object->getPretext();
         }
-        if (null !== $object->getImageHeight()) {
-            $data->{'image_height'} = $object->getImageHeight();
+        if (null !== $object->getAuthorName()) {
+            $data->{'author_name'} = $object->getAuthorName();
+        }
+        if (null !== $object->getAuthorLink()) {
+            $data->{'author_link'} = $object->getAuthorLink();
+        }
+        if (null !== $object->getAuthorIcon()) {
+            $data->{'author_icon'} = $object->getAuthorIcon();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
+        }
+        if (null !== $object->getTitleLink()) {
+            $data->{'title_link'} = $object->getTitleLink();
+        }
+        if (null !== $object->getText()) {
+            $data->{'text'} = $object->getText();
+        }
+        if (null !== $object->getFields()) {
+            $values = [];
+            foreach ($object->getFields() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'fields'} = $values;
         }
         if (null !== $object->getImageUrl()) {
             $data->{'image_url'} = $object->getImageUrl();
         }
-        if (null !== $object->getImageWidth()) {
-            $data->{'image_width'} = $object->getImageWidth();
+        if (null !== $object->getThumbUrl()) {
+            $data->{'thumb_url'} = $object->getThumbUrl();
         }
-        foreach ($object as $key => $value) {
+        if (null !== $object->getFooter()) {
+            $data->{'footer'} = $object->getFooter();
+        }
+        if (null !== $object->getFooterIcon()) {
+            $data->{'footer_icon'} = $object->getFooterIcon();
+        }
+        if (null !== $object->getTs()) {
+            $data->{'ts'} = $object->getTs();
+        }
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+                $data->{$key} = $value_1;
             }
         }
 
