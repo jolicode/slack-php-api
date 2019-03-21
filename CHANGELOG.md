@@ -1,5 +1,9 @@
 # Changes between versions
 
+## 1.1.3 (2019-03-21)
+
+* **Specification override** Fix Message attachment data
+
 ## 1.1.2 (2019-03-21)
 
 * **Specification override** Fix Timestamp type in Chat Update endpoint
