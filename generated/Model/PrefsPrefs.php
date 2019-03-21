@@ -844,14 +844,6 @@ class PrefsPrefs extends \ArrayObject
      * @var int
      */
     protected $whatsNewRead;
-    /**
-     * @var bool
-     */
-    protected $winssbRunFromTray;
-    /**
-     * @var string
-     */
-    protected $winssbWindowFlashBehavior;
 
     /**
      * @return bool
@@ -4997,46 +4989,6 @@ class PrefsPrefs extends \ArrayObject
     public function setWhatsNewRead(?int $whatsNewRead): self
     {
         $this->whatsNewRead = $whatsNewRead;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getWinssbRunFromTray(): ?bool
-    {
-        return $this->winssbRunFromTray;
-    }
-
-    /**
-     * @param bool $winssbRunFromTray
-     *
-     * @return self
-     */
-    public function setWinssbRunFromTray(?bool $winssbRunFromTray): self
-    {
-        $this->winssbRunFromTray = $winssbRunFromTray;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWinssbWindowFlashBehavior(): ?string
-    {
-        return $this->winssbWindowFlashBehavior;
-    }
-
-    /**
-     * @param string $winssbWindowFlashBehavior
-     *
-     * @return self
-     */
-    public function setWinssbWindowFlashBehavior(?string $winssbWindowFlashBehavior): self
-    {
-        $this->winssbWindowFlashBehavior = $winssbWindowFlashBehavior;
 
         return $this;
     }

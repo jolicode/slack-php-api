@@ -2608,12 +2608,6 @@
                 },
                 "whats_new_read": {
                     "type": "integer"
-                },
-                "winssb_run_from_tray": {
-                    "type": "boolean"
-                },
-                "winssb_window_flash_behavior": {
-                    "type": "string"
                 }
             },
             "title": "User Prefs object",
@@ -7106,7 +7100,7 @@
                         "description": "Timestamp of the message to be updated.",
                         "in": "formData",
                         "name": "ts",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).",
