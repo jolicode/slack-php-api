@@ -1,7 +1,5 @@
-diff --git a/resources/slack-openapi-patched.json b/resources/slack-openapi-patched.json
-index c5fa09e..68885bb 100644
---- a/resources/slack-openapi-patched.json
-+++ b/resources/slack-openapi-patched.json
+--- resources/slack-openapi-patched.json 2019-03-21 12:14:33.020307516 +0100
++++ resources/slack-openapi-patched.json 2019-03-21 12:14:56.296475732 +0100
 @@ -7106,7 +7106,7 @@
                          "description": "Timestamp of the message to be updated.",
                          "in": "formData",

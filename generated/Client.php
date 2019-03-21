@@ -652,7 +652,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
      *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
-     *     @var float $ts timestamp of the message to be updated
+     *     @var string $ts timestamp of the message to be updated
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
      *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var bool $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).

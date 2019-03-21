@@ -876,14 +876,6 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setWhatsNewRead($data->{'whats_new_read'});
             unset($data->{'whats_new_read'});
         }
-        if (property_exists($data, 'winssb_run_from_tray')) {
-            $object->setWinssbRunFromTray($data->{'winssb_run_from_tray'});
-            unset($data->{'winssb_run_from_tray'});
-        }
-        if (property_exists($data, 'winssb_window_flash_behavior')) {
-            $object->setWinssbWindowFlashBehavior($data->{'winssb_window_flash_behavior'});
-            unset($data->{'winssb_window_flash_behavior'});
-        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', $key)) {
                 $object[$key] = $value;
@@ -1511,12 +1503,6 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getWhatsNewRead()) {
             $data->{'whats_new_read'} = $object->getWhatsNewRead();
-        }
-        if (null !== $object->getWinssbRunFromTray()) {
-            $data->{'winssb_run_from_tray'} = $object->getWinssbRunFromTray();
-        }
-        if (null !== $object->getWinssbWindowFlashBehavior()) {
-            $data->{'winssb_window_flash_behavior'} = $object->getWinssbWindowFlashBehavior();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {

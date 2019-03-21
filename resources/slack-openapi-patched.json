@@ -2608,12 +2608,6 @@
                 },
                 "whats_new_read": {
                     "type": "integer"
-                },
-                "winssb_run_from_tray": {
-                    "type": "boolean"
-                },
-                "winssb_window_flash_behavior": {
-                    "type": "string"
                 }
             },
             "title": "User Prefs object",
