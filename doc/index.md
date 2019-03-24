@@ -6,11 +6,11 @@ This library mostly contains automatically generated code from the official
 [Slack OpenAPI spec](https://github.com/slackapi/slack-api-specs).
 
 The library provides three kinds of PHP classes:
-- [endpoints](generated/Endpoint/) represent requests to API methods
-- [models](generated/Model) represent data from the API
-- [normalizers](generated/Normalizer) transform JSON from the API to PHP models
+- [endpoints](../generated/Endpoint/) represent requests to API methods
+- [models](../generated/Model) represent data from the API
+- [normalizers](../generated/Normalizer) transform JSON from the API to PHP models
 
-If you use the provided [Client](generated/Client.php), you don't have to
+If you use the provided [Client](../generated/Client.php), you don't have to
 understand how the library works internally. Calling one of its method will
 make the HTTP request to the API and return the corresponding PHP object.
 
