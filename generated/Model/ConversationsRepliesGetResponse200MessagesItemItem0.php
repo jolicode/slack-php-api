@@ -230,9 +230,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTs(): ?string
+    public function getTs()
     {
         return $this->ts;
     }
@@ -242,7 +242,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      *
      * @return self
      */
-    public function setTs(?string $ts): self
+    public function setTs($ts = null): self
     {
         $this->ts = $ts;
 
