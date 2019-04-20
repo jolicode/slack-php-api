@@ -57,7 +57,7 @@ class ObjsConversationItem2 extends \ArrayObject
      */
     protected $latest;
     /**
-     * @var string
+     * @var mixed
      */
     protected $priority;
     /**
@@ -294,19 +294,19 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getPriority(): ?string
+    public function getPriority()
     {
         return $this->priority;
     }
 
     /**
-     * @param string $priority
+     * @param mixed $priority
      *
      * @return self
      */
-    public function setPriority(?string $priority): self
+    public function setPriority($priority = null): self
     {
         $this->priority = $priority;
 

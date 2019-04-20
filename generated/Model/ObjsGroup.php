@@ -69,7 +69,7 @@ class ObjsGroup extends \ArrayObject
      */
     protected $nameNormalized;
     /**
-     * @var string
+     * @var mixed
      */
     protected $priority;
     /**
@@ -370,19 +370,19 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getPriority(): ?string
+    public function getPriority()
     {
         return $this->priority;
     }
 
     /**
-     * @param string $priority
+     * @param mixed $priority
      *
      * @return self
      */
-    public function setPriority(?string $priority): self
+    public function setPriority($priority = null): self
     {
         $this->priority = $priority;
 
