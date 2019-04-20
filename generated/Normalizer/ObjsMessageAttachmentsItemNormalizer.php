@@ -44,6 +44,10 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem();
         $data = clone $data;
+        if (property_exists($data, 'id')) {
+            $object->setId($data->{'id'});
+            unset($data->{'id'});
+        }
         if (property_exists($data, 'fallback')) {
             $object->setFallback($data->{'fallback'});
             unset($data->{'fallback'});
@@ -120,6 +124,9 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
         if (null !== $object->getFallback()) {
             $data->{'fallback'} = $object->getFallback();
         }

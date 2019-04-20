@@ -1319,6 +1319,9 @@
                     "items": {
                         "additionalProperties": true,
                         "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
                             "fallback": {
                                 "type": "string"
                             },

@@ -13,6 +13,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItem extends \ArrayObject
 {
     /**
+     * @var int
+     */
+    protected $id;
+    /**
      * @var string
      */
     protected $fallback;
@@ -72,6 +76,26 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      * @var string
      */
     protected $ts;
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return self
+     */
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * @return string
