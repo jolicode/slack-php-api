@@ -203,7 +203,7 @@
                     "uniqueItems": true
                 },
                 "priority": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "purpose": {
                     "additionalProperties": true,
@@ -453,7 +453,7 @@
                             "uniqueItems": true
                         },
                         "priority": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "purpose": {
                             "additionalProperties": true,
@@ -699,7 +699,7 @@
                             "uniqueItems": true
                         },
                         "priority": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "purpose": {
                             "additionalProperties": true,
@@ -860,7 +860,7 @@
                             ]
                         },
                         "priority": {
-                            "type": "integer"
+                            "type": "string"
                         },
                         "unread_count": {
                             "type": "integer"
@@ -1170,7 +1170,7 @@
                     "type": "string"
                 },
                 "priority": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "purpose": {
                     "additionalProperties": true,
@@ -1252,7 +1252,7 @@
                     "type": "boolean"
                 },
                 "priority": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "user": {
                     "$ref": "#/definitions/defs_user_id"

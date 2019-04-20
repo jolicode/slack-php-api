@@ -33,7 +33,7 @@ class ObjsIm extends \ArrayObject
      */
     protected $isUserDeleted;
     /**
-     * @var int
+     * @var string
      */
     protected $priority;
     /**
@@ -142,19 +142,19 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPriority(): ?int
+    public function getPriority(): ?string
     {
         return $this->priority;
     }
 
     /**
-     * @param int $priority
+     * @param string $priority
      *
      * @return self
      */
-    public function setPriority(?int $priority): self
+    public function setPriority(?string $priority): self
     {
         $this->priority = $priority;
 
