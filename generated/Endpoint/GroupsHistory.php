@@ -21,9 +21,9 @@ class GroupsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `groups:history`
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel private channel to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -63,9 +63,9 @@ class GroupsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $optionsResolver->setAllowedTypes('unreads', ['bool']);
         $optionsResolver->setAllowedTypes('inclusive', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('oldest', ['float']);
+        $optionsResolver->setAllowedTypes('oldest', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('latest', ['float']);
+        $optionsResolver->setAllowedTypes('latest', ['string']);
 
         return $optionsResolver;
     }
