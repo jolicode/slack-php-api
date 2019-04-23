@@ -52,6 +52,23 @@ Got some problems using this library? Need a missing feature?
 Do not hesitate to [open an issue](https://github.com/jolicode/slack-php-api/issues)
 and share it with us.
 
+### Missing data in the DTO?
+
+The Slack specification is not up to date and miss some critical parts. We do build a [better one on top of the official](doc/updating-sdk.md) but can't be perfect.
+
+What's good is that we use `\ArrayObject` as base classes so if the API return data we don't have in the mapping, you can still access it via Array like syntax:
+
+```php
+$results = $client->searchMessages([
+    'query' => 'test'
+]);
+
+var_dump($results->getOk()); // Mapped
+var_dump($results['messages']); // Not mapped but still readable
+```
+
+Feel free to open issues for those missing fields.
+
 ## Further documentation
 
 You can see the current and past versions using one of the following:

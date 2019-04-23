@@ -105,12 +105,18 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             unset($data->{'footer_icon'});
         }
         if (property_exists($data, 'ts')) {
-            $object->setTs($data->{'ts'});
+            $value_1 = $data->{'ts'};
+            if (is_float($data->{'ts'})) {
+                $value_1 = $data->{'ts'};
+            } elseif (is_string($data->{'ts'})) {
+                $value_1 = $data->{'ts'};
+            }
+            $object->setTs($value_1);
             unset($data->{'ts'});
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
 
@@ -167,11 +173,17 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $data->{'footer_icon'} = $object->getFooterIcon();
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $value_1 = $object->getTs();
+            if (is_float($object->getTs())) {
+                $value_1 = $object->getTs();
+            } elseif (is_string($object->getTs())) {
+                $value_1 = $object->getTs();
+            }
+            $data->{'ts'} = $value_1;
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+                $data->{$key} = $value_2;
             }
         }
 

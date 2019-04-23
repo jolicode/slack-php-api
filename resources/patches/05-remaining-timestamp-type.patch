@@ -1,7 +1,5 @@
-diff --git a/resources/slack-openapi-patched.json b/resources/slack-openapi-patched.json
-index 6a00dc1..b149888 100644
---- a/resources/slack-openapi-patched.json
-+++ b/resources/slack-openapi-patched.json
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
 @@ -5507,7 +5507,7 @@
                          "description": "Timestamp of the most recently seen message.",
                          "in": "formData",
