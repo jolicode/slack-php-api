@@ -133,7 +133,7 @@ class ObjsConversationItem0 extends \ArrayObject
      */
     protected $previousNames;
     /**
-     * @var int
+     * @var float
      */
     protected $priority;
     /**
@@ -774,19 +774,19 @@ class ObjsConversationItem0 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getPriority(): ?int
+    public function getPriority(): ?float
     {
         return $this->priority;
     }
 
     /**
-     * @param int $priority
+     * @param float $priority
      *
      * @return self
      */
-    public function setPriority(?int $priority): self
+    public function setPriority(?float $priority): self
     {
         $this->priority = $priority;
 
