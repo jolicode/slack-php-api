@@ -29,7 +29,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
      */
     protected $isOpen;
     /**
-     * @var string
+     * @var float|string
      */
     protected $lastRead;
     /**
@@ -130,19 +130,19 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return float|string
      */
-    public function getLastRead(): ?string
+    public function getLastRead()
     {
         return $this->lastRead;
     }
 
     /**
-     * @param string $lastRead
+     * @param float|string $lastRead
      *
      * @return self
      */
-    public function setLastRead(?string $lastRead): self
+    public function setLastRead($lastRead): self
     {
         $this->lastRead = $lastRead;
 

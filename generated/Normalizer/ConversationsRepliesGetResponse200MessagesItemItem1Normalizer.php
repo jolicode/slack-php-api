@@ -65,11 +65,23 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
             unset($data->{'text'});
         }
         if (property_exists($data, 'thread_ts')) {
-            $object->setThreadTs($data->{'thread_ts'});
+            $value = $data->{'thread_ts'};
+            if (is_float($data->{'thread_ts'})) {
+                $value = $data->{'thread_ts'};
+            } elseif (is_string($data->{'thread_ts'})) {
+                $value = $data->{'thread_ts'};
+            }
+            $object->setThreadTs($value);
             unset($data->{'thread_ts'});
         }
         if (property_exists($data, 'ts')) {
-            $object->setTs($data->{'ts'});
+            $value_1 = $data->{'ts'};
+            if (is_float($data->{'ts'})) {
+                $value_1 = $data->{'ts'};
+            } elseif (is_string($data->{'ts'})) {
+                $value_1 = $data->{'ts'};
+            }
+            $object->setTs($value_1);
             unset($data->{'ts'});
         }
         if (property_exists($data, 'type')) {
@@ -88,9 +100,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
             $object->setUserTeam($data->{'user_team'});
             unset($data->{'user_team'});
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_2;
             }
         }
 
@@ -116,10 +128,22 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
             $data->{'text'} = $object->getText();
         }
         if (null !== $object->getThreadTs()) {
-            $data->{'thread_ts'} = $object->getThreadTs();
+            $value = $object->getThreadTs();
+            if (is_float($object->getThreadTs())) {
+                $value = $object->getThreadTs();
+            } elseif (is_string($object->getThreadTs())) {
+                $value = $object->getThreadTs();
+            }
+            $data->{'thread_ts'} = $value;
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $value_1 = $object->getTs();
+            if (is_float($object->getTs())) {
+                $value_1 = $object->getTs();
+            } elseif (is_string($object->getTs())) {
+                $value_1 = $object->getTs();
+            }
+            $data->{'ts'} = $value_1;
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
@@ -133,9 +157,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         if (null !== $object->getUserTeam()) {
             $data->{'user_team'} = $object->getUserTeam();
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+                $data->{$key} = $value_2;
             }
         }
 

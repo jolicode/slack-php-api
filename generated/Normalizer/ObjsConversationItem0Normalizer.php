@@ -129,7 +129,13 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
             unset($data->{'is_shared'});
         }
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            }
+            $object->setLastRead($value);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'latest')) {
@@ -138,8 +144,8 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'members')) {
             $values = [];
-            foreach ($data->{'members'} as $value) {
-                $values[] = $value;
+            foreach ($data->{'members'} as $value_1) {
+                $values[] = $value_1;
             }
             $object->setMembers($values);
             unset($data->{'members'});
@@ -158,8 +164,8 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'pending_shared')) {
             $values_1 = [];
-            foreach ($data->{'pending_shared'} as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->{'pending_shared'} as $value_2) {
+                $values_1[] = $value_2;
             }
             $object->setPendingShared($values_1);
             unset($data->{'pending_shared'});
@@ -170,8 +176,8 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'previous_names')) {
             $values_2 = [];
-            foreach ($data->{'previous_names'} as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->{'previous_names'} as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setPreviousNames($values_2);
             unset($data->{'previous_names'});
@@ -186,16 +192,16 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'shared_team_ids')) {
             $values_3 = [];
-            foreach ($data->{'shared_team_ids'} as $value_3) {
-                $values_3[] = $value_3;
+            foreach ($data->{'shared_team_ids'} as $value_4) {
+                $values_3[] = $value_4;
             }
             $object->setSharedTeamIds($values_3);
             unset($data->{'shared_team_ids'});
         }
         if (property_exists($data, 'shares')) {
             $values_4 = [];
-            foreach ($data->{'shares'} as $value_4) {
-                $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem0SharesItem', 'json', $context);
+            foreach ($data->{'shares'} as $value_5) {
+                $values_4[] = $this->denormalizer->denormalize($value_5, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem0SharesItem', 'json', $context);
             }
             $object->setShares($values_4);
             unset($data->{'shares'});
@@ -224,9 +230,9 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        foreach ($data as $key => $value_5) {
+        foreach ($data as $key => $value_6) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_5;
+                $object[$key] = $value_6;
             }
         }
 
@@ -300,15 +306,21 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
             $data->{'is_shared'} = $object->getIsShared();
         }
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value;
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $object->getLatest();
         }
         if (null !== $object->getMembers()) {
             $values = [];
-            foreach ($object->getMembers() as $value) {
-                $values[] = $value;
+            foreach ($object->getMembers() as $value_1) {
+                $values[] = $value_1;
             }
             $data->{'members'} = $values;
         }
@@ -323,8 +335,8 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getPendingShared()) {
             $values_1 = [];
-            foreach ($object->getPendingShared() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($object->getPendingShared() as $value_2) {
+                $values_1[] = $value_2;
             }
             $data->{'pending_shared'} = $values_1;
         }
@@ -333,8 +345,8 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getPreviousNames()) {
             $values_2 = [];
-            foreach ($object->getPreviousNames() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($object->getPreviousNames() as $value_3) {
+                $values_2[] = $value_3;
             }
             $data->{'previous_names'} = $values_2;
         }
@@ -346,15 +358,15 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getSharedTeamIds()) {
             $values_3 = [];
-            foreach ($object->getSharedTeamIds() as $value_3) {
-                $values_3[] = $value_3;
+            foreach ($object->getSharedTeamIds() as $value_4) {
+                $values_3[] = $value_4;
             }
             $data->{'shared_team_ids'} = $values_3;
         }
         if (null !== $object->getShares()) {
             $values_4 = [];
-            foreach ($object->getShares() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+            foreach ($object->getShares() as $value_5) {
+                $values_4[] = $this->normalizer->normalize($value_5, 'json', $context);
             }
             $data->{'shares'} = $values_4;
         }
@@ -376,9 +388,9 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
         }
-        foreach ($object as $key => $value_5) {
+        foreach ($object as $key => $value_6) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_5;
+                $data->{$key} = $value_6;
             }
         }
 

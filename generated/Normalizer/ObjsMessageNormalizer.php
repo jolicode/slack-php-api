@@ -81,7 +81,13 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data->{'is_intro'});
         }
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value_1 = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value_1 = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value_1 = $data->{'last_read'};
+            }
+            $object->setLastRead($value_1);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'name')) {
@@ -98,8 +104,8 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'pinned_to')) {
             $values_1 = [];
-            foreach ($data->{'pinned_to'} as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->{'pinned_to'} as $value_2) {
+                $values_1[] = $value_2;
             }
             $object->setPinnedTo($values_1);
             unset($data->{'pinned_to'});
@@ -110,16 +116,16 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'reactions')) {
             $values_2 = [];
-            foreach ($data->{'reactions'} as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
+            foreach ($data->{'reactions'} as $value_3) {
+                $values_2[] = $this->denormalizer->denormalize($value_3, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
             $object->setReactions($values_2);
             unset($data->{'reactions'});
         }
         if (property_exists($data, 'replies')) {
             $values_3 = [];
-            foreach ($data->{'replies'} as $value_3) {
-                $values_3[] = $this->denormalizer->denormalize($value_3, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageRepliesItem', 'json', $context);
+            foreach ($data->{'replies'} as $value_4) {
+                $values_3[] = $this->denormalizer->denormalize($value_4, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageRepliesItem', 'json', $context);
             }
             $object->setReplies($values_3);
             unset($data->{'replies'});
@@ -149,7 +155,13 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data->{'text'});
         }
         if (property_exists($data, 'thread_ts')) {
-            $object->setThreadTs($data->{'thread_ts'});
+            $value_5 = $data->{'thread_ts'};
+            if (is_float($data->{'thread_ts'})) {
+                $value_5 = $data->{'thread_ts'};
+            } elseif (is_string($data->{'thread_ts'})) {
+                $value_5 = $data->{'thread_ts'};
+            }
+            $object->setThreadTs($value_5);
             unset($data->{'thread_ts'});
         }
         if (property_exists($data, 'topic')) {
@@ -157,7 +169,13 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data->{'topic'});
         }
         if (property_exists($data, 'ts')) {
-            $object->setTs($data->{'ts'});
+            $value_6 = $data->{'ts'};
+            if (is_float($data->{'ts'})) {
+                $value_6 = $data->{'ts'};
+            } elseif (is_string($data->{'ts'})) {
+                $value_6 = $data->{'ts'};
+            }
+            $object->setTs($value_6);
             unset($data->{'ts'});
         }
         if (property_exists($data, 'type')) {
@@ -188,9 +206,9 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setUsername($data->{'username'});
             unset($data->{'username'});
         }
-        foreach ($data as $key => $value_4) {
+        foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_4;
+                $object[$key] = $value_7;
             }
         }
 
@@ -229,7 +247,13 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data->{'is_intro'} = $object->getIsIntro();
         }
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value_1 = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value_1 = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value_1 = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value_1;
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
@@ -242,8 +266,8 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getPinnedTo()) {
             $values_1 = [];
-            foreach ($object->getPinnedTo() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($object->getPinnedTo() as $value_2) {
+                $values_1[] = $value_2;
             }
             $data->{'pinned_to'} = $values_1;
         }
@@ -252,15 +276,15 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getReactions()) {
             $values_2 = [];
-            foreach ($object->getReactions() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($object->getReactions() as $value_3) {
+                $values_2[] = $this->normalizer->normalize($value_3, 'json', $context);
             }
             $data->{'reactions'} = $values_2;
         }
         if (null !== $object->getReplies()) {
             $values_3 = [];
-            foreach ($object->getReplies() as $value_3) {
-                $values_3[] = $this->normalizer->normalize($value_3, 'json', $context);
+            foreach ($object->getReplies() as $value_4) {
+                $values_3[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data->{'replies'} = $values_3;
         }
@@ -283,13 +307,25 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data->{'text'} = $object->getText();
         }
         if (null !== $object->getThreadTs()) {
-            $data->{'thread_ts'} = $object->getThreadTs();
+            $value_5 = $object->getThreadTs();
+            if (is_float($object->getThreadTs())) {
+                $value_5 = $object->getThreadTs();
+            } elseif (is_string($object->getThreadTs())) {
+                $value_5 = $object->getThreadTs();
+            }
+            $data->{'thread_ts'} = $value_5;
         }
         if (null !== $object->getTopic()) {
             $data->{'topic'} = $object->getTopic();
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $value_6 = $object->getTs();
+            if (is_float($object->getTs())) {
+                $value_6 = $object->getTs();
+            } elseif (is_string($object->getTs())) {
+                $value_6 = $object->getTs();
+            }
+            $data->{'ts'} = $value_6;
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
@@ -312,9 +348,9 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getUsername()) {
             $data->{'username'} = $object->getUsername();
         }
-        foreach ($object as $key => $value_4) {
+        foreach ($object as $key => $value_7) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_4;
+                $data->{$key} = $value_7;
             }
         }
 
