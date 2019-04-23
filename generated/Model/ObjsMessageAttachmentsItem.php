@@ -69,7 +69,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $footerIcon;
     /**
-     * @var string
+     * @var float|string
      */
     protected $ts;
 
@@ -354,19 +354,19 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return float|string
      */
-    public function getTs(): ?string
+    public function getTs()
     {
         return $this->ts;
     }
 
     /**
-     * @param string $ts
+     * @param float|string $ts
      *
      * @return self
      */
-    public function setTs(?string $ts): self
+    public function setTs($ts): self
     {
         $this->ts = $ts;
 

@@ -45,16 +45,22 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItemNormalizer i
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem();
         $data = clone $data;
         if (property_exists($data, 'ts')) {
-            $object->setTs($data->{'ts'});
+            $value = $data->{'ts'};
+            if (is_float($data->{'ts'})) {
+                $value = $data->{'ts'};
+            } elseif (is_string($data->{'ts'})) {
+                $value = $data->{'ts'};
+            }
+            $object->setTs($value);
             unset($data->{'ts'});
         }
         if (property_exists($data, 'user')) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -65,14 +71,20 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItemNormalizer i
     {
         $data = new \stdClass();
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $value = $object->getTs();
+            if (is_float($object->getTs())) {
+                $value = $object->getTs();
+            } elseif (is_string($object->getTs())) {
+                $value = $object->getTs();
+            }
+            $data->{'ts'} = $value;
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+                $data->{$key} = $value_1;
             }
         }
 

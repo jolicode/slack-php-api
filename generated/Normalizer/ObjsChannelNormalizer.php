@@ -105,7 +105,13 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             unset($data->{'is_shared'});
         }
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            }
+            $object->setLastRead($value);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'latest')) {
@@ -114,8 +120,8 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'members')) {
             $values = [];
-            foreach ($data->{'members'} as $value) {
-                $values[] = $value;
+            foreach ($data->{'members'} as $value_1) {
+                $values[] = $value_1;
             }
             $object->setMembers($values);
             unset($data->{'members'});
@@ -134,16 +140,16 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'pending_shared')) {
             $values_1 = [];
-            foreach ($data->{'pending_shared'} as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($data->{'pending_shared'} as $value_2) {
+                $values_1[] = $value_2;
             }
             $object->setPendingShared($values_1);
             unset($data->{'pending_shared'});
         }
         if (property_exists($data, 'previous_names')) {
             $values_2 = [];
-            foreach ($data->{'previous_names'} as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->{'previous_names'} as $value_3) {
+                $values_2[] = $value_3;
             }
             $object->setPreviousNames($values_2);
             unset($data->{'previous_names'});
@@ -172,9 +178,9 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
             unset($data->{'unread_count_display'});
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_4;
             }
         }
 
@@ -230,15 +236,21 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data->{'is_shared'} = $object->getIsShared();
         }
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value;
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $object->getLatest();
         }
         if (null !== $object->getMembers()) {
             $values = [];
-            foreach ($object->getMembers() as $value) {
-                $values[] = $value;
+            foreach ($object->getMembers() as $value_1) {
+                $values[] = $value_1;
             }
             $data->{'members'} = $values;
         }
@@ -253,15 +265,15 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getPendingShared()) {
             $values_1 = [];
-            foreach ($object->getPendingShared() as $value_1) {
-                $values_1[] = $value_1;
+            foreach ($object->getPendingShared() as $value_2) {
+                $values_1[] = $value_2;
             }
             $data->{'pending_shared'} = $values_1;
         }
         if (null !== $object->getPreviousNames()) {
             $values_2 = [];
-            foreach ($object->getPreviousNames() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($object->getPreviousNames() as $value_3) {
+                $values_2[] = $value_3;
             }
             $data->{'previous_names'} = $values_2;
         }
@@ -283,9 +295,9 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getUnreadCountDisplay()) {
             $data->{'unread_count_display'} = $object->getUnreadCountDisplay();
         }
-        foreach ($object as $key => $value_3) {
+        foreach ($object as $key => $value_4) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_3;
+                $data->{$key} = $value_4;
             }
         }
 

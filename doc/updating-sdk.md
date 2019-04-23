@@ -22,7 +22,7 @@ So we patch the schema with what we can see in the official documentation via th
 curl https://api.slack.com/specs/openapi/v2/slack_web.json -o resources/slack-openapi.json
 rm resources/slack-openapi-patched.json
 cp resources/slack-openapi.json resources/slack-openapi-patched.json
-patch -p0 < resources/patches/*.patch
+patch --verbose -p0 < resources/patches/*.patch
 ```
 
 ### Generating a new patch

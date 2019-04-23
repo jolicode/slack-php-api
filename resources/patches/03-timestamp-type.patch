@@ -9,10 +9,3 @@
                      },
                      {
                          "description": "Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).",
-@@ -22212,4 +22212,4 @@
-         }
-     },
-     "swagger": "2.0"
--}
-\ No newline at end of file
-+}

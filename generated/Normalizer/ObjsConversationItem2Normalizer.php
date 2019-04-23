@@ -81,7 +81,13 @@ class ObjsConversationItem2Normalizer implements DenormalizerInterface, Normaliz
             unset($data->{'is_user_deleted'});
         }
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            }
+            $object->setLastRead($value);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'latest')) {
@@ -104,9 +110,9 @@ class ObjsConversationItem2Normalizer implements DenormalizerInterface, Normaliz
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -144,7 +150,13 @@ class ObjsConversationItem2Normalizer implements DenormalizerInterface, Normaliz
             $data->{'is_user_deleted'} = $object->getIsUserDeleted();
         }
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value;
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $object->getLatest();
@@ -161,9 +173,9 @@ class ObjsConversationItem2Normalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+                $data->{$key} = $value_1;
             }
         }
 
