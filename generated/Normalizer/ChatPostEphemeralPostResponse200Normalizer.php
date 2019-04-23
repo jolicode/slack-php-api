@@ -45,16 +45,22 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
         $object = new \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200();
         $data = clone $data;
         if (property_exists($data, 'message_ts')) {
-            $object->setMessageTs($data->{'message_ts'});
+            $value = $data->{'message_ts'};
+            if (is_float($data->{'message_ts'})) {
+                $value = $data->{'message_ts'};
+            } elseif (is_string($data->{'message_ts'})) {
+                $value = $data->{'message_ts'};
+            }
+            $object->setMessageTs($value);
             unset($data->{'message_ts'});
         }
         if (property_exists($data, 'ok')) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -65,14 +71,20 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
     {
         $data = new \stdClass();
         if (null !== $object->getMessageTs()) {
-            $data->{'message_ts'} = $object->getMessageTs();
+            $value = $object->getMessageTs();
+            if (is_float($object->getMessageTs())) {
+                $value = $object->getMessageTs();
+            } elseif (is_string($object->getMessageTs())) {
+                $value = $object->getMessageTs();
+            }
+            $data->{'message_ts'} = $value;
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+                $data->{$key} = $value_1;
             }
         }
 

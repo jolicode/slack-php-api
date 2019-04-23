@@ -61,7 +61,13 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
             unset($data->{'is_open'});
         }
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            }
+            $object->setLastRead($value);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'latest')) {
@@ -80,9 +86,9 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
 
@@ -105,7 +111,13 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
             $data->{'is_open'} = $object->getIsOpen();
         }
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value;
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $this->normalizer->normalize($object->getLatest(), 'json', $context);
@@ -119,9 +131,9 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+                $data->{$key} = $value_1;
             }
         }
 

@@ -101,7 +101,7 @@
         "defs_ts": {
             "pattern": "^\\d{10}\\.\\d{6}$",
             "title": "Timestamp in format 0123456789.012345",
-            "type": "string"
+            "type": ["number", "string"]
         },
         "defs_user_id": {
             "pattern": "^[UW][A-Z0-9]{8}$",
@@ -1376,7 +1376,7 @@
                                 "type": "string"
                             },
                             "ts": {
-                                "type": "string"
+                                "type": ["number", "string"]
                             }
                         },
                         "type": "object"

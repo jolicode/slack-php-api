@@ -45,13 +45,19 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0();
         $data = clone $data;
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            }
+            $object->setLastRead($value);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'replies')) {
             $values = [];
-            foreach ($data->{'replies'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem', 'json', $context);
+            foreach ($data->{'replies'} as $value_1) {
+                $values[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem', 'json', $context);
             }
             $object->setReplies($values);
             unset($data->{'replies'});
@@ -77,11 +83,23 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             unset($data->{'text'});
         }
         if (property_exists($data, 'thread_ts')) {
-            $object->setThreadTs($data->{'thread_ts'});
+            $value_2 = $data->{'thread_ts'};
+            if (is_float($data->{'thread_ts'})) {
+                $value_2 = $data->{'thread_ts'};
+            } elseif (is_string($data->{'thread_ts'})) {
+                $value_2 = $data->{'thread_ts'};
+            }
+            $object->setThreadTs($value_2);
             unset($data->{'thread_ts'});
         }
         if (property_exists($data, 'ts')) {
-            $object->setTs($data->{'ts'});
+            $value_3 = $data->{'ts'};
+            if (is_float($data->{'ts'})) {
+                $value_3 = $data->{'ts'};
+            } elseif (is_string($data->{'ts'})) {
+                $value_3 = $data->{'ts'};
+            }
+            $object->setTs($value_3);
             unset($data->{'ts'});
         }
         if (property_exists($data, 'type')) {
@@ -104,9 +122,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $object->setUserTeam($data->{'user_team'});
             unset($data->{'user_team'});
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_4;
             }
         }
 
@@ -117,12 +135,18 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
     {
         $data = new \stdClass();
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value;
         }
         if (null !== $object->getReplies()) {
             $values = [];
-            foreach ($object->getReplies() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($object->getReplies() as $value_1) {
+                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data->{'replies'} = $values;
         }
@@ -142,10 +166,22 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $data->{'text'} = $object->getText();
         }
         if (null !== $object->getThreadTs()) {
-            $data->{'thread_ts'} = $object->getThreadTs();
+            $value_2 = $object->getThreadTs();
+            if (is_float($object->getThreadTs())) {
+                $value_2 = $object->getThreadTs();
+            } elseif (is_string($object->getThreadTs())) {
+                $value_2 = $object->getThreadTs();
+            }
+            $data->{'thread_ts'} = $value_2;
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $value_3 = $object->getTs();
+            if (is_float($object->getTs())) {
+                $value_3 = $object->getTs();
+            } elseif (is_string($object->getTs())) {
+                $value_3 = $object->getTs();
+            }
+            $data->{'ts'} = $value_3;
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
@@ -162,9 +198,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
         if (null !== $object->getUserTeam()) {
             $data->{'user_team'} = $object->getUserTeam();
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_4) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+                $data->{$key} = $value_4;
             }
         }
 
