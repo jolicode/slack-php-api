@@ -44,6 +44,14 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem();
         $data = clone $data;
+        if (property_exists($data, 'id')) {
+            $object->setId($data->{'id'});
+            unset($data->{'id'});
+        }
+        if (property_exists($data, 'callback_id')) {
+            $object->setCallbackId($data->{'callback_id'});
+            unset($data->{'callback_id'});
+        }
         if (property_exists($data, 'fallback')) {
             $object->setFallback($data->{'fallback'});
             unset($data->{'fallback'});
@@ -88,6 +96,14 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $object->setFields($values);
             unset($data->{'fields'});
         }
+        if (property_exists($data, 'actions')) {
+            $values_1 = [];
+            foreach ($data->{'actions'} as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
+            }
+            $object->setActions($values_1);
+            unset($data->{'actions'});
+        }
         if (property_exists($data, 'image_url')) {
             $object->setImageUrl($data->{'image_url'});
             unset($data->{'image_url'});
@@ -105,18 +121,18 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             unset($data->{'footer_icon'});
         }
         if (property_exists($data, 'ts')) {
-            $value_1 = $data->{'ts'};
+            $value_2 = $data->{'ts'};
             if (is_float($data->{'ts'})) {
-                $value_1 = $data->{'ts'};
+                $value_2 = $data->{'ts'};
             } elseif (is_string($data->{'ts'})) {
-                $value_1 = $data->{'ts'};
+                $value_2 = $data->{'ts'};
             }
-            $object->setTs($value_1);
+            $object->setTs($value_2);
             unset($data->{'ts'});
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
 
@@ -126,6 +142,12 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
+        if (null !== $object->getCallbackId()) {
+            $data->{'callback_id'} = $object->getCallbackId();
+        }
         if (null !== $object->getFallback()) {
             $data->{'fallback'} = $object->getFallback();
         }
@@ -160,6 +182,13 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             }
             $data->{'fields'} = $values;
         }
+        if (null !== $object->getActions()) {
+            $values_1 = [];
+            foreach ($object->getActions() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data->{'actions'} = $values_1;
+        }
         if (null !== $object->getImageUrl()) {
             $data->{'image_url'} = $object->getImageUrl();
         }
@@ -173,17 +202,17 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $data->{'footer_icon'} = $object->getFooterIcon();
         }
         if (null !== $object->getTs()) {
-            $value_1 = $object->getTs();
+            $value_2 = $object->getTs();
             if (is_float($object->getTs())) {
-                $value_1 = $object->getTs();
+                $value_2 = $object->getTs();
             } elseif (is_string($object->getTs())) {
-                $value_1 = $object->getTs();
+                $value_2 = $object->getTs();
             }
-            $data->{'ts'} = $value_1;
+            $data->{'ts'} = $value_2;
         }
-        foreach ($object as $key => $value_2) {
+        foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_2;
+                $data->{$key} = $value_3;
             }
         }
 
