@@ -6,6 +6,7 @@
 * **Specification override** Fix "oldest" and "latest" parameters type, allow string
 * **Specification override** Fix "priority" type from integer to float
 * **Specification override** Add "id", "callback_id" and "actions" mapping to attachments (in Messages)
+* **Specification override** Map the "files" key in Message objects
 
 ## 1.1.3 (2019-03-21)
 

@@ -963,6 +963,12 @@
                 "is_public": {
                     "type": "boolean"
                 },
+                "is_starred": {
+                    "type": "boolean"
+                },
+                "has_rich_preview": {
+                    "type": "boolean"
+                },
                 "mimetype": {
                     "type": "string"
                 },
@@ -1416,6 +1422,13 @@
                     "minItems": 1,
                     "type": "array",
                     "uniqueItems": true
+                },
+                "files": {
+                    "items": {
+                        "$ref": "#/definitions/objs_file",
+                        "additionalProperties": true
+                    },
+                    "type": "array"
                 },
                 "bot_id": {
                     "items": [

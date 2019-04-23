@@ -17,6 +17,10 @@ class ObjsMessage extends \ArrayObject
      */
     protected $attachments;
     /**
+     * @var ObjsFile[]
+     */
+    protected $files;
+    /**
      * @var mixed
      */
     protected $botId;
@@ -157,6 +161,26 @@ class ObjsMessage extends \ArrayObject
     public function setAttachments(?array $attachments): self
     {
         $this->attachments = $attachments;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsFile[]
+     */
+    public function getFiles(): ?array
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param ObjsFile[] $files
+     *
+     * @return self
+     */
+    public function setFiles(?array $files): self
+    {
+        $this->files = $files;
 
         return $this;
     }

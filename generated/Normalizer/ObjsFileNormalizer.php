@@ -108,6 +108,14 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setIsPublic($data->{'is_public'});
             unset($data->{'is_public'});
         }
+        if (property_exists($data, 'is_starred')) {
+            $object->setIsStarred($data->{'is_starred'});
+            unset($data->{'is_starred'});
+        }
+        if (property_exists($data, 'has_rich_preview')) {
+            $object->setHasRichPreview($data->{'has_rich_preview'});
+            unset($data->{'has_rich_preview'});
+        }
         if (property_exists($data, 'mimetype')) {
             $object->setMimetype($data->{'mimetype'});
             unset($data->{'mimetype'});
@@ -342,6 +350,12 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getIsPublic()) {
             $data->{'is_public'} = $object->getIsPublic();
+        }
+        if (null !== $object->getIsStarred()) {
+            $data->{'is_starred'} = $object->getIsStarred();
+        }
+        if (null !== $object->getHasRichPreview()) {
+            $data->{'has_rich_preview'} = $object->getHasRichPreview();
         }
         if (null !== $object->getMimetype()) {
             $data->{'mimetype'} = $object->getMimetype();
