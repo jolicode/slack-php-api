@@ -18,6 +18,7 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $formParameters {
      *
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
+     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
      *     @var string $ts timestamp of the message to be updated
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
@@ -62,10 +63,11 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['attachments', 'text', 'ts', 'parse', 'as_user', 'link_names', 'channel']);
+        $optionsResolver->setDefined(['attachments', 'blocks', 'text', 'ts', 'parse', 'as_user', 'link_names', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
+        $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('text', ['string']);
         $optionsResolver->setAllowedTypes('ts', ['string']);
         $optionsResolver->setAllowedTypes('parse', ['string']);

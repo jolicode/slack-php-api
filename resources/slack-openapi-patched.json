@@ -6642,6 +6642,12 @@
                         "type": "string"
                     },
                     {
+                        "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
+                        "in": "formData",
+                        "name": "blocks",
+                        "type": "string"
+                    },
+                    {
                         "description": "Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.",
                         "in": "formData",
                         "name": "text",
@@ -7171,6 +7177,12 @@
                         "description": "A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.",
                         "in": "formData",
                         "name": "attachments",
+                        "type": "string"
+                    },
+                    {
+                        "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
+                        "in": "formData",
+                        "name": "blocks",
                         "type": "string"
                     },
                     {

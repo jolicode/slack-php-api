@@ -18,6 +18,7 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      * @param array $formParameters {
      *
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
      *     @var bool $link_names find and link channel names and usernames
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
@@ -62,10 +63,11 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['attachments', 'text', 'link_names', 'parse', 'user', 'as_user', 'channel']);
+        $optionsResolver->setDefined(['attachments', 'blocks', 'text', 'link_names', 'parse', 'user', 'as_user', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
+        $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('text', ['string']);
         $optionsResolver->setAllowedTypes('link_names', ['bool']);
         $optionsResolver->setAllowedTypes('parse', ['string']);
