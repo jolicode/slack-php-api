@@ -1319,6 +1319,12 @@
                     "items": {
                         "additionalProperties": true,
                         "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "callback_id": {
+                                "type": "string"
+                            },
                             "fallback": {
                                 "type": "string"
                             },
@@ -1359,6 +1365,32 @@
                                         },
                                         "short": {
                                             "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "actions": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "text": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        },
+                                        "style": {
+                                            "type": "string"
                                         }
                                     }
                                 }

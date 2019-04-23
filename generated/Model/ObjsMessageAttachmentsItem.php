@@ -13,6 +13,14 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItem extends \ArrayObject
 {
     /**
+     * @var int
+     */
+    protected $id;
+    /**
+     * @var string
+     */
+    protected $callbackId;
+    /**
      * @var string
      */
     protected $fallback;
@@ -53,6 +61,10 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $fields;
     /**
+     * @var ObjsMessageAttachmentsItemActionsItem[]
+     */
+    protected $actions;
+    /**
      * @var string
      */
     protected $imageUrl;
@@ -72,6 +84,46 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      * @var float|string
      */
     protected $ts;
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return self
+     */
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCallbackId(): ?string
+    {
+        return $this->callbackId;
+    }
+
+    /**
+     * @param string $callbackId
+     *
+     * @return self
+     */
+    public function setCallbackId(?string $callbackId): self
+    {
+        $this->callbackId = $callbackId;
+
+        return $this;
+    }
 
     /**
      * @return string
@@ -269,6 +321,26 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     public function setFields(?array $fields): self
     {
         $this->fields = $fields;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsMessageAttachmentsItemActionsItem[]
+     */
+    public function getActions(): ?array
+    {
+        return $this->actions;
+    }
+
+    /**
+     * @param ObjsMessageAttachmentsItemActionsItem[] $actions
+     *
+     * @return self
+     */
+    public function setActions(?array $actions): self
+    {
+        $this->actions = $actions;
 
         return $this;
     }
