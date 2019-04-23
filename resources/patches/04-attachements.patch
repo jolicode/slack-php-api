@@ -1,7 +1,5 @@
-diff --git i/resources/slack-openapi-patched.json w/resources/slack-openapi-patched.json
-index 73f2227..6a00dc1 100644
---- i/resources/slack-openapi-patched.json
-+++ w/resources/slack-openapi-patched.json
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
 @@ -1322,25 +1322,63 @@
                              "fallback": {
                                  "type": "string"
@@ -68,7 +66,7 @@ index 73f2227..6a00dc1 100644
 +                                "type": "string"
 +                            },
 +                            "ts": {
-+                                "type": "string"
++                                "type": ["number", "string"]
                              }
                          },
 -                        "required": [

@@ -1376,7 +1376,7 @@
                                 "type": "string"
                             },
                             "ts": {
-                                "type": "string"
+                                "type": ["number", "string"]
                             }
                         },
                         "type": "object"
