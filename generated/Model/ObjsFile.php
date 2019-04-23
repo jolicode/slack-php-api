@@ -65,6 +65,14 @@ class ObjsFile extends \ArrayObject
      */
     protected $isPublic;
     /**
+     * @var bool
+     */
+    protected $isStarred;
+    /**
+     * @var bool
+     */
+    protected $hasRichPreview;
+    /**
      * @var string
      */
     protected $mimetype;
@@ -481,6 +489,46 @@ class ObjsFile extends \ArrayObject
     public function setIsPublic(?bool $isPublic): self
     {
         $this->isPublic = $isPublic;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsStarred(): ?bool
+    {
+        return $this->isStarred;
+    }
+
+    /**
+     * @param bool $isStarred
+     *
+     * @return self
+     */
+    public function setIsStarred(?bool $isStarred): self
+    {
+        $this->isStarred = $isStarred;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHasRichPreview(): ?bool
+    {
+        return $this->hasRichPreview;
+    }
+
+    /**
+     * @param bool $hasRichPreview
+     *
+     * @return self
+     */
+    public function setHasRichPreview(?bool $hasRichPreview): self
+    {
+        $this->hasRichPreview = $hasRichPreview;
 
         return $this;
     }
