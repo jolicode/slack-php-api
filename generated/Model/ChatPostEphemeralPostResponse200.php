@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ChatPostEphemeralPostResponse200 extends \ArrayObject
 {
     /**
-     * @var string
+     * @var float|string
      */
     protected $messageTs;
     /**
@@ -22,19 +22,19 @@ class ChatPostEphemeralPostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return string
+     * @return float|string
      */
-    public function getMessageTs(): ?string
+    public function getMessageTs()
     {
         return $this->messageTs;
     }
 
     /**
-     * @param string $messageTs
+     * @param float|string $messageTs
      *
      * @return self
      */
-    public function setMessageTs(?string $messageTs): self
+    public function setMessageTs($messageTs): self
     {
         $this->messageTs = $messageTs;
 

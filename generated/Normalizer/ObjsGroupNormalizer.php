@@ -81,7 +81,13 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             unset($data->{'is_pending_ext_shared'});
         }
         if (property_exists($data, 'last_read')) {
-            $object->setLastRead($data->{'last_read'});
+            $value = $data->{'last_read'};
+            if (is_float($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            } elseif (is_string($data->{'last_read'})) {
+                $value = $data->{'last_read'};
+            }
+            $object->setLastRead($value);
             unset($data->{'last_read'});
         }
         if (property_exists($data, 'latest')) {
@@ -90,8 +96,8 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (property_exists($data, 'members')) {
             $values = [];
-            foreach ($data->{'members'} as $value) {
-                $values[] = $value;
+            foreach ($data->{'members'} as $value_1) {
+                $values[] = $value_1;
             }
             $object->setMembers($values);
             unset($data->{'members'});
@@ -124,9 +130,9 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
             unset($data->{'unread_count_display'});
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
 
@@ -164,15 +170,21 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data->{'is_pending_ext_shared'} = $object->getIsPendingExtShared();
         }
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
+            $value = $object->getLastRead();
+            if (is_float($object->getLastRead())) {
+                $value = $object->getLastRead();
+            } elseif (is_string($object->getLastRead())) {
+                $value = $object->getLastRead();
+            }
+            $data->{'last_read'} = $value;
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $object->getLatest();
         }
         if (null !== $object->getMembers()) {
             $values = [];
-            foreach ($object->getMembers() as $value) {
-                $values[] = $value;
+            foreach ($object->getMembers() as $value_1) {
+                $values[] = $value_1;
             }
             $data->{'members'} = $values;
         }
@@ -197,9 +209,9 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getUnreadCountDisplay()) {
             $data->{'unread_count_display'} = $object->getUnreadCountDisplay();
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+                $data->{$key} = $value_2;
             }
         }
 

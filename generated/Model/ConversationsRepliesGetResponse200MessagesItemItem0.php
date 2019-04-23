@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
 {
     /**
-     * @var string
+     * @var float|string
      */
     protected $lastRead;
     /**
@@ -41,11 +41,11 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      */
     protected $text;
     /**
-     * @var string
+     * @var float|string
      */
     protected $threadTs;
     /**
-     * @var string
+     * @var float|string
      */
     protected $ts;
     /**
@@ -70,19 +70,19 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     protected $userTeam;
 
     /**
-     * @return string
+     * @return float|string
      */
-    public function getLastRead(): ?string
+    public function getLastRead()
     {
         return $this->lastRead;
     }
 
     /**
-     * @param string $lastRead
+     * @param float|string $lastRead
      *
      * @return self
      */
-    public function setLastRead(?string $lastRead): self
+    public function setLastRead($lastRead): self
     {
         $this->lastRead = $lastRead;
 
@@ -210,19 +210,19 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return float|string
      */
-    public function getThreadTs(): ?string
+    public function getThreadTs()
     {
         return $this->threadTs;
     }
 
     /**
-     * @param string $threadTs
+     * @param float|string $threadTs
      *
      * @return self
      */
-    public function setThreadTs(?string $threadTs): self
+    public function setThreadTs($threadTs): self
     {
         $this->threadTs = $threadTs;
 
@@ -230,19 +230,19 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return float|string
      */
-    public function getTs(): ?string
+    public function getTs()
     {
         return $this->ts;
     }
 
     /**
-     * @param string $ts
+     * @param float|string $ts
      *
      * @return self
      */
-    public function setTs(?string $ts): self
+    public function setTs($ts): self
     {
         $this->ts = $ts;
 
