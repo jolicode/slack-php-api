@@ -3,6 +3,7 @@
 ## Not yet released
 
 * **Specification override** Fix Timestamp type in all endpoints, allow string and number because of API inconsistency
+* **Specification override** Fix "oldest" and "latest" parameters type, allow string
 
 ## 1.1.3 (2019-03-21)
 
