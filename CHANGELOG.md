@@ -1,5 +1,9 @@
 # Changes between versions
 
+## Not yet released
+
+* **Specification override** Fix Timestamp type in all endpoints
+
 ## 1.1.3 (2019-03-21)
 
 * **Specification override** Fix Message attachment data
