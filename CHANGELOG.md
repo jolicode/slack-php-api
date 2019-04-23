@@ -2,6 +2,8 @@
 
 ## Not yet released
 
+## 1.2.0 (2019-04-23)
+
 * **Specification override** Fix Timestamp type in all endpoints, allow string and number because of API inconsistency
 * **Specification override** Fix "oldest" and "latest" parameters type, allow string
 * **Specification override** Fix "priority" type from integer to float
