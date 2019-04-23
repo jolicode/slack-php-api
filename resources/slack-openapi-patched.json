@@ -4390,7 +4390,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Channel to fetch history for.",
@@ -4402,7 +4402,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -7755,7 +7755,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Conversation ID to fetch history for.",
@@ -7767,7 +7767,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -9504,7 +9504,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Conversation ID to fetch thread from.",
@@ -9516,7 +9516,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -12323,7 +12323,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Private channel to fetch history for.",
@@ -12335,7 +12335,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -13918,7 +13918,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Direct message channel to fetch history for.",
@@ -13930,7 +13930,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -14919,7 +14919,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Multiparty direct message to fetch history for.",
@@ -14931,7 +14931,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [

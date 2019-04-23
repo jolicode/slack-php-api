@@ -209,9 +209,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `channels:history`
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel channel to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -749,9 +749,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel conversation ID to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -970,9 +970,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel conversation ID to fetch thread from
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1466,9 +1466,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `groups:history`
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel private channel to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1773,9 +1773,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `im:history`
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel direct message channel to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1922,9 +1922,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `mpim:history`
-     *     @var float $oldest start of time range of messages to include in results
+     *     @var string $oldest start of time range of messages to include in results
      *     @var string $channel multiparty direct message to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
