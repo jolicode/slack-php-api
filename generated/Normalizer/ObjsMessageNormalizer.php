@@ -90,9 +90,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'last_read')) {
             $value_2 = $data->{'last_read'};
-            if (is_float($data->{'last_read'})) {
-                $value_2 = $data->{'last_read'};
-            } elseif (is_string($data->{'last_read'})) {
+            if (is_string($data->{'last_read'})) {
                 $value_2 = $data->{'last_read'};
             }
             $object->setLastRead($value_2);
@@ -164,9 +162,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'thread_ts')) {
             $value_6 = $data->{'thread_ts'};
-            if (is_float($data->{'thread_ts'})) {
-                $value_6 = $data->{'thread_ts'};
-            } elseif (is_string($data->{'thread_ts'})) {
+            if (is_string($data->{'thread_ts'})) {
                 $value_6 = $data->{'thread_ts'};
             }
             $object->setThreadTs($value_6);
@@ -178,9 +174,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (property_exists($data, 'ts')) {
             $value_7 = $data->{'ts'};
-            if (is_float($data->{'ts'})) {
-                $value_7 = $data->{'ts'};
-            } elseif (is_string($data->{'ts'})) {
+            if (is_string($data->{'ts'})) {
                 $value_7 = $data->{'ts'};
             }
             $object->setTs($value_7);
@@ -263,9 +257,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getLastRead()) {
             $value_2 = $object->getLastRead();
-            if (is_float($object->getLastRead())) {
-                $value_2 = $object->getLastRead();
-            } elseif (is_string($object->getLastRead())) {
+            if (is_string($object->getLastRead())) {
                 $value_2 = $object->getLastRead();
             }
             $data->{'last_read'} = $value_2;
@@ -323,9 +315,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getThreadTs()) {
             $value_6 = $object->getThreadTs();
-            if (is_float($object->getThreadTs())) {
-                $value_6 = $object->getThreadTs();
-            } elseif (is_string($object->getThreadTs())) {
+            if (is_string($object->getThreadTs())) {
                 $value_6 = $object->getThreadTs();
             }
             $data->{'thread_ts'} = $value_6;
@@ -335,9 +325,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getTs()) {
             $value_7 = $object->getTs();
-            if (is_float($object->getTs())) {
-                $value_7 = $object->getTs();
-            } elseif (is_string($object->getTs())) {
+            if (is_string($object->getTs())) {
                 $value_7 = $object->getTs();
             }
             $data->{'ts'} = $value_7;

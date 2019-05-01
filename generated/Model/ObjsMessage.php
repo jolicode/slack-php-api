@@ -49,7 +49,7 @@ class ObjsMessage extends \ArrayObject
      */
     protected $isIntro;
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -105,7 +105,7 @@ class ObjsMessage extends \ArrayObject
      */
     protected $text;
     /**
-     * @var float|string
+     * @var string
      */
     protected $threadTs;
     /**
@@ -113,7 +113,7 @@ class ObjsMessage extends \ArrayObject
      */
     protected $topic;
     /**
-     * @var float|string
+     * @var string
      */
     protected $ts;
     /**
@@ -326,7 +326,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -334,7 +334,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */
@@ -606,7 +606,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getThreadTs()
     {
@@ -614,7 +614,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param float|string $threadTs
+     * @param string $threadTs
      *
      * @return self
      */
@@ -646,7 +646,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getTs()
     {
@@ -654,7 +654,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param float|string $ts
+     * @param string $ts
      *
      * @return self
      */

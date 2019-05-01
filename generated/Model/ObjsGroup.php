@@ -49,7 +49,7 @@ class ObjsGroup extends \ArrayObject
      */
     protected $isPendingExtShared;
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -270,7 +270,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -278,7 +278,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */

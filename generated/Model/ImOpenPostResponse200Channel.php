@@ -29,7 +29,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
      */
     protected $isOpen;
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -130,7 +130,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -138,7 +138,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */

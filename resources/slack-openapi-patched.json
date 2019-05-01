@@ -100,8 +100,8 @@
         },
         "defs_ts": {
             "pattern": "^\\d{10}\\.\\d{6}$",
-            "title": "Timestamp in format 0123456789.012345",
-            "type": ["number", "string"]
+            "title": "Timestamp in format 0123456789.012345 as string",
+            "type": ["string"]
         },
         "defs_user_id": {
             "pattern": "^[UW][A-Z0-9]{8}$",
@@ -5830,7 +5830,7 @@
                         "description": "Unique identifier of a thread's parent message",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `channels:history`",
@@ -13411,7 +13411,7 @@
                         "description": "Unique identifier of a thread's parent message",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `groups:history`",
@@ -14600,7 +14600,7 @@
                         "description": "Unique identifier of a thread's parent message",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `im:history`",
@@ -15410,7 +15410,7 @@
                         "description": "Unique identifier of a thread's parent message.",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `mpim:history`",

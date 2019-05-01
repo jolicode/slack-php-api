@@ -130,9 +130,7 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'last_read')) {
             $value = $data->{'last_read'};
-            if (is_float($data->{'last_read'})) {
-                $value = $data->{'last_read'};
-            } elseif (is_string($data->{'last_read'})) {
+            if (is_string($data->{'last_read'})) {
                 $value = $data->{'last_read'};
             }
             $object->setLastRead($value);
@@ -307,9 +305,7 @@ class ObjsConversationItem0Normalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getLastRead()) {
             $value = $object->getLastRead();
-            if (is_float($object->getLastRead())) {
-                $value = $object->getLastRead();
-            } elseif (is_string($object->getLastRead())) {
+            if (is_string($object->getLastRead())) {
                 $value = $object->getLastRead();
             }
             $data->{'last_read'} = $value;

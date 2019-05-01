@@ -73,7 +73,7 @@ class ObjsChannel extends \ArrayObject
      */
     protected $isShared;
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -430,7 +430,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -438,7 +438,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */

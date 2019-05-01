@@ -33,11 +33,11 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
      */
     protected $text;
     /**
-     * @var float|string
+     * @var string
      */
     protected $threadTs;
     /**
-     * @var float|string
+     * @var string
      */
     protected $ts;
     /**
@@ -158,7 +158,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getThreadTs()
     {
@@ -166,7 +166,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param float|string $threadTs
+     * @param string $threadTs
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getTs()
     {
@@ -186,7 +186,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param float|string $ts
+     * @param string $ts
      *
      * @return self
      */

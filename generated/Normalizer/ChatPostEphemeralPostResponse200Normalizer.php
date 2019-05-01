@@ -46,9 +46,7 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
         $data = clone $data;
         if (property_exists($data, 'message_ts')) {
             $value = $data->{'message_ts'};
-            if (is_float($data->{'message_ts'})) {
-                $value = $data->{'message_ts'};
-            } elseif (is_string($data->{'message_ts'})) {
+            if (is_string($data->{'message_ts'})) {
                 $value = $data->{'message_ts'};
             }
             $object->setMessageTs($value);
@@ -72,9 +70,7 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
         $data = new \stdClass();
         if (null !== $object->getMessageTs()) {
             $value = $object->getMessageTs();
-            if (is_float($object->getMessageTs())) {
-                $value = $object->getMessageTs();
-            } elseif (is_string($object->getMessageTs())) {
+            if (is_string($object->getMessageTs())) {
                 $value = $object->getMessageTs();
             }
             $data->{'message_ts'} = $value;

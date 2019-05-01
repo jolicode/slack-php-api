@@ -406,7 +406,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `channels:history`
      *     @var string $channel Channel to fetch thread from
      * }
@@ -1662,7 +1662,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `groups:history`
      *     @var string $channel Private channel to fetch thread from
      * }
@@ -1860,7 +1860,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `im:history`
      *     @var string $channel Direct message channel to fetch thread from
      * }
@@ -2005,7 +2005,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts unique identifier of a thread's parent message
+     *     @var string $thread_ts unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `mpim:history`
      *     @var string $channel Multiparty direct message channel to fetch thread from.
      * }
