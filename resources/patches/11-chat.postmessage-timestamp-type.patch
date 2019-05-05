@@ -5,7 +5,7 @@ index 24d5ee0..4b2c628 100644
 @@ -101,7 +101,7 @@
          "defs_ts": {
              "pattern": "^\\d{10}\\.\\d{6}$",
-             "title": "Timestamp in format 0123456789.012345",
+             "title": "Timestamp in format 0123456789.012345 as string",
 -            "type": ["number", "string"]
 +            "type": ["string"]
          },
