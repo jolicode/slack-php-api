@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
 {
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -41,11 +41,11 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      */
     protected $text;
     /**
-     * @var float|string
+     * @var string
      */
     protected $threadTs;
     /**
-     * @var float|string
+     * @var string
      */
     protected $ts;
     /**
@@ -70,7 +70,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     protected $userTeam;
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -78,7 +78,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getThreadTs()
     {
@@ -218,7 +218,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @param float|string $threadTs
+     * @param string $threadTs
      *
      * @return self
      */
@@ -230,7 +230,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getTs()
     {
@@ -238,7 +238,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     }
 
     /**
-     * @param float|string $ts
+     * @param string $ts
      *
      * @return self
      */

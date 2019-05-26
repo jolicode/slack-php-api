@@ -58,9 +58,7 @@ class ChatUpdatePostResponse200Normalizer implements DenormalizerInterface, Norm
         }
         if (property_exists($data, 'ts')) {
             $value = $data->{'ts'};
-            if (is_float($data->{'ts'})) {
-                $value = $data->{'ts'};
-            } elseif (is_string($data->{'ts'})) {
+            if (is_string($data->{'ts'})) {
                 $value = $data->{'ts'};
             }
             $object->setTs($value);
@@ -89,9 +87,7 @@ class ChatUpdatePostResponse200Normalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getTs()) {
             $value = $object->getTs();
-            if (is_float($object->getTs())) {
-                $value = $object->getTs();
-            } elseif (is_string($object->getTs())) {
+            if (is_string($object->getTs())) {
                 $value = $object->getTs();
             }
             $data->{'ts'} = $value;

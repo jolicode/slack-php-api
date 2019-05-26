@@ -21,7 +21,7 @@ class ChatDeletePostResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
-     * @var float|string
+     * @var string
      */
     protected $ts;
 
@@ -66,7 +66,7 @@ class ChatDeletePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getTs()
     {
@@ -74,7 +74,7 @@ class ChatDeletePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param float|string $ts
+     * @param string $ts
      *
      * @return self
      */

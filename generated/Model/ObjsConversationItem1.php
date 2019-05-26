@@ -93,7 +93,7 @@ class ObjsConversationItem1 extends \ArrayObject
      */
     protected $isShared;
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -570,7 +570,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -578,7 +578,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */

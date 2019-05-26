@@ -66,9 +66,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         }
         if (property_exists($data, 'thread_ts')) {
             $value = $data->{'thread_ts'};
-            if (is_float($data->{'thread_ts'})) {
-                $value = $data->{'thread_ts'};
-            } elseif (is_string($data->{'thread_ts'})) {
+            if (is_string($data->{'thread_ts'})) {
                 $value = $data->{'thread_ts'};
             }
             $object->setThreadTs($value);
@@ -76,9 +74,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         }
         if (property_exists($data, 'ts')) {
             $value_1 = $data->{'ts'};
-            if (is_float($data->{'ts'})) {
-                $value_1 = $data->{'ts'};
-            } elseif (is_string($data->{'ts'})) {
+            if (is_string($data->{'ts'})) {
                 $value_1 = $data->{'ts'};
             }
             $object->setTs($value_1);
@@ -129,18 +125,14 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         }
         if (null !== $object->getThreadTs()) {
             $value = $object->getThreadTs();
-            if (is_float($object->getThreadTs())) {
-                $value = $object->getThreadTs();
-            } elseif (is_string($object->getThreadTs())) {
+            if (is_string($object->getThreadTs())) {
                 $value = $object->getThreadTs();
             }
             $data->{'thread_ts'} = $value;
         }
         if (null !== $object->getTs()) {
             $value_1 = $object->getTs();
-            if (is_float($object->getTs())) {
-                $value_1 = $object->getTs();
-            } elseif (is_string($object->getTs())) {
+            if (is_string($object->getTs())) {
                 $value_1 = $object->getTs();
             }
             $data->{'ts'} = $value_1;

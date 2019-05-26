@@ -49,7 +49,7 @@ class ObjsConversationItem2 extends \ArrayObject
      */
     protected $isUserDeleted;
     /**
-     * @var float|string
+     * @var string
      */
     protected $lastRead;
     /**
@@ -254,7 +254,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getLastRead()
     {
@@ -262,7 +262,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param float|string $lastRead
+     * @param string $lastRead
      *
      * @return self
      */

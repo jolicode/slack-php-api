@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \ArrayObject
 {
     /**
-     * @var float|string
+     * @var string
      */
     protected $ts;
     /**
@@ -22,7 +22,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     protected $user;
 
     /**
-     * @return float|string
+     * @return string
      */
     public function getTs()
     {
@@ -30,7 +30,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     }
 
     /**
-     * @param float|string $ts
+     * @param string $ts
      *
      * @return self
      */
