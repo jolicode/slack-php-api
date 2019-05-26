@@ -18,6 +18,15 @@
                      },
                      {
                          "description": "Authentication token. Requires scope: `channels:history`",
+@@ -6812,7 +6812,7 @@
+                         "description": "Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.",
+                         "in": "formData",
+                         "name": "thread_ts",
+-                        "type": "number"
++                        "type": "string"
+                     },
+                     {
+                         "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.",
 @@ -13411,7 +13411,7 @@
                          "description": "Unique identifier of a thread's parent message",
                          "in": "query",
