@@ -1,11 +1,9 @@
-diff --git a/resources/slack-openapi-patched.json b/resources/slack-openapi-patched.json
-index 24d5ee0..4b2c628 100644
---- a/resources/slack-openapi-patched.json
-+++ b/resources/slack-openapi-patched.json
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
 @@ -101,7 +101,7 @@
          "defs_ts": {
              "pattern": "^\\d{10}\\.\\d{6}$",
-             "title": "Timestamp in format 0123456789.012345 as string",
+             "title": "Timestamp in format 0123456789.012345",
 -            "type": ["number", "string"]
 +            "type": ["string"]
          },

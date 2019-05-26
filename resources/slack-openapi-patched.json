@@ -100,7 +100,7 @@
         },
         "defs_ts": {
             "pattern": "^\\d{10}\\.\\d{6}$",
-            "title": "Timestamp in format 0123456789.012345 as string",
+            "title": "Timestamp in format 0123456789.012345",
             "type": ["string"]
         },
         "defs_user_id": {

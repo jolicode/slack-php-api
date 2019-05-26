@@ -589,7 +589,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
-     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
