@@ -2,6 +2,8 @@
 
 ## Not yet released
 
+* **Specification override** Fix Thread TS parameter and body type from float to string because the Slack API is very strange about it, a PHP Float does not seams to work but a string does, and the API always answer "ok" even if not thread reply is created.
+
 ## 1.2.0 (2019-04-23)
 
 * **Specification override** Fix Timestamp type in all endpoints, allow string and number because of API inconsistency
