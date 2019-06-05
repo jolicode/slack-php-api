@@ -2067,7 +2067,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to pin
-     *     @var float $timestamp timestamp of the message to pin
+     *     @var string $timestamp timestamp of the message to pin
      *     @var string $file file to pin
      *     @var string $channel Channel to pin the item in.
      * }
@@ -2110,7 +2110,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to un-pin
-     *     @var float $timestamp timestamp of the message to un-pin
+     *     @var string $timestamp timestamp of the message to un-pin
      *     @var string $file file to un-pin
      *     @var string $channel Channel where the item is pinned to.
      * }
@@ -2136,7 +2136,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var string $name reaction (emoji) name
      *     @var string $file_comment file comment to add reaction to
-     *     @var float $timestamp timestamp of the message to add reaction to
+     *     @var string $timestamp timestamp of the message to add reaction to
      *     @var string $file file to add reaction to
      *     @var string $channel Channel where the message to add reaction to was posted.
      * }
@@ -2162,7 +2162,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var bool $full if true always return the complete reaction list
      *     @var string $file_comment file comment to get reactions for
-     *     @var float $timestamp timestamp of the message to get reactions for
+     *     @var string $timestamp timestamp of the message to get reactions for
      *     @var string $token Authentication token. Requires scope: `reactions:read`
      *     @var string $file file to get reactions for
      *     @var string $channel Channel where the message to get reactions for was posted.
@@ -2205,7 +2205,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var string $name reaction (emoji) name
      *     @var string $file_comment file comment to remove reaction from
-     *     @var float $timestamp timestamp of the message to remove reaction from
+     *     @var string $timestamp timestamp of the message to remove reaction from
      *     @var string $file file to remove reaction from
      *     @var string $channel Channel where the message to remove reaction from was posted.
      * }
@@ -2445,7 +2445,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to add star to
-     *     @var float $timestamp timestamp of the message to add star to
+     *     @var string $timestamp timestamp of the message to add star to
      *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
      *     @var string $file File to add star to.
      * }
@@ -2489,7 +2489,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to remove star from
-     *     @var float $timestamp timestamp of the message to remove star from
+     *     @var string $timestamp timestamp of the message to remove star from
      *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
      *     @var string $file File to remove star from.
      * }

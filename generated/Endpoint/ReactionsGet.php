@@ -19,7 +19,7 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      *     @var bool $full if true always return the complete reaction list
      *     @var string $file_comment file comment to get reactions for
-     *     @var float $timestamp timestamp of the message to get reactions for
+     *     @var string $timestamp timestamp of the message to get reactions for
      *     @var string $token Authentication token. Requires scope: `reactions:read`
      *     @var string $file file to get reactions for
      *     @var string $channel Channel where the message to get reactions for was posted.
@@ -60,7 +60,7 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('full', ['bool']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['float']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);

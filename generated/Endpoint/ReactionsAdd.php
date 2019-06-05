@@ -19,7 +19,7 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      *     @var string $name reaction (emoji) name
      *     @var string $file_comment file comment to add reaction to
-     *     @var float $timestamp timestamp of the message to add reaction to
+     *     @var string $timestamp timestamp of the message to add reaction to
      *     @var string $file file to add reaction to
      *     @var string $channel Channel where the message to add reaction to was posted.
      * }
@@ -65,7 +65,7 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['float']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

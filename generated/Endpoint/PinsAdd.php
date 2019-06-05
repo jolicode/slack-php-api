@@ -18,7 +18,7 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to pin
-     *     @var float $timestamp timestamp of the message to pin
+     *     @var string $timestamp timestamp of the message to pin
      *     @var string $file file to pin
      *     @var string $channel Channel to pin the item in.
      * }
@@ -63,7 +63,7 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['float']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

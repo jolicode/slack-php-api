@@ -15761,7 +15761,7 @@
                         "description": "Timestamp of the message to pin.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `pins:write`",
@@ -16140,7 +16140,7 @@
                         "description": "Timestamp of the message to un-pin.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `pins:write`",
@@ -16280,7 +16280,7 @@
                         "description": "Timestamp of the message to add reaction to.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `reactions:write`",
@@ -16421,7 +16421,7 @@
                         "description": "Timestamp of the message to get reactions for.",
                         "in": "query",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `reactions:read`",
@@ -16942,7 +16942,7 @@
                         "description": "Timestamp of the message to remove reaction from.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `reactions:write`",
@@ -18605,7 +18605,7 @@
                         "description": "Timestamp of the message to add star to.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `stars:write`",
@@ -18802,7 +18802,7 @@
                         "description": "Timestamp of the message to remove star from.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `stars:write`",
