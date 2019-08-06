@@ -30,7 +30,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     protected $paging;
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getComments(): ?array
     {
@@ -38,7 +38,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $comments
+     * @param mixed[]|null $comments
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsFile
+     * @return ObjsFile|null
      */
     public function getFile(): ?ObjsFile
     {
@@ -58,7 +58,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile $file
+     * @param ObjsFile|null $file
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -78,7 +78,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsPaging
+     * @return ObjsPaging|null
      */
     public function getPaging(): ?ObjsPaging
     {
@@ -98,7 +98,7 @@ class FilesInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsPaging $paging
+     * @param ObjsPaging|null $paging
      *
      * @return self
      */

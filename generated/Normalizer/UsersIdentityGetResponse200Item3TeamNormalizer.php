@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,60 +30,60 @@ class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item3Team';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
         $data = clone $data;
-        if (property_exists($data, 'domain')) {
+        if (property_exists($data, 'domain') && $data->{'domain'} !== null) {
             $object->setDomain($data->{'domain'});
             unset($data->{'domain'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'image_102')) {
+        if (property_exists($data, 'image_102') && $data->{'image_102'} !== null) {
             $object->setImage102($data->{'image_102'});
             unset($data->{'image_102'});
         }
-        if (property_exists($data, 'image_132')) {
+        if (property_exists($data, 'image_132') && $data->{'image_132'} !== null) {
             $object->setImage132($data->{'image_132'});
             unset($data->{'image_132'});
         }
-        if (property_exists($data, 'image_230')) {
+        if (property_exists($data, 'image_230') && $data->{'image_230'} !== null) {
             $object->setImage230($data->{'image_230'});
             unset($data->{'image_230'});
         }
-        if (property_exists($data, 'image_34')) {
+        if (property_exists($data, 'image_34') && $data->{'image_34'} !== null) {
             $object->setImage34($data->{'image_34'});
             unset($data->{'image_34'});
         }
-        if (property_exists($data, 'image_44')) {
+        if (property_exists($data, 'image_44') && $data->{'image_44'} !== null) {
             $object->setImage44($data->{'image_44'});
             unset($data->{'image_44'});
         }
-        if (property_exists($data, 'image_68')) {
+        if (property_exists($data, 'image_68') && $data->{'image_68'} !== null) {
             $object->setImage68($data->{'image_68'});
             unset($data->{'image_68'});
         }
-        if (property_exists($data, 'image_88')) {
+        if (property_exists($data, 'image_88') && $data->{'image_88'} !== null) {
             $object->setImage88($data->{'image_88'});
             unset($data->{'image_88'});
         }
-        if (property_exists($data, 'image_default')) {
+        if (property_exists($data, 'image_default') && $data->{'image_default'} !== null) {
             $object->setImageDefault($data->{'image_default'});
             unset($data->{'image_default'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }

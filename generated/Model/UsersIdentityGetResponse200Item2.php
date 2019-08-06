@@ -26,7 +26,7 @@ class UsersIdentityGetResponse200Item2 extends \ArrayObject
     protected $user;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -34,7 +34,7 @@ class UsersIdentityGetResponse200Item2 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class UsersIdentityGetResponse200Item2 extends \ArrayObject
     }
 
     /**
-     * @return UsersIdentityGetResponse200Item2Team
+     * @return UsersIdentityGetResponse200Item2Team|null
      */
     public function getTeam(): ?UsersIdentityGetResponse200Item2Team
     {
@@ -54,7 +54,7 @@ class UsersIdentityGetResponse200Item2 extends \ArrayObject
     }
 
     /**
-     * @param UsersIdentityGetResponse200Item2Team $team
+     * @param UsersIdentityGetResponse200Item2Team|null $team
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class UsersIdentityGetResponse200Item2 extends \ArrayObject
     }
 
     /**
-     * @return UsersIdentityGetResponse200Item2User
+     * @return UsersIdentityGetResponse200Item2User|null
      */
     public function getUser(): ?UsersIdentityGetResponse200Item2User
     {
@@ -74,7 +74,7 @@ class UsersIdentityGetResponse200Item2 extends \ArrayObject
     }
 
     /**
-     * @param UsersIdentityGetResponse200Item2User $user
+     * @param UsersIdentityGetResponse200Item2User|null $user
      *
      * @return self
      */

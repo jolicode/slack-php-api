@@ -34,7 +34,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     protected $userIdMap;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEnterpriseId(): ?string
     {
@@ -42,7 +42,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $enterpriseId
+     * @param string|null $enterpriseId
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getInvalidUserIds(): ?array
     {
@@ -62,7 +62,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string[] $invalidUserIds
+     * @param string[]|null $invalidUserIds
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -82,7 +82,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeamId(): ?string
     {
@@ -102,7 +102,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $teamId
+     * @param string|null $teamId
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getUserIdMap(): ?\ArrayObject
     {
@@ -122,7 +122,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $userIdMap
+     * @param mixed[]|null $userIdMap
      *
      * @return self
      */

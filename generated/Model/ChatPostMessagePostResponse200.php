@@ -30,7 +30,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     protected $ts;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getChannel(): ?string
     {
@@ -38,7 +38,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $channel
+     * @param string|null $channel
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessage
+     * @return ObjsMessage|null
      */
     public function getMessage(): ?ObjsMessage
     {
@@ -58,7 +58,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessage $message
+     * @param ObjsMessage|null $message
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -78,7 +78,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTs()
     {
@@ -98,7 +98,7 @@ class ChatPostMessagePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $ts
+     * @param string|null $ts
      *
      * @return self
      */

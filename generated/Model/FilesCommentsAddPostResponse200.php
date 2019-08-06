@@ -22,7 +22,7 @@ class FilesCommentsAddPostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return ObjsComment
+     * @return ObjsComment|null
      */
     public function getComment(): ?ObjsComment
     {
@@ -30,7 +30,7 @@ class FilesCommentsAddPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsComment $comment
+     * @param ObjsComment|null $comment
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class FilesCommentsAddPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class FilesCommentsAddPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

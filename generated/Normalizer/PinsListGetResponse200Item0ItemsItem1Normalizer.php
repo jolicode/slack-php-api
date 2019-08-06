@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,32 +30,32 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem1';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1();
         $data = clone $data;
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'created_by')) {
+        if (property_exists($data, 'created_by') && $data->{'created_by'} !== null) {
             $object->setCreatedBy($data->{'created_by'});
             unset($data->{'created_by'});
         }
-        if (property_exists($data, 'file')) {
+        if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
             unset($data->{'file'});
         }
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
             unset($data->{'type'});
         }

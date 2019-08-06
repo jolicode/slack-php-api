@@ -22,7 +22,7 @@ class DefsPinnedInfoItem extends \ArrayObject
     protected $pinnedTs;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPinnedBy(): ?string
     {
@@ -30,7 +30,7 @@ class DefsPinnedInfoItem extends \ArrayObject
     }
 
     /**
-     * @param string $pinnedBy
+     * @param string|null $pinnedBy
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class DefsPinnedInfoItem extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPinnedTs(): ?int
     {
@@ -50,7 +50,7 @@ class DefsPinnedInfoItem extends \ArrayObject
     }
 
     /**
-     * @param int $pinnedTs
+     * @param int|null $pinnedTs
      *
      * @return self
      */

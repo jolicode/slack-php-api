@@ -26,7 +26,7 @@ class ConversationsMembersGetResponse200 extends \ArrayObject
     protected $responseMetadata;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMembers(): ?array
     {
@@ -34,7 +34,7 @@ class ConversationsMembersGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string[] $members
+     * @param string[]|null $members
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ConversationsMembersGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class ConversationsMembersGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ConversationsMembersGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ConversationsMembersGetResponse200ResponseMetadata
+     * @return ConversationsMembersGetResponse200ResponseMetadata|null
      */
     public function getResponseMetadata(): ?ConversationsMembersGetResponse200ResponseMetadata
     {
@@ -74,7 +74,7 @@ class ConversationsMembersGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ConversationsMembersGetResponse200ResponseMetadata $responseMetadata
+     * @param ConversationsMembersGetResponse200ResponseMetadata|null $responseMetadata
      *
      * @return self
      */

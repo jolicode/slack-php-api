@@ -46,7 +46,7 @@ class ObjsTeamIcon
     protected $imageDefault;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage102(): ?string
     {
@@ -54,7 +54,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image102
+     * @param string|null $image102
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage132(): ?string
     {
@@ -74,7 +74,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image132
+     * @param string|null $image132
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage230(): ?string
     {
@@ -94,7 +94,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image230
+     * @param string|null $image230
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage34(): ?string
     {
@@ -114,7 +114,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image34
+     * @param string|null $image34
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage44(): ?string
     {
@@ -134,7 +134,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image44
+     * @param string|null $image44
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage68(): ?string
     {
@@ -154,7 +154,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image68
+     * @param string|null $image68
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage88(): ?string
     {
@@ -174,7 +174,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param string $image88
+     * @param string|null $image88
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getImageDefault(): ?bool
     {
@@ -194,7 +194,7 @@ class ObjsTeamIcon
     }
 
     /**
-     * @param bool $imageDefault
+     * @param bool|null $imageDefault
      *
      * @return self
      */

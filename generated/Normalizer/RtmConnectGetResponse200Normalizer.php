@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,32 +30,32 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\RtmConnectGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmConnectGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'self')) {
+        if (property_exists($data, 'self') && $data->{'self'} !== null) {
             $object->setSelf($this->denormalizer->denormalize($data->{'self'}, 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Self', 'json', $context));
             unset($data->{'self'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Team', 'json', $context));
             unset($data->{'team'});
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
             unset($data->{'url'});
         }

@@ -74,7 +74,7 @@ class ObjsConversationItem2 extends \ArrayObject
     protected $user;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -82,7 +82,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasPins(): ?bool
     {
@@ -102,7 +102,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $hasPins
+     * @param bool|null $hasPins
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -122,7 +122,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -134,7 +134,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsExtShared(): ?bool
     {
@@ -142,7 +142,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $isExtShared
+     * @param bool|null $isExtShared
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsIm(): ?bool
     {
@@ -162,7 +162,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $isIm
+     * @param bool|null $isIm
      *
      * @return self
      */
@@ -174,7 +174,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOpen(): ?bool
     {
@@ -182,7 +182,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $isOpen
+     * @param bool|null $isOpen
      *
      * @return self
      */
@@ -194,7 +194,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOrgShared(): ?bool
     {
@@ -202,7 +202,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $isOrgShared
+     * @param bool|null $isOrgShared
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsShared(): ?bool
     {
@@ -222,7 +222,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $isShared
+     * @param bool|null $isShared
      *
      * @return self
      */
@@ -234,7 +234,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsUserDeleted(): ?bool
     {
@@ -242,7 +242,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param bool $isUserDeleted
+     * @param bool|null $isUserDeleted
      *
      * @return self
      */
@@ -254,7 +254,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastRead()
     {
@@ -262,7 +262,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param string $lastRead
+     * @param string|null $lastRead
      *
      * @return self
      */
@@ -294,7 +294,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getPriority(): ?float
     {
@@ -302,7 +302,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param float $priority
+     * @param float|null $priority
      *
      * @return self
      */
@@ -314,7 +314,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCount(): ?int
     {
@@ -322,7 +322,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCount
+     * @param int|null $unreadCount
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCountDisplay(): ?int
     {
@@ -342,7 +342,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCountDisplay
+     * @param int|null $unreadCountDisplay
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -362,7 +362,7 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

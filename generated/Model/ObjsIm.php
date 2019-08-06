@@ -42,7 +42,7 @@ class ObjsIm extends \ArrayObject
     protected $user;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -50,7 +50,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -70,7 +70,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsIm(): ?bool
     {
@@ -90,7 +90,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param bool $isIm
+     * @param bool|null $isIm
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOrgShared(): ?bool
     {
@@ -110,7 +110,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param bool $isOrgShared
+     * @param bool|null $isOrgShared
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsUserDeleted(): ?bool
     {
@@ -130,7 +130,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param bool $isUserDeleted
+     * @param bool|null $isUserDeleted
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getPriority(): ?float
     {
@@ -150,7 +150,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param float $priority
+     * @param float|null $priority
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -170,7 +170,7 @@ class ObjsIm extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

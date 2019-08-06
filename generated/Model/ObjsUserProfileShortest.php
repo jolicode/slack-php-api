@@ -38,7 +38,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     protected $team;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAvatarHash(): ?string
     {
@@ -46,7 +46,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @param string $avatarHash
+     * @param string|null $avatarHash
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDisplayName(): ?string
     {
@@ -66,7 +66,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -86,7 +86,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage72(): ?string
     {
@@ -106,7 +106,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @param string $image72
+     * @param string|null $image72
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRealName(): ?string
     {
@@ -126,7 +126,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @param string $realName
+     * @param string|null $realName
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeam(): ?string
     {
@@ -146,7 +146,7 @@ class ObjsUserProfileShortest extends \ArrayObject
     }
 
     /**
-     * @param string $team
+     * @param string|null $team
      *
      * @return self
      */

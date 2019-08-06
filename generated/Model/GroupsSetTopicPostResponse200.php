@@ -22,7 +22,7 @@ class GroupsSetTopicPostResponse200 extends \ArrayObject
     protected $topic;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class GroupsSetTopicPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GroupsSetTopicPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTopic(): ?string
     {
@@ -50,7 +50,7 @@ class GroupsSetTopicPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $topic
+     * @param string|null $topic
      *
      * @return self
      */

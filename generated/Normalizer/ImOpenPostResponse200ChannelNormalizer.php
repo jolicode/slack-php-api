@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,36 +30,36 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ImOpenPostResponse200Channel;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ImOpenPostResponse200Channel';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImOpenPostResponse200Channel();
         $data = clone $data;
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_im')) {
+        if (property_exists($data, 'is_im') && $data->{'is_im'} !== null) {
             $object->setIsIm($data->{'is_im'});
             unset($data->{'is_im'});
         }
-        if (property_exists($data, 'is_open')) {
+        if (property_exists($data, 'is_open') && $data->{'is_open'} !== null) {
             $object->setIsOpen($data->{'is_open'});
             unset($data->{'is_open'});
         }
-        if (property_exists($data, 'last_read')) {
+        if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
             $value = $data->{'last_read'};
             if (is_string($data->{'last_read'})) {
                 $value = $data->{'last_read'};
@@ -68,19 +67,19 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
             $object->setLastRead($value);
             unset($data->{'last_read'});
         }
-        if (property_exists($data, 'latest')) {
+        if (property_exists($data, 'latest') && $data->{'latest'} !== null) {
             $object->setLatest($this->denormalizer->denormalize($data->{'latest'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
             unset($data->{'latest'});
         }
-        if (property_exists($data, 'unread_count')) {
+        if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
             unset($data->{'unread_count'});
         }
-        if (property_exists($data, 'unread_count_display')) {
+        if (property_exists($data, 'unread_count_display') && $data->{'unread_count_display'} !== null) {
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
             unset($data->{'unread_count_display'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }

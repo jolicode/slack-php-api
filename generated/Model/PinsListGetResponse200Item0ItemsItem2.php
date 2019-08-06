@@ -34,7 +34,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     protected $type;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getChannel(): ?string
     {
@@ -42,7 +42,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @param string $channel
+     * @param string|null $channel
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -62,7 +62,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreatedBy(): ?string
     {
@@ -82,7 +82,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @param string $createdBy
+     * @param string|null $createdBy
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessage
+     * @return ObjsMessage|null
      */
     public function getMessage(): ?ObjsMessage
     {
@@ -102,7 +102,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessage $message
+     * @param ObjsMessage|null $message
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -122,7 +122,7 @@ class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

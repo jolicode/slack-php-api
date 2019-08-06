@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,32 +30,32 @@ class ObjsDndNormalizer implements DenormalizerInterface, NormalizerInterface, D
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsDnd;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsDnd';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsDnd();
         $data = clone $data;
-        if (property_exists($data, 'dnd_enabled')) {
+        if (property_exists($data, 'dnd_enabled') && $data->{'dnd_enabled'} !== null) {
             $object->setDndEnabled($data->{'dnd_enabled'});
             unset($data->{'dnd_enabled'});
         }
-        if (property_exists($data, 'next_dnd_end_ts')) {
+        if (property_exists($data, 'next_dnd_end_ts') && $data->{'next_dnd_end_ts'} !== null) {
             $object->setNextDndEndTs($data->{'next_dnd_end_ts'});
             unset($data->{'next_dnd_end_ts'});
         }
-        if (property_exists($data, 'next_dnd_start_ts')) {
+        if (property_exists($data, 'next_dnd_start_ts') && $data->{'next_dnd_start_ts'} !== null) {
             $object->setNextDndStartTs($data->{'next_dnd_start_ts'});
             unset($data->{'next_dnd_start_ts'});
         }
-        if (property_exists($data, 'snooze_enabled')) {
+        if (property_exists($data, 'snooze_enabled') && $data->{'snooze_enabled'} !== null) {
             $object->setSnoozeEnabled($data->{'snooze_enabled'});
             unset($data->{'snooze_enabled'});
         }

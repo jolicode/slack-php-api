@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,32 +30,32 @@ class ObjsConversationItem1SharesItemNormalizer implements DenormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsConversationItem1SharesItem;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1SharesItem';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem1SharesItem();
         $data = clone $data;
-        if (property_exists($data, 'accepted_user')) {
+        if (property_exists($data, 'accepted_user') && $data->{'accepted_user'} !== null) {
             $object->setAcceptedUser($data->{'accepted_user'});
             unset($data->{'accepted_user'});
         }
-        if (property_exists($data, 'is_active')) {
+        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
             unset($data->{'is_active'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
             unset($data->{'team'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }

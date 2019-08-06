@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,28 +30,28 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsReaction;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsReaction';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsReaction();
         $data = clone $data;
-        if (property_exists($data, 'count')) {
+        if (property_exists($data, 'count') && $data->{'count'} !== null) {
             $object->setCount($data->{'count'});
             unset($data->{'count'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'users')) {
+        if (property_exists($data, 'users') && $data->{'users'} !== null) {
             $values = [];
             foreach ($data->{'users'} as $value) {
                 $values[] = $value;

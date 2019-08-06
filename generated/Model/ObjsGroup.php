@@ -90,7 +90,7 @@ class ObjsGroup extends \ArrayObject
     protected $unreadCountDisplay;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -98,7 +98,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -110,7 +110,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreator(): ?string
     {
@@ -118,7 +118,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param string $creator
+     * @param string|null $creator
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -138,7 +138,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsArchived(): ?bool
     {
@@ -158,7 +158,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param bool $isArchived
+     * @param bool|null $isArchived
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsGroup(): ?bool
     {
@@ -178,7 +178,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param bool $isGroup
+     * @param bool|null $isGroup
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getIsMoved(): ?int
     {
@@ -198,7 +198,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param int $isMoved
+     * @param int|null $isMoved
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsMpim(): ?bool
     {
@@ -218,7 +218,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param bool $isMpim
+     * @param bool|null $isMpim
      *
      * @return self
      */
@@ -230,7 +230,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOpen(): ?bool
     {
@@ -238,7 +238,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param bool $isOpen
+     * @param bool|null $isOpen
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPendingExtShared(): ?bool
     {
@@ -258,7 +258,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param bool $isPendingExtShared
+     * @param bool|null $isPendingExtShared
      *
      * @return self
      */
@@ -270,7 +270,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastRead()
     {
@@ -278,7 +278,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param string $lastRead
+     * @param string|null $lastRead
      *
      * @return self
      */
@@ -310,7 +310,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMembers(): ?array
     {
@@ -318,7 +318,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param string[] $members
+     * @param string[]|null $members
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -338,7 +338,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNameNormalized(): ?string
     {
@@ -358,7 +358,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param string $nameNormalized
+     * @param string|null $nameNormalized
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getPriority(): ?float
     {
@@ -378,7 +378,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param float $priority
+     * @param float|null $priority
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return ObjsGroupPurpose
+     * @return ObjsGroupPurpose|null
      */
     public function getPurpose(): ?ObjsGroupPurpose
     {
@@ -398,7 +398,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param ObjsGroupPurpose $purpose
+     * @param ObjsGroupPurpose|null $purpose
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return ObjsGroupTopic
+     * @return ObjsGroupTopic|null
      */
     public function getTopic(): ?ObjsGroupTopic
     {
@@ -418,7 +418,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param ObjsGroupTopic $topic
+     * @param ObjsGroupTopic|null $topic
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCount(): ?int
     {
@@ -438,7 +438,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCount
+     * @param int|null $unreadCount
      *
      * @return self
      */
@@ -450,7 +450,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCountDisplay(): ?int
     {
@@ -458,7 +458,7 @@ class ObjsGroup extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCountDisplay
+     * @param int|null $unreadCountDisplay
      *
      * @return self
      */

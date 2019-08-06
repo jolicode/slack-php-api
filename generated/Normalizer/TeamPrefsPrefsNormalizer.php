@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,68 +30,68 @@ class TeamPrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\TeamPrefsPrefs;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefs';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamPrefsPrefs();
         $data = clone $data;
-        if (property_exists($data, 'all_users_can_purchase')) {
+        if (property_exists($data, 'all_users_can_purchase') && $data->{'all_users_can_purchase'} !== null) {
             $object->setAllUsersCanPurchase($data->{'all_users_can_purchase'});
             unset($data->{'all_users_can_purchase'});
         }
-        if (property_exists($data, 'allow_calls')) {
+        if (property_exists($data, 'allow_calls') && $data->{'allow_calls'} !== null) {
             $object->setAllowCalls($data->{'allow_calls'});
             unset($data->{'allow_calls'});
         }
-        if (property_exists($data, 'allow_calls_interactive_screen_sharing')) {
+        if (property_exists($data, 'allow_calls_interactive_screen_sharing') && $data->{'allow_calls_interactive_screen_sharing'} !== null) {
             $object->setAllowCallsInteractiveScreenSharing($data->{'allow_calls_interactive_screen_sharing'});
             unset($data->{'allow_calls_interactive_screen_sharing'});
         }
-        if (property_exists($data, 'allow_message_deletion')) {
+        if (property_exists($data, 'allow_message_deletion') && $data->{'allow_message_deletion'} !== null) {
             $object->setAllowMessageDeletion($data->{'allow_message_deletion'});
             unset($data->{'allow_message_deletion'});
         }
-        if (property_exists($data, 'allow_retention_override')) {
+        if (property_exists($data, 'allow_retention_override') && $data->{'allow_retention_override'} !== null) {
             $object->setAllowRetentionOverride($data->{'allow_retention_override'});
             unset($data->{'allow_retention_override'});
         }
-        if (property_exists($data, 'allow_shared_channel_perms_override')) {
+        if (property_exists($data, 'allow_shared_channel_perms_override') && $data->{'allow_shared_channel_perms_override'} !== null) {
             $object->setAllowSharedChannelPermsOverride($data->{'allow_shared_channel_perms_override'});
             unset($data->{'allow_shared_channel_perms_override'});
         }
-        if (property_exists($data, 'app_whitelist_enabled')) {
+        if (property_exists($data, 'app_whitelist_enabled') && $data->{'app_whitelist_enabled'} !== null) {
             $object->setAppWhitelistEnabled($data->{'app_whitelist_enabled'});
             unset($data->{'app_whitelist_enabled'});
         }
-        if (property_exists($data, 'auth_mode')) {
+        if (property_exists($data, 'auth_mode') && $data->{'auth_mode'} !== null) {
             $object->setAuthMode($data->{'auth_mode'});
             unset($data->{'auth_mode'});
         }
-        if (property_exists($data, 'calling_app_name')) {
+        if (property_exists($data, 'calling_app_name') && $data->{'calling_app_name'} !== null) {
             $object->setCallingAppName($data->{'calling_app_name'});
             unset($data->{'calling_app_name'});
         }
-        if (property_exists($data, 'can_receive_shared_channels_invites')) {
+        if (property_exists($data, 'can_receive_shared_channels_invites') && $data->{'can_receive_shared_channels_invites'} !== null) {
             $object->setCanReceiveSharedChannelsInvites($data->{'can_receive_shared_channels_invites'});
             unset($data->{'can_receive_shared_channels_invites'});
         }
-        if (property_exists($data, 'compliance_export_start')) {
+        if (property_exists($data, 'compliance_export_start') && $data->{'compliance_export_start'} !== null) {
             $object->setComplianceExportStart($data->{'compliance_export_start'});
             unset($data->{'compliance_export_start'});
         }
-        if (property_exists($data, 'custom_status_default_emoji')) {
+        if (property_exists($data, 'custom_status_default_emoji') && $data->{'custom_status_default_emoji'} !== null) {
             $object->setCustomStatusDefaultEmoji($data->{'custom_status_default_emoji'});
             unset($data->{'custom_status_default_emoji'});
         }
-        if (property_exists($data, 'custom_status_presets')) {
+        if (property_exists($data, 'custom_status_presets') && $data->{'custom_status_presets'} !== null) {
             $values = [];
             foreach ($data->{'custom_status_presets'} as $value) {
                 $values_1 = [];
@@ -104,11 +103,11 @@ class TeamPrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setCustomStatusPresets($values);
             unset($data->{'custom_status_presets'});
         }
-        if (property_exists($data, 'custom_tos')) {
+        if (property_exists($data, 'custom_tos') && $data->{'custom_tos'} !== null) {
             $object->setCustomTos($data->{'custom_tos'});
             unset($data->{'custom_tos'});
         }
-        if (property_exists($data, 'default_channels')) {
+        if (property_exists($data, 'default_channels') && $data->{'default_channels'} !== null) {
             $values_2 = [];
             foreach ($data->{'default_channels'} as $value_2) {
                 $values_2[] = $value_2;
@@ -116,7 +115,7 @@ class TeamPrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setDefaultChannels($values_2);
             unset($data->{'default_channels'});
         }
-        if (property_exists($data, 'default_rxns')) {
+        if (property_exists($data, 'default_rxns') && $data->{'default_rxns'} !== null) {
             $values_3 = [];
             foreach ($data->{'default_rxns'} as $value_3) {
                 $values_3[] = $value_3;
@@ -124,63 +123,63 @@ class TeamPrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setDefaultRxns($values_3);
             unset($data->{'default_rxns'});
         }
-        if (property_exists($data, 'disable_email_ingestion')) {
+        if (property_exists($data, 'disable_email_ingestion') && $data->{'disable_email_ingestion'} !== null) {
             $object->setDisableEmailIngestion($data->{'disable_email_ingestion'});
             unset($data->{'disable_email_ingestion'});
         }
-        if (property_exists($data, 'disable_file_deleting')) {
+        if (property_exists($data, 'disable_file_deleting') && $data->{'disable_file_deleting'} !== null) {
             $object->setDisableFileDeleting($data->{'disable_file_deleting'});
             unset($data->{'disable_file_deleting'});
         }
-        if (property_exists($data, 'disable_file_editing')) {
+        if (property_exists($data, 'disable_file_editing') && $data->{'disable_file_editing'} !== null) {
             $object->setDisableFileEditing($data->{'disable_file_editing'});
             unset($data->{'disable_file_editing'});
         }
-        if (property_exists($data, 'disable_file_uploads')) {
+        if (property_exists($data, 'disable_file_uploads') && $data->{'disable_file_uploads'} !== null) {
             $object->setDisableFileUploads($data->{'disable_file_uploads'});
             unset($data->{'disable_file_uploads'});
         }
-        if (property_exists($data, 'disallow_public_file_urls')) {
+        if (property_exists($data, 'disallow_public_file_urls') && $data->{'disallow_public_file_urls'} !== null) {
             $object->setDisallowPublicFileUrls($data->{'disallow_public_file_urls'});
             unset($data->{'disallow_public_file_urls'});
         }
-        if (property_exists($data, 'discoverable')) {
+        if (property_exists($data, 'discoverable') && $data->{'discoverable'} !== null) {
             $object->setDiscoverable($data->{'discoverable'});
             unset($data->{'discoverable'});
         }
-        if (property_exists($data, 'display_email_addresses')) {
+        if (property_exists($data, 'display_email_addresses') && $data->{'display_email_addresses'} !== null) {
             $object->setDisplayEmailAddresses($data->{'display_email_addresses'});
             unset($data->{'display_email_addresses'});
         }
-        if (property_exists($data, 'display_real_names')) {
+        if (property_exists($data, 'display_real_names') && $data->{'display_real_names'} !== null) {
             $object->setDisplayRealNames($data->{'display_real_names'});
             unset($data->{'display_real_names'});
         }
-        if (property_exists($data, 'dm_retention_duration')) {
+        if (property_exists($data, 'dm_retention_duration') && $data->{'dm_retention_duration'} !== null) {
             $object->setDmRetentionDuration($data->{'dm_retention_duration'});
             unset($data->{'dm_retention_duration'});
         }
-        if (property_exists($data, 'dm_retention_type')) {
+        if (property_exists($data, 'dm_retention_type') && $data->{'dm_retention_type'} !== null) {
             $object->setDmRetentionType($data->{'dm_retention_type'});
             unset($data->{'dm_retention_type'});
         }
-        if (property_exists($data, 'dnd_enabled')) {
+        if (property_exists($data, 'dnd_enabled') && $data->{'dnd_enabled'} !== null) {
             $object->setDndEnabled($data->{'dnd_enabled'});
             unset($data->{'dnd_enabled'});
         }
-        if (property_exists($data, 'dnd_end_hour')) {
+        if (property_exists($data, 'dnd_end_hour') && $data->{'dnd_end_hour'} !== null) {
             $object->setDndEndHour($data->{'dnd_end_hour'});
             unset($data->{'dnd_end_hour'});
         }
-        if (property_exists($data, 'dnd_start_hour')) {
+        if (property_exists($data, 'dnd_start_hour') && $data->{'dnd_start_hour'} !== null) {
             $object->setDndStartHour($data->{'dnd_start_hour'});
             unset($data->{'dnd_start_hour'});
         }
-        if (property_exists($data, 'enable_shared_channels')) {
+        if (property_exists($data, 'enable_shared_channels') && $data->{'enable_shared_channels'} !== null) {
             $object->setEnableSharedChannels($data->{'enable_shared_channels'});
             unset($data->{'enable_shared_channels'});
         }
-        if (property_exists($data, 'enterprise_default_channels')) {
+        if (property_exists($data, 'enterprise_default_channels') && $data->{'enterprise_default_channels'} !== null) {
             $values_4 = [];
             foreach ($data->{'enterprise_default_channels'} as $value_4) {
                 $values_4[] = $value_4;
@@ -188,7 +187,7 @@ class TeamPrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setEnterpriseDefaultChannels($values_4);
             unset($data->{'enterprise_default_channels'});
         }
-        if (property_exists($data, 'enterprise_mandatory_channels')) {
+        if (property_exists($data, 'enterprise_mandatory_channels') && $data->{'enterprise_mandatory_channels'} !== null) {
             $values_5 = [];
             foreach ($data->{'enterprise_mandatory_channels'} as $value_5) {
                 $values_5[] = $value_5;
@@ -196,151 +195,151 @@ class TeamPrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setEnterpriseMandatoryChannels($values_5);
             unset($data->{'enterprise_mandatory_channels'});
         }
-        if (property_exists($data, 'enterprise_mdm_date_enabled')) {
+        if (property_exists($data, 'enterprise_mdm_date_enabled') && $data->{'enterprise_mdm_date_enabled'} !== null) {
             $object->setEnterpriseMdmDateEnabled($data->{'enterprise_mdm_date_enabled'});
             unset($data->{'enterprise_mdm_date_enabled'});
         }
-        if (property_exists($data, 'enterprise_mdm_level')) {
+        if (property_exists($data, 'enterprise_mdm_level') && $data->{'enterprise_mdm_level'} !== null) {
             $object->setEnterpriseMdmLevel($data->{'enterprise_mdm_level'});
             unset($data->{'enterprise_mdm_level'});
         }
-        if (property_exists($data, 'enterprise_team_creation_request')) {
+        if (property_exists($data, 'enterprise_team_creation_request') && $data->{'enterprise_team_creation_request'} !== null) {
             $object->setEnterpriseTeamCreationRequest($this->denormalizer->denormalize($data->{'enterprise_team_creation_request'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefsEnterpriseTeamCreationRequest', 'json', $context));
             unset($data->{'enterprise_team_creation_request'});
         }
-        if (property_exists($data, 'file_limit_whitelisted')) {
+        if (property_exists($data, 'file_limit_whitelisted') && $data->{'file_limit_whitelisted'} !== null) {
             $object->setFileLimitWhitelisted($data->{'file_limit_whitelisted'});
             unset($data->{'file_limit_whitelisted'});
         }
-        if (property_exists($data, 'file_retention_duration')) {
+        if (property_exists($data, 'file_retention_duration') && $data->{'file_retention_duration'} !== null) {
             $object->setFileRetentionDuration($data->{'file_retention_duration'});
             unset($data->{'file_retention_duration'});
         }
-        if (property_exists($data, 'file_retention_type')) {
+        if (property_exists($data, 'file_retention_type') && $data->{'file_retention_type'} !== null) {
             $object->setFileRetentionType($data->{'file_retention_type'});
             unset($data->{'file_retention_type'});
         }
-        if (property_exists($data, 'gdrive_enabled_team')) {
+        if (property_exists($data, 'gdrive_enabled_team') && $data->{'gdrive_enabled_team'} !== null) {
             $object->setGdriveEnabledTeam($data->{'gdrive_enabled_team'});
             unset($data->{'gdrive_enabled_team'});
         }
-        if (property_exists($data, 'group_retention_duration')) {
+        if (property_exists($data, 'group_retention_duration') && $data->{'group_retention_duration'} !== null) {
             $object->setGroupRetentionDuration($data->{'group_retention_duration'});
             unset($data->{'group_retention_duration'});
         }
-        if (property_exists($data, 'group_retention_type')) {
+        if (property_exists($data, 'group_retention_type') && $data->{'group_retention_type'} !== null) {
             $object->setGroupRetentionType($data->{'group_retention_type'});
             unset($data->{'group_retention_type'});
         }
-        if (property_exists($data, 'hide_referers')) {
+        if (property_exists($data, 'hide_referers') && $data->{'hide_referers'} !== null) {
             $object->setHideReferers($data->{'hide_referers'});
             unset($data->{'hide_referers'});
         }
-        if (property_exists($data, 'invites_limit')) {
+        if (property_exists($data, 'invites_limit') && $data->{'invites_limit'} !== null) {
             $object->setInvitesLimit($data->{'invites_limit'});
             unset($data->{'invites_limit'});
         }
-        if (property_exists($data, 'invites_only_admins')) {
+        if (property_exists($data, 'invites_only_admins') && $data->{'invites_only_admins'} !== null) {
             $object->setInvitesOnlyAdmins($data->{'invites_only_admins'});
             unset($data->{'invites_only_admins'});
         }
-        if (property_exists($data, 'locale')) {
+        if (property_exists($data, 'locale') && $data->{'locale'} !== null) {
             $object->setLocale($data->{'locale'});
             unset($data->{'locale'});
         }
-        if (property_exists($data, 'loud_channel_mentions_limit')) {
+        if (property_exists($data, 'loud_channel_mentions_limit') && $data->{'loud_channel_mentions_limit'} !== null) {
             $object->setLoudChannelMentionsLimit($data->{'loud_channel_mentions_limit'});
             unset($data->{'loud_channel_mentions_limit'});
         }
-        if (property_exists($data, 'msg_edit_window_mins')) {
+        if (property_exists($data, 'msg_edit_window_mins') && $data->{'msg_edit_window_mins'} !== null) {
             $object->setMsgEditWindowMins($data->{'msg_edit_window_mins'});
             unset($data->{'msg_edit_window_mins'});
         }
-        if (property_exists($data, 'retention_duration')) {
+        if (property_exists($data, 'retention_duration') && $data->{'retention_duration'} !== null) {
             $object->setRetentionDuration($data->{'retention_duration'});
             unset($data->{'retention_duration'});
         }
-        if (property_exists($data, 'retention_type')) {
+        if (property_exists($data, 'retention_type') && $data->{'retention_type'} !== null) {
             $object->setRetentionType($data->{'retention_type'});
             unset($data->{'retention_type'});
         }
-        if (property_exists($data, 'show_join_leave')) {
+        if (property_exists($data, 'show_join_leave') && $data->{'show_join_leave'} !== null) {
             $object->setShowJoinLeave($data->{'show_join_leave'});
             unset($data->{'show_join_leave'});
         }
-        if (property_exists($data, 'uses_customized_custom_status_presets')) {
+        if (property_exists($data, 'uses_customized_custom_status_presets') && $data->{'uses_customized_custom_status_presets'} !== null) {
             $object->setUsesCustomizedCustomStatusPresets($data->{'uses_customized_custom_status_presets'});
             unset($data->{'uses_customized_custom_status_presets'});
         }
-        if (property_exists($data, 'warn_before_at_channel')) {
+        if (property_exists($data, 'warn_before_at_channel') && $data->{'warn_before_at_channel'} !== null) {
             $object->setWarnBeforeAtChannel($data->{'warn_before_at_channel'});
             unset($data->{'warn_before_at_channel'});
         }
-        if (property_exists($data, 'who_can_archive_channels')) {
+        if (property_exists($data, 'who_can_archive_channels') && $data->{'who_can_archive_channels'} !== null) {
             $object->setWhoCanArchiveChannels($data->{'who_can_archive_channels'});
             unset($data->{'who_can_archive_channels'});
         }
-        if (property_exists($data, 'who_can_at_channel')) {
+        if (property_exists($data, 'who_can_at_channel') && $data->{'who_can_at_channel'} !== null) {
             $object->setWhoCanAtChannel($data->{'who_can_at_channel'});
             unset($data->{'who_can_at_channel'});
         }
-        if (property_exists($data, 'who_can_at_everyone')) {
+        if (property_exists($data, 'who_can_at_everyone') && $data->{'who_can_at_everyone'} !== null) {
             $object->setWhoCanAtEveryone($data->{'who_can_at_everyone'});
             unset($data->{'who_can_at_everyone'});
         }
-        if (property_exists($data, 'who_can_change_team_profile')) {
+        if (property_exists($data, 'who_can_change_team_profile') && $data->{'who_can_change_team_profile'} !== null) {
             $object->setWhoCanChangeTeamProfile($data->{'who_can_change_team_profile'});
             unset($data->{'who_can_change_team_profile'});
         }
-        if (property_exists($data, 'who_can_create_channels')) {
+        if (property_exists($data, 'who_can_create_channels') && $data->{'who_can_create_channels'} !== null) {
             $object->setWhoCanCreateChannels($data->{'who_can_create_channels'});
             unset($data->{'who_can_create_channels'});
         }
-        if (property_exists($data, 'who_can_create_delete_user_groups')) {
+        if (property_exists($data, 'who_can_create_delete_user_groups') && $data->{'who_can_create_delete_user_groups'} !== null) {
             $object->setWhoCanCreateDeleteUserGroups($data->{'who_can_create_delete_user_groups'});
             unset($data->{'who_can_create_delete_user_groups'});
         }
-        if (property_exists($data, 'who_can_create_groups')) {
+        if (property_exists($data, 'who_can_create_groups') && $data->{'who_can_create_groups'} !== null) {
             $object->setWhoCanCreateGroups($data->{'who_can_create_groups'});
             unset($data->{'who_can_create_groups'});
         }
-        if (property_exists($data, 'who_can_create_shared_channels')) {
+        if (property_exists($data, 'who_can_create_shared_channels') && $data->{'who_can_create_shared_channels'} !== null) {
             $object->setWhoCanCreateSharedChannels($data->{'who_can_create_shared_channels'});
             unset($data->{'who_can_create_shared_channels'});
         }
-        if (property_exists($data, 'who_can_edit_user_groups')) {
+        if (property_exists($data, 'who_can_edit_user_groups') && $data->{'who_can_edit_user_groups'} !== null) {
             $object->setWhoCanEditUserGroups($data->{'who_can_edit_user_groups'});
             unset($data->{'who_can_edit_user_groups'});
         }
-        if (property_exists($data, 'who_can_kick_channels')) {
+        if (property_exists($data, 'who_can_kick_channels') && $data->{'who_can_kick_channels'} !== null) {
             $object->setWhoCanKickChannels($data->{'who_can_kick_channels'});
             unset($data->{'who_can_kick_channels'});
         }
-        if (property_exists($data, 'who_can_kick_groups')) {
+        if (property_exists($data, 'who_can_kick_groups') && $data->{'who_can_kick_groups'} !== null) {
             $object->setWhoCanKickGroups($data->{'who_can_kick_groups'});
             unset($data->{'who_can_kick_groups'});
         }
-        if (property_exists($data, 'who_can_manage_guests')) {
+        if (property_exists($data, 'who_can_manage_guests') && $data->{'who_can_manage_guests'} !== null) {
             $object->setWhoCanManageGuests($this->denormalizer->denormalize($data->{'who_can_manage_guests'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefsWhoCanManageGuests', 'json', $context));
             unset($data->{'who_can_manage_guests'});
         }
-        if (property_exists($data, 'who_can_manage_integrations')) {
+        if (property_exists($data, 'who_can_manage_integrations') && $data->{'who_can_manage_integrations'} !== null) {
             $object->setWhoCanManageIntegrations($this->denormalizer->denormalize($data->{'who_can_manage_integrations'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefsWhoCanManageIntegrations', 'json', $context));
             unset($data->{'who_can_manage_integrations'});
         }
-        if (property_exists($data, 'who_can_manage_shared_channels')) {
+        if (property_exists($data, 'who_can_manage_shared_channels') && $data->{'who_can_manage_shared_channels'} !== null) {
             $object->setWhoCanManageSharedChannels($this->denormalizer->denormalize($data->{'who_can_manage_shared_channels'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefsWhoCanManageSharedChannels', 'json', $context));
             unset($data->{'who_can_manage_shared_channels'});
         }
-        if (property_exists($data, 'who_can_post_general')) {
+        if (property_exists($data, 'who_can_post_general') && $data->{'who_can_post_general'} !== null) {
             $object->setWhoCanPostGeneral($data->{'who_can_post_general'});
             unset($data->{'who_can_post_general'});
         }
-        if (property_exists($data, 'who_can_post_in_shared_channels')) {
+        if (property_exists($data, 'who_can_post_in_shared_channels') && $data->{'who_can_post_in_shared_channels'} !== null) {
             $object->setWhoCanPostInSharedChannels($this->denormalizer->denormalize($data->{'who_can_post_in_shared_channels'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefsWhoCanPostInSharedChannels', 'json', $context));
             unset($data->{'who_can_post_in_shared_channels'});
         }
-        if (property_exists($data, 'who_has_team_visibility')) {
+        if (property_exists($data, 'who_has_team_visibility') && $data->{'who_has_team_visibility'} !== null) {
             $object->setWhoHasTeamVisibility($data->{'who_has_team_visibility'});
             unset($data->{'who_has_team_visibility'});
         }

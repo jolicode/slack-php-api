@@ -22,7 +22,7 @@ class ObjsConversationItem1DisplayCounts extends \ArrayObject
     protected $guestCounts;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getDisplayCounts(): ?int
     {
@@ -30,7 +30,7 @@ class ObjsConversationItem1DisplayCounts extends \ArrayObject
     }
 
     /**
-     * @param int $displayCounts
+     * @param int|null $displayCounts
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ObjsConversationItem1DisplayCounts extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGuestCounts(): ?int
     {
@@ -50,7 +50,7 @@ class ObjsConversationItem1DisplayCounts extends \ArrayObject
     }
 
     /**
-     * @param int $guestCounts
+     * @param int|null $guestCounts
      *
      * @return self
      */

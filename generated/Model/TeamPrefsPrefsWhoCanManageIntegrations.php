@@ -18,7 +18,7 @@ class TeamPrefsPrefsWhoCanManageIntegrations extends \ArrayObject
     protected $type;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getType(): ?array
     {
@@ -26,7 +26,7 @@ class TeamPrefsPrefsWhoCanManageIntegrations extends \ArrayObject
     }
 
     /**
-     * @param string[] $type
+     * @param string[]|null $type
      *
      * @return self
      */

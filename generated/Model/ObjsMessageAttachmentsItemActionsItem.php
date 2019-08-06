@@ -38,7 +38,7 @@ class ObjsMessageAttachmentsItemActionsItem
     protected $style;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -46,7 +46,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -66,7 +66,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getText(): ?string
     {
@@ -86,7 +86,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @param string $text
+     * @param string|null $text
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -106,7 +106,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getValue(): ?string
     {
@@ -126,7 +126,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStyle(): ?string
     {
@@ -146,7 +146,7 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @param string $style
+     * @param string|null $style
      *
      * @return self
      */

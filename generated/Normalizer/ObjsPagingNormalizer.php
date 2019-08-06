@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,32 +30,32 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsPaging;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsPaging';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsPaging();
         $data = clone $data;
-        if (property_exists($data, 'count')) {
+        if (property_exists($data, 'count') && $data->{'count'} !== null) {
             $object->setCount($data->{'count'});
             unset($data->{'count'});
         }
-        if (property_exists($data, 'page')) {
+        if (property_exists($data, 'page') && $data->{'page'} !== null) {
             $object->setPage($data->{'page'});
             unset($data->{'page'});
         }
-        if (property_exists($data, 'pages')) {
+        if (property_exists($data, 'pages') && $data->{'pages'} !== null) {
             $object->setPages($data->{'pages'});
             unset($data->{'pages'});
         }
-        if (property_exists($data, 'total')) {
+        if (property_exists($data, 'total') && $data->{'total'} !== null) {
             $object->setTotal($data->{'total'});
             unset($data->{'total'});
         }

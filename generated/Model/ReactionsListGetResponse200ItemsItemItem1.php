@@ -22,7 +22,7 @@ class ReactionsListGetResponse200ItemsItemItem1 extends \ArrayObject
     protected $type;
 
     /**
-     * @return ObjsFile
+     * @return ObjsFile|null
      */
     public function getFile(): ?ObjsFile
     {
@@ -30,7 +30,7 @@ class ReactionsListGetResponse200ItemsItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile $file
+     * @param ObjsFile|null $file
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ReactionsListGetResponse200ItemsItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -50,7 +50,7 @@ class ReactionsListGetResponse200ItemsItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

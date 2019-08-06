@@ -86,7 +86,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     protected $ts;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -94,7 +94,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCallbackId(): ?string
     {
@@ -114,7 +114,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $callbackId
+     * @param string|null $callbackId
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFallback(): ?string
     {
@@ -134,7 +134,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $fallback
+     * @param string|null $fallback
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getColor(): ?string
     {
@@ -154,7 +154,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $color
+     * @param string|null $color
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPretext(): ?string
     {
@@ -174,7 +174,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $pretext
+     * @param string|null $pretext
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthorName(): ?string
     {
@@ -194,7 +194,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $authorName
+     * @param string|null $authorName
      *
      * @return self
      */
@@ -206,7 +206,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthorLink(): ?string
     {
@@ -214,7 +214,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $authorLink
+     * @param string|null $authorLink
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthorIcon(): ?string
     {
@@ -234,7 +234,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $authorIcon
+     * @param string|null $authorIcon
      *
      * @return self
      */
@@ -246,7 +246,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -254,7 +254,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
@@ -266,7 +266,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitleLink(): ?string
     {
@@ -274,7 +274,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $titleLink
+     * @param string|null $titleLink
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getText(): ?string
     {
@@ -294,7 +294,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $text
+     * @param string|null $text
      *
      * @return self
      */
@@ -306,7 +306,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessageAttachmentsItemFieldsItem[]
+     * @return ObjsMessageAttachmentsItemFieldsItem[]|null
      */
     public function getFields(): ?array
     {
@@ -314,7 +314,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageAttachmentsItemFieldsItem[] $fields
+     * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
      *
      * @return self
      */
@@ -326,7 +326,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessageAttachmentsItemActionsItem[]
+     * @return ObjsMessageAttachmentsItemActionsItem[]|null
      */
     public function getActions(): ?array
     {
@@ -334,7 +334,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageAttachmentsItemActionsItem[] $actions
+     * @param ObjsMessageAttachmentsItemActionsItem[]|null $actions
      *
      * @return self
      */
@@ -346,7 +346,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImageUrl(): ?string
     {
@@ -354,7 +354,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $imageUrl
+     * @param string|null $imageUrl
      *
      * @return self
      */
@@ -366,7 +366,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumbUrl(): ?string
     {
@@ -374,7 +374,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $thumbUrl
+     * @param string|null $thumbUrl
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFooter(): ?string
     {
@@ -394,7 +394,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $footer
+     * @param string|null $footer
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFooterIcon(): ?string
     {
@@ -414,7 +414,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param string $footerIcon
+     * @param string|null $footerIcon
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return float|string
+     * @return float|string|null
      */
     public function getTs()
     {
@@ -434,7 +434,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param float|string $ts
+     * @param float|string|null $ts
      *
      * @return self
      */

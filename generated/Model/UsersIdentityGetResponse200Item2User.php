@@ -46,7 +46,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     protected $name;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -54,7 +54,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage192(): ?string
     {
@@ -74,7 +74,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $image192
+     * @param string|null $image192
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage24(): ?string
     {
@@ -94,7 +94,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $image24
+     * @param string|null $image24
      *
      * @return self
      */
@@ -106,7 +106,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage32(): ?string
     {
@@ -114,7 +114,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $image32
+     * @param string|null $image32
      *
      * @return self
      */
@@ -126,7 +126,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage48(): ?string
     {
@@ -134,7 +134,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $image48
+     * @param string|null $image48
      *
      * @return self
      */
@@ -146,7 +146,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage512(): ?string
     {
@@ -154,7 +154,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $image512
+     * @param string|null $image512
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage72(): ?string
     {
@@ -174,7 +174,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $image72
+     * @param string|null $image72
      *
      * @return self
      */
@@ -186,7 +186,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -194,7 +194,7 @@ class UsersIdentityGetResponse200Item2User extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

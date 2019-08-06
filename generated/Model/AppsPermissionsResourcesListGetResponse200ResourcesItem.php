@@ -22,7 +22,7 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItem
     protected $type;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -30,7 +30,7 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItem
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -50,7 +50,7 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItem
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

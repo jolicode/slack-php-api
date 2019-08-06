@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,28 +30,28 @@ class UsersIdentityGetResponse200Item0Normalizer implements DenormalizerInterfac
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item0';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0();
         $data = clone $data;
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item0Team', 'json', $context));
             unset($data->{'team'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item0User', 'json', $context));
             unset($data->{'user'});
         }

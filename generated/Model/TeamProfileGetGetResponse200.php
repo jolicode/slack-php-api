@@ -22,7 +22,7 @@ class TeamProfileGetGetResponse200 extends \ArrayObject
     protected $profile;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class TeamProfileGetGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class TeamProfileGetGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return TeamProfileGetGetResponse200Profile
+     * @return TeamProfileGetGetResponse200Profile|null
      */
     public function getProfile(): ?TeamProfileGetGetResponse200Profile
     {
@@ -50,7 +50,7 @@ class TeamProfileGetGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param TeamProfileGetGetResponse200Profile $profile
+     * @param TeamProfileGetGetResponse200Profile|null $profile
      *
      * @return self
      */

@@ -18,7 +18,7 @@ class ConversationsListGetResponse200ResponseMetadata extends \ArrayObject
     protected $nextCursor;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNextCursor(): ?string
     {
@@ -26,7 +26,7 @@ class ConversationsListGetResponse200ResponseMetadata extends \ArrayObject
     }
 
     /**
-     * @param string $nextCursor
+     * @param string|null $nextCursor
      *
      * @return self
      */

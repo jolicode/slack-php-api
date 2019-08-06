@@ -50,7 +50,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     protected $user;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreated(): ?string
     {
@@ -58,7 +58,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param string $created
+     * @param string|null $created
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -78,7 +78,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsIm(): ?bool
     {
@@ -98,7 +98,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param bool $isIm
+     * @param bool|null $isIm
      *
      * @return self
      */
@@ -110,7 +110,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOpen(): ?bool
     {
@@ -118,7 +118,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param bool $isOpen
+     * @param bool|null $isOpen
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastRead()
     {
@@ -138,7 +138,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param string $lastRead
+     * @param string|null $lastRead
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessage
+     * @return ObjsMessage|null
      */
     public function getLatest(): ?ObjsMessage
     {
@@ -158,7 +158,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessage $latest
+     * @param ObjsMessage|null $latest
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getUnreadCount(): ?float
     {
@@ -178,7 +178,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param float $unreadCount
+     * @param float|null $unreadCount
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getUnreadCountDisplay(): ?float
     {
@@ -198,7 +198,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param float $unreadCountDisplay
+     * @param float|null $unreadCountDisplay
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -218,7 +218,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

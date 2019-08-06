@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,24 +30,24 @@ class ObjsConversationItem0DisplayCountsNormalizer implements DenormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsConversationItem0DisplayCounts;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem0DisplayCounts';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem0DisplayCounts();
         $data = clone $data;
-        if (property_exists($data, 'display_counts')) {
+        if (property_exists($data, 'display_counts') && $data->{'display_counts'} !== null) {
             $object->setDisplayCounts($data->{'display_counts'});
             unset($data->{'display_counts'});
         }
-        if (property_exists($data, 'guest_counts')) {
+        if (property_exists($data, 'guest_counts') && $data->{'guest_counts'} !== null) {
             $object->setGuestCounts($data->{'guest_counts'});
             unset($data->{'guest_counts'});
         }

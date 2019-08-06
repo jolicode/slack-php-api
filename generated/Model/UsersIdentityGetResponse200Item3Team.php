@@ -58,7 +58,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     protected $name;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDomain(): ?string
     {
@@ -66,7 +66,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $domain
+     * @param string|null $domain
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -86,7 +86,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage102(): ?string
     {
@@ -106,7 +106,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image102
+     * @param string|null $image102
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage132(): ?string
     {
@@ -126,7 +126,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image132
+     * @param string|null $image132
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage230(): ?string
     {
@@ -146,7 +146,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image230
+     * @param string|null $image230
      *
      * @return self
      */
@@ -158,7 +158,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage34(): ?string
     {
@@ -166,7 +166,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image34
+     * @param string|null $image34
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage44(): ?string
     {
@@ -186,7 +186,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image44
+     * @param string|null $image44
      *
      * @return self
      */
@@ -198,7 +198,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage68(): ?string
     {
@@ -206,7 +206,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image68
+     * @param string|null $image68
      *
      * @return self
      */
@@ -218,7 +218,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage88(): ?string
     {
@@ -226,7 +226,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $image88
+     * @param string|null $image88
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getImageDefault(): ?bool
     {
@@ -246,7 +246,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param bool $imageDefault
+     * @param bool|null $imageDefault
      *
      * @return self
      */
@@ -258,7 +258,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -266,7 +266,7 @@ class UsersIdentityGetResponse200Item3Team extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

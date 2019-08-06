@@ -26,7 +26,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     protected $users;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getCached(): ?bool
     {
@@ -34,7 +34,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $cached
+     * @param bool|null $cached
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getUsers(): ?\ArrayObject
     {
@@ -74,7 +74,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $users
+     * @param mixed[]|null $users
      *
      * @return self
      */

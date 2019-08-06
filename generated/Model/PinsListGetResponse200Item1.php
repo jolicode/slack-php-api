@@ -22,7 +22,7 @@ class PinsListGetResponse200Item1 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCount(): ?int
     {
@@ -30,7 +30,7 @@ class PinsListGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class PinsListGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class PinsListGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

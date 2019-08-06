@@ -22,7 +22,7 @@ class TeamInfoGetResponse200 extends \ArrayObject
     protected $team;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class TeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class TeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsTeam
+     * @return ObjsTeam|null
      */
     public function getTeam(): ?ObjsTeam
     {
@@ -50,7 +50,7 @@ class TeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsTeam $team
+     * @param ObjsTeam|null $team
      *
      * @return self
      */

@@ -118,7 +118,7 @@ class ObjsUserProfile extends \ArrayObject
     protected $title;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAlwaysActive(): ?bool
     {
@@ -126,7 +126,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param bool $alwaysActive
+     * @param bool|null $alwaysActive
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAvatarHash(): ?string
     {
@@ -146,7 +146,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $avatarHash
+     * @param string|null $avatarHash
      *
      * @return self
      */
@@ -158,7 +158,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDisplayName(): ?string
     {
@@ -166,7 +166,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDisplayNameNormalized(): ?string
     {
@@ -186,7 +186,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $displayNameNormalized
+     * @param string|null $displayNameNormalized
      *
      * @return self
      */
@@ -198,7 +198,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail(): ?string
     {
@@ -206,7 +206,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $email
+     * @param string|null $email
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -246,7 +246,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -258,7 +258,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getGuestChannels(): ?string
     {
@@ -266,7 +266,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $guestChannels
+     * @param string|null $guestChannels
      *
      * @return self
      */
@@ -278,7 +278,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage192(): ?string
     {
@@ -286,7 +286,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $image192
+     * @param string|null $image192
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage24(): ?string
     {
@@ -306,7 +306,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $image24
+     * @param string|null $image24
      *
      * @return self
      */
@@ -318,7 +318,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage32(): ?string
     {
@@ -326,7 +326,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $image32
+     * @param string|null $image32
      *
      * @return self
      */
@@ -338,7 +338,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage48(): ?string
     {
@@ -346,7 +346,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $image48
+     * @param string|null $image48
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage512(): ?string
     {
@@ -366,7 +366,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $image512
+     * @param string|null $image512
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage72(): ?string
     {
@@ -386,7 +386,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $image72
+     * @param string|null $image72
      *
      * @return self
      */
@@ -398,7 +398,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImageOriginal(): ?string
     {
@@ -406,7 +406,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $imageOriginal
+     * @param string|null $imageOriginal
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastName(): ?string
     {
@@ -426,7 +426,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $lastName
+     * @param string|null $lastName
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPhone(): ?string
     {
@@ -446,7 +446,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $phone
+     * @param string|null $phone
      *
      * @return self
      */
@@ -458,7 +458,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRealName(): ?string
     {
@@ -466,7 +466,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $realName
+     * @param string|null $realName
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRealNameNormalized(): ?string
     {
@@ -486,7 +486,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $realNameNormalized
+     * @param string|null $realNameNormalized
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSkype(): ?string
     {
@@ -506,7 +506,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $skype
+     * @param string|null $skype
      *
      * @return self
      */
@@ -518,7 +518,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatusEmoji(): ?string
     {
@@ -526,7 +526,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $statusEmoji
+     * @param string|null $statusEmoji
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getStatusExpiration(): ?int
     {
@@ -546,7 +546,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param int $statusExpiration
+     * @param int|null $statusExpiration
      *
      * @return self
      */
@@ -558,7 +558,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatusText(): ?string
     {
@@ -566,7 +566,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $statusText
+     * @param string|null $statusText
      *
      * @return self
      */
@@ -578,7 +578,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStatusTextCanonical(): ?string
     {
@@ -586,7 +586,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $statusTextCanonical
+     * @param string|null $statusTextCanonical
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeam(): ?string
     {
@@ -606,7 +606,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $team
+     * @param string|null $team
      *
      * @return self
      */
@@ -618,7 +618,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -626,7 +626,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */

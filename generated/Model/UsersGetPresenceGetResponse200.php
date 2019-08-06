@@ -42,7 +42,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     protected $presence;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAutoAway(): ?bool
     {
@@ -50,7 +50,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $autoAway
+     * @param bool|null $autoAway
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getConnectionCount(): ?int
     {
@@ -70,7 +70,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param int $connectionCount
+     * @param int|null $connectionCount
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getLastActivity(): ?int
     {
@@ -90,7 +90,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param int $lastActivity
+     * @param int|null $lastActivity
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getManualAway(): ?bool
     {
@@ -110,7 +110,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $manualAway
+     * @param bool|null $manualAway
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -130,7 +130,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOnline(): ?bool
     {
@@ -150,7 +150,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $online
+     * @param bool|null $online
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPresence(): ?string
     {
@@ -170,7 +170,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $presence
+     * @param string|null $presence
      *
      * @return self
      */

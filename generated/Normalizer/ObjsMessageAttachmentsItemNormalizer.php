@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,64 +30,64 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem();
         $data = clone $data;
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'callback_id')) {
+        if (property_exists($data, 'callback_id') && $data->{'callback_id'} !== null) {
             $object->setCallbackId($data->{'callback_id'});
             unset($data->{'callback_id'});
         }
-        if (property_exists($data, 'fallback')) {
+        if (property_exists($data, 'fallback') && $data->{'fallback'} !== null) {
             $object->setFallback($data->{'fallback'});
             unset($data->{'fallback'});
         }
-        if (property_exists($data, 'color')) {
+        if (property_exists($data, 'color') && $data->{'color'} !== null) {
             $object->setColor($data->{'color'});
             unset($data->{'color'});
         }
-        if (property_exists($data, 'pretext')) {
+        if (property_exists($data, 'pretext') && $data->{'pretext'} !== null) {
             $object->setPretext($data->{'pretext'});
             unset($data->{'pretext'});
         }
-        if (property_exists($data, 'author_name')) {
+        if (property_exists($data, 'author_name') && $data->{'author_name'} !== null) {
             $object->setAuthorName($data->{'author_name'});
             unset($data->{'author_name'});
         }
-        if (property_exists($data, 'author_link')) {
+        if (property_exists($data, 'author_link') && $data->{'author_link'} !== null) {
             $object->setAuthorLink($data->{'author_link'});
             unset($data->{'author_link'});
         }
-        if (property_exists($data, 'author_icon')) {
+        if (property_exists($data, 'author_icon') && $data->{'author_icon'} !== null) {
             $object->setAuthorIcon($data->{'author_icon'});
             unset($data->{'author_icon'});
         }
-        if (property_exists($data, 'title')) {
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
             unset($data->{'title'});
         }
-        if (property_exists($data, 'title_link')) {
+        if (property_exists($data, 'title_link') && $data->{'title_link'} !== null) {
             $object->setTitleLink($data->{'title_link'});
             unset($data->{'title_link'});
         }
-        if (property_exists($data, 'text')) {
+        if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
             unset($data->{'text'});
         }
-        if (property_exists($data, 'fields')) {
+        if (property_exists($data, 'fields') && $data->{'fields'} !== null) {
             $values = [];
             foreach ($data->{'fields'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
@@ -96,7 +95,7 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $object->setFields($values);
             unset($data->{'fields'});
         }
-        if (property_exists($data, 'actions')) {
+        if (property_exists($data, 'actions') && $data->{'actions'} !== null) {
             $values_1 = [];
             foreach ($data->{'actions'} as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
@@ -104,23 +103,23 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             $object->setActions($values_1);
             unset($data->{'actions'});
         }
-        if (property_exists($data, 'image_url')) {
+        if (property_exists($data, 'image_url') && $data->{'image_url'} !== null) {
             $object->setImageUrl($data->{'image_url'});
             unset($data->{'image_url'});
         }
-        if (property_exists($data, 'thumb_url')) {
+        if (property_exists($data, 'thumb_url') && $data->{'thumb_url'} !== null) {
             $object->setThumbUrl($data->{'thumb_url'});
             unset($data->{'thumb_url'});
         }
-        if (property_exists($data, 'footer')) {
+        if (property_exists($data, 'footer') && $data->{'footer'} !== null) {
             $object->setFooter($data->{'footer'});
             unset($data->{'footer'});
         }
-        if (property_exists($data, 'footer_icon')) {
+        if (property_exists($data, 'footer_icon') && $data->{'footer_icon'} !== null) {
             $object->setFooterIcon($data->{'footer_icon'});
             unset($data->{'footer_icon'});
         }
-        if (property_exists($data, 'ts')) {
+        if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
             $value_2 = $data->{'ts'};
             if (is_float($data->{'ts'})) {
                 $value_2 = $data->{'ts'};

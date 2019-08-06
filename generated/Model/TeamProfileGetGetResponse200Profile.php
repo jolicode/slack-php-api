@@ -18,7 +18,7 @@ class TeamProfileGetGetResponse200Profile extends \ArrayObject
     protected $fields;
 
     /**
-     * @return ObjsTeamProfileField[]
+     * @return ObjsTeamProfileField[]|null
      */
     public function getFields(): ?array
     {
@@ -26,7 +26,7 @@ class TeamProfileGetGetResponse200Profile extends \ArrayObject
     }
 
     /**
-     * @param ObjsTeamProfileField[] $fields
+     * @param ObjsTeamProfileField[]|null $fields
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
     protected $user;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsUser
+     * @return ObjsUser|null
      */
     public function getUser(): ?ObjsUser
     {
@@ -50,7 +50,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsUser $user
+     * @param ObjsUser|null $user
      *
      * @return self
      */

@@ -30,7 +30,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     protected $type;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -38,7 +38,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreatedBy(): ?string
     {
@@ -58,7 +58,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $createdBy
+     * @param string|null $createdBy
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @return ObjsFile
+     * @return ObjsFile|null
      */
     public function getFile(): ?ObjsFile
     {
@@ -78,7 +78,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile $file
+     * @param ObjsFile|null $file
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -98,7 +98,7 @@ class PinsListGetResponse200Item0ItemsItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,52 +30,52 @@ class ObjsInvitingUserNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsInvitingUser;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsInvitingUser';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsInvitingUser();
         $data = clone $data;
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_app_user')) {
+        if (property_exists($data, 'is_app_user') && $data->{'is_app_user'} !== null) {
             $object->setIsAppUser($data->{'is_app_user'});
             unset($data->{'is_app_user'});
         }
-        if (property_exists($data, 'is_restricted')) {
+        if (property_exists($data, 'is_restricted') && $data->{'is_restricted'} !== null) {
             $object->setIsRestricted($data->{'is_restricted'});
             unset($data->{'is_restricted'});
         }
-        if (property_exists($data, 'is_ultra_restricted')) {
+        if (property_exists($data, 'is_ultra_restricted') && $data->{'is_ultra_restricted'} !== null) {
             $object->setIsUltraRestricted($data->{'is_ultra_restricted'});
             unset($data->{'is_ultra_restricted'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'profile')) {
+        if (property_exists($data, 'profile') && $data->{'profile'} !== null) {
             $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShortest', 'json', $context));
             unset($data->{'profile'});
         }
-        if (property_exists($data, 'real_name')) {
+        if (property_exists($data, 'real_name') && $data->{'real_name'} !== null) {
             $object->setRealName($data->{'real_name'});
             unset($data->{'real_name'});
         }
-        if (property_exists($data, 'team_id')) {
+        if (property_exists($data, 'team_id') && $data->{'team_id'} !== null) {
             $object->setTeamId($data->{'team_id'});
             unset($data->{'team_id'});
         }
-        if (property_exists($data, 'updated')) {
+        if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
             $object->setUpdated($data->{'updated'});
             unset($data->{'updated'});
         }

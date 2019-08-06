@@ -26,7 +26,7 @@ class ConversationsRepliesGetResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasMore(): ?bool
     {
@@ -34,7 +34,7 @@ class ConversationsRepliesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $hasMore
+     * @param bool|null $hasMore
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ConversationsRepliesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getMessages(): ?array
     {
@@ -54,7 +54,7 @@ class ConversationsRepliesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $messages
+     * @param mixed[]|null $messages
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ConversationsRepliesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -74,7 +74,7 @@ class ConversationsRepliesGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

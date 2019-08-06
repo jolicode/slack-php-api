@@ -30,7 +30,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     protected $provided;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -38,7 +38,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNeeded(): ?string
     {
@@ -58,7 +58,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $needed
+     * @param string|null $needed
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -78,7 +78,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProvided(): ?string
     {
@@ -98,7 +98,7 @@ class ConversationsRepliesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $provided
+     * @param string|null $provided
      *
      * @return self
      */

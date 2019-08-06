@@ -130,7 +130,7 @@ class ObjsChannel extends \ArrayObject
     protected $unreadCountDisplay;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAcceptedUser(): ?string
     {
@@ -138,7 +138,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string $acceptedUser
+     * @param string|null $acceptedUser
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -158,7 +158,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreator(): ?string
     {
@@ -178,7 +178,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string $creator
+     * @param string|null $creator
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -198,7 +198,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsArchived(): ?bool
     {
@@ -218,7 +218,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isArchived
+     * @param bool|null $isArchived
      *
      * @return self
      */
@@ -230,7 +230,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsChannel(): ?bool
     {
@@ -238,7 +238,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isChannel
+     * @param bool|null $isChannel
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsGeneral(): ?bool
     {
@@ -258,7 +258,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isGeneral
+     * @param bool|null $isGeneral
      *
      * @return self
      */
@@ -270,7 +270,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsMember(): ?bool
     {
@@ -278,7 +278,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isMember
+     * @param bool|null $isMember
      *
      * @return self
      */
@@ -290,7 +290,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getIsMoved(): ?int
     {
@@ -298,7 +298,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param int $isMoved
+     * @param int|null $isMoved
      *
      * @return self
      */
@@ -310,7 +310,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsMpim(): ?bool
     {
@@ -318,7 +318,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isMpim
+     * @param bool|null $isMpim
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOrgShared(): ?bool
     {
@@ -338,7 +338,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isOrgShared
+     * @param bool|null $isOrgShared
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPendingExtShared(): ?bool
     {
@@ -358,7 +358,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isPendingExtShared
+     * @param bool|null $isPendingExtShared
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPrivate(): ?bool
     {
@@ -378,7 +378,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isPrivate
+     * @param bool|null $isPrivate
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsReadOnly(): ?bool
     {
@@ -398,7 +398,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isReadOnly
+     * @param bool|null $isReadOnly
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsShared(): ?bool
     {
@@ -418,7 +418,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param bool $isShared
+     * @param bool|null $isShared
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastRead()
     {
@@ -438,7 +438,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string $lastRead
+     * @param string|null $lastRead
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMembers(): ?array
     {
@@ -478,7 +478,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string[] $members
+     * @param string[]|null $members
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -498,7 +498,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNameNormalized(): ?string
     {
@@ -518,7 +518,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string $nameNormalized
+     * @param string|null $nameNormalized
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNumMembers(): ?int
     {
@@ -538,7 +538,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param int $numMembers
+     * @param int|null $numMembers
      *
      * @return self
      */
@@ -550,7 +550,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPendingShared(): ?array
     {
@@ -558,7 +558,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string[] $pendingShared
+     * @param string[]|null $pendingShared
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPreviousNames(): ?array
     {
@@ -578,7 +578,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param string[] $previousNames
+     * @param string[]|null $previousNames
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getPriority(): ?float
     {
@@ -598,7 +598,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param float $priority
+     * @param float|null $priority
      *
      * @return self
      */
@@ -610,7 +610,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return ObjsChannelPurpose
+     * @return ObjsChannelPurpose|null
      */
     public function getPurpose(): ?ObjsChannelPurpose
     {
@@ -618,7 +618,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param ObjsChannelPurpose $purpose
+     * @param ObjsChannelPurpose|null $purpose
      *
      * @return self
      */
@@ -630,7 +630,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return ObjsChannelTopic
+     * @return ObjsChannelTopic|null
      */
     public function getTopic(): ?ObjsChannelTopic
     {
@@ -638,7 +638,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param ObjsChannelTopic $topic
+     * @param ObjsChannelTopic|null $topic
      *
      * @return self
      */
@@ -650,7 +650,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnlinked(): ?int
     {
@@ -658,7 +658,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param int $unlinked
+     * @param int|null $unlinked
      *
      * @return self
      */
@@ -670,7 +670,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCount(): ?int
     {
@@ -678,7 +678,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCount
+     * @param int|null $unreadCount
      *
      * @return self
      */
@@ -690,7 +690,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCountDisplay(): ?int
     {
@@ -698,7 +698,7 @@ class ObjsChannel extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCountDisplay
+     * @param int|null $unreadCountDisplay
      *
      * @return self
      */

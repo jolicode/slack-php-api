@@ -22,7 +22,7 @@ class GroupsSetPurposePostResponse200 extends \ArrayObject
     protected $purpose;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class GroupsSetPurposePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GroupsSetPurposePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPurpose(): ?string
     {
@@ -50,7 +50,7 @@ class GroupsSetPurposePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $purpose
+     * @param string|null $purpose
      *
      * @return self
      */

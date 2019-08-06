@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,24 +30,24 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\MigrationExchangeGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'enterprise_id')) {
+        if (property_exists($data, 'enterprise_id') && $data->{'enterprise_id'} !== null) {
             $object->setEnterpriseId($data->{'enterprise_id'});
             unset($data->{'enterprise_id'});
         }
-        if (property_exists($data, 'invalid_user_ids')) {
+        if (property_exists($data, 'invalid_user_ids') && $data->{'invalid_user_ids'} !== null) {
             $values = [];
             foreach ($data->{'invalid_user_ids'} as $value) {
                 $values[] = $value;
@@ -56,15 +55,15 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             $object->setInvalidUserIds($values);
             unset($data->{'invalid_user_ids'});
         }
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'team_id')) {
+        if (property_exists($data, 'team_id') && $data->{'team_id'} !== null) {
             $object->setTeamId($data->{'team_id'});
             unset($data->{'team_id'});
         }
-        if (property_exists($data, 'user_id_map')) {
+        if (property_exists($data, 'user_id_map') && $data->{'user_id_map'} !== null) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'user_id_map'} as $key => $value_1) {
                 $values_1[$key] = $value_1;

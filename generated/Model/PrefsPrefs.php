@@ -846,7 +846,7 @@ class PrefsPrefs extends \ArrayObject
     protected $whatsNewRead;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getA11yAnimations(): ?bool
     {
@@ -854,7 +854,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $a11yAnimations
+     * @param bool|null $a11yAnimations
      *
      * @return self
      */
@@ -866,7 +866,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getA11yFontSize(): ?string
     {
@@ -874,7 +874,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $a11yFontSize
+     * @param string|null $a11yFontSize
      *
      * @return self
      */
@@ -886,7 +886,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllChannelsLoud(): ?bool
     {
@@ -894,7 +894,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allChannelsLoud
+     * @param bool|null $allChannelsLoud
      *
      * @return self
      */
@@ -906,7 +906,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAllNotificationsPrefs(): ?string
     {
@@ -914,7 +914,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $allNotificationsPrefs
+     * @param string|null $allNotificationsPrefs
      *
      * @return self
      */
@@ -926,7 +926,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAllUnreadsSortOrder(): ?string
     {
@@ -934,7 +934,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $allUnreadsSortOrder
+     * @param string|null $allUnreadsSortOrder
      *
      * @return self
      */
@@ -946,7 +946,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowCallsToSetCurrentStatus(): ?bool
     {
@@ -954,7 +954,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowCallsToSetCurrentStatus
+     * @param bool|null $allowCallsToSetCurrentStatus
      *
      * @return self
      */
@@ -966,7 +966,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowCmdTabIss(): ?bool
     {
@@ -974,7 +974,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowCmdTabIss
+     * @param bool|null $allowCmdTabIss
      *
      * @return self
      */
@@ -986,7 +986,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAnalyticsUpsellCoachmarkSeen(): ?bool
     {
@@ -994,7 +994,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $analyticsUpsellCoachmarkSeen
+     * @param bool|null $analyticsUpsellCoachmarkSeen
      *
      * @return self
      */
@@ -1006,7 +1006,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getArrowHistory(): ?bool
     {
@@ -1014,7 +1014,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $arrowHistory
+     * @param bool|null $arrowHistory
      *
      * @return self
      */
@@ -1026,7 +1026,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAtChannelSuppressedChannels(): ?string
     {
@@ -1034,7 +1034,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $atChannelSuppressedChannels
+     * @param string|null $atChannelSuppressedChannels
      *
      * @return self
      */
@@ -1046,7 +1046,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getBoxEnabled(): ?bool
     {
@@ -1054,7 +1054,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $boxEnabled
+     * @param bool|null $boxEnabled
      *
      * @return self
      */
@@ -1066,7 +1066,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getChannelSort(): ?string
     {
@@ -1074,7 +1074,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $channelSort
+     * @param string|null $channelSort
      *
      * @return self
      */
@@ -1086,7 +1086,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getClientLogsPri(): ?string
     {
@@ -1094,7 +1094,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $clientLogsPri
+     * @param string|null $clientLogsPri
      *
      * @return self
      */
@@ -1106,7 +1106,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getColorNamesInList(): ?bool
     {
@@ -1114,7 +1114,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $colorNamesInList
+     * @param bool|null $colorNamesInList
      *
      * @return self
      */
@@ -1126,7 +1126,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getConfirmClearAllUnreads(): ?bool
     {
@@ -1134,7 +1134,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $confirmClearAllUnreads
+     * @param bool|null $confirmClearAllUnreads
      *
      * @return self
      */
@@ -1146,7 +1146,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getConfirmShCallStart(): ?bool
     {
@@ -1154,7 +1154,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $confirmShCallStart
+     * @param bool|null $confirmShCallStart
      *
      * @return self
      */
@@ -1166,7 +1166,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getConfirmUserMarkedAway(): ?bool
     {
@@ -1174,7 +1174,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $confirmUserMarkedAway
+     * @param bool|null $confirmUserMarkedAway
      *
      * @return self
      */
@@ -1186,7 +1186,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getConvertEmoticons(): ?bool
     {
@@ -1194,7 +1194,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $convertEmoticons
+     * @param bool|null $convertEmoticons
      *
      * @return self
      */
@@ -1206,7 +1206,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisplayDisplayNames(): ?bool
     {
@@ -1214,7 +1214,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $displayDisplayNames
+     * @param bool|null $displayDisplayNames
      *
      * @return self
      */
@@ -1226,7 +1226,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getDisplayRealNamesOverride(): ?int
     {
@@ -1234,7 +1234,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $displayRealNamesOverride
+     * @param int|null $displayRealNamesOverride
      *
      * @return self
      */
@@ -1246,7 +1246,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDndEnabled(): ?bool
     {
@@ -1254,7 +1254,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $dndEnabled
+     * @param bool|null $dndEnabled
      *
      * @return self
      */
@@ -1266,7 +1266,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDndEndHour(): ?string
     {
@@ -1274,7 +1274,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $dndEndHour
+     * @param string|null $dndEndHour
      *
      * @return self
      */
@@ -1286,7 +1286,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDndStartHour(): ?string
     {
@@ -1294,7 +1294,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $dndStartHour
+     * @param string|null $dndStartHour
      *
      * @return self
      */
@@ -1306,7 +1306,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDropboxEnabled(): ?bool
     {
@@ -1314,7 +1314,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $dropboxEnabled
+     * @param bool|null $dropboxEnabled
      *
      * @return self
      */
@@ -1326,7 +1326,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmailAlerts(): ?string
     {
@@ -1334,7 +1334,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $emailAlerts
+     * @param string|null $emailAlerts
      *
      * @return self
      */
@@ -1346,7 +1346,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getEmailAlertsSleepUntil(): ?int
     {
@@ -1354,7 +1354,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $emailAlertsSleepUntil
+     * @param int|null $emailAlertsSleepUntil
      *
      * @return self
      */
@@ -1366,7 +1366,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmailDeveloper(): ?bool
     {
@@ -1374,7 +1374,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emailDeveloper
+     * @param bool|null $emailDeveloper
      *
      * @return self
      */
@@ -1386,7 +1386,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmailMisc(): ?bool
     {
@@ -1394,7 +1394,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emailMisc
+     * @param bool|null $emailMisc
      *
      * @return self
      */
@@ -1406,7 +1406,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmailOffers(): ?bool
     {
@@ -1414,7 +1414,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emailOffers
+     * @param bool|null $emailOffers
      *
      * @return self
      */
@@ -1426,7 +1426,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmailResearch(): ?bool
     {
@@ -1434,7 +1434,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emailResearch
+     * @param bool|null $emailResearch
      *
      * @return self
      */
@@ -1446,7 +1446,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmailTips(): ?bool
     {
@@ -1454,7 +1454,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emailTips
+     * @param bool|null $emailTips
      *
      * @return self
      */
@@ -1466,7 +1466,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmailWeekly(): ?bool
     {
@@ -1474,7 +1474,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emailWeekly
+     * @param bool|null $emailWeekly
      *
      * @return self
      */
@@ -1486,7 +1486,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEmojiAutocompleteBig(): ?bool
     {
@@ -1494,7 +1494,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $emojiAutocompleteBig
+     * @param bool|null $emojiAutocompleteBig
      *
      * @return self
      */
@@ -1506,7 +1506,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmojiMode(): ?string
     {
@@ -1514,7 +1514,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $emojiMode
+     * @param string|null $emojiMode
      *
      * @return self
      */
@@ -1526,7 +1526,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmojiUse(): ?string
     {
@@ -1534,7 +1534,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $emojiUse
+     * @param string|null $emojiUse
      *
      * @return self
      */
@@ -1546,7 +1546,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEnableReactEmojiPicker(): ?bool
     {
@@ -1554,7 +1554,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $enableReactEmojiPicker
+     * @param bool|null $enableReactEmojiPicker
      *
      * @return self
      */
@@ -1566,7 +1566,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEnableUnreadView(): ?bool
     {
@@ -1574,7 +1574,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $enableUnreadView
+     * @param bool|null $enableUnreadView
      *
      * @return self
      */
@@ -1586,7 +1586,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEnhancedDebugging(): ?bool
     {
@@ -1594,7 +1594,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $enhancedDebugging
+     * @param bool|null $enhancedDebugging
      *
      * @return self
      */
@@ -1606,7 +1606,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEntOrgWideChannelsSidebar(): ?bool
     {
@@ -1614,7 +1614,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $entOrgWideChannelsSidebar
+     * @param bool|null $entOrgWideChannelsSidebar
      *
      * @return self
      */
@@ -1626,7 +1626,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEnterIsSpecialInTbt(): ?bool
     {
@@ -1634,7 +1634,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $enterIsSpecialInTbt
+     * @param bool|null $enterIsSpecialInTbt
      *
      * @return self
      */
@@ -1663,7 +1663,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEnterpriseMdmCustomMsg(): ?string
     {
@@ -1671,7 +1671,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $enterpriseMdmCustomMsg
+     * @param string|null $enterpriseMdmCustomMsg
      *
      * @return self
      */
@@ -1683,7 +1683,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEnterpriseMigrationSeen(): ?bool
     {
@@ -1691,7 +1691,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $enterpriseMigrationSeen
+     * @param bool|null $enterpriseMigrationSeen
      *
      * @return self
      */
@@ -1703,7 +1703,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExpandInlineImgs(): ?bool
     {
@@ -1711,7 +1711,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $expandInlineImgs
+     * @param bool|null $expandInlineImgs
      *
      * @return self
      */
@@ -1723,7 +1723,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExpandInternalInlineImgs(): ?bool
     {
@@ -1731,7 +1731,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $expandInternalInlineImgs
+     * @param bool|null $expandInternalInlineImgs
      *
      * @return self
      */
@@ -1743,7 +1743,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExpandNonMediaAttachments(): ?bool
     {
@@ -1751,7 +1751,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $expandNonMediaAttachments
+     * @param bool|null $expandNonMediaAttachments
      *
      * @return self
      */
@@ -1763,7 +1763,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExpandSnippets(): ?bool
     {
@@ -1771,7 +1771,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $expandSnippets
+     * @param bool|null $expandSnippets
      *
      * @return self
      */
@@ -1783,7 +1783,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getFKeySearch(): ?bool
     {
@@ -1791,7 +1791,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $fKeySearch
+     * @param bool|null $fKeySearch
      *
      * @return self
      */
@@ -1803,7 +1803,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFlannelServerPool(): ?string
     {
@@ -1811,7 +1811,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $flannelServerPool
+     * @param string|null $flannelServerPool
      *
      * @return self
      */
@@ -1823,7 +1823,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFolderData(): ?string
     {
@@ -1831,7 +1831,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $folderData
+     * @param string|null $folderData
      *
      * @return self
      */
@@ -1843,7 +1843,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getFoldersEnabled(): ?bool
     {
@@ -1851,7 +1851,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $foldersEnabled
+     * @param bool|null $foldersEnabled
      *
      * @return self
      */
@@ -1863,7 +1863,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFrecencyEntJumper(): ?string
     {
@@ -1871,7 +1871,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $frecencyEntJumper
+     * @param string|null $frecencyEntJumper
      *
      * @return self
      */
@@ -1883,7 +1883,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFrecencyEntJumperBackup(): ?string
     {
@@ -1891,7 +1891,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $frecencyEntJumperBackup
+     * @param string|null $frecencyEntJumperBackup
      *
      * @return self
      */
@@ -1903,7 +1903,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFrecencyJumper(): ?string
     {
@@ -1911,7 +1911,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $frecencyJumper
+     * @param string|null $frecencyJumper
      *
      * @return self
      */
@@ -1923,7 +1923,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getFullTextExtracts(): ?bool
     {
@@ -1931,7 +1931,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $fullTextExtracts
+     * @param bool|null $fullTextExtracts
      *
      * @return self
      */
@@ -1943,7 +1943,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getFullerTimestamps(): ?bool
     {
@@ -1951,7 +1951,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $fullerTimestamps
+     * @param bool|null $fullerTimestamps
      *
      * @return self
      */
@@ -1963,7 +1963,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getGdriveAuthed(): ?bool
     {
@@ -1971,7 +1971,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $gdriveAuthed
+     * @param bool|null $gdriveAuthed
      *
      * @return self
      */
@@ -1983,7 +1983,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getGdriveEnabled(): ?bool
     {
@@ -1991,7 +1991,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $gdriveEnabled
+     * @param bool|null $gdriveEnabled
      *
      * @return self
      */
@@ -2003,7 +2003,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getGraphicEmoticons(): ?bool
     {
@@ -2011,7 +2011,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $graphicEmoticons
+     * @param bool|null $graphicEmoticons
      *
      * @return self
      */
@@ -2023,7 +2023,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getGrowlsEnabled(): ?bool
     {
@@ -2031,7 +2031,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $growlsEnabled
+     * @param bool|null $growlsEnabled
      *
      * @return self
      */
@@ -2043,7 +2043,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getGrowthAllBannersPrefs(): ?string
     {
@@ -2051,7 +2051,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $growthAllBannersPrefs
+     * @param string|null $growthAllBannersPrefs
      *
      * @return self
      */
@@ -2063,7 +2063,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitApproachingCtaCount(): ?int
     {
@@ -2071,7 +2071,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitApproachingCtaCount
+     * @param int|null $growthMsgLimitApproachingCtaCount
      *
      * @return self
      */
@@ -2083,7 +2083,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitApproachingCtaTs(): ?int
     {
@@ -2091,7 +2091,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitApproachingCtaTs
+     * @param int|null $growthMsgLimitApproachingCtaTs
      *
      * @return self
      */
@@ -2103,7 +2103,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitLongReachedCtaCount(): ?int
     {
@@ -2111,7 +2111,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitLongReachedCtaCount
+     * @param int|null $growthMsgLimitLongReachedCtaCount
      *
      * @return self
      */
@@ -2123,7 +2123,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitLongReachedCtaLastTs(): ?int
     {
@@ -2131,7 +2131,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitLongReachedCtaLastTs
+     * @param int|null $growthMsgLimitLongReachedCtaLastTs
      *
      * @return self
      */
@@ -2143,7 +2143,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitReachedCtaCount(): ?int
     {
@@ -2151,7 +2151,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitReachedCtaCount
+     * @param int|null $growthMsgLimitReachedCtaCount
      *
      * @return self
      */
@@ -2163,7 +2163,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitReachedCtaLastTs(): ?int
     {
@@ -2171,7 +2171,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitReachedCtaLastTs
+     * @param int|null $growthMsgLimitReachedCtaLastTs
      *
      * @return self
      */
@@ -2183,7 +2183,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitSixtyDayBannerCtaCount(): ?int
     {
@@ -2191,7 +2191,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitSixtyDayBannerCtaCount
+     * @param int|null $growthMsgLimitSixtyDayBannerCtaCount
      *
      * @return self
      */
@@ -2203,7 +2203,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGrowthMsgLimitSixtyDayBannerCtaLastTs(): ?int
     {
@@ -2211,7 +2211,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $growthMsgLimitSixtyDayBannerCtaLastTs
+     * @param int|null $growthMsgLimitSixtyDayBannerCtaLastTs
      *
      * @return self
      */
@@ -2223,7 +2223,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasCreatedChannel(): ?bool
     {
@@ -2231,7 +2231,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hasCreatedChannel
+     * @param bool|null $hasCreatedChannel
      *
      * @return self
      */
@@ -2243,7 +2243,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasInvited(): ?bool
     {
@@ -2251,7 +2251,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hasInvited
+     * @param bool|null $hasInvited
      *
      * @return self
      */
@@ -2263,7 +2263,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasRecentlySharedAChannel(): ?bool
     {
@@ -2271,7 +2271,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hasRecentlySharedAChannel
+     * @param bool|null $hasRecentlySharedAChannel
      *
      * @return self
      */
@@ -2283,7 +2283,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasSearched(): ?bool
     {
@@ -2291,7 +2291,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hasSearched
+     * @param bool|null $hasSearched
      *
      * @return self
      */
@@ -2303,7 +2303,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasUploaded(): ?bool
     {
@@ -2311,7 +2311,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hasUploaded
+     * @param bool|null $hasUploaded
      *
      * @return self
      */
@@ -2323,7 +2323,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHideHexSwatch(): ?bool
     {
@@ -2331,7 +2331,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hideHexSwatch
+     * @param bool|null $hideHexSwatch
      *
      * @return self
      */
@@ -2343,7 +2343,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHideUserGroupInfoPane(): ?bool
     {
@@ -2351,7 +2351,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hideUserGroupInfoPane
+     * @param bool|null $hideUserGroupInfoPane
      *
      * @return self
      */
@@ -2363,7 +2363,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getHighlightWords(): ?string
     {
@@ -2371,7 +2371,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $highlightWords
+     * @param string|null $highlightWords
      *
      * @return self
      */
@@ -2383,7 +2383,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getInInteractiveMasMigrationFlow(): ?bool
     {
@@ -2391,7 +2391,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $inInteractiveMasMigrationFlow
+     * @param bool|null $inInteractiveMasMigrationFlow
      *
      * @return self
      */
@@ -2403,7 +2403,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIntroToAppsMessageSeen(): ?bool
     {
@@ -2411,7 +2411,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $introToAppsMessageSeen
+     * @param bool|null $introToAppsMessageSeen
      *
      * @return self
      */
@@ -2423,7 +2423,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getJumbomoji(): ?bool
     {
@@ -2431,7 +2431,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $jumbomoji
+     * @param bool|null $jumbomoji
      *
      * @return self
      */
@@ -2443,7 +2443,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getKKeyOmnibox(): ?bool
     {
@@ -2451,7 +2451,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $kKeyOmnibox
+     * @param bool|null $kKeyOmnibox
      *
      * @return self
      */
@@ -2463,7 +2463,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getKKeyOmniboxAutoHideCount(): ?int
     {
@@ -2471,7 +2471,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $kKeyOmniboxAutoHideCount
+     * @param int|null $kKeyOmniboxAutoHideCount
      *
      * @return self
      */
@@ -2500,7 +2500,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getLastSeenAtChannelWarning(): ?int
     {
@@ -2508,7 +2508,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $lastSeenAtChannelWarning
+     * @param int|null $lastSeenAtChannelWarning
      *
      * @return self
      */
@@ -2520,7 +2520,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastSnippetType(): ?string
     {
@@ -2528,7 +2528,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $lastSnippetType
+     * @param string|null $lastSnippetType
      *
      * @return self
      */
@@ -2540,7 +2540,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastTosAcknowledged(): ?string
     {
@@ -2548,7 +2548,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $lastTosAcknowledged
+     * @param string|null $lastTosAcknowledged
      *
      * @return self
      */
@@ -2560,7 +2560,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getLessonsEnabled(): ?bool
     {
@@ -2568,7 +2568,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $lessonsEnabled
+     * @param bool|null $lessonsEnabled
      *
      * @return self
      */
@@ -2580,7 +2580,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getLoadLato2(): ?bool
     {
@@ -2588,7 +2588,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $loadLato2
+     * @param bool|null $loadLato2
      *
      * @return self
      */
@@ -2600,7 +2600,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLocale(): ?string
     {
@@ -2608,7 +2608,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $locale
+     * @param string|null $locale
      *
      * @return self
      */
@@ -2620,7 +2620,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return PrefsPrefsLocalesEnabled
+     * @return PrefsPrefsLocalesEnabled|null
      */
     public function getLocalesEnabled(): ?PrefsPrefsLocalesEnabled
     {
@@ -2628,7 +2628,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param PrefsPrefsLocalesEnabled $localesEnabled
+     * @param PrefsPrefsLocalesEnabled|null $localesEnabled
      *
      * @return self
      */
@@ -2640,7 +2640,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLoudChannels(): ?string
     {
@@ -2648,7 +2648,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $loudChannels
+     * @param string|null $loudChannels
      *
      * @return self
      */
@@ -2660,7 +2660,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLoudChannelsSet(): ?string
     {
@@ -2668,7 +2668,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $loudChannelsSet
+     * @param string|null $loudChannelsSet
      *
      * @return self
      */
@@ -2680,7 +2680,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getLsDisabled(): ?bool
     {
@@ -2688,7 +2688,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $lsDisabled
+     * @param bool|null $lsDisabled
      *
      * @return self
      */
@@ -2700,7 +2700,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMacSsbBounce(): ?string
     {
@@ -2708,7 +2708,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $macSsbBounce
+     * @param string|null $macSsbBounce
      *
      * @return self
      */
@@ -2720,7 +2720,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMacSsbBullet(): ?bool
     {
@@ -2728,7 +2728,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $macSsbBullet
+     * @param bool|null $macSsbBullet
      *
      * @return self
      */
@@ -2740,7 +2740,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMarkMsgsReadImmediately(): ?bool
     {
@@ -2748,7 +2748,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $markMsgsReadImmediately
+     * @param bool|null $markMsgsReadImmediately
      *
      * @return self
      */
@@ -2760,7 +2760,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMeasureCssUsage(): ?bool
     {
@@ -2768,7 +2768,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $measureCssUsage
+     * @param bool|null $measureCssUsage
      *
      * @return self
      */
@@ -2780,7 +2780,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMentionsExcludeAtChannels(): ?bool
     {
@@ -2788,7 +2788,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $mentionsExcludeAtChannels
+     * @param bool|null $mentionsExcludeAtChannels
      *
      * @return self
      */
@@ -2800,7 +2800,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMentionsExcludeAtUserGroups(): ?bool
     {
@@ -2808,7 +2808,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $mentionsExcludeAtUserGroups
+     * @param bool|null $mentionsExcludeAtUserGroups
      *
      * @return self
      */
@@ -2820,7 +2820,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMessagesTheme(): ?string
     {
@@ -2828,7 +2828,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $messagesTheme
+     * @param string|null $messagesTheme
      *
      * @return self
      */
@@ -2840,7 +2840,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMsgInputSendBtn(): ?bool
     {
@@ -2848,7 +2848,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $msgInputSendBtn
+     * @param bool|null $msgInputSendBtn
      *
      * @return self
      */
@@ -2860,7 +2860,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMsgInputSendBtnAutoSet(): ?bool
     {
@@ -2868,7 +2868,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $msgInputSendBtnAutoSet
+     * @param bool|null $msgInputSendBtnAutoSet
      *
      * @return self
      */
@@ -2880,7 +2880,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getMuteSounds(): ?bool
     {
@@ -2888,7 +2888,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $muteSounds
+     * @param bool|null $muteSounds
      *
      * @return self
      */
@@ -2900,7 +2900,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMutedChannels(): ?string
     {
@@ -2908,7 +2908,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $mutedChannels
+     * @param string|null $mutedChannels
      *
      * @return self
      */
@@ -2920,7 +2920,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNeverChannels(): ?string
     {
@@ -2928,7 +2928,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $neverChannels
+     * @param string|null $neverChannels
      *
      * @return self
      */
@@ -2940,7 +2940,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNewMsgSnd(): ?string
     {
@@ -2948,7 +2948,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $newMsgSnd
+     * @param string|null $newMsgSnd
      *
      * @return self
      */
@@ -2960,7 +2960,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNewxpSeenLastMessage(): ?int
     {
@@ -2968,7 +2968,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $newxpSeenLastMessage
+     * @param int|null $newxpSeenLastMessage
      *
      * @return self
      */
@@ -2980,7 +2980,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoCreatedOverlays(): ?bool
     {
@@ -2988,7 +2988,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noCreatedOverlays
+     * @param bool|null $noCreatedOverlays
      *
      * @return self
      */
@@ -3000,7 +3000,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoInvitesWidgetInSidebar(): ?bool
     {
@@ -3008,7 +3008,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noInvitesWidgetInSidebar
+     * @param bool|null $noInvitesWidgetInSidebar
      *
      * @return self
      */
@@ -3020,7 +3020,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoJoinedOverlays(): ?bool
     {
@@ -3028,7 +3028,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noJoinedOverlays
+     * @param bool|null $noJoinedOverlays
      *
      * @return self
      */
@@ -3040,7 +3040,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoMacelectronBanner(): ?bool
     {
@@ -3048,7 +3048,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noMacelectronBanner
+     * @param bool|null $noMacelectronBanner
      *
      * @return self
      */
@@ -3060,7 +3060,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoMacssb1Banner(): ?bool
     {
@@ -3068,7 +3068,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noMacssb1Banner
+     * @param bool|null $noMacssb1Banner
      *
      * @return self
      */
@@ -3080,7 +3080,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoMacssb2Banner(): ?bool
     {
@@ -3088,7 +3088,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noMacssb2Banner
+     * @param bool|null $noMacssb2Banner
      *
      * @return self
      */
@@ -3100,7 +3100,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoOmniboxInChannels(): ?bool
     {
@@ -3108,7 +3108,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noOmniboxInChannels
+     * @param bool|null $noOmniboxInChannels
      *
      * @return self
      */
@@ -3120,7 +3120,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoTextInNotifications(): ?bool
     {
@@ -3128,7 +3128,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noTextInNotifications
+     * @param bool|null $noTextInNotifications
      *
      * @return self
      */
@@ -3140,7 +3140,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoWinssb1Banner(): ?bool
     {
@@ -3148,7 +3148,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $noWinssb1Banner
+     * @param bool|null $noWinssb1Banner
      *
      * @return self
      */
@@ -3160,7 +3160,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getObeyInlineImgLimit(): ?bool
     {
@@ -3168,7 +3168,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $obeyInlineImgLimit
+     * @param bool|null $obeyInlineImgLimit
      *
      * @return self
      */
@@ -3180,7 +3180,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOnboardingCancelled(): ?bool
     {
@@ -3188,7 +3188,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $onboardingCancelled
+     * @param bool|null $onboardingCancelled
      *
      * @return self
      */
@@ -3200,7 +3200,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getOnboardingSlackbotConversationStep(): ?int
     {
@@ -3208,7 +3208,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $onboardingSlackbotConversationStep
+     * @param int|null $onboardingSlackbotConversationStep
      *
      * @return self
      */
@@ -3220,7 +3220,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOverloadedMessageEnabled(): ?bool
     {
@@ -3228,7 +3228,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $overloadedMessageEnabled
+     * @param bool|null $overloadedMessageEnabled
      *
      * @return self
      */
@@ -3240,7 +3240,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPagekeysHandled(): ?bool
     {
@@ -3248,7 +3248,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $pagekeysHandled
+     * @param bool|null $pagekeysHandled
      *
      * @return self
      */
@@ -3260,7 +3260,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPostsFormattingGuide(): ?bool
     {
@@ -3268,7 +3268,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $postsFormattingGuide
+     * @param bool|null $postsFormattingGuide
      *
      * @return self
      */
@@ -3280,7 +3280,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPreferredSkinTone(): ?string
     {
@@ -3288,7 +3288,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $preferredSkinTone
+     * @param string|null $preferredSkinTone
      *
      * @return self
      */
@@ -3300,7 +3300,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPrivacyPolicySeen(): ?bool
     {
@@ -3308,7 +3308,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $privacyPolicySeen
+     * @param bool|null $privacyPolicySeen
      *
      * @return self
      */
@@ -3320,7 +3320,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPromptedForEmailDisabling(): ?bool
     {
@@ -3328,7 +3328,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $promptedForEmailDisabling
+     * @param bool|null $promptedForEmailDisabling
      *
      * @return self
      */
@@ -3340,7 +3340,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPurchaser(): ?bool
     {
@@ -3348,7 +3348,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $purchaser
+     * @param bool|null $purchaser
      *
      * @return self
      */
@@ -3360,7 +3360,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPushAtChannelSuppressedChannels(): ?string
     {
@@ -3368,7 +3368,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $pushAtChannelSuppressedChannels
+     * @param string|null $pushAtChannelSuppressedChannels
      *
      * @return self
      */
@@ -3380,7 +3380,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPushDmAlert(): ?bool
     {
@@ -3388,7 +3388,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $pushDmAlert
+     * @param bool|null $pushDmAlert
      *
      * @return self
      */
@@ -3400,7 +3400,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPushEverything(): ?bool
     {
@@ -3408,7 +3408,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $pushEverything
+     * @param bool|null $pushEverything
      *
      * @return self
      */
@@ -3420,7 +3420,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPushIdleWait(): ?int
     {
@@ -3428,7 +3428,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $pushIdleWait
+     * @param int|null $pushIdleWait
      *
      * @return self
      */
@@ -3440,7 +3440,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPushLoudChannels(): ?string
     {
@@ -3448,7 +3448,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $pushLoudChannels
+     * @param string|null $pushLoudChannels
      *
      * @return self
      */
@@ -3460,7 +3460,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPushLoudChannelsSet(): ?string
     {
@@ -3468,7 +3468,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $pushLoudChannelsSet
+     * @param string|null $pushLoudChannelsSet
      *
      * @return self
      */
@@ -3480,7 +3480,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPushMentionAlert(): ?bool
     {
@@ -3488,7 +3488,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $pushMentionAlert
+     * @param bool|null $pushMentionAlert
      *
      * @return self
      */
@@ -3500,7 +3500,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPushMentionChannels(): ?string
     {
@@ -3508,7 +3508,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $pushMentionChannels
+     * @param string|null $pushMentionChannels
      *
      * @return self
      */
@@ -3520,7 +3520,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPushShowPreview(): ?bool
     {
@@ -3528,7 +3528,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $pushShowPreview
+     * @param bool|null $pushShowPreview
      *
      * @return self
      */
@@ -3540,7 +3540,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPushSound(): ?string
     {
@@ -3548,7 +3548,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $pushSound
+     * @param string|null $pushSound
      *
      * @return self
      */
@@ -3560,7 +3560,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRequireAt(): ?bool
     {
@@ -3568,7 +3568,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $requireAt
+     * @param bool|null $requireAt
      *
      * @return self
      */
@@ -3580,7 +3580,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSearchExcludeBots(): ?bool
     {
@@ -3588,7 +3588,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $searchExcludeBots
+     * @param bool|null $searchExcludeBots
      *
      * @return self
      */
@@ -3600,7 +3600,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSearchExcludeChannels(): ?string
     {
@@ -3608,7 +3608,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $searchExcludeChannels
+     * @param string|null $searchExcludeChannels
      *
      * @return self
      */
@@ -3620,7 +3620,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSearchOnlyCurrentTeam(): ?bool
     {
@@ -3628,7 +3628,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $searchOnlyCurrentTeam
+     * @param bool|null $searchOnlyCurrentTeam
      *
      * @return self
      */
@@ -3640,7 +3640,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSearchOnlyMyChannels(): ?bool
     {
@@ -3648,7 +3648,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $searchOnlyMyChannels
+     * @param bool|null $searchOnlyMyChannels
      *
      * @return self
      */
@@ -3660,7 +3660,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSearchSort(): ?string
     {
@@ -3668,7 +3668,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $searchSort
+     * @param string|null $searchSort
      *
      * @return self
      */
@@ -3680,7 +3680,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenAdministrationMenu(): ?bool
     {
@@ -3688,7 +3688,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenAdministrationMenu
+     * @param bool|null $seenAdministrationMenu
      *
      * @return self
      */
@@ -3700,7 +3700,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenAppSpaceCoachmark(): ?bool
     {
@@ -3708,7 +3708,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenAppSpaceCoachmark
+     * @param bool|null $seenAppSpaceCoachmark
      *
      * @return self
      */
@@ -3720,7 +3720,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenAppSpaceTutorial(): ?bool
     {
@@ -3728,7 +3728,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenAppSpaceTutorial
+     * @param bool|null $seenAppSpaceTutorial
      *
      * @return self
      */
@@ -3740,7 +3740,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenCallsInteractiveCoachmark(): ?bool
     {
@@ -3748,7 +3748,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenCallsInteractiveCoachmark
+     * @param bool|null $seenCallsInteractiveCoachmark
      *
      * @return self
      */
@@ -3760,7 +3760,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenChannelBrowserAdminCoachmark(): ?bool
     {
@@ -3768,7 +3768,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenChannelBrowserAdminCoachmark
+     * @param bool|null $seenChannelBrowserAdminCoachmark
      *
      * @return self
      */
@@ -3780,7 +3780,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenCustomStatusBadge(): ?bool
     {
@@ -3788,7 +3788,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenCustomStatusBadge
+     * @param bool|null $seenCustomStatusBadge
      *
      * @return self
      */
@@ -3800,7 +3800,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenCustomStatusCallout(): ?bool
     {
@@ -3808,7 +3808,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenCustomStatusCallout
+     * @param bool|null $seenCustomStatusCallout
      *
      * @return self
      */
@@ -3820,7 +3820,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenDomainInviteReminder(): ?bool
     {
@@ -3828,7 +3828,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenDomainInviteReminder
+     * @param bool|null $seenDomainInviteReminder
      *
      * @return self
      */
@@ -3840,7 +3840,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenEmojiUpdateOverlayCoachmark(): ?bool
     {
@@ -3848,7 +3848,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenEmojiUpdateOverlayCoachmark
+     * @param bool|null $seenEmojiUpdateOverlayCoachmark
      *
      * @return self
      */
@@ -3860,7 +3860,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenGdriveCoachmark(): ?bool
     {
@@ -3868,7 +3868,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenGdriveCoachmark
+     * @param bool|null $seenGdriveCoachmark
      *
      * @return self
      */
@@ -3880,7 +3880,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenGuestAdminSlackbotAnnouncement(): ?bool
     {
@@ -3888,7 +3888,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenGuestAdminSlackbotAnnouncement
+     * @param bool|null $seenGuestAdminSlackbotAnnouncement
      *
      * @return self
      */
@@ -3900,7 +3900,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenHighlightsArrowsCoachmark(): ?bool
     {
@@ -3908,7 +3908,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenHighlightsArrowsCoachmark
+     * @param bool|null $seenHighlightsArrowsCoachmark
      *
      * @return self
      */
@@ -3920,7 +3920,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenHighlightsCoachmark(): ?bool
     {
@@ -3928,7 +3928,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenHighlightsCoachmark
+     * @param bool|null $seenHighlightsCoachmark
      *
      * @return self
      */
@@ -3940,7 +3940,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenHighlightsWarmWelcome(): ?bool
     {
@@ -3948,7 +3948,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenHighlightsWarmWelcome
+     * @param bool|null $seenHighlightsWarmWelcome
      *
      * @return self
      */
@@ -3960,7 +3960,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenIntlChannelNamesCoachmark(): ?bool
     {
@@ -3968,7 +3968,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenIntlChannelNamesCoachmark
+     * @param bool|null $seenIntlChannelNamesCoachmark
      *
      * @return self
      */
@@ -3980,7 +3980,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenJapaneseLocaleChangeMessage(): ?bool
     {
@@ -3988,7 +3988,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenJapaneseLocaleChangeMessage
+     * @param bool|null $seenJapaneseLocaleChangeMessage
      *
      * @return self
      */
@@ -4000,7 +4000,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenKeyboardShortcutsCoachmark(): ?bool
     {
@@ -4008,7 +4008,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenKeyboardShortcutsCoachmark
+     * @param bool|null $seenKeyboardShortcutsCoachmark
      *
      * @return self
      */
@@ -4020,7 +4020,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSeenLocaleChangeMessage(): ?int
     {
@@ -4028,7 +4028,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $seenLocaleChangeMessage
+     * @param int|null $seenLocaleChangeMessage
      *
      * @return self
      */
@@ -4040,7 +4040,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenMemberInviteReminder(): ?bool
     {
@@ -4048,7 +4048,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenMemberInviteReminder
+     * @param bool|null $seenMemberInviteReminder
      *
      * @return self
      */
@@ -4060,7 +4060,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenNameTaggingCoachmark(): ?bool
     {
@@ -4068,7 +4068,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenNameTaggingCoachmark
+     * @param bool|null $seenNameTaggingCoachmark
      *
      * @return self
      */
@@ -4080,7 +4080,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingBanner(): ?bool
     {
@@ -4088,7 +4088,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingBanner
+     * @param bool|null $seenOnboardingBanner
      *
      * @return self
      */
@@ -4100,7 +4100,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingChannels(): ?bool
     {
@@ -4108,7 +4108,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingChannels
+     * @param bool|null $seenOnboardingChannels
      *
      * @return self
      */
@@ -4120,7 +4120,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingDirectMessages(): ?bool
     {
@@ -4128,7 +4128,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingDirectMessages
+     * @param bool|null $seenOnboardingDirectMessages
      *
      * @return self
      */
@@ -4140,7 +4140,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingInvites(): ?bool
     {
@@ -4148,7 +4148,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingInvites
+     * @param bool|null $seenOnboardingInvites
      *
      * @return self
      */
@@ -4160,7 +4160,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingPrivateGroups(): ?bool
     {
@@ -4168,7 +4168,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingPrivateGroups
+     * @param bool|null $seenOnboardingPrivateGroups
      *
      * @return self
      */
@@ -4180,7 +4180,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingRecentMentions(): ?bool
     {
@@ -4188,7 +4188,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingRecentMentions
+     * @param bool|null $seenOnboardingRecentMentions
      *
      * @return self
      */
@@ -4200,7 +4200,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingSearch(): ?bool
     {
@@ -4208,7 +4208,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingSearch
+     * @param bool|null $seenOnboardingSearch
      *
      * @return self
      */
@@ -4220,7 +4220,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingSlackbotConversation(): ?bool
     {
@@ -4228,7 +4228,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingSlackbotConversation
+     * @param bool|null $seenOnboardingSlackbotConversation
      *
      * @return self
      */
@@ -4240,7 +4240,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingStarredItems(): ?bool
     {
@@ -4248,7 +4248,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingStarredItems
+     * @param bool|null $seenOnboardingStarredItems
      *
      * @return self
      */
@@ -4260,7 +4260,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenOnboardingStart(): ?bool
     {
@@ -4268,7 +4268,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenOnboardingStart
+     * @param bool|null $seenOnboardingStart
      *
      * @return self
      */
@@ -4280,7 +4280,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenSharedChannelsCoachmark(): ?bool
     {
@@ -4288,7 +4288,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenSharedChannelsCoachmark
+     * @param bool|null $seenSharedChannelsCoachmark
      *
      * @return self
      */
@@ -4300,7 +4300,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenSharedChannelsOptInChangeMessage(): ?bool
     {
@@ -4308,7 +4308,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenSharedChannelsOptInChangeMessage
+     * @param bool|null $seenSharedChannelsOptInChangeMessage
      *
      * @return self
      */
@@ -4320,7 +4320,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenShdepSlackbotMessage(): ?bool
     {
@@ -4328,7 +4328,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenShdepSlackbotMessage
+     * @param bool|null $seenShdepSlackbotMessage
      *
      * @return self
      */
@@ -4340,7 +4340,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenSingleEmojiMsg(): ?bool
     {
@@ -4348,7 +4348,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenSingleEmojiMsg
+     * @param bool|null $seenSingleEmojiMsg
      *
      * @return self
      */
@@ -4360,7 +4360,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenSsbPrompt(): ?bool
     {
@@ -4368,7 +4368,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenSsbPrompt
+     * @param bool|null $seenSsbPrompt
      *
      * @return self
      */
@@ -4380,7 +4380,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenThreadsNotificationBanner(): ?bool
     {
@@ -4388,7 +4388,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenThreadsNotificationBanner
+     * @param bool|null $seenThreadsNotificationBanner
      *
      * @return self
      */
@@ -4400,7 +4400,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenUnreadViewCoachmark(): ?bool
     {
@@ -4408,7 +4408,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenUnreadViewCoachmark
+     * @param bool|null $seenUnreadViewCoachmark
      *
      * @return self
      */
@@ -4420,7 +4420,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeenWelcome2(): ?bool
     {
@@ -4428,7 +4428,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $seenWelcome2
+     * @param bool|null $seenWelcome2
      *
      * @return self
      */
@@ -4440,7 +4440,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeparatePrivateChannels(): ?bool
     {
@@ -4448,7 +4448,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $separatePrivateChannels
+     * @param bool|null $separatePrivateChannels
      *
      * @return self
      */
@@ -4460,7 +4460,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSeparateSharedChannels(): ?bool
     {
@@ -4468,7 +4468,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $separateSharedChannels
+     * @param bool|null $separateSharedChannels
      *
      * @return self
      */
@@ -4480,7 +4480,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShdepPromoCodeSubmitted(): ?bool
     {
@@ -4488,7 +4488,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $shdepPromoCodeSubmitted
+     * @param bool|null $shdepPromoCodeSubmitted
      *
      * @return self
      */
@@ -4500,7 +4500,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowAllSkinTones(): ?bool
     {
@@ -4508,7 +4508,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showAllSkinTones
+     * @param bool|null $showAllSkinTones
      *
      * @return self
      */
@@ -4520,7 +4520,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowEntOnboarding(): ?bool
     {
@@ -4528,7 +4528,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showEntOnboarding
+     * @param bool|null $showEntOnboarding
      *
      * @return self
      */
@@ -4540,7 +4540,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowJumperScores(): ?bool
     {
@@ -4548,7 +4548,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showJumperScores
+     * @param bool|null $showJumperScores
      *
      * @return self
      */
@@ -4560,7 +4560,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowMemoryInstrument(): ?bool
     {
@@ -4568,7 +4568,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showMemoryInstrument
+     * @param bool|null $showMemoryInstrument
      *
      * @return self
      */
@@ -4580,7 +4580,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowSidebarQuickswitcherButton(): ?bool
     {
@@ -4588,7 +4588,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showSidebarQuickswitcherButton
+     * @param bool|null $showSidebarQuickswitcherButton
      *
      * @return self
      */
@@ -4600,7 +4600,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowTyping(): ?bool
     {
@@ -4608,7 +4608,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showTyping
+     * @param bool|null $showTyping
      *
      * @return self
      */
@@ -4620,7 +4620,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSidebarBehavior(): ?string
     {
@@ -4628,7 +4628,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $sidebarBehavior
+     * @param string|null $sidebarBehavior
      *
      * @return self
      */
@@ -4640,7 +4640,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSidebarTheme(): ?string
     {
@@ -4648,7 +4648,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $sidebarTheme
+     * @param string|null $sidebarTheme
      *
      * @return self
      */
@@ -4660,7 +4660,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSidebarThemeCustomValues(): ?string
     {
@@ -4668,7 +4668,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $sidebarThemeCustomValues
+     * @param string|null $sidebarThemeCustomValues
      *
      * @return self
      */
@@ -4680,7 +4680,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSnippetEditorWrapLongLines(): ?bool
     {
@@ -4688,7 +4688,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $snippetEditorWrapLongLines
+     * @param bool|null $snippetEditorWrapLongLines
      *
      * @return self
      */
@@ -4700,7 +4700,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSpacesNewXpBannerDismissed(): ?bool
     {
@@ -4708,7 +4708,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $spacesNewXpBannerDismissed
+     * @param bool|null $spacesNewXpBannerDismissed
      *
      * @return self
      */
@@ -4720,7 +4720,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSsEmojis(): ?bool
     {
@@ -4728,7 +4728,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $ssEmojis
+     * @param bool|null $ssEmojis
      *
      * @return self
      */
@@ -4740,7 +4740,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSsbSpaceWindow(): ?string
     {
@@ -4748,7 +4748,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $ssbSpaceWindow
+     * @param string|null $ssbSpaceWindow
      *
      * @return self
      */
@@ -4760,7 +4760,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getStartScrollAtOldest(): ?bool
     {
@@ -4768,7 +4768,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $startScrollAtOldest
+     * @param bool|null $startScrollAtOldest
      *
      * @return self
      */
@@ -4780,7 +4780,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getTabUiReturnSelects(): ?bool
     {
@@ -4788,7 +4788,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $tabUiReturnSelects
+     * @param bool|null $tabUiReturnSelects
      *
      * @return self
      */
@@ -4800,7 +4800,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getThreadsEverything(): ?bool
     {
@@ -4808,7 +4808,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $threadsEverything
+     * @param bool|null $threadsEverything
      *
      * @return self
      */
@@ -4820,7 +4820,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getTime24(): ?bool
     {
@@ -4828,7 +4828,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $time24
+     * @param bool|null $time24
      *
      * @return self
      */
@@ -4840,7 +4840,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getTwoFactorAuthEnabled(): ?bool
     {
@@ -4848,7 +4848,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $twoFactorAuthEnabled
+     * @param bool|null $twoFactorAuthEnabled
      *
      * @return self
      */
@@ -4894,7 +4894,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTz(): ?string
     {
@@ -4902,7 +4902,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $tz
+     * @param string|null $tz
      *
      * @return self
      */
@@ -4914,7 +4914,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUserColors(): ?string
     {
@@ -4922,7 +4922,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $userColors
+     * @param string|null $userColors
      *
      * @return self
      */
@@ -4934,7 +4934,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getWebappSpellcheck(): ?bool
     {
@@ -4942,7 +4942,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $webappSpellcheck
+     * @param bool|null $webappSpellcheck
      *
      * @return self
      */
@@ -4954,7 +4954,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getWelcomeMessageHidden(): ?bool
     {
@@ -4962,7 +4962,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $welcomeMessageHidden
+     * @param bool|null $welcomeMessageHidden
      *
      * @return self
      */
@@ -4974,7 +4974,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getWhatsNewRead(): ?int
     {
@@ -4982,7 +4982,7 @@ class PrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $whatsNewRead
+     * @param int|null $whatsNewRead
      *
      * @return self
      */

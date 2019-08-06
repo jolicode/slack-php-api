@@ -30,7 +30,7 @@ class ObjsDnd extends \ArrayObject
     protected $snoozeEnabled;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDndEnabled(): ?bool
     {
@@ -38,7 +38,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @param bool $dndEnabled
+     * @param bool|null $dndEnabled
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNextDndEndTs(): ?int
     {
@@ -58,7 +58,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @param int $nextDndEndTs
+     * @param int|null $nextDndEndTs
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNextDndStartTs(): ?int
     {
@@ -78,7 +78,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @param int $nextDndStartTs
+     * @param int|null $nextDndStartTs
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSnoozeEnabled(): ?bool
     {
@@ -98,7 +98,7 @@ class ObjsDnd extends \ArrayObject
     }
 
     /**
-     * @param bool $snoozeEnabled
+     * @param bool|null $snoozeEnabled
      *
      * @return self
      */

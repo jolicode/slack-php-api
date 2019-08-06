@@ -11,4 +11,5 @@ return [
     'namespace' => 'JoliCode\Slack\Api',
     'directory' => $directory,
     'reference' => true,
+    'strict' => false,
 ];

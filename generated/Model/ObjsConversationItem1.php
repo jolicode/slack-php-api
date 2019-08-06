@@ -170,7 +170,7 @@ class ObjsConversationItem1 extends \ArrayObject
     protected $user;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAcceptedUser(): ?string
     {
@@ -178,7 +178,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $acceptedUser
+     * @param string|null $acceptedUser
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -198,7 +198,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreator(): ?string
     {
@@ -218,7 +218,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $creator
+     * @param string|null $creator
      *
      * @return self
      */
@@ -230,7 +230,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return ObjsConversationItem1DisplayCounts
+     * @return ObjsConversationItem1DisplayCounts|null
      */
     public function getDisplayCounts(): ?ObjsConversationItem1DisplayCounts
     {
@@ -238,7 +238,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsConversationItem1DisplayCounts $displayCounts
+     * @param ObjsConversationItem1DisplayCounts|null $displayCounts
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -258,7 +258,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -270,7 +270,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsArchived(): ?bool
     {
@@ -278,7 +278,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isArchived
+     * @param bool|null $isArchived
      *
      * @return self
      */
@@ -290,7 +290,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsChannel(): ?bool
     {
@@ -298,7 +298,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isChannel
+     * @param bool|null $isChannel
      *
      * @return self
      */
@@ -310,7 +310,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsExtShared(): ?bool
     {
@@ -318,7 +318,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isExtShared
+     * @param bool|null $isExtShared
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsGeneral(): ?bool
     {
@@ -338,7 +338,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isGeneral
+     * @param bool|null $isGeneral
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsGroup(): ?bool
     {
@@ -358,7 +358,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isGroup
+     * @param bool|null $isGroup
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsIm(): ?bool
     {
@@ -378,7 +378,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isIm
+     * @param bool|null $isIm
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsMember(): ?bool
     {
@@ -398,7 +398,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isMember
+     * @param bool|null $isMember
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getIsMoved(): ?int
     {
@@ -418,7 +418,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $isMoved
+     * @param int|null $isMoved
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsMpim(): ?bool
     {
@@ -438,7 +438,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isMpim
+     * @param bool|null $isMpim
      *
      * @return self
      */
@@ -450,7 +450,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOpen(): ?bool
     {
@@ -458,7 +458,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isOpen
+     * @param bool|null $isOpen
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOrgShared(): ?bool
     {
@@ -478,7 +478,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isOrgShared
+     * @param bool|null $isOrgShared
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPendingExtShared(): ?bool
     {
@@ -498,7 +498,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isPendingExtShared
+     * @param bool|null $isPendingExtShared
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPrivate(): ?bool
     {
@@ -518,7 +518,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isPrivate
+     * @param bool|null $isPrivate
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsReadOnly(): ?bool
     {
@@ -538,7 +538,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isReadOnly
+     * @param bool|null $isReadOnly
      *
      * @return self
      */
@@ -550,7 +550,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsShared(): ?bool
     {
@@ -558,7 +558,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isShared
+     * @param bool|null $isShared
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastRead()
     {
@@ -578,7 +578,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $lastRead
+     * @param string|null $lastRead
      *
      * @return self
      */
@@ -610,7 +610,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMembers(): ?array
     {
@@ -618,7 +618,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string[] $members
+     * @param string[]|null $members
      *
      * @return self
      */
@@ -630,7 +630,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -638,7 +638,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -650,7 +650,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNameNormalized(): ?string
     {
@@ -658,7 +658,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $nameNormalized
+     * @param string|null $nameNormalized
      *
      * @return self
      */
@@ -670,7 +670,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getNumMembers(): ?int
     {
@@ -678,7 +678,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $numMembers
+     * @param int|null $numMembers
      *
      * @return self
      */
@@ -690,7 +690,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPendingShared(): ?array
     {
@@ -698,7 +698,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string[] $pendingShared
+     * @param string[]|null $pendingShared
      *
      * @return self
      */
@@ -710,7 +710,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPinCount(): ?string
     {
@@ -718,7 +718,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $pinCount
+     * @param string|null $pinCount
      *
      * @return self
      */
@@ -730,7 +730,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPreviousNames(): ?array
     {
@@ -738,7 +738,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string[] $previousNames
+     * @param string[]|null $previousNames
      *
      * @return self
      */
@@ -750,7 +750,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getPriority(): ?float
     {
@@ -758,7 +758,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param float $priority
+     * @param float|null $priority
      *
      * @return self
      */
@@ -770,7 +770,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return ObjsConversationItem1Purpose
+     * @return ObjsConversationItem1Purpose|null
      */
     public function getPurpose(): ?ObjsConversationItem1Purpose
     {
@@ -778,7 +778,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsConversationItem1Purpose $purpose
+     * @param ObjsConversationItem1Purpose|null $purpose
      *
      * @return self
      */
@@ -790,7 +790,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getSharedTeamIds(): ?array
     {
@@ -798,7 +798,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string[] $sharedTeamIds
+     * @param string[]|null $sharedTeamIds
      *
      * @return self
      */
@@ -810,7 +810,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return ObjsConversationItem1SharesItem[]
+     * @return ObjsConversationItem1SharesItem[]|null
      */
     public function getShares(): ?array
     {
@@ -818,7 +818,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsConversationItem1SharesItem[] $shares
+     * @param ObjsConversationItem1SharesItem[]|null $shares
      *
      * @return self
      */
@@ -830,7 +830,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTimezoneCount(): ?int
     {
@@ -838,7 +838,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $timezoneCount
+     * @param int|null $timezoneCount
      *
      * @return self
      */
@@ -850,7 +850,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return ObjsConversationItem1Topic
+     * @return ObjsConversationItem1Topic|null
      */
     public function getTopic(): ?ObjsConversationItem1Topic
     {
@@ -858,7 +858,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsConversationItem1Topic $topic
+     * @param ObjsConversationItem1Topic|null $topic
      *
      * @return self
      */
@@ -870,7 +870,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnlinked(): ?int
     {
@@ -878,7 +878,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $unlinked
+     * @param int|null $unlinked
      *
      * @return self
      */
@@ -890,7 +890,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCount(): ?int
     {
@@ -898,7 +898,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCount
+     * @param int|null $unreadCount
      *
      * @return self
      */
@@ -910,7 +910,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCountDisplay(): ?int
     {
@@ -918,7 +918,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCountDisplay
+     * @param int|null $unreadCountDisplay
      *
      * @return self
      */
@@ -930,7 +930,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -938,7 +938,7 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

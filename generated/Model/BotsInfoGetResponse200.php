@@ -22,7 +22,7 @@ class BotsInfoGetResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return BotsInfoGetResponse200Bot
+     * @return BotsInfoGetResponse200Bot|null
      */
     public function getBot(): ?BotsInfoGetResponse200Bot
     {
@@ -30,7 +30,7 @@ class BotsInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param BotsInfoGetResponse200Bot $bot
+     * @param BotsInfoGetResponse200Bot|null $bot
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class BotsInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class BotsInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

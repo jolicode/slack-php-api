@@ -26,7 +26,7 @@ class ChannelsJoinPostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAlreadyInChannel(): ?bool
     {
@@ -34,7 +34,7 @@ class ChannelsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $alreadyInChannel
+     * @param bool|null $alreadyInChannel
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ChannelsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsChannel
+     * @return ObjsChannel|null
      */
     public function getChannel(): ?ObjsChannel
     {
@@ -54,7 +54,7 @@ class ChannelsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsChannel $channel
+     * @param ObjsChannel|null $channel
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ChannelsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -74,7 +74,7 @@ class ChannelsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

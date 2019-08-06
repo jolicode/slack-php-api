@@ -18,7 +18,7 @@ class UsersIdentityGetResponse200Item0Team extends \ArrayObject
     protected $id;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -26,7 +26,7 @@ class UsersIdentityGetResponse200Item0Team extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */

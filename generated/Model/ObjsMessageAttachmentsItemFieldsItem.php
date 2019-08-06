@@ -26,7 +26,7 @@ class ObjsMessageAttachmentsItemFieldsItem
     protected $short;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -34,7 +34,7 @@ class ObjsMessageAttachmentsItemFieldsItem
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ObjsMessageAttachmentsItemFieldsItem
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getValue(): ?string
     {
@@ -54,7 +54,7 @@ class ObjsMessageAttachmentsItemFieldsItem
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ObjsMessageAttachmentsItemFieldsItem
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShort(): ?bool
     {
@@ -74,7 +74,7 @@ class ObjsMessageAttachmentsItemFieldsItem
     }
 
     /**
-     * @param bool $short
+     * @param bool|null $short
      *
      * @return self
      */

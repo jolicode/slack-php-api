@@ -26,7 +26,7 @@ class ChatGetPermalinkGetResponse200 extends \ArrayObject
     protected $permalink;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getChannel(): ?string
     {
@@ -34,7 +34,7 @@ class ChatGetPermalinkGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $channel
+     * @param string|null $channel
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ChatGetPermalinkGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class ChatGetPermalinkGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ChatGetPermalinkGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPermalink(): ?string
     {
@@ -74,7 +74,7 @@ class ChatGetPermalinkGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $permalink
+     * @param string|null $permalink
      *
      * @return self
      */

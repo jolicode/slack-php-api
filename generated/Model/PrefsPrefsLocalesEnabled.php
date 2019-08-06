@@ -38,7 +38,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     protected $pseudo;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDeDE(): ?string
     {
@@ -46,7 +46,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @param string $deDE
+     * @param string|null $deDE
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEnUS(): ?string
     {
@@ -66,7 +66,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @param string $enUS
+     * @param string|null $enUS
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEsES(): ?string
     {
@@ -86,7 +86,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @param string $esES
+     * @param string|null $esES
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFrFR(): ?string
     {
@@ -106,7 +106,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @param string $frFR
+     * @param string|null $frFR
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getJaJP(): ?string
     {
@@ -126,7 +126,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @param string $jaJP
+     * @param string|null $jaJP
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPseudo(): ?string
     {
@@ -146,7 +146,7 @@ class PrefsPrefsLocalesEnabled extends \ArrayObject
     }
 
     /**
-     * @param string $pseudo
+     * @param string|null $pseudo
      *
      * @return self
      */

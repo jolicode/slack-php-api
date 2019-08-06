@@ -26,7 +26,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     protected $responseMetadata;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -34,7 +34,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return AppsPermissionsResourcesListGetResponse200ResourcesItem[]
+     * @return AppsPermissionsResourcesListGetResponse200ResourcesItem[]|null
      */
     public function getResources(): ?array
     {
@@ -54,7 +54,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param AppsPermissionsResourcesListGetResponse200ResourcesItem[] $resources
+     * @param AppsPermissionsResourcesListGetResponse200ResourcesItem[]|null $resources
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return AppsPermissionsResourcesListGetResponse200ResponseMetadata
+     * @return AppsPermissionsResourcesListGetResponse200ResponseMetadata|null
      */
     public function getResponseMetadata(): ?AppsPermissionsResourcesListGetResponse200ResponseMetadata
     {
@@ -74,7 +74,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param AppsPermissionsResourcesListGetResponse200ResponseMetadata $responseMetadata
+     * @param AppsPermissionsResourcesListGetResponse200ResponseMetadata|null $responseMetadata
      *
      * @return self
      */

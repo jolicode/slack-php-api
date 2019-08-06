@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,32 +30,32 @@ class ImOpenPostResponse200Normalizer implements DenormalizerInterface, Normaliz
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ImOpenPostResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ImOpenPostResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImOpenPostResponse200();
         $data = clone $data;
-        if (property_exists($data, 'already_open')) {
+        if (property_exists($data, 'already_open') && $data->{'already_open'} !== null) {
             $object->setAlreadyOpen($data->{'already_open'});
             unset($data->{'already_open'});
         }
-        if (property_exists($data, 'channel')) {
+        if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ImOpenPostResponse200Channel', 'json', $context));
             unset($data->{'channel'});
         }
-        if (property_exists($data, 'no_op')) {
+        if (property_exists($data, 'no_op') && $data->{'no_op'} !== null) {
             $object->setNoOp($data->{'no_op'});
             unset($data->{'no_op'});
         }
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }

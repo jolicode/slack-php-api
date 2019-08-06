@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,28 +30,28 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\UsersProfileSetPostResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200();
         $data = clone $data;
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'profile')) {
+        if (property_exists($data, 'profile') && $data->{'profile'} !== null) {
             $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
             unset($data->{'profile'});
         }
-        if (property_exists($data, 'username')) {
+        if (property_exists($data, 'username') && $data->{'username'} !== null) {
             $object->setUsername($data->{'username'});
             unset($data->{'username'});
         }

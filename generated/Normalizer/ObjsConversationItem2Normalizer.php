@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,56 +30,56 @@ class ObjsConversationItem2Normalizer implements DenormalizerInterface, Normaliz
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsConversationItem2;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem2';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem2();
         $data = clone $data;
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'has_pins')) {
+        if (property_exists($data, 'has_pins') && $data->{'has_pins'} !== null) {
             $object->setHasPins($data->{'has_pins'});
             unset($data->{'has_pins'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_ext_shared')) {
+        if (property_exists($data, 'is_ext_shared') && $data->{'is_ext_shared'} !== null) {
             $object->setIsExtShared($data->{'is_ext_shared'});
             unset($data->{'is_ext_shared'});
         }
-        if (property_exists($data, 'is_im')) {
+        if (property_exists($data, 'is_im') && $data->{'is_im'} !== null) {
             $object->setIsIm($data->{'is_im'});
             unset($data->{'is_im'});
         }
-        if (property_exists($data, 'is_open')) {
+        if (property_exists($data, 'is_open') && $data->{'is_open'} !== null) {
             $object->setIsOpen($data->{'is_open'});
             unset($data->{'is_open'});
         }
-        if (property_exists($data, 'is_org_shared')) {
+        if (property_exists($data, 'is_org_shared') && $data->{'is_org_shared'} !== null) {
             $object->setIsOrgShared($data->{'is_org_shared'});
             unset($data->{'is_org_shared'});
         }
-        if (property_exists($data, 'is_shared')) {
+        if (property_exists($data, 'is_shared') && $data->{'is_shared'} !== null) {
             $object->setIsShared($data->{'is_shared'});
             unset($data->{'is_shared'});
         }
-        if (property_exists($data, 'is_user_deleted')) {
+        if (property_exists($data, 'is_user_deleted') && $data->{'is_user_deleted'} !== null) {
             $object->setIsUserDeleted($data->{'is_user_deleted'});
             unset($data->{'is_user_deleted'});
         }
-        if (property_exists($data, 'last_read')) {
+        if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
             $value = $data->{'last_read'};
             if (is_string($data->{'last_read'})) {
                 $value = $data->{'last_read'};
@@ -88,23 +87,23 @@ class ObjsConversationItem2Normalizer implements DenormalizerInterface, Normaliz
             $object->setLastRead($value);
             unset($data->{'last_read'});
         }
-        if (property_exists($data, 'latest')) {
+        if (property_exists($data, 'latest') && $data->{'latest'} !== null) {
             $object->setLatest($data->{'latest'});
             unset($data->{'latest'});
         }
-        if (property_exists($data, 'priority')) {
+        if (property_exists($data, 'priority') && $data->{'priority'} !== null) {
             $object->setPriority($data->{'priority'});
             unset($data->{'priority'});
         }
-        if (property_exists($data, 'unread_count')) {
+        if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
             unset($data->{'unread_count'});
         }
-        if (property_exists($data, 'unread_count_display')) {
+        if (property_exists($data, 'unread_count_display') && $data->{'unread_count_display'} !== null) {
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
             unset($data->{'unread_count_display'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }

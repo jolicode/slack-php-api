@@ -22,7 +22,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     protected $user;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTs()
     {
@@ -30,7 +30,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     }
 
     /**
-     * @param string $ts
+     * @param string|null $ts
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -50,7 +50,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

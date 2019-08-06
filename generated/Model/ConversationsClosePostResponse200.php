@@ -26,7 +26,7 @@ class ConversationsClosePostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAlreadyClosed(): ?bool
     {
@@ -34,7 +34,7 @@ class ConversationsClosePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $alreadyClosed
+     * @param bool|null $alreadyClosed
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ConversationsClosePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoOp(): ?bool
     {
@@ -54,7 +54,7 @@ class ConversationsClosePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $noOp
+     * @param bool|null $noOp
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ConversationsClosePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -74,7 +74,7 @@ class ConversationsClosePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,40 +30,40 @@ class PrefsPrefsLocalesEnabledNormalizer implements DenormalizerInterface, Norma
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\PrefsPrefsLocalesEnabled;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\PrefsPrefsLocalesEnabled';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PrefsPrefsLocalesEnabled();
         $data = clone $data;
-        if (property_exists($data, 'de-DE')) {
+        if (property_exists($data, 'de-DE') && $data->{'de-DE'} !== null) {
             $object->setDeDE($data->{'de-DE'});
             unset($data->{'de-DE'});
         }
-        if (property_exists($data, 'en-US')) {
+        if (property_exists($data, 'en-US') && $data->{'en-US'} !== null) {
             $object->setEnUS($data->{'en-US'});
             unset($data->{'en-US'});
         }
-        if (property_exists($data, 'es-ES')) {
+        if (property_exists($data, 'es-ES') && $data->{'es-ES'} !== null) {
             $object->setEsES($data->{'es-ES'});
             unset($data->{'es-ES'});
         }
-        if (property_exists($data, 'fr-FR')) {
+        if (property_exists($data, 'fr-FR') && $data->{'fr-FR'} !== null) {
             $object->setFrFR($data->{'fr-FR'});
             unset($data->{'fr-FR'});
         }
-        if (property_exists($data, 'ja-JP')) {
+        if (property_exists($data, 'ja-JP') && $data->{'ja-JP'} !== null) {
             $object->setJaJP($data->{'ja-JP'});
             unset($data->{'ja-JP'});
         }
-        if (property_exists($data, 'pseudo')) {
+        if (property_exists($data, 'pseudo') && $data->{'pseudo'} !== null) {
             $object->setPseudo($data->{'pseudo'});
             unset($data->{'pseudo'});
         }

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,28 +30,28 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\DndTeamInfoGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'cached')) {
+        if (property_exists($data, 'cached') && $data->{'cached'} !== null) {
             $object->setCached($data->{'cached'});
             unset($data->{'cached'});
         }
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'users')) {
+        if (property_exists($data, 'users') && $data->{'users'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'users'} as $key => $value) {
                 $values[$key] = $value;

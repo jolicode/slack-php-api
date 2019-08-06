@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,848 +30,848 @@ class PrefsPrefsNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\PrefsPrefs;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\PrefsPrefs';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PrefsPrefs();
         $data = clone $data;
-        if (property_exists($data, 'a11y_animations')) {
+        if (property_exists($data, 'a11y_animations') && $data->{'a11y_animations'} !== null) {
             $object->setA11yAnimations($data->{'a11y_animations'});
             unset($data->{'a11y_animations'});
         }
-        if (property_exists($data, 'a11y_font_size')) {
+        if (property_exists($data, 'a11y_font_size') && $data->{'a11y_font_size'} !== null) {
             $object->setA11yFontSize($data->{'a11y_font_size'});
             unset($data->{'a11y_font_size'});
         }
-        if (property_exists($data, 'all_channels_loud')) {
+        if (property_exists($data, 'all_channels_loud') && $data->{'all_channels_loud'} !== null) {
             $object->setAllChannelsLoud($data->{'all_channels_loud'});
             unset($data->{'all_channels_loud'});
         }
-        if (property_exists($data, 'all_notifications_prefs')) {
+        if (property_exists($data, 'all_notifications_prefs') && $data->{'all_notifications_prefs'} !== null) {
             $object->setAllNotificationsPrefs($data->{'all_notifications_prefs'});
             unset($data->{'all_notifications_prefs'});
         }
-        if (property_exists($data, 'all_unreads_sort_order')) {
+        if (property_exists($data, 'all_unreads_sort_order') && $data->{'all_unreads_sort_order'} !== null) {
             $object->setAllUnreadsSortOrder($data->{'all_unreads_sort_order'});
             unset($data->{'all_unreads_sort_order'});
         }
-        if (property_exists($data, 'allow_calls_to_set_current_status')) {
+        if (property_exists($data, 'allow_calls_to_set_current_status') && $data->{'allow_calls_to_set_current_status'} !== null) {
             $object->setAllowCallsToSetCurrentStatus($data->{'allow_calls_to_set_current_status'});
             unset($data->{'allow_calls_to_set_current_status'});
         }
-        if (property_exists($data, 'allow_cmd_tab_iss')) {
+        if (property_exists($data, 'allow_cmd_tab_iss') && $data->{'allow_cmd_tab_iss'} !== null) {
             $object->setAllowCmdTabIss($data->{'allow_cmd_tab_iss'});
             unset($data->{'allow_cmd_tab_iss'});
         }
-        if (property_exists($data, 'analytics_upsell_coachmark_seen')) {
+        if (property_exists($data, 'analytics_upsell_coachmark_seen') && $data->{'analytics_upsell_coachmark_seen'} !== null) {
             $object->setAnalyticsUpsellCoachmarkSeen($data->{'analytics_upsell_coachmark_seen'});
             unset($data->{'analytics_upsell_coachmark_seen'});
         }
-        if (property_exists($data, 'arrow_history')) {
+        if (property_exists($data, 'arrow_history') && $data->{'arrow_history'} !== null) {
             $object->setArrowHistory($data->{'arrow_history'});
             unset($data->{'arrow_history'});
         }
-        if (property_exists($data, 'at_channel_suppressed_channels')) {
+        if (property_exists($data, 'at_channel_suppressed_channels') && $data->{'at_channel_suppressed_channels'} !== null) {
             $object->setAtChannelSuppressedChannels($data->{'at_channel_suppressed_channels'});
             unset($data->{'at_channel_suppressed_channels'});
         }
-        if (property_exists($data, 'box_enabled')) {
+        if (property_exists($data, 'box_enabled') && $data->{'box_enabled'} !== null) {
             $object->setBoxEnabled($data->{'box_enabled'});
             unset($data->{'box_enabled'});
         }
-        if (property_exists($data, 'channel_sort')) {
+        if (property_exists($data, 'channel_sort') && $data->{'channel_sort'} !== null) {
             $object->setChannelSort($data->{'channel_sort'});
             unset($data->{'channel_sort'});
         }
-        if (property_exists($data, 'client_logs_pri')) {
+        if (property_exists($data, 'client_logs_pri') && $data->{'client_logs_pri'} !== null) {
             $object->setClientLogsPri($data->{'client_logs_pri'});
             unset($data->{'client_logs_pri'});
         }
-        if (property_exists($data, 'color_names_in_list')) {
+        if (property_exists($data, 'color_names_in_list') && $data->{'color_names_in_list'} !== null) {
             $object->setColorNamesInList($data->{'color_names_in_list'});
             unset($data->{'color_names_in_list'});
         }
-        if (property_exists($data, 'confirm_clear_all_unreads')) {
+        if (property_exists($data, 'confirm_clear_all_unreads') && $data->{'confirm_clear_all_unreads'} !== null) {
             $object->setConfirmClearAllUnreads($data->{'confirm_clear_all_unreads'});
             unset($data->{'confirm_clear_all_unreads'});
         }
-        if (property_exists($data, 'confirm_sh_call_start')) {
+        if (property_exists($data, 'confirm_sh_call_start') && $data->{'confirm_sh_call_start'} !== null) {
             $object->setConfirmShCallStart($data->{'confirm_sh_call_start'});
             unset($data->{'confirm_sh_call_start'});
         }
-        if (property_exists($data, 'confirm_user_marked_away')) {
+        if (property_exists($data, 'confirm_user_marked_away') && $data->{'confirm_user_marked_away'} !== null) {
             $object->setConfirmUserMarkedAway($data->{'confirm_user_marked_away'});
             unset($data->{'confirm_user_marked_away'});
         }
-        if (property_exists($data, 'convert_emoticons')) {
+        if (property_exists($data, 'convert_emoticons') && $data->{'convert_emoticons'} !== null) {
             $object->setConvertEmoticons($data->{'convert_emoticons'});
             unset($data->{'convert_emoticons'});
         }
-        if (property_exists($data, 'display_display_names')) {
+        if (property_exists($data, 'display_display_names') && $data->{'display_display_names'} !== null) {
             $object->setDisplayDisplayNames($data->{'display_display_names'});
             unset($data->{'display_display_names'});
         }
-        if (property_exists($data, 'display_real_names_override')) {
+        if (property_exists($data, 'display_real_names_override') && $data->{'display_real_names_override'} !== null) {
             $object->setDisplayRealNamesOverride($data->{'display_real_names_override'});
             unset($data->{'display_real_names_override'});
         }
-        if (property_exists($data, 'dnd_enabled')) {
+        if (property_exists($data, 'dnd_enabled') && $data->{'dnd_enabled'} !== null) {
             $object->setDndEnabled($data->{'dnd_enabled'});
             unset($data->{'dnd_enabled'});
         }
-        if (property_exists($data, 'dnd_end_hour')) {
+        if (property_exists($data, 'dnd_end_hour') && $data->{'dnd_end_hour'} !== null) {
             $object->setDndEndHour($data->{'dnd_end_hour'});
             unset($data->{'dnd_end_hour'});
         }
-        if (property_exists($data, 'dnd_start_hour')) {
+        if (property_exists($data, 'dnd_start_hour') && $data->{'dnd_start_hour'} !== null) {
             $object->setDndStartHour($data->{'dnd_start_hour'});
             unset($data->{'dnd_start_hour'});
         }
-        if (property_exists($data, 'dropbox_enabled')) {
+        if (property_exists($data, 'dropbox_enabled') && $data->{'dropbox_enabled'} !== null) {
             $object->setDropboxEnabled($data->{'dropbox_enabled'});
             unset($data->{'dropbox_enabled'});
         }
-        if (property_exists($data, 'email_alerts')) {
+        if (property_exists($data, 'email_alerts') && $data->{'email_alerts'} !== null) {
             $object->setEmailAlerts($data->{'email_alerts'});
             unset($data->{'email_alerts'});
         }
-        if (property_exists($data, 'email_alerts_sleep_until')) {
+        if (property_exists($data, 'email_alerts_sleep_until') && $data->{'email_alerts_sleep_until'} !== null) {
             $object->setEmailAlertsSleepUntil($data->{'email_alerts_sleep_until'});
             unset($data->{'email_alerts_sleep_until'});
         }
-        if (property_exists($data, 'email_developer')) {
+        if (property_exists($data, 'email_developer') && $data->{'email_developer'} !== null) {
             $object->setEmailDeveloper($data->{'email_developer'});
             unset($data->{'email_developer'});
         }
-        if (property_exists($data, 'email_misc')) {
+        if (property_exists($data, 'email_misc') && $data->{'email_misc'} !== null) {
             $object->setEmailMisc($data->{'email_misc'});
             unset($data->{'email_misc'});
         }
-        if (property_exists($data, 'email_offers')) {
+        if (property_exists($data, 'email_offers') && $data->{'email_offers'} !== null) {
             $object->setEmailOffers($data->{'email_offers'});
             unset($data->{'email_offers'});
         }
-        if (property_exists($data, 'email_research')) {
+        if (property_exists($data, 'email_research') && $data->{'email_research'} !== null) {
             $object->setEmailResearch($data->{'email_research'});
             unset($data->{'email_research'});
         }
-        if (property_exists($data, 'email_tips')) {
+        if (property_exists($data, 'email_tips') && $data->{'email_tips'} !== null) {
             $object->setEmailTips($data->{'email_tips'});
             unset($data->{'email_tips'});
         }
-        if (property_exists($data, 'email_weekly')) {
+        if (property_exists($data, 'email_weekly') && $data->{'email_weekly'} !== null) {
             $object->setEmailWeekly($data->{'email_weekly'});
             unset($data->{'email_weekly'});
         }
-        if (property_exists($data, 'emoji_autocomplete_big')) {
+        if (property_exists($data, 'emoji_autocomplete_big') && $data->{'emoji_autocomplete_big'} !== null) {
             $object->setEmojiAutocompleteBig($data->{'emoji_autocomplete_big'});
             unset($data->{'emoji_autocomplete_big'});
         }
-        if (property_exists($data, 'emoji_mode')) {
+        if (property_exists($data, 'emoji_mode') && $data->{'emoji_mode'} !== null) {
             $object->setEmojiMode($data->{'emoji_mode'});
             unset($data->{'emoji_mode'});
         }
-        if (property_exists($data, 'emoji_use')) {
+        if (property_exists($data, 'emoji_use') && $data->{'emoji_use'} !== null) {
             $object->setEmojiUse($data->{'emoji_use'});
             unset($data->{'emoji_use'});
         }
-        if (property_exists($data, 'enable_react_emoji_picker')) {
+        if (property_exists($data, 'enable_react_emoji_picker') && $data->{'enable_react_emoji_picker'} !== null) {
             $object->setEnableReactEmojiPicker($data->{'enable_react_emoji_picker'});
             unset($data->{'enable_react_emoji_picker'});
         }
-        if (property_exists($data, 'enable_unread_view')) {
+        if (property_exists($data, 'enable_unread_view') && $data->{'enable_unread_view'} !== null) {
             $object->setEnableUnreadView($data->{'enable_unread_view'});
             unset($data->{'enable_unread_view'});
         }
-        if (property_exists($data, 'enhanced_debugging')) {
+        if (property_exists($data, 'enhanced_debugging') && $data->{'enhanced_debugging'} !== null) {
             $object->setEnhancedDebugging($data->{'enhanced_debugging'});
             unset($data->{'enhanced_debugging'});
         }
-        if (property_exists($data, 'ent_org_wide_channels_sidebar')) {
+        if (property_exists($data, 'ent_org_wide_channels_sidebar') && $data->{'ent_org_wide_channels_sidebar'} !== null) {
             $object->setEntOrgWideChannelsSidebar($data->{'ent_org_wide_channels_sidebar'});
             unset($data->{'ent_org_wide_channels_sidebar'});
         }
-        if (property_exists($data, 'enter_is_special_in_tbt')) {
+        if (property_exists($data, 'enter_is_special_in_tbt') && $data->{'enter_is_special_in_tbt'} !== null) {
             $object->setEnterIsSpecialInTbt($data->{'enter_is_special_in_tbt'});
             unset($data->{'enter_is_special_in_tbt'});
         }
-        if (property_exists($data, 'enterprise_excluded_app_teams')) {
+        if (property_exists($data, 'enterprise_excluded_app_teams') && $data->{'enterprise_excluded_app_teams'} !== null) {
             $object->setEnterpriseExcludedAppTeams($data->{'enterprise_excluded_app_teams'});
             unset($data->{'enterprise_excluded_app_teams'});
         }
-        if (property_exists($data, 'enterprise_mdm_custom_msg')) {
+        if (property_exists($data, 'enterprise_mdm_custom_msg') && $data->{'enterprise_mdm_custom_msg'} !== null) {
             $object->setEnterpriseMdmCustomMsg($data->{'enterprise_mdm_custom_msg'});
             unset($data->{'enterprise_mdm_custom_msg'});
         }
-        if (property_exists($data, 'enterprise_migration_seen')) {
+        if (property_exists($data, 'enterprise_migration_seen') && $data->{'enterprise_migration_seen'} !== null) {
             $object->setEnterpriseMigrationSeen($data->{'enterprise_migration_seen'});
             unset($data->{'enterprise_migration_seen'});
         }
-        if (property_exists($data, 'expand_inline_imgs')) {
+        if (property_exists($data, 'expand_inline_imgs') && $data->{'expand_inline_imgs'} !== null) {
             $object->setExpandInlineImgs($data->{'expand_inline_imgs'});
             unset($data->{'expand_inline_imgs'});
         }
-        if (property_exists($data, 'expand_internal_inline_imgs')) {
+        if (property_exists($data, 'expand_internal_inline_imgs') && $data->{'expand_internal_inline_imgs'} !== null) {
             $object->setExpandInternalInlineImgs($data->{'expand_internal_inline_imgs'});
             unset($data->{'expand_internal_inline_imgs'});
         }
-        if (property_exists($data, 'expand_non_media_attachments')) {
+        if (property_exists($data, 'expand_non_media_attachments') && $data->{'expand_non_media_attachments'} !== null) {
             $object->setExpandNonMediaAttachments($data->{'expand_non_media_attachments'});
             unset($data->{'expand_non_media_attachments'});
         }
-        if (property_exists($data, 'expand_snippets')) {
+        if (property_exists($data, 'expand_snippets') && $data->{'expand_snippets'} !== null) {
             $object->setExpandSnippets($data->{'expand_snippets'});
             unset($data->{'expand_snippets'});
         }
-        if (property_exists($data, 'f_key_search')) {
+        if (property_exists($data, 'f_key_search') && $data->{'f_key_search'} !== null) {
             $object->setFKeySearch($data->{'f_key_search'});
             unset($data->{'f_key_search'});
         }
-        if (property_exists($data, 'flannel_server_pool')) {
+        if (property_exists($data, 'flannel_server_pool') && $data->{'flannel_server_pool'} !== null) {
             $object->setFlannelServerPool($data->{'flannel_server_pool'});
             unset($data->{'flannel_server_pool'});
         }
-        if (property_exists($data, 'folder_data')) {
+        if (property_exists($data, 'folder_data') && $data->{'folder_data'} !== null) {
             $object->setFolderData($data->{'folder_data'});
             unset($data->{'folder_data'});
         }
-        if (property_exists($data, 'folders_enabled')) {
+        if (property_exists($data, 'folders_enabled') && $data->{'folders_enabled'} !== null) {
             $object->setFoldersEnabled($data->{'folders_enabled'});
             unset($data->{'folders_enabled'});
         }
-        if (property_exists($data, 'frecency_ent_jumper')) {
+        if (property_exists($data, 'frecency_ent_jumper') && $data->{'frecency_ent_jumper'} !== null) {
             $object->setFrecencyEntJumper($data->{'frecency_ent_jumper'});
             unset($data->{'frecency_ent_jumper'});
         }
-        if (property_exists($data, 'frecency_ent_jumper_backup')) {
+        if (property_exists($data, 'frecency_ent_jumper_backup') && $data->{'frecency_ent_jumper_backup'} !== null) {
             $object->setFrecencyEntJumperBackup($data->{'frecency_ent_jumper_backup'});
             unset($data->{'frecency_ent_jumper_backup'});
         }
-        if (property_exists($data, 'frecency_jumper')) {
+        if (property_exists($data, 'frecency_jumper') && $data->{'frecency_jumper'} !== null) {
             $object->setFrecencyJumper($data->{'frecency_jumper'});
             unset($data->{'frecency_jumper'});
         }
-        if (property_exists($data, 'full_text_extracts')) {
+        if (property_exists($data, 'full_text_extracts') && $data->{'full_text_extracts'} !== null) {
             $object->setFullTextExtracts($data->{'full_text_extracts'});
             unset($data->{'full_text_extracts'});
         }
-        if (property_exists($data, 'fuller_timestamps')) {
+        if (property_exists($data, 'fuller_timestamps') && $data->{'fuller_timestamps'} !== null) {
             $object->setFullerTimestamps($data->{'fuller_timestamps'});
             unset($data->{'fuller_timestamps'});
         }
-        if (property_exists($data, 'gdrive_authed')) {
+        if (property_exists($data, 'gdrive_authed') && $data->{'gdrive_authed'} !== null) {
             $object->setGdriveAuthed($data->{'gdrive_authed'});
             unset($data->{'gdrive_authed'});
         }
-        if (property_exists($data, 'gdrive_enabled')) {
+        if (property_exists($data, 'gdrive_enabled') && $data->{'gdrive_enabled'} !== null) {
             $object->setGdriveEnabled($data->{'gdrive_enabled'});
             unset($data->{'gdrive_enabled'});
         }
-        if (property_exists($data, 'graphic_emoticons')) {
+        if (property_exists($data, 'graphic_emoticons') && $data->{'graphic_emoticons'} !== null) {
             $object->setGraphicEmoticons($data->{'graphic_emoticons'});
             unset($data->{'graphic_emoticons'});
         }
-        if (property_exists($data, 'growls_enabled')) {
+        if (property_exists($data, 'growls_enabled') && $data->{'growls_enabled'} !== null) {
             $object->setGrowlsEnabled($data->{'growls_enabled'});
             unset($data->{'growls_enabled'});
         }
-        if (property_exists($data, 'growth_all_banners_prefs')) {
+        if (property_exists($data, 'growth_all_banners_prefs') && $data->{'growth_all_banners_prefs'} !== null) {
             $object->setGrowthAllBannersPrefs($data->{'growth_all_banners_prefs'});
             unset($data->{'growth_all_banners_prefs'});
         }
-        if (property_exists($data, 'growth_msg_limit_approaching_cta_count')) {
+        if (property_exists($data, 'growth_msg_limit_approaching_cta_count') && $data->{'growth_msg_limit_approaching_cta_count'} !== null) {
             $object->setGrowthMsgLimitApproachingCtaCount($data->{'growth_msg_limit_approaching_cta_count'});
             unset($data->{'growth_msg_limit_approaching_cta_count'});
         }
-        if (property_exists($data, 'growth_msg_limit_approaching_cta_ts')) {
+        if (property_exists($data, 'growth_msg_limit_approaching_cta_ts') && $data->{'growth_msg_limit_approaching_cta_ts'} !== null) {
             $object->setGrowthMsgLimitApproachingCtaTs($data->{'growth_msg_limit_approaching_cta_ts'});
             unset($data->{'growth_msg_limit_approaching_cta_ts'});
         }
-        if (property_exists($data, 'growth_msg_limit_long_reached_cta_count')) {
+        if (property_exists($data, 'growth_msg_limit_long_reached_cta_count') && $data->{'growth_msg_limit_long_reached_cta_count'} !== null) {
             $object->setGrowthMsgLimitLongReachedCtaCount($data->{'growth_msg_limit_long_reached_cta_count'});
             unset($data->{'growth_msg_limit_long_reached_cta_count'});
         }
-        if (property_exists($data, 'growth_msg_limit_long_reached_cta_last_ts')) {
+        if (property_exists($data, 'growth_msg_limit_long_reached_cta_last_ts') && $data->{'growth_msg_limit_long_reached_cta_last_ts'} !== null) {
             $object->setGrowthMsgLimitLongReachedCtaLastTs($data->{'growth_msg_limit_long_reached_cta_last_ts'});
             unset($data->{'growth_msg_limit_long_reached_cta_last_ts'});
         }
-        if (property_exists($data, 'growth_msg_limit_reached_cta_count')) {
+        if (property_exists($data, 'growth_msg_limit_reached_cta_count') && $data->{'growth_msg_limit_reached_cta_count'} !== null) {
             $object->setGrowthMsgLimitReachedCtaCount($data->{'growth_msg_limit_reached_cta_count'});
             unset($data->{'growth_msg_limit_reached_cta_count'});
         }
-        if (property_exists($data, 'growth_msg_limit_reached_cta_last_ts')) {
+        if (property_exists($data, 'growth_msg_limit_reached_cta_last_ts') && $data->{'growth_msg_limit_reached_cta_last_ts'} !== null) {
             $object->setGrowthMsgLimitReachedCtaLastTs($data->{'growth_msg_limit_reached_cta_last_ts'});
             unset($data->{'growth_msg_limit_reached_cta_last_ts'});
         }
-        if (property_exists($data, 'growth_msg_limit_sixty_day_banner_cta_count')) {
+        if (property_exists($data, 'growth_msg_limit_sixty_day_banner_cta_count') && $data->{'growth_msg_limit_sixty_day_banner_cta_count'} !== null) {
             $object->setGrowthMsgLimitSixtyDayBannerCtaCount($data->{'growth_msg_limit_sixty_day_banner_cta_count'});
             unset($data->{'growth_msg_limit_sixty_day_banner_cta_count'});
         }
-        if (property_exists($data, 'growth_msg_limit_sixty_day_banner_cta_last_ts')) {
+        if (property_exists($data, 'growth_msg_limit_sixty_day_banner_cta_last_ts') && $data->{'growth_msg_limit_sixty_day_banner_cta_last_ts'} !== null) {
             $object->setGrowthMsgLimitSixtyDayBannerCtaLastTs($data->{'growth_msg_limit_sixty_day_banner_cta_last_ts'});
             unset($data->{'growth_msg_limit_sixty_day_banner_cta_last_ts'});
         }
-        if (property_exists($data, 'has_created_channel')) {
+        if (property_exists($data, 'has_created_channel') && $data->{'has_created_channel'} !== null) {
             $object->setHasCreatedChannel($data->{'has_created_channel'});
             unset($data->{'has_created_channel'});
         }
-        if (property_exists($data, 'has_invited')) {
+        if (property_exists($data, 'has_invited') && $data->{'has_invited'} !== null) {
             $object->setHasInvited($data->{'has_invited'});
             unset($data->{'has_invited'});
         }
-        if (property_exists($data, 'has_recently_shared_a_channel')) {
+        if (property_exists($data, 'has_recently_shared_a_channel') && $data->{'has_recently_shared_a_channel'} !== null) {
             $object->setHasRecentlySharedAChannel($data->{'has_recently_shared_a_channel'});
             unset($data->{'has_recently_shared_a_channel'});
         }
-        if (property_exists($data, 'has_searched')) {
+        if (property_exists($data, 'has_searched') && $data->{'has_searched'} !== null) {
             $object->setHasSearched($data->{'has_searched'});
             unset($data->{'has_searched'});
         }
-        if (property_exists($data, 'has_uploaded')) {
+        if (property_exists($data, 'has_uploaded') && $data->{'has_uploaded'} !== null) {
             $object->setHasUploaded($data->{'has_uploaded'});
             unset($data->{'has_uploaded'});
         }
-        if (property_exists($data, 'hide_hex_swatch')) {
+        if (property_exists($data, 'hide_hex_swatch') && $data->{'hide_hex_swatch'} !== null) {
             $object->setHideHexSwatch($data->{'hide_hex_swatch'});
             unset($data->{'hide_hex_swatch'});
         }
-        if (property_exists($data, 'hide_user_group_info_pane')) {
+        if (property_exists($data, 'hide_user_group_info_pane') && $data->{'hide_user_group_info_pane'} !== null) {
             $object->setHideUserGroupInfoPane($data->{'hide_user_group_info_pane'});
             unset($data->{'hide_user_group_info_pane'});
         }
-        if (property_exists($data, 'highlight_words')) {
+        if (property_exists($data, 'highlight_words') && $data->{'highlight_words'} !== null) {
             $object->setHighlightWords($data->{'highlight_words'});
             unset($data->{'highlight_words'});
         }
-        if (property_exists($data, 'in_interactive_mas_migration_flow')) {
+        if (property_exists($data, 'in_interactive_mas_migration_flow') && $data->{'in_interactive_mas_migration_flow'} !== null) {
             $object->setInInteractiveMasMigrationFlow($data->{'in_interactive_mas_migration_flow'});
             unset($data->{'in_interactive_mas_migration_flow'});
         }
-        if (property_exists($data, 'intro_to_apps_message_seen')) {
+        if (property_exists($data, 'intro_to_apps_message_seen') && $data->{'intro_to_apps_message_seen'} !== null) {
             $object->setIntroToAppsMessageSeen($data->{'intro_to_apps_message_seen'});
             unset($data->{'intro_to_apps_message_seen'});
         }
-        if (property_exists($data, 'jumbomoji')) {
+        if (property_exists($data, 'jumbomoji') && $data->{'jumbomoji'} !== null) {
             $object->setJumbomoji($data->{'jumbomoji'});
             unset($data->{'jumbomoji'});
         }
-        if (property_exists($data, 'k_key_omnibox')) {
+        if (property_exists($data, 'k_key_omnibox') && $data->{'k_key_omnibox'} !== null) {
             $object->setKKeyOmnibox($data->{'k_key_omnibox'});
             unset($data->{'k_key_omnibox'});
         }
-        if (property_exists($data, 'k_key_omnibox_auto_hide_count')) {
+        if (property_exists($data, 'k_key_omnibox_auto_hide_count') && $data->{'k_key_omnibox_auto_hide_count'} !== null) {
             $object->setKKeyOmniboxAutoHideCount($data->{'k_key_omnibox_auto_hide_count'});
             unset($data->{'k_key_omnibox_auto_hide_count'});
         }
-        if (property_exists($data, 'keyboard')) {
+        if (property_exists($data, 'keyboard') && $data->{'keyboard'} !== null) {
             $object->setKeyboard($data->{'keyboard'});
             unset($data->{'keyboard'});
         }
-        if (property_exists($data, 'last_seen_at_channel_warning')) {
+        if (property_exists($data, 'last_seen_at_channel_warning') && $data->{'last_seen_at_channel_warning'} !== null) {
             $object->setLastSeenAtChannelWarning($data->{'last_seen_at_channel_warning'});
             unset($data->{'last_seen_at_channel_warning'});
         }
-        if (property_exists($data, 'last_snippet_type')) {
+        if (property_exists($data, 'last_snippet_type') && $data->{'last_snippet_type'} !== null) {
             $object->setLastSnippetType($data->{'last_snippet_type'});
             unset($data->{'last_snippet_type'});
         }
-        if (property_exists($data, 'last_tos_acknowledged')) {
+        if (property_exists($data, 'last_tos_acknowledged') && $data->{'last_tos_acknowledged'} !== null) {
             $object->setLastTosAcknowledged($data->{'last_tos_acknowledged'});
             unset($data->{'last_tos_acknowledged'});
         }
-        if (property_exists($data, 'lessons_enabled')) {
+        if (property_exists($data, 'lessons_enabled') && $data->{'lessons_enabled'} !== null) {
             $object->setLessonsEnabled($data->{'lessons_enabled'});
             unset($data->{'lessons_enabled'});
         }
-        if (property_exists($data, 'load_lato_2')) {
+        if (property_exists($data, 'load_lato_2') && $data->{'load_lato_2'} !== null) {
             $object->setLoadLato2($data->{'load_lato_2'});
             unset($data->{'load_lato_2'});
         }
-        if (property_exists($data, 'locale')) {
+        if (property_exists($data, 'locale') && $data->{'locale'} !== null) {
             $object->setLocale($data->{'locale'});
             unset($data->{'locale'});
         }
-        if (property_exists($data, 'locales_enabled')) {
+        if (property_exists($data, 'locales_enabled') && $data->{'locales_enabled'} !== null) {
             $object->setLocalesEnabled($this->denormalizer->denormalize($data->{'locales_enabled'}, 'JoliCode\\Slack\\Api\\Model\\PrefsPrefsLocalesEnabled', 'json', $context));
             unset($data->{'locales_enabled'});
         }
-        if (property_exists($data, 'loud_channels')) {
+        if (property_exists($data, 'loud_channels') && $data->{'loud_channels'} !== null) {
             $object->setLoudChannels($data->{'loud_channels'});
             unset($data->{'loud_channels'});
         }
-        if (property_exists($data, 'loud_channels_set')) {
+        if (property_exists($data, 'loud_channels_set') && $data->{'loud_channels_set'} !== null) {
             $object->setLoudChannelsSet($data->{'loud_channels_set'});
             unset($data->{'loud_channels_set'});
         }
-        if (property_exists($data, 'ls_disabled')) {
+        if (property_exists($data, 'ls_disabled') && $data->{'ls_disabled'} !== null) {
             $object->setLsDisabled($data->{'ls_disabled'});
             unset($data->{'ls_disabled'});
         }
-        if (property_exists($data, 'mac_ssb_bounce')) {
+        if (property_exists($data, 'mac_ssb_bounce') && $data->{'mac_ssb_bounce'} !== null) {
             $object->setMacSsbBounce($data->{'mac_ssb_bounce'});
             unset($data->{'mac_ssb_bounce'});
         }
-        if (property_exists($data, 'mac_ssb_bullet')) {
+        if (property_exists($data, 'mac_ssb_bullet') && $data->{'mac_ssb_bullet'} !== null) {
             $object->setMacSsbBullet($data->{'mac_ssb_bullet'});
             unset($data->{'mac_ssb_bullet'});
         }
-        if (property_exists($data, 'mark_msgs_read_immediately')) {
+        if (property_exists($data, 'mark_msgs_read_immediately') && $data->{'mark_msgs_read_immediately'} !== null) {
             $object->setMarkMsgsReadImmediately($data->{'mark_msgs_read_immediately'});
             unset($data->{'mark_msgs_read_immediately'});
         }
-        if (property_exists($data, 'measure_css_usage')) {
+        if (property_exists($data, 'measure_css_usage') && $data->{'measure_css_usage'} !== null) {
             $object->setMeasureCssUsage($data->{'measure_css_usage'});
             unset($data->{'measure_css_usage'});
         }
-        if (property_exists($data, 'mentions_exclude_at_channels')) {
+        if (property_exists($data, 'mentions_exclude_at_channels') && $data->{'mentions_exclude_at_channels'} !== null) {
             $object->setMentionsExcludeAtChannels($data->{'mentions_exclude_at_channels'});
             unset($data->{'mentions_exclude_at_channels'});
         }
-        if (property_exists($data, 'mentions_exclude_at_user_groups')) {
+        if (property_exists($data, 'mentions_exclude_at_user_groups') && $data->{'mentions_exclude_at_user_groups'} !== null) {
             $object->setMentionsExcludeAtUserGroups($data->{'mentions_exclude_at_user_groups'});
             unset($data->{'mentions_exclude_at_user_groups'});
         }
-        if (property_exists($data, 'messages_theme')) {
+        if (property_exists($data, 'messages_theme') && $data->{'messages_theme'} !== null) {
             $object->setMessagesTheme($data->{'messages_theme'});
             unset($data->{'messages_theme'});
         }
-        if (property_exists($data, 'msg_input_send_btn')) {
+        if (property_exists($data, 'msg_input_send_btn') && $data->{'msg_input_send_btn'} !== null) {
             $object->setMsgInputSendBtn($data->{'msg_input_send_btn'});
             unset($data->{'msg_input_send_btn'});
         }
-        if (property_exists($data, 'msg_input_send_btn_auto_set')) {
+        if (property_exists($data, 'msg_input_send_btn_auto_set') && $data->{'msg_input_send_btn_auto_set'} !== null) {
             $object->setMsgInputSendBtnAutoSet($data->{'msg_input_send_btn_auto_set'});
             unset($data->{'msg_input_send_btn_auto_set'});
         }
-        if (property_exists($data, 'mute_sounds')) {
+        if (property_exists($data, 'mute_sounds') && $data->{'mute_sounds'} !== null) {
             $object->setMuteSounds($data->{'mute_sounds'});
             unset($data->{'mute_sounds'});
         }
-        if (property_exists($data, 'muted_channels')) {
+        if (property_exists($data, 'muted_channels') && $data->{'muted_channels'} !== null) {
             $object->setMutedChannels($data->{'muted_channels'});
             unset($data->{'muted_channels'});
         }
-        if (property_exists($data, 'never_channels')) {
+        if (property_exists($data, 'never_channels') && $data->{'never_channels'} !== null) {
             $object->setNeverChannels($data->{'never_channels'});
             unset($data->{'never_channels'});
         }
-        if (property_exists($data, 'new_msg_snd')) {
+        if (property_exists($data, 'new_msg_snd') && $data->{'new_msg_snd'} !== null) {
             $object->setNewMsgSnd($data->{'new_msg_snd'});
             unset($data->{'new_msg_snd'});
         }
-        if (property_exists($data, 'newxp_seen_last_message')) {
+        if (property_exists($data, 'newxp_seen_last_message') && $data->{'newxp_seen_last_message'} !== null) {
             $object->setNewxpSeenLastMessage($data->{'newxp_seen_last_message'});
             unset($data->{'newxp_seen_last_message'});
         }
-        if (property_exists($data, 'no_created_overlays')) {
+        if (property_exists($data, 'no_created_overlays') && $data->{'no_created_overlays'} !== null) {
             $object->setNoCreatedOverlays($data->{'no_created_overlays'});
             unset($data->{'no_created_overlays'});
         }
-        if (property_exists($data, 'no_invites_widget_in_sidebar')) {
+        if (property_exists($data, 'no_invites_widget_in_sidebar') && $data->{'no_invites_widget_in_sidebar'} !== null) {
             $object->setNoInvitesWidgetInSidebar($data->{'no_invites_widget_in_sidebar'});
             unset($data->{'no_invites_widget_in_sidebar'});
         }
-        if (property_exists($data, 'no_joined_overlays')) {
+        if (property_exists($data, 'no_joined_overlays') && $data->{'no_joined_overlays'} !== null) {
             $object->setNoJoinedOverlays($data->{'no_joined_overlays'});
             unset($data->{'no_joined_overlays'});
         }
-        if (property_exists($data, 'no_macelectron_banner')) {
+        if (property_exists($data, 'no_macelectron_banner') && $data->{'no_macelectron_banner'} !== null) {
             $object->setNoMacelectronBanner($data->{'no_macelectron_banner'});
             unset($data->{'no_macelectron_banner'});
         }
-        if (property_exists($data, 'no_macssb1_banner')) {
+        if (property_exists($data, 'no_macssb1_banner') && $data->{'no_macssb1_banner'} !== null) {
             $object->setNoMacssb1Banner($data->{'no_macssb1_banner'});
             unset($data->{'no_macssb1_banner'});
         }
-        if (property_exists($data, 'no_macssb2_banner')) {
+        if (property_exists($data, 'no_macssb2_banner') && $data->{'no_macssb2_banner'} !== null) {
             $object->setNoMacssb2Banner($data->{'no_macssb2_banner'});
             unset($data->{'no_macssb2_banner'});
         }
-        if (property_exists($data, 'no_omnibox_in_channels')) {
+        if (property_exists($data, 'no_omnibox_in_channels') && $data->{'no_omnibox_in_channels'} !== null) {
             $object->setNoOmniboxInChannels($data->{'no_omnibox_in_channels'});
             unset($data->{'no_omnibox_in_channels'});
         }
-        if (property_exists($data, 'no_text_in_notifications')) {
+        if (property_exists($data, 'no_text_in_notifications') && $data->{'no_text_in_notifications'} !== null) {
             $object->setNoTextInNotifications($data->{'no_text_in_notifications'});
             unset($data->{'no_text_in_notifications'});
         }
-        if (property_exists($data, 'no_winssb1_banner')) {
+        if (property_exists($data, 'no_winssb1_banner') && $data->{'no_winssb1_banner'} !== null) {
             $object->setNoWinssb1Banner($data->{'no_winssb1_banner'});
             unset($data->{'no_winssb1_banner'});
         }
-        if (property_exists($data, 'obey_inline_img_limit')) {
+        if (property_exists($data, 'obey_inline_img_limit') && $data->{'obey_inline_img_limit'} !== null) {
             $object->setObeyInlineImgLimit($data->{'obey_inline_img_limit'});
             unset($data->{'obey_inline_img_limit'});
         }
-        if (property_exists($data, 'onboarding_cancelled')) {
+        if (property_exists($data, 'onboarding_cancelled') && $data->{'onboarding_cancelled'} !== null) {
             $object->setOnboardingCancelled($data->{'onboarding_cancelled'});
             unset($data->{'onboarding_cancelled'});
         }
-        if (property_exists($data, 'onboarding_slackbot_conversation_step')) {
+        if (property_exists($data, 'onboarding_slackbot_conversation_step') && $data->{'onboarding_slackbot_conversation_step'} !== null) {
             $object->setOnboardingSlackbotConversationStep($data->{'onboarding_slackbot_conversation_step'});
             unset($data->{'onboarding_slackbot_conversation_step'});
         }
-        if (property_exists($data, 'overloaded_message_enabled')) {
+        if (property_exists($data, 'overloaded_message_enabled') && $data->{'overloaded_message_enabled'} !== null) {
             $object->setOverloadedMessageEnabled($data->{'overloaded_message_enabled'});
             unset($data->{'overloaded_message_enabled'});
         }
-        if (property_exists($data, 'pagekeys_handled')) {
+        if (property_exists($data, 'pagekeys_handled') && $data->{'pagekeys_handled'} !== null) {
             $object->setPagekeysHandled($data->{'pagekeys_handled'});
             unset($data->{'pagekeys_handled'});
         }
-        if (property_exists($data, 'posts_formatting_guide')) {
+        if (property_exists($data, 'posts_formatting_guide') && $data->{'posts_formatting_guide'} !== null) {
             $object->setPostsFormattingGuide($data->{'posts_formatting_guide'});
             unset($data->{'posts_formatting_guide'});
         }
-        if (property_exists($data, 'preferred_skin_tone')) {
+        if (property_exists($data, 'preferred_skin_tone') && $data->{'preferred_skin_tone'} !== null) {
             $object->setPreferredSkinTone($data->{'preferred_skin_tone'});
             unset($data->{'preferred_skin_tone'});
         }
-        if (property_exists($data, 'privacy_policy_seen')) {
+        if (property_exists($data, 'privacy_policy_seen') && $data->{'privacy_policy_seen'} !== null) {
             $object->setPrivacyPolicySeen($data->{'privacy_policy_seen'});
             unset($data->{'privacy_policy_seen'});
         }
-        if (property_exists($data, 'prompted_for_email_disabling')) {
+        if (property_exists($data, 'prompted_for_email_disabling') && $data->{'prompted_for_email_disabling'} !== null) {
             $object->setPromptedForEmailDisabling($data->{'prompted_for_email_disabling'});
             unset($data->{'prompted_for_email_disabling'});
         }
-        if (property_exists($data, 'purchaser')) {
+        if (property_exists($data, 'purchaser') && $data->{'purchaser'} !== null) {
             $object->setPurchaser($data->{'purchaser'});
             unset($data->{'purchaser'});
         }
-        if (property_exists($data, 'push_at_channel_suppressed_channels')) {
+        if (property_exists($data, 'push_at_channel_suppressed_channels') && $data->{'push_at_channel_suppressed_channels'} !== null) {
             $object->setPushAtChannelSuppressedChannels($data->{'push_at_channel_suppressed_channels'});
             unset($data->{'push_at_channel_suppressed_channels'});
         }
-        if (property_exists($data, 'push_dm_alert')) {
+        if (property_exists($data, 'push_dm_alert') && $data->{'push_dm_alert'} !== null) {
             $object->setPushDmAlert($data->{'push_dm_alert'});
             unset($data->{'push_dm_alert'});
         }
-        if (property_exists($data, 'push_everything')) {
+        if (property_exists($data, 'push_everything') && $data->{'push_everything'} !== null) {
             $object->setPushEverything($data->{'push_everything'});
             unset($data->{'push_everything'});
         }
-        if (property_exists($data, 'push_idle_wait')) {
+        if (property_exists($data, 'push_idle_wait') && $data->{'push_idle_wait'} !== null) {
             $object->setPushIdleWait($data->{'push_idle_wait'});
             unset($data->{'push_idle_wait'});
         }
-        if (property_exists($data, 'push_loud_channels')) {
+        if (property_exists($data, 'push_loud_channels') && $data->{'push_loud_channels'} !== null) {
             $object->setPushLoudChannels($data->{'push_loud_channels'});
             unset($data->{'push_loud_channels'});
         }
-        if (property_exists($data, 'push_loud_channels_set')) {
+        if (property_exists($data, 'push_loud_channels_set') && $data->{'push_loud_channels_set'} !== null) {
             $object->setPushLoudChannelsSet($data->{'push_loud_channels_set'});
             unset($data->{'push_loud_channels_set'});
         }
-        if (property_exists($data, 'push_mention_alert')) {
+        if (property_exists($data, 'push_mention_alert') && $data->{'push_mention_alert'} !== null) {
             $object->setPushMentionAlert($data->{'push_mention_alert'});
             unset($data->{'push_mention_alert'});
         }
-        if (property_exists($data, 'push_mention_channels')) {
+        if (property_exists($data, 'push_mention_channels') && $data->{'push_mention_channels'} !== null) {
             $object->setPushMentionChannels($data->{'push_mention_channels'});
             unset($data->{'push_mention_channels'});
         }
-        if (property_exists($data, 'push_show_preview')) {
+        if (property_exists($data, 'push_show_preview') && $data->{'push_show_preview'} !== null) {
             $object->setPushShowPreview($data->{'push_show_preview'});
             unset($data->{'push_show_preview'});
         }
-        if (property_exists($data, 'push_sound')) {
+        if (property_exists($data, 'push_sound') && $data->{'push_sound'} !== null) {
             $object->setPushSound($data->{'push_sound'});
             unset($data->{'push_sound'});
         }
-        if (property_exists($data, 'require_at')) {
+        if (property_exists($data, 'require_at') && $data->{'require_at'} !== null) {
             $object->setRequireAt($data->{'require_at'});
             unset($data->{'require_at'});
         }
-        if (property_exists($data, 'search_exclude_bots')) {
+        if (property_exists($data, 'search_exclude_bots') && $data->{'search_exclude_bots'} !== null) {
             $object->setSearchExcludeBots($data->{'search_exclude_bots'});
             unset($data->{'search_exclude_bots'});
         }
-        if (property_exists($data, 'search_exclude_channels')) {
+        if (property_exists($data, 'search_exclude_channels') && $data->{'search_exclude_channels'} !== null) {
             $object->setSearchExcludeChannels($data->{'search_exclude_channels'});
             unset($data->{'search_exclude_channels'});
         }
-        if (property_exists($data, 'search_only_current_team')) {
+        if (property_exists($data, 'search_only_current_team') && $data->{'search_only_current_team'} !== null) {
             $object->setSearchOnlyCurrentTeam($data->{'search_only_current_team'});
             unset($data->{'search_only_current_team'});
         }
-        if (property_exists($data, 'search_only_my_channels')) {
+        if (property_exists($data, 'search_only_my_channels') && $data->{'search_only_my_channels'} !== null) {
             $object->setSearchOnlyMyChannels($data->{'search_only_my_channels'});
             unset($data->{'search_only_my_channels'});
         }
-        if (property_exists($data, 'search_sort')) {
+        if (property_exists($data, 'search_sort') && $data->{'search_sort'} !== null) {
             $object->setSearchSort($data->{'search_sort'});
             unset($data->{'search_sort'});
         }
-        if (property_exists($data, 'seen_administration_menu')) {
+        if (property_exists($data, 'seen_administration_menu') && $data->{'seen_administration_menu'} !== null) {
             $object->setSeenAdministrationMenu($data->{'seen_administration_menu'});
             unset($data->{'seen_administration_menu'});
         }
-        if (property_exists($data, 'seen_app_space_coachmark')) {
+        if (property_exists($data, 'seen_app_space_coachmark') && $data->{'seen_app_space_coachmark'} !== null) {
             $object->setSeenAppSpaceCoachmark($data->{'seen_app_space_coachmark'});
             unset($data->{'seen_app_space_coachmark'});
         }
-        if (property_exists($data, 'seen_app_space_tutorial')) {
+        if (property_exists($data, 'seen_app_space_tutorial') && $data->{'seen_app_space_tutorial'} !== null) {
             $object->setSeenAppSpaceTutorial($data->{'seen_app_space_tutorial'});
             unset($data->{'seen_app_space_tutorial'});
         }
-        if (property_exists($data, 'seen_calls_interactive_coachmark')) {
+        if (property_exists($data, 'seen_calls_interactive_coachmark') && $data->{'seen_calls_interactive_coachmark'} !== null) {
             $object->setSeenCallsInteractiveCoachmark($data->{'seen_calls_interactive_coachmark'});
             unset($data->{'seen_calls_interactive_coachmark'});
         }
-        if (property_exists($data, 'seen_channel_browser_admin_coachmark')) {
+        if (property_exists($data, 'seen_channel_browser_admin_coachmark') && $data->{'seen_channel_browser_admin_coachmark'} !== null) {
             $object->setSeenChannelBrowserAdminCoachmark($data->{'seen_channel_browser_admin_coachmark'});
             unset($data->{'seen_channel_browser_admin_coachmark'});
         }
-        if (property_exists($data, 'seen_custom_status_badge')) {
+        if (property_exists($data, 'seen_custom_status_badge') && $data->{'seen_custom_status_badge'} !== null) {
             $object->setSeenCustomStatusBadge($data->{'seen_custom_status_badge'});
             unset($data->{'seen_custom_status_badge'});
         }
-        if (property_exists($data, 'seen_custom_status_callout')) {
+        if (property_exists($data, 'seen_custom_status_callout') && $data->{'seen_custom_status_callout'} !== null) {
             $object->setSeenCustomStatusCallout($data->{'seen_custom_status_callout'});
             unset($data->{'seen_custom_status_callout'});
         }
-        if (property_exists($data, 'seen_domain_invite_reminder')) {
+        if (property_exists($data, 'seen_domain_invite_reminder') && $data->{'seen_domain_invite_reminder'} !== null) {
             $object->setSeenDomainInviteReminder($data->{'seen_domain_invite_reminder'});
             unset($data->{'seen_domain_invite_reminder'});
         }
-        if (property_exists($data, 'seen_emoji_update_overlay_coachmark')) {
+        if (property_exists($data, 'seen_emoji_update_overlay_coachmark') && $data->{'seen_emoji_update_overlay_coachmark'} !== null) {
             $object->setSeenEmojiUpdateOverlayCoachmark($data->{'seen_emoji_update_overlay_coachmark'});
             unset($data->{'seen_emoji_update_overlay_coachmark'});
         }
-        if (property_exists($data, 'seen_gdrive_coachmark')) {
+        if (property_exists($data, 'seen_gdrive_coachmark') && $data->{'seen_gdrive_coachmark'} !== null) {
             $object->setSeenGdriveCoachmark($data->{'seen_gdrive_coachmark'});
             unset($data->{'seen_gdrive_coachmark'});
         }
-        if (property_exists($data, 'seen_guest_admin_slackbot_announcement')) {
+        if (property_exists($data, 'seen_guest_admin_slackbot_announcement') && $data->{'seen_guest_admin_slackbot_announcement'} !== null) {
             $object->setSeenGuestAdminSlackbotAnnouncement($data->{'seen_guest_admin_slackbot_announcement'});
             unset($data->{'seen_guest_admin_slackbot_announcement'});
         }
-        if (property_exists($data, 'seen_highlights_arrows_coachmark')) {
+        if (property_exists($data, 'seen_highlights_arrows_coachmark') && $data->{'seen_highlights_arrows_coachmark'} !== null) {
             $object->setSeenHighlightsArrowsCoachmark($data->{'seen_highlights_arrows_coachmark'});
             unset($data->{'seen_highlights_arrows_coachmark'});
         }
-        if (property_exists($data, 'seen_highlights_coachmark')) {
+        if (property_exists($data, 'seen_highlights_coachmark') && $data->{'seen_highlights_coachmark'} !== null) {
             $object->setSeenHighlightsCoachmark($data->{'seen_highlights_coachmark'});
             unset($data->{'seen_highlights_coachmark'});
         }
-        if (property_exists($data, 'seen_highlights_warm_welcome')) {
+        if (property_exists($data, 'seen_highlights_warm_welcome') && $data->{'seen_highlights_warm_welcome'} !== null) {
             $object->setSeenHighlightsWarmWelcome($data->{'seen_highlights_warm_welcome'});
             unset($data->{'seen_highlights_warm_welcome'});
         }
-        if (property_exists($data, 'seen_intl_channel_names_coachmark')) {
+        if (property_exists($data, 'seen_intl_channel_names_coachmark') && $data->{'seen_intl_channel_names_coachmark'} !== null) {
             $object->setSeenIntlChannelNamesCoachmark($data->{'seen_intl_channel_names_coachmark'});
             unset($data->{'seen_intl_channel_names_coachmark'});
         }
-        if (property_exists($data, 'seen_japanese_locale_change_message')) {
+        if (property_exists($data, 'seen_japanese_locale_change_message') && $data->{'seen_japanese_locale_change_message'} !== null) {
             $object->setSeenJapaneseLocaleChangeMessage($data->{'seen_japanese_locale_change_message'});
             unset($data->{'seen_japanese_locale_change_message'});
         }
-        if (property_exists($data, 'seen_keyboard_shortcuts_coachmark')) {
+        if (property_exists($data, 'seen_keyboard_shortcuts_coachmark') && $data->{'seen_keyboard_shortcuts_coachmark'} !== null) {
             $object->setSeenKeyboardShortcutsCoachmark($data->{'seen_keyboard_shortcuts_coachmark'});
             unset($data->{'seen_keyboard_shortcuts_coachmark'});
         }
-        if (property_exists($data, 'seen_locale_change_message')) {
+        if (property_exists($data, 'seen_locale_change_message') && $data->{'seen_locale_change_message'} !== null) {
             $object->setSeenLocaleChangeMessage($data->{'seen_locale_change_message'});
             unset($data->{'seen_locale_change_message'});
         }
-        if (property_exists($data, 'seen_member_invite_reminder')) {
+        if (property_exists($data, 'seen_member_invite_reminder') && $data->{'seen_member_invite_reminder'} !== null) {
             $object->setSeenMemberInviteReminder($data->{'seen_member_invite_reminder'});
             unset($data->{'seen_member_invite_reminder'});
         }
-        if (property_exists($data, 'seen_name_tagging_coachmark')) {
+        if (property_exists($data, 'seen_name_tagging_coachmark') && $data->{'seen_name_tagging_coachmark'} !== null) {
             $object->setSeenNameTaggingCoachmark($data->{'seen_name_tagging_coachmark'});
             unset($data->{'seen_name_tagging_coachmark'});
         }
-        if (property_exists($data, 'seen_onboarding_banner')) {
+        if (property_exists($data, 'seen_onboarding_banner') && $data->{'seen_onboarding_banner'} !== null) {
             $object->setSeenOnboardingBanner($data->{'seen_onboarding_banner'});
             unset($data->{'seen_onboarding_banner'});
         }
-        if (property_exists($data, 'seen_onboarding_channels')) {
+        if (property_exists($data, 'seen_onboarding_channels') && $data->{'seen_onboarding_channels'} !== null) {
             $object->setSeenOnboardingChannels($data->{'seen_onboarding_channels'});
             unset($data->{'seen_onboarding_channels'});
         }
-        if (property_exists($data, 'seen_onboarding_direct_messages')) {
+        if (property_exists($data, 'seen_onboarding_direct_messages') && $data->{'seen_onboarding_direct_messages'} !== null) {
             $object->setSeenOnboardingDirectMessages($data->{'seen_onboarding_direct_messages'});
             unset($data->{'seen_onboarding_direct_messages'});
         }
-        if (property_exists($data, 'seen_onboarding_invites')) {
+        if (property_exists($data, 'seen_onboarding_invites') && $data->{'seen_onboarding_invites'} !== null) {
             $object->setSeenOnboardingInvites($data->{'seen_onboarding_invites'});
             unset($data->{'seen_onboarding_invites'});
         }
-        if (property_exists($data, 'seen_onboarding_private_groups')) {
+        if (property_exists($data, 'seen_onboarding_private_groups') && $data->{'seen_onboarding_private_groups'} !== null) {
             $object->setSeenOnboardingPrivateGroups($data->{'seen_onboarding_private_groups'});
             unset($data->{'seen_onboarding_private_groups'});
         }
-        if (property_exists($data, 'seen_onboarding_recent_mentions')) {
+        if (property_exists($data, 'seen_onboarding_recent_mentions') && $data->{'seen_onboarding_recent_mentions'} !== null) {
             $object->setSeenOnboardingRecentMentions($data->{'seen_onboarding_recent_mentions'});
             unset($data->{'seen_onboarding_recent_mentions'});
         }
-        if (property_exists($data, 'seen_onboarding_search')) {
+        if (property_exists($data, 'seen_onboarding_search') && $data->{'seen_onboarding_search'} !== null) {
             $object->setSeenOnboardingSearch($data->{'seen_onboarding_search'});
             unset($data->{'seen_onboarding_search'});
         }
-        if (property_exists($data, 'seen_onboarding_slackbot_conversation')) {
+        if (property_exists($data, 'seen_onboarding_slackbot_conversation') && $data->{'seen_onboarding_slackbot_conversation'} !== null) {
             $object->setSeenOnboardingSlackbotConversation($data->{'seen_onboarding_slackbot_conversation'});
             unset($data->{'seen_onboarding_slackbot_conversation'});
         }
-        if (property_exists($data, 'seen_onboarding_starred_items')) {
+        if (property_exists($data, 'seen_onboarding_starred_items') && $data->{'seen_onboarding_starred_items'} !== null) {
             $object->setSeenOnboardingStarredItems($data->{'seen_onboarding_starred_items'});
             unset($data->{'seen_onboarding_starred_items'});
         }
-        if (property_exists($data, 'seen_onboarding_start')) {
+        if (property_exists($data, 'seen_onboarding_start') && $data->{'seen_onboarding_start'} !== null) {
             $object->setSeenOnboardingStart($data->{'seen_onboarding_start'});
             unset($data->{'seen_onboarding_start'});
         }
-        if (property_exists($data, 'seen_shared_channels_coachmark')) {
+        if (property_exists($data, 'seen_shared_channels_coachmark') && $data->{'seen_shared_channels_coachmark'} !== null) {
             $object->setSeenSharedChannelsCoachmark($data->{'seen_shared_channels_coachmark'});
             unset($data->{'seen_shared_channels_coachmark'});
         }
-        if (property_exists($data, 'seen_shared_channels_opt_in_change_message')) {
+        if (property_exists($data, 'seen_shared_channels_opt_in_change_message') && $data->{'seen_shared_channels_opt_in_change_message'} !== null) {
             $object->setSeenSharedChannelsOptInChangeMessage($data->{'seen_shared_channels_opt_in_change_message'});
             unset($data->{'seen_shared_channels_opt_in_change_message'});
         }
-        if (property_exists($data, 'seen_shdep_slackbot_message')) {
+        if (property_exists($data, 'seen_shdep_slackbot_message') && $data->{'seen_shdep_slackbot_message'} !== null) {
             $object->setSeenShdepSlackbotMessage($data->{'seen_shdep_slackbot_message'});
             unset($data->{'seen_shdep_slackbot_message'});
         }
-        if (property_exists($data, 'seen_single_emoji_msg')) {
+        if (property_exists($data, 'seen_single_emoji_msg') && $data->{'seen_single_emoji_msg'} !== null) {
             $object->setSeenSingleEmojiMsg($data->{'seen_single_emoji_msg'});
             unset($data->{'seen_single_emoji_msg'});
         }
-        if (property_exists($data, 'seen_ssb_prompt')) {
+        if (property_exists($data, 'seen_ssb_prompt') && $data->{'seen_ssb_prompt'} !== null) {
             $object->setSeenSsbPrompt($data->{'seen_ssb_prompt'});
             unset($data->{'seen_ssb_prompt'});
         }
-        if (property_exists($data, 'seen_threads_notification_banner')) {
+        if (property_exists($data, 'seen_threads_notification_banner') && $data->{'seen_threads_notification_banner'} !== null) {
             $object->setSeenThreadsNotificationBanner($data->{'seen_threads_notification_banner'});
             unset($data->{'seen_threads_notification_banner'});
         }
-        if (property_exists($data, 'seen_unread_view_coachmark')) {
+        if (property_exists($data, 'seen_unread_view_coachmark') && $data->{'seen_unread_view_coachmark'} !== null) {
             $object->setSeenUnreadViewCoachmark($data->{'seen_unread_view_coachmark'});
             unset($data->{'seen_unread_view_coachmark'});
         }
-        if (property_exists($data, 'seen_welcome_2')) {
+        if (property_exists($data, 'seen_welcome_2') && $data->{'seen_welcome_2'} !== null) {
             $object->setSeenWelcome2($data->{'seen_welcome_2'});
             unset($data->{'seen_welcome_2'});
         }
-        if (property_exists($data, 'separate_private_channels')) {
+        if (property_exists($data, 'separate_private_channels') && $data->{'separate_private_channels'} !== null) {
             $object->setSeparatePrivateChannels($data->{'separate_private_channels'});
             unset($data->{'separate_private_channels'});
         }
-        if (property_exists($data, 'separate_shared_channels')) {
+        if (property_exists($data, 'separate_shared_channels') && $data->{'separate_shared_channels'} !== null) {
             $object->setSeparateSharedChannels($data->{'separate_shared_channels'});
             unset($data->{'separate_shared_channels'});
         }
-        if (property_exists($data, 'shdep_promo_code_submitted')) {
+        if (property_exists($data, 'shdep_promo_code_submitted') && $data->{'shdep_promo_code_submitted'} !== null) {
             $object->setShdepPromoCodeSubmitted($data->{'shdep_promo_code_submitted'});
             unset($data->{'shdep_promo_code_submitted'});
         }
-        if (property_exists($data, 'show_all_skin_tones')) {
+        if (property_exists($data, 'show_all_skin_tones') && $data->{'show_all_skin_tones'} !== null) {
             $object->setShowAllSkinTones($data->{'show_all_skin_tones'});
             unset($data->{'show_all_skin_tones'});
         }
-        if (property_exists($data, 'show_ent_onboarding')) {
+        if (property_exists($data, 'show_ent_onboarding') && $data->{'show_ent_onboarding'} !== null) {
             $object->setShowEntOnboarding($data->{'show_ent_onboarding'});
             unset($data->{'show_ent_onboarding'});
         }
-        if (property_exists($data, 'show_jumper_scores')) {
+        if (property_exists($data, 'show_jumper_scores') && $data->{'show_jumper_scores'} !== null) {
             $object->setShowJumperScores($data->{'show_jumper_scores'});
             unset($data->{'show_jumper_scores'});
         }
-        if (property_exists($data, 'show_memory_instrument')) {
+        if (property_exists($data, 'show_memory_instrument') && $data->{'show_memory_instrument'} !== null) {
             $object->setShowMemoryInstrument($data->{'show_memory_instrument'});
             unset($data->{'show_memory_instrument'});
         }
-        if (property_exists($data, 'show_sidebar_quickswitcher_button')) {
+        if (property_exists($data, 'show_sidebar_quickswitcher_button') && $data->{'show_sidebar_quickswitcher_button'} !== null) {
             $object->setShowSidebarQuickswitcherButton($data->{'show_sidebar_quickswitcher_button'});
             unset($data->{'show_sidebar_quickswitcher_button'});
         }
-        if (property_exists($data, 'show_typing')) {
+        if (property_exists($data, 'show_typing') && $data->{'show_typing'} !== null) {
             $object->setShowTyping($data->{'show_typing'});
             unset($data->{'show_typing'});
         }
-        if (property_exists($data, 'sidebar_behavior')) {
+        if (property_exists($data, 'sidebar_behavior') && $data->{'sidebar_behavior'} !== null) {
             $object->setSidebarBehavior($data->{'sidebar_behavior'});
             unset($data->{'sidebar_behavior'});
         }
-        if (property_exists($data, 'sidebar_theme')) {
+        if (property_exists($data, 'sidebar_theme') && $data->{'sidebar_theme'} !== null) {
             $object->setSidebarTheme($data->{'sidebar_theme'});
             unset($data->{'sidebar_theme'});
         }
-        if (property_exists($data, 'sidebar_theme_custom_values')) {
+        if (property_exists($data, 'sidebar_theme_custom_values') && $data->{'sidebar_theme_custom_values'} !== null) {
             $object->setSidebarThemeCustomValues($data->{'sidebar_theme_custom_values'});
             unset($data->{'sidebar_theme_custom_values'});
         }
-        if (property_exists($data, 'snippet_editor_wrap_long_lines')) {
+        if (property_exists($data, 'snippet_editor_wrap_long_lines') && $data->{'snippet_editor_wrap_long_lines'} !== null) {
             $object->setSnippetEditorWrapLongLines($data->{'snippet_editor_wrap_long_lines'});
             unset($data->{'snippet_editor_wrap_long_lines'});
         }
-        if (property_exists($data, 'spaces_new_xp_banner_dismissed')) {
+        if (property_exists($data, 'spaces_new_xp_banner_dismissed') && $data->{'spaces_new_xp_banner_dismissed'} !== null) {
             $object->setSpacesNewXpBannerDismissed($data->{'spaces_new_xp_banner_dismissed'});
             unset($data->{'spaces_new_xp_banner_dismissed'});
         }
-        if (property_exists($data, 'ss_emojis')) {
+        if (property_exists($data, 'ss_emojis') && $data->{'ss_emojis'} !== null) {
             $object->setSsEmojis($data->{'ss_emojis'});
             unset($data->{'ss_emojis'});
         }
-        if (property_exists($data, 'ssb_space_window')) {
+        if (property_exists($data, 'ssb_space_window') && $data->{'ssb_space_window'} !== null) {
             $object->setSsbSpaceWindow($data->{'ssb_space_window'});
             unset($data->{'ssb_space_window'});
         }
-        if (property_exists($data, 'start_scroll_at_oldest')) {
+        if (property_exists($data, 'start_scroll_at_oldest') && $data->{'start_scroll_at_oldest'} !== null) {
             $object->setStartScrollAtOldest($data->{'start_scroll_at_oldest'});
             unset($data->{'start_scroll_at_oldest'});
         }
-        if (property_exists($data, 'tab_ui_return_selects')) {
+        if (property_exists($data, 'tab_ui_return_selects') && $data->{'tab_ui_return_selects'} !== null) {
             $object->setTabUiReturnSelects($data->{'tab_ui_return_selects'});
             unset($data->{'tab_ui_return_selects'});
         }
-        if (property_exists($data, 'threads_everything')) {
+        if (property_exists($data, 'threads_everything') && $data->{'threads_everything'} !== null) {
             $object->setThreadsEverything($data->{'threads_everything'});
             unset($data->{'threads_everything'});
         }
-        if (property_exists($data, 'time24')) {
+        if (property_exists($data, 'time24') && $data->{'time24'} !== null) {
             $object->setTime24($data->{'time24'});
             unset($data->{'time24'});
         }
-        if (property_exists($data, 'two_factor_auth_enabled')) {
+        if (property_exists($data, 'two_factor_auth_enabled') && $data->{'two_factor_auth_enabled'} !== null) {
             $object->setTwoFactorAuthEnabled($data->{'two_factor_auth_enabled'});
             unset($data->{'two_factor_auth_enabled'});
         }
-        if (property_exists($data, 'two_factor_backup_type')) {
+        if (property_exists($data, 'two_factor_backup_type') && $data->{'two_factor_backup_type'} !== null) {
             $object->setTwoFactorBackupType($data->{'two_factor_backup_type'});
             unset($data->{'two_factor_backup_type'});
         }
-        if (property_exists($data, 'two_factor_type')) {
+        if (property_exists($data, 'two_factor_type') && $data->{'two_factor_type'} !== null) {
             $object->setTwoFactorType($data->{'two_factor_type'});
             unset($data->{'two_factor_type'});
         }
-        if (property_exists($data, 'tz')) {
+        if (property_exists($data, 'tz') && $data->{'tz'} !== null) {
             $object->setTz($data->{'tz'});
             unset($data->{'tz'});
         }
-        if (property_exists($data, 'user_colors')) {
+        if (property_exists($data, 'user_colors') && $data->{'user_colors'} !== null) {
             $object->setUserColors($data->{'user_colors'});
             unset($data->{'user_colors'});
         }
-        if (property_exists($data, 'webapp_spellcheck')) {
+        if (property_exists($data, 'webapp_spellcheck') && $data->{'webapp_spellcheck'} !== null) {
             $object->setWebappSpellcheck($data->{'webapp_spellcheck'});
             unset($data->{'webapp_spellcheck'});
         }
-        if (property_exists($data, 'welcome_message_hidden')) {
+        if (property_exists($data, 'welcome_message_hidden') && $data->{'welcome_message_hidden'} !== null) {
             $object->setWelcomeMessageHidden($data->{'welcome_message_hidden'});
             unset($data->{'welcome_message_hidden'});
         }
-        if (property_exists($data, 'whats_new_read')) {
+        if (property_exists($data, 'whats_new_read') && $data->{'whats_new_read'} !== null) {
             $object->setWhatsNewRead($data->{'whats_new_read'});
             unset($data->{'whats_new_read'});
         }

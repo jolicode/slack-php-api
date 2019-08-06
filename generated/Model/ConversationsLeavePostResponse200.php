@@ -22,7 +22,7 @@ class ConversationsLeavePostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNotInChannel(): ?bool
     {
@@ -30,7 +30,7 @@ class ConversationsLeavePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $notInChannel
+     * @param bool|null $notInChannel
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ConversationsLeavePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class ConversationsLeavePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

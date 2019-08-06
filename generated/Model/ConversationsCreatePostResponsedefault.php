@@ -34,7 +34,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     protected $provided;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDetail(): ?string
     {
@@ -42,7 +42,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $detail
+     * @param string|null $detail
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -62,7 +62,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNeeded(): ?string
     {
@@ -82,7 +82,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $needed
+     * @param string|null $needed
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -102,7 +102,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getProvided(): ?string
     {
@@ -122,7 +122,7 @@ class ConversationsCreatePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $provided
+     * @param string|null $provided
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class GroupsListGetResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return ObjsGroup[]
+     * @return ObjsGroup[]|null
      */
     public function getGroups(): ?array
     {
@@ -30,7 +30,7 @@ class GroupsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsGroup[] $groups
+     * @param ObjsGroup[]|null $groups
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GroupsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class GroupsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

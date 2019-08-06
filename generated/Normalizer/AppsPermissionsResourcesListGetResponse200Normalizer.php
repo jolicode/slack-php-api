@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,24 +30,24 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'resources')) {
+        if (property_exists($data, 'resources') && $data->{'resources'} !== null) {
             $values = [];
             foreach ($data->{'resources'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResourcesItem', 'json', $context);
@@ -56,7 +55,7 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
             $object->setResources($values);
             unset($data->{'resources'});
         }
-        if (property_exists($data, 'response_metadata')) {
+        if (property_exists($data, 'response_metadata') && $data->{'response_metadata'} !== null) {
             $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResponseMetadata', 'json', $context));
             unset($data->{'response_metadata'});
         }
