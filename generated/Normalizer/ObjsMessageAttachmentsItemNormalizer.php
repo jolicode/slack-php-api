@@ -45,20 +45,58 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         if (property_exists($data, 'fallback') && $data->{'fallback'} !== null) {
             $object->setFallback($data->{'fallback'});
         }
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        if (property_exists($data, 'color') && $data->{'color'} !== null) {
+            $object->setColor($data->{'color'});
         }
-        if (property_exists($data, 'image_bytes') && $data->{'image_bytes'} !== null) {
-            $object->setImageBytes($data->{'image_bytes'});
+        if (property_exists($data, 'pretext') && $data->{'pretext'} !== null) {
+            $object->setPretext($data->{'pretext'});
         }
-        if (property_exists($data, 'image_height') && $data->{'image_height'} !== null) {
-            $object->setImageHeight($data->{'image_height'});
+        if (property_exists($data, 'author_name') && $data->{'author_name'} !== null) {
+            $object->setAuthorName($data->{'author_name'});
+        }
+        if (property_exists($data, 'author_link') && $data->{'author_link'} !== null) {
+            $object->setAuthorLink($data->{'author_link'});
+        }
+        if (property_exists($data, 'author_icon') && $data->{'author_icon'} !== null) {
+            $object->setAuthorIcon($data->{'author_icon'});
+        }
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
+            $object->setTitle($data->{'title'});
+        }
+        if (property_exists($data, 'title_link') && $data->{'title_link'} !== null) {
+            $object->setTitleLink($data->{'title_link'});
+        }
+        if (property_exists($data, 'text') && $data->{'text'} !== null) {
+            $object->setText($data->{'text'});
+        }
+        if (property_exists($data, 'fields') && $data->{'fields'} !== null) {
+            $values = [];
+            foreach ($data->{'fields'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
+            }
+            $object->setFields($values);
+        }
+        if (property_exists($data, 'actions') && $data->{'actions'} !== null) {
+            $values_1 = [];
+            foreach ($data->{'actions'} as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
+            }
+            $object->setActions($values_1);
         }
         if (property_exists($data, 'image_url') && $data->{'image_url'} !== null) {
             $object->setImageUrl($data->{'image_url'});
         }
-        if (property_exists($data, 'image_width') && $data->{'image_width'} !== null) {
-            $object->setImageWidth($data->{'image_width'});
+        if (property_exists($data, 'thumb_url') && $data->{'thumb_url'} !== null) {
+            $object->setThumbUrl($data->{'thumb_url'});
+        }
+        if (property_exists($data, 'footer') && $data->{'footer'} !== null) {
+            $object->setFooter($data->{'footer'});
+        }
+        if (property_exists($data, 'footer_icon') && $data->{'footer_icon'} !== null) {
+            $object->setFooterIcon($data->{'footer_icon'});
+        }
+        if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
+            $object->setTs($data->{'ts'});
         }
 
         return $object;
@@ -70,20 +108,58 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getFallback()) {
             $data->{'fallback'} = $object->getFallback();
         }
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+        if (null !== $object->getColor()) {
+            $data->{'color'} = $object->getColor();
         }
-        if (null !== $object->getImageBytes()) {
-            $data->{'image_bytes'} = $object->getImageBytes();
+        if (null !== $object->getPretext()) {
+            $data->{'pretext'} = $object->getPretext();
         }
-        if (null !== $object->getImageHeight()) {
-            $data->{'image_height'} = $object->getImageHeight();
+        if (null !== $object->getAuthorName()) {
+            $data->{'author_name'} = $object->getAuthorName();
+        }
+        if (null !== $object->getAuthorLink()) {
+            $data->{'author_link'} = $object->getAuthorLink();
+        }
+        if (null !== $object->getAuthorIcon()) {
+            $data->{'author_icon'} = $object->getAuthorIcon();
+        }
+        if (null !== $object->getTitle()) {
+            $data->{'title'} = $object->getTitle();
+        }
+        if (null !== $object->getTitleLink()) {
+            $data->{'title_link'} = $object->getTitleLink();
+        }
+        if (null !== $object->getText()) {
+            $data->{'text'} = $object->getText();
+        }
+        if (null !== $object->getFields()) {
+            $values = [];
+            foreach ($object->getFields() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'fields'} = $values;
+        }
+        if (null !== $object->getActions()) {
+            $values_1 = [];
+            foreach ($object->getActions() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data->{'actions'} = $values_1;
         }
         if (null !== $object->getImageUrl()) {
             $data->{'image_url'} = $object->getImageUrl();
         }
-        if (null !== $object->getImageWidth()) {
-            $data->{'image_width'} = $object->getImageWidth();
+        if (null !== $object->getThumbUrl()) {
+            $data->{'thumb_url'} = $object->getThumbUrl();
+        }
+        if (null !== $object->getFooter()) {
+            $data->{'footer'} = $object->getFooter();
+        }
+        if (null !== $object->getFooterIcon()) {
+            $data->{'footer_icon'} = $object->getFooterIcon();
+        }
+        if (null !== $object->getTs()) {
+            $data->{'ts'} = $object->getTs();
         }
 
         return $data;
