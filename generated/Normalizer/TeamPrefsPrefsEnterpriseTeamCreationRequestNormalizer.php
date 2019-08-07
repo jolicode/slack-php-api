@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class TeamPrefsPrefsEnterpriseTeamCreationRequestNormalizer implements Denormali
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\TeamPrefsPrefsEnterpriseTeamCreationRequest;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefsEnterpriseTeamCreationRequest';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamPrefsPrefsEnterpriseTeamCreationRequest();
         $data = clone $data;
-        if (property_exists($data, 'is_enabled')) {
+        if (property_exists($data, 'is_enabled') && $data->{'is_enabled'} !== null) {
             $object->setIsEnabled($data->{'is_enabled'});
             unset($data->{'is_enabled'});
         }

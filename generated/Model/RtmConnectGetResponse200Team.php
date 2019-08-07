@@ -26,7 +26,7 @@ class RtmConnectGetResponse200Team extends \ArrayObject
     protected $name;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDomain(): ?string
     {
@@ -34,7 +34,7 @@ class RtmConnectGetResponse200Team extends \ArrayObject
     }
 
     /**
-     * @param string $domain
+     * @param string|null $domain
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class RtmConnectGetResponse200Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -54,7 +54,7 @@ class RtmConnectGetResponse200Team extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class RtmConnectGetResponse200Team extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -74,7 +74,7 @@ class RtmConnectGetResponse200Team extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */

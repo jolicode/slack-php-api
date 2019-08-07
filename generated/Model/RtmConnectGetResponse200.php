@@ -30,7 +30,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     protected $url;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -38,7 +38,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return RtmConnectGetResponse200Self
+     * @return RtmConnectGetResponse200Self|null
      */
     public function getSelf(): ?RtmConnectGetResponse200Self
     {
@@ -58,7 +58,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param RtmConnectGetResponse200Self $self
+     * @param RtmConnectGetResponse200Self|null $self
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return RtmConnectGetResponse200Team
+     * @return RtmConnectGetResponse200Team|null
      */
     public function getTeam(): ?RtmConnectGetResponse200Team
     {
@@ -78,7 +78,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param RtmConnectGetResponse200Team $team
+     * @param RtmConnectGetResponse200Team|null $team
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -98,7 +98,7 @@ class RtmConnectGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */

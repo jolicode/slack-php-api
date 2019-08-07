@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,28 +30,28 @@ class ObjsConversationItem0TopicNormalizer implements DenormalizerInterface, Nor
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsConversationItem0Topic;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem0Topic';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem0Topic();
         $data = clone $data;
-        if (property_exists($data, 'creator')) {
+        if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($data->{'creator'});
             unset($data->{'creator'});
         }
-        if (property_exists($data, 'last_set')) {
+        if (property_exists($data, 'last_set') && $data->{'last_set'} !== null) {
             $object->setLastSet($data->{'last_set'});
             unset($data->{'last_set'});
         }
-        if (property_exists($data, 'value')) {
+        if (property_exists($data, 'value') && $data->{'value'} !== null) {
             $object->setValue($data->{'value'});
             unset($data->{'value'});
         }

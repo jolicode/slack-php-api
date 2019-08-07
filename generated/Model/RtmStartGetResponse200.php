@@ -102,7 +102,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     protected $users;
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getBots(): ?array
     {
@@ -110,7 +110,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $bots
+     * @param mixed[]|null $bots
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCacheTs(): ?int
     {
@@ -130,7 +130,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param int $cacheTs
+     * @param int|null $cacheTs
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCacheTsVersion(): ?string
     {
@@ -150,7 +150,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $cacheTsVersion
+     * @param string|null $cacheTsVersion
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCacheVersion(): ?string
     {
@@ -170,7 +170,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $cacheVersion
+     * @param string|null $cacheVersion
      *
      * @return self
      */
@@ -182,7 +182,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getCanManageSharedChannels(): ?bool
     {
@@ -190,7 +190,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $canManageSharedChannels
+     * @param bool|null $canManageSharedChannels
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getChannels(): ?array
     {
@@ -210,7 +210,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $channels
+     * @param mixed[]|null $channels
      *
      * @return self
      */
@@ -222,7 +222,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeadPig(): ?bool
     {
@@ -230,7 +230,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $deadPig
+     * @param bool|null $deadPig
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsDnd
+     * @return ObjsDnd|null
      */
     public function getDnd(): ?ObjsDnd
     {
@@ -250,7 +250,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsDnd $dnd
+     * @param ObjsDnd|null $dnd
      *
      * @return self
      */
@@ -264,7 +264,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     /**
      * Group objects present for rtm.start. Can be null when there are no groups.
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getGroups(): ?array
     {
@@ -274,7 +274,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     /**
      * Group objects present for rtm.start. Can be null when there are no groups.
      *
-     * @param mixed[] $groups
+     * @param mixed[]|null $groups
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getIms(): ?array
     {
@@ -294,7 +294,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $ims
+     * @param mixed[]|null $ims
      *
      * @return self
      */
@@ -306,7 +306,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLatestEventTs(): ?string
     {
@@ -314,7 +314,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $latestEventTs
+     * @param string|null $latestEventTs
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     /**
      * Mpim objects present for rtm.start. Can be null when there are no mpims.
      *
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getMpims(): ?array
     {
@@ -338,7 +338,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     /**
      * Mpim objects present for rtm.start. Can be null when there are no mpims.
      *
-     * @param mixed[] $mpims
+     * @param mixed[]|null $mpims
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getNonThreadableChannels(): ?array
     {
@@ -358,7 +358,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $nonThreadableChannels
+     * @param mixed[]|null $nonThreadableChannels
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -378,7 +378,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getReadOnlyChannels(): ?array
     {
@@ -398,7 +398,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $readOnlyChannels
+     * @param mixed[]|null $readOnlyChannels
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return RtmStartGetResponse200Self
+     * @return RtmStartGetResponse200Self|null
      */
     public function getSelf(): ?RtmStartGetResponse200Self
     {
@@ -418,7 +418,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param RtmStartGetResponse200Self $self
+     * @param RtmStartGetResponse200Self|null $self
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return RtmStartGetResponse200Subteams
+     * @return RtmStartGetResponse200Subteams|null
      */
     public function getSubteams(): ?RtmStartGetResponse200Subteams
     {
@@ -438,7 +438,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param RtmStartGetResponse200Subteams $subteams
+     * @param RtmStartGetResponse200Subteams|null $subteams
      *
      * @return self
      */
@@ -450,7 +450,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsTeam
+     * @return ObjsTeam|null
      */
     public function getTeam(): ?ObjsTeam
     {
@@ -458,7 +458,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsTeam $team
+     * @param ObjsTeam|null $team
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getThreadOnlyChannels(): ?array
     {
@@ -478,7 +478,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $threadOnlyChannels
+     * @param mixed[]|null $threadOnlyChannels
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -498,7 +498,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsUser[]
+     * @return ObjsUser[]|null
      */
     public function getUsers(): ?array
     {
@@ -518,7 +518,7 @@ class RtmStartGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsUser[] $users
+     * @param ObjsUser[]|null $users
      *
      * @return self
      */

@@ -50,7 +50,7 @@ class ObjsInvitingUser extends \ArrayObject
     protected $updated;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -58,7 +58,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsAppUser(): ?bool
     {
@@ -78,7 +78,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isAppUser
+     * @param bool|null $isAppUser
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsRestricted(): ?bool
     {
@@ -98,7 +98,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isRestricted
+     * @param bool|null $isRestricted
      *
      * @return self
      */
@@ -110,7 +110,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsUltraRestricted(): ?bool
     {
@@ -118,7 +118,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isUltraRestricted
+     * @param bool|null $isUltraRestricted
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -138,7 +138,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return ObjsUserProfileShortest
+     * @return ObjsUserProfileShortest|null
      */
     public function getProfile(): ?ObjsUserProfileShortest
     {
@@ -158,7 +158,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param ObjsUserProfileShortest $profile
+     * @param ObjsUserProfileShortest|null $profile
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRealName(): ?string
     {
@@ -178,7 +178,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param string $realName
+     * @param string|null $realName
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeamId(): ?string
     {
@@ -198,7 +198,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param string $teamId
+     * @param string|null $teamId
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getUpdated(): ?float
     {
@@ -218,7 +218,7 @@ class ObjsInvitingUser extends \ArrayObject
     }
 
     /**
-     * @param float $updated
+     * @param float|null $updated
      *
      * @return self
      */

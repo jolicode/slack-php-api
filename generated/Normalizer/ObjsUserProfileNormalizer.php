@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,120 +30,120 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsUserProfile;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUserProfile();
         $data = clone $data;
-        if (property_exists($data, 'always_active')) {
+        if (property_exists($data, 'always_active') && $data->{'always_active'} !== null) {
             $object->setAlwaysActive($data->{'always_active'});
             unset($data->{'always_active'});
         }
-        if (property_exists($data, 'avatar_hash')) {
+        if (property_exists($data, 'avatar_hash') && $data->{'avatar_hash'} !== null) {
             $object->setAvatarHash($data->{'avatar_hash'});
             unset($data->{'avatar_hash'});
         }
-        if (property_exists($data, 'display_name')) {
+        if (property_exists($data, 'display_name') && $data->{'display_name'} !== null) {
             $object->setDisplayName($data->{'display_name'});
             unset($data->{'display_name'});
         }
-        if (property_exists($data, 'display_name_normalized')) {
+        if (property_exists($data, 'display_name_normalized') && $data->{'display_name_normalized'} !== null) {
             $object->setDisplayNameNormalized($data->{'display_name_normalized'});
             unset($data->{'display_name_normalized'});
         }
-        if (property_exists($data, 'email')) {
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
             unset($data->{'email'});
         }
-        if (property_exists($data, 'fields')) {
+        if (property_exists($data, 'fields') && $data->{'fields'} !== null) {
             $object->setFields($data->{'fields'});
             unset($data->{'fields'});
         }
-        if (property_exists($data, 'first_name')) {
+        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
             $object->setFirstName($data->{'first_name'});
             unset($data->{'first_name'});
         }
-        if (property_exists($data, 'guest_channels')) {
+        if (property_exists($data, 'guest_channels') && $data->{'guest_channels'} !== null) {
             $object->setGuestChannels($data->{'guest_channels'});
             unset($data->{'guest_channels'});
         }
-        if (property_exists($data, 'image_192')) {
+        if (property_exists($data, 'image_192') && $data->{'image_192'} !== null) {
             $object->setImage192($data->{'image_192'});
             unset($data->{'image_192'});
         }
-        if (property_exists($data, 'image_24')) {
+        if (property_exists($data, 'image_24') && $data->{'image_24'} !== null) {
             $object->setImage24($data->{'image_24'});
             unset($data->{'image_24'});
         }
-        if (property_exists($data, 'image_32')) {
+        if (property_exists($data, 'image_32') && $data->{'image_32'} !== null) {
             $object->setImage32($data->{'image_32'});
             unset($data->{'image_32'});
         }
-        if (property_exists($data, 'image_48')) {
+        if (property_exists($data, 'image_48') && $data->{'image_48'} !== null) {
             $object->setImage48($data->{'image_48'});
             unset($data->{'image_48'});
         }
-        if (property_exists($data, 'image_512')) {
+        if (property_exists($data, 'image_512') && $data->{'image_512'} !== null) {
             $object->setImage512($data->{'image_512'});
             unset($data->{'image_512'});
         }
-        if (property_exists($data, 'image_72')) {
+        if (property_exists($data, 'image_72') && $data->{'image_72'} !== null) {
             $object->setImage72($data->{'image_72'});
             unset($data->{'image_72'});
         }
-        if (property_exists($data, 'image_original')) {
+        if (property_exists($data, 'image_original') && $data->{'image_original'} !== null) {
             $object->setImageOriginal($data->{'image_original'});
             unset($data->{'image_original'});
         }
-        if (property_exists($data, 'last_name')) {
+        if (property_exists($data, 'last_name') && $data->{'last_name'} !== null) {
             $object->setLastName($data->{'last_name'});
             unset($data->{'last_name'});
         }
-        if (property_exists($data, 'phone')) {
+        if (property_exists($data, 'phone') && $data->{'phone'} !== null) {
             $object->setPhone($data->{'phone'});
             unset($data->{'phone'});
         }
-        if (property_exists($data, 'real_name')) {
+        if (property_exists($data, 'real_name') && $data->{'real_name'} !== null) {
             $object->setRealName($data->{'real_name'});
             unset($data->{'real_name'});
         }
-        if (property_exists($data, 'real_name_normalized')) {
+        if (property_exists($data, 'real_name_normalized') && $data->{'real_name_normalized'} !== null) {
             $object->setRealNameNormalized($data->{'real_name_normalized'});
             unset($data->{'real_name_normalized'});
         }
-        if (property_exists($data, 'skype')) {
+        if (property_exists($data, 'skype') && $data->{'skype'} !== null) {
             $object->setSkype($data->{'skype'});
             unset($data->{'skype'});
         }
-        if (property_exists($data, 'status_emoji')) {
+        if (property_exists($data, 'status_emoji') && $data->{'status_emoji'} !== null) {
             $object->setStatusEmoji($data->{'status_emoji'});
             unset($data->{'status_emoji'});
         }
-        if (property_exists($data, 'status_expiration')) {
+        if (property_exists($data, 'status_expiration') && $data->{'status_expiration'} !== null) {
             $object->setStatusExpiration($data->{'status_expiration'});
             unset($data->{'status_expiration'});
         }
-        if (property_exists($data, 'status_text')) {
+        if (property_exists($data, 'status_text') && $data->{'status_text'} !== null) {
             $object->setStatusText($data->{'status_text'});
             unset($data->{'status_text'});
         }
-        if (property_exists($data, 'status_text_canonical')) {
+        if (property_exists($data, 'status_text_canonical') && $data->{'status_text_canonical'} !== null) {
             $object->setStatusTextCanonical($data->{'status_text_canonical'});
             unset($data->{'status_text_canonical'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
             unset($data->{'team'});
         }
-        if (property_exists($data, 'title')) {
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
             unset($data->{'title'});
         }

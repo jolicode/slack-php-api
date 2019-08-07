@@ -22,7 +22,7 @@ class GroupsSetPurposePostResponsedefault extends \ArrayObject
     protected $ok;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -30,7 +30,7 @@ class GroupsSetPurposePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class GroupsSetPurposePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class GroupsSetPurposePostResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

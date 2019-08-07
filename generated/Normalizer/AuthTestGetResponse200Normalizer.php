@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,40 +30,40 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\AuthTestGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\AuthTestGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
             unset($data->{'team'});
         }
-        if (property_exists($data, 'team_id')) {
+        if (property_exists($data, 'team_id') && $data->{'team_id'} !== null) {
             $object->setTeamId($data->{'team_id'});
             unset($data->{'team_id'});
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
             unset($data->{'url'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        if (property_exists($data, 'user_id')) {
+        if (property_exists($data, 'user_id') && $data->{'user_id'} !== null) {
             $object->setUserId($data->{'user_id'});
             unset($data->{'user_id'});
         }

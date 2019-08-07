@@ -22,7 +22,7 @@ class ChannelsRenamePostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return ObjsChannel
+     * @return ObjsChannel|null
      */
     public function getChannel(): ?ObjsChannel
     {
@@ -30,7 +30,7 @@ class ChannelsRenamePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsChannel $channel
+     * @param ObjsChannel|null $channel
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ChannelsRenamePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class ChannelsRenamePostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

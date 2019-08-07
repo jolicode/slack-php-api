@@ -26,7 +26,7 @@ class ObjsReaction extends \ArrayObject
     protected $users;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCount(): ?int
     {
@@ -34,7 +34,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -54,7 +54,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getUsers(): ?array
     {
@@ -74,7 +74,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @param string[] $users
+     * @param string[]|null $users
      *
      * @return self
      */

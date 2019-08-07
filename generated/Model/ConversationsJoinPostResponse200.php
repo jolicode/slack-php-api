@@ -50,7 +50,7 @@ class ConversationsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -58,7 +58,7 @@ class ConversationsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ConversationsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ConversationsJoinPostResponse200ResponseMetadata
+     * @return ConversationsJoinPostResponse200ResponseMetadata|null
      */
     public function getResponseMetadata(): ?ConversationsJoinPostResponse200ResponseMetadata
     {
@@ -78,7 +78,7 @@ class ConversationsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ConversationsJoinPostResponse200ResponseMetadata $responseMetadata
+     * @param ConversationsJoinPostResponse200ResponseMetadata|null $responseMetadata
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ConversationsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWarning(): ?string
     {
@@ -98,7 +98,7 @@ class ConversationsJoinPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $warning
+     * @param string|null $warning
      *
      * @return self
      */

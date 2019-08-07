@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,36 +30,36 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsComment;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsComment';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsComment();
         $data = clone $data;
-        if (property_exists($data, 'comment')) {
+        if (property_exists($data, 'comment') && $data->{'comment'} !== null) {
             $object->setComment($data->{'comment'});
             unset($data->{'comment'});
         }
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_intro')) {
+        if (property_exists($data, 'is_intro') && $data->{'is_intro'} !== null) {
             $object->setIsIntro($data->{'is_intro'});
             unset($data->{'is_intro'});
         }
-        if (property_exists($data, 'pinned_info')) {
+        if (property_exists($data, 'pinned_info') && $data->{'pinned_info'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'pinned_info'} as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
@@ -68,7 +67,7 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setPinnedInfo($values);
             unset($data->{'pinned_info'});
         }
-        if (property_exists($data, 'pinned_to')) {
+        if (property_exists($data, 'pinned_to') && $data->{'pinned_to'} !== null) {
             $values_1 = [];
             foreach ($data->{'pinned_to'} as $value_1) {
                 $values_1[] = $value_1;
@@ -76,7 +75,7 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setPinnedTo($values_1);
             unset($data->{'pinned_to'});
         }
-        if (property_exists($data, 'reactions')) {
+        if (property_exists($data, 'reactions') && $data->{'reactions'} !== null) {
             $values_2 = [];
             foreach ($data->{'reactions'} as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
@@ -84,11 +83,11 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setReactions($values_2);
             unset($data->{'reactions'});
         }
-        if (property_exists($data, 'timestamp')) {
+        if (property_exists($data, 'timestamp') && $data->{'timestamp'} !== null) {
             $object->setTimestamp($data->{'timestamp'});
             unset($data->{'timestamp'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }

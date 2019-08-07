@@ -26,7 +26,7 @@ class ReactionsListGetResponse200ItemsItemItem0 extends \ArrayObject
     protected $type;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getChannel(): ?string
     {
@@ -34,7 +34,7 @@ class ReactionsListGetResponse200ItemsItemItem0 extends \ArrayObject
     }
 
     /**
-     * @param string $channel
+     * @param string|null $channel
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ReactionsListGetResponse200ItemsItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessage
+     * @return ObjsMessage|null
      */
     public function getMessage(): ?ObjsMessage
     {
@@ -54,7 +54,7 @@ class ReactionsListGetResponse200ItemsItemItem0 extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessage $message
+     * @param ObjsMessage|null $message
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ReactionsListGetResponse200ItemsItemItem0 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -74,7 +74,7 @@ class ReactionsListGetResponse200ItemsItemItem0 extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

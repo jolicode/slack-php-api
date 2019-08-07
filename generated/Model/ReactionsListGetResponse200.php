@@ -26,7 +26,7 @@ class ReactionsListGetResponse200 extends \ArrayObject
     protected $paging;
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getItems(): ?array
     {
@@ -34,7 +34,7 @@ class ReactionsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $items
+     * @param mixed[]|null $items
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ReactionsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class ReactionsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ReactionsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsPaging
+     * @return ObjsPaging|null
      */
     public function getPaging(): ?ObjsPaging
     {
@@ -74,7 +74,7 @@ class ReactionsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsPaging $paging
+     * @param ObjsPaging|null $paging
      *
      * @return self
      */

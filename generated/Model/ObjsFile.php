@@ -234,7 +234,7 @@ class ObjsFile extends \ArrayObject
     protected $username;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getChannels(): ?array
     {
@@ -242,7 +242,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string[] $channels
+     * @param string[]|null $channels
      *
      * @return self
      */
@@ -254,7 +254,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCommentsCount(): ?int
     {
@@ -262,7 +262,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $commentsCount
+     * @param int|null $commentsCount
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -282,7 +282,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -294,7 +294,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisplayAsBot(): ?bool
     {
@@ -302,7 +302,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $displayAsBot
+     * @param bool|null $displayAsBot
      *
      * @return self
      */
@@ -314,7 +314,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getEditable(): ?bool
     {
@@ -322,7 +322,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $editable
+     * @param bool|null $editable
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getExternalType(): ?string
     {
@@ -342,7 +342,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $externalType
+     * @param string|null $externalType
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFiletype(): ?string
     {
@@ -362,7 +362,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $filetype
+     * @param string|null $filetype
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getGroups(): ?array
     {
@@ -382,7 +382,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string[] $groups
+     * @param string[]|null $groups
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -402,7 +402,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -414,7 +414,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getImageExifRotation(): ?int
     {
@@ -422,7 +422,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $imageExifRotation
+     * @param int|null $imageExifRotation
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getIms(): ?array
     {
@@ -442,7 +442,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string[] $ims
+     * @param string[]|null $ims
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsExternal(): ?bool
     {
@@ -462,7 +462,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $isExternal
+     * @param bool|null $isExternal
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPublic(): ?bool
     {
@@ -482,7 +482,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $isPublic
+     * @param bool|null $isPublic
      *
      * @return self
      */
@@ -494,7 +494,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsStarred(): ?bool
     {
@@ -502,7 +502,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $isStarred
+     * @param bool|null $isStarred
      *
      * @return self
      */
@@ -514,7 +514,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasRichPreview(): ?bool
     {
@@ -522,7 +522,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $hasRichPreview
+     * @param bool|null $hasRichPreview
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMimetype(): ?string
     {
@@ -542,7 +542,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $mimetype
+     * @param string|null $mimetype
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getMode(): ?string
     {
@@ -562,7 +562,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $mode
+     * @param string|null $mode
      *
      * @return self
      */
@@ -574,7 +574,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -582,7 +582,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -594,7 +594,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getOriginalH(): ?int
     {
@@ -602,7 +602,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $originalH
+     * @param int|null $originalH
      *
      * @return self
      */
@@ -614,7 +614,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getOriginalW(): ?int
     {
@@ -622,7 +622,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $originalW
+     * @param int|null $originalW
      *
      * @return self
      */
@@ -634,7 +634,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPermalink(): ?string
     {
@@ -642,7 +642,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $permalink
+     * @param string|null $permalink
      *
      * @return self
      */
@@ -654,7 +654,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPermalinkPublic(): ?string
     {
@@ -662,7 +662,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $permalinkPublic
+     * @param string|null $permalinkPublic
      *
      * @return self
      */
@@ -674,7 +674,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return DefsPinnedInfoItem[]
+     * @return DefsPinnedInfoItem[]|null
      */
     public function getPinnedInfo(): ?\ArrayObject
     {
@@ -682,7 +682,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param DefsPinnedInfoItem[] $pinnedInfo
+     * @param DefsPinnedInfoItem[]|null $pinnedInfo
      *
      * @return self
      */
@@ -694,7 +694,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPinnedTo(): ?array
     {
@@ -702,7 +702,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string[] $pinnedTo
+     * @param string[]|null $pinnedTo
      *
      * @return self
      */
@@ -714,7 +714,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPrettyType(): ?string
     {
@@ -722,7 +722,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $prettyType
+     * @param string|null $prettyType
      *
      * @return self
      */
@@ -734,7 +734,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getPublicUrlShared(): ?bool
     {
@@ -742,7 +742,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param bool $publicUrlShared
+     * @param bool|null $publicUrlShared
      *
      * @return self
      */
@@ -754,7 +754,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return ObjsReaction[]
+     * @return ObjsReaction[]|null
      */
     public function getReactions(): ?array
     {
@@ -762,7 +762,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param ObjsReaction[] $reactions
+     * @param ObjsReaction[]|null $reactions
      *
      * @return self
      */
@@ -774,7 +774,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getSize(): ?int
     {
@@ -782,7 +782,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $size
+     * @param int|null $size
      *
      * @return self
      */
@@ -794,7 +794,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb1024(): ?string
     {
@@ -802,7 +802,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb1024
+     * @param string|null $thumb1024
      *
      * @return self
      */
@@ -814,7 +814,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb1024H(): ?int
     {
@@ -822,7 +822,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb1024H
+     * @param int|null $thumb1024H
      *
      * @return self
      */
@@ -834,7 +834,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb1024W(): ?int
     {
@@ -842,7 +842,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb1024W
+     * @param int|null $thumb1024W
      *
      * @return self
      */
@@ -854,7 +854,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb160(): ?string
     {
@@ -862,7 +862,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb160
+     * @param string|null $thumb160
      *
      * @return self
      */
@@ -874,7 +874,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb360(): ?string
     {
@@ -882,7 +882,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb360
+     * @param string|null $thumb360
      *
      * @return self
      */
@@ -894,7 +894,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb360H(): ?int
     {
@@ -902,7 +902,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb360H
+     * @param int|null $thumb360H
      *
      * @return self
      */
@@ -914,7 +914,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb360W(): ?int
     {
@@ -922,7 +922,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb360W
+     * @param int|null $thumb360W
      *
      * @return self
      */
@@ -934,7 +934,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb480(): ?string
     {
@@ -942,7 +942,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb480
+     * @param string|null $thumb480
      *
      * @return self
      */
@@ -954,7 +954,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb480H(): ?int
     {
@@ -962,7 +962,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb480H
+     * @param int|null $thumb480H
      *
      * @return self
      */
@@ -974,7 +974,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb480W(): ?int
     {
@@ -982,7 +982,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb480W
+     * @param int|null $thumb480W
      *
      * @return self
      */
@@ -994,7 +994,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb64(): ?string
     {
@@ -1002,7 +1002,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb64
+     * @param string|null $thumb64
      *
      * @return self
      */
@@ -1014,7 +1014,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb720(): ?string
     {
@@ -1022,7 +1022,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb720
+     * @param string|null $thumb720
      *
      * @return self
      */
@@ -1034,7 +1034,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb720H(): ?int
     {
@@ -1042,7 +1042,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb720H
+     * @param int|null $thumb720H
      *
      * @return self
      */
@@ -1054,7 +1054,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb720W(): ?int
     {
@@ -1062,7 +1062,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb720W
+     * @param int|null $thumb720W
      *
      * @return self
      */
@@ -1074,7 +1074,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb80(): ?string
     {
@@ -1082,7 +1082,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb80
+     * @param string|null $thumb80
      *
      * @return self
      */
@@ -1094,7 +1094,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb800(): ?string
     {
@@ -1102,7 +1102,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb800
+     * @param string|null $thumb800
      *
      * @return self
      */
@@ -1114,7 +1114,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb800H(): ?int
     {
@@ -1122,7 +1122,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb800H
+     * @param int|null $thumb800H
      *
      * @return self
      */
@@ -1134,7 +1134,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb800W(): ?int
     {
@@ -1142,7 +1142,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb800W
+     * @param int|null $thumb800W
      *
      * @return self
      */
@@ -1154,7 +1154,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThumb960(): ?string
     {
@@ -1162,7 +1162,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $thumb960
+     * @param string|null $thumb960
      *
      * @return self
      */
@@ -1174,7 +1174,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb960H(): ?int
     {
@@ -1182,7 +1182,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb960H
+     * @param int|null $thumb960H
      *
      * @return self
      */
@@ -1194,7 +1194,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getThumb960W(): ?int
     {
@@ -1202,7 +1202,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $thumb960W
+     * @param int|null $thumb960W
      *
      * @return self
      */
@@ -1214,7 +1214,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTimestamp(): ?int
     {
@@ -1222,7 +1222,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param int $timestamp
+     * @param int|null $timestamp
      *
      * @return self
      */
@@ -1234,7 +1234,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -1242,7 +1242,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
@@ -1254,7 +1254,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrlPrivate(): ?string
     {
@@ -1262,7 +1262,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $urlPrivate
+     * @param string|null $urlPrivate
      *
      * @return self
      */
@@ -1274,7 +1274,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrlPrivateDownload(): ?string
     {
@@ -1282,7 +1282,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $urlPrivateDownload
+     * @param string|null $urlPrivateDownload
      *
      * @return self
      */
@@ -1294,7 +1294,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -1302,7 +1302,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -1314,7 +1314,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUsername(): ?string
     {
@@ -1322,7 +1322,7 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
-     * @param string $username
+     * @param string|null $username
      *
      * @return self
      */

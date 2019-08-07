@@ -30,7 +30,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     protected $user;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAcceptedUser(): ?string
     {
@@ -38,7 +38,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @param string $acceptedUser
+     * @param string|null $acceptedUser
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsActive(): ?bool
     {
@@ -58,7 +58,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @param bool $isActive
+     * @param bool|null $isActive
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @return ObjsTeam
+     * @return ObjsTeam|null
      */
     public function getTeam(): ?ObjsTeam
     {
@@ -78,7 +78,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @param ObjsTeam $team
+     * @param ObjsTeam|null $team
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -98,7 +98,7 @@ class ObjsConversationItem0SharesItem extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

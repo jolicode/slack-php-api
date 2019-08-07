@@ -30,7 +30,7 @@ class ObjsPaging extends \ArrayObject
     protected $total;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCount(): ?int
     {
@@ -38,7 +38,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPage(): ?int
     {
@@ -58,7 +58,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @param int $page
+     * @param int|null $page
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPages(): ?int
     {
@@ -78,7 +78,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @param int $pages
+     * @param int|null $pages
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTotal(): ?int
     {
@@ -98,7 +98,7 @@ class ObjsPaging extends \ArrayObject
     }
 
     /**
-     * @param int $total
+     * @param int|null $total
      *
      * @return self
      */

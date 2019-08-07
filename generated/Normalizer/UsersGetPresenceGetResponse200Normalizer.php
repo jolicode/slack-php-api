@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,44 +30,44 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\UsersGetPresenceGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'auto_away')) {
+        if (property_exists($data, 'auto_away') && $data->{'auto_away'} !== null) {
             $object->setAutoAway($data->{'auto_away'});
             unset($data->{'auto_away'});
         }
-        if (property_exists($data, 'connection_count')) {
+        if (property_exists($data, 'connection_count') && $data->{'connection_count'} !== null) {
             $object->setConnectionCount($data->{'connection_count'});
             unset($data->{'connection_count'});
         }
-        if (property_exists($data, 'last_activity')) {
+        if (property_exists($data, 'last_activity') && $data->{'last_activity'} !== null) {
             $object->setLastActivity($data->{'last_activity'});
             unset($data->{'last_activity'});
         }
-        if (property_exists($data, 'manual_away')) {
+        if (property_exists($data, 'manual_away') && $data->{'manual_away'} !== null) {
             $object->setManualAway($data->{'manual_away'});
             unset($data->{'manual_away'});
         }
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'online')) {
+        if (property_exists($data, 'online') && $data->{'online'} !== null) {
             $object->setOnline($data->{'online'});
             unset($data->{'online'});
         }
-        if (property_exists($data, 'presence')) {
+        if (property_exists($data, 'presence') && $data->{'presence'} !== null) {
             $object->setPresence($data->{'presence'});
             unset($data->{'presence'});
         }

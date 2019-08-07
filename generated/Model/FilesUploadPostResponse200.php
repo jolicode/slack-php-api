@@ -22,7 +22,7 @@ class FilesUploadPostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return ObjsFile
+     * @return ObjsFile|null
      */
     public function getFile(): ?ObjsFile
     {
@@ -30,7 +30,7 @@ class FilesUploadPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile $file
+     * @param ObjsFile|null $file
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class FilesUploadPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class FilesUploadPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

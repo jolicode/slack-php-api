@@ -26,7 +26,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem extends \ArrayObject
     protected $user;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getError(): ?string
     {
@@ -34,7 +34,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem extends \ArrayObject
     }
 
     /**
-     * @param string $error
+     * @param string|null $error
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -74,7 +74,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

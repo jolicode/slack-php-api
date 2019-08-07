@@ -26,7 +26,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     protected $responseMetadata;
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getChannels(): ?array
     {
@@ -34,7 +34,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $channels
+     * @param mixed[]|null $channels
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ConversationsListGetResponse200ResponseMetadata
+     * @return ConversationsListGetResponse200ResponseMetadata|null
      */
     public function getResponseMetadata(): ?ConversationsListGetResponse200ResponseMetadata
     {
@@ -74,7 +74,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ConversationsListGetResponse200ResponseMetadata $responseMetadata
+     * @param ConversationsListGetResponse200ResponseMetadata|null $responseMetadata
      *
      * @return self
      */

@@ -50,7 +50,7 @@ class ObjsComment extends \ArrayObject
     protected $user;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getComment(): ?string
     {
@@ -58,7 +58,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param string $comment
+     * @param string|null $comment
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -78,7 +78,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -98,7 +98,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -110,7 +110,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsIntro(): ?bool
     {
@@ -118,7 +118,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param bool $isIntro
+     * @param bool|null $isIntro
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return DefsPinnedInfoItem[]
+     * @return DefsPinnedInfoItem[]|null
      */
     public function getPinnedInfo(): ?\ArrayObject
     {
@@ -138,7 +138,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param DefsPinnedInfoItem[] $pinnedInfo
+     * @param DefsPinnedInfoItem[]|null $pinnedInfo
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPinnedTo(): ?array
     {
@@ -158,7 +158,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param string[] $pinnedTo
+     * @param string[]|null $pinnedTo
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return ObjsReaction[]
+     * @return ObjsReaction[]|null
      */
     public function getReactions(): ?array
     {
@@ -178,7 +178,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param ObjsReaction[] $reactions
+     * @param ObjsReaction[]|null $reactions
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getTimestamp(): ?int
     {
@@ -198,7 +198,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param int $timestamp
+     * @param int|null $timestamp
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -218,7 +218,7 @@ class ObjsComment extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */

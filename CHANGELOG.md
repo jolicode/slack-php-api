@@ -3,6 +3,7 @@
 ## Not yet released
 
 * **Specification override** Fix Thread TS parameter and body type from float to string because the Slack API is very strange about it, a PHP Float does not seams to work but a string does, and the API always answer "ok" even if not thread reply is created.
+* Upgrade Jane to 4.4 https://github.com/janephp/janephp/releases/tag/v4.4.0, the new generated classes have better PHPDoc
 
 ## 1.2.0 (2019-04-23)
 

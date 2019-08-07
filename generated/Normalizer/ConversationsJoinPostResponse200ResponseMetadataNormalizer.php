@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,19 +30,19 @@ class ConversationsJoinPostResponse200ResponseMetadataNormalizer implements Deno
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ConversationsJoinPostResponse200ResponseMetadata';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata();
-        if (property_exists($data, 'warnings')) {
+        if (property_exists($data, 'warnings') && $data->{'warnings'} !== null) {
             $values = [];
             foreach ($data->{'warnings'} as $value) {
                 $values[] = $value;

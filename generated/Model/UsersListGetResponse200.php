@@ -30,7 +30,7 @@ class UsersListGetResponse200 extends \ArrayObject
     protected $responseMetadata;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCacheTs(): ?int
     {
@@ -38,7 +38,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param int $cacheTs
+     * @param int|null $cacheTs
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsUser[]
+     * @return ObjsUser[]|null
      */
     public function getMembers(): ?array
     {
@@ -58,7 +58,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsUser[] $members
+     * @param ObjsUser[]|null $members
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -78,7 +78,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return UsersListGetResponse200ResponseMetadata
+     * @return UsersListGetResponse200ResponseMetadata|null
      */
     public function getResponseMetadata(): ?UsersListGetResponse200ResponseMetadata
     {
@@ -98,7 +98,7 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param UsersListGetResponse200ResponseMetadata $responseMetadata
+     * @param UsersListGetResponse200ResponseMetadata|null $responseMetadata
      *
      * @return self
      */

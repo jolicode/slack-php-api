@@ -18,7 +18,7 @@ class TeamPrefsPrefsEnterpriseTeamCreationRequest extends \ArrayObject
     protected $isEnabled;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsEnabled(): ?bool
     {
@@ -26,7 +26,7 @@ class TeamPrefsPrefsEnterpriseTeamCreationRequest extends \ArrayObject
     }
 
     /**
-     * @param bool $isEnabled
+     * @param bool|null $isEnabled
      *
      * @return self
      */

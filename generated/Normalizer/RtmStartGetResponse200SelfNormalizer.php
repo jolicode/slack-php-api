@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,36 +30,36 @@ class RtmStartGetResponse200SelfNormalizer implements DenormalizerInterface, Nor
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\RtmStartGetResponse200Self;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\RtmStartGetResponse200Self';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmStartGetResponse200Self();
         $data = clone $data;
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'manual_presence')) {
+        if (property_exists($data, 'manual_presence') && $data->{'manual_presence'} !== null) {
             $object->setManualPresence($data->{'manual_presence'});
             unset($data->{'manual_presence'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'prefs')) {
+        if (property_exists($data, 'prefs') && $data->{'prefs'} !== null) {
             $object->setPrefs($this->denormalizer->denormalize($data->{'prefs'}, 'JoliCode\\Slack\\Api\\Model\\PrefsPrefs', 'json', $context));
             unset($data->{'prefs'});
         }

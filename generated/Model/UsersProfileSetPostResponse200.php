@@ -26,7 +26,7 @@ class UsersProfileSetPostResponse200 extends \ArrayObject
     protected $username;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -34,7 +34,7 @@ class UsersProfileSetPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class UsersProfileSetPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsUserProfile
+     * @return ObjsUserProfile|null
      */
     public function getProfile(): ?ObjsUserProfile
     {
@@ -54,7 +54,7 @@ class UsersProfileSetPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsUserProfile $profile
+     * @param ObjsUserProfile|null $profile
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class UsersProfileSetPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUsername(): ?string
     {
@@ -74,7 +74,7 @@ class UsersProfileSetPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $username
+     * @param string|null $username
      *
      * @return self
      */

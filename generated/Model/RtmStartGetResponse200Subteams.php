@@ -22,7 +22,7 @@ class RtmStartGetResponse200Subteams extends \ArrayObject
     protected $self;
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getAll(): ?array
     {
@@ -30,7 +30,7 @@ class RtmStartGetResponse200Subteams extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $all
+     * @param mixed[]|null $all
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class RtmStartGetResponse200Subteams extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getSelf(): ?array
     {
@@ -50,7 +50,7 @@ class RtmStartGetResponse200Subteams extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $self
+     * @param mixed[]|null $self
      *
      * @return self
      */

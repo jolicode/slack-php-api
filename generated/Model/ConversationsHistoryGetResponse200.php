@@ -30,7 +30,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     protected $pinCount;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasMore(): ?bool
     {
@@ -38,7 +38,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $hasMore
+     * @param bool|null $hasMore
      *
      * @return self
      */
@@ -50,7 +50,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessage[]
+     * @return ObjsMessage[]|null
      */
     public function getMessages(): ?array
     {
@@ -58,7 +58,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessage[] $messages
+     * @param ObjsMessage[]|null $messages
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -78,7 +78,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getPinCount(): ?int
     {
@@ -98,7 +98,7 @@ class ConversationsHistoryGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param int $pinCount
+     * @param int|null $pinCount
      *
      * @return self
      */

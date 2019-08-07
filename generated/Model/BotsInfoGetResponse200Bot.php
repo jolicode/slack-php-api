@@ -42,7 +42,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     protected $userId;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAppId(): ?string
     {
@@ -50,7 +50,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param string $appId
+     * @param string|null $appId
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeleted(): ?bool
     {
@@ -70,7 +70,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param bool $deleted
+     * @param bool|null $deleted
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @return BotsInfoGetResponse200BotIcons
+     * @return BotsInfoGetResponse200BotIcons|null
      */
     public function getIcons(): ?BotsInfoGetResponse200BotIcons
     {
@@ -90,7 +90,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param BotsInfoGetResponse200BotIcons $icons
+     * @param BotsInfoGetResponse200BotIcons|null $icons
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -110,7 +110,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -130,7 +130,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUpdated(): ?int
     {
@@ -150,7 +150,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param int $updated
+     * @param int|null $updated
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUserId(): ?string
     {
@@ -170,7 +170,7 @@ class BotsInfoGetResponse200Bot extends \ArrayObject
     }
 
     /**
-     * @param string $userId
+     * @param string|null $userId
      *
      * @return self
      */

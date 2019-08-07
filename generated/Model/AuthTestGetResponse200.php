@@ -38,7 +38,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     protected $userId;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -46,7 +46,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -58,7 +58,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeam(): ?string
     {
@@ -66,7 +66,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $team
+     * @param string|null $team
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeamId(): ?string
     {
@@ -86,7 +86,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $teamId
+     * @param string|null $teamId
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl(): ?string
     {
@@ -106,7 +106,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -126,7 +126,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUserId(): ?string
     {
@@ -146,7 +146,7 @@ class AuthTestGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string $userId
+     * @param string|null $userId
      *
      * @return self
      */

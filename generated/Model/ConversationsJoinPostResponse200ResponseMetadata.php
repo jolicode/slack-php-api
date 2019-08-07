@@ -18,7 +18,7 @@ class ConversationsJoinPostResponse200ResponseMetadata
     protected $warnings;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getWarnings(): ?array
     {
@@ -26,7 +26,7 @@ class ConversationsJoinPostResponse200ResponseMetadata
     }
 
     /**
-     * @param string[] $warnings
+     * @param string[]|null $warnings
      *
      * @return self
      */

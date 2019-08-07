@@ -26,7 +26,7 @@ class ObjsConversationItem0Topic extends \ArrayObject
     protected $value;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCreator(): ?string
     {
@@ -34,7 +34,7 @@ class ObjsConversationItem0Topic extends \ArrayObject
     }
 
     /**
-     * @param string $creator
+     * @param string|null $creator
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ObjsConversationItem0Topic extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getLastSet(): ?int
     {
@@ -54,7 +54,7 @@ class ObjsConversationItem0Topic extends \ArrayObject
     }
 
     /**
-     * @param int $lastSet
+     * @param int|null $lastSet
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ObjsConversationItem0Topic extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getValue(): ?string
     {
@@ -74,7 +74,7 @@ class ObjsConversationItem0Topic extends \ArrayObject
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      *
      * @return self
      */

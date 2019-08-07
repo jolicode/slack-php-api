@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class RtmStartGetResponse200SubteamsNormalizer implements DenormalizerInterface,
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\RtmStartGetResponse200Subteams;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\RtmStartGetResponse200Subteams';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmStartGetResponse200Subteams();
         $data = clone $data;
-        if (property_exists($data, 'all')) {
+        if (property_exists($data, 'all') && $data->{'all'} !== null) {
             $values = [];
             foreach ($data->{'all'} as $value) {
                 $values[] = $value;
@@ -52,7 +51,7 @@ class RtmStartGetResponse200SubteamsNormalizer implements DenormalizerInterface,
             $object->setAll($values);
             unset($data->{'all'});
         }
-        if (property_exists($data, 'self')) {
+        if (property_exists($data, 'self') && $data->{'self'} !== null) {
             $values_1 = [];
             foreach ($data->{'self'} as $value_1) {
                 $values_1[] = $value_1;

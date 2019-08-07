@@ -58,7 +58,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     protected $userTeam;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsStarred(): ?bool
     {
@@ -66,7 +66,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param bool $isStarred
+     * @param bool|null $isStarred
      *
      * @return self
      */
@@ -78,7 +78,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getParentUserId(): ?string
     {
@@ -86,7 +86,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $parentUserId
+     * @param string|null $parentUserId
      *
      * @return self
      */
@@ -98,7 +98,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSourceTeam(): ?string
     {
@@ -106,7 +106,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $sourceTeam
+     * @param string|null $sourceTeam
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeam(): ?string
     {
@@ -126,7 +126,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $team
+     * @param string|null $team
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getText(): ?string
     {
@@ -146,7 +146,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $text
+     * @param string|null $text
      *
      * @return self
      */
@@ -158,7 +158,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThreadTs()
     {
@@ -166,7 +166,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $threadTs
+     * @param string|null $threadTs
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTs()
     {
@@ -186,7 +186,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $ts
+     * @param string|null $ts
      *
      * @return self
      */
@@ -198,7 +198,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -206,7 +206,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -218,7 +218,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -226,7 +226,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return ObjsUserProfileShort
+     * @return ObjsUserProfileShort|null
      */
     public function getUserProfile(): ?ObjsUserProfileShort
     {
@@ -246,7 +246,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsUserProfileShort $userProfile
+     * @param ObjsUserProfileShort|null $userProfile
      *
      * @return self
      */
@@ -258,7 +258,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUserTeam(): ?string
     {
@@ -266,7 +266,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     }
 
     /**
-     * @param string $userTeam
+     * @param string|null $userTeam
      *
      * @return self
      */

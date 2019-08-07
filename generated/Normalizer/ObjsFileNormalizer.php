@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsFile;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsFile';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsFile();
         $data = clone $data;
-        if (property_exists($data, 'channels')) {
+        if (property_exists($data, 'channels') && $data->{'channels'} !== null) {
             $values = [];
             foreach ($data->{'channels'} as $value) {
                 $values[] = $value;
@@ -52,31 +51,31 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setChannels($values);
             unset($data->{'channels'});
         }
-        if (property_exists($data, 'comments_count')) {
+        if (property_exists($data, 'comments_count') && $data->{'comments_count'} !== null) {
             $object->setCommentsCount($data->{'comments_count'});
             unset($data->{'comments_count'});
         }
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'display_as_bot')) {
+        if (property_exists($data, 'display_as_bot') && $data->{'display_as_bot'} !== null) {
             $object->setDisplayAsBot($data->{'display_as_bot'});
             unset($data->{'display_as_bot'});
         }
-        if (property_exists($data, 'editable')) {
+        if (property_exists($data, 'editable') && $data->{'editable'} !== null) {
             $object->setEditable($data->{'editable'});
             unset($data->{'editable'});
         }
-        if (property_exists($data, 'external_type')) {
+        if (property_exists($data, 'external_type') && $data->{'external_type'} !== null) {
             $object->setExternalType($data->{'external_type'});
             unset($data->{'external_type'});
         }
-        if (property_exists($data, 'filetype')) {
+        if (property_exists($data, 'filetype') && $data->{'filetype'} !== null) {
             $object->setFiletype($data->{'filetype'});
             unset($data->{'filetype'});
         }
-        if (property_exists($data, 'groups')) {
+        if (property_exists($data, 'groups') && $data->{'groups'} !== null) {
             $values_1 = [];
             foreach ($data->{'groups'} as $value_1) {
                 $values_1[] = $value_1;
@@ -84,15 +83,15 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setGroups($values_1);
             unset($data->{'groups'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'image_exif_rotation')) {
+        if (property_exists($data, 'image_exif_rotation') && $data->{'image_exif_rotation'} !== null) {
             $object->setImageExifRotation($data->{'image_exif_rotation'});
             unset($data->{'image_exif_rotation'});
         }
-        if (property_exists($data, 'ims')) {
+        if (property_exists($data, 'ims') && $data->{'ims'} !== null) {
             $values_2 = [];
             foreach ($data->{'ims'} as $value_2) {
                 $values_2[] = $value_2;
@@ -100,51 +99,51 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setIms($values_2);
             unset($data->{'ims'});
         }
-        if (property_exists($data, 'is_external')) {
+        if (property_exists($data, 'is_external') && $data->{'is_external'} !== null) {
             $object->setIsExternal($data->{'is_external'});
             unset($data->{'is_external'});
         }
-        if (property_exists($data, 'is_public')) {
+        if (property_exists($data, 'is_public') && $data->{'is_public'} !== null) {
             $object->setIsPublic($data->{'is_public'});
             unset($data->{'is_public'});
         }
-        if (property_exists($data, 'is_starred')) {
+        if (property_exists($data, 'is_starred') && $data->{'is_starred'} !== null) {
             $object->setIsStarred($data->{'is_starred'});
             unset($data->{'is_starred'});
         }
-        if (property_exists($data, 'has_rich_preview')) {
+        if (property_exists($data, 'has_rich_preview') && $data->{'has_rich_preview'} !== null) {
             $object->setHasRichPreview($data->{'has_rich_preview'});
             unset($data->{'has_rich_preview'});
         }
-        if (property_exists($data, 'mimetype')) {
+        if (property_exists($data, 'mimetype') && $data->{'mimetype'} !== null) {
             $object->setMimetype($data->{'mimetype'});
             unset($data->{'mimetype'});
         }
-        if (property_exists($data, 'mode')) {
+        if (property_exists($data, 'mode') && $data->{'mode'} !== null) {
             $object->setMode($data->{'mode'});
             unset($data->{'mode'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'original_h')) {
+        if (property_exists($data, 'original_h') && $data->{'original_h'} !== null) {
             $object->setOriginalH($data->{'original_h'});
             unset($data->{'original_h'});
         }
-        if (property_exists($data, 'original_w')) {
+        if (property_exists($data, 'original_w') && $data->{'original_w'} !== null) {
             $object->setOriginalW($data->{'original_w'});
             unset($data->{'original_w'});
         }
-        if (property_exists($data, 'permalink')) {
+        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
             unset($data->{'permalink'});
         }
-        if (property_exists($data, 'permalink_public')) {
+        if (property_exists($data, 'permalink_public') && $data->{'permalink_public'} !== null) {
             $object->setPermalinkPublic($data->{'permalink_public'});
             unset($data->{'permalink_public'});
         }
-        if (property_exists($data, 'pinned_info')) {
+        if (property_exists($data, 'pinned_info') && $data->{'pinned_info'} !== null) {
             $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'pinned_info'} as $key => $value_3) {
                 $values_3[$key] = $this->denormalizer->denormalize($value_3, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
@@ -152,7 +151,7 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setPinnedInfo($values_3);
             unset($data->{'pinned_info'});
         }
-        if (property_exists($data, 'pinned_to')) {
+        if (property_exists($data, 'pinned_to') && $data->{'pinned_to'} !== null) {
             $values_4 = [];
             foreach ($data->{'pinned_to'} as $value_4) {
                 $values_4[] = $value_4;
@@ -160,15 +159,15 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setPinnedTo($values_4);
             unset($data->{'pinned_to'});
         }
-        if (property_exists($data, 'pretty_type')) {
+        if (property_exists($data, 'pretty_type') && $data->{'pretty_type'} !== null) {
             $object->setPrettyType($data->{'pretty_type'});
             unset($data->{'pretty_type'});
         }
-        if (property_exists($data, 'public_url_shared')) {
+        if (property_exists($data, 'public_url_shared') && $data->{'public_url_shared'} !== null) {
             $object->setPublicUrlShared($data->{'public_url_shared'});
             unset($data->{'public_url_shared'});
         }
-        if (property_exists($data, 'reactions')) {
+        if (property_exists($data, 'reactions') && $data->{'reactions'} !== null) {
             $values_5 = [];
             foreach ($data->{'reactions'} as $value_5) {
                 $values_5[] = $this->denormalizer->denormalize($value_5, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
@@ -176,115 +175,115 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setReactions($values_5);
             unset($data->{'reactions'});
         }
-        if (property_exists($data, 'size')) {
+        if (property_exists($data, 'size') && $data->{'size'} !== null) {
             $object->setSize($data->{'size'});
             unset($data->{'size'});
         }
-        if (property_exists($data, 'thumb_1024')) {
+        if (property_exists($data, 'thumb_1024') && $data->{'thumb_1024'} !== null) {
             $object->setThumb1024($data->{'thumb_1024'});
             unset($data->{'thumb_1024'});
         }
-        if (property_exists($data, 'thumb_1024_h')) {
+        if (property_exists($data, 'thumb_1024_h') && $data->{'thumb_1024_h'} !== null) {
             $object->setThumb1024H($data->{'thumb_1024_h'});
             unset($data->{'thumb_1024_h'});
         }
-        if (property_exists($data, 'thumb_1024_w')) {
+        if (property_exists($data, 'thumb_1024_w') && $data->{'thumb_1024_w'} !== null) {
             $object->setThumb1024W($data->{'thumb_1024_w'});
             unset($data->{'thumb_1024_w'});
         }
-        if (property_exists($data, 'thumb_160')) {
+        if (property_exists($data, 'thumb_160') && $data->{'thumb_160'} !== null) {
             $object->setThumb160($data->{'thumb_160'});
             unset($data->{'thumb_160'});
         }
-        if (property_exists($data, 'thumb_360')) {
+        if (property_exists($data, 'thumb_360') && $data->{'thumb_360'} !== null) {
             $object->setThumb360($data->{'thumb_360'});
             unset($data->{'thumb_360'});
         }
-        if (property_exists($data, 'thumb_360_h')) {
+        if (property_exists($data, 'thumb_360_h') && $data->{'thumb_360_h'} !== null) {
             $object->setThumb360H($data->{'thumb_360_h'});
             unset($data->{'thumb_360_h'});
         }
-        if (property_exists($data, 'thumb_360_w')) {
+        if (property_exists($data, 'thumb_360_w') && $data->{'thumb_360_w'} !== null) {
             $object->setThumb360W($data->{'thumb_360_w'});
             unset($data->{'thumb_360_w'});
         }
-        if (property_exists($data, 'thumb_480')) {
+        if (property_exists($data, 'thumb_480') && $data->{'thumb_480'} !== null) {
             $object->setThumb480($data->{'thumb_480'});
             unset($data->{'thumb_480'});
         }
-        if (property_exists($data, 'thumb_480_h')) {
+        if (property_exists($data, 'thumb_480_h') && $data->{'thumb_480_h'} !== null) {
             $object->setThumb480H($data->{'thumb_480_h'});
             unset($data->{'thumb_480_h'});
         }
-        if (property_exists($data, 'thumb_480_w')) {
+        if (property_exists($data, 'thumb_480_w') && $data->{'thumb_480_w'} !== null) {
             $object->setThumb480W($data->{'thumb_480_w'});
             unset($data->{'thumb_480_w'});
         }
-        if (property_exists($data, 'thumb_64')) {
+        if (property_exists($data, 'thumb_64') && $data->{'thumb_64'} !== null) {
             $object->setThumb64($data->{'thumb_64'});
             unset($data->{'thumb_64'});
         }
-        if (property_exists($data, 'thumb_720')) {
+        if (property_exists($data, 'thumb_720') && $data->{'thumb_720'} !== null) {
             $object->setThumb720($data->{'thumb_720'});
             unset($data->{'thumb_720'});
         }
-        if (property_exists($data, 'thumb_720_h')) {
+        if (property_exists($data, 'thumb_720_h') && $data->{'thumb_720_h'} !== null) {
             $object->setThumb720H($data->{'thumb_720_h'});
             unset($data->{'thumb_720_h'});
         }
-        if (property_exists($data, 'thumb_720_w')) {
+        if (property_exists($data, 'thumb_720_w') && $data->{'thumb_720_w'} !== null) {
             $object->setThumb720W($data->{'thumb_720_w'});
             unset($data->{'thumb_720_w'});
         }
-        if (property_exists($data, 'thumb_80')) {
+        if (property_exists($data, 'thumb_80') && $data->{'thumb_80'} !== null) {
             $object->setThumb80($data->{'thumb_80'});
             unset($data->{'thumb_80'});
         }
-        if (property_exists($data, 'thumb_800')) {
+        if (property_exists($data, 'thumb_800') && $data->{'thumb_800'} !== null) {
             $object->setThumb800($data->{'thumb_800'});
             unset($data->{'thumb_800'});
         }
-        if (property_exists($data, 'thumb_800_h')) {
+        if (property_exists($data, 'thumb_800_h') && $data->{'thumb_800_h'} !== null) {
             $object->setThumb800H($data->{'thumb_800_h'});
             unset($data->{'thumb_800_h'});
         }
-        if (property_exists($data, 'thumb_800_w')) {
+        if (property_exists($data, 'thumb_800_w') && $data->{'thumb_800_w'} !== null) {
             $object->setThumb800W($data->{'thumb_800_w'});
             unset($data->{'thumb_800_w'});
         }
-        if (property_exists($data, 'thumb_960')) {
+        if (property_exists($data, 'thumb_960') && $data->{'thumb_960'} !== null) {
             $object->setThumb960($data->{'thumb_960'});
             unset($data->{'thumb_960'});
         }
-        if (property_exists($data, 'thumb_960_h')) {
+        if (property_exists($data, 'thumb_960_h') && $data->{'thumb_960_h'} !== null) {
             $object->setThumb960H($data->{'thumb_960_h'});
             unset($data->{'thumb_960_h'});
         }
-        if (property_exists($data, 'thumb_960_w')) {
+        if (property_exists($data, 'thumb_960_w') && $data->{'thumb_960_w'} !== null) {
             $object->setThumb960W($data->{'thumb_960_w'});
             unset($data->{'thumb_960_w'});
         }
-        if (property_exists($data, 'timestamp')) {
+        if (property_exists($data, 'timestamp') && $data->{'timestamp'} !== null) {
             $object->setTimestamp($data->{'timestamp'});
             unset($data->{'timestamp'});
         }
-        if (property_exists($data, 'title')) {
+        if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
             unset($data->{'title'});
         }
-        if (property_exists($data, 'url_private')) {
+        if (property_exists($data, 'url_private') && $data->{'url_private'} !== null) {
             $object->setUrlPrivate($data->{'url_private'});
             unset($data->{'url_private'});
         }
-        if (property_exists($data, 'url_private_download')) {
+        if (property_exists($data, 'url_private_download') && $data->{'url_private_download'} !== null) {
             $object->setUrlPrivateDownload($data->{'url_private_download'});
             unset($data->{'url_private_download'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        if (property_exists($data, 'username')) {
+        if (property_exists($data, 'username') && $data->{'username'} !== null) {
             $object->setUsername($data->{'username'});
             unset($data->{'username'});
         }

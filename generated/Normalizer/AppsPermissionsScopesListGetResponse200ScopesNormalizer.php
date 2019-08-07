@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsScopesListGetResponse200Scopes';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes();
         $data = clone $data;
-        if (property_exists($data, 'app_home')) {
+        if (property_exists($data, 'app_home') && $data->{'app_home'} !== null) {
             $values = [];
             foreach ($data->{'app_home'} as $value) {
                 $values[] = $value;
@@ -52,7 +51,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             $object->setAppHome($values);
             unset($data->{'app_home'});
         }
-        if (property_exists($data, 'channel')) {
+        if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $values_1 = [];
             foreach ($data->{'channel'} as $value_1) {
                 $values_1[] = $value_1;
@@ -60,7 +59,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             $object->setChannel($values_1);
             unset($data->{'channel'});
         }
-        if (property_exists($data, 'group')) {
+        if (property_exists($data, 'group') && $data->{'group'} !== null) {
             $values_2 = [];
             foreach ($data->{'group'} as $value_2) {
                 $values_2[] = $value_2;
@@ -68,7 +67,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             $object->setGroup($values_2);
             unset($data->{'group'});
         }
-        if (property_exists($data, 'im')) {
+        if (property_exists($data, 'im') && $data->{'im'} !== null) {
             $values_3 = [];
             foreach ($data->{'im'} as $value_3) {
                 $values_3[] = $value_3;
@@ -76,7 +75,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             $object->setIm($values_3);
             unset($data->{'im'});
         }
-        if (property_exists($data, 'mpim')) {
+        if (property_exists($data, 'mpim') && $data->{'mpim'} !== null) {
             $values_4 = [];
             foreach ($data->{'mpim'} as $value_4) {
                 $values_4[] = $value_4;
@@ -84,7 +83,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             $object->setMpim($values_4);
             unset($data->{'mpim'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $values_5 = [];
             foreach ($data->{'team'} as $value_5) {
                 $values_5[] = $value_5;
@@ -92,7 +91,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             $object->setTeam($values_5);
             unset($data->{'team'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $values_6 = [];
             foreach ($data->{'user'} as $value_6) {
                 $values_6[] = $value_6;

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem0';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0();
         $data = clone $data;
-        if (property_exists($data, 'last_read')) {
+        if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
             $value = $data->{'last_read'};
             if (is_string($data->{'last_read'})) {
                 $value = $data->{'last_read'};
@@ -52,7 +51,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $object->setLastRead($value);
             unset($data->{'last_read'});
         }
-        if (property_exists($data, 'replies')) {
+        if (property_exists($data, 'replies') && $data->{'replies'} !== null) {
             $values = [];
             foreach ($data->{'replies'} as $value_1) {
                 $values[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem', 'json', $context);
@@ -60,27 +59,27 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $object->setReplies($values);
             unset($data->{'replies'});
         }
-        if (property_exists($data, 'reply_count')) {
+        if (property_exists($data, 'reply_count') && $data->{'reply_count'} !== null) {
             $object->setReplyCount($data->{'reply_count'});
             unset($data->{'reply_count'});
         }
-        if (property_exists($data, 'source_team')) {
+        if (property_exists($data, 'source_team') && $data->{'source_team'} !== null) {
             $object->setSourceTeam($data->{'source_team'});
             unset($data->{'source_team'});
         }
-        if (property_exists($data, 'subscribed')) {
+        if (property_exists($data, 'subscribed') && $data->{'subscribed'} !== null) {
             $object->setSubscribed($data->{'subscribed'});
             unset($data->{'subscribed'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
             unset($data->{'team'});
         }
-        if (property_exists($data, 'text')) {
+        if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
             unset($data->{'text'});
         }
-        if (property_exists($data, 'thread_ts')) {
+        if (property_exists($data, 'thread_ts') && $data->{'thread_ts'} !== null) {
             $value_2 = $data->{'thread_ts'};
             if (is_string($data->{'thread_ts'})) {
                 $value_2 = $data->{'thread_ts'};
@@ -88,7 +87,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $object->setThreadTs($value_2);
             unset($data->{'thread_ts'});
         }
-        if (property_exists($data, 'ts')) {
+        if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
             $value_3 = $data->{'ts'};
             if (is_string($data->{'ts'})) {
                 $value_3 = $data->{'ts'};
@@ -96,23 +95,23 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $object->setTs($value_3);
             unset($data->{'ts'});
         }
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
             unset($data->{'type'});
         }
-        if (property_exists($data, 'unread_count')) {
+        if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
             unset($data->{'unread_count'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        if (property_exists($data, 'user_profile')) {
+        if (property_exists($data, 'user_profile') && $data->{'user_profile'} !== null) {
             $object->setUserProfile($this->denormalizer->denormalize($data->{'user_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort', 'json', $context));
             unset($data->{'user_profile'});
         }
-        if (property_exists($data, 'user_team')) {
+        if (property_exists($data, 'user_team') && $data->{'user_team'} !== null) {
             $object->setUserTeam($data->{'user_team'});
             unset($data->{'user_team'});
         }

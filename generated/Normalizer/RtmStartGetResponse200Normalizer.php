@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\RtmStartGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\RtmStartGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmStartGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'bots')) {
+        if (property_exists($data, 'bots') && $data->{'bots'} !== null) {
             $values = [];
             foreach ($data->{'bots'} as $value) {
                 $values[] = $value;
@@ -52,23 +51,23 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setBots($values);
             unset($data->{'bots'});
         }
-        if (property_exists($data, 'cache_ts')) {
+        if (property_exists($data, 'cache_ts') && $data->{'cache_ts'} !== null) {
             $object->setCacheTs($data->{'cache_ts'});
             unset($data->{'cache_ts'});
         }
-        if (property_exists($data, 'cache_ts_version')) {
+        if (property_exists($data, 'cache_ts_version') && $data->{'cache_ts_version'} !== null) {
             $object->setCacheTsVersion($data->{'cache_ts_version'});
             unset($data->{'cache_ts_version'});
         }
-        if (property_exists($data, 'cache_version')) {
+        if (property_exists($data, 'cache_version') && $data->{'cache_version'} !== null) {
             $object->setCacheVersion($data->{'cache_version'});
             unset($data->{'cache_version'});
         }
-        if (property_exists($data, 'can_manage_shared_channels')) {
+        if (property_exists($data, 'can_manage_shared_channels') && $data->{'can_manage_shared_channels'} !== null) {
             $object->setCanManageSharedChannels($data->{'can_manage_shared_channels'});
             unset($data->{'can_manage_shared_channels'});
         }
-        if (property_exists($data, 'channels')) {
+        if (property_exists($data, 'channels') && $data->{'channels'} !== null) {
             $values_1 = [];
             foreach ($data->{'channels'} as $value_1) {
                 $values_1[] = $value_1;
@@ -76,15 +75,15 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setChannels($values_1);
             unset($data->{'channels'});
         }
-        if (property_exists($data, 'dead_pig')) {
+        if (property_exists($data, 'dead_pig') && $data->{'dead_pig'} !== null) {
             $object->setDeadPig($data->{'dead_pig'});
             unset($data->{'dead_pig'});
         }
-        if (property_exists($data, 'dnd')) {
+        if (property_exists($data, 'dnd') && $data->{'dnd'} !== null) {
             $object->setDnd($this->denormalizer->denormalize($data->{'dnd'}, 'JoliCode\\Slack\\Api\\Model\\ObjsDnd', 'json', $context));
             unset($data->{'dnd'});
         }
-        if (property_exists($data, 'groups')) {
+        if (property_exists($data, 'groups') && $data->{'groups'} !== null) {
             $values_2 = [];
             foreach ($data->{'groups'} as $value_2) {
                 $values_2[] = $value_2;
@@ -92,7 +91,7 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setGroups($values_2);
             unset($data->{'groups'});
         }
-        if (property_exists($data, 'ims')) {
+        if (property_exists($data, 'ims') && $data->{'ims'} !== null) {
             $values_3 = [];
             foreach ($data->{'ims'} as $value_3) {
                 $values_3[] = $value_3;
@@ -100,11 +99,11 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setIms($values_3);
             unset($data->{'ims'});
         }
-        if (property_exists($data, 'latest_event_ts')) {
+        if (property_exists($data, 'latest_event_ts') && $data->{'latest_event_ts'} !== null) {
             $object->setLatestEventTs($data->{'latest_event_ts'});
             unset($data->{'latest_event_ts'});
         }
-        if (property_exists($data, 'mpims')) {
+        if (property_exists($data, 'mpims') && $data->{'mpims'} !== null) {
             $values_4 = [];
             foreach ($data->{'mpims'} as $value_4) {
                 $values_4[] = $value_4;
@@ -112,7 +111,7 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setMpims($values_4);
             unset($data->{'mpims'});
         }
-        if (property_exists($data, 'non_threadable_channels')) {
+        if (property_exists($data, 'non_threadable_channels') && $data->{'non_threadable_channels'} !== null) {
             $values_5 = [];
             foreach ($data->{'non_threadable_channels'} as $value_5) {
                 $values_5[] = $value_5;
@@ -120,11 +119,11 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setNonThreadableChannels($values_5);
             unset($data->{'non_threadable_channels'});
         }
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }
-        if (property_exists($data, 'read_only_channels')) {
+        if (property_exists($data, 'read_only_channels') && $data->{'read_only_channels'} !== null) {
             $values_6 = [];
             foreach ($data->{'read_only_channels'} as $value_6) {
                 $values_6[] = $value_6;
@@ -132,19 +131,19 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setReadOnlyChannels($values_6);
             unset($data->{'read_only_channels'});
         }
-        if (property_exists($data, 'self')) {
+        if (property_exists($data, 'self') && $data->{'self'} !== null) {
             $object->setSelf($this->denormalizer->denormalize($data->{'self'}, 'JoliCode\\Slack\\Api\\Model\\RtmStartGetResponse200Self', 'json', $context));
             unset($data->{'self'});
         }
-        if (property_exists($data, 'subteams')) {
+        if (property_exists($data, 'subteams') && $data->{'subteams'} !== null) {
             $object->setSubteams($this->denormalizer->denormalize($data->{'subteams'}, 'JoliCode\\Slack\\Api\\Model\\RtmStartGetResponse200Subteams', 'json', $context));
             unset($data->{'subteams'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
             unset($data->{'team'});
         }
-        if (property_exists($data, 'thread_only_channels')) {
+        if (property_exists($data, 'thread_only_channels') && $data->{'thread_only_channels'} !== null) {
             $values_7 = [];
             foreach ($data->{'thread_only_channels'} as $value_7) {
                 $values_7[] = $value_7;
@@ -152,11 +151,11 @@ class RtmStartGetResponse200Normalizer implements DenormalizerInterface, Normali
             $object->setThreadOnlyChannels($values_7);
             unset($data->{'thread_only_channels'});
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
             unset($data->{'url'});
         }
-        if (property_exists($data, 'users')) {
+        if (property_exists($data, 'users') && $data->{'users'} !== null) {
             $values_8 = [];
             foreach ($data->{'users'} as $value_8) {
                 $values_8[] = $this->denormalizer->denormalize($value_8, 'JoliCode\\Slack\\Api\\Model\\ObjsUser', 'json', $context);

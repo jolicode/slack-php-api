@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,44 +30,44 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsIm;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsIm';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsIm();
         $data = clone $data;
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_im')) {
+        if (property_exists($data, 'is_im') && $data->{'is_im'} !== null) {
             $object->setIsIm($data->{'is_im'});
             unset($data->{'is_im'});
         }
-        if (property_exists($data, 'is_org_shared')) {
+        if (property_exists($data, 'is_org_shared') && $data->{'is_org_shared'} !== null) {
             $object->setIsOrgShared($data->{'is_org_shared'});
             unset($data->{'is_org_shared'});
         }
-        if (property_exists($data, 'is_user_deleted')) {
+        if (property_exists($data, 'is_user_deleted') && $data->{'is_user_deleted'} !== null) {
             $object->setIsUserDeleted($data->{'is_user_deleted'});
             unset($data->{'is_user_deleted'});
         }
-        if (property_exists($data, 'priority')) {
+        if (property_exists($data, 'priority') && $data->{'priority'} !== null) {
             $object->setPriority($data->{'priority'});
             unset($data->{'priority'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }

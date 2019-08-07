@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,24 +30,24 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'has_more')) {
+        if (property_exists($data, 'has_more') && $data->{'has_more'} !== null) {
             $object->setHasMore($data->{'has_more'});
             unset($data->{'has_more'});
         }
-        if (property_exists($data, 'messages')) {
+        if (property_exists($data, 'messages') && $data->{'messages'} !== null) {
             $values = [];
             foreach ($data->{'messages'} as $value) {
                 $values[] = $value;
@@ -56,7 +55,7 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
             $object->setMessages($values);
             unset($data->{'messages'});
         }
-        if (property_exists($data, 'ok')) {
+        if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
             unset($data->{'ok'});
         }

@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,56 +30,56 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsGroup;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsGroup';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsGroup();
         $data = clone $data;
-        if (property_exists($data, 'created')) {
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
             unset($data->{'created'});
         }
-        if (property_exists($data, 'creator')) {
+        if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($data->{'creator'});
             unset($data->{'creator'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_archived')) {
+        if (property_exists($data, 'is_archived') && $data->{'is_archived'} !== null) {
             $object->setIsArchived($data->{'is_archived'});
             unset($data->{'is_archived'});
         }
-        if (property_exists($data, 'is_group')) {
+        if (property_exists($data, 'is_group') && $data->{'is_group'} !== null) {
             $object->setIsGroup($data->{'is_group'});
             unset($data->{'is_group'});
         }
-        if (property_exists($data, 'is_moved')) {
+        if (property_exists($data, 'is_moved') && $data->{'is_moved'} !== null) {
             $object->setIsMoved($data->{'is_moved'});
             unset($data->{'is_moved'});
         }
-        if (property_exists($data, 'is_mpim')) {
+        if (property_exists($data, 'is_mpim') && $data->{'is_mpim'} !== null) {
             $object->setIsMpim($data->{'is_mpim'});
             unset($data->{'is_mpim'});
         }
-        if (property_exists($data, 'is_open')) {
+        if (property_exists($data, 'is_open') && $data->{'is_open'} !== null) {
             $object->setIsOpen($data->{'is_open'});
             unset($data->{'is_open'});
         }
-        if (property_exists($data, 'is_pending_ext_shared')) {
+        if (property_exists($data, 'is_pending_ext_shared') && $data->{'is_pending_ext_shared'} !== null) {
             $object->setIsPendingExtShared($data->{'is_pending_ext_shared'});
             unset($data->{'is_pending_ext_shared'});
         }
-        if (property_exists($data, 'last_read')) {
+        if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
             $value = $data->{'last_read'};
             if (is_string($data->{'last_read'})) {
                 $value = $data->{'last_read'};
@@ -88,11 +87,11 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setLastRead($value);
             unset($data->{'last_read'});
         }
-        if (property_exists($data, 'latest')) {
+        if (property_exists($data, 'latest') && $data->{'latest'} !== null) {
             $object->setLatest($data->{'latest'});
             unset($data->{'latest'});
         }
-        if (property_exists($data, 'members')) {
+        if (property_exists($data, 'members') && $data->{'members'} !== null) {
             $values = [];
             foreach ($data->{'members'} as $value_1) {
                 $values[] = $value_1;
@@ -100,31 +99,31 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setMembers($values);
             unset($data->{'members'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'name_normalized')) {
+        if (property_exists($data, 'name_normalized') && $data->{'name_normalized'} !== null) {
             $object->setNameNormalized($data->{'name_normalized'});
             unset($data->{'name_normalized'});
         }
-        if (property_exists($data, 'priority')) {
+        if (property_exists($data, 'priority') && $data->{'priority'} !== null) {
             $object->setPriority($data->{'priority'});
             unset($data->{'priority'});
         }
-        if (property_exists($data, 'purpose')) {
+        if (property_exists($data, 'purpose') && $data->{'purpose'} !== null) {
             $object->setPurpose($this->denormalizer->denormalize($data->{'purpose'}, 'JoliCode\\Slack\\Api\\Model\\ObjsGroupPurpose', 'json', $context));
             unset($data->{'purpose'});
         }
-        if (property_exists($data, 'topic')) {
+        if (property_exists($data, 'topic') && $data->{'topic'} !== null) {
             $object->setTopic($this->denormalizer->denormalize($data->{'topic'}, 'JoliCode\\Slack\\Api\\Model\\ObjsGroupTopic', 'json', $context));
             unset($data->{'topic'});
         }
-        if (property_exists($data, 'unread_count')) {
+        if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
             unset($data->{'unread_count'});
         }
-        if (property_exists($data, 'unread_count_display')) {
+        if (property_exists($data, 'unread_count_display') && $data->{'unread_count_display'} !== null) {
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
             unset($data->{'unread_count_display'});
         }

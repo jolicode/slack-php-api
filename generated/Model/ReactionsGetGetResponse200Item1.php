@@ -26,7 +26,7 @@ class ReactionsGetGetResponse200Item1 extends \ArrayObject
     protected $type;
 
     /**
-     * @return ObjsFile
+     * @return ObjsFile|null
      */
     public function getFile(): ?ObjsFile
     {
@@ -34,7 +34,7 @@ class ReactionsGetGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile $file
+     * @param ObjsFile|null $file
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class ReactionsGetGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -54,7 +54,7 @@ class ReactionsGetGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class ReactionsGetGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -74,7 +74,7 @@ class ReactionsGetGetResponse200Item1 extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

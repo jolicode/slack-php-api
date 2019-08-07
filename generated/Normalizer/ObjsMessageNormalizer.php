@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,20 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsMessage;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsMessage';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessage();
         $data = clone $data;
-        if (property_exists($data, 'attachments')) {
+        if (property_exists($data, 'attachments') && $data->{'attachments'} !== null) {
             $values = [];
             foreach ($data->{'attachments'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem', 'json', $context);
@@ -52,7 +51,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setAttachments($values);
             unset($data->{'attachments'});
         }
-        if (property_exists($data, 'files')) {
+        if (property_exists($data, 'files') && $data->{'files'} !== null) {
             $values_1 = [];
             foreach ($data->{'files'} as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context);
@@ -60,35 +59,35 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setFiles($values_1);
             unset($data->{'files'});
         }
-        if (property_exists($data, 'bot_id')) {
+        if (property_exists($data, 'bot_id') && $data->{'bot_id'} !== null) {
             $object->setBotId($data->{'bot_id'});
             unset($data->{'bot_id'});
         }
-        if (property_exists($data, 'comment')) {
+        if (property_exists($data, 'comment') && $data->{'comment'} !== null) {
             $object->setComment($this->denormalizer->denormalize($data->{'comment'}, 'JoliCode\\Slack\\Api\\Model\\ObjsComment', 'json', $context));
             unset($data->{'comment'});
         }
-        if (property_exists($data, 'display_as_bot')) {
+        if (property_exists($data, 'display_as_bot') && $data->{'display_as_bot'} !== null) {
             $object->setDisplayAsBot($data->{'display_as_bot'});
             unset($data->{'display_as_bot'});
         }
-        if (property_exists($data, 'file')) {
+        if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
             unset($data->{'file'});
         }
-        if (property_exists($data, 'icons')) {
+        if (property_exists($data, 'icons') && $data->{'icons'} !== null) {
             $object->setIcons($this->denormalizer->denormalize($data->{'icons'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageIcons', 'json', $context));
             unset($data->{'icons'});
         }
-        if (property_exists($data, 'inviter')) {
+        if (property_exists($data, 'inviter') && $data->{'inviter'} !== null) {
             $object->setInviter($data->{'inviter'});
             unset($data->{'inviter'});
         }
-        if (property_exists($data, 'is_intro')) {
+        if (property_exists($data, 'is_intro') && $data->{'is_intro'} !== null) {
             $object->setIsIntro($data->{'is_intro'});
             unset($data->{'is_intro'});
         }
-        if (property_exists($data, 'last_read')) {
+        if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
             $value_2 = $data->{'last_read'};
             if (is_string($data->{'last_read'})) {
                 $value_2 = $data->{'last_read'};
@@ -96,19 +95,19 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setLastRead($value_2);
             unset($data->{'last_read'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'old_name')) {
+        if (property_exists($data, 'old_name') && $data->{'old_name'} !== null) {
             $object->setOldName($data->{'old_name'});
             unset($data->{'old_name'});
         }
-        if (property_exists($data, 'permalink')) {
+        if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
             unset($data->{'permalink'});
         }
-        if (property_exists($data, 'pinned_to')) {
+        if (property_exists($data, 'pinned_to') && $data->{'pinned_to'} !== null) {
             $values_2 = [];
             foreach ($data->{'pinned_to'} as $value_3) {
                 $values_2[] = $value_3;
@@ -116,11 +115,11 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setPinnedTo($values_2);
             unset($data->{'pinned_to'});
         }
-        if (property_exists($data, 'purpose')) {
+        if (property_exists($data, 'purpose') && $data->{'purpose'} !== null) {
             $object->setPurpose($data->{'purpose'});
             unset($data->{'purpose'});
         }
-        if (property_exists($data, 'reactions')) {
+        if (property_exists($data, 'reactions') && $data->{'reactions'} !== null) {
             $values_3 = [];
             foreach ($data->{'reactions'} as $value_4) {
                 $values_3[] = $this->denormalizer->denormalize($value_4, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
@@ -128,7 +127,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setReactions($values_3);
             unset($data->{'reactions'});
         }
-        if (property_exists($data, 'replies')) {
+        if (property_exists($data, 'replies') && $data->{'replies'} !== null) {
             $values_4 = [];
             foreach ($data->{'replies'} as $value_5) {
                 $values_4[] = $this->denormalizer->denormalize($value_5, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageRepliesItem', 'json', $context);
@@ -136,31 +135,31 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setReplies($values_4);
             unset($data->{'replies'});
         }
-        if (property_exists($data, 'reply_count')) {
+        if (property_exists($data, 'reply_count') && $data->{'reply_count'} !== null) {
             $object->setReplyCount($data->{'reply_count'});
             unset($data->{'reply_count'});
         }
-        if (property_exists($data, 'source_team')) {
+        if (property_exists($data, 'source_team') && $data->{'source_team'} !== null) {
             $object->setSourceTeam($data->{'source_team'});
             unset($data->{'source_team'});
         }
-        if (property_exists($data, 'subscribed')) {
+        if (property_exists($data, 'subscribed') && $data->{'subscribed'} !== null) {
             $object->setSubscribed($data->{'subscribed'});
             unset($data->{'subscribed'});
         }
-        if (property_exists($data, 'subtype')) {
+        if (property_exists($data, 'subtype') && $data->{'subtype'} !== null) {
             $object->setSubtype($data->{'subtype'});
             unset($data->{'subtype'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
             unset($data->{'team'});
         }
-        if (property_exists($data, 'text')) {
+        if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
             unset($data->{'text'});
         }
-        if (property_exists($data, 'thread_ts')) {
+        if (property_exists($data, 'thread_ts') && $data->{'thread_ts'} !== null) {
             $value_6 = $data->{'thread_ts'};
             if (is_string($data->{'thread_ts'})) {
                 $value_6 = $data->{'thread_ts'};
@@ -168,11 +167,11 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setThreadTs($value_6);
             unset($data->{'thread_ts'});
         }
-        if (property_exists($data, 'topic')) {
+        if (property_exists($data, 'topic') && $data->{'topic'} !== null) {
             $object->setTopic($data->{'topic'});
             unset($data->{'topic'});
         }
-        if (property_exists($data, 'ts')) {
+        if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
             $value_7 = $data->{'ts'};
             if (is_string($data->{'ts'})) {
                 $value_7 = $data->{'ts'};
@@ -180,31 +179,31 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setTs($value_7);
             unset($data->{'ts'});
         }
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
             unset($data->{'type'});
         }
-        if (property_exists($data, 'unread_count')) {
+        if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
             unset($data->{'unread_count'});
         }
-        if (property_exists($data, 'upload')) {
+        if (property_exists($data, 'upload') && $data->{'upload'} !== null) {
             $object->setUpload($data->{'upload'});
             unset($data->{'upload'});
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
-        if (property_exists($data, 'user_profile')) {
+        if (property_exists($data, 'user_profile') && $data->{'user_profile'} !== null) {
             $object->setUserProfile($this->denormalizer->denormalize($data->{'user_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort', 'json', $context));
             unset($data->{'user_profile'});
         }
-        if (property_exists($data, 'user_team')) {
+        if (property_exists($data, 'user_team') && $data->{'user_team'} !== null) {
             $object->setUserTeam($data->{'user_team'});
             unset($data->{'user_team'});
         }
-        if (property_exists($data, 'username')) {
+        if (property_exists($data, 'username') && $data->{'username'} !== null) {
             $object->setUsername($data->{'username'});
             unset($data->{'username'});
         }

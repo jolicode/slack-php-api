@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,76 +30,76 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsTeam;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsTeam';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeam();
         $data = clone $data;
-        if (property_exists($data, 'avatar_base_url')) {
+        if (property_exists($data, 'avatar_base_url') && $data->{'avatar_base_url'} !== null) {
             $object->setAvatarBaseUrl($data->{'avatar_base_url'});
             unset($data->{'avatar_base_url'});
         }
-        if (property_exists($data, 'domain')) {
+        if (property_exists($data, 'domain') && $data->{'domain'} !== null) {
             $object->setDomain($data->{'domain'});
             unset($data->{'domain'});
         }
-        if (property_exists($data, 'email_domain')) {
+        if (property_exists($data, 'email_domain') && $data->{'email_domain'} !== null) {
             $object->setEmailDomain($data->{'email_domain'});
             unset($data->{'email_domain'});
         }
-        if (property_exists($data, 'enterprise_id')) {
+        if (property_exists($data, 'enterprise_id') && $data->{'enterprise_id'} !== null) {
             $object->setEnterpriseId($data->{'enterprise_id'});
             unset($data->{'enterprise_id'});
         }
-        if (property_exists($data, 'enterprise_name')) {
+        if (property_exists($data, 'enterprise_name') && $data->{'enterprise_name'} !== null) {
             $object->setEnterpriseName($data->{'enterprise_name'});
             unset($data->{'enterprise_name'});
         }
-        if (property_exists($data, 'has_compliance_export')) {
+        if (property_exists($data, 'has_compliance_export') && $data->{'has_compliance_export'} !== null) {
             $object->setHasComplianceExport($data->{'has_compliance_export'});
             unset($data->{'has_compliance_export'});
         }
-        if (property_exists($data, 'icon')) {
+        if (property_exists($data, 'icon') && $data->{'icon'} !== null) {
             $object->setIcon($this->denormalizer->denormalize($data->{'icon'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeamIcon', 'json', $context));
             unset($data->{'icon'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'messages_count')) {
+        if (property_exists($data, 'messages_count') && $data->{'messages_count'} !== null) {
             $object->setMessagesCount($data->{'messages_count'});
             unset($data->{'messages_count'});
         }
-        if (property_exists($data, 'msg_edit_window_mins')) {
+        if (property_exists($data, 'msg_edit_window_mins') && $data->{'msg_edit_window_mins'} !== null) {
             $object->setMsgEditWindowMins($data->{'msg_edit_window_mins'});
             unset($data->{'msg_edit_window_mins'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'over_integrations_limit')) {
+        if (property_exists($data, 'over_integrations_limit') && $data->{'over_integrations_limit'} !== null) {
             $object->setOverIntegrationsLimit($data->{'over_integrations_limit'});
             unset($data->{'over_integrations_limit'});
         }
-        if (property_exists($data, 'over_storage_limit')) {
+        if (property_exists($data, 'over_storage_limit') && $data->{'over_storage_limit'} !== null) {
             $object->setOverStorageLimit($data->{'over_storage_limit'});
             unset($data->{'over_storage_limit'});
         }
-        if (property_exists($data, 'plan')) {
+        if (property_exists($data, 'plan') && $data->{'plan'} !== null) {
             $object->setPlan($data->{'plan'});
             unset($data->{'plan'});
         }
-        if (property_exists($data, 'prefs')) {
+        if (property_exists($data, 'prefs') && $data->{'prefs'} !== null) {
             $object->setPrefs($this->denormalizer->denormalize($data->{'prefs'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefs', 'json', $context));
             unset($data->{'prefs'});
         }

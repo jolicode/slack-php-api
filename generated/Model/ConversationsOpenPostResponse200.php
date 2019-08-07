@@ -30,7 +30,7 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAlreadyOpen(): ?bool
     {
@@ -38,7 +38,7 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $alreadyOpen
+     * @param bool|null $alreadyOpen
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getNoOp(): ?bool
     {
@@ -78,7 +78,7 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $noOp
+     * @param bool|null $noOp
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -98,7 +98,7 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

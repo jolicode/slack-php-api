@@ -50,7 +50,7 @@ class ObjsTeamProfileField extends \ArrayObject
     protected $type;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFieldName(): ?string
     {
@@ -58,7 +58,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string $fieldName
+     * @param string|null $fieldName
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getHint(): ?string
     {
@@ -78,7 +78,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string $hint
+     * @param string|null $hint
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -98,7 +98,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -110,7 +110,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsHidden(): ?bool
     {
@@ -118,7 +118,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param bool $isHidden
+     * @param bool|null $isHidden
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLabel(): ?string
     {
@@ -138,7 +138,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string $label
+     * @param string|null $label
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getOptions(): ?array
     {
@@ -158,7 +158,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string[] $options
+     * @param string[]|null $options
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getOrdering(): ?float
     {
@@ -178,7 +178,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param float $ordering
+     * @param float|null $ordering
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPossibleValues(): ?array
     {
@@ -198,7 +198,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string[] $possibleValues
+     * @param string[]|null $possibleValues
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -218,7 +218,7 @@ class ObjsTeamProfileField extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */

@@ -22,7 +22,7 @@ class ImListGetResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return ObjsIm[]
+     * @return ObjsIm[]|null
      */
     public function getIms(): ?array
     {
@@ -30,7 +30,7 @@ class ImListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsIm[] $ims
+     * @param ObjsIm[]|null $ims
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ImListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class ImListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

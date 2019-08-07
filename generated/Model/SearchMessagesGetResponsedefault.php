@@ -18,7 +18,7 @@ class SearchMessagesGetResponsedefault extends \ArrayObject
     protected $ok;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -26,7 +26,7 @@ class SearchMessagesGetResponsedefault extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

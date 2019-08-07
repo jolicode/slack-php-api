@@ -22,7 +22,7 @@ class PinsListGetResponse200Item0 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]
+     * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]|null
      */
     public function getItems()
     {
@@ -30,7 +30,7 @@ class PinsListGetResponse200Item0 extends \ArrayObject
     }
 
     /**
-     * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[] $items
+     * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]|null $items
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class PinsListGetResponse200Item0 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class PinsListGetResponse200Item0 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

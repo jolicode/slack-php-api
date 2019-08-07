@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,44 +30,44 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200Bot';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot();
         $data = clone $data;
-        if (property_exists($data, 'app_id')) {
+        if (property_exists($data, 'app_id') && $data->{'app_id'} !== null) {
             $object->setAppId($data->{'app_id'});
             unset($data->{'app_id'});
         }
-        if (property_exists($data, 'deleted')) {
+        if (property_exists($data, 'deleted') && $data->{'deleted'} !== null) {
             $object->setDeleted($data->{'deleted'});
             unset($data->{'deleted'});
         }
-        if (property_exists($data, 'icons')) {
+        if (property_exists($data, 'icons') && $data->{'icons'} !== null) {
             $object->setIcons($this->denormalizer->denormalize($data->{'icons'}, 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200BotIcons', 'json', $context));
             unset($data->{'icons'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'updated')) {
+        if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
             $object->setUpdated($data->{'updated'});
             unset($data->{'updated'});
         }
-        if (property_exists($data, 'user_id')) {
+        if (property_exists($data, 'user_id') && $data->{'user_id'} !== null) {
             $object->setUserId($data->{'user_id'});
             unset($data->{'user_id'});
         }

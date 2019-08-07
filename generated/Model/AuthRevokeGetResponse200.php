@@ -22,7 +22,7 @@ class AuthRevokeGetResponse200 extends \ArrayObject
     protected $revoked;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class AuthRevokeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class AuthRevokeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRevoked(): ?bool
     {
@@ -50,7 +50,7 @@ class AuthRevokeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $revoked
+     * @param bool|null $revoked
      *
      * @return self
      */

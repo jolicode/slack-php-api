@@ -22,7 +22,7 @@ class ChannelsListGetResponse200 extends \ArrayObject
     protected $ok;
 
     /**
-     * @return ObjsChannel[]
+     * @return ObjsChannel[]|null
      */
     public function getChannels(): ?array
     {
@@ -30,7 +30,7 @@ class ChannelsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsChannel[] $channels
+     * @param ObjsChannel[]|null $channels
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class ChannelsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -50,7 +50,7 @@ class ChannelsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */

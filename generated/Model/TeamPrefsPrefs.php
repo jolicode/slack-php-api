@@ -290,7 +290,7 @@ class TeamPrefsPrefs extends \ArrayObject
     protected $whoHasTeamVisibility;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllUsersCanPurchase(): ?bool
     {
@@ -298,7 +298,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allUsersCanPurchase
+     * @param bool|null $allUsersCanPurchase
      *
      * @return self
      */
@@ -310,7 +310,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowCalls(): ?bool
     {
@@ -318,7 +318,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowCalls
+     * @param bool|null $allowCalls
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowCallsInteractiveScreenSharing(): ?bool
     {
@@ -338,7 +338,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowCallsInteractiveScreenSharing
+     * @param bool|null $allowCallsInteractiveScreenSharing
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowMessageDeletion(): ?bool
     {
@@ -358,7 +358,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowMessageDeletion
+     * @param bool|null $allowMessageDeletion
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowRetentionOverride(): ?bool
     {
@@ -378,7 +378,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowRetentionOverride
+     * @param bool|null $allowRetentionOverride
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowSharedChannelPermsOverride(): ?bool
     {
@@ -398,7 +398,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $allowSharedChannelPermsOverride
+     * @param bool|null $allowSharedChannelPermsOverride
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAppWhitelistEnabled(): ?bool
     {
@@ -418,7 +418,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $appWhitelistEnabled
+     * @param bool|null $appWhitelistEnabled
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthMode(): ?string
     {
@@ -438,7 +438,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $authMode
+     * @param string|null $authMode
      *
      * @return self
      */
@@ -450,7 +450,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCallingAppName(): ?string
     {
@@ -458,7 +458,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $callingAppName
+     * @param string|null $callingAppName
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getCanReceiveSharedChannelsInvites(): ?bool
     {
@@ -478,7 +478,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $canReceiveSharedChannelsInvites
+     * @param bool|null $canReceiveSharedChannelsInvites
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getComplianceExportStart(): ?int
     {
@@ -498,7 +498,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $complianceExportStart
+     * @param int|null $complianceExportStart
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getCustomStatusDefaultEmoji(): ?string
     {
@@ -518,7 +518,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $customStatusDefaultEmoji
+     * @param string|null $customStatusDefaultEmoji
      *
      * @return self
      */
@@ -530,7 +530,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string[][]
+     * @return string[][]|null
      */
     public function getCustomStatusPresets(): ?array
     {
@@ -538,7 +538,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string[][] $customStatusPresets
+     * @param string[][]|null $customStatusPresets
      *
      * @return self
      */
@@ -550,7 +550,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getCustomTos(): ?bool
     {
@@ -558,7 +558,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $customTos
+     * @param bool|null $customTos
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getDefaultChannels(): ?array
     {
@@ -578,7 +578,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string[] $defaultChannels
+     * @param string[]|null $defaultChannels
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getDefaultRxns(): ?array
     {
@@ -598,7 +598,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string[] $defaultRxns
+     * @param string[]|null $defaultRxns
      *
      * @return self
      */
@@ -610,7 +610,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisableEmailIngestion(): ?bool
     {
@@ -618,7 +618,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $disableEmailIngestion
+     * @param bool|null $disableEmailIngestion
      *
      * @return self
      */
@@ -630,7 +630,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisableFileDeleting(): ?bool
     {
@@ -638,7 +638,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $disableFileDeleting
+     * @param bool|null $disableFileDeleting
      *
      * @return self
      */
@@ -650,7 +650,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisableFileEditing(): ?bool
     {
@@ -658,7 +658,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $disableFileEditing
+     * @param bool|null $disableFileEditing
      *
      * @return self
      */
@@ -670,7 +670,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDisableFileUploads(): ?string
     {
@@ -678,7 +678,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $disableFileUploads
+     * @param string|null $disableFileUploads
      *
      * @return self
      */
@@ -690,7 +690,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisallowPublicFileUrls(): ?bool
     {
@@ -698,7 +698,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $disallowPublicFileUrls
+     * @param bool|null $disallowPublicFileUrls
      *
      * @return self
      */
@@ -710,7 +710,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDiscoverable(): ?string
     {
@@ -718,7 +718,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $discoverable
+     * @param string|null $discoverable
      *
      * @return self
      */
@@ -730,7 +730,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisplayEmailAddresses(): ?bool
     {
@@ -738,7 +738,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $displayEmailAddresses
+     * @param bool|null $displayEmailAddresses
      *
      * @return self
      */
@@ -750,7 +750,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisplayRealNames(): ?bool
     {
@@ -758,7 +758,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $displayRealNames
+     * @param bool|null $displayRealNames
      *
      * @return self
      */
@@ -770,7 +770,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getDmRetentionDuration(): ?int
     {
@@ -778,7 +778,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $dmRetentionDuration
+     * @param int|null $dmRetentionDuration
      *
      * @return self
      */
@@ -790,7 +790,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getDmRetentionType(): ?int
     {
@@ -798,7 +798,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $dmRetentionType
+     * @param int|null $dmRetentionType
      *
      * @return self
      */
@@ -810,7 +810,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDndEnabled(): ?bool
     {
@@ -818,7 +818,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $dndEnabled
+     * @param bool|null $dndEnabled
      *
      * @return self
      */
@@ -830,7 +830,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDndEndHour(): ?string
     {
@@ -838,7 +838,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $dndEndHour
+     * @param string|null $dndEndHour
      *
      * @return self
      */
@@ -850,7 +850,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDndStartHour(): ?string
     {
@@ -858,7 +858,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $dndStartHour
+     * @param string|null $dndStartHour
      *
      * @return self
      */
@@ -870,7 +870,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getEnableSharedChannels(): ?int
     {
@@ -878,7 +878,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $enableSharedChannels
+     * @param int|null $enableSharedChannels
      *
      * @return self
      */
@@ -890,7 +890,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getEnterpriseDefaultChannels(): ?array
     {
@@ -898,7 +898,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $enterpriseDefaultChannels
+     * @param mixed[]|null $enterpriseDefaultChannels
      *
      * @return self
      */
@@ -910,7 +910,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
     public function getEnterpriseMandatoryChannels(): ?array
     {
@@ -918,7 +918,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param mixed[] $enterpriseMandatoryChannels
+     * @param mixed[]|null $enterpriseMandatoryChannels
      *
      * @return self
      */
@@ -930,7 +930,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getEnterpriseMdmDateEnabled(): ?int
     {
@@ -938,7 +938,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $enterpriseMdmDateEnabled
+     * @param int|null $enterpriseMdmDateEnabled
      *
      * @return self
      */
@@ -950,7 +950,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getEnterpriseMdmLevel(): ?int
     {
@@ -958,7 +958,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $enterpriseMdmLevel
+     * @param int|null $enterpriseMdmLevel
      *
      * @return self
      */
@@ -970,7 +970,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return TeamPrefsPrefsEnterpriseTeamCreationRequest
+     * @return TeamPrefsPrefsEnterpriseTeamCreationRequest|null
      */
     public function getEnterpriseTeamCreationRequest(): ?TeamPrefsPrefsEnterpriseTeamCreationRequest
     {
@@ -978,7 +978,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param TeamPrefsPrefsEnterpriseTeamCreationRequest $enterpriseTeamCreationRequest
+     * @param TeamPrefsPrefsEnterpriseTeamCreationRequest|null $enterpriseTeamCreationRequest
      *
      * @return self
      */
@@ -990,7 +990,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getFileLimitWhitelisted(): ?bool
     {
@@ -998,7 +998,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $fileLimitWhitelisted
+     * @param bool|null $fileLimitWhitelisted
      *
      * @return self
      */
@@ -1010,7 +1010,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getFileRetentionDuration(): ?int
     {
@@ -1018,7 +1018,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $fileRetentionDuration
+     * @param int|null $fileRetentionDuration
      *
      * @return self
      */
@@ -1030,7 +1030,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getFileRetentionType(): ?int
     {
@@ -1038,7 +1038,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $fileRetentionType
+     * @param int|null $fileRetentionType
      *
      * @return self
      */
@@ -1050,7 +1050,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getGdriveEnabledTeam(): ?bool
     {
@@ -1058,7 +1058,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $gdriveEnabledTeam
+     * @param bool|null $gdriveEnabledTeam
      *
      * @return self
      */
@@ -1070,7 +1070,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGroupRetentionDuration(): ?int
     {
@@ -1078,7 +1078,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $groupRetentionDuration
+     * @param int|null $groupRetentionDuration
      *
      * @return self
      */
@@ -1090,7 +1090,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getGroupRetentionType(): ?int
     {
@@ -1098,7 +1098,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $groupRetentionType
+     * @param int|null $groupRetentionType
      *
      * @return self
      */
@@ -1110,7 +1110,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHideReferers(): ?bool
     {
@@ -1118,7 +1118,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $hideReferers
+     * @param bool|null $hideReferers
      *
      * @return self
      */
@@ -1130,7 +1130,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getInvitesLimit(): ?bool
     {
@@ -1138,7 +1138,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $invitesLimit
+     * @param bool|null $invitesLimit
      *
      * @return self
      */
@@ -1150,7 +1150,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getInvitesOnlyAdmins(): ?bool
     {
@@ -1158,7 +1158,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $invitesOnlyAdmins
+     * @param bool|null $invitesOnlyAdmins
      *
      * @return self
      */
@@ -1170,7 +1170,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLocale(): ?string
     {
@@ -1178,7 +1178,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $locale
+     * @param string|null $locale
      *
      * @return self
      */
@@ -1190,7 +1190,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getLoudChannelMentionsLimit(): ?int
     {
@@ -1198,7 +1198,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $loudChannelMentionsLimit
+     * @param int|null $loudChannelMentionsLimit
      *
      * @return self
      */
@@ -1210,7 +1210,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getMsgEditWindowMins(): ?int
     {
@@ -1218,7 +1218,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $msgEditWindowMins
+     * @param int|null $msgEditWindowMins
      *
      * @return self
      */
@@ -1230,7 +1230,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getRetentionDuration(): ?int
     {
@@ -1238,7 +1238,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $retentionDuration
+     * @param int|null $retentionDuration
      *
      * @return self
      */
@@ -1250,7 +1250,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getRetentionType(): ?int
     {
@@ -1258,7 +1258,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param int $retentionType
+     * @param int|null $retentionType
      *
      * @return self
      */
@@ -1270,7 +1270,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getShowJoinLeave(): ?bool
     {
@@ -1278,7 +1278,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $showJoinLeave
+     * @param bool|null $showJoinLeave
      *
      * @return self
      */
@@ -1290,7 +1290,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getUsesCustomizedCustomStatusPresets(): ?bool
     {
@@ -1298,7 +1298,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param bool $usesCustomizedCustomStatusPresets
+     * @param bool|null $usesCustomizedCustomStatusPresets
      *
      * @return self
      */
@@ -1310,7 +1310,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWarnBeforeAtChannel(): ?string
     {
@@ -1318,7 +1318,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $warnBeforeAtChannel
+     * @param string|null $warnBeforeAtChannel
      *
      * @return self
      */
@@ -1330,7 +1330,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanArchiveChannels(): ?string
     {
@@ -1338,7 +1338,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanArchiveChannels
+     * @param string|null $whoCanArchiveChannels
      *
      * @return self
      */
@@ -1350,7 +1350,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanAtChannel(): ?string
     {
@@ -1358,7 +1358,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanAtChannel
+     * @param string|null $whoCanAtChannel
      *
      * @return self
      */
@@ -1370,7 +1370,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanAtEveryone(): ?string
     {
@@ -1378,7 +1378,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanAtEveryone
+     * @param string|null $whoCanAtEveryone
      *
      * @return self
      */
@@ -1390,7 +1390,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanChangeTeamProfile(): ?string
     {
@@ -1398,7 +1398,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanChangeTeamProfile
+     * @param string|null $whoCanChangeTeamProfile
      *
      * @return self
      */
@@ -1410,7 +1410,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanCreateChannels(): ?string
     {
@@ -1418,7 +1418,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanCreateChannels
+     * @param string|null $whoCanCreateChannels
      *
      * @return self
      */
@@ -1430,7 +1430,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanCreateDeleteUserGroups(): ?string
     {
@@ -1438,7 +1438,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanCreateDeleteUserGroups
+     * @param string|null $whoCanCreateDeleteUserGroups
      *
      * @return self
      */
@@ -1450,7 +1450,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanCreateGroups(): ?string
     {
@@ -1458,7 +1458,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanCreateGroups
+     * @param string|null $whoCanCreateGroups
      *
      * @return self
      */
@@ -1470,7 +1470,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanCreateSharedChannels(): ?string
     {
@@ -1478,7 +1478,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanCreateSharedChannels
+     * @param string|null $whoCanCreateSharedChannels
      *
      * @return self
      */
@@ -1490,7 +1490,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanEditUserGroups(): ?string
     {
@@ -1498,7 +1498,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanEditUserGroups
+     * @param string|null $whoCanEditUserGroups
      *
      * @return self
      */
@@ -1510,7 +1510,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanKickChannels(): ?string
     {
@@ -1518,7 +1518,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanKickChannels
+     * @param string|null $whoCanKickChannels
      *
      * @return self
      */
@@ -1530,7 +1530,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanKickGroups(): ?string
     {
@@ -1538,7 +1538,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanKickGroups
+     * @param string|null $whoCanKickGroups
      *
      * @return self
      */
@@ -1550,7 +1550,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return TeamPrefsPrefsWhoCanManageGuests
+     * @return TeamPrefsPrefsWhoCanManageGuests|null
      */
     public function getWhoCanManageGuests(): ?TeamPrefsPrefsWhoCanManageGuests
     {
@@ -1558,7 +1558,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param TeamPrefsPrefsWhoCanManageGuests $whoCanManageGuests
+     * @param TeamPrefsPrefsWhoCanManageGuests|null $whoCanManageGuests
      *
      * @return self
      */
@@ -1570,7 +1570,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return TeamPrefsPrefsWhoCanManageIntegrations
+     * @return TeamPrefsPrefsWhoCanManageIntegrations|null
      */
     public function getWhoCanManageIntegrations(): ?TeamPrefsPrefsWhoCanManageIntegrations
     {
@@ -1578,7 +1578,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param TeamPrefsPrefsWhoCanManageIntegrations $whoCanManageIntegrations
+     * @param TeamPrefsPrefsWhoCanManageIntegrations|null $whoCanManageIntegrations
      *
      * @return self
      */
@@ -1590,7 +1590,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return TeamPrefsPrefsWhoCanManageSharedChannels
+     * @return TeamPrefsPrefsWhoCanManageSharedChannels|null
      */
     public function getWhoCanManageSharedChannels(): ?TeamPrefsPrefsWhoCanManageSharedChannels
     {
@@ -1598,7 +1598,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param TeamPrefsPrefsWhoCanManageSharedChannels $whoCanManageSharedChannels
+     * @param TeamPrefsPrefsWhoCanManageSharedChannels|null $whoCanManageSharedChannels
      *
      * @return self
      */
@@ -1610,7 +1610,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoCanPostGeneral(): ?string
     {
@@ -1618,7 +1618,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoCanPostGeneral
+     * @param string|null $whoCanPostGeneral
      *
      * @return self
      */
@@ -1630,7 +1630,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return TeamPrefsPrefsWhoCanPostInSharedChannels
+     * @return TeamPrefsPrefsWhoCanPostInSharedChannels|null
      */
     public function getWhoCanPostInSharedChannels(): ?TeamPrefsPrefsWhoCanPostInSharedChannels
     {
@@ -1638,7 +1638,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param TeamPrefsPrefsWhoCanPostInSharedChannels $whoCanPostInSharedChannels
+     * @param TeamPrefsPrefsWhoCanPostInSharedChannels|null $whoCanPostInSharedChannels
      *
      * @return self
      */
@@ -1650,7 +1650,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getWhoHasTeamVisibility(): ?string
     {
@@ -1658,7 +1658,7 @@ class TeamPrefsPrefs extends \ArrayObject
     }
 
     /**
-     * @param string $whoHasTeamVisibility
+     * @param string|null $whoHasTeamVisibility
      *
      * @return self
      */

@@ -42,7 +42,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     protected $user;
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getAppHome(): ?array
     {
@@ -50,7 +50,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $appHome
+     * @param string[]|null $appHome
      *
      * @return self
      */
@@ -62,7 +62,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getChannel(): ?array
     {
@@ -70,7 +70,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $channel
+     * @param string[]|null $channel
      *
      * @return self
      */
@@ -82,7 +82,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getGroup(): ?array
     {
@@ -90,7 +90,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $group
+     * @param string[]|null $group
      *
      * @return self
      */
@@ -102,7 +102,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getIm(): ?array
     {
@@ -110,7 +110,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $im
+     * @param string[]|null $im
      *
      * @return self
      */
@@ -122,7 +122,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getMpim(): ?array
     {
@@ -130,7 +130,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $mpim
+     * @param string[]|null $mpim
      *
      * @return self
      */
@@ -142,7 +142,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getTeam(): ?array
     {
@@ -150,7 +150,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $team
+     * @param string[]|null $team
      *
      * @return self
      */
@@ -162,7 +162,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getUser(): ?array
     {
@@ -170,7 +170,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[] $user
+     * @param string[]|null $user
      *
      * @return self
      */

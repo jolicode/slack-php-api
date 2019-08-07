@@ -18,7 +18,7 @@ class ObjsMessageIcons extends \ArrayObject
     protected $emoji;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmoji(): ?string
     {
@@ -26,7 +26,7 @@ class ObjsMessageIcons extends \ArrayObject
     }
 
     /**
-     * @param string $emoji
+     * @param string|null $emoji
      *
      * @return self
      */

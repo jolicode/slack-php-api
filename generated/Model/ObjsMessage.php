@@ -146,7 +146,7 @@ class ObjsMessage extends \ArrayObject
     protected $username;
 
     /**
-     * @return ObjsMessageAttachmentsItem[]
+     * @return ObjsMessageAttachmentsItem[]|null
      */
     public function getAttachments(): ?array
     {
@@ -154,7 +154,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageAttachmentsItem[] $attachments
+     * @param ObjsMessageAttachmentsItem[]|null $attachments
      *
      * @return self
      */
@@ -166,7 +166,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsFile[]
+     * @return ObjsFile[]|null
      */
     public function getFiles(): ?array
     {
@@ -174,7 +174,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile[] $files
+     * @param ObjsFile[]|null $files
      *
      * @return self
      */
@@ -206,7 +206,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsComment
+     * @return ObjsComment|null
      */
     public function getComment(): ?ObjsComment
     {
@@ -214,7 +214,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsComment $comment
+     * @param ObjsComment|null $comment
      *
      * @return self
      */
@@ -226,7 +226,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDisplayAsBot(): ?bool
     {
@@ -234,7 +234,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param bool $displayAsBot
+     * @param bool|null $displayAsBot
      *
      * @return self
      */
@@ -246,7 +246,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsFile
+     * @return ObjsFile|null
      */
     public function getFile(): ?ObjsFile
     {
@@ -254,7 +254,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsFile $file
+     * @param ObjsFile|null $file
      *
      * @return self
      */
@@ -266,7 +266,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessageIcons
+     * @return ObjsMessageIcons|null
      */
     public function getIcons(): ?ObjsMessageIcons
     {
@@ -274,7 +274,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageIcons $icons
+     * @param ObjsMessageIcons|null $icons
      *
      * @return self
      */
@@ -286,7 +286,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getInviter(): ?string
     {
@@ -294,7 +294,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $inviter
+     * @param string|null $inviter
      *
      * @return self
      */
@@ -306,7 +306,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsIntro(): ?bool
     {
@@ -314,7 +314,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param bool $isIntro
+     * @param bool|null $isIntro
      *
      * @return self
      */
@@ -326,7 +326,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLastRead()
     {
@@ -334,7 +334,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $lastRead
+     * @param string|null $lastRead
      *
      * @return self
      */
@@ -346,7 +346,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -354,7 +354,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -366,7 +366,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getOldName(): ?string
     {
@@ -374,7 +374,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $oldName
+     * @param string|null $oldName
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPermalink(): ?string
     {
@@ -394,7 +394,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $permalink
+     * @param string|null $permalink
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
     public function getPinnedTo(): ?array
     {
@@ -414,7 +414,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string[] $pinnedTo
+     * @param string[]|null $pinnedTo
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPurpose(): ?string
     {
@@ -434,7 +434,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $purpose
+     * @param string|null $purpose
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsReaction[]
+     * @return ObjsReaction[]|null
      */
     public function getReactions(): ?array
     {
@@ -454,7 +454,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsReaction[] $reactions
+     * @param ObjsReaction[]|null $reactions
      *
      * @return self
      */
@@ -466,7 +466,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessageRepliesItem[]
+     * @return ObjsMessageRepliesItem[]|null
      */
     public function getReplies(): ?array
     {
@@ -474,7 +474,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageRepliesItem[] $replies
+     * @param ObjsMessageRepliesItem[]|null $replies
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getReplyCount(): ?int
     {
@@ -494,7 +494,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param int $replyCount
+     * @param int|null $replyCount
      *
      * @return self
      */
@@ -506,7 +506,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSourceTeam(): ?string
     {
@@ -514,7 +514,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $sourceTeam
+     * @param string|null $sourceTeam
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getSubscribed(): ?bool
     {
@@ -534,7 +534,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param bool $subscribed
+     * @param bool|null $subscribed
      *
      * @return self
      */
@@ -546,7 +546,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSubtype(): ?string
     {
@@ -554,7 +554,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $subtype
+     * @param string|null $subtype
      *
      * @return self
      */
@@ -566,7 +566,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeam(): ?string
     {
@@ -574,7 +574,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $team
+     * @param string|null $team
      *
      * @return self
      */
@@ -586,7 +586,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getText(): ?string
     {
@@ -594,7 +594,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $text
+     * @param string|null $text
      *
      * @return self
      */
@@ -606,7 +606,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getThreadTs()
     {
@@ -614,7 +614,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $threadTs
+     * @param string|null $threadTs
      *
      * @return self
      */
@@ -626,7 +626,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTopic(): ?string
     {
@@ -634,7 +634,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $topic
+     * @param string|null $topic
      *
      * @return self
      */
@@ -646,7 +646,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTs()
     {
@@ -654,7 +654,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $ts
+     * @param string|null $ts
      *
      * @return self
      */
@@ -666,7 +666,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getType(): ?string
     {
@@ -674,7 +674,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
@@ -686,7 +686,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getUnreadCount(): ?int
     {
@@ -694,7 +694,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param int $unreadCount
+     * @param int|null $unreadCount
      *
      * @return self
      */
@@ -706,7 +706,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getUpload(): ?bool
     {
@@ -714,7 +714,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param bool $upload
+     * @param bool|null $upload
      *
      * @return self
      */
@@ -726,7 +726,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUser(): ?string
     {
@@ -734,7 +734,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $user
+     * @param string|null $user
      *
      * @return self
      */
@@ -746,7 +746,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsUserProfileShort
+     * @return ObjsUserProfileShort|null
      */
     public function getUserProfile(): ?ObjsUserProfileShort
     {
@@ -754,7 +754,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param ObjsUserProfileShort $userProfile
+     * @param ObjsUserProfileShort|null $userProfile
      *
      * @return self
      */
@@ -766,7 +766,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUserTeam(): ?string
     {
@@ -774,7 +774,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $userTeam
+     * @param string|null $userTeam
      *
      * @return self
      */
@@ -786,7 +786,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getUsername(): ?string
     {
@@ -794,7 +794,7 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @param string $username
+     * @param string|null $username
      *
      * @return self
      */

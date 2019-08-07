@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,40 +30,40 @@ class ObjsUserProfileShortestNormalizer implements DenormalizerInterface, Normal
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsUserProfileShortest;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShortest';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUserProfileShortest();
         $data = clone $data;
-        if (property_exists($data, 'avatar_hash')) {
+        if (property_exists($data, 'avatar_hash') && $data->{'avatar_hash'} !== null) {
             $object->setAvatarHash($data->{'avatar_hash'});
             unset($data->{'avatar_hash'});
         }
-        if (property_exists($data, 'display_name')) {
+        if (property_exists($data, 'display_name') && $data->{'display_name'} !== null) {
             $object->setDisplayName($data->{'display_name'});
             unset($data->{'display_name'});
         }
-        if (property_exists($data, 'first_name')) {
+        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
             $object->setFirstName($data->{'first_name'});
             unset($data->{'first_name'});
         }
-        if (property_exists($data, 'image_72')) {
+        if (property_exists($data, 'image_72') && $data->{'image_72'} !== null) {
             $object->setImage72($data->{'image_72'});
             unset($data->{'image_72'});
         }
-        if (property_exists($data, 'real_name')) {
+        if (property_exists($data, 'real_name') && $data->{'real_name'} !== null) {
             $object->setRealName($data->{'real_name'});
             unset($data->{'real_name'});
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
             unset($data->{'team'});
         }

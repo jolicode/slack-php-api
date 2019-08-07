@@ -74,7 +74,7 @@ class ObjsTeam extends \ArrayObject
     protected $prefs;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAvatarBaseUrl(): ?string
     {
@@ -82,7 +82,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $avatarBaseUrl
+     * @param string|null $avatarBaseUrl
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDomain(): ?string
     {
@@ -102,7 +102,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $domain
+     * @param string|null $domain
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmailDomain(): ?string
     {
@@ -122,7 +122,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $emailDomain
+     * @param string|null $emailDomain
      *
      * @return self
      */
@@ -134,7 +134,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEnterpriseId(): ?string
     {
@@ -142,7 +142,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $enterpriseId
+     * @param string|null $enterpriseId
      *
      * @return self
      */
@@ -154,7 +154,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEnterpriseName(): ?string
     {
@@ -162,7 +162,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $enterpriseName
+     * @param string|null $enterpriseName
      *
      * @return self
      */
@@ -174,7 +174,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHasComplianceExport(): ?bool
     {
@@ -182,7 +182,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param bool $hasComplianceExport
+     * @param bool|null $hasComplianceExport
      *
      * @return self
      */
@@ -194,7 +194,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return ObjsTeamIcon
+     * @return ObjsTeamIcon|null
      */
     public function getIcon(): ?ObjsTeamIcon
     {
@@ -202,7 +202,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param ObjsTeamIcon $icon
+     * @param ObjsTeamIcon|null $icon
      *
      * @return self
      */
@@ -214,7 +214,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -222,7 +222,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -234,7 +234,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getMessagesCount(): ?int
     {
@@ -242,7 +242,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param int $messagesCount
+     * @param int|null $messagesCount
      *
      * @return self
      */
@@ -254,7 +254,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getMsgEditWindowMins(): ?int
     {
@@ -262,7 +262,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param int $msgEditWindowMins
+     * @param int|null $msgEditWindowMins
      *
      * @return self
      */
@@ -274,7 +274,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -282,7 +282,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -294,7 +294,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOverIntegrationsLimit(): ?bool
     {
@@ -302,7 +302,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param bool $overIntegrationsLimit
+     * @param bool|null $overIntegrationsLimit
      *
      * @return self
      */
@@ -314,7 +314,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOverStorageLimit(): ?bool
     {
@@ -322,7 +322,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param bool $overStorageLimit
+     * @param bool|null $overStorageLimit
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPlan(): ?string
     {
@@ -342,7 +342,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param string $plan
+     * @param string|null $plan
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return TeamPrefsPrefs
+     * @return TeamPrefsPrefs|null
      */
     public function getPrefs(): ?TeamPrefsPrefs
     {
@@ -362,7 +362,7 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @param TeamPrefsPrefs $prefs
+     * @param TeamPrefsPrefs|null $prefs
      *
      * @return self
      */

@@ -26,7 +26,7 @@ class BotsInfoGetResponse200BotIcons extends \ArrayObject
     protected $image72;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage36(): ?string
     {
@@ -34,7 +34,7 @@ class BotsInfoGetResponse200BotIcons extends \ArrayObject
     }
 
     /**
-     * @param string $image36
+     * @param string|null $image36
      *
      * @return self
      */
@@ -46,7 +46,7 @@ class BotsInfoGetResponse200BotIcons extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage48(): ?string
     {
@@ -54,7 +54,7 @@ class BotsInfoGetResponse200BotIcons extends \ArrayObject
     }
 
     /**
-     * @param string $image48
+     * @param string|null $image48
      *
      * @return self
      */
@@ -66,7 +66,7 @@ class BotsInfoGetResponse200BotIcons extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage72(): ?string
     {
@@ -74,7 +74,7 @@ class BotsInfoGetResponse200BotIcons extends \ArrayObject
     }
 
     /**
-     * @param string $image72
+     * @param string|null $image72
      *
      * @return self
      */

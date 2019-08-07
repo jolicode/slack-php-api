@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,100 +30,100 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsUser;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUser';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUser();
         $data = clone $data;
-        if (property_exists($data, 'color')) {
+        if (property_exists($data, 'color') && $data->{'color'} !== null) {
             $object->setColor($data->{'color'});
             unset($data->{'color'});
         }
-        if (property_exists($data, 'deleted')) {
+        if (property_exists($data, 'deleted') && $data->{'deleted'} !== null) {
             $object->setDeleted($data->{'deleted'});
             unset($data->{'deleted'});
         }
-        if (property_exists($data, 'has_2fa')) {
+        if (property_exists($data, 'has_2fa') && $data->{'has_2fa'} !== null) {
             $object->setHas2fa($data->{'has_2fa'});
             unset($data->{'has_2fa'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_admin')) {
+        if (property_exists($data, 'is_admin') && $data->{'is_admin'} !== null) {
             $object->setIsAdmin($data->{'is_admin'});
             unset($data->{'is_admin'});
         }
-        if (property_exists($data, 'is_app_user')) {
+        if (property_exists($data, 'is_app_user') && $data->{'is_app_user'} !== null) {
             $object->setIsAppUser($data->{'is_app_user'});
             unset($data->{'is_app_user'});
         }
-        if (property_exists($data, 'is_bot')) {
+        if (property_exists($data, 'is_bot') && $data->{'is_bot'} !== null) {
             $object->setIsBot($data->{'is_bot'});
             unset($data->{'is_bot'});
         }
-        if (property_exists($data, 'is_owner')) {
+        if (property_exists($data, 'is_owner') && $data->{'is_owner'} !== null) {
             $object->setIsOwner($data->{'is_owner'});
             unset($data->{'is_owner'});
         }
-        if (property_exists($data, 'is_primary_owner')) {
+        if (property_exists($data, 'is_primary_owner') && $data->{'is_primary_owner'} !== null) {
             $object->setIsPrimaryOwner($data->{'is_primary_owner'});
             unset($data->{'is_primary_owner'});
         }
-        if (property_exists($data, 'is_restricted')) {
+        if (property_exists($data, 'is_restricted') && $data->{'is_restricted'} !== null) {
             $object->setIsRestricted($data->{'is_restricted'});
             unset($data->{'is_restricted'});
         }
-        if (property_exists($data, 'is_ultra_restricted')) {
+        if (property_exists($data, 'is_ultra_restricted') && $data->{'is_ultra_restricted'} !== null) {
             $object->setIsUltraRestricted($data->{'is_ultra_restricted'});
             unset($data->{'is_ultra_restricted'});
         }
-        if (property_exists($data, 'locale')) {
+        if (property_exists($data, 'locale') && $data->{'locale'} !== null) {
             $object->setLocale($data->{'locale'});
             unset($data->{'locale'});
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
             unset($data->{'name'});
         }
-        if (property_exists($data, 'presence')) {
+        if (property_exists($data, 'presence') && $data->{'presence'} !== null) {
             $object->setPresence($data->{'presence'});
             unset($data->{'presence'});
         }
-        if (property_exists($data, 'profile')) {
+        if (property_exists($data, 'profile') && $data->{'profile'} !== null) {
             $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
             unset($data->{'profile'});
         }
-        if (property_exists($data, 'real_name')) {
+        if (property_exists($data, 'real_name') && $data->{'real_name'} !== null) {
             $object->setRealName($data->{'real_name'});
             unset($data->{'real_name'});
         }
-        if (property_exists($data, 'team_id')) {
+        if (property_exists($data, 'team_id') && $data->{'team_id'} !== null) {
             $object->setTeamId($data->{'team_id'});
             unset($data->{'team_id'});
         }
-        if (property_exists($data, 'tz')) {
+        if (property_exists($data, 'tz') && $data->{'tz'} !== null) {
             $object->setTz($data->{'tz'});
             unset($data->{'tz'});
         }
-        if (property_exists($data, 'tz_label')) {
+        if (property_exists($data, 'tz_label') && $data->{'tz_label'} !== null) {
             $object->setTzLabel($data->{'tz_label'});
             unset($data->{'tz_label'});
         }
-        if (property_exists($data, 'tz_offset')) {
+        if (property_exists($data, 'tz_offset') && $data->{'tz_offset'} !== null) {
             $object->setTzOffset($data->{'tz_offset'});
             unset($data->{'tz_offset'});
         }
-        if (property_exists($data, 'updated')) {
+        if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
             $object->setUpdated($data->{'updated'});
             unset($data->{'updated'});
         }

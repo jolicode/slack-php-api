@@ -22,7 +22,7 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
     protected $scopes;
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOk(): ?bool
     {
@@ -30,7 +30,7 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param bool $ok
+     * @param bool|null $ok
      *
      * @return self
      */
@@ -42,7 +42,7 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return AppsPermissionsScopesListGetResponse200Scopes
+     * @return AppsPermissionsScopesListGetResponse200Scopes|null
      */
     public function getScopes(): ?AppsPermissionsScopesListGetResponse200Scopes
     {
@@ -50,7 +50,7 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param AppsPermissionsScopesListGetResponse200Scopes $scopes
+     * @param AppsPermissionsScopesListGetResponse200Scopes|null $scopes
      *
      * @return self
      */

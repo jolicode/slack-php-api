@@ -98,7 +98,7 @@ class ObjsUser extends \ArrayObject
     protected $updated;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getColor(): ?string
     {
@@ -106,7 +106,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $color
+     * @param string|null $color
      *
      * @return self
      */
@@ -118,7 +118,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeleted(): ?bool
     {
@@ -126,7 +126,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $deleted
+     * @param bool|null $deleted
      *
      * @return self
      */
@@ -138,7 +138,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getHas2fa(): ?bool
     {
@@ -146,7 +146,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $has2fa
+     * @param bool|null $has2fa
      *
      * @return self
      */
@@ -158,7 +158,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -166,7 +166,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -178,7 +178,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsAdmin(): ?bool
     {
@@ -186,7 +186,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isAdmin
+     * @param bool|null $isAdmin
      *
      * @return self
      */
@@ -198,7 +198,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsAppUser(): ?bool
     {
@@ -206,7 +206,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isAppUser
+     * @param bool|null $isAppUser
      *
      * @return self
      */
@@ -218,7 +218,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsBot(): ?bool
     {
@@ -226,7 +226,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isBot
+     * @param bool|null $isBot
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsOwner(): ?bool
     {
@@ -246,7 +246,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isOwner
+     * @param bool|null $isOwner
      *
      * @return self
      */
@@ -258,7 +258,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsPrimaryOwner(): ?bool
     {
@@ -266,7 +266,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isPrimaryOwner
+     * @param bool|null $isPrimaryOwner
      *
      * @return self
      */
@@ -278,7 +278,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsRestricted(): ?bool
     {
@@ -286,7 +286,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isRestricted
+     * @param bool|null $isRestricted
      *
      * @return self
      */
@@ -298,7 +298,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsUltraRestricted(): ?bool
     {
@@ -306,7 +306,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param bool $isUltraRestricted
+     * @param bool|null $isUltraRestricted
      *
      * @return self
      */
@@ -318,7 +318,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getLocale(): ?string
     {
@@ -326,7 +326,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $locale
+     * @param string|null $locale
      *
      * @return self
      */
@@ -338,7 +338,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -346,7 +346,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getPresence(): ?string
     {
@@ -366,7 +366,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $presence
+     * @param string|null $presence
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return ObjsUserProfile
+     * @return ObjsUserProfile|null
      */
     public function getProfile(): ?ObjsUserProfile
     {
@@ -386,7 +386,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param ObjsUserProfile $profile
+     * @param ObjsUserProfile|null $profile
      *
      * @return self
      */
@@ -398,7 +398,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRealName(): ?string
     {
@@ -406,7 +406,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $realName
+     * @param string|null $realName
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeamId(): ?string
     {
@@ -426,7 +426,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $teamId
+     * @param string|null $teamId
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTz(): ?string
     {
@@ -446,7 +446,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $tz
+     * @param string|null $tz
      *
      * @return self
      */
@@ -458,7 +458,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTzLabel(): ?string
     {
@@ -466,7 +466,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param string $tzLabel
+     * @param string|null $tzLabel
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getTzOffset(): ?float
     {
@@ -486,7 +486,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param float $tzOffset
+     * @param float|null $tzOffset
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @return float
+     * @return float|null
      */
     public function getUpdated(): ?float
     {
@@ -506,7 +506,7 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
-     * @param float $updated
+     * @param float|null $updated
      *
      * @return self
      */

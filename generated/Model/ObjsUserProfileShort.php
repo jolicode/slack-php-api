@@ -50,7 +50,7 @@ class ObjsUserProfileShort extends \ArrayObject
     protected $team;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getAvatarHash(): ?string
     {
@@ -58,7 +58,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $avatarHash
+     * @param string|null $avatarHash
      *
      * @return self
      */
@@ -70,7 +70,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getDisplayName(): ?string
     {
@@ -78,7 +78,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $displayName
+     * @param string|null $displayName
      *
      * @return self
      */
@@ -90,7 +90,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getFirstName(): ?string
     {
@@ -98,7 +98,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $firstName
+     * @param string|null $firstName
      *
      * @return self
      */
@@ -110,7 +110,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImage72(): ?string
     {
@@ -118,7 +118,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $image72
+     * @param string|null $image72
      *
      * @return self
      */
@@ -130,7 +130,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsRestricted(): ?bool
     {
@@ -138,7 +138,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param bool $isRestricted
+     * @param bool|null $isRestricted
      *
      * @return self
      */
@@ -150,7 +150,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getIsUltraRestricted(): ?bool
     {
@@ -158,7 +158,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param bool $isUltraRestricted
+     * @param bool|null $isUltraRestricted
      *
      * @return self
      */
@@ -170,7 +170,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -178,7 +178,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -190,7 +190,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getRealName(): ?string
     {
@@ -198,7 +198,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $realName
+     * @param string|null $realName
      *
      * @return self
      */
@@ -210,7 +210,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getTeam(): ?string
     {
@@ -218,7 +218,7 @@ class ObjsUserProfileShort extends \ArrayObject
     }
 
     /**
-     * @param string $team
+     * @param string|null $team
      *
      * @return self
      */

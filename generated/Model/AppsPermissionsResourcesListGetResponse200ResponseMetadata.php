@@ -18,7 +18,7 @@ class AppsPermissionsResourcesListGetResponse200ResponseMetadata extends \ArrayO
     protected $nextCursor;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getNextCursor(): ?string
     {
@@ -26,7 +26,7 @@ class AppsPermissionsResourcesListGetResponse200ResponseMetadata extends \ArrayO
     }
 
     /**
-     * @param string $nextCursor
+     * @param string|null $nextCursor
      *
      * @return self
      */

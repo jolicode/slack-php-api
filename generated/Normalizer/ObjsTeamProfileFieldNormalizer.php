@@ -11,7 +11,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\JsonSchemaRuntime\Reference;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,40 +30,40 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
 
     public function supportsNormalization($data, $format = null)
     {
-        return $data instanceof \JoliCode\Slack\Api\Model\ObjsTeamProfileField;
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileField';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException();
+            return null;
         }
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
         $data = clone $data;
-        if (property_exists($data, 'field_name')) {
+        if (property_exists($data, 'field_name') && $data->{'field_name'} !== null) {
             $object->setFieldName($data->{'field_name'});
             unset($data->{'field_name'});
         }
-        if (property_exists($data, 'hint')) {
+        if (property_exists($data, 'hint') && $data->{'hint'} !== null) {
             $object->setHint($data->{'hint'});
             unset($data->{'hint'});
         }
-        if (property_exists($data, 'id')) {
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
             unset($data->{'id'});
         }
-        if (property_exists($data, 'is_hidden')) {
+        if (property_exists($data, 'is_hidden') && $data->{'is_hidden'} !== null) {
             $object->setIsHidden($data->{'is_hidden'});
             unset($data->{'is_hidden'});
         }
-        if (property_exists($data, 'label')) {
+        if (property_exists($data, 'label') && $data->{'label'} !== null) {
             $object->setLabel($data->{'label'});
             unset($data->{'label'});
         }
-        if (property_exists($data, 'options')) {
+        if (property_exists($data, 'options') && $data->{'options'} !== null) {
             $values = [];
             foreach ($data->{'options'} as $value) {
                 $values[] = $value;
@@ -72,11 +71,11 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $object->setOptions($values);
             unset($data->{'options'});
         }
-        if (property_exists($data, 'ordering')) {
+        if (property_exists($data, 'ordering') && $data->{'ordering'} !== null) {
             $object->setOrdering($data->{'ordering'});
             unset($data->{'ordering'});
         }
-        if (property_exists($data, 'possible_values')) {
+        if (property_exists($data, 'possible_values') && $data->{'possible_values'} !== null) {
             $values_1 = [];
             foreach ($data->{'possible_values'} as $value_1) {
                 $values_1[] = $value_1;
@@ -84,7 +83,7 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $object->setPossibleValues($values_1);
             unset($data->{'possible_values'});
         }
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
             unset($data->{'type'});
         }

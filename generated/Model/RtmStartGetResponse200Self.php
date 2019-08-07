@@ -34,7 +34,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     protected $prefs;
 
     /**
-     * @return int
+     * @return int|null
      */
     public function getCreated(): ?int
     {
@@ -42,7 +42,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @param int $created
+     * @param int|null $created
      *
      * @return self
      */
@@ -54,7 +54,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getId(): ?string
     {
@@ -62,7 +62,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      *
      * @return self
      */
@@ -74,7 +74,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getManualPresence(): ?string
     {
@@ -82,7 +82,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @param string $manualPresence
+     * @param string|null $manualPresence
      *
      * @return self
      */
@@ -94,7 +94,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getName(): ?string
     {
@@ -102,7 +102,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      *
      * @return self
      */
@@ -114,7 +114,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @return PrefsPrefs
+     * @return PrefsPrefs|null
      */
     public function getPrefs(): ?PrefsPrefs
     {
@@ -122,7 +122,7 @@ class RtmStartGetResponse200Self extends \ArrayObject
     }
 
     /**
-     * @param PrefsPrefs $prefs
+     * @param PrefsPrefs|null $prefs
      *
      * @return self
      */
