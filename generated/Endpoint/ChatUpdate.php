@@ -20,7 +20,7 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
      *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
-     *     @var float $ts timestamp of the message to be updated
+     *     @var string $ts timestamp of the message to be updated
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
      *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var bool $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
@@ -69,7 +69,7 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
         $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('ts', ['float']);
+        $optionsResolver->setAllowedTypes('ts', ['string']);
         $optionsResolver->setAllowedTypes('parse', ['string']);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
         $optionsResolver->setAllowedTypes('link_names', ['bool']);

@@ -420,7 +420,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel Channel to set reading cursor in.
      * }
      *
@@ -467,7 +467,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `channels:history`
      *     @var string $channel Channel to fetch thread from
      * }
@@ -555,7 +555,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var bool $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
-     *     @var float $ts timestamp of the message to be deleted
+     *     @var string $ts timestamp of the message to be deleted
      *     @var string $channel Channel containing the message to be deleted.
      * }
      *
@@ -630,7 +630,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var float $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
+     *     @var string $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $as_user Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false.
@@ -673,7 +673,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
      *     @var bool $link_names find and link channel names and usernames
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
-     *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      * }
      *
@@ -696,7 +696,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
@@ -785,7 +785,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
      *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
-     *     @var float $ts timestamp of the message to be updated
+     *     @var string $ts timestamp of the message to be updated
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
      *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var bool $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
@@ -1101,7 +1101,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $queryParameters {
      *
      *     @var bool $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
-     *     @var float $ts unique identifier of a thread's parent message
+     *     @var string $ts unique identifier of a thread's parent message
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
@@ -1428,7 +1428,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $content File contents via a POST variable. If omitting this parameter, you must provide a `file`.
      *     @var string $token Authentication token. Requires scope: `files:write:user`
      *     @var string $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
-     *     @var float $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
+     *     @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1639,7 +1639,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel Private channel to set reading cursor in.
      * }
      *
@@ -1708,7 +1708,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `groups:history`
      *     @var string $channel Private channel to fetch thread from
      * }
@@ -1848,7 +1848,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $channel direct message channel to set reading cursor in
-     *     @var float $ts Timestamp of the most recently seen message.
+     *     @var string $ts Timestamp of the most recently seen message.
      * }
      *
      * @param array $headerParameters {
@@ -1894,7 +1894,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `im:history`
      *     @var string $channel Direct message channel to fetch thread from
      * }
@@ -1987,7 +1987,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel multiparty direct message channel to set reading cursor in.
      * }
      *
@@ -2032,7 +2032,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts unique identifier of a thread's parent message
+     *     @var string $thread_ts unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `mpim:history`
      *     @var string $channel Multiparty direct message channel to fetch thread from.
      * }
