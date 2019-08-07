@@ -42,14 +42,23 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem();
-        if (property_exists($data, 'type') && $data->{'type'} !== null) {
-            $object->setType($data->{'type'});
+        if (property_exists($data, 'id') && $data->{'id'} !== null) {
+            $object->setId($data->{'id'});
+        }
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
+            $object->setName($data->{'name'});
         }
         if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
         }
-        if (property_exists($data, 'url') && $data->{'url'} !== null) {
-            $object->setUrl($data->{'url'});
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
+            $object->setType($data->{'type'});
+        }
+        if (property_exists($data, 'value') && $data->{'value'} !== null) {
+            $object->setValue($data->{'value'});
+        }
+        if (property_exists($data, 'style') && $data->{'style'} !== null) {
+            $object->setStyle($data->{'style'});
         }
 
         return $object;
@@ -58,14 +67,23 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
+        }
+        if (null !== $object->getName()) {
+            $data->{'name'} = $object->getName();
         }
         if (null !== $object->getText()) {
             $data->{'text'} = $object->getText();
         }
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+        if (null !== $object->getType()) {
+            $data->{'type'} = $object->getType();
+        }
+        if (null !== $object->getValue()) {
+            $data->{'value'} = $object->getValue();
+        }
+        if (null !== $object->getStyle()) {
+            $data->{'style'} = $object->getStyle();
         }
 
         return $data;

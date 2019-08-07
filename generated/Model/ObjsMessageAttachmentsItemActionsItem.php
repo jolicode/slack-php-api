@@ -15,32 +15,64 @@ class ObjsMessageAttachmentsItemActionsItem
     /**
      * @var string
      */
-    protected $type;
+    protected $id;
+    /**
+     * @var string
+     */
+    protected $name;
     /**
      * @var string
      */
     protected $text;
     /**
-     * @var bool
+     * @var string
      */
-    protected $url;
+    protected $type;
+    /**
+     * @var string
+     */
+    protected $value;
+    /**
+     * @var string
+     */
+    protected $style;
 
     /**
      * @return string|null
      */
-    public function getType(): ?string
+    public function getId(): ?string
     {
-        return $this->type;
+        return $this->id;
     }
 
     /**
-     * @param string|null $type
+     * @param string|null $id
      *
      * @return self
      */
-    public function setType(?string $type): self
+    public function setId(?string $id): self
     {
-        $this->type = $type;
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     *
+     * @return self
+     */
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
@@ -66,21 +98,61 @@ class ObjsMessageAttachmentsItemActionsItem
     }
 
     /**
-     * @return bool|null
+     * @return string|null
      */
-    public function getUrl(): ?bool
+    public function getType(): ?string
     {
-        return $this->url;
+        return $this->type;
     }
 
     /**
-     * @param bool|null $url
+     * @param string|null $type
      *
      * @return self
      */
-    public function setUrl(?bool $url): self
+    public function setType(?string $type): self
     {
-        $this->url = $url;
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param string|null $value
+     *
+     * @return self
+     */
+    public function setValue(?string $value): self
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    /**
+     * @param string|null $style
+     *
+     * @return self
+     */
+    public function setStyle(?string $style): self
+    {
+        $this->style = $style;
 
         return $this;
     }

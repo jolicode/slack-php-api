@@ -10,8 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsMessageAttachmentsItem
+class ObjsMessageAttachmentsItem extends \ArrayObject
 {
+    /**
+     * @var int
+     */
+    protected $id;
+    /**
+     * @var string
+     */
+    protected $callbackId;
     /**
      * @var string
      */
@@ -73,9 +81,49 @@ class ObjsMessageAttachmentsItem
      */
     protected $footerIcon;
     /**
-     * @var float
+     * @var float|string
      */
     protected $ts;
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     *
+     * @return self
+     */
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCallbackId(): ?string
+    {
+        return $this->callbackId;
+    }
+
+    /**
+     * @param string|null $callbackId
+     *
+     * @return self
+     */
+    public function setCallbackId(?string $callbackId): self
+    {
+        $this->callbackId = $callbackId;
+
+        return $this;
+    }
 
     /**
      * @return string|null
@@ -378,19 +426,19 @@ class ObjsMessageAttachmentsItem
     }
 
     /**
-     * @return float|null
+     * @return float|string|null
      */
-    public function getTs(): ?float
+    public function getTs()
     {
         return $this->ts;
     }
 
     /**
-     * @param float|null $ts
+     * @param float|string|null $ts
      *
      * @return self
      */
-    public function setTs(?float $ts): self
+    public function setTs($ts): self
     {
         $this->ts = $ts;
 
