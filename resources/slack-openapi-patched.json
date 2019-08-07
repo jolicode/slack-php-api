@@ -1591,80 +1591,25 @@
                             "fallback": {
                                 "type": "string"
                             },
-                            "color": {
-                                "type": "string"
+                            "id": {
+                                "type": "integer"
                             },
-                            "pretext": {
-                                "type": "string"
+                            "image_bytes": {
+                                "type": "integer"
                             },
-                            "author_name": {
-                                "type": "string"
-                            },
-                            "author_link": {
-                                "type": "string"
-                            },
-                            "author_icon": {
-                                "type": "string"
-                            },
-                            "title": {
-                                "type": "string"
-                            },
-                            "title_link": {
-                                "type": "string"
-                            },
-                            "text": {
-                                "type": "string"
-                            },
-                            "fields": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "title": {
-                                            "type": "string"
-                                        },
-                                        "value": {
-                                            "type": "string"
-                                        },
-                                        "short": {
-                                            "type": "boolean"
-                                        }
-                                    }
-                                }
-                            },
-                            "actions": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "type": {
-                                            "type": "string"
-                                        },
-                                        "text": {
-                                            "type": "string"
-                                        },
-                                        "url": {
-                                            "type": "boolean"
-                                        }
-                                    }
-                                }
+                            "image_height": {
+                                "type": "integer"
                             },
                             "image_url": {
                                 "type": "string"
                             },
-                            "thumb_url": {
-                                "type": "string"
-                            },
-                            "footer": {
-                                "type": "string"
-                            },
-                            "footer_icon": {
-                                "type": "string"
-                            },
-                            "ts": {
-                                "type": "number"
+                            "image_width": {
+                                "type": "integer"
                             }
                         },
+                        "required": [
+                            "id"
+                        ],
                         "type": "object"
                     },
                     "minItems": 1,
