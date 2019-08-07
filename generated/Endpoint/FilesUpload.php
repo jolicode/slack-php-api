@@ -19,12 +19,13 @@ class FilesUpload extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      *     @var string $channels comma-separated list of channel names or IDs where the file will be shared
      *     @var string $title title of file
-     *     @var string $initial_comment initial comment to add to file
+     *     @var string $initial_comment the message text introducing the file in specified `channels`
      *     @var string $filetype a [file type](/types/file#file_types) identifier
      *     @var string $filename filename of file
      *     @var string $content File contents via a POST variable. If omitting this parameter, you must provide a `file`.
      *     @var string $token Authentication token. Requires scope: `files:write:user`
      *     @var string $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
+     *     @var float $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
      * }
      */
     public function __construct(array $formParameters = [])
@@ -57,7 +58,7 @@ class FilesUpload extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['channels', 'title', 'initial_comment', 'filetype', 'filename', 'content', 'token', 'file']);
+        $optionsResolver->setDefined(['channels', 'title', 'initial_comment', 'filetype', 'filename', 'content', 'token', 'file', 'thread_ts']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channels', ['string']);
@@ -68,6 +69,7 @@ class FilesUpload extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $optionsResolver->setAllowedTypes('content', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
 
         return $optionsResolver;
     }

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ImOpenPostResponse200Channel extends \ArrayObject
+class ImOpenPostResponse200Channel
 {
     /**
      * @var string
@@ -132,7 +132,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -142,7 +142,7 @@ class ImOpenPostResponse200Channel extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
 

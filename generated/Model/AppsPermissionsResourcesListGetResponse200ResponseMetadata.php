@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AppsPermissionsResourcesListGetResponse200ResponseMetadata extends \ArrayObject
+class AppsPermissionsResourcesListGetResponse200ResponseMetadata
 {
     /**
      * @var string

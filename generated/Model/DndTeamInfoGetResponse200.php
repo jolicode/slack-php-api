@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class DndTeamInfoGetResponse200 extends \ArrayObject
+class DndTeamInfoGetResponse200
 {
     /**
      * @var bool
@@ -21,7 +21,7 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
-     * @var mixed[]
+     * @var mixed
      */
     protected $users;
 
@@ -66,19 +66,19 @@ class DndTeamInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]|null
+     * @return mixed
      */
-    public function getUsers(): ?\ArrayObject
+    public function getUsers()
     {
         return $this->users;
     }
 
     /**
-     * @param mixed[]|null $users
+     * @param mixed $users
      *
      * @return self
      */
-    public function setUsers(?\ArrayObject $users): self
+    public function setUsers($users): self
     {
         $this->users = $users;
 

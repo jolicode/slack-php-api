@@ -10,12 +10,20 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsConversationItem1 extends \ArrayObject
+class ObjsConversationItem1
 {
     /**
      * @var string
      */
     protected $acceptedUser;
+    /**
+     * @var string[]
+     */
+    protected $connectedTeamIds;
+    /**
+     * @var string
+     */
+    protected $conversationHostId;
     /**
      * @var int
      */
@@ -32,6 +40,10 @@ class ObjsConversationItem1 extends \ArrayObject
      * @var string
      */
     protected $id;
+    /**
+     * @var string[]
+     */
+    protected $internalTeamIds;
     /**
      * @var bool
      */
@@ -93,6 +105,10 @@ class ObjsConversationItem1 extends \ArrayObject
      */
     protected $isShared;
     /**
+     * @var bool
+     */
+    protected $isStarred;
+    /**
      * @var string
      */
     protected $lastRead;
@@ -117,11 +133,19 @@ class ObjsConversationItem1 extends \ArrayObject
      */
     protected $numMembers;
     /**
+     * @var mixed
+     */
+    protected $parentConversation;
+    /**
+     * @var string[]
+     */
+    protected $pendingConnectedTeamIds;
+    /**
      * @var string[]
      */
     protected $pendingShared;
     /**
-     * @var string
+     * @var int
      */
     protected $pinCount;
     /**
@@ -168,6 +192,10 @@ class ObjsConversationItem1 extends \ArrayObject
      * @var string
      */
     protected $user;
+    /**
+     * @var int
+     */
+    protected $version;
 
     /**
      * @return string|null
@@ -185,6 +213,46 @@ class ObjsConversationItem1 extends \ArrayObject
     public function setAcceptedUser(?string $acceptedUser): self
     {
         $this->acceptedUser = $acceptedUser;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getConnectedTeamIds(): ?array
+    {
+        return $this->connectedTeamIds;
+    }
+
+    /**
+     * @param string[]|null $connectedTeamIds
+     *
+     * @return self
+     */
+    public function setConnectedTeamIds(?array $connectedTeamIds): self
+    {
+        $this->connectedTeamIds = $connectedTeamIds;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getConversationHostId(): ?string
+    {
+        return $this->conversationHostId;
+    }
+
+    /**
+     * @param string|null $conversationHostId
+     *
+     * @return self
+     */
+    public function setConversationHostId(?string $conversationHostId): self
+    {
+        $this->conversationHostId = $conversationHostId;
 
         return $this;
     }
@@ -265,6 +333,26 @@ class ObjsConversationItem1 extends \ArrayObject
     public function setId(?string $id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getInternalTeamIds(): ?array
+    {
+        return $this->internalTeamIds;
+    }
+
+    /**
+     * @param string[]|null $internalTeamIds
+     *
+     * @return self
+     */
+    public function setInternalTeamIds(?array $internalTeamIds): self
+    {
+        $this->internalTeamIds = $internalTeamIds;
 
         return $this;
     }
@@ -570,9 +658,29 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
+     * @return bool|null
+     */
+    public function getIsStarred(): ?bool
+    {
+        return $this->isStarred;
+    }
+
+    /**
+     * @param bool|null $isStarred
+     *
+     * @return self
+     */
+    public function setIsStarred(?bool $isStarred): self
+    {
+        $this->isStarred = $isStarred;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -582,7 +690,7 @@ class ObjsConversationItem1 extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
 
@@ -690,6 +798,46 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
+     * @return mixed
+     */
+    public function getParentConversation()
+    {
+        return $this->parentConversation;
+    }
+
+    /**
+     * @param mixed $parentConversation
+     *
+     * @return self
+     */
+    public function setParentConversation($parentConversation): self
+    {
+        $this->parentConversation = $parentConversation;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getPendingConnectedTeamIds(): ?array
+    {
+        return $this->pendingConnectedTeamIds;
+    }
+
+    /**
+     * @param string[]|null $pendingConnectedTeamIds
+     *
+     * @return self
+     */
+    public function setPendingConnectedTeamIds(?array $pendingConnectedTeamIds): self
+    {
+        $this->pendingConnectedTeamIds = $pendingConnectedTeamIds;
+
+        return $this;
+    }
+
+    /**
      * @return string[]|null
      */
     public function getPendingShared(): ?array
@@ -710,19 +858,19 @@ class ObjsConversationItem1 extends \ArrayObject
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getPinCount(): ?string
+    public function getPinCount(): ?int
     {
         return $this->pinCount;
     }
 
     /**
-     * @param string|null $pinCount
+     * @param int|null $pinCount
      *
      * @return self
      */
-    public function setPinCount(?string $pinCount): self
+    public function setPinCount(?int $pinCount): self
     {
         $this->pinCount = $pinCount;
 
@@ -945,6 +1093,26 @@ class ObjsConversationItem1 extends \ArrayObject
     public function setUser(?string $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getVersion(): ?int
+    {
+        return $this->version;
+    }
+
+    /**
+     * @param int|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?int $version): self
+    {
+        $this->version = $version;
 
         return $this;
     }

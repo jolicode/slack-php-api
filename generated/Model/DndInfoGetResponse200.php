@@ -10,12 +10,96 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class DndInfoGetResponse200 extends \ArrayObject
+class DndInfoGetResponse200
 {
     /**
      * @var bool
      */
+    protected $dndEnabled;
+    /**
+     * @var int
+     */
+    protected $nextDndEndTs;
+    /**
+     * @var int
+     */
+    protected $nextDndStartTs;
+    /**
+     * @var bool
+     */
     protected $ok;
+    /**
+     * @var bool
+     */
+    protected $snoozeEnabled;
+    /**
+     * @var int
+     */
+    protected $snoozeEndtime;
+    /**
+     * @var int
+     */
+    protected $snoozeRemaining;
+
+    /**
+     * @return bool|null
+     */
+    public function getDndEnabled(): ?bool
+    {
+        return $this->dndEnabled;
+    }
+
+    /**
+     * @param bool|null $dndEnabled
+     *
+     * @return self
+     */
+    public function setDndEnabled(?bool $dndEnabled): self
+    {
+        $this->dndEnabled = $dndEnabled;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNextDndEndTs(): ?int
+    {
+        return $this->nextDndEndTs;
+    }
+
+    /**
+     * @param int|null $nextDndEndTs
+     *
+     * @return self
+     */
+    public function setNextDndEndTs(?int $nextDndEndTs): self
+    {
+        $this->nextDndEndTs = $nextDndEndTs;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNextDndStartTs(): ?int
+    {
+        return $this->nextDndStartTs;
+    }
+
+    /**
+     * @param int|null $nextDndStartTs
+     *
+     * @return self
+     */
+    public function setNextDndStartTs(?int $nextDndStartTs): self
+    {
+        $this->nextDndStartTs = $nextDndStartTs;
+
+        return $this;
+    }
 
     /**
      * @return bool|null
@@ -33,6 +117,66 @@ class DndInfoGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getSnoozeEnabled(): ?bool
+    {
+        return $this->snoozeEnabled;
+    }
+
+    /**
+     * @param bool|null $snoozeEnabled
+     *
+     * @return self
+     */
+    public function setSnoozeEnabled(?bool $snoozeEnabled): self
+    {
+        $this->snoozeEnabled = $snoozeEnabled;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getSnoozeEndtime(): ?int
+    {
+        return $this->snoozeEndtime;
+    }
+
+    /**
+     * @param int|null $snoozeEndtime
+     *
+     * @return self
+     */
+    public function setSnoozeEndtime(?int $snoozeEndtime): self
+    {
+        $this->snoozeEndtime = $snoozeEndtime;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getSnoozeRemaining(): ?int
+    {
+        return $this->snoozeRemaining;
+    }
+
+    /**
+     * @param int|null $snoozeRemaining
+     *
+     * @return self
+     */
+    public function setSnoozeRemaining(?int $snoozeRemaining): self
+    {
+        $this->snoozeRemaining = $snoozeRemaining;
 
         return $this;
     }

@@ -18,9 +18,9 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @param array $formParameters {
      *
      *     @var string $name reaction (emoji) name
-     *     @var string $file_comment file comment to add reaction to
+     *     @var string $file_comment File comment to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
      *     @var float $timestamp timestamp of the message to add reaction to
-     *     @var string $file file to add reaction to
+     *     @var string $file File to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
      *     @var string $channel Channel where the message to add reaction to was posted.
      * }
      *

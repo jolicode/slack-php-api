@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ImHistoryGetResponse200 extends \ArrayObject
+class ImHistoryGetResponse200
 {
     /**
      * @var bool

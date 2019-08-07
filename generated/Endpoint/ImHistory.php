@@ -21,9 +21,9 @@ class ImHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `im:history`
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel direct message channel to fetch history for
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -63,9 +63,9 @@ class ImHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $optionsResolver->setAllowedTypes('unreads', ['bool']);
         $optionsResolver->setAllowedTypes('inclusive', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('oldest', ['string']);
+        $optionsResolver->setAllowedTypes('oldest', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('latest', ['string']);
+        $optionsResolver->setAllowedTypes('latest', ['float']);
 
         return $optionsResolver;
     }

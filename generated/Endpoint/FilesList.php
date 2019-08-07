@@ -24,17 +24,7 @@ class FilesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *     @var string $token Authentication token. Requires scope: `files:read`
      *     @var string $user filter files created by a single user
      *     @var string $page
-     *     @var string $types Filter files by type:
-
-     * `all` - All files
-     * `spaces` - Posts
-     * `snippets` - Snippets
-     * `images` - Image files
-     * `gdocs` - Google docs
-     * `zips` - Zip files
-     * `pdfs` - PDF files
-
-    You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
+     *     @var string $types Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
      * }
      */
     public function __construct(array $queryParameters = [])

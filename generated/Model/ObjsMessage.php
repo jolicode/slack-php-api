@@ -10,20 +10,26 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsMessage extends \ArrayObject
+class ObjsMessage
 {
     /**
      * @var ObjsMessageAttachmentsItem[]
      */
     protected $attachments;
     /**
-     * @var ObjsFile[]
+     * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
+     *
+     * @var BlocksItem[]
      */
-    protected $files;
+    protected $blocks;
     /**
      * @var mixed
      */
     protected $botId;
+    /**
+     * @var string
+     */
+    protected $clientMsgId;
     /**
      * @var ObjsComment
      */
@@ -37,6 +43,10 @@ class ObjsMessage extends \ArrayObject
      */
     protected $file;
     /**
+     * @var ObjsFile[]
+     */
+    protected $files;
+    /**
      * @var ObjsMessageIcons
      */
     protected $icons;
@@ -47,11 +57,23 @@ class ObjsMessage extends \ArrayObject
     /**
      * @var bool
      */
+    protected $isDelayedMessage;
+    /**
+     * @var bool
+     */
     protected $isIntro;
+    /**
+     * @var bool
+     */
+    protected $isStarred;
     /**
      * @var string
      */
     protected $lastRead;
+    /**
+     * @var string
+     */
+    protected $latestReply;
     /**
      * @var string
      */
@@ -60,6 +82,10 @@ class ObjsMessage extends \ArrayObject
      * @var string
      */
     protected $oldName;
+    /**
+     * @var string
+     */
+    protected $parentUserId;
     /**
      * @var string
      */
@@ -84,6 +110,14 @@ class ObjsMessage extends \ArrayObject
      * @var int
      */
     protected $replyCount;
+    /**
+     * @var string[]
+     */
+    protected $replyUsers;
+    /**
+     * @var int
+     */
+    protected $replyUsersCount;
     /**
      * @var string
      */
@@ -166,21 +200,25 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
-     * @return ObjsFile[]|null
+     * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
+     *
+     * @return BlocksItem[]|null
      */
-    public function getFiles(): ?array
+    public function getBlocks(): ?array
     {
-        return $this->files;
+        return $this->blocks;
     }
 
     /**
-     * @param ObjsFile[]|null $files
+     * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
+     *
+     * @param BlocksItem[]|null $blocks
      *
      * @return self
      */
-    public function setFiles(?array $files): self
+    public function setBlocks(?array $blocks): self
     {
-        $this->files = $files;
+        $this->blocks = $blocks;
 
         return $this;
     }
@@ -201,6 +239,26 @@ class ObjsMessage extends \ArrayObject
     public function setBotId($botId): self
     {
         $this->botId = $botId;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getClientMsgId(): ?string
+    {
+        return $this->clientMsgId;
+    }
+
+    /**
+     * @param string|null $clientMsgId
+     *
+     * @return self
+     */
+    public function setClientMsgId(?string $clientMsgId): self
+    {
+        $this->clientMsgId = $clientMsgId;
 
         return $this;
     }
@@ -266,6 +324,26 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
+     * @return ObjsFile[]|null
+     */
+    public function getFiles(): ?array
+    {
+        return $this->files;
+    }
+
+    /**
+     * @param ObjsFile[]|null $files
+     *
+     * @return self
+     */
+    public function setFiles(?array $files): self
+    {
+        $this->files = $files;
+
+        return $this;
+    }
+
+    /**
      * @return ObjsMessageIcons|null
      */
     public function getIcons(): ?ObjsMessageIcons
@@ -308,6 +386,26 @@ class ObjsMessage extends \ArrayObject
     /**
      * @return bool|null
      */
+    public function getIsDelayedMessage(): ?bool
+    {
+        return $this->isDelayedMessage;
+    }
+
+    /**
+     * @param bool|null $isDelayedMessage
+     *
+     * @return self
+     */
+    public function setIsDelayedMessage(?bool $isDelayedMessage): self
+    {
+        $this->isDelayedMessage = $isDelayedMessage;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
     public function getIsIntro(): ?bool
     {
         return $this->isIntro;
@@ -326,9 +424,29 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
+     * @return bool|null
+     */
+    public function getIsStarred(): ?bool
+    {
+        return $this->isStarred;
+    }
+
+    /**
+     * @param bool|null $isStarred
+     *
+     * @return self
+     */
+    public function setIsStarred(?bool $isStarred): self
+    {
+        $this->isStarred = $isStarred;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -338,9 +456,29 @@ class ObjsMessage extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLatestReply(): ?string
+    {
+        return $this->latestReply;
+    }
+
+    /**
+     * @param string|null $latestReply
+     *
+     * @return self
+     */
+    public function setLatestReply(?string $latestReply): self
+    {
+        $this->latestReply = $latestReply;
 
         return $this;
     }
@@ -381,6 +519,26 @@ class ObjsMessage extends \ArrayObject
     public function setOldName(?string $oldName): self
     {
         $this->oldName = $oldName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getParentUserId(): ?string
+    {
+        return $this->parentUserId;
+    }
+
+    /**
+     * @param string|null $parentUserId
+     *
+     * @return self
+     */
+    public function setParentUserId(?string $parentUserId): self
+    {
+        $this->parentUserId = $parentUserId;
 
         return $this;
     }
@@ -506,6 +664,46 @@ class ObjsMessage extends \ArrayObject
     }
 
     /**
+     * @return string[]|null
+     */
+    public function getReplyUsers(): ?array
+    {
+        return $this->replyUsers;
+    }
+
+    /**
+     * @param string[]|null $replyUsers
+     *
+     * @return self
+     */
+    public function setReplyUsers(?array $replyUsers): self
+    {
+        $this->replyUsers = $replyUsers;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getReplyUsersCount(): ?int
+    {
+        return $this->replyUsersCount;
+    }
+
+    /**
+     * @param int|null $replyUsersCount
+     *
+     * @return self
+     */
+    public function setReplyUsersCount(?int $replyUsersCount): self
+    {
+        $this->replyUsersCount = $replyUsersCount;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getSourceTeam(): ?string
@@ -608,7 +806,7 @@ class ObjsMessage extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getThreadTs()
+    public function getThreadTs(): ?string
     {
         return $this->threadTs;
     }
@@ -618,7 +816,7 @@ class ObjsMessage extends \ArrayObject
      *
      * @return self
      */
-    public function setThreadTs($threadTs): self
+    public function setThreadTs(?string $threadTs): self
     {
         $this->threadTs = $threadTs;
 
@@ -648,7 +846,7 @@ class ObjsMessage extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getTs()
+    public function getTs(): ?string
     {
         return $this->ts;
     }
@@ -658,7 +856,7 @@ class ObjsMessage extends \ArrayObject
      *
      * @return self
      */
-    public function setTs($ts): self
+    public function setTs(?string $ts): self
     {
         $this->ts = $ts;
 

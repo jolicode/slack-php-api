@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class MpimListGetResponse200 extends \ArrayObject
+class MpimListGetResponse200
 {
+    /**
+     * @var ObjsGroup[]
+     */
+    protected $groups;
     /**
      * @var bool
      */
     protected $ok;
+
+    /**
+     * @return ObjsGroup[]|null
+     */
+    public function getGroups(): ?array
+    {
+        return $this->groups;
+    }
+
+    /**
+     * @param ObjsGroup[]|null $groups
+     *
+     * @return self
+     */
+    public function setGroups(?array $groups): self
+    {
+        $this->groups = $groups;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

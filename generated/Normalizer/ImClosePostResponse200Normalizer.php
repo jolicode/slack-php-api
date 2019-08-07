@@ -42,15 +42,14 @@ class ImClosePostResponse200Normalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImClosePostResponse200();
-        $data = clone $data;
+        if (property_exists($data, 'already_closed') && $data->{'already_closed'} !== null) {
+            $object->setAlreadyClosed($data->{'already_closed'});
+        }
+        if (property_exists($data, 'no_op') && $data->{'no_op'} !== null) {
+            $object->setNoOp($data->{'no_op'});
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -59,13 +58,14 @@ class ImClosePostResponse200Normalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getAlreadyClosed()) {
+            $data->{'already_closed'} = $object->getAlreadyClosed();
+        }
+        if (null !== $object->getNoOp()) {
+            $data->{'no_op'} = $object->getNoOp();
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

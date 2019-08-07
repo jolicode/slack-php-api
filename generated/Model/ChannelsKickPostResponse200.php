@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsKickPostResponse200 extends \ArrayObject
+class ChannelsKickPostResponse200
 {
     /**
      * @var bool

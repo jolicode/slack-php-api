@@ -10,12 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsersSetPhotoPostResponse200 extends \ArrayObject
+class UsersSetPhotoPostResponse200
 {
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var UsersSetPhotoPostResponse200Profile
+     */
+    protected $profile;
 
     /**
      * @return bool|null
@@ -33,6 +37,26 @@ class UsersSetPhotoPostResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return UsersSetPhotoPostResponse200Profile|null
+     */
+    public function getProfile(): ?UsersSetPhotoPostResponse200Profile
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @param UsersSetPhotoPostResponse200Profile|null $profile
+     *
+     * @return self
+     */
+    public function setProfile(?UsersSetPhotoPostResponse200Profile $profile): self
+    {
+        $this->profile = $profile;
 
         return $this;
     }

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsConversationItem0Purpose extends \ArrayObject
+class ObjsConversationItem0Purpose
 {
     /**
      * @var string

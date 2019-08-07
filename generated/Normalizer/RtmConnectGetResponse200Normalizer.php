@@ -42,27 +42,17 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmConnectGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'self') && $data->{'self'} !== null) {
             $object->setSelf($this->denormalizer->denormalize($data->{'self'}, 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Self', 'json', $context));
-            unset($data->{'self'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Team', 'json', $context));
-            unset($data->{'team'});
         }
         if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
-            unset($data->{'url'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -82,11 +72,6 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         if (null !== $object->getUrl()) {
             $data->{'url'} = $object->getUrl();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

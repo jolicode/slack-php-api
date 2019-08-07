@@ -17,8 +17,8 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      * @param array $formParameters {
      *
-     *     @var bool $include_count include the number of users in the User Group
      *     @var string $users a comma separated string of encoded user IDs that represent the entire list of users for the User Group
+     *     @var bool $include_count include the number of users in the User Group
      *     @var string $usergroup The encoded ID of the User Group to update.
      * }
      *
@@ -58,11 +58,11 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['include_count', 'users', 'usergroup']);
+        $optionsResolver->setDefined(['users', 'include_count', 'usergroup']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_count', ['bool']);
         $optionsResolver->setAllowedTypes('users', ['string']);
+        $optionsResolver->setAllowedTypes('include_count', ['bool']);
         $optionsResolver->setAllowedTypes('usergroup', ['string']);
 
         return $optionsResolver;

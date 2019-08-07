@@ -42,23 +42,14 @@ class ChatGetPermalinkGetResponse200Normalizer implements DenormalizerInterface,
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
-            unset($data->{'permalink'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class ChatGetPermalinkGetResponse200Normalizer implements DenormalizerInterface,
         }
         if (null !== $object->getPermalink()) {
             $data->{'permalink'} = $object->getPermalink();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

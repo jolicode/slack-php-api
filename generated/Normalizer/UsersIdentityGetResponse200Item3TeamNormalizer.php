@@ -42,55 +42,38 @@ class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInte
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
-        $data = clone $data;
         if (property_exists($data, 'domain') && $data->{'domain'} !== null) {
             $object->setDomain($data->{'domain'});
-            unset($data->{'domain'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'image_102') && $data->{'image_102'} !== null) {
             $object->setImage102($data->{'image_102'});
-            unset($data->{'image_102'});
         }
         if (property_exists($data, 'image_132') && $data->{'image_132'} !== null) {
             $object->setImage132($data->{'image_132'});
-            unset($data->{'image_132'});
         }
         if (property_exists($data, 'image_230') && $data->{'image_230'} !== null) {
             $object->setImage230($data->{'image_230'});
-            unset($data->{'image_230'});
         }
         if (property_exists($data, 'image_34') && $data->{'image_34'} !== null) {
             $object->setImage34($data->{'image_34'});
-            unset($data->{'image_34'});
         }
         if (property_exists($data, 'image_44') && $data->{'image_44'} !== null) {
             $object->setImage44($data->{'image_44'});
-            unset($data->{'image_44'});
         }
         if (property_exists($data, 'image_68') && $data->{'image_68'} !== null) {
             $object->setImage68($data->{'image_68'});
-            unset($data->{'image_68'});
         }
         if (property_exists($data, 'image_88') && $data->{'image_88'} !== null) {
             $object->setImage88($data->{'image_88'});
-            unset($data->{'image_88'});
         }
         if (property_exists($data, 'image_default') && $data->{'image_default'} !== null) {
             $object->setImageDefault($data->{'image_default'});
-            unset($data->{'image_default'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -131,11 +114,6 @@ class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInte
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

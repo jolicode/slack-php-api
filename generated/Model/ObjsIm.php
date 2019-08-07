@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsIm extends \ArrayObject
+class ObjsIm
 {
     /**
      * @var int
@@ -23,11 +23,23 @@ class ObjsIm extends \ArrayObject
     /**
      * @var bool
      */
+    protected $isAppHome;
+    /**
+     * @var bool
+     */
+    protected $isExtShared;
+    /**
+     * @var bool
+     */
     protected $isIm;
     /**
      * @var bool
      */
     protected $isOrgShared;
+    /**
+     * @var bool
+     */
+    protected $isShared;
     /**
      * @var bool
      */
@@ -84,6 +96,46 @@ class ObjsIm extends \ArrayObject
     /**
      * @return bool|null
      */
+    public function getIsAppHome(): ?bool
+    {
+        return $this->isAppHome;
+    }
+
+    /**
+     * @param bool|null $isAppHome
+     *
+     * @return self
+     */
+    public function setIsAppHome(?bool $isAppHome): self
+    {
+        $this->isAppHome = $isAppHome;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsExtShared(): ?bool
+    {
+        return $this->isExtShared;
+    }
+
+    /**
+     * @param bool|null $isExtShared
+     *
+     * @return self
+     */
+    public function setIsExtShared(?bool $isExtShared): self
+    {
+        $this->isExtShared = $isExtShared;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
     public function getIsIm(): ?bool
     {
         return $this->isIm;
@@ -117,6 +169,26 @@ class ObjsIm extends \ArrayObject
     public function setIsOrgShared(?bool $isOrgShared): self
     {
         $this->isOrgShared = $isOrgShared;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsShared(): ?bool
+    {
+        return $this->isShared;
+    }
+
+    /**
+     * @param bool|null $isShared
+     *
+     * @return self
+     */
+    public function setIsShared(?bool $isShared): self
+    {
+        $this->isShared = $isShared;
 
         return $this;
     }

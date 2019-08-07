@@ -42,35 +42,23 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
-            unset($data->{'team'});
         }
         if (property_exists($data, 'team_id') && $data->{'team_id'} !== null) {
             $object->setTeamId($data->{'team_id'});
-            unset($data->{'team_id'});
         }
         if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
-            unset($data->{'url'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
         }
         if (property_exists($data, 'user_id') && $data->{'user_id'} !== null) {
             $object->setUserId($data->{'user_id'});
-            unset($data->{'user_id'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -96,11 +84,6 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getUserId()) {
             $data->{'user_id'} = $object->getUserId();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -42,39 +42,35 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsIm();
-        $data = clone $data;
         if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
-            unset($data->{'created'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
+        }
+        if (property_exists($data, 'is_app_home') && $data->{'is_app_home'} !== null) {
+            $object->setIsAppHome($data->{'is_app_home'});
+        }
+        if (property_exists($data, 'is_ext_shared') && $data->{'is_ext_shared'} !== null) {
+            $object->setIsExtShared($data->{'is_ext_shared'});
         }
         if (property_exists($data, 'is_im') && $data->{'is_im'} !== null) {
             $object->setIsIm($data->{'is_im'});
-            unset($data->{'is_im'});
         }
         if (property_exists($data, 'is_org_shared') && $data->{'is_org_shared'} !== null) {
             $object->setIsOrgShared($data->{'is_org_shared'});
-            unset($data->{'is_org_shared'});
+        }
+        if (property_exists($data, 'is_shared') && $data->{'is_shared'} !== null) {
+            $object->setIsShared($data->{'is_shared'});
         }
         if (property_exists($data, 'is_user_deleted') && $data->{'is_user_deleted'} !== null) {
             $object->setIsUserDeleted($data->{'is_user_deleted'});
-            unset($data->{'is_user_deleted'});
         }
         if (property_exists($data, 'priority') && $data->{'priority'} !== null) {
             $object->setPriority($data->{'priority'});
-            unset($data->{'priority'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -89,11 +85,20 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
         if (null !== $object->getId()) {
             $data->{'id'} = $object->getId();
         }
+        if (null !== $object->getIsAppHome()) {
+            $data->{'is_app_home'} = $object->getIsAppHome();
+        }
+        if (null !== $object->getIsExtShared()) {
+            $data->{'is_ext_shared'} = $object->getIsExtShared();
+        }
         if (null !== $object->getIsIm()) {
             $data->{'is_im'} = $object->getIsIm();
         }
         if (null !== $object->getIsOrgShared()) {
             $data->{'is_org_shared'} = $object->getIsOrgShared();
+        }
+        if (null !== $object->getIsShared()) {
+            $data->{'is_shared'} = $object->getIsShared();
         }
         if (null !== $object->getIsUserDeleted()) {
             $data->{'is_user_deleted'} = $object->getIsUserDeleted();
@@ -103,11 +108,6 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

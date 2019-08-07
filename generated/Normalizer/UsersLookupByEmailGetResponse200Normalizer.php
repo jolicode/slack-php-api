@@ -48,7 +48,7 @@ class UsersLookupByEmailGetResponse200Normalizer implements DenormalizerInterfac
             unset($data->{'ok'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
-            $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUser', 'json', $context));
+            $object->setUser($data->{'user'});
             unset($data->{'user'});
         }
         foreach ($data as $key => $value) {
@@ -67,7 +67,7 @@ class UsersLookupByEmailGetResponse200Normalizer implements DenormalizerInterfac
             $data->{'ok'} = $object->getOk();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $this->normalizer->normalize($object->getUser(), 'json', $context);
+            $data->{'user'} = $object->getUser();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {

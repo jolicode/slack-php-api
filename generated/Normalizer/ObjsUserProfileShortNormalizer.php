@@ -42,47 +42,32 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUserProfileShort();
-        $data = clone $data;
         if (property_exists($data, 'avatar_hash') && $data->{'avatar_hash'} !== null) {
             $object->setAvatarHash($data->{'avatar_hash'});
-            unset($data->{'avatar_hash'});
         }
         if (property_exists($data, 'display_name') && $data->{'display_name'} !== null) {
             $object->setDisplayName($data->{'display_name'});
-            unset($data->{'display_name'});
         }
         if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
             $object->setFirstName($data->{'first_name'});
-            unset($data->{'first_name'});
         }
         if (property_exists($data, 'image_72') && $data->{'image_72'} !== null) {
             $object->setImage72($data->{'image_72'});
-            unset($data->{'image_72'});
         }
         if (property_exists($data, 'is_restricted') && $data->{'is_restricted'} !== null) {
             $object->setIsRestricted($data->{'is_restricted'});
-            unset($data->{'is_restricted'});
         }
         if (property_exists($data, 'is_ultra_restricted') && $data->{'is_ultra_restricted'} !== null) {
             $object->setIsUltraRestricted($data->{'is_ultra_restricted'});
-            unset($data->{'is_ultra_restricted'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
         }
         if (property_exists($data, 'real_name') && $data->{'real_name'} !== null) {
             $object->setRealName($data->{'real_name'});
-            unset($data->{'real_name'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
-            unset($data->{'team'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -117,11 +102,6 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getTeam()) {
             $data->{'team'} = $object->getTeam();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

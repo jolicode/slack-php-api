@@ -42,23 +42,15 @@ class ImListGetResponse200Normalizer implements DenormalizerInterface, Normalize
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ims') && $data->{'ims'} !== null) {
             $values = [];
             foreach ($data->{'ims'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsIm', 'json', $context);
             }
             $object->setIms($values);
-            unset($data->{'ims'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
         }
 
         return $object;
@@ -76,11 +68,6 @@ class ImListGetResponse200Normalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
         }
 
         return $data;

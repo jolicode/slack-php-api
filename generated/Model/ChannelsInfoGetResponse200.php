@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsInfoGetResponse200 extends \ArrayObject
+class ChannelsInfoGetResponse200
 {
     /**
      * @var ObjsChannel

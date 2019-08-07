@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsPaging extends \ArrayObject
+class ObjsPaging
 {
     /**
      * @var int
@@ -24,6 +24,14 @@ class ObjsPaging extends \ArrayObject
      * @var int
      */
     protected $pages;
+    /**
+     * @var int
+     */
+    protected $perPage;
+    /**
+     * @var int
+     */
+    protected $spill;
     /**
      * @var int
      */
@@ -85,6 +93,46 @@ class ObjsPaging extends \ArrayObject
     public function setPages(?int $pages): self
     {
         $this->pages = $pages;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPerPage(): ?int
+    {
+        return $this->perPage;
+    }
+
+    /**
+     * @param int|null $perPage
+     *
+     * @return self
+     */
+    public function setPerPage(?int $perPage): self
+    {
+        $this->perPage = $perPage;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getSpill(): ?int
+    {
+        return $this->spill;
+    }
+
+    /**
+     * @param int|null $spill
+     *
+     * @return self
+     */
+    public function setSpill(?int $spill): self
+    {
+        $this->spill = $spill;
 
         return $this;
     }

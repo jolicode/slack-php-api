@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsSetPurposePostResponse200 extends \ArrayObject
+class ConversationsSetPurposePostResponse200
 {
     /**
      * @var mixed

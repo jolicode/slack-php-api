@@ -42,19 +42,11 @@ class ReactionsListGetResponse200ItemsItemItem1Normalizer implements Denormalize
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1();
-        $data = clone $data;
         if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-            unset($data->{'file'});
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -68,11 +60,6 @@ class ReactionsListGetResponse200ItemsItemItem1Normalizer implements Denormalize
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

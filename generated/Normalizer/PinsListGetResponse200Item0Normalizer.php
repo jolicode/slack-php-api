@@ -42,7 +42,6 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0();
-        $data = clone $data;
         if (property_exists($data, 'items') && $data->{'items'} !== null) {
             $value = $data->{'items'};
             if (is_array($data->{'items'})) {
@@ -65,16 +64,9 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
                 $value = $values_2;
             }
             $object->setItems($value);
-            unset($data->{'items'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value_4) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_4;
-            }
         }
 
         return $object;
@@ -108,11 +100,6 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value_4) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_4;
-            }
         }
 
         return $data;

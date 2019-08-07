@@ -10,12 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
+class ConversationsRepliesGetResponse200MessagesItemItem0
 {
     /**
      * @var string
      */
     protected $lastRead;
+    /**
+     * @var string
+     */
+    protected $latestReply;
     /**
      * @var ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem[]
      */
@@ -24,6 +28,14 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      * @var int
      */
     protected $replyCount;
+    /**
+     * @var string[]
+     */
+    protected $replyUsers;
+    /**
+     * @var int
+     */
+    protected $replyUsersCount;
     /**
      * @var string
      */
@@ -72,7 +84,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -82,9 +94,29 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLatestReply(): ?string
+    {
+        return $this->latestReply;
+    }
+
+    /**
+     * @param string|null $latestReply
+     *
+     * @return self
+     */
+    public function setLatestReply(?string $latestReply): self
+    {
+        $this->latestReply = $latestReply;
 
         return $this;
     }
@@ -125,6 +157,46 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     public function setReplyCount(?int $replyCount): self
     {
         $this->replyCount = $replyCount;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getReplyUsers(): ?array
+    {
+        return $this->replyUsers;
+    }
+
+    /**
+     * @param string[]|null $replyUsers
+     *
+     * @return self
+     */
+    public function setReplyUsers(?array $replyUsers): self
+    {
+        $this->replyUsers = $replyUsers;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getReplyUsersCount(): ?int
+    {
+        return $this->replyUsersCount;
+    }
+
+    /**
+     * @param int|null $replyUsersCount
+     *
+     * @return self
+     */
+    public function setReplyUsersCount(?int $replyUsersCount): self
+    {
+        $this->replyUsersCount = $replyUsersCount;
 
         return $this;
     }
@@ -212,7 +284,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getThreadTs()
+    public function getThreadTs(): ?string
     {
         return $this->threadTs;
     }
@@ -222,7 +294,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      *
      * @return self
      */
-    public function setThreadTs($threadTs): self
+    public function setThreadTs(?string $threadTs): self
     {
         $this->threadTs = $threadTs;
 
@@ -232,7 +304,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getTs()
+    public function getTs(): ?string
     {
         return $this->ts;
     }
@@ -242,7 +314,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0 extends \ArrayObject
      *
      * @return self
      */
-    public function setTs($ts): self
+    public function setTs(?string $ts): self
     {
         $this->ts = $ts;
 

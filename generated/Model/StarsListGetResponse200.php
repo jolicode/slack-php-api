@@ -10,12 +10,40 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class StarsListGetResponse200 extends \ArrayObject
+class StarsListGetResponse200
 {
+    /**
+     * @var mixed[]
+     */
+    protected $items;
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var ObjsPaging
+     */
+    protected $paging;
+
+    /**
+     * @return mixed[]|null
+     */
+    public function getItems(): ?array
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed[]|null $items
+     *
+     * @return self
+     */
+    public function setItems(?array $items): self
+    {
+        $this->items = $items;
+
+        return $this;
+    }
 
     /**
      * @return bool|null
@@ -33,6 +61,26 @@ class StarsListGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsPaging|null
+     */
+    public function getPaging(): ?ObjsPaging
+    {
+        return $this->paging;
+    }
+
+    /**
+     * @param ObjsPaging|null $paging
+     *
+     * @return self
+     */
+    public function setPaging(?ObjsPaging $paging): self
+    {
+        $this->paging = $paging;
 
         return $this;
     }

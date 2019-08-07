@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ReactionsGetGetResponse200Item2 extends \ArrayObject
+class ReactionsGetGetResponse200Item2
 {
     /**
      * @var ObjsComment

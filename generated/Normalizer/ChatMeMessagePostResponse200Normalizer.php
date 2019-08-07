@@ -42,15 +42,14 @@ class ChatMeMessagePostResponse200Normalizer implements DenormalizerInterface, N
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200();
-        $data = clone $data;
+        if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
+            $object->setChannel($data->{'channel'});
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
+            $object->setTs($data->{'ts'});
         }
 
         return $object;
@@ -59,13 +58,14 @@ class ChatMeMessagePostResponse200Normalizer implements DenormalizerInterface, N
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getChannel()) {
+            $data->{'channel'} = $object->getChannel();
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getTs()) {
+            $data->{'ts'} = $object->getTs();
         }
 
         return $data;

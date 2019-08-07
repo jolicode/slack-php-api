@@ -42,15 +42,18 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\StarsListGetResponse200();
-        $data = clone $data;
+        if (property_exists($data, 'items') && $data->{'items'} !== null) {
+            $values = [];
+            foreach ($data->{'items'} as $value) {
+                $values[] = $value;
+            }
+            $object->setItems($values);
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'paging') && $data->{'paging'} !== null) {
+            $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
         }
 
         return $object;
@@ -59,13 +62,18 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getItems()) {
+            $values = [];
+            foreach ($object->getItems() as $value) {
+                $values[] = $value;
+            }
+            $data->{'items'} = $values;
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getPaging()) {
+            $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
 
         return $data;

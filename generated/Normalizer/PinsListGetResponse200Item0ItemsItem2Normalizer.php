@@ -42,31 +42,20 @@ class PinsListGetResponse200Item0ItemsItem2Normalizer implements DenormalizerInt
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem2();
-        $data = clone $data;
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
         }
         if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
-            unset($data->{'created'});
         }
         if (property_exists($data, 'created_by') && $data->{'created_by'} !== null) {
             $object->setCreatedBy($data->{'created_by'});
-            unset($data->{'created_by'});
         }
         if (property_exists($data, 'message') && $data->{'message'} !== null) {
             $object->setMessage($this->denormalizer->denormalize($data->{'message'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
-            unset($data->{'message'});
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -89,11 +78,6 @@ class PinsListGetResponse200Item0ItemsItem2Normalizer implements DenormalizerInt
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

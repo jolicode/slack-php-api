@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsOpenPostResponse200 extends \ArrayObject
+class ConversationsOpenPostResponse200
 {
     /**
      * @var bool

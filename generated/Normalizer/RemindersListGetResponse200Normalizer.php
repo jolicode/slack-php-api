@@ -42,15 +42,15 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RemindersListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+        if (property_exists($data, 'reminders') && $data->{'reminders'} !== null) {
+            $values = [];
+            foreach ($data->{'reminders'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsReminder', 'json', $context);
             }
+            $object->setReminders($values);
         }
 
         return $object;
@@ -62,10 +62,12 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+        if (null !== $object->getReminders()) {
+            $values = [];
+            foreach ($object->getReminders() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
+            $data->{'reminders'} = $values;
         }
 
         return $data;

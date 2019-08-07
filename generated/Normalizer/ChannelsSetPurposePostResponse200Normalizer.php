@@ -42,19 +42,11 @@ class ChannelsSetPurposePostResponse200Normalizer implements DenormalizerInterfa
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChannelsSetPurposePostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'purpose') && $data->{'purpose'} !== null) {
             $object->setPurpose($data->{'purpose'});
-            unset($data->{'purpose'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -68,11 +60,6 @@ class ChannelsSetPurposePostResponse200Normalizer implements DenormalizerInterfa
         }
         if (null !== $object->getPurpose()) {
             $data->{'purpose'} = $object->getPurpose();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

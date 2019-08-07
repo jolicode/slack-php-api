@@ -42,19 +42,11 @@ class ObjsConversationItem1DisplayCountsNormalizer implements DenormalizerInterf
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem1DisplayCounts();
-        $data = clone $data;
         if (property_exists($data, 'display_counts') && $data->{'display_counts'} !== null) {
             $object->setDisplayCounts($data->{'display_counts'});
-            unset($data->{'display_counts'});
         }
         if (property_exists($data, 'guest_counts') && $data->{'guest_counts'} !== null) {
             $object->setGuestCounts($data->{'guest_counts'});
-            unset($data->{'guest_counts'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -68,11 +60,6 @@ class ObjsConversationItem1DisplayCountsNormalizer implements DenormalizerInterf
         }
         if (null !== $object->getGuestCounts()) {
             $data->{'guest_counts'} = $object->getGuestCounts();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

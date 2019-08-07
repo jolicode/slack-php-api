@@ -42,15 +42,11 @@ class UsergroupsUpdatePostResponse200Normalizer implements DenormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'usergroup') && $data->{'usergroup'} !== null) {
+            $object->setUsergroup($this->denormalizer->denormalize($data->{'usergroup'}, 'JoliCode\\Slack\\Api\\Model\\ObjsSubteam', 'json', $context));
         }
 
         return $object;
@@ -62,10 +58,8 @@ class UsergroupsUpdatePostResponse200Normalizer implements DenormalizerInterface
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getUsergroup()) {
+            $data->{'usergroup'} = $this->normalizer->normalize($object->getUsergroup(), 'json', $context);
         }
 
         return $data;

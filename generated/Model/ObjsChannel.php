@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsChannel extends \ArrayObject
+class ObjsChannel
 {
     /**
      * @var string
@@ -432,7 +432,7 @@ class ObjsChannel extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -442,7 +442,7 @@ class ObjsChannel extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
 

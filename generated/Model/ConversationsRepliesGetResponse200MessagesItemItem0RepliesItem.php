@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \ArrayObject
+class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem
 {
     /**
      * @var string
@@ -24,7 +24,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
     /**
      * @return string|null
      */
-    public function getTs()
+    public function getTs(): ?string
     {
         return $this->ts;
     }
@@ -34,7 +34,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0RepliesItem extends \Ar
      *
      * @return self
      */
-    public function setTs($ts): self
+    public function setTs(?string $ts): self
     {
         $this->ts = $ts;
 

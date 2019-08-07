@@ -10,12 +10,60 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsRepliesGetResponse200 extends \ArrayObject
+class ChannelsRepliesGetResponse200
 {
     /**
      * @var bool
      */
+    protected $hasMore;
+    /**
+     * @var mixed[]
+     */
+    protected $messages;
+    /**
+     * @var bool
+     */
     protected $ok;
+
+    /**
+     * @return bool|null
+     */
+    public function getHasMore(): ?bool
+    {
+        return $this->hasMore;
+    }
+
+    /**
+     * @param bool|null $hasMore
+     *
+     * @return self
+     */
+    public function setHasMore(?bool $hasMore): self
+    {
+        $this->hasMore = $hasMore;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed[]|null
+     */
+    public function getMessages(): ?array
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param mixed[]|null $messages
+     *
+     * @return self
+     */
+    public function setMessages(?array $messages): self
+    {
+        $this->messages = $messages;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

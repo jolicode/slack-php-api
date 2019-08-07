@@ -42,39 +42,26 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot();
-        $data = clone $data;
         if (property_exists($data, 'app_id') && $data->{'app_id'} !== null) {
             $object->setAppId($data->{'app_id'});
-            unset($data->{'app_id'});
         }
         if (property_exists($data, 'deleted') && $data->{'deleted'} !== null) {
             $object->setDeleted($data->{'deleted'});
-            unset($data->{'deleted'});
         }
         if (property_exists($data, 'icons') && $data->{'icons'} !== null) {
             $object->setIcons($this->denormalizer->denormalize($data->{'icons'}, 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200BotIcons', 'json', $context));
-            unset($data->{'icons'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
         }
         if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
             $object->setUpdated($data->{'updated'});
-            unset($data->{'updated'});
         }
         if (property_exists($data, 'user_id') && $data->{'user_id'} !== null) {
             $object->setUserId($data->{'user_id'});
-            unset($data->{'user_id'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -103,11 +90,6 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
         }
         if (null !== $object->getUserId()) {
             $data->{'user_id'} = $object->getUserId();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

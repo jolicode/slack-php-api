@@ -42,27 +42,18 @@ class ConversationsMembersGetResponse200Normalizer implements DenormalizerInterf
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'members') && $data->{'members'} !== null) {
             $values = [];
             foreach ($data->{'members'} as $value) {
                 $values[] = $value;
             }
             $object->setMembers($values);
-            unset($data->{'members'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'response_metadata') && $data->{'response_metadata'} !== null) {
             $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ConversationsMembersGetResponse200ResponseMetadata', 'json', $context));
-            unset($data->{'response_metadata'});
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
         }
 
         return $object;
@@ -83,11 +74,6 @@ class ConversationsMembersGetResponse200Normalizer implements DenormalizerInterf
         }
         if (null !== $object->getResponseMetadata()) {
             $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
         }
 
         return $data;

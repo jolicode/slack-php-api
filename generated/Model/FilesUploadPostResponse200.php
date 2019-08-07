@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class FilesUploadPostResponse200 extends \ArrayObject
+class FilesUploadPostResponse200
 {
     /**
      * @var ObjsFile

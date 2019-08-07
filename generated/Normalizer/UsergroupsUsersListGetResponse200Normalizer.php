@@ -42,15 +42,15 @@ class UsergroupsUsersListGetResponse200Normalizer implements DenormalizerInterfa
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+        if (property_exists($data, 'users') && $data->{'users'} !== null) {
+            $values = [];
+            foreach ($data->{'users'} as $value) {
+                $values[] = $value;
             }
+            $object->setUsers($values);
         }
 
         return $object;
@@ -62,10 +62,12 @@ class UsergroupsUsersListGetResponse200Normalizer implements DenormalizerInterfa
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+        if (null !== $object->getUsers()) {
+            $values = [];
+            foreach ($object->getUsers() as $value) {
+                $values[] = $value;
             }
+            $data->{'users'} = $values;
         }
 
         return $data;

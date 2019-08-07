@@ -42,23 +42,14 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons();
-        $data = clone $data;
         if (property_exists($data, 'image_36') && $data->{'image_36'} !== null) {
             $object->setImage36($data->{'image_36'});
-            unset($data->{'image_36'});
         }
         if (property_exists($data, 'image_48') && $data->{'image_48'} !== null) {
             $object->setImage48($data->{'image_48'});
-            unset($data->{'image_48'});
         }
         if (property_exists($data, 'image_72') && $data->{'image_72'} !== null) {
             $object->setImage72($data->{'image_72'});
-            unset($data->{'image_72'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
         }
         if (null !== $object->getImage72()) {
             $data->{'image_72'} = $object->getImage72();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -42,71 +42,74 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeam();
-        $data = clone $data;
+        if (property_exists($data, 'archived') && $data->{'archived'} !== null) {
+            $object->setArchived($data->{'archived'});
+        }
         if (property_exists($data, 'avatar_base_url') && $data->{'avatar_base_url'} !== null) {
             $object->setAvatarBaseUrl($data->{'avatar_base_url'});
-            unset($data->{'avatar_base_url'});
+        }
+        if (property_exists($data, 'created') && $data->{'created'} !== null) {
+            $object->setCreated($data->{'created'});
+        }
+        if (property_exists($data, 'date_create') && $data->{'date_create'} !== null) {
+            $object->setDateCreate($data->{'date_create'});
+        }
+        if (property_exists($data, 'deleted') && $data->{'deleted'} !== null) {
+            $object->setDeleted($data->{'deleted'});
+        }
+        if (property_exists($data, 'description') && $data->{'description'} !== null) {
+            $object->setDescription($data->{'description'});
+        }
+        if (property_exists($data, 'discoverable') && $data->{'discoverable'} !== null) {
+            $object->setDiscoverable($data->{'discoverable'});
         }
         if (property_exists($data, 'domain') && $data->{'domain'} !== null) {
             $object->setDomain($data->{'domain'});
-            unset($data->{'domain'});
         }
         if (property_exists($data, 'email_domain') && $data->{'email_domain'} !== null) {
             $object->setEmailDomain($data->{'email_domain'});
-            unset($data->{'email_domain'});
         }
         if (property_exists($data, 'enterprise_id') && $data->{'enterprise_id'} !== null) {
             $object->setEnterpriseId($data->{'enterprise_id'});
-            unset($data->{'enterprise_id'});
         }
         if (property_exists($data, 'enterprise_name') && $data->{'enterprise_name'} !== null) {
             $object->setEnterpriseName($data->{'enterprise_name'});
-            unset($data->{'enterprise_name'});
         }
         if (property_exists($data, 'has_compliance_export') && $data->{'has_compliance_export'} !== null) {
             $object->setHasComplianceExport($data->{'has_compliance_export'});
-            unset($data->{'has_compliance_export'});
         }
         if (property_exists($data, 'icon') && $data->{'icon'} !== null) {
-            $object->setIcon($this->denormalizer->denormalize($data->{'icon'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeamIcon', 'json', $context));
-            unset($data->{'icon'});
+            $object->setIcon($this->denormalizer->denormalize($data->{'icon'}, 'JoliCode\\Slack\\Api\\Model\\ObjsIcon', 'json', $context));
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
+        }
+        if (property_exists($data, 'is_assigned') && $data->{'is_assigned'} !== null) {
+            $object->setIsAssigned($data->{'is_assigned'});
+        }
+        if (property_exists($data, 'is_enterprise') && $data->{'is_enterprise'} !== null) {
+            $object->setIsEnterprise($data->{'is_enterprise'});
+        }
+        if (property_exists($data, 'limit_ts') && $data->{'limit_ts'} !== null) {
+            $object->setLimitTs($data->{'limit_ts'});
         }
         if (property_exists($data, 'messages_count') && $data->{'messages_count'} !== null) {
             $object->setMessagesCount($data->{'messages_count'});
-            unset($data->{'messages_count'});
         }
         if (property_exists($data, 'msg_edit_window_mins') && $data->{'msg_edit_window_mins'} !== null) {
             $object->setMsgEditWindowMins($data->{'msg_edit_window_mins'});
-            unset($data->{'msg_edit_window_mins'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
         }
         if (property_exists($data, 'over_integrations_limit') && $data->{'over_integrations_limit'} !== null) {
             $object->setOverIntegrationsLimit($data->{'over_integrations_limit'});
-            unset($data->{'over_integrations_limit'});
         }
         if (property_exists($data, 'over_storage_limit') && $data->{'over_storage_limit'} !== null) {
             $object->setOverStorageLimit($data->{'over_storage_limit'});
-            unset($data->{'over_storage_limit'});
         }
         if (property_exists($data, 'plan') && $data->{'plan'} !== null) {
             $object->setPlan($data->{'plan'});
-            unset($data->{'plan'});
-        }
-        if (property_exists($data, 'prefs') && $data->{'prefs'} !== null) {
-            $object->setPrefs($this->denormalizer->denormalize($data->{'prefs'}, 'JoliCode\\Slack\\Api\\Model\\TeamPrefsPrefs', 'json', $context));
-            unset($data->{'prefs'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -115,8 +118,26 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getArchived()) {
+            $data->{'archived'} = $object->getArchived();
+        }
         if (null !== $object->getAvatarBaseUrl()) {
             $data->{'avatar_base_url'} = $object->getAvatarBaseUrl();
+        }
+        if (null !== $object->getCreated()) {
+            $data->{'created'} = $object->getCreated();
+        }
+        if (null !== $object->getDateCreate()) {
+            $data->{'date_create'} = $object->getDateCreate();
+        }
+        if (null !== $object->getDeleted()) {
+            $data->{'deleted'} = $object->getDeleted();
+        }
+        if (null !== $object->getDescription()) {
+            $data->{'description'} = $object->getDescription();
+        }
+        if (null !== $object->getDiscoverable()) {
+            $data->{'discoverable'} = $object->getDiscoverable();
         }
         if (null !== $object->getDomain()) {
             $data->{'domain'} = $object->getDomain();
@@ -139,6 +160,15 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getId()) {
             $data->{'id'} = $object->getId();
         }
+        if (null !== $object->getIsAssigned()) {
+            $data->{'is_assigned'} = $object->getIsAssigned();
+        }
+        if (null !== $object->getIsEnterprise()) {
+            $data->{'is_enterprise'} = $object->getIsEnterprise();
+        }
+        if (null !== $object->getLimitTs()) {
+            $data->{'limit_ts'} = $object->getLimitTs();
+        }
         if (null !== $object->getMessagesCount()) {
             $data->{'messages_count'} = $object->getMessagesCount();
         }
@@ -156,14 +186,6 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getPlan()) {
             $data->{'plan'} = $object->getPlan();
-        }
-        if (null !== $object->getPrefs()) {
-            $data->{'prefs'} = $this->normalizer->normalize($object->getPrefs(), 'json', $context);
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

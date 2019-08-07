@@ -17,7 +17,7 @@ class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @param array $formParameters {
      *
-     *     @var string $ts timestamp of the most recently seen message
+     *     @var float $ts timestamp of the most recently seen message
      *     @var string $channel multiparty direct message channel to set reading cursor in.
      * }
      *
@@ -60,7 +60,7 @@ class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         $optionsResolver->setDefined(['ts', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsListGetResponse200ResponseMetadata extends \ArrayObject
+class ConversationsListGetResponse200ResponseMetadata
 {
     /**
      * @var string

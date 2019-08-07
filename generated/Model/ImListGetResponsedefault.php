@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ImListGetResponsedefault extends \ArrayObject
+class ImListGetResponsedefault
 {
     /**
      * @var string

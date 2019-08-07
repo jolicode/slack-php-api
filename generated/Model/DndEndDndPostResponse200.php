@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class DndEndDndPostResponse200 extends \ArrayObject
+class DndEndDndPostResponse200
 {
     /**
      * @var bool

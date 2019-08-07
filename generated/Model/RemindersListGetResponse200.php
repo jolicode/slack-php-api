@@ -10,12 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class RemindersListGetResponse200 extends \ArrayObject
+class RemindersListGetResponse200
 {
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var ObjsReminder[]
+     */
+    protected $reminders;
 
     /**
      * @return bool|null
@@ -33,6 +37,26 @@ class RemindersListGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsReminder[]|null
+     */
+    public function getReminders(): ?array
+    {
+        return $this->reminders;
+    }
+
+    /**
+     * @param ObjsReminder[]|null $reminders
+     *
+     * @return self
+     */
+    public function setReminders(?array $reminders): self
+    {
+        $this->reminders = $reminders;
 
         return $this;
     }

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsersLookupByEmailGetResponsedefault extends \ArrayObject
+class UsersLookupByEmailGetResponsedefault
 {
     /**
      * @var string

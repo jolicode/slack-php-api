@@ -10,12 +10,60 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ImClosePostResponse200 extends \ArrayObject
+class ImClosePostResponse200
 {
     /**
      * @var bool
      */
+    protected $alreadyClosed;
+    /**
+     * @var bool
+     */
+    protected $noOp;
+    /**
+     * @var bool
+     */
     protected $ok;
+
+    /**
+     * @return bool|null
+     */
+    public function getAlreadyClosed(): ?bool
+    {
+        return $this->alreadyClosed;
+    }
+
+    /**
+     * @param bool|null $alreadyClosed
+     *
+     * @return self
+     */
+    public function setAlreadyClosed(?bool $alreadyClosed): self
+    {
+        $this->alreadyClosed = $alreadyClosed;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getNoOp(): ?bool
+    {
+        return $this->noOp;
+    }
+
+    /**
+     * @param bool|null $noOp
+     *
+     * @return self
+     */
+    public function setNoOp(?bool $noOp): self
+    {
+        $this->noOp = $noOp;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

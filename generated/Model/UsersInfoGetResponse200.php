@@ -17,7 +17,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
-     * @var ObjsUser
+     * @var mixed
      */
     protected $user;
 
@@ -42,19 +42,19 @@ class UsersInfoGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsUser|null
+     * @return mixed
      */
-    public function getUser(): ?ObjsUser
+    public function getUser()
     {
         return $this->user;
     }
 
     /**
-     * @param ObjsUser|null $user
+     * @param mixed $user
      *
      * @return self
      */
-    public function setUser(?ObjsUser $user): self
+    public function setUser($user): self
     {
         $this->user = $user;
 

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsConversationItem2 extends \ArrayObject
+class ObjsConversationItem2
 {
     /**
      * @var int
@@ -47,6 +47,10 @@ class ObjsConversationItem2 extends \ArrayObject
     /**
      * @var bool
      */
+    protected $isStarred;
+    /**
+     * @var bool
+     */
     protected $isUserDeleted;
     /**
      * @var string
@@ -57,9 +61,21 @@ class ObjsConversationItem2 extends \ArrayObject
      */
     protected $latest;
     /**
+     * @var mixed
+     */
+    protected $parentConversation;
+    /**
+     * @var int
+     */
+    protected $pinCount;
+    /**
      * @var float
      */
     protected $priority;
+    /**
+     * @var ObjsConversationItem2SharesItem[]
+     */
+    protected $shares;
     /**
      * @var int
      */
@@ -72,6 +88,10 @@ class ObjsConversationItem2 extends \ArrayObject
      * @var string
      */
     protected $user;
+    /**
+     * @var int
+     */
+    protected $version;
 
     /**
      * @return int|null
@@ -236,6 +256,26 @@ class ObjsConversationItem2 extends \ArrayObject
     /**
      * @return bool|null
      */
+    public function getIsStarred(): ?bool
+    {
+        return $this->isStarred;
+    }
+
+    /**
+     * @param bool|null $isStarred
+     *
+     * @return self
+     */
+    public function setIsStarred(?bool $isStarred): self
+    {
+        $this->isStarred = $isStarred;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
     public function getIsUserDeleted(): ?bool
     {
         return $this->isUserDeleted;
@@ -256,7 +296,7 @@ class ObjsConversationItem2 extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -266,7 +306,7 @@ class ObjsConversationItem2 extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
 
@@ -294,6 +334,46 @@ class ObjsConversationItem2 extends \ArrayObject
     }
 
     /**
+     * @return mixed
+     */
+    public function getParentConversation()
+    {
+        return $this->parentConversation;
+    }
+
+    /**
+     * @param mixed $parentConversation
+     *
+     * @return self
+     */
+    public function setParentConversation($parentConversation): self
+    {
+        $this->parentConversation = $parentConversation;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPinCount(): ?int
+    {
+        return $this->pinCount;
+    }
+
+    /**
+     * @param int|null $pinCount
+     *
+     * @return self
+     */
+    public function setPinCount(?int $pinCount): self
+    {
+        $this->pinCount = $pinCount;
+
+        return $this;
+    }
+
+    /**
      * @return float|null
      */
     public function getPriority(): ?float
@@ -309,6 +389,26 @@ class ObjsConversationItem2 extends \ArrayObject
     public function setPriority(?float $priority): self
     {
         $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsConversationItem2SharesItem[]|null
+     */
+    public function getShares(): ?array
+    {
+        return $this->shares;
+    }
+
+    /**
+     * @param ObjsConversationItem2SharesItem[]|null $shares
+     *
+     * @return self
+     */
+    public function setShares(?array $shares): self
+    {
+        $this->shares = $shares;
 
         return $this;
     }
@@ -369,6 +469,26 @@ class ObjsConversationItem2 extends \ArrayObject
     public function setUser(?string $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getVersion(): ?int
+    {
+        return $this->version;
+    }
+
+    /**
+     * @param int|null $version
+     *
+     * @return self
+     */
+    public function setVersion(?int $version): self
+    {
+        $this->version = $version;
 
         return $this;
     }

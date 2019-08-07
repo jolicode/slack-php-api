@@ -42,31 +42,20 @@ class ConversationsCreatePostResponsedefaultNormalizer implements DenormalizerIn
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault();
-        $data = clone $data;
         if (property_exists($data, 'detail') && $data->{'detail'} !== null) {
             $object->setDetail($data->{'detail'});
-            unset($data->{'detail'});
         }
         if (property_exists($data, 'error') && $data->{'error'} !== null) {
             $object->setError($data->{'error'});
-            unset($data->{'error'});
         }
         if (property_exists($data, 'needed') && $data->{'needed'} !== null) {
             $object->setNeeded($data->{'needed'});
-            unset($data->{'needed'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'provided') && $data->{'provided'} !== null) {
             $object->setProvided($data->{'provided'});
-            unset($data->{'provided'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -89,11 +78,6 @@ class ConversationsCreatePostResponsedefaultNormalizer implements DenormalizerIn
         }
         if (null !== $object->getProvided()) {
             $data->{'provided'} = $object->getProvided();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

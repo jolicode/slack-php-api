@@ -17,13 +17,14 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
-     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var float $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
-     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
-     *     @var bool $link_names find and link channel names and usernames
+     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var bool $as_user Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false.
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
+     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
      *     @var string $user `id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.
-     *     @var bool $as_user Pass true to post the message as the authed bot. Defaults to false.
+     *     @var bool $link_names find and link channel names and usernames
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name.
      * }
      *
@@ -63,16 +64,17 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['attachments', 'blocks', 'text', 'link_names', 'parse', 'user', 'as_user', 'channel']);
+        $optionsResolver->setDefined(['thread_ts', 'blocks', 'attachments', 'as_user', 'parse', 'text', 'user', 'link_names', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('attachments', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('blocks', ['string']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('link_names', ['bool']);
-        $optionsResolver->setAllowedTypes('parse', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->setAllowedTypes('attachments', ['string']);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
+        $optionsResolver->setAllowedTypes('parse', ['string']);
+        $optionsResolver->setAllowedTypes('text', ['string']);
+        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->setAllowedTypes('link_names', ['bool']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

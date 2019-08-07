@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsUserProfile extends \ArrayObject
+class ObjsUserProfile
 {
     /**
      * @var bool
@@ -19,7 +19,15 @@ class ObjsUserProfile extends \ArrayObject
     /**
      * @var string
      */
+    protected $apiAppId;
+    /**
+     * @var string
+     */
     protected $avatarHash;
+    /**
+     * @var string
+     */
+    protected $botId;
     /**
      * @var string
      */
@@ -33,7 +41,7 @@ class ObjsUserProfile extends \ArrayObject
      */
     protected $email;
     /**
-     * @var mixed
+     * @var mixed|mixed[]|null
      */
     protected $fields;
     /**
@@ -44,6 +52,18 @@ class ObjsUserProfile extends \ArrayObject
      * @var string
      */
     protected $guestChannels;
+    /**
+     * @var int
+     */
+    protected $guestExpirationTs;
+    /**
+     * @var string
+     */
+    protected $guestInvitedBy;
+    /**
+     * @var string
+     */
+    protected $image1024;
     /**
      * @var string
      */
@@ -72,6 +92,10 @@ class ObjsUserProfile extends \ArrayObject
      * @var string
      */
     protected $imageOriginal;
+    /**
+     * @var bool
+     */
+    protected $isCustomImage;
     /**
      * @var string
      */
@@ -115,6 +139,10 @@ class ObjsUserProfile extends \ArrayObject
     /**
      * @var string
      */
+    protected $teams;
+    /**
+     * @var string
+     */
     protected $title;
 
     /**
@@ -140,6 +168,26 @@ class ObjsUserProfile extends \ArrayObject
     /**
      * @return string|null
      */
+    public function getApiAppId(): ?string
+    {
+        return $this->apiAppId;
+    }
+
+    /**
+     * @param string|null $apiAppId
+     *
+     * @return self
+     */
+    public function setApiAppId(?string $apiAppId): self
+    {
+        $this->apiAppId = $apiAppId;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getAvatarHash(): ?string
     {
         return $this->avatarHash;
@@ -153,6 +201,26 @@ class ObjsUserProfile extends \ArrayObject
     public function setAvatarHash(?string $avatarHash): self
     {
         $this->avatarHash = $avatarHash;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getBotId(): ?string
+    {
+        return $this->botId;
+    }
+
+    /**
+     * @param string|null $botId
+     *
+     * @return self
+     */
+    public function setBotId(?string $botId): self
+    {
+        $this->botId = $botId;
 
         return $this;
     }
@@ -218,7 +286,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @return mixed
+     * @return mixed|mixed[]|null
      */
     public function getFields()
     {
@@ -226,7 +294,7 @@ class ObjsUserProfile extends \ArrayObject
     }
 
     /**
-     * @param mixed $fields
+     * @param mixed|mixed[]|null $fields
      *
      * @return self
      */
@@ -273,6 +341,66 @@ class ObjsUserProfile extends \ArrayObject
     public function setGuestChannels(?string $guestChannels): self
     {
         $this->guestChannels = $guestChannels;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getGuestExpirationTs(): ?int
+    {
+        return $this->guestExpirationTs;
+    }
+
+    /**
+     * @param int|null $guestExpirationTs
+     *
+     * @return self
+     */
+    public function setGuestExpirationTs(?int $guestExpirationTs): self
+    {
+        $this->guestExpirationTs = $guestExpirationTs;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGuestInvitedBy(): ?string
+    {
+        return $this->guestInvitedBy;
+    }
+
+    /**
+     * @param string|null $guestInvitedBy
+     *
+     * @return self
+     */
+    public function setGuestInvitedBy(?string $guestInvitedBy): self
+    {
+        $this->guestInvitedBy = $guestInvitedBy;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImage1024(): ?string
+    {
+        return $this->image1024;
+    }
+
+    /**
+     * @param string|null $image1024
+     *
+     * @return self
+     */
+    public function setImage1024(?string $image1024): self
+    {
+        $this->image1024 = $image1024;
 
         return $this;
     }
@@ -413,6 +541,26 @@ class ObjsUserProfile extends \ArrayObject
     public function setImageOriginal(?string $imageOriginal): self
     {
         $this->imageOriginal = $imageOriginal;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsCustomImage(): ?bool
+    {
+        return $this->isCustomImage;
+    }
+
+    /**
+     * @param bool|null $isCustomImage
+     *
+     * @return self
+     */
+    public function setIsCustomImage(?bool $isCustomImage): self
+    {
+        $this->isCustomImage = $isCustomImage;
 
         return $this;
     }
@@ -613,6 +761,26 @@ class ObjsUserProfile extends \ArrayObject
     public function setTeam(?string $team): self
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTeams(): ?string
+    {
+        return $this->teams;
+    }
+
+    /**
+     * @param string|null $teams
+     *
+     * @return self
+     */
+    public function setTeams(?string $teams): self
+    {
+        $this->teams = $teams;
 
         return $this;
     }

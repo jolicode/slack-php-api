@@ -42,31 +42,30 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesInfoGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'comments') && $data->{'comments'} !== null) {
             $values = [];
             foreach ($data->{'comments'} as $value) {
                 $values[] = $value;
             }
             $object->setComments($values);
-            unset($data->{'comments'});
+        }
+        if (property_exists($data, 'content_html') && $data->{'content_html'} !== null) {
+            $object->setContentHtml($data->{'content_html'});
+        }
+        if (property_exists($data, 'editor') && $data->{'editor'} !== null) {
+            $object->setEditor($data->{'editor'});
         }
         if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-            unset($data->{'file'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'paging') && $data->{'paging'} !== null) {
             $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-            unset($data->{'paging'});
         }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
+        if (property_exists($data, 'response_metadata') && $data->{'response_metadata'} !== null) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
         }
 
         return $object;
@@ -82,6 +81,10 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
             }
             $data->{'comments'} = $values;
         }
+        $data->{'content_html'} = $object->getContentHtml();
+        if (null !== $object->getEditor()) {
+            $data->{'editor'} = $object->getEditor();
+        }
         if (null !== $object->getFile()) {
             $data->{'file'} = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
@@ -91,10 +94,8 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
         if (null !== $object->getPaging()) {
             $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
+        if (null !== $object->getResponseMetadata()) {
+            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         }
 
         return $data;

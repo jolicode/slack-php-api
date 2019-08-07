@@ -42,27 +42,18 @@ class FilesListGetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'files') && $data->{'files'} !== null) {
             $values = [];
             foreach ($data->{'files'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context);
             }
             $object->setFiles($values);
-            unset($data->{'files'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'paging') && $data->{'paging'} !== null) {
             $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-            unset($data->{'paging'});
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
         }
 
         return $object;
@@ -83,11 +74,6 @@ class FilesListGetResponse200Normalizer implements DenormalizerInterface, Normal
         }
         if (null !== $object->getPaging()) {
             $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
         }
 
         return $data;

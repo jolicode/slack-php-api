@@ -42,27 +42,17 @@ class ObjsConversationItem0SharesItemNormalizer implements DenormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem0SharesItem();
-        $data = clone $data;
         if (property_exists($data, 'accepted_user') && $data->{'accepted_user'} !== null) {
             $object->setAcceptedUser($data->{'accepted_user'});
-            unset($data->{'accepted_user'});
         }
         if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
-            unset($data->{'is_active'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
-            unset($data->{'team'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -82,11 +72,6 @@ class ObjsConversationItem0SharesItemNormalizer implements DenormalizerInterface
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

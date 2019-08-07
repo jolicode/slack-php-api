@@ -17,7 +17,6 @@ class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *
      * @param array $queryParameters {
      *
-     *     @var bool $presence Deprecated. Whether to include presence data in the output. Defaults to `false`. Setting this to `true` reduces performance, especially with large teams.
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `users:read`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
@@ -54,10 +53,9 @@ class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['presence', 'cursor', 'token', 'limit', 'include_locale']);
+        $optionsResolver->setDefined(['cursor', 'token', 'limit', 'include_locale']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('presence', ['bool']);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);

@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class GroupsRenamePostResponse200 extends \ArrayObject
+class GroupsRenamePostResponse200
 {
+    /**
+     * @var ObjsGroup
+     */
+    protected $channel;
     /**
      * @var bool
      */
     protected $ok;
+
+    /**
+     * @return ObjsGroup|null
+     */
+    public function getChannel(): ?ObjsGroup
+    {
+        return $this->channel;
+    }
+
+    /**
+     * @param ObjsGroup|null $channel
+     *
+     * @return self
+     */
+    public function setChannel(?ObjsGroup $channel): self
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

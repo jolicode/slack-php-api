@@ -18,7 +18,7 @@ class ChatDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $formParameters {
      *
      *     @var bool $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
-     *     @var string $ts timestamp of the message to be deleted
+     *     @var float $ts timestamp of the message to be deleted
      *     @var string $channel Channel containing the message to be deleted.
      * }
      *
@@ -62,7 +62,7 @@ class ChatDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

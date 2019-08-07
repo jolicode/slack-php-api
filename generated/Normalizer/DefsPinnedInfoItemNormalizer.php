@@ -42,19 +42,11 @@ class DefsPinnedInfoItemNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DefsPinnedInfoItem();
-        $data = clone $data;
         if (property_exists($data, 'pinned_by') && $data->{'pinned_by'} !== null) {
             $object->setPinnedBy($data->{'pinned_by'});
-            unset($data->{'pinned_by'});
         }
         if (property_exists($data, 'pinned_ts') && $data->{'pinned_ts'} !== null) {
             $object->setPinnedTs($data->{'pinned_ts'});
-            unset($data->{'pinned_ts'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -68,11 +60,6 @@ class DefsPinnedInfoItemNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (null !== $object->getPinnedTs()) {
             $data->{'pinned_ts'} = $object->getPinnedTs();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -42,43 +42,29 @@ class UsersIdentityGetResponse200Item2UserNormalizer implements DenormalizerInte
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User();
-        $data = clone $data;
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'image_192') && $data->{'image_192'} !== null) {
             $object->setImage192($data->{'image_192'});
-            unset($data->{'image_192'});
         }
         if (property_exists($data, 'image_24') && $data->{'image_24'} !== null) {
             $object->setImage24($data->{'image_24'});
-            unset($data->{'image_24'});
         }
         if (property_exists($data, 'image_32') && $data->{'image_32'} !== null) {
             $object->setImage32($data->{'image_32'});
-            unset($data->{'image_32'});
         }
         if (property_exists($data, 'image_48') && $data->{'image_48'} !== null) {
             $object->setImage48($data->{'image_48'});
-            unset($data->{'image_48'});
         }
         if (property_exists($data, 'image_512') && $data->{'image_512'} !== null) {
             $object->setImage512($data->{'image_512'});
-            unset($data->{'image_512'});
         }
         if (property_exists($data, 'image_72') && $data->{'image_72'} !== null) {
             $object->setImage72($data->{'image_72'});
-            unset($data->{'image_72'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -110,11 +96,6 @@ class UsersIdentityGetResponse200Item2UserNormalizer implements DenormalizerInte
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -42,27 +42,14 @@ class ChatDeletePostResponse200Normalizer implements DenormalizerInterface, Norm
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatDeletePostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
-            $value = $data->{'ts'};
-            if (is_string($data->{'ts'})) {
-                $value = $data->{'ts'};
-            }
-            $object->setTs($value);
-            unset($data->{'ts'});
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
+            $object->setTs($data->{'ts'});
         }
 
         return $object;
@@ -78,16 +65,7 @@ class ChatDeletePostResponse200Normalizer implements DenormalizerInterface, Norm
             $data->{'ok'} = $object->getOk();
         }
         if (null !== $object->getTs()) {
-            $value = $object->getTs();
-            if (is_string($object->getTs())) {
-                $value = $object->getTs();
-            }
-            $data->{'ts'} = $value;
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
+            $data->{'ts'} = $object->getTs();
         }
 
         return $data;

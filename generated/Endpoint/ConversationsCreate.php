@@ -17,6 +17,7 @@ class ConversationsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
+     *     @var string $user_ids **Required** for workspace apps. A list of between 1 and 30 human users that will be added to the newly-created conversation. This argument has no effect when used by classic Slack apps.
      *     @var string $name Name of the public or private channel to create
      *     @var bool $is_private Create a private channel instead of a public one
      * }
@@ -57,9 +58,10 @@ class ConversationsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'is_private']);
+        $optionsResolver->setDefined(['user_ids', 'name', 'is_private']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('user_ids', ['string']);
         $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('is_private', ['bool']);
 

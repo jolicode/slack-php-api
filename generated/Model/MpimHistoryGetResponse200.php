@@ -10,12 +10,60 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class MpimHistoryGetResponse200 extends \ArrayObject
+class MpimHistoryGetResponse200
 {
     /**
      * @var bool
      */
+    protected $hasMore;
+    /**
+     * @var ObjsMessage[]
+     */
+    protected $messages;
+    /**
+     * @var bool
+     */
     protected $ok;
+
+    /**
+     * @return bool|null
+     */
+    public function getHasMore(): ?bool
+    {
+        return $this->hasMore;
+    }
+
+    /**
+     * @param bool|null $hasMore
+     *
+     * @return self
+     */
+    public function setHasMore(?bool $hasMore): self
+    {
+        $this->hasMore = $hasMore;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsMessage[]|null
+     */
+    public function getMessages(): ?array
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param ObjsMessage[]|null $messages
+     *
+     * @return self
+     */
+    public function setMessages(?array $messages): self
+    {
+        $this->messages = $messages;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

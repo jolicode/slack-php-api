@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ReactionsListGetResponse200 extends \ArrayObject
+class ReactionsListGetResponse200
 {
     /**
      * @var mixed[]
@@ -24,6 +24,10 @@ class ReactionsListGetResponse200 extends \ArrayObject
      * @var ObjsPaging
      */
     protected $paging;
+    /**
+     * @var ObjsResponseMetadata
+     */
+    protected $responseMetadata;
 
     /**
      * @return mixed[]|null
@@ -81,6 +85,26 @@ class ReactionsListGetResponse200 extends \ArrayObject
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsResponseMetadata|null
+     */
+    public function getResponseMetadata(): ?ObjsResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    /**
+     * @param ObjsResponseMetadata|null $responseMetadata
+     *
+     * @return self
+     */
+    public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

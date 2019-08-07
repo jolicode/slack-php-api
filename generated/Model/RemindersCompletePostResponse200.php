@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class RemindersCompletePostResponse200 extends \ArrayObject
+class RemindersCompletePostResponse200
 {
     /**
      * @var bool

@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AppsPermissionsInfoGetResponse200 extends \ArrayObject
+class AppsPermissionsInfoGetResponse200
 {
+    /**
+     * @var AppsPermissionsInfoGetResponse200Info
+     */
+    protected $info;
     /**
      * @var bool
      */
     protected $ok;
+
+    /**
+     * @return AppsPermissionsInfoGetResponse200Info|null
+     */
+    public function getInfo(): ?AppsPermissionsInfoGetResponse200Info
+    {
+        return $this->info;
+    }
+
+    /**
+     * @param AppsPermissionsInfoGetResponse200Info|null $info
+     *
+     * @return self
+     */
+    public function setInfo(?AppsPermissionsInfoGetResponse200Info $info): self
+    {
+        $this->info = $info;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

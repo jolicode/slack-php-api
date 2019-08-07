@@ -42,15 +42,18 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\MpimHistoryGetResponse200();
-        $data = clone $data;
+        if (property_exists($data, 'has_more') && $data->{'has_more'} !== null) {
+            $object->setHasMore($data->{'has_more'});
+        }
+        if (property_exists($data, 'messages') && $data->{'messages'} !== null) {
+            $values = [];
+            foreach ($data->{'messages'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context);
+            }
+            $object->setMessages($values);
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -59,13 +62,18 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getHasMore()) {
+            $data->{'has_more'} = $object->getHasMore();
+        }
+        if (null !== $object->getMessages()) {
+            $values = [];
+            foreach ($object->getMessages() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'messages'} = $values;
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

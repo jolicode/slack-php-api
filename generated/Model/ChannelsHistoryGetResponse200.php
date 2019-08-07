@@ -10,12 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsHistoryGetResponse200 extends \ArrayObject
+class ChannelsHistoryGetResponse200
 {
     /**
      * @var bool
      */
     protected $hasMore;
+    /**
+     * @var bool
+     */
+    protected $isLimited;
     /**
      * @var ObjsMessage[]
      */
@@ -41,6 +45,26 @@ class ChannelsHistoryGetResponse200 extends \ArrayObject
     public function setHasMore(?bool $hasMore): self
     {
         $this->hasMore = $hasMore;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsLimited(): ?bool
+    {
+        return $this->isLimited;
+    }
+
+    /**
+     * @param bool|null $isLimited
+     *
+     * @return self
+     */
+    public function setIsLimited(?bool $isLimited): self
+    {
+        $this->isLimited = $isLimited;
 
         return $this;
     }
