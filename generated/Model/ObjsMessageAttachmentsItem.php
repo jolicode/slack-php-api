@@ -73,7 +73,7 @@ class ObjsMessageAttachmentsItem
      */
     protected $footerIcon;
     /**
-     * @var string
+     * @var float
      */
     protected $ts;
 
@@ -378,19 +378,19 @@ class ObjsMessageAttachmentsItem
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getTs(): ?string
+    public function getTs(): ?float
     {
         return $this->ts;
     }
 
     /**
-     * @param string|null $ts
+     * @param float|null $ts
      *
      * @return self
      */
-    public function setTs(?string $ts): self
+    public function setTs(?float $ts): self
     {
         $this->ts = $ts;
 

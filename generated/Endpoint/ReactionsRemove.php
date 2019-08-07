@@ -19,7 +19,7 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      *     @var string $name reaction (emoji) name
      *     @var string $file_comment file comment to remove reaction from
-     *     @var float $timestamp timestamp of the message to remove reaction from
+     *     @var string $timestamp timestamp of the message to remove reaction from
      *     @var string $file file to remove reaction from
      *     @var string $channel Channel where the message to remove reaction from was posted.
      * }
@@ -65,7 +65,7 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['float']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
