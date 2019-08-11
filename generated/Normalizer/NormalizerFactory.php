@@ -58,10 +58,8 @@ class NormalizerFactory
         $normalizers[] = new ObjsSubteamPrefsNormalizer();
         $normalizers[] = new ObjsTeamNormalizer();
         $normalizers[] = new ObjsTeamProfileFieldNormalizer();
-        $normalizers[] = new ObjsUserItem0Normalizer();
-        $normalizers[] = new ObjsUserItem0TeamProfileNormalizer();
-        $normalizers[] = new ObjsUserItem1Normalizer();
-        $normalizers[] = new ObjsUserItem1TeamProfileNormalizer();
+        $normalizers[] = new ObjsUserNormalizer();
+        $normalizers[] = new ObjsUserTeamProfileNormalizer();
         $normalizers[] = new ObjsUserProfileNormalizer();
         $normalizers[] = new ObjsUserProfileShortNormalizer();
         $normalizers[] = new AdminUsersSessionResetPostResponse200Normalizer();

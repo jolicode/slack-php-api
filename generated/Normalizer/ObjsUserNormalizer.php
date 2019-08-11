@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsUserItem0Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem0';
+        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsUser';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem0';
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUser';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,7 +41,7 @@ class ObjsUserItem0Normalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsUserItem0();
+        $object = new \JoliCode\Slack\Api\Model\ObjsUser();
         if (property_exists($data, 'color') && $data->{'color'} !== null) {
             $object->setColor($data->{'color'});
         }
@@ -103,7 +103,7 @@ class ObjsUserItem0Normalizer implements DenormalizerInterface, NormalizerInterf
             $object->setTeamId($data->{'team_id'});
         }
         if (property_exists($data, 'team_profile') && $data->{'team_profile'} !== null) {
-            $object->setTeamProfile($this->denormalizer->denormalize($data->{'team_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem0TeamProfile', 'json', $context));
+            $object->setTeamProfile($this->denormalizer->denormalize($data->{'team_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile', 'json', $context));
         }
         if (property_exists($data, 'two_factor_type') && $data->{'two_factor_type'} !== null) {
             $object->setTwoFactorType($data->{'two_factor_type'});
@@ -119,6 +119,13 @@ class ObjsUserItem0Normalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
             $object->setUpdated($data->{'updated'});
+        }
+        if (property_exists($data, 'teams') && $data->{'teams'} !== null) {
+            $values = [];
+            foreach ($data->{'teams'} as $value) {
+                $values[] = $value;
+            }
+            $object->setTeams($values);
         }
 
         return $object;
@@ -204,6 +211,13 @@ class ObjsUserItem0Normalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getUpdated()) {
             $data->{'updated'} = $object->getUpdated();
+        }
+        if (null !== $object->getTeams()) {
+            $values = [];
+            foreach ($object->getTeams() as $value) {
+                $values[] = $value;
+            }
+            $data->{'teams'} = $values;
         }
 
         return $data;

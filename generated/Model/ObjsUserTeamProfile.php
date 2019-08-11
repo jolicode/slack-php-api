@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsUserItem0TeamProfile
+class ObjsUserTeamProfile
 {
     /**
      * @var ObjsTeamProfileField[]

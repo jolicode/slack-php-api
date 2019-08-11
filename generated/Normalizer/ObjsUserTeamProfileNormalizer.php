@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsUserItem1TeamProfileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem1TeamProfile';
+        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem1TeamProfile';
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,7 +41,7 @@ class ObjsUserItem1TeamProfileNormalizer implements DenormalizerInterface, Norma
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsUserItem1TeamProfile();
+        $object = new \JoliCode\Slack\Api\Model\ObjsUserTeamProfile();
         if (property_exists($data, 'fields') && $data->{'fields'} !== null) {
             $values = [];
             foreach ($data->{'fields'} as $value) {

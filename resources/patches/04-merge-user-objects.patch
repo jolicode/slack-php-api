@@ -1,0 +1,356 @@
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
+@@ -2288,245 +2288,128 @@
+             "type": "object"
+         },
+         "objs_user": {
+-            "items": [
+-                {
+-                    "additionalProperties": false,
+-                    "description": "user object for non enterprise type",
+-                    "properties": {
+-                        "color": {
+-                            "pattern": "^[a-fA-F0-9]{6}$",
+-                            "type": "string"
+-                        },
+-                        "deleted": {
+-                            "type": "boolean"
+-                        },
+-                        "enterprise_user": {
+-                            "$ref": "#/definitions/objs_enterprise_user"
+-                        },
+-                        "has_2fa": {
+-                            "type": "boolean"
+-                        },
+-                        "id": {
+-                            "$ref": "#/definitions/defs_user_id"
+-                        },
+-                        "is_admin": {
+-                            "type": "boolean"
+-                        },
+-                        "is_app_user": {
+-                            "type": "boolean"
+-                        },
+-                        "is_bot": {
+-                            "type": "boolean"
+-                        },
+-                        "is_invited_user": {
+-                            "type": "boolean"
+-                        },
+-                        "is_owner": {
+-                            "type": "boolean"
+-                        },
+-                        "is_primary_owner": {
+-                            "type": "boolean"
+-                        },
+-                        "is_restricted": {
+-                            "type": "boolean"
+-                        },
+-                        "is_ultra_restricted": {
+-                            "type": "boolean"
+-                        },
+-                        "locale": {
+-                            "type": "string"
+-                        },
+-                        "name": {
+-                            "type": "string"
+-                        },
+-                        "presence": {
+-                            "type": "string"
+-                        },
+-                        "profile": {
+-                            "$ref": "#/definitions/objs_user_profile"
+-                        },
+-                        "real_name": {
+-                            "type": "string"
+-                        },
+-                        "team": {
+-                            "$ref": "#/definitions/defs_team"
+-                        },
+-                        "team_id": {
+-                            "$ref": "#/definitions/defs_team"
+-                        },
+-                        "team_profile": {
+-                            "additionalProperties": false,
+-                            "properties": {
+-                                "fields": {
+-                                    "items": {
+-                                        "$ref": "#/definitions/objs_team_profile_field"
+-                                    },
+-                                    "minItems": 1,
+-                                    "type": "array",
+-                                    "uniqueItems": true
+-                                }
+-                            },
+-                            "required": [
+-                                "fields"
+-                            ],
+-                            "type": "object"
+-                        },
+-                        "two_factor_type": {
+-                            "type": "string"
+-                        },
+-                        "tz": {
+-                            "items": [
+-                                {
+-                                    "type": "null"
+-                                },
+-                                {
+-                                    "type": "string"
+-                                }
+-                            ]
+-                        },
+-                        "tz_label": {
+-                            "type": "string"
+-                        },
+-                        "tz_offset": {
+-                            "type": "number"
+-                        },
+-                        "updated": {
+-                            "type": "number"
+-                        }
+-                    },
+-                    "required": [
+-                        "id",
+-                        "name",
+-                        "deleted",
+-                        "profile",
+-                        "is_bot",
+-                        "updated",
+-                        "is_app_user"
+-                    ],
+-                    "type": "object"
++            "type": "object",
++            "additionalProperties": false,
++            "description": "Merged user object for non enterprise type and enterprise user",
++            "required": [
++                "id",
++                "name",
++                "deleted",
++                "profile",
++                "is_bot",
++                "updated",
++                "is_app_user"
++            ],
++            "properties": {
++                "color": {
++                    "pattern": "^[a-fA-F0-9]{6}$",
++                    "type": "string"
+                 },
+-                {
++                "deleted": {
++                    "type": "boolean"
++                },
++                "enterprise_user": {
++                    "$ref": "#/definitions/objs_enterprise_user"
++                },
++                "has_2fa": {
++                    "type": "boolean"
++                },
++                "id": {
++                    "$ref": "#/definitions/defs_user_id"
++                },
++                "is_admin": {
++                    "type": "boolean"
++                },
++                "is_app_user": {
++                    "type": "boolean"
++                },
++                "is_bot": {
++                    "type": "boolean"
++                },
++                "is_invited_user": {
++                    "type": "boolean"
++                },
++                "is_owner": {
++                    "type": "boolean"
++                },
++                "is_primary_owner": {
++                    "type": "boolean"
++                },
++                "is_restricted": {
++                    "type": "boolean"
++                },
++                "is_ultra_restricted": {
++                    "type": "boolean"
++                },
++                "locale": {
++                    "type": "string"
++                },
++                "name": {
++                    "type": "string"
++                },
++                "presence": {
++                    "type": "string"
++                },
++                "profile": {
++                    "$ref": "#/definitions/objs_user_profile"
++                },
++                "real_name": {
++                    "type": "string"
++                },
++                "team": {
++                    "$ref": "#/definitions/defs_team"
++                },
++                "team_id": {
++                    "$ref": "#/definitions/defs_team"
++                },
++                "team_profile": {
+                     "additionalProperties": false,
+-                    "description": "enterprise user",
+                     "properties": {
+-                        "color": {
+-                            "description": "refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559",
+-                            "pattern": "^$",
+-                            "type": "string"
+-                        },
+-                        "deleted": {
+-                            "type": "boolean"
+-                        },
+-                        "enterprise_user": {
+-                            "$ref": "#/definitions/objs_enterprise_user"
+-                        },
+-                        "has_2fa": {
+-                            "type": "boolean"
+-                        },
+-                        "id": {
+-                            "$ref": "#/definitions/defs_user_id"
+-                        },
+-                        "is_admin": {
+-                            "type": "boolean"
+-                        },
+-                        "is_app_user": {
+-                            "type": "boolean"
+-                        },
+-                        "is_bot": {
+-                            "type": "boolean"
+-                        },
+-                        "is_owner": {
+-                            "type": "boolean"
+-                        },
+-                        "is_primary_owner": {
+-                            "type": "boolean"
+-                        },
+-                        "is_restricted": {
+-                            "type": "boolean"
+-                        },
+-                        "is_ultra_restricted": {
+-                            "type": "boolean"
+-                        },
+-                        "locale": {
+-                            "type": "string"
+-                        },
+-                        "name": {
+-                            "type": "string"
+-                        },
+-                        "presence": {
+-                            "type": "string"
+-                        },
+-                        "profile": {
+-                            "$ref": "#/definitions/objs_user_profile"
+-                        },
+-                        "real_name": {
+-                            "type": "string"
+-                        },
+-                        "team_id": {
+-                            "$ref": "#/definitions/defs_team"
+-                        },
+-                        "team_profile": {
+-                            "additionalProperties": false,
+-                            "properties": {
+-                                "fields": {
+-                                    "items": {
+-                                        "$ref": "#/definitions/objs_team_profile_field"
+-                                    },
+-                                    "minItems": 1,
+-                                    "type": "array",
+-                                    "uniqueItems": true
+-                                }
+-                            },
+-                            "required": [
+-                                "fields"
+-                            ],
+-                            "type": "object"
+-                        },
+-                        "teams": {
++                        "fields": {
+                             "items": {
+-                                "$ref": "#/definitions/defs_workspace_id"
++                                "$ref": "#/definitions/objs_team_profile_field"
+                             },
+                             "minItems": 1,
+                             "type": "array",
+                             "uniqueItems": true
+-                        },
+-                        "two_factor_type": {
+-                            "type": "string"
+-                        },
+-                        "tz": {
+-                            "items": [
+-                                {
+-                                    "type": "null"
+-                                },
+-                                {
+-                                    "type": "string"
+-                                }
+-                            ]
+-                        },
+-                        "tz_label": {
+-                            "type": "string"
+-                        },
+-                        "tz_offset": {
+-                            "type": "number"
+-                        },
+-                        "updated": {
+-                            "type": "number"
+                         }
+                     },
+                     "required": [
+-                        "id",
+-                        "name",
+-                        "deleted",
+-                        "profile",
+-                        "is_restricted",
+-                        "is_ultra_restricted",
+-                        "is_bot",
+-                        "updated",
+-                        "is_app_user"
++                        "fields"
+                     ],
+                     "type": "object"
++                },
++                "two_factor_type": {
++                    "type": "string"
++                },
++                "tz": {
++                    "items": [
++                        {
++                            "type": "null"
++                        },
++                        {
++                            "type": "string"
++                        }
++                    ]
++                },
++                "tz_label": {
++                    "type": "string"
++                },
++                "tz_offset": {
++                    "type": "number"
++                },
++                "updated": {
++                    "type": "number"
++                },
++                "teams": {
++                    "items": {
++                        "$ref": "#/definitions/defs_workspace_id"
++                    },
++                    "minItems": 1,
++                    "type": "array",
++                    "uniqueItems": true
+                 }
+-            ]
++            }
+         },
+         "objs_user_profile": {
+             "additionalProperties": false,

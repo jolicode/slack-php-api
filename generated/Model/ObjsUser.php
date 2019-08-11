@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsUserItem0
+class ObjsUser
 {
     /**
      * @var string
@@ -93,7 +93,7 @@ class ObjsUserItem0
      */
     protected $teamId;
     /**
-     * @var ObjsUserItem0TeamProfile
+     * @var ObjsUserTeamProfile
      */
     protected $teamProfile;
     /**
@@ -116,6 +116,10 @@ class ObjsUserItem0
      * @var float
      */
     protected $updated;
+    /**
+     * @var string[]
+     */
+    protected $teams;
 
     /**
      * @return string|null
@@ -518,19 +522,19 @@ class ObjsUserItem0
     }
 
     /**
-     * @return ObjsUserItem0TeamProfile|null
+     * @return ObjsUserTeamProfile|null
      */
-    public function getTeamProfile(): ?ObjsUserItem0TeamProfile
+    public function getTeamProfile(): ?ObjsUserTeamProfile
     {
         return $this->teamProfile;
     }
 
     /**
-     * @param ObjsUserItem0TeamProfile|null $teamProfile
+     * @param ObjsUserTeamProfile|null $teamProfile
      *
      * @return self
      */
-    public function setTeamProfile(?ObjsUserItem0TeamProfile $teamProfile): self
+    public function setTeamProfile(?ObjsUserTeamProfile $teamProfile): self
     {
         $this->teamProfile = $teamProfile;
 
@@ -633,6 +637,26 @@ class ObjsUserItem0
     public function setUpdated(?float $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getTeams(): ?array
+    {
+        return $this->teams;
+    }
+
+    /**
+     * @param string[]|null $teams
+     *
+     * @return self
+     */
+    public function setTeams(?array $teams): self
+    {
+        $this->teams = $teams;
 
         return $this;
     }

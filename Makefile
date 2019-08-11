@@ -10,6 +10,9 @@ spec_diff: ## detect diff between spec and SDK
 test: ## Run test suite
 	./vendor/bin/simple-phpunit
 
+jane: ## Generate the SDK
+	rm -rf generated/* && vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
+
 .PHONY: help
 
 help: ## Display this help

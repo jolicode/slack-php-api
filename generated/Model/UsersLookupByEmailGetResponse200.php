@@ -17,7 +17,9 @@ class UsersLookupByEmailGetResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
-     * @var mixed
+     * Merged user object for non enterprise type and enterprise user.
+     *
+     * @var ObjsUser
      */
     protected $user;
 
@@ -42,19 +44,23 @@ class UsersLookupByEmailGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed
+     * Merged user object for non enterprise type and enterprise user.
+     *
+     * @return ObjsUser|null
      */
-    public function getUser()
+    public function getUser(): ?ObjsUser
     {
         return $this->user;
     }
 
     /**
-     * @param mixed $user
+     * Merged user object for non enterprise type and enterprise user.
+     *
+     * @param ObjsUser|null $user
      *
      * @return self
      */
-    public function setUser($user): self
+    public function setUser(?ObjsUser $user): self
     {
         $this->user = $user;
 
