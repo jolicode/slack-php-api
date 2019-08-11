@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsConversationItem1DisplayCountsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1DisplayCounts';
+        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationDisplayCounts';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1DisplayCounts';
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationDisplayCounts';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,7 +41,7 @@ class ObjsConversationItem1DisplayCountsNormalizer implements DenormalizerInterf
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem1DisplayCounts();
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts();
         if (property_exists($data, 'display_counts') && $data->{'display_counts'} !== null) {
             $object->setDisplayCounts($data->{'display_counts'});
         }

@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsConversationItem0PurposeNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsConversationTopicNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem0Purpose';
+        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationTopic';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem0Purpose';
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationTopic';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,7 +41,7 @@ class ObjsConversationItem0PurposeNormalizer implements DenormalizerInterface, N
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem0Purpose();
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversationTopic();
         if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($data->{'creator'});
         }

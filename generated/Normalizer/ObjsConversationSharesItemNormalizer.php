@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsConversationItem2SharesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem2SharesItem';
+        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem2SharesItem';
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,21 +41,18 @@ class ObjsConversationItem2SharesItemNormalizer implements DenormalizerInterface
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem2SharesItem();
-        if (property_exists($data, 'date_create') && $data->{'date_create'} !== null) {
-            $object->setDateCreate($data->{'date_create'});
-        }
-        if (property_exists($data, 'id') && $data->{'id'} !== null) {
-            $object->setId($data->{'id'});
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversationSharesItem();
+        if (property_exists($data, 'accepted_user') && $data->{'accepted_user'} !== null) {
+            $object->setAcceptedUser($data->{'accepted_user'});
         }
         if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
         }
-        if (property_exists($data, 'name') && $data->{'name'} !== null) {
-            $object->setName($data->{'name'});
-        }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
+        }
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
+            $object->setUser($data->{'user'});
         }
 
         return $object;
@@ -64,20 +61,17 @@ class ObjsConversationItem2SharesItemNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getDateCreate()) {
-            $data->{'date_create'} = $object->getDateCreate();
-        }
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+        if (null !== $object->getAcceptedUser()) {
+            $data->{'accepted_user'} = $object->getAcceptedUser();
         }
         if (null !== $object->getIsActive()) {
             $data->{'is_active'} = $object->getIsActive();
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        }
         if (null !== $object->getTeam()) {
             $data->{'team'} = $this->normalizer->normalize($object->getTeam(), 'json', $context);
+        }
+        if (null !== $object->getUser()) {
+            $data->{'user'} = $object->getUser();
         }
 
         return $data;

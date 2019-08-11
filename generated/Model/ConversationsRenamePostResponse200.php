@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsRenamePostResponse200
 {
     /**
-     * @var mixed
+     * @var ObjsConversation
      */
     protected $channel;
     /**
@@ -22,19 +22,19 @@ class ConversationsRenamePostResponse200
     protected $ok;
 
     /**
-     * @return mixed
+     * @return ObjsConversation|null
      */
-    public function getChannel()
+    public function getChannel(): ?ObjsConversation
     {
         return $this->channel;
     }
 
     /**
-     * @param mixed $channel
+     * @param ObjsConversation|null $channel
      *
      * @return self
      */
-    public function setChannel($channel): self
+    public function setChannel(?ObjsConversation $channel): self
     {
         $this->channel = $channel;
 

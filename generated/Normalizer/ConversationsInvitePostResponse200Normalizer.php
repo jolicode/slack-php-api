@@ -43,7 +43,7 @@ class ConversationsInvitePostResponse200Normalizer implements DenormalizerInterf
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200();
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
-            $object->setChannel($data->{'channel'});
+            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context));
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
@@ -56,7 +56,7 @@ class ConversationsInvitePostResponse200Normalizer implements DenormalizerInterf
     {
         $data = new \stdClass();
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
+            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();

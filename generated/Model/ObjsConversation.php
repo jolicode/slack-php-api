@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsConversationItem0
+class ObjsConversation
 {
     /**
      * @var string
@@ -33,7 +33,7 @@ class ObjsConversationItem0
      */
     protected $creator;
     /**
-     * @var ObjsConversationItem0DisplayCounts
+     * @var ObjsConversationDisplayCounts
      */
     protected $displayCounts;
     /**
@@ -189,7 +189,7 @@ class ObjsConversationItem0
      */
     protected $priority;
     /**
-     * @var ObjsConversationItem0Purpose
+     * @var ObjsConversationPurpose
      */
     protected $purpose;
     /**
@@ -197,7 +197,7 @@ class ObjsConversationItem0
      */
     protected $sharedTeamIds;
     /**
-     * @var ObjsConversationItem0SharesItem[]
+     * @var ObjsConversationSharesItem[]
      */
     protected $shares;
     /**
@@ -205,7 +205,7 @@ class ObjsConversationItem0
      */
     protected $timezoneCount;
     /**
-     * @var ObjsConversationItem0Topic
+     * @var ObjsConversationTopic
      */
     protected $topic;
     /**
@@ -228,6 +228,10 @@ class ObjsConversationItem0
      * @var int
      */
     protected $version;
+    /**
+     * @var bool
+     */
+    protected $isUserDeleted;
 
     /**
      * @return string|null
@@ -330,19 +334,19 @@ class ObjsConversationItem0
     }
 
     /**
-     * @return ObjsConversationItem0DisplayCounts|null
+     * @return ObjsConversationDisplayCounts|null
      */
-    public function getDisplayCounts(): ?ObjsConversationItem0DisplayCounts
+    public function getDisplayCounts(): ?ObjsConversationDisplayCounts
     {
         return $this->displayCounts;
     }
 
     /**
-     * @param ObjsConversationItem0DisplayCounts|null $displayCounts
+     * @param ObjsConversationDisplayCounts|null $displayCounts
      *
      * @return self
      */
-    public function setDisplayCounts(?ObjsConversationItem0DisplayCounts $displayCounts): self
+    public function setDisplayCounts(?ObjsConversationDisplayCounts $displayCounts): self
     {
         $this->displayCounts = $displayCounts;
 
@@ -1110,19 +1114,19 @@ class ObjsConversationItem0
     }
 
     /**
-     * @return ObjsConversationItem0Purpose|null
+     * @return ObjsConversationPurpose|null
      */
-    public function getPurpose(): ?ObjsConversationItem0Purpose
+    public function getPurpose(): ?ObjsConversationPurpose
     {
         return $this->purpose;
     }
 
     /**
-     * @param ObjsConversationItem0Purpose|null $purpose
+     * @param ObjsConversationPurpose|null $purpose
      *
      * @return self
      */
-    public function setPurpose(?ObjsConversationItem0Purpose $purpose): self
+    public function setPurpose(?ObjsConversationPurpose $purpose): self
     {
         $this->purpose = $purpose;
 
@@ -1150,7 +1154,7 @@ class ObjsConversationItem0
     }
 
     /**
-     * @return ObjsConversationItem0SharesItem[]|null
+     * @return ObjsConversationSharesItem[]|null
      */
     public function getShares(): ?array
     {
@@ -1158,7 +1162,7 @@ class ObjsConversationItem0
     }
 
     /**
-     * @param ObjsConversationItem0SharesItem[]|null $shares
+     * @param ObjsConversationSharesItem[]|null $shares
      *
      * @return self
      */
@@ -1190,19 +1194,19 @@ class ObjsConversationItem0
     }
 
     /**
-     * @return ObjsConversationItem0Topic|null
+     * @return ObjsConversationTopic|null
      */
-    public function getTopic(): ?ObjsConversationItem0Topic
+    public function getTopic(): ?ObjsConversationTopic
     {
         return $this->topic;
     }
 
     /**
-     * @param ObjsConversationItem0Topic|null $topic
+     * @param ObjsConversationTopic|null $topic
      *
      * @return self
      */
-    public function setTopic(?ObjsConversationItem0Topic $topic): self
+    public function setTopic(?ObjsConversationTopic $topic): self
     {
         $this->topic = $topic;
 
@@ -1305,6 +1309,26 @@ class ObjsConversationItem0
     public function setVersion(?int $version): self
     {
         $this->version = $version;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsUserDeleted(): ?bool
+    {
+        return $this->isUserDeleted;
+    }
+
+    /**
+     * @param bool|null $isUserDeleted
+     *
+     * @return self
+     */
+    public function setIsUserDeleted(?bool $isUserDeleted): self
+    {
+        $this->isUserDeleted = $isUserDeleted;
 
         return $this;
     }

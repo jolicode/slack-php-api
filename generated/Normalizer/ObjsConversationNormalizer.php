@@ -18,19 +18,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsConversationItem1Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1';
+        return $type === 'JoliCode\\Slack\\Api\\Model\\ObjsConversation';
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1';
+        return get_class($data) === 'JoliCode\\Slack\\Api\\Model\\ObjsConversation';
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -41,7 +41,7 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (isset($data->{'$ref'})) {
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem1();
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversation();
         if (property_exists($data, 'accepted_user') && $data->{'accepted_user'} !== null) {
             $object->setAcceptedUser($data->{'accepted_user'});
         }
@@ -62,7 +62,16 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
             $object->setCreator($data->{'creator'});
         }
         if (property_exists($data, 'display_counts') && $data->{'display_counts'} !== null) {
-            $object->setDisplayCounts($this->denormalizer->denormalize($data->{'display_counts'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1DisplayCounts', 'json', $context));
+            $object->setDisplayCounts($this->denormalizer->denormalize($data->{'display_counts'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationDisplayCounts', 'json', $context));
+        }
+        if (property_exists($data, 'enterprise_id') && $data->{'enterprise_id'} !== null) {
+            $object->setEnterpriseId($data->{'enterprise_id'});
+        }
+        if (property_exists($data, 'external_connections') && $data->{'external_connections'} !== null) {
+            $object->setExternalConnections($data->{'external_connections'});
+        }
+        if (property_exists($data, 'has_pins') && $data->{'has_pins'} !== null) {
+            $object->setHasPins($data->{'has_pins'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
@@ -86,6 +95,9 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'is_general') && $data->{'is_general'} !== null) {
             $object->setIsGeneral($data->{'is_general'});
         }
+        if (property_exists($data, 'is_global_shared') && $data->{'is_global_shared'} !== null) {
+            $object->setIsGlobalShared($data->{'is_global_shared'});
+        }
         if (property_exists($data, 'is_group') && $data->{'is_group'} !== null) {
             $object->setIsGroup($data->{'is_group'});
         }
@@ -101,8 +113,17 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'is_mpim') && $data->{'is_mpim'} !== null) {
             $object->setIsMpim($data->{'is_mpim'});
         }
+        if (property_exists($data, 'is_non_threadable') && $data->{'is_non_threadable'} !== null) {
+            $object->setIsNonThreadable($data->{'is_non_threadable'});
+        }
         if (property_exists($data, 'is_open') && $data->{'is_open'} !== null) {
             $object->setIsOpen($data->{'is_open'});
+        }
+        if (property_exists($data, 'is_org_default') && $data->{'is_org_default'} !== null) {
+            $object->setIsOrgDefault($data->{'is_org_default'});
+        }
+        if (property_exists($data, 'is_org_mandatory') && $data->{'is_org_mandatory'} !== null) {
+            $object->setIsOrgMandatory($data->{'is_org_mandatory'});
         }
         if (property_exists($data, 'is_org_shared') && $data->{'is_org_shared'} !== null) {
             $object->setIsOrgShared($data->{'is_org_shared'});
@@ -121,6 +142,9 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'is_starred') && $data->{'is_starred'} !== null) {
             $object->setIsStarred($data->{'is_starred'});
+        }
+        if (property_exists($data, 'is_thread_only') && $data->{'is_thread_only'} !== null) {
+            $object->setIsThreadOnly($data->{'is_thread_only'});
         }
         if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
             $object->setLastRead($data->{'last_read'});
@@ -175,7 +199,7 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
             $object->setPriority($data->{'priority'});
         }
         if (property_exists($data, 'purpose') && $data->{'purpose'} !== null) {
-            $object->setPurpose($this->denormalizer->denormalize($data->{'purpose'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1Purpose', 'json', $context));
+            $object->setPurpose($this->denormalizer->denormalize($data->{'purpose'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationPurpose', 'json', $context));
         }
         if (property_exists($data, 'shared_team_ids') && $data->{'shared_team_ids'} !== null) {
             $values_6 = [];
@@ -187,7 +211,7 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (property_exists($data, 'shares') && $data->{'shares'} !== null) {
             $values_7 = [];
             foreach ($data->{'shares'} as $value_7) {
-                $values_7[] = $this->denormalizer->denormalize($value_7, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1SharesItem', 'json', $context);
+                $values_7[] = $this->denormalizer->denormalize($value_7, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem', 'json', $context);
             }
             $object->setShares($values_7);
         }
@@ -195,7 +219,7 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
             $object->setTimezoneCount($data->{'timezone_count'});
         }
         if (property_exists($data, 'topic') && $data->{'topic'} !== null) {
-            $object->setTopic($this->denormalizer->denormalize($data->{'topic'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1Topic', 'json', $context));
+            $object->setTopic($this->denormalizer->denormalize($data->{'topic'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversationTopic', 'json', $context));
         }
         if (property_exists($data, 'unlinked') && $data->{'unlinked'} !== null) {
             $object->setUnlinked($data->{'unlinked'});
@@ -211,6 +235,9 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         }
         if (property_exists($data, 'version') && $data->{'version'} !== null) {
             $object->setVersion($data->{'version'});
+        }
+        if (property_exists($data, 'is_user_deleted') && $data->{'is_user_deleted'} !== null) {
+            $object->setIsUserDeleted($data->{'is_user_deleted'});
         }
 
         return $object;
@@ -241,6 +268,15 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getDisplayCounts()) {
             $data->{'display_counts'} = $this->normalizer->normalize($object->getDisplayCounts(), 'json', $context);
         }
+        if (null !== $object->getEnterpriseId()) {
+            $data->{'enterprise_id'} = $object->getEnterpriseId();
+        }
+        if (null !== $object->getExternalConnections()) {
+            $data->{'external_connections'} = $object->getExternalConnections();
+        }
+        if (null !== $object->getHasPins()) {
+            $data->{'has_pins'} = $object->getHasPins();
+        }
         if (null !== $object->getId()) {
             $data->{'id'} = $object->getId();
         }
@@ -263,6 +299,9 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getIsGeneral()) {
             $data->{'is_general'} = $object->getIsGeneral();
         }
+        if (null !== $object->getIsGlobalShared()) {
+            $data->{'is_global_shared'} = $object->getIsGlobalShared();
+        }
         if (null !== $object->getIsGroup()) {
             $data->{'is_group'} = $object->getIsGroup();
         }
@@ -278,8 +317,17 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         if (null !== $object->getIsMpim()) {
             $data->{'is_mpim'} = $object->getIsMpim();
         }
+        if (null !== $object->getIsNonThreadable()) {
+            $data->{'is_non_threadable'} = $object->getIsNonThreadable();
+        }
         if (null !== $object->getIsOpen()) {
             $data->{'is_open'} = $object->getIsOpen();
+        }
+        if (null !== $object->getIsOrgDefault()) {
+            $data->{'is_org_default'} = $object->getIsOrgDefault();
+        }
+        if (null !== $object->getIsOrgMandatory()) {
+            $data->{'is_org_mandatory'} = $object->getIsOrgMandatory();
         }
         if (null !== $object->getIsOrgShared()) {
             $data->{'is_org_shared'} = $object->getIsOrgShared();
@@ -298,6 +346,9 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getIsStarred()) {
             $data->{'is_starred'} = $object->getIsStarred();
+        }
+        if (null !== $object->getIsThreadOnly()) {
+            $data->{'is_thread_only'} = $object->getIsThreadOnly();
         }
         if (null !== $object->getLastRead()) {
             $data->{'last_read'} = $object->getLastRead();
@@ -388,6 +439,9 @@ class ObjsConversationItem1Normalizer implements DenormalizerInterface, Normaliz
         }
         if (null !== $object->getVersion()) {
             $data->{'version'} = $object->getVersion();
+        }
+        if (null !== $object->getIsUserDeleted()) {
+            $data->{'is_user_deleted'} = $object->getIsUserDeleted();
         }
 
         return $data;
