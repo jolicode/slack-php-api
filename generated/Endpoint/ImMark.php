@@ -17,8 +17,8 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
      *
      * @param array $formParameters {
      *
-     *     @var string $ts timestamp of the most recently seen message
-     *     @var string $channel Direct message channel to set reading cursor in.
+     *     @var string $channel direct message channel to set reading cursor in
+     *     @var string $ts Timestamp of the most recently seen message.
      * }
      *
      * @param array $headerParameters {
@@ -57,11 +57,11 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['ts', 'channel']);
+        $optionsResolver->setDefined(['channel', 'ts']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['string']);
 
         return $optionsResolver;
     }

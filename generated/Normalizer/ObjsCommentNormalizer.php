@@ -42,22 +42,23 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsComment();
-        $data = clone $data;
         if (property_exists($data, 'comment') && $data->{'comment'} !== null) {
             $object->setComment($data->{'comment'});
-            unset($data->{'comment'});
         }
         if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
-            unset($data->{'created'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'is_intro') && $data->{'is_intro'} !== null) {
             $object->setIsIntro($data->{'is_intro'});
-            unset($data->{'is_intro'});
+        }
+        if (property_exists($data, 'is_starred') && $data->{'is_starred'} !== null) {
+            $object->setIsStarred($data->{'is_starred'});
+        }
+        if (property_exists($data, 'num_stars') && $data->{'num_stars'} !== null) {
+            $object->setNumStars($data->{'num_stars'});
         }
         if (property_exists($data, 'pinned_info') && $data->{'pinned_info'} !== null) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -65,7 +66,6 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values[$key] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
             }
             $object->setPinnedInfo($values);
-            unset($data->{'pinned_info'});
         }
         if (property_exists($data, 'pinned_to') && $data->{'pinned_to'} !== null) {
             $values_1 = [];
@@ -73,7 +73,6 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_1[] = $value_1;
             }
             $object->setPinnedTo($values_1);
-            unset($data->{'pinned_to'});
         }
         if (property_exists($data, 'reactions') && $data->{'reactions'} !== null) {
             $values_2 = [];
@@ -81,20 +80,12 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
             $object->setReactions($values_2);
-            unset($data->{'reactions'});
         }
         if (property_exists($data, 'timestamp') && $data->{'timestamp'} !== null) {
             $object->setTimestamp($data->{'timestamp'});
-            unset($data->{'timestamp'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
-        }
-        foreach ($data as $key_1 => $value_3) {
-            if (preg_match('/.*/', $key_1)) {
-                $object[$key_1] = $value_3;
-            }
         }
 
         return $object;
@@ -114,6 +105,12 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getIsIntro()) {
             $data->{'is_intro'} = $object->getIsIntro();
+        }
+        if (null !== $object->getIsStarred()) {
+            $data->{'is_starred'} = $object->getIsStarred();
+        }
+        if (null !== $object->getNumStars()) {
+            $data->{'num_stars'} = $object->getNumStars();
         }
         if (null !== $object->getPinnedInfo()) {
             $values = new \stdClass();
@@ -141,11 +138,6 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
-        }
-        foreach ($object as $key_1 => $value_3) {
-            if (preg_match('/.*/', $key_1)) {
-                $data->{$key_1} = $value_3;
-            }
         }
 
         return $data;

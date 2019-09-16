@@ -42,15 +42,18 @@ class TeamIntegrationLogsGetResponse200Normalizer implements DenormalizerInterfa
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200();
-        $data = clone $data;
+        if (property_exists($data, 'logs') && $data->{'logs'} !== null) {
+            $values = [];
+            foreach ($data->{'logs'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\TeamIntegrationLogsGetResponse200LogsItem', 'json', $context);
+            }
+            $object->setLogs($values);
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'paging') && $data->{'paging'} !== null) {
+            $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
         }
 
         return $object;
@@ -59,13 +62,18 @@ class TeamIntegrationLogsGetResponse200Normalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getLogs()) {
+            $values = [];
+            foreach ($object->getLogs() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'logs'} = $values;
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getPaging()) {
+            $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
 
         return $data;

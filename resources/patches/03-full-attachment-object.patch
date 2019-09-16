@@ -1,0 +1,115 @@
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
+@@ -1586,30 +1586,100 @@
+             "properties": {
+                 "attachments": {
+                     "items": {
+-                        "additionalProperties": false,
++                        "additionalProperties": true,
+                         "properties": {
++                            "id": {
++                                "type": "integer"
++                            },
++                            "callback_id": {
++                                "type": "string"
++                            },
+                             "fallback": {
+                                 "type": "string"
+                             },
+-                            "id": {
+-                                "type": "integer"
++                            "color": {
++                                "type": "string"
+                             },
+-                            "image_bytes": {
+-                                "type": "integer"
++                            "pretext": {
++                                "type": "string"
+                             },
+-                            "image_height": {
+-                                "type": "integer"
++                            "author_name": {
++                                "type": "string"
++                            },
++                            "author_link": {
++                                "type": "string"
++                            },
++                            "author_icon": {
++                                "type": "string"
++                            },
++                            "title": {
++                                "type": "string"
++                            },
++                            "title_link": {
++                                "type": "string"
++                            },
++                            "text": {
++                                "type": "string"
++                            },
++                            "fields": {
++                                "type": "array",
++                                "items": {
++                                    "type": "object",
++                                    "properties": {
++                                        "title": {
++                                            "type": "string"
++                                        },
++                                        "value": {
++                                            "type": "string"
++                                        },
++                                        "short": {
++                                            "type": "boolean"
++                                        }
++                                    }
++                                }
++                            },
++                            "actions": {
++                                "type": "array",
++                                "items": {
++                                    "type": "object",
++                                    "properties": {
++                                        "id": {
++                                            "type": "string"
++                                        },
++                                        "name": {
++                                            "type": "string"
++                                        },
++                                        "text": {
++                                            "type": "string"
++                                        },
++                                        "type": {
++                                            "type": "string"
++                                        },
++                                        "value": {
++                                            "type": "string"
++                                        },
++                                        "style": {
++                                            "type": "string"
++                                        }
++                                    }
++                                }
+                             },
+                             "image_url": {
+                                 "type": "string"
+                             },
+-                            "image_width": {
+-                                "type": "integer"
++                            "thumb_url": {
++                                "type": "string"
++                            },
++                            "footer": {
++                                "type": "string"
++                            },
++                            "footer_icon": {
++                                "type": "string"
++                            },
++                            "ts": {
++                                "type": ["number", "string"]
+                             }
+                         },
+-                        "required": [
+-                            "id"
+-                        ],
+                         "type": "object"
+                     },
+                     "minItems": 1,

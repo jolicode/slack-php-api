@@ -13,6 +13,16 @@ namespace JoliCode\Slack\Api;
 class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
 {
     /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersSessionReset(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSessionReset(), $fetch);
+    }
+
+    /**
      * Checks API calling code.
      *
      * @param array $queryParameters {
@@ -103,6 +113,64 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
+     * Returns list of user grants and corresponding scopes this app has on a team.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     *     @var string $token Authentication token. Requires scope: `none`
+     *     @var int $limit The maximum number of items to return.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function appsPermissionsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsUsersList($queryParameters), $fetch);
+    }
+
+    /**
+     * Enables an app to trigger a permissions modal to grant an app access to a user access scope.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $scopes A comma separated list of user scopes to request for
+     *     @var string $token Authentication token. Requires scope: `none`
+     *     @var string $user The user this scope is being requested for
+     *     @var string $trigger_id Token used to trigger the request
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function appsPermissionsUsersRequest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsUsersRequest($queryParameters), $fetch);
+    }
+
+    /**
+     * Uninstalls your app from a workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $client_secret issued when you created your application
+     *     @var string $token Authentication token. Requires scope: `none`
+     *     @var string $client_id Issued when you created your application.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200|\JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function appsUninstall(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AppsUninstall($queryParameters), $fetch);
+    }
+
+    /**
      * Revokes a token.
      *
      * @param array $queryParameters {
@@ -121,20 +189,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Checks authentication & identity.
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\AuthTestGetResponse200|\JoliCode\Slack\Api\Model\AuthTestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function authTest(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function authTest(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AuthTest($headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AuthTest(), $fetch);
     }
 
     /**
@@ -209,9 +270,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `channels:history`
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel channel to fetch history for
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -513,6 +574,16 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function chatDeleteScheduledMessage(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ChatDeleteScheduledMessage(), $fetch);
+    }
+
+    /**
      * Retrieve a permalink URL for a specific extant message.
      *
      * @param array $queryParameters {
@@ -559,13 +630,14 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var string $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
-     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
-     *     @var bool $link_names find and link channel names and usernames
+     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var bool $as_user Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false.
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
+     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
      *     @var string $user `id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.
-     *     @var bool $as_user Pass true to post the message as the authed bot. Defaults to false.
+     *     @var bool $link_names find and link channel names and usernames
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name.
      * }
      *
@@ -588,21 +660,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
-     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
-     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
      *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead. Provide no more than 40,000 characters or [risk truncation](/changelog/2018-04-truncating-really-long-messages).
      *     @var bool $unfurl_media pass false to disable unfurling of media content
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
      *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
      *     @var bool $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
+     *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
+     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
+     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
      *     @var bool $link_names find and link channel names and usernames
-     *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
-     *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
+     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      * }
      *
      * @param array $headerParameters {
@@ -620,13 +692,72 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
+     * Schedules a message to be sent to a channel.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
+     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
+     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead. Provide no more than 40,000 characters or [risk truncation](/changelog/2018-04-truncating-really-long-messages).
+     *     @var bool $link_names find and link channel names and usernames
+     *     @var bool $unfurl_media pass false to disable unfurling of media content
+     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
+     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
+     *     @var string $post_at unix EPOCH timestamp of time in future to send the message
+     *     @var string $channel Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
+     *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `chat:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function chatScheduleMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ChatScheduleMessage($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Returns a list of scheduled messages.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
+     *     @var int $limit maximum number of original entries to return
+     *     @var string $oldest A UNIX timestamp of the oldest value in the time range
+     *     @var string $channel The channel of the scheduled messages
+     *     @var string $latest A UNIX timestamp of the latest value in the time range
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200|\JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function chatScheduledMessagesList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ChatScheduledMessagesList($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
      * Provide custom unfurl behavior for user-posted URLs.
      *
      * @param array $formParameters {
      *
      *     @var string $user_auth_message Provide a simply-formatted string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior
      *     @var bool $user_auth_required Set to `true` or `1` to indicate the user must install your Slack app to trigger unfurls for this domain
-     *     @var string $unfurls URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl message attachments
+     *     @var string $unfurls URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl blocks or message attachments
      *     @var string $ts timestamp of the message to add unfurl behavior to
      *     @var string $user_auth_url Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded.
      *     @var string $channel Channel ID of the message
@@ -651,8 +782,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
+     *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
      *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
      *     @var string $ts timestamp of the message to be updated
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
@@ -724,6 +855,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
+     *     @var string $user_ids **Required** for workspace apps. A list of between 1 and 30 human users that will be added to the newly-created conversation. This argument has no effect when used by classic Slack apps.
      *     @var string $name Name of the public or private channel to create
      *     @var bool $is_private Create a private channel instead of a public one
      * }
@@ -751,9 +883,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel conversation ID to fetch history for
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -770,6 +902,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
+     *     @var bool $include_num_members Set to `true` to include the member count for the specified conversation. Defaults to `false`
      *     @var string $token Authentication token. Requires scope: `conversations:read`
      *     @var string $channel Conversation ID to learn more about
      *     @var bool $include_locale Set this to `true` to receive the locale for this conversation. Defaults to `false`
@@ -972,9 +1105,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel conversation ID to fetch thread from
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1055,60 +1188,33 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Open a dialog with a user.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
-     *     @var string $trigger_id Exchange a trigger to post to the user.
-     * }
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DialogOpenGetResponse200|\JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dialogOpen(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function dialogOpen(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DialogOpen($queryParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DialogOpen(), $fetch);
     }
 
     /**
-     * Ends the current user's Do Not Disturb session immediately.
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `dnd:write`
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndEndDndPostResponse200|\JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndEndDnd(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function dndEndDnd(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndDnd($headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndDnd(), $fetch);
     }
 
     /**
-     * Ends the current user's snooze mode immediately.
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `dnd:write`
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndEndSnooze(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function dndEndSnooze(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndSnooze($headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndSnooze(), $fetch);
     }
 
     /**
@@ -1130,25 +1236,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Turns on Do Not Disturb mode for the current user, or changes its duration.
-     *
-     * @param array $formParameters {
-     *
-     *     @var int $num_minutes number of minutes, from now, to snooze until
-     *     @var string $token Authentication token. Requires scope: `dnd:write`
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndSetSnooze(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function dndSetSnooze(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze($formParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze(), $fetch);
     }
 
     /**
-     * Retrieves the Do Not Disturb status for users on a team.
+     * Retrieves the Do Not Disturb status for up to 50 users on a team.
      *
      * @param array $queryParameters {
      *
@@ -1183,29 +1281,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Add a comment to an existing file.
-     *
-     * @param array $formParameters {
-     *
-     *     @var string $comment text of the comment to add
-     *     @var string $file File to add a comment to.
-     * }
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `files:write:user`
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \JoliCode\Slack\Api\Model\FilesCommentsAddPostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function filesCommentsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesCommentsAdd($formParameters, $headerParameters), $fetch);
-    }
-
-    /**
      * Deletes an existing comment on a file.
      *
      * @param array $formParameters {
@@ -1226,30 +1301,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     public function filesCommentsDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesCommentsDelete($formParameters, $headerParameters), $fetch);
-    }
-
-    /**
-     * Edit an existing file comment.
-     *
-     * @param array $formParameters {
-     *
-     *     @var string $comment text of the comment to edit
-     *     @var string $id the comment to edit
-     *     @var string $file File containing the comment to edit.
-     * }
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `files:write:user`
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \JoliCode\Slack\Api\Model\FilesCommentsEditPostResponse200|\JoliCode\Slack\Api\Model\FilesCommentsEditPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function filesCommentsEdit(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesCommentsEdit($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1280,7 +1331,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $queryParameters {
      *
      *     @var string $count
+     *     @var string $cursor Parameter for pagination. File comments are paginated for a single file. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection of comments. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `files:read`
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $file specify a file by providing its ID
      *     @var string $page
      * }
@@ -1301,22 +1354,12 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var string $count
      *     @var string $channel filter files appearing in a specific channel, indicated by its ID
-     *     @var float $ts_to filter files created before this timestamp (inclusive)
-     *     @var float $ts_from filter files created after this timestamp (inclusive)
+     *     @var string $ts_to filter files created before this timestamp (inclusive)
+     *     @var string $ts_from filter files created after this timestamp (inclusive)
      *     @var string $token Authentication token. Requires scope: `files:read`
      *     @var string $user filter files created by a single user
      *     @var string $page
-     *     @var string $types Filter files by type:
-
-     * `all` - All files
-     * `spaces` - Posts
-     * `snippets` - Snippets
-     * `images` - Image files
-     * `gdocs` - Google docs
-     * `zips` - Zip files
-     * `pdfs` - PDF files
-
-    You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
+     *     @var string $types Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1379,12 +1422,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var string $channels comma-separated list of channel names or IDs where the file will be shared
      *     @var string $title title of file
-     *     @var string $initial_comment initial comment to add to file
+     *     @var string $initial_comment the message text introducing the file in specified `channels`
      *     @var string $filetype a [file type](/types/file#file_types) identifier
      *     @var string $filename filename of file
      *     @var string $content File contents via a POST variable. If omitting this parameter, you must provide a `file`.
      *     @var string $token Authentication token. Requires scope: `files:write:user`
      *     @var string $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
+     *     @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1468,9 +1512,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `groups:history`
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel private channel to fetch history for
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1574,9 +1618,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var bool $exclude_members Exclude the `members` from each `group`
      *     @var string $token Authentication token. Requires scope: `groups:read`
-     *     @var bool $exclude_archived Don't return archived private channels.
+     *     @var bool $exclude_archived don't return archived private channels
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1745,25 +1791,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Close a direct message channel.
-     *
-     * @param array $formParameters {
-     *
-     *     @var string $channel Direct message channel to close.
-     * }
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `im:write`
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\ImClosePostResponse200|\JoliCode\Slack\Api\Model\ImClosePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function imClose(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function imClose(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ImClose($formParameters, $headerParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ImClose(), $fetch);
     }
 
     /**
@@ -1775,9 +1809,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `im:history`
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel direct message channel to fetch history for
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1813,8 +1847,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var string $ts timestamp of the most recently seen message
-     *     @var string $channel Direct message channel to set reading cursor in.
+     *     @var string $channel direct message channel to set reading cursor in
+     *     @var string $ts Timestamp of the most recently seen message.
      * }
      *
      * @param array $headerParameters {
@@ -1875,22 +1909,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * For Enterprise Grid workspaces, map local user IDs to global user IDs.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `tokens.basic`
-     *     @var bool $to_old Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
-     *     @var string $users A comma-separated list of user ids, up to 400 per request
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function migrationExchange(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function migrationExchange(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\MigrationExchange($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\MigrationExchange(), $fetch);
     }
 
     /**
@@ -1924,9 +1949,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *     @var bool $unreads Include `unread_count_display` in the output?
      *     @var bool $inclusive include messages with latest or oldest timestamp in results
      *     @var string $token Authentication token. Requires scope: `mpim:history`
-     *     @var string $oldest start of time range of messages to include in results
+     *     @var float $oldest start of time range of messages to include in results
      *     @var string $channel multiparty direct message to fetch history for
-     *     @var string $latest End of time range of messages to include in results.
+     *     @var float $latest End of time range of messages to include in results.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1943,7 +1968,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `mpim:read`
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2024,11 +2051,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var string $client_secret issued when you created your application
      *     @var string $code the `code` param returned via the OAuth callback
-     *     @var bool $single_channel request the user to add your app only to a single channel
+     *     @var string $redirect_uri this must match the originally submitted URI (if one was sent)
      *     @var string $client_id issued when you created your application
-     *     @var string $redirect_uri This must match the originally submitted URI (if one was sent).
+     *     @var string $client_secret issued when you created your application
+     *     @var bool $single_channel Request the user to add your app only to a single channel.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2067,7 +2094,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to pin
-     *     @var float $timestamp timestamp of the message to pin
+     *     @var string $timestamp timestamp of the message to pin
      *     @var string $file file to pin
      *     @var string $channel Channel to pin the item in.
      * }
@@ -2110,7 +2137,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to un-pin
-     *     @var float $timestamp timestamp of the message to un-pin
+     *     @var string $timestamp timestamp of the message to un-pin
      *     @var string $file file to un-pin
      *     @var string $channel Channel where the item is pinned to.
      * }
@@ -2135,9 +2162,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $name reaction (emoji) name
-     *     @var string $file_comment file comment to add reaction to
-     *     @var float $timestamp timestamp of the message to add reaction to
-     *     @var string $file file to add reaction to
+     *     @var string $file_comment File comment to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
+     *     @var string $timestamp timestamp of the message to add reaction to
+     *     @var string $file File to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
      *     @var string $channel Channel where the message to add reaction to was posted.
      * }
      *
@@ -2162,7 +2189,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var bool $full if true always return the complete reaction list
      *     @var string $file_comment file comment to get reactions for
-     *     @var float $timestamp timestamp of the message to get reactions for
+     *     @var string $timestamp timestamp of the message to get reactions for
      *     @var string $token Authentication token. Requires scope: `reactions:read`
      *     @var string $file file to get reactions for
      *     @var string $channel Channel where the message to get reactions for was posted.
@@ -2183,8 +2210,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $queryParameters {
      *
      *     @var string $count
-     *     @var string $token Authentication token. Requires scope: `reactions:read`
      *     @var bool $full if true always return the complete reaction list
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
+     *     @var string $token Authentication token. Requires scope: `reactions:read`
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $user Show reactions made by this user. Defaults to the authed user.
      *     @var string $page
      * }
@@ -2205,7 +2234,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      *     @var string $name reaction (emoji) name
      *     @var string $file_comment file comment to remove reaction from
-     *     @var float $timestamp timestamp of the message to remove reaction from
+     *     @var string $timestamp timestamp of the message to remove reaction from
      *     @var string $file file to remove reaction from
      *     @var string $channel Channel where the message to remove reaction from was posted.
      * }
@@ -2347,76 +2376,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Starts a Real Time Messaging session.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var bool $no_latest Exclude latest timestamps for channels, groups, mpims, and ims. Automatically sets `no_unreads` to `1`
-     *     @var bool $simple_latest return timestamp only for latest message object of each channel (improves performance)
-     *     @var bool $include_locale Set this to `true` to receive the locale for users and channels. Defaults to `false`
-     *     @var bool $presence_sub Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).
-     *     @var bool $no_unreads skip unread counts for each channel (improves performance)
-     *     @var bool $batch_presence_aware Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).
-     *     @var bool $mpim_aware returns MPIMs to the client in the API response
-     *     @var string $token Authentication token. Requires scope: `rtm:stream`
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \JoliCode\Slack\Api\Model\RtmStartGetResponse200|\JoliCode\Slack\Api\Model\RtmStartGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function rtmStart(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\RtmStart($queryParameters), $fetch);
-    }
-
-    /**
-     * Searches for messages and files matching a query.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
-     *     @var string $query Search query. May contains booleans, etc.
-     *     @var string $sort return matches sorted by either `score` or `timestamp`
-     *     @var string $count
-     *     @var string $token Authentication token. Requires scope: `search:read`
-     *     @var bool $highlight pass a value of `true` to enable query highlight markers (see below)
-     *     @var string $page
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \JoliCode\Slack\Api\Model\SearchAllGetResponse200|\JoliCode\Slack\Api\Model\SearchAllGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function searchAll(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\SearchAll($queryParameters), $fetch);
-    }
-
-    /**
-     * Searches for files matching a query.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
-     *     @var string $query search query
-     *     @var string $sort return matches sorted by either `score` or `timestamp`
-     *     @var bool $highlight pass a value of `true` to enable query highlight markers (see below)
-     *     @var string $count
-     *     @var string $token Authentication token. Requires scope: `search:read`
-     *     @var string $page
-     * }
-     *
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return \JoliCode\Slack\Api\Model\SearchFilesGetResponse200|\JoliCode\Slack\Api\Model\SearchFilesGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
-     */
-    public function searchFiles(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\SearchFiles($queryParameters), $fetch);
-    }
-
-    /**
      * Searches for messages matching a query.
      *
      * @param array $queryParameters {
@@ -2445,7 +2404,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to add star to
-     *     @var float $timestamp timestamp of the message to add star to
+     *     @var string $timestamp timestamp of the message to add star to
      *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
      *     @var string $file File to add star to.
      * }
@@ -2470,7 +2429,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $queryParameters {
      *
      *     @var string $count
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `stars:read`
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $page
      * }
      *
@@ -2489,7 +2450,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to remove star from
-     *     @var float $timestamp timestamp of the message to remove star from
+     *     @var string $timestamp timestamp of the message to remove star from
      *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
      *     @var string $file File to remove star from.
      * }
@@ -2529,21 +2490,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * Gets billable users information for the current team.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `admin`
-     *     @var string $user A user to retrieve the billable information for. Defaults to all users.
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function teamBillableInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function teamBillableInfo(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\TeamBillableInfo($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\TeamBillableInfo(), $fetch);
     }
 
     /**
@@ -2552,6 +2505,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $queryParameters {
      *
      *     @var string $token Authentication token. Requires scope: `team:read`
+     *     @var string $team Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2610,10 +2564,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      * @param array $formParameters {
      *
      *     @var string $handle A mention handle. Must be unique among channels, users and User Groups.
-     *     @var string $name A name for the User Group. Must be unique among User Groups.
+     *     @var string $description a short description of the User Group
      *     @var string $channels a comma separated string of encoded channel IDs for which the User Group uses as a default
      *     @var bool $include_count include the number of users in each User Group
-     *     @var string $description A short description of the User Group.
+     *     @var string $name A name for the User Group. Must be unique among User Groups.
      * }
      *
      * @param array $headerParameters {
@@ -2724,22 +2678,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
     }
 
     /**
-     * List all users in a User Group.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `usergroups:read`
-     *     @var bool $include_disabled allow results that involve disabled User Groups
-     *     @var string $usergroup The encoded ID of the User Group to update.
-     * }
-     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function usergroupsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function usergroupsUsersList(string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUsersList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUsersList(), $fetch);
     }
 
     /**
@@ -2747,8 +2692,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var bool $include_count include the number of users in the User Group
      *     @var string $users a comma separated string of encoded user IDs that represent the entire list of users for the User Group
+     *     @var bool $include_count include the number of users in the User Group
      *     @var string $usergroup The encoded ID of the User Group to update.
      * }
      *
@@ -2845,9 +2790,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var bool $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
      *     @var string $token Authentication token. Requires scope: `users:read`
      *     @var string $user User to get info on
+     *     @var bool $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2864,7 +2809,6 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $queryParameters {
      *
-     *     @var bool $presence Deprecated. Whether to include presence data in the output. Defaults to `false`. Setting this to `true` reduces performance, especially with large teams.
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `users:read`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
@@ -2922,7 +2866,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr7HttplugClient
      *
      * @param array $formParameters {
      *
-     *     @var string $profile collection of key:value pairs presented as a URL-encoded JSON hash
+     *     @var string $profile Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.
      *     @var string $user ID of user to change. This argument may only be specified by team admins on paid teams.
      *     @var string $value Value to set a single key to. Usable only if `profile` is not passed.
      *     @var string $name Name of a single key to set. Usable only if `profile` is not passed.

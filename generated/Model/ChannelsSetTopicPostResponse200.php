@@ -10,12 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsSetTopicPostResponse200 extends \ArrayObject
+class ChannelsSetTopicPostResponse200
 {
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var string
+     */
+    protected $topic;
 
     /**
      * @return bool|null
@@ -33,6 +37,26 @@ class ChannelsSetTopicPostResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTopic(): ?string
+    {
+        return $this->topic;
+    }
+
+    /**
+     * @param string|null $topic
+     *
+     * @return self
+     */
+    public function setTopic(?string $topic): self
+    {
+        $this->topic = $topic;
 
         return $this;
     }

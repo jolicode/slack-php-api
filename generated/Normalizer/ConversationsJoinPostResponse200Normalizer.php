@@ -42,27 +42,17 @@ class ConversationsJoinPostResponse200Normalizer implements DenormalizerInterfac
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
-            $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
+            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context));
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'response_metadata') && $data->{'response_metadata'} !== null) {
             $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ConversationsJoinPostResponse200ResponseMetadata', 'json', $context));
-            unset($data->{'response_metadata'});
         }
         if (property_exists($data, 'warning') && $data->{'warning'} !== null) {
             $object->setWarning($data->{'warning'});
-            unset($data->{'warning'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -72,7 +62,7 @@ class ConversationsJoinPostResponse200Normalizer implements DenormalizerInterfac
     {
         $data = new \stdClass();
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
+            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
@@ -82,11 +72,6 @@ class ConversationsJoinPostResponse200Normalizer implements DenormalizerInterfac
         }
         if (null !== $object->getWarning()) {
             $data->{'warning'} = $object->getWarning();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

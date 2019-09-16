@@ -42,95 +42,90 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUser();
-        $data = clone $data;
         if (property_exists($data, 'color') && $data->{'color'} !== null) {
             $object->setColor($data->{'color'});
-            unset($data->{'color'});
         }
         if (property_exists($data, 'deleted') && $data->{'deleted'} !== null) {
             $object->setDeleted($data->{'deleted'});
-            unset($data->{'deleted'});
+        }
+        if (property_exists($data, 'enterprise_user') && $data->{'enterprise_user'} !== null) {
+            $object->setEnterpriseUser($this->denormalizer->denormalize($data->{'enterprise_user'}, 'JoliCode\\Slack\\Api\\Model\\ObjsEnterpriseUser', 'json', $context));
         }
         if (property_exists($data, 'has_2fa') && $data->{'has_2fa'} !== null) {
             $object->setHas2fa($data->{'has_2fa'});
-            unset($data->{'has_2fa'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'is_admin') && $data->{'is_admin'} !== null) {
             $object->setIsAdmin($data->{'is_admin'});
-            unset($data->{'is_admin'});
         }
         if (property_exists($data, 'is_app_user') && $data->{'is_app_user'} !== null) {
             $object->setIsAppUser($data->{'is_app_user'});
-            unset($data->{'is_app_user'});
         }
         if (property_exists($data, 'is_bot') && $data->{'is_bot'} !== null) {
             $object->setIsBot($data->{'is_bot'});
-            unset($data->{'is_bot'});
+        }
+        if (property_exists($data, 'is_invited_user') && $data->{'is_invited_user'} !== null) {
+            $object->setIsInvitedUser($data->{'is_invited_user'});
         }
         if (property_exists($data, 'is_owner') && $data->{'is_owner'} !== null) {
             $object->setIsOwner($data->{'is_owner'});
-            unset($data->{'is_owner'});
         }
         if (property_exists($data, 'is_primary_owner') && $data->{'is_primary_owner'} !== null) {
             $object->setIsPrimaryOwner($data->{'is_primary_owner'});
-            unset($data->{'is_primary_owner'});
         }
         if (property_exists($data, 'is_restricted') && $data->{'is_restricted'} !== null) {
             $object->setIsRestricted($data->{'is_restricted'});
-            unset($data->{'is_restricted'});
         }
         if (property_exists($data, 'is_ultra_restricted') && $data->{'is_ultra_restricted'} !== null) {
             $object->setIsUltraRestricted($data->{'is_ultra_restricted'});
-            unset($data->{'is_ultra_restricted'});
         }
         if (property_exists($data, 'locale') && $data->{'locale'} !== null) {
             $object->setLocale($data->{'locale'});
-            unset($data->{'locale'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
         }
         if (property_exists($data, 'presence') && $data->{'presence'} !== null) {
             $object->setPresence($data->{'presence'});
-            unset($data->{'presence'});
         }
         if (property_exists($data, 'profile') && $data->{'profile'} !== null) {
             $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
-            unset($data->{'profile'});
         }
         if (property_exists($data, 'real_name') && $data->{'real_name'} !== null) {
             $object->setRealName($data->{'real_name'});
-            unset($data->{'real_name'});
+        }
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
+            $object->setTeam($data->{'team'});
         }
         if (property_exists($data, 'team_id') && $data->{'team_id'} !== null) {
             $object->setTeamId($data->{'team_id'});
-            unset($data->{'team_id'});
+        }
+        if (property_exists($data, 'team_profile') && $data->{'team_profile'} !== null) {
+            $object->setTeamProfile($this->denormalizer->denormalize($data->{'team_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile', 'json', $context));
+        }
+        if (property_exists($data, 'two_factor_type') && $data->{'two_factor_type'} !== null) {
+            $object->setTwoFactorType($data->{'two_factor_type'});
         }
         if (property_exists($data, 'tz') && $data->{'tz'} !== null) {
             $object->setTz($data->{'tz'});
-            unset($data->{'tz'});
         }
         if (property_exists($data, 'tz_label') && $data->{'tz_label'} !== null) {
             $object->setTzLabel($data->{'tz_label'});
-            unset($data->{'tz_label'});
         }
         if (property_exists($data, 'tz_offset') && $data->{'tz_offset'} !== null) {
             $object->setTzOffset($data->{'tz_offset'});
-            unset($data->{'tz_offset'});
         }
         if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
             $object->setUpdated($data->{'updated'});
-            unset($data->{'updated'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+        if (property_exists($data, 'teams') && $data->{'teams'} !== null) {
+            $values = [];
+            foreach ($data->{'teams'} as $value) {
+                $values[] = $value;
             }
+            $object->setTeams($values);
         }
 
         return $object;
@@ -144,6 +139,9 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getDeleted()) {
             $data->{'deleted'} = $object->getDeleted();
+        }
+        if (null !== $object->getEnterpriseUser()) {
+            $data->{'enterprise_user'} = $this->normalizer->normalize($object->getEnterpriseUser(), 'json', $context);
         }
         if (null !== $object->getHas2fa()) {
             $data->{'has_2fa'} = $object->getHas2fa();
@@ -159,6 +157,9 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getIsBot()) {
             $data->{'is_bot'} = $object->getIsBot();
+        }
+        if (null !== $object->getIsInvitedUser()) {
+            $data->{'is_invited_user'} = $object->getIsInvitedUser();
         }
         if (null !== $object->getIsOwner()) {
             $data->{'is_owner'} = $object->getIsOwner();
@@ -187,8 +188,17 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getRealName()) {
             $data->{'real_name'} = $object->getRealName();
         }
+        if (null !== $object->getTeam()) {
+            $data->{'team'} = $object->getTeam();
+        }
         if (null !== $object->getTeamId()) {
             $data->{'team_id'} = $object->getTeamId();
+        }
+        if (null !== $object->getTeamProfile()) {
+            $data->{'team_profile'} = $this->normalizer->normalize($object->getTeamProfile(), 'json', $context);
+        }
+        if (null !== $object->getTwoFactorType()) {
+            $data->{'two_factor_type'} = $object->getTwoFactorType();
         }
         if (null !== $object->getTz()) {
             $data->{'tz'} = $object->getTz();
@@ -202,10 +212,12 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getUpdated()) {
             $data->{'updated'} = $object->getUpdated();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+        if (null !== $object->getTeams()) {
+            $values = [];
+            foreach ($object->getTeams() as $value) {
+                $values[] = $value;
             }
+            $data->{'teams'} = $values;
         }
 
         return $data;

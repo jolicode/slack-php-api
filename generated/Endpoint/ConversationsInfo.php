@@ -17,6 +17,7 @@ class ConversationsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $queryParameters {
      *
+     *     @var bool $include_num_members Set to `true` to include the member count for the specified conversation. Defaults to `false`
      *     @var string $token Authentication token. Requires scope: `conversations:read`
      *     @var string $channel Conversation ID to learn more about
      *     @var bool $include_locale Set this to `true` to receive the locale for this conversation. Defaults to `false`
@@ -52,9 +53,10 @@ class ConversationsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'channel', 'include_locale']);
+        $optionsResolver->setDefined(['include_num_members', 'token', 'channel', 'include_locale']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('include_num_members', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('include_locale', ['bool']);

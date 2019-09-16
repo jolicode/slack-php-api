@@ -42,19 +42,11 @@ class ConversationsCreatePostResponse200Normalizer implements DenormalizerInterf
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
-            $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
+            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context));
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -64,15 +56,10 @@ class ConversationsCreatePostResponse200Normalizer implements DenormalizerInterf
     {
         $data = new \stdClass();
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
+            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

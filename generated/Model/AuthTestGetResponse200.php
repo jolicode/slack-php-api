@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AuthTestGetResponse200 extends \ArrayObject
+class AuthTestGetResponse200
 {
     /**
      * @var bool

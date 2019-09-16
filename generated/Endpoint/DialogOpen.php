@@ -12,26 +12,6 @@ namespace JoliCode\Slack\Api\Endpoint;
 
 class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    /**
-     * Open a dialog with a user.
-     *
-     * @param array $queryParameters {
-     *
-     *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
-     *     @var string $trigger_id Exchange a trigger to post to the user.
-     * }
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
-     */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
-    {
-        $this->queryParameters = $queryParameters;
-        $this->headerParameters = $headerParameters;
-    }
-
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
@@ -52,29 +32,6 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
-    }
-
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['dialog', 'trigger_id']);
-        $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('dialog', ['string']);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
-
-        return $optionsResolver;
-    }
-
-    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-
-        return $optionsResolver;
     }
 
     /**

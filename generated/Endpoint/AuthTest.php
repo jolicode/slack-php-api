@@ -12,19 +12,6 @@ namespace JoliCode\Slack\Api\Endpoint;
 
 class AuthTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    /**
-     * Checks authentication & identity.
-     *
-     * @param array $headerParameters {
-     *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
-     */
-    public function __construct(array $headerParameters = [])
-    {
-        $this->headerParameters = $headerParameters;
-    }
-
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
@@ -45,17 +32,6 @@ class AuthTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
-    }
-
-    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getHeadersOptionsResolver();
-        $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-
-        return $optionsResolver;
     }
 
     /**

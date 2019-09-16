@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsFile extends \ArrayObject
+class ObjsFile
 {
     /**
      * @var string[]
@@ -35,7 +35,19 @@ class ObjsFile extends \ArrayObject
     /**
      * @var string
      */
+    protected $editor;
+    /**
+     * @var string
+     */
+    protected $externalId;
+    /**
+     * @var string
+     */
     protected $externalType;
+    /**
+     * @var string
+     */
+    protected $externalUrl;
     /**
      * @var string
      */
@@ -44,6 +56,10 @@ class ObjsFile extends \ArrayObject
      * @var string[]
      */
     protected $groups;
+    /**
+     * @var bool
+     */
+    protected $hasRichPreview;
     /**
      * @var string
      */
@@ -71,7 +87,11 @@ class ObjsFile extends \ArrayObject
     /**
      * @var bool
      */
-    protected $hasRichPreview;
+    protected $isTombstoned;
+    /**
+     * @var string
+     */
+    protected $lastEditor;
     /**
      * @var string
      */
@@ -84,6 +104,10 @@ class ObjsFile extends \ArrayObject
      * @var string
      */
     protected $name;
+    /**
+     * @var int
+     */
+    protected $numStars;
     /**
      * @var int
      */
@@ -113,6 +137,10 @@ class ObjsFile extends \ArrayObject
      */
     protected $prettyType;
     /**
+     * @var null
+     */
+    protected $preview;
+    /**
      * @var bool
      */
     protected $publicUrlShared;
@@ -121,9 +149,21 @@ class ObjsFile extends \ArrayObject
      */
     protected $reactions;
     /**
+     * @var ObjsFileShares
+     */
+    protected $shares;
+    /**
      * @var int
      */
     protected $size;
+    /**
+     * @var string
+     */
+    protected $sourceTeam;
+    /**
+     * @var string
+     */
+    protected $state;
     /**
      * @var string
      */
@@ -217,6 +257,10 @@ class ObjsFile extends \ArrayObject
      */
     protected $title;
     /**
+     * @var int
+     */
+    protected $updated;
+    /**
      * @var string
      */
     protected $urlPrivate;
@@ -228,6 +272,10 @@ class ObjsFile extends \ArrayObject
      * @var string
      */
     protected $user;
+    /**
+     * @var string
+     */
+    protected $userTeam;
     /**
      * @var string
      */
@@ -336,6 +384,46 @@ class ObjsFile extends \ArrayObject
     /**
      * @return string|null
      */
+    public function getEditor(): ?string
+    {
+        return $this->editor;
+    }
+
+    /**
+     * @param string|null $editor
+     *
+     * @return self
+     */
+    public function setEditor(?string $editor): self
+    {
+        $this->editor = $editor;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExternalId(): ?string
+    {
+        return $this->externalId;
+    }
+
+    /**
+     * @param string|null $externalId
+     *
+     * @return self
+     */
+    public function setExternalId(?string $externalId): self
+    {
+        $this->externalId = $externalId;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getExternalType(): ?string
     {
         return $this->externalType;
@@ -349,6 +437,26 @@ class ObjsFile extends \ArrayObject
     public function setExternalType(?string $externalType): self
     {
         $this->externalType = $externalType;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExternalUrl(): ?string
+    {
+        return $this->externalUrl;
+    }
+
+    /**
+     * @param string|null $externalUrl
+     *
+     * @return self
+     */
+    public function setExternalUrl(?string $externalUrl): self
+    {
+        $this->externalUrl = $externalUrl;
 
         return $this;
     }
@@ -389,6 +497,26 @@ class ObjsFile extends \ArrayObject
     public function setGroups(?array $groups): self
     {
         $this->groups = $groups;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getHasRichPreview(): ?bool
+    {
+        return $this->hasRichPreview;
+    }
+
+    /**
+     * @param bool|null $hasRichPreview
+     *
+     * @return self
+     */
+    public function setHasRichPreview(?bool $hasRichPreview): self
+    {
+        $this->hasRichPreview = $hasRichPreview;
 
         return $this;
     }
@@ -516,19 +644,39 @@ class ObjsFile extends \ArrayObject
     /**
      * @return bool|null
      */
-    public function getHasRichPreview(): ?bool
+    public function getIsTombstoned(): ?bool
     {
-        return $this->hasRichPreview;
+        return $this->isTombstoned;
     }
 
     /**
-     * @param bool|null $hasRichPreview
+     * @param bool|null $isTombstoned
      *
      * @return self
      */
-    public function setHasRichPreview(?bool $hasRichPreview): self
+    public function setIsTombstoned(?bool $isTombstoned): self
     {
-        $this->hasRichPreview = $hasRichPreview;
+        $this->isTombstoned = $isTombstoned;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastEditor(): ?string
+    {
+        return $this->lastEditor;
+    }
+
+    /**
+     * @param string|null $lastEditor
+     *
+     * @return self
+     */
+    public function setLastEditor(?string $lastEditor): self
+    {
+        $this->lastEditor = $lastEditor;
 
         return $this;
     }
@@ -589,6 +737,26 @@ class ObjsFile extends \ArrayObject
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNumStars(): ?int
+    {
+        return $this->numStars;
+    }
+
+    /**
+     * @param int|null $numStars
+     *
+     * @return self
+     */
+    public function setNumStars(?int $numStars): self
+    {
+        $this->numStars = $numStars;
 
         return $this;
     }
@@ -733,6 +901,23 @@ class ObjsFile extends \ArrayObject
         return $this;
     }
 
+    public function getPreview()
+    {
+        return $this->preview;
+    }
+
+    /**
+     * @param null $preview
+     *
+     * @return self
+     */
+    public function setPreview($preview): self
+    {
+        $this->preview = $preview;
+
+        return $this;
+    }
+
     /**
      * @return bool|null
      */
@@ -774,6 +959,26 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
+     * @return ObjsFileShares|null
+     */
+    public function getShares(): ?ObjsFileShares
+    {
+        return $this->shares;
+    }
+
+    /**
+     * @param ObjsFileShares|null $shares
+     *
+     * @return self
+     */
+    public function setShares(?ObjsFileShares $shares): self
+    {
+        $this->shares = $shares;
+
+        return $this;
+    }
+
+    /**
      * @return int|null
      */
     public function getSize(): ?int
@@ -789,6 +994,46 @@ class ObjsFile extends \ArrayObject
     public function setSize(?int $size): self
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSourceTeam(): ?string
+    {
+        return $this->sourceTeam;
+    }
+
+    /**
+     * @param string|null $sourceTeam
+     *
+     * @return self
+     */
+    public function setSourceTeam(?string $sourceTeam): self
+    {
+        $this->sourceTeam = $sourceTeam;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param string|null $state
+     *
+     * @return self
+     */
+    public function setState(?string $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
@@ -1254,6 +1499,26 @@ class ObjsFile extends \ArrayObject
     }
 
     /**
+     * @return int|null
+     */
+    public function getUpdated(): ?int
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param int|null $updated
+     *
+     * @return self
+     */
+    public function setUpdated(?int $updated): self
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
     public function getUrlPrivate(): ?string
@@ -1309,6 +1574,26 @@ class ObjsFile extends \ArrayObject
     public function setUser(?string $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUserTeam(): ?string
+    {
+        return $this->userTeam;
+    }
+
+    /**
+     * @param string|null $userTeam
+     *
+     * @return self
+     */
+    public function setUserTeam(?string $userTeam): self
+    {
+        $this->userTeam = $userTeam;
 
         return $this;
     }

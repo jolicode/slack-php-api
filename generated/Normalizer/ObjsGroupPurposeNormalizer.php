@@ -42,23 +42,14 @@ class ObjsGroupPurposeNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsGroupPurpose();
-        $data = clone $data;
         if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($data->{'creator'});
-            unset($data->{'creator'});
         }
         if (property_exists($data, 'last_set') && $data->{'last_set'} !== null) {
             $object->setLastSet($data->{'last_set'});
-            unset($data->{'last_set'});
         }
         if (property_exists($data, 'value') && $data->{'value'} !== null) {
             $object->setValue($data->{'value'});
-            unset($data->{'value'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class ObjsGroupPurposeNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getValue()) {
             $data->{'value'} = $object->getValue();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

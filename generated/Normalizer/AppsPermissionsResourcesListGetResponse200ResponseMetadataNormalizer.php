@@ -42,15 +42,8 @@ class AppsPermissionsResourcesListGetResponse200ResponseMetadataNormalizer imple
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata();
-        $data = clone $data;
         if (property_exists($data, 'next_cursor') && $data->{'next_cursor'} !== null) {
             $object->setNextCursor($data->{'next_cursor'});
-            unset($data->{'next_cursor'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -61,11 +54,6 @@ class AppsPermissionsResourcesListGetResponse200ResponseMetadataNormalizer imple
         $data = new \stdClass();
         if (null !== $object->getNextCursor()) {
             $data->{'next_cursor'} = $object->getNextCursor();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

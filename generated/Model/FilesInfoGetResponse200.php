@@ -10,12 +10,20 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class FilesInfoGetResponse200 extends \ArrayObject
+class FilesInfoGetResponse200
 {
     /**
      * @var mixed[]
      */
     protected $comments;
+    /**
+     * @var null
+     */
+    protected $contentHtml;
+    /**
+     * @var string
+     */
+    protected $editor;
     /**
      * @var ObjsFile
      */
@@ -28,6 +36,10 @@ class FilesInfoGetResponse200 extends \ArrayObject
      * @var ObjsPaging
      */
     protected $paging;
+    /**
+     * @var ObjsResponseMetadata
+     */
+    protected $responseMetadata;
 
     /**
      * @return mixed[]|null
@@ -45,6 +57,43 @@ class FilesInfoGetResponse200 extends \ArrayObject
     public function setComments(?array $comments): self
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    public function getContentHtml()
+    {
+        return $this->contentHtml;
+    }
+
+    /**
+     * @param null $contentHtml
+     *
+     * @return self
+     */
+    public function setContentHtml($contentHtml): self
+    {
+        $this->contentHtml = $contentHtml;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEditor(): ?string
+    {
+        return $this->editor;
+    }
+
+    /**
+     * @param string|null $editor
+     *
+     * @return self
+     */
+    public function setEditor(?string $editor): self
+    {
+        $this->editor = $editor;
 
         return $this;
     }
@@ -105,6 +154,26 @@ class FilesInfoGetResponse200 extends \ArrayObject
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsResponseMetadata|null
+     */
+    public function getResponseMetadata(): ?ObjsResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    /**
+     * @param ObjsResponseMetadata|null $responseMetadata
+     *
+     * @return self
+     */
+    public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

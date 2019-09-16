@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class GroupsOpenPostResponse200 extends \ArrayObject
+class GroupsOpenPostResponse200
 {
     /**
      * @var bool

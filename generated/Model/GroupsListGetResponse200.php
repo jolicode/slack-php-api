@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class GroupsListGetResponse200 extends \ArrayObject
+class GroupsListGetResponse200
 {
     /**
      * @var ObjsGroup[]

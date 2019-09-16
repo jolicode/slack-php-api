@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsGroup extends \ArrayObject
+class ObjsGroup
 {
     /**
      * @var int
@@ -28,6 +28,10 @@ class ObjsGroup extends \ArrayObject
      * @var bool
      */
     protected $isArchived;
+    /**
+     * @var bool
+     */
+    protected $isDeleted;
     /**
      * @var bool
      */
@@ -68,6 +72,10 @@ class ObjsGroup extends \ArrayObject
      * @var string
      */
     protected $nameNormalized;
+    /**
+     * @var int
+     */
+    protected $numMembers;
     /**
      * @var float
      */
@@ -165,6 +173,26 @@ class ObjsGroup extends \ArrayObject
     public function setIsArchived(?bool $isArchived): self
     {
         $this->isArchived = $isArchived;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsDeleted(): ?bool
+    {
+        return $this->isDeleted;
+    }
+
+    /**
+     * @param bool|null $isDeleted
+     *
+     * @return self
+     */
+    public function setIsDeleted(?bool $isDeleted): self
+    {
+        $this->isDeleted = $isDeleted;
 
         return $this;
     }
@@ -272,7 +300,7 @@ class ObjsGroup extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getLastRead()
+    public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
@@ -282,7 +310,7 @@ class ObjsGroup extends \ArrayObject
      *
      * @return self
      */
-    public function setLastRead($lastRead): self
+    public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
 
@@ -365,6 +393,26 @@ class ObjsGroup extends \ArrayObject
     public function setNameNormalized(?string $nameNormalized): self
     {
         $this->nameNormalized = $nameNormalized;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNumMembers(): ?int
+    {
+        return $this->numMembers;
+    }
+
+    /**
+     * @param int|null $numMembers
+     *
+     * @return self
+     */
+    public function setNumMembers(?int $numMembers): self
+    {
+        $this->numMembers = $numMembers;
 
         return $this;
     }

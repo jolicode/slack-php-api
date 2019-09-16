@@ -42,27 +42,23 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsPaging();
-        $data = clone $data;
         if (property_exists($data, 'count') && $data->{'count'} !== null) {
             $object->setCount($data->{'count'});
-            unset($data->{'count'});
         }
         if (property_exists($data, 'page') && $data->{'page'} !== null) {
             $object->setPage($data->{'page'});
-            unset($data->{'page'});
         }
         if (property_exists($data, 'pages') && $data->{'pages'} !== null) {
             $object->setPages($data->{'pages'});
-            unset($data->{'pages'});
+        }
+        if (property_exists($data, 'per_page') && $data->{'per_page'} !== null) {
+            $object->setPerPage($data->{'per_page'});
+        }
+        if (property_exists($data, 'spill') && $data->{'spill'} !== null) {
+            $object->setSpill($data->{'spill'});
         }
         if (property_exists($data, 'total') && $data->{'total'} !== null) {
             $object->setTotal($data->{'total'});
-            unset($data->{'total'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -80,13 +76,14 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getPages()) {
             $data->{'pages'} = $object->getPages();
         }
+        if (null !== $object->getPerPage()) {
+            $data->{'per_page'} = $object->getPerPage();
+        }
+        if (null !== $object->getSpill()) {
+            $data->{'spill'} = $object->getSpill();
+        }
         if (null !== $object->getTotal()) {
             $data->{'total'} = $object->getTotal();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

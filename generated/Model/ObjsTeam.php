@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsTeam extends \ArrayObject
+class ObjsTeam
 {
+    /**
+     * @var bool
+     */
+    protected $archived;
     /**
      * @var string
      */
     protected $avatarBaseUrl;
+    /**
+     * @var int
+     */
+    protected $created;
+    /**
+     * @var int
+     */
+    protected $dateCreate;
+    /**
+     * @var bool
+     */
+    protected $deleted;
+    /**
+     * @var string
+     */
+    protected $description;
+    /**
+     * @var string
+     */
+    protected $discoverable;
     /**
      * @var string
      */
@@ -37,13 +61,25 @@ class ObjsTeam extends \ArrayObject
      */
     protected $hasComplianceExport;
     /**
-     * @var ObjsTeamIcon
+     * @var ObjsIcon
      */
     protected $icon;
     /**
      * @var string
      */
     protected $id;
+    /**
+     * @var bool
+     */
+    protected $isAssigned;
+    /**
+     * @var int
+     */
+    protected $isEnterprise;
+    /**
+     * @var int
+     */
+    protected $limitTs;
     /**
      * @var int
      */
@@ -68,10 +104,26 @@ class ObjsTeam extends \ArrayObject
      * @var string
      */
     protected $plan;
+
     /**
-     * @var TeamPrefsPrefs
+     * @return bool|null
      */
-    protected $prefs;
+    public function getArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    /**
+     * @param bool|null $archived
+     *
+     * @return self
+     */
+    public function setArchived(?bool $archived): self
+    {
+        $this->archived = $archived;
+
+        return $this;
+    }
 
     /**
      * @return string|null
@@ -89,6 +141,106 @@ class ObjsTeam extends \ArrayObject
     public function setAvatarBaseUrl(?string $avatarBaseUrl): self
     {
         $this->avatarBaseUrl = $avatarBaseUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCreated(): ?int
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param int|null $created
+     *
+     * @return self
+     */
+    public function setCreated(?int $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDateCreate(): ?int
+    {
+        return $this->dateCreate;
+    }
+
+    /**
+     * @param int|null $dateCreate
+     *
+     * @return self
+     */
+    public function setDateCreate(?int $dateCreate): self
+    {
+        $this->dateCreate = $dateCreate;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getDeleted(): ?bool
+    {
+        return $this->deleted;
+    }
+
+    /**
+     * @param bool|null $deleted
+     *
+     * @return self
+     */
+    public function setDeleted(?bool $deleted): self
+    {
+        $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     *
+     * @return self
+     */
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDiscoverable(): ?string
+    {
+        return $this->discoverable;
+    }
+
+    /**
+     * @param string|null $discoverable
+     *
+     * @return self
+     */
+    public function setDiscoverable(?string $discoverable): self
+    {
+        $this->discoverable = $discoverable;
 
         return $this;
     }
@@ -194,19 +346,19 @@ class ObjsTeam extends \ArrayObject
     }
 
     /**
-     * @return ObjsTeamIcon|null
+     * @return ObjsIcon|null
      */
-    public function getIcon(): ?ObjsTeamIcon
+    public function getIcon(): ?ObjsIcon
     {
         return $this->icon;
     }
 
     /**
-     * @param ObjsTeamIcon|null $icon
+     * @param ObjsIcon|null $icon
      *
      * @return self
      */
-    public function setIcon(?ObjsTeamIcon $icon): self
+    public function setIcon(?ObjsIcon $icon): self
     {
         $this->icon = $icon;
 
@@ -229,6 +381,66 @@ class ObjsTeam extends \ArrayObject
     public function setId(?string $id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsAssigned(): ?bool
+    {
+        return $this->isAssigned;
+    }
+
+    /**
+     * @param bool|null $isAssigned
+     *
+     * @return self
+     */
+    public function setIsAssigned(?bool $isAssigned): self
+    {
+        $this->isAssigned = $isAssigned;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getIsEnterprise(): ?int
+    {
+        return $this->isEnterprise;
+    }
+
+    /**
+     * @param int|null $isEnterprise
+     *
+     * @return self
+     */
+    public function setIsEnterprise(?int $isEnterprise): self
+    {
+        $this->isEnterprise = $isEnterprise;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLimitTs(): ?int
+    {
+        return $this->limitTs;
+    }
+
+    /**
+     * @param int|null $limitTs
+     *
+     * @return self
+     */
+    public function setLimitTs(?int $limitTs): self
+    {
+        $this->limitTs = $limitTs;
 
         return $this;
     }
@@ -349,26 +561,6 @@ class ObjsTeam extends \ArrayObject
     public function setPlan(?string $plan): self
     {
         $this->plan = $plan;
-
-        return $this;
-    }
-
-    /**
-     * @return TeamPrefsPrefs|null
-     */
-    public function getPrefs(): ?TeamPrefsPrefs
-    {
-        return $this->prefs;
-    }
-
-    /**
-     * @param TeamPrefsPrefs|null $prefs
-     *
-     * @return self
-     */
-    public function setPrefs(?TeamPrefsPrefs $prefs): self
-    {
-        $this->prefs = $prefs;
 
         return $this;
     }

@@ -12,20 +12,6 @@ namespace JoliCode\Slack\Api\Endpoint;
 
 class DndSetSnooze extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
-    /**
-     * Turns on Do Not Disturb mode for the current user, or changes its duration.
-     *
-     * @param array $formParameters {
-     *
-     *     @var int $num_minutes number of minutes, from now, to snooze until
-     *     @var string $token Authentication token. Requires scope: `dnd:write`
-     * }
-     */
-    public function __construct(array $formParameters = [])
-    {
-        $this->formParameters = $formParameters;
-    }
-
     use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
@@ -40,24 +26,12 @@ class DndSetSnooze extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
     {
-        return $this->getFormBody();
+        return [[], null];
     }
 
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
-    }
-
-    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['num_minutes', 'token']);
-        $optionsResolver->setRequired([]);
-        $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('num_minutes', ['int']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-
-        return $optionsResolver;
     }
 
     /**

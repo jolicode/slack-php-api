@@ -42,23 +42,14 @@ class ChannelsJoinPostResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChannelsJoinPostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'already_in_channel') && $data->{'already_in_channel'} !== null) {
             $object->setAlreadyInChannel($data->{'already_in_channel'});
-            unset($data->{'already_in_channel'});
         }
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsChannel', 'json', $context));
-            unset($data->{'channel'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class ChannelsJoinPostResponse200Normalizer implements DenormalizerInterface, No
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
+class ConversationsRepliesGetResponse200MessagesItemItem1
 {
     /**
      * @var bool
@@ -160,7 +160,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getThreadTs()
+    public function getThreadTs(): ?string
     {
         return $this->threadTs;
     }
@@ -170,7 +170,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
      *
      * @return self
      */
-    public function setThreadTs($threadTs): self
+    public function setThreadTs(?string $threadTs): self
     {
         $this->threadTs = $threadTs;
 
@@ -180,7 +180,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
     /**
      * @return string|null
      */
-    public function getTs()
+    public function getTs(): ?string
     {
         return $this->ts;
     }
@@ -190,7 +190,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1 extends \ArrayObject
      *
      * @return self
      */
-    public function setTs($ts): self
+    public function setTs(?string $ts): self
     {
         $this->ts = $ts;
 

@@ -42,23 +42,14 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'profile') && $data->{'profile'} !== null) {
             $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
-            unset($data->{'profile'});
         }
         if (property_exists($data, 'username') && $data->{'username'} !== null) {
             $object->setUsername($data->{'username'});
-            unset($data->{'username'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
         }
         if (null !== $object->getUsername()) {
             $data->{'username'} = $object->getUsername();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

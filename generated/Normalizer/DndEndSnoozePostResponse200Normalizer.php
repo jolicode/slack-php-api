@@ -42,15 +42,20 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200();
-        $data = clone $data;
+        if (property_exists($data, 'dnd_enabled') && $data->{'dnd_enabled'} !== null) {
+            $object->setDndEnabled($data->{'dnd_enabled'});
+        }
+        if (property_exists($data, 'next_dnd_end_ts') && $data->{'next_dnd_end_ts'} !== null) {
+            $object->setNextDndEndTs($data->{'next_dnd_end_ts'});
+        }
+        if (property_exists($data, 'next_dnd_start_ts') && $data->{'next_dnd_start_ts'} !== null) {
+            $object->setNextDndStartTs($data->{'next_dnd_start_ts'});
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'snooze_enabled') && $data->{'snooze_enabled'} !== null) {
+            $object->setSnoozeEnabled($data->{'snooze_enabled'});
         }
 
         return $object;
@@ -59,13 +64,20 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getDndEnabled()) {
+            $data->{'dnd_enabled'} = $object->getDndEnabled();
+        }
+        if (null !== $object->getNextDndEndTs()) {
+            $data->{'next_dnd_end_ts'} = $object->getNextDndEndTs();
+        }
+        if (null !== $object->getNextDndStartTs()) {
+            $data->{'next_dnd_start_ts'} = $object->getNextDndStartTs();
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getSnoozeEnabled()) {
+            $data->{'snooze_enabled'} = $object->getSnoozeEnabled();
         }
 
         return $data;

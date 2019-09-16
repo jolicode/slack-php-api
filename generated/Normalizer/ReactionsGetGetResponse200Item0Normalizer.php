@@ -42,27 +42,17 @@ class ReactionsGetGetResponse200Item0Normalizer implements DenormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsGetGetResponse200Item0();
-        $data = clone $data;
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
             $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
         }
         if (property_exists($data, 'message') && $data->{'message'} !== null) {
             $object->setMessage($this->denormalizer->denormalize($data->{'message'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
-            unset($data->{'message'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -82,11 +72,6 @@ class ReactionsGetGetResponse200Item0Normalizer implements DenormalizerInterface
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class PinsListGetResponse200Item0ItemsItem2 extends \ArrayObject
+class PinsListGetResponse200Item0ItemsItem2
 {
     /**
      * @var string

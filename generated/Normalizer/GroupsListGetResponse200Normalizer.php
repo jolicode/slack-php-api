@@ -42,23 +42,15 @@ class GroupsListGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\GroupsListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'groups') && $data->{'groups'} !== null) {
             $values = [];
             foreach ($data->{'groups'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsGroup', 'json', $context);
             }
             $object->setGroups($values);
-            unset($data->{'groups'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
         }
 
         return $object;
@@ -76,11 +68,6 @@ class GroupsListGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
         }
 
         return $data;

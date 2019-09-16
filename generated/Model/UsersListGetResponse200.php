@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsersListGetResponse200 extends \ArrayObject
+class UsersListGetResponse200
 {
     /**
      * @var int
@@ -25,7 +25,7 @@ class UsersListGetResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
-     * @var UsersListGetResponse200ResponseMetadata
+     * @var ObjsResponseMetadata
      */
     protected $responseMetadata;
 
@@ -90,19 +90,19 @@ class UsersListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return UsersListGetResponse200ResponseMetadata|null
+     * @return ObjsResponseMetadata|null
      */
-    public function getResponseMetadata(): ?UsersListGetResponse200ResponseMetadata
+    public function getResponseMetadata(): ?ObjsResponseMetadata
     {
         return $this->responseMetadata;
     }
 
     /**
-     * @param UsersListGetResponse200ResponseMetadata|null $responseMetadata
+     * @param ObjsResponseMetadata|null $responseMetadata
      *
      * @return self
      */
-    public function setResponseMetadata(?UsersListGetResponse200ResponseMetadata $responseMetadata): self
+    public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;
 

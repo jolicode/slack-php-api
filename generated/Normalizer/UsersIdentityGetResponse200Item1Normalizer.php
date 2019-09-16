@@ -42,23 +42,14 @@ class UsersIdentityGetResponse200Item1Normalizer implements DenormalizerInterfac
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item1Team', 'json', $context));
-            unset($data->{'team'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item1User', 'json', $context));
-            unset($data->{'user'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class UsersIdentityGetResponse200Item1Normalizer implements DenormalizerInterfac
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $this->normalizer->normalize($object->getUser(), 'json', $context);
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

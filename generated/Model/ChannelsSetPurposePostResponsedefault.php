@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsSetPurposePostResponsedefault extends \ArrayObject
+class ChannelsSetPurposePostResponsedefault
 {
     /**
      * @var string

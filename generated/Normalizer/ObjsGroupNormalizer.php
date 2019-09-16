@@ -42,95 +42,72 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsGroup();
-        $data = clone $data;
         if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
-            unset($data->{'created'});
         }
         if (property_exists($data, 'creator') && $data->{'creator'} !== null) {
             $object->setCreator($data->{'creator'});
-            unset($data->{'creator'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'is_archived') && $data->{'is_archived'} !== null) {
             $object->setIsArchived($data->{'is_archived'});
-            unset($data->{'is_archived'});
+        }
+        if (property_exists($data, 'is_deleted') && $data->{'is_deleted'} !== null) {
+            $object->setIsDeleted($data->{'is_deleted'});
         }
         if (property_exists($data, 'is_group') && $data->{'is_group'} !== null) {
             $object->setIsGroup($data->{'is_group'});
-            unset($data->{'is_group'});
         }
         if (property_exists($data, 'is_moved') && $data->{'is_moved'} !== null) {
             $object->setIsMoved($data->{'is_moved'});
-            unset($data->{'is_moved'});
         }
         if (property_exists($data, 'is_mpim') && $data->{'is_mpim'} !== null) {
             $object->setIsMpim($data->{'is_mpim'});
-            unset($data->{'is_mpim'});
         }
         if (property_exists($data, 'is_open') && $data->{'is_open'} !== null) {
             $object->setIsOpen($data->{'is_open'});
-            unset($data->{'is_open'});
         }
         if (property_exists($data, 'is_pending_ext_shared') && $data->{'is_pending_ext_shared'} !== null) {
             $object->setIsPendingExtShared($data->{'is_pending_ext_shared'});
-            unset($data->{'is_pending_ext_shared'});
         }
         if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
-            $value = $data->{'last_read'};
-            if (is_string($data->{'last_read'})) {
-                $value = $data->{'last_read'};
-            }
-            $object->setLastRead($value);
-            unset($data->{'last_read'});
+            $object->setLastRead($data->{'last_read'});
         }
         if (property_exists($data, 'latest') && $data->{'latest'} !== null) {
             $object->setLatest($data->{'latest'});
-            unset($data->{'latest'});
         }
         if (property_exists($data, 'members') && $data->{'members'} !== null) {
             $values = [];
-            foreach ($data->{'members'} as $value_1) {
-                $values[] = $value_1;
+            foreach ($data->{'members'} as $value) {
+                $values[] = $value;
             }
             $object->setMembers($values);
-            unset($data->{'members'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
         }
         if (property_exists($data, 'name_normalized') && $data->{'name_normalized'} !== null) {
             $object->setNameNormalized($data->{'name_normalized'});
-            unset($data->{'name_normalized'});
+        }
+        if (property_exists($data, 'num_members') && $data->{'num_members'} !== null) {
+            $object->setNumMembers($data->{'num_members'});
         }
         if (property_exists($data, 'priority') && $data->{'priority'} !== null) {
             $object->setPriority($data->{'priority'});
-            unset($data->{'priority'});
         }
         if (property_exists($data, 'purpose') && $data->{'purpose'} !== null) {
             $object->setPurpose($this->denormalizer->denormalize($data->{'purpose'}, 'JoliCode\\Slack\\Api\\Model\\ObjsGroupPurpose', 'json', $context));
-            unset($data->{'purpose'});
         }
         if (property_exists($data, 'topic') && $data->{'topic'} !== null) {
             $object->setTopic($this->denormalizer->denormalize($data->{'topic'}, 'JoliCode\\Slack\\Api\\Model\\ObjsGroupTopic', 'json', $context));
-            unset($data->{'topic'});
         }
         if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
-            unset($data->{'unread_count'});
         }
         if (property_exists($data, 'unread_count_display') && $data->{'unread_count_display'} !== null) {
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
-            unset($data->{'unread_count_display'});
-        }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_2;
-            }
         }
 
         return $object;
@@ -151,6 +128,9 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null !== $object->getIsArchived()) {
             $data->{'is_archived'} = $object->getIsArchived();
         }
+        if (null !== $object->getIsDeleted()) {
+            $data->{'is_deleted'} = $object->getIsDeleted();
+        }
         if (null !== $object->getIsGroup()) {
             $data->{'is_group'} = $object->getIsGroup();
         }
@@ -167,19 +147,15 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data->{'is_pending_ext_shared'} = $object->getIsPendingExtShared();
         }
         if (null !== $object->getLastRead()) {
-            $value = $object->getLastRead();
-            if (is_string($object->getLastRead())) {
-                $value = $object->getLastRead();
-            }
-            $data->{'last_read'} = $value;
+            $data->{'last_read'} = $object->getLastRead();
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $object->getLatest();
         }
         if (null !== $object->getMembers()) {
             $values = [];
-            foreach ($object->getMembers() as $value_1) {
-                $values[] = $value_1;
+            foreach ($object->getMembers() as $value) {
+                $values[] = $value;
             }
             $data->{'members'} = $values;
         }
@@ -188,6 +164,9 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (null !== $object->getNameNormalized()) {
             $data->{'name_normalized'} = $object->getNameNormalized();
+        }
+        if (null !== $object->getNumMembers()) {
+            $data->{'num_members'} = $object->getNumMembers();
         }
         if (null !== $object->getPriority()) {
             $data->{'priority'} = $object->getPriority();
@@ -203,11 +182,6 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if (null !== $object->getUnreadCountDisplay()) {
             $data->{'unread_count_display'} = $object->getUnreadCountDisplay();
-        }
-        foreach ($object as $key => $value_2) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_2;
-            }
         }
 
         return $data;

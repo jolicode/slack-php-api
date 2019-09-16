@@ -42,19 +42,11 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamInfoGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
-            unset($data->{'team'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -68,11 +60,6 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
         }
         if (null !== $object->getTeam()) {
             $data->{'team'} = $this->normalizer->normalize($object->getTeam(), 'json', $context);
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class GroupsInvitePostResponse200 extends \ArrayObject
+class GroupsInvitePostResponse200
 {
     /**
      * @var ObjsGroup

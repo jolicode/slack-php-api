@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class GroupsCreateChildPostResponsedefault extends \ArrayObject
+class GroupsCreateChildPostResponsedefault
 {
+    /**
+     * @var string
+     */
+    protected $error;
     /**
      * @var bool
      */
     protected $ok;
+
+    /**
+     * @return string|null
+     */
+    public function getError(): ?string
+    {
+        return $this->error;
+    }
+
+    /**
+     * @param string|null $error
+     *
+     * @return self
+     */
+    public function setError(?string $error): self
+    {
+        $this->error = $error;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

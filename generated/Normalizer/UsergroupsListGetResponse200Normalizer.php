@@ -42,15 +42,15 @@ class UsergroupsListGetResponse200Normalizer implements DenormalizerInterface, N
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
+        if (property_exists($data, 'usergroups') && $data->{'usergroups'} !== null) {
+            $values = [];
+            foreach ($data->{'usergroups'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsSubteam', 'json', $context);
             }
+            $object->setUsergroups($values);
         }
 
         return $object;
@@ -62,10 +62,12 @@ class UsergroupsListGetResponse200Normalizer implements DenormalizerInterface, N
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+        if (null !== $object->getUsergroups()) {
+            $values = [];
+            foreach ($object->getUsergroups() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
+            $data->{'usergroups'} = $values;
         }
 
         return $data;

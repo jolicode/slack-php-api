@@ -10,12 +10,40 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChatMeMessagePostResponse200 extends \ArrayObject
+class ChatMeMessagePostResponse200
 {
+    /**
+     * @var string
+     */
+    protected $channel;
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var string
+     */
+    protected $ts;
+
+    /**
+     * @return string|null
+     */
+    public function getChannel(): ?string
+    {
+        return $this->channel;
+    }
+
+    /**
+     * @param string|null $channel
+     *
+     * @return self
+     */
+    public function setChannel(?string $channel): self
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
 
     /**
      * @return bool|null
@@ -33,6 +61,26 @@ class ChatMeMessagePostResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTs(): ?string
+    {
+        return $this->ts;
+    }
+
+    /**
+     * @param string|null $ts
+     *
+     * @return self
+     */
+    public function setTs(?string $ts): self
+    {
+        $this->ts = $ts;
 
         return $this;
     }

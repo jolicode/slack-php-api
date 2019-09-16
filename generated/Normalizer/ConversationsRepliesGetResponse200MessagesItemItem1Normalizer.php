@@ -42,63 +42,38 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1();
-        $data = clone $data;
         if (property_exists($data, 'is_starred') && $data->{'is_starred'} !== null) {
             $object->setIsStarred($data->{'is_starred'});
-            unset($data->{'is_starred'});
         }
         if (property_exists($data, 'parent_user_id') && $data->{'parent_user_id'} !== null) {
             $object->setParentUserId($data->{'parent_user_id'});
-            unset($data->{'parent_user_id'});
         }
         if (property_exists($data, 'source_team') && $data->{'source_team'} !== null) {
             $object->setSourceTeam($data->{'source_team'});
-            unset($data->{'source_team'});
         }
         if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($data->{'team'});
-            unset($data->{'team'});
         }
         if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
-            unset($data->{'text'});
         }
         if (property_exists($data, 'thread_ts') && $data->{'thread_ts'} !== null) {
-            $value = $data->{'thread_ts'};
-            if (is_string($data->{'thread_ts'})) {
-                $value = $data->{'thread_ts'};
-            }
-            $object->setThreadTs($value);
-            unset($data->{'thread_ts'});
+            $object->setThreadTs($data->{'thread_ts'});
         }
         if (property_exists($data, 'ts') && $data->{'ts'} !== null) {
-            $value_1 = $data->{'ts'};
-            if (is_string($data->{'ts'})) {
-                $value_1 = $data->{'ts'};
-            }
-            $object->setTs($value_1);
-            unset($data->{'ts'});
+            $object->setTs($data->{'ts'});
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-            unset($data->{'type'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
         }
         if (property_exists($data, 'user_profile') && $data->{'user_profile'} !== null) {
             $object->setUserProfile($this->denormalizer->denormalize($data->{'user_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort', 'json', $context));
-            unset($data->{'user_profile'});
         }
         if (property_exists($data, 'user_team') && $data->{'user_team'} !== null) {
             $object->setUserTeam($data->{'user_team'});
-            unset($data->{'user_team'});
-        }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_2;
-            }
         }
 
         return $object;
@@ -123,18 +98,10 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
             $data->{'text'} = $object->getText();
         }
         if (null !== $object->getThreadTs()) {
-            $value = $object->getThreadTs();
-            if (is_string($object->getThreadTs())) {
-                $value = $object->getThreadTs();
-            }
-            $data->{'thread_ts'} = $value;
+            $data->{'thread_ts'} = $object->getThreadTs();
         }
         if (null !== $object->getTs()) {
-            $value_1 = $object->getTs();
-            if (is_string($object->getTs())) {
-                $value_1 = $object->getTs();
-            }
-            $data->{'ts'} = $value_1;
+            $data->{'ts'} = $object->getTs();
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
@@ -147,11 +114,6 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         }
         if (null !== $object->getUserTeam()) {
             $data->{'user_team'} = $object->getUserTeam();
-        }
-        foreach ($object as $key => $value_2) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_2;
-            }
         }
 
         return $data;

@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChannelsRenamePostResponse200 extends \ArrayObject
+class ChannelsRenamePostResponse200
 {
     /**
      * @var ObjsChannel

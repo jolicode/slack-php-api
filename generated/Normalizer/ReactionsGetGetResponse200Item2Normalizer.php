@@ -42,27 +42,17 @@ class ReactionsGetGetResponse200Item2Normalizer implements DenormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsGetGetResponse200Item2();
-        $data = clone $data;
         if (property_exists($data, 'comment') && $data->{'comment'} !== null) {
             $object->setComment($this->denormalizer->denormalize($data->{'comment'}, 'JoliCode\\Slack\\Api\\Model\\ObjsComment', 'json', $context));
-            unset($data->{'comment'});
         }
         if (property_exists($data, 'file') && $data->{'file'} !== null) {
             $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-            unset($data->{'file'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -82,11 +72,6 @@ class ReactionsGetGetResponse200Item2Normalizer implements DenormalizerInterface
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

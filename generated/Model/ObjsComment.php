@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsComment extends \ArrayObject
+class ObjsComment
 {
     /**
      * @var string
@@ -28,6 +28,14 @@ class ObjsComment extends \ArrayObject
      * @var bool
      */
     protected $isIntro;
+    /**
+     * @var bool
+     */
+    protected $isStarred;
+    /**
+     * @var int
+     */
+    protected $numStars;
     /**
      * @var DefsPinnedInfoItem[]
      */
@@ -125,6 +133,46 @@ class ObjsComment extends \ArrayObject
     public function setIsIntro(?bool $isIntro): self
     {
         $this->isIntro = $isIntro;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsStarred(): ?bool
+    {
+        return $this->isStarred;
+    }
+
+    /**
+     * @param bool|null $isStarred
+     *
+     * @return self
+     */
+    public function setIsStarred(?bool $isStarred): self
+    {
+        $this->isStarred = $isStarred;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNumStars(): ?int
+    {
+        return $this->numStars;
+    }
+
+    /**
+     * @param int|null $numStars
+     *
+     * @return self
+     */
+    public function setNumStars(?int $numStars): self
+    {
+        $this->numStars = $numStars;
 
         return $this;
     }

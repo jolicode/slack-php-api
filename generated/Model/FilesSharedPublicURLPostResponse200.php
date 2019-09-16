@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class FilesSharedPublicURLPostResponse200 extends \ArrayObject
+class FilesSharedPublicURLPostResponse200
 {
+    /**
+     * @var ObjsFile
+     */
+    protected $file;
     /**
      * @var bool
      */
     protected $ok;
+
+    /**
+     * @return ObjsFile|null
+     */
+    public function getFile(): ?ObjsFile
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param ObjsFile|null $file
+     *
+     * @return self
+     */
+    public function setFile(?ObjsFile $file): self
+    {
+        $this->file = $file;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

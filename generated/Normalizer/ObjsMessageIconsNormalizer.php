@@ -42,15 +42,8 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageIcons();
-        $data = clone $data;
         if (property_exists($data, 'emoji') && $data->{'emoji'} !== null) {
             $object->setEmoji($data->{'emoji'});
-            unset($data->{'emoji'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -61,11 +54,6 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
         $data = new \stdClass();
         if (null !== $object->getEmoji()) {
             $data->{'emoji'} = $object->getEmoji();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

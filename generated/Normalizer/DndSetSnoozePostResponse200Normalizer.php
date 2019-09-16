@@ -42,15 +42,17 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'snooze_enabled') && $data->{'snooze_enabled'} !== null) {
+            $object->setSnoozeEnabled($data->{'snooze_enabled'});
+        }
+        if (property_exists($data, 'snooze_endtime') && $data->{'snooze_endtime'} !== null) {
+            $object->setSnoozeEndtime($data->{'snooze_endtime'});
+        }
+        if (property_exists($data, 'snooze_remaining') && $data->{'snooze_remaining'} !== null) {
+            $object->setSnoozeRemaining($data->{'snooze_remaining'});
         }
 
         return $object;
@@ -62,10 +64,14 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getSnoozeEnabled()) {
+            $data->{'snooze_enabled'} = $object->getSnoozeEnabled();
+        }
+        if (null !== $object->getSnoozeEndtime()) {
+            $data->{'snooze_endtime'} = $object->getSnoozeEndtime();
+        }
+        if (null !== $object->getSnoozeRemaining()) {
+            $data->{'snooze_remaining'} = $object->getSnoozeRemaining();
         }
 
         return $data;

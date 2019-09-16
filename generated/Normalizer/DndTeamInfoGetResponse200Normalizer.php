@@ -42,27 +42,14 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'cached') && $data->{'cached'} !== null) {
             $object->setCached($data->{'cached'});
-            unset($data->{'cached'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'users') && $data->{'users'} !== null) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'users'} as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setUsers($values);
-            unset($data->{'users'});
-        }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', $key_1)) {
-                $object[$key_1] = $value_1;
-            }
+            $object->setUsers($data->{'users'});
         }
 
         return $object;
@@ -78,16 +65,7 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
             $data->{'ok'} = $object->getOk();
         }
         if (null !== $object->getUsers()) {
-            $values = new \stdClass();
-            foreach ($object->getUsers() as $key => $value) {
-                $values->{$key} = $value;
-            }
-            $data->{'users'} = $values;
-        }
-        foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/.*/', $key_1)) {
-                $data->{$key_1} = $value_1;
-            }
+            $data->{'users'} = $object->getUsers();
         }
 
         return $data;

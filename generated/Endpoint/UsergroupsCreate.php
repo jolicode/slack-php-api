@@ -18,10 +18,10 @@ class UsergroupsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @param array $formParameters {
      *
      *     @var string $handle A mention handle. Must be unique among channels, users and User Groups.
-     *     @var string $name A name for the User Group. Must be unique among User Groups.
+     *     @var string $description a short description of the User Group
      *     @var string $channels a comma separated string of encoded channel IDs for which the User Group uses as a default
      *     @var bool $include_count include the number of users in each User Group
-     *     @var string $description A short description of the User Group.
+     *     @var string $name A name for the User Group. Must be unique among User Groups.
      * }
      *
      * @param array $headerParameters {
@@ -60,14 +60,14 @@ class UsergroupsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['handle', 'name', 'channels', 'include_count', 'description']);
+        $optionsResolver->setDefined(['handle', 'description', 'channels', 'include_count', 'name']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('handle', ['string']);
-        $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->setAllowedTypes('description', ['string']);
         $optionsResolver->setAllowedTypes('channels', ['string']);
         $optionsResolver->setAllowedTypes('include_count', ['bool']);
-        $optionsResolver->setAllowedTypes('description', ['string']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }

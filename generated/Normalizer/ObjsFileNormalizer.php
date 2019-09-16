@@ -42,38 +42,39 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsFile();
-        $data = clone $data;
         if (property_exists($data, 'channels') && $data->{'channels'} !== null) {
             $values = [];
             foreach ($data->{'channels'} as $value) {
                 $values[] = $value;
             }
             $object->setChannels($values);
-            unset($data->{'channels'});
         }
         if (property_exists($data, 'comments_count') && $data->{'comments_count'} !== null) {
             $object->setCommentsCount($data->{'comments_count'});
-            unset($data->{'comments_count'});
         }
         if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
-            unset($data->{'created'});
         }
         if (property_exists($data, 'display_as_bot') && $data->{'display_as_bot'} !== null) {
             $object->setDisplayAsBot($data->{'display_as_bot'});
-            unset($data->{'display_as_bot'});
         }
         if (property_exists($data, 'editable') && $data->{'editable'} !== null) {
             $object->setEditable($data->{'editable'});
-            unset($data->{'editable'});
+        }
+        if (property_exists($data, 'editor') && $data->{'editor'} !== null) {
+            $object->setEditor($data->{'editor'});
+        }
+        if (property_exists($data, 'external_id') && $data->{'external_id'} !== null) {
+            $object->setExternalId($data->{'external_id'});
         }
         if (property_exists($data, 'external_type') && $data->{'external_type'} !== null) {
             $object->setExternalType($data->{'external_type'});
-            unset($data->{'external_type'});
+        }
+        if (property_exists($data, 'external_url') && $data->{'external_url'} !== null) {
+            $object->setExternalUrl($data->{'external_url'});
         }
         if (property_exists($data, 'filetype') && $data->{'filetype'} !== null) {
             $object->setFiletype($data->{'filetype'});
-            unset($data->{'filetype'});
         }
         if (property_exists($data, 'groups') && $data->{'groups'} !== null) {
             $values_1 = [];
@@ -81,15 +82,15 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_1[] = $value_1;
             }
             $object->setGroups($values_1);
-            unset($data->{'groups'});
+        }
+        if (property_exists($data, 'has_rich_preview') && $data->{'has_rich_preview'} !== null) {
+            $object->setHasRichPreview($data->{'has_rich_preview'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'image_exif_rotation') && $data->{'image_exif_rotation'} !== null) {
             $object->setImageExifRotation($data->{'image_exif_rotation'});
-            unset($data->{'image_exif_rotation'});
         }
         if (property_exists($data, 'ims') && $data->{'ims'} !== null) {
             $values_2 = [];
@@ -97,51 +98,45 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_2[] = $value_2;
             }
             $object->setIms($values_2);
-            unset($data->{'ims'});
         }
         if (property_exists($data, 'is_external') && $data->{'is_external'} !== null) {
             $object->setIsExternal($data->{'is_external'});
-            unset($data->{'is_external'});
         }
         if (property_exists($data, 'is_public') && $data->{'is_public'} !== null) {
             $object->setIsPublic($data->{'is_public'});
-            unset($data->{'is_public'});
         }
         if (property_exists($data, 'is_starred') && $data->{'is_starred'} !== null) {
             $object->setIsStarred($data->{'is_starred'});
-            unset($data->{'is_starred'});
         }
-        if (property_exists($data, 'has_rich_preview') && $data->{'has_rich_preview'} !== null) {
-            $object->setHasRichPreview($data->{'has_rich_preview'});
-            unset($data->{'has_rich_preview'});
+        if (property_exists($data, 'is_tombstoned') && $data->{'is_tombstoned'} !== null) {
+            $object->setIsTombstoned($data->{'is_tombstoned'});
+        }
+        if (property_exists($data, 'last_editor') && $data->{'last_editor'} !== null) {
+            $object->setLastEditor($data->{'last_editor'});
         }
         if (property_exists($data, 'mimetype') && $data->{'mimetype'} !== null) {
             $object->setMimetype($data->{'mimetype'});
-            unset($data->{'mimetype'});
         }
         if (property_exists($data, 'mode') && $data->{'mode'} !== null) {
             $object->setMode($data->{'mode'});
-            unset($data->{'mode'});
         }
         if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
-            unset($data->{'name'});
+        }
+        if (property_exists($data, 'num_stars') && $data->{'num_stars'} !== null) {
+            $object->setNumStars($data->{'num_stars'});
         }
         if (property_exists($data, 'original_h') && $data->{'original_h'} !== null) {
             $object->setOriginalH($data->{'original_h'});
-            unset($data->{'original_h'});
         }
         if (property_exists($data, 'original_w') && $data->{'original_w'} !== null) {
             $object->setOriginalW($data->{'original_w'});
-            unset($data->{'original_w'});
         }
         if (property_exists($data, 'permalink') && $data->{'permalink'} !== null) {
             $object->setPermalink($data->{'permalink'});
-            unset($data->{'permalink'});
         }
         if (property_exists($data, 'permalink_public') && $data->{'permalink_public'} !== null) {
             $object->setPermalinkPublic($data->{'permalink_public'});
-            unset($data->{'permalink_public'});
         }
         if (property_exists($data, 'pinned_info') && $data->{'pinned_info'} !== null) {
             $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
@@ -149,7 +144,6 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_3[$key] = $this->denormalizer->denormalize($value_3, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
             }
             $object->setPinnedInfo($values_3);
-            unset($data->{'pinned_info'});
         }
         if (property_exists($data, 'pinned_to') && $data->{'pinned_to'} !== null) {
             $values_4 = [];
@@ -157,15 +151,15 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_4[] = $value_4;
             }
             $object->setPinnedTo($values_4);
-            unset($data->{'pinned_to'});
         }
         if (property_exists($data, 'pretty_type') && $data->{'pretty_type'} !== null) {
             $object->setPrettyType($data->{'pretty_type'});
-            unset($data->{'pretty_type'});
+        }
+        if (property_exists($data, 'preview') && $data->{'preview'} !== null) {
+            $object->setPreview($data->{'preview'});
         }
         if (property_exists($data, 'public_url_shared') && $data->{'public_url_shared'} !== null) {
             $object->setPublicUrlShared($data->{'public_url_shared'});
-            unset($data->{'public_url_shared'});
         }
         if (property_exists($data, 'reactions') && $data->{'reactions'} !== null) {
             $values_5 = [];
@@ -173,124 +167,105 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_5[] = $this->denormalizer->denormalize($value_5, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
             $object->setReactions($values_5);
-            unset($data->{'reactions'});
+        }
+        if (property_exists($data, 'shares') && $data->{'shares'} !== null) {
+            $object->setShares($this->denormalizer->denormalize($data->{'shares'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFileShares', 'json', $context));
         }
         if (property_exists($data, 'size') && $data->{'size'} !== null) {
             $object->setSize($data->{'size'});
-            unset($data->{'size'});
+        }
+        if (property_exists($data, 'source_team') && $data->{'source_team'} !== null) {
+            $object->setSourceTeam($data->{'source_team'});
+        }
+        if (property_exists($data, 'state') && $data->{'state'} !== null) {
+            $object->setState($data->{'state'});
         }
         if (property_exists($data, 'thumb_1024') && $data->{'thumb_1024'} !== null) {
             $object->setThumb1024($data->{'thumb_1024'});
-            unset($data->{'thumb_1024'});
         }
         if (property_exists($data, 'thumb_1024_h') && $data->{'thumb_1024_h'} !== null) {
             $object->setThumb1024H($data->{'thumb_1024_h'});
-            unset($data->{'thumb_1024_h'});
         }
         if (property_exists($data, 'thumb_1024_w') && $data->{'thumb_1024_w'} !== null) {
             $object->setThumb1024W($data->{'thumb_1024_w'});
-            unset($data->{'thumb_1024_w'});
         }
         if (property_exists($data, 'thumb_160') && $data->{'thumb_160'} !== null) {
             $object->setThumb160($data->{'thumb_160'});
-            unset($data->{'thumb_160'});
         }
         if (property_exists($data, 'thumb_360') && $data->{'thumb_360'} !== null) {
             $object->setThumb360($data->{'thumb_360'});
-            unset($data->{'thumb_360'});
         }
         if (property_exists($data, 'thumb_360_h') && $data->{'thumb_360_h'} !== null) {
             $object->setThumb360H($data->{'thumb_360_h'});
-            unset($data->{'thumb_360_h'});
         }
         if (property_exists($data, 'thumb_360_w') && $data->{'thumb_360_w'} !== null) {
             $object->setThumb360W($data->{'thumb_360_w'});
-            unset($data->{'thumb_360_w'});
         }
         if (property_exists($data, 'thumb_480') && $data->{'thumb_480'} !== null) {
             $object->setThumb480($data->{'thumb_480'});
-            unset($data->{'thumb_480'});
         }
         if (property_exists($data, 'thumb_480_h') && $data->{'thumb_480_h'} !== null) {
             $object->setThumb480H($data->{'thumb_480_h'});
-            unset($data->{'thumb_480_h'});
         }
         if (property_exists($data, 'thumb_480_w') && $data->{'thumb_480_w'} !== null) {
             $object->setThumb480W($data->{'thumb_480_w'});
-            unset($data->{'thumb_480_w'});
         }
         if (property_exists($data, 'thumb_64') && $data->{'thumb_64'} !== null) {
             $object->setThumb64($data->{'thumb_64'});
-            unset($data->{'thumb_64'});
         }
         if (property_exists($data, 'thumb_720') && $data->{'thumb_720'} !== null) {
             $object->setThumb720($data->{'thumb_720'});
-            unset($data->{'thumb_720'});
         }
         if (property_exists($data, 'thumb_720_h') && $data->{'thumb_720_h'} !== null) {
             $object->setThumb720H($data->{'thumb_720_h'});
-            unset($data->{'thumb_720_h'});
         }
         if (property_exists($data, 'thumb_720_w') && $data->{'thumb_720_w'} !== null) {
             $object->setThumb720W($data->{'thumb_720_w'});
-            unset($data->{'thumb_720_w'});
         }
         if (property_exists($data, 'thumb_80') && $data->{'thumb_80'} !== null) {
             $object->setThumb80($data->{'thumb_80'});
-            unset($data->{'thumb_80'});
         }
         if (property_exists($data, 'thumb_800') && $data->{'thumb_800'} !== null) {
             $object->setThumb800($data->{'thumb_800'});
-            unset($data->{'thumb_800'});
         }
         if (property_exists($data, 'thumb_800_h') && $data->{'thumb_800_h'} !== null) {
             $object->setThumb800H($data->{'thumb_800_h'});
-            unset($data->{'thumb_800_h'});
         }
         if (property_exists($data, 'thumb_800_w') && $data->{'thumb_800_w'} !== null) {
             $object->setThumb800W($data->{'thumb_800_w'});
-            unset($data->{'thumb_800_w'});
         }
         if (property_exists($data, 'thumb_960') && $data->{'thumb_960'} !== null) {
             $object->setThumb960($data->{'thumb_960'});
-            unset($data->{'thumb_960'});
         }
         if (property_exists($data, 'thumb_960_h') && $data->{'thumb_960_h'} !== null) {
             $object->setThumb960H($data->{'thumb_960_h'});
-            unset($data->{'thumb_960_h'});
         }
         if (property_exists($data, 'thumb_960_w') && $data->{'thumb_960_w'} !== null) {
             $object->setThumb960W($data->{'thumb_960_w'});
-            unset($data->{'thumb_960_w'});
         }
         if (property_exists($data, 'timestamp') && $data->{'timestamp'} !== null) {
             $object->setTimestamp($data->{'timestamp'});
-            unset($data->{'timestamp'});
         }
         if (property_exists($data, 'title') && $data->{'title'} !== null) {
             $object->setTitle($data->{'title'});
-            unset($data->{'title'});
+        }
+        if (property_exists($data, 'updated') && $data->{'updated'} !== null) {
+            $object->setUpdated($data->{'updated'});
         }
         if (property_exists($data, 'url_private') && $data->{'url_private'} !== null) {
             $object->setUrlPrivate($data->{'url_private'});
-            unset($data->{'url_private'});
         }
         if (property_exists($data, 'url_private_download') && $data->{'url_private_download'} !== null) {
             $object->setUrlPrivateDownload($data->{'url_private_download'});
-            unset($data->{'url_private_download'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
+        }
+        if (property_exists($data, 'user_team') && $data->{'user_team'} !== null) {
+            $object->setUserTeam($data->{'user_team'});
         }
         if (property_exists($data, 'username') && $data->{'username'} !== null) {
             $object->setUsername($data->{'username'});
-            unset($data->{'username'});
-        }
-        foreach ($data as $key_1 => $value_6) {
-            if (preg_match('/.*/', $key_1)) {
-                $object[$key_1] = $value_6;
-            }
         }
 
         return $object;
@@ -318,8 +293,17 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getEditable()) {
             $data->{'editable'} = $object->getEditable();
         }
+        if (null !== $object->getEditor()) {
+            $data->{'editor'} = $object->getEditor();
+        }
+        if (null !== $object->getExternalId()) {
+            $data->{'external_id'} = $object->getExternalId();
+        }
         if (null !== $object->getExternalType()) {
             $data->{'external_type'} = $object->getExternalType();
+        }
+        if (null !== $object->getExternalUrl()) {
+            $data->{'external_url'} = $object->getExternalUrl();
         }
         if (null !== $object->getFiletype()) {
             $data->{'filetype'} = $object->getFiletype();
@@ -330,6 +314,9 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_1[] = $value_1;
             }
             $data->{'groups'} = $values_1;
+        }
+        if (null !== $object->getHasRichPreview()) {
+            $data->{'has_rich_preview'} = $object->getHasRichPreview();
         }
         if (null !== $object->getId()) {
             $data->{'id'} = $object->getId();
@@ -353,8 +340,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getIsStarred()) {
             $data->{'is_starred'} = $object->getIsStarred();
         }
-        if (null !== $object->getHasRichPreview()) {
-            $data->{'has_rich_preview'} = $object->getHasRichPreview();
+        if (null !== $object->getIsTombstoned()) {
+            $data->{'is_tombstoned'} = $object->getIsTombstoned();
+        }
+        if (null !== $object->getLastEditor()) {
+            $data->{'last_editor'} = $object->getLastEditor();
         }
         if (null !== $object->getMimetype()) {
             $data->{'mimetype'} = $object->getMimetype();
@@ -364,6 +354,9 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getName()) {
             $data->{'name'} = $object->getName();
+        }
+        if (null !== $object->getNumStars()) {
+            $data->{'num_stars'} = $object->getNumStars();
         }
         if (null !== $object->getOriginalH()) {
             $data->{'original_h'} = $object->getOriginalH();
@@ -394,6 +387,7 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getPrettyType()) {
             $data->{'pretty_type'} = $object->getPrettyType();
         }
+        $data->{'preview'} = $object->getPreview();
         if (null !== $object->getPublicUrlShared()) {
             $data->{'public_url_shared'} = $object->getPublicUrlShared();
         }
@@ -404,8 +398,17 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $data->{'reactions'} = $values_5;
         }
+        if (null !== $object->getShares()) {
+            $data->{'shares'} = $this->normalizer->normalize($object->getShares(), 'json', $context);
+        }
         if (null !== $object->getSize()) {
             $data->{'size'} = $object->getSize();
+        }
+        if (null !== $object->getSourceTeam()) {
+            $data->{'source_team'} = $object->getSourceTeam();
+        }
+        if (null !== $object->getState()) {
+            $data->{'state'} = $object->getState();
         }
         if (null !== $object->getThumb1024()) {
             $data->{'thumb_1024'} = $object->getThumb1024();
@@ -476,6 +479,9 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getTitle()) {
             $data->{'title'} = $object->getTitle();
         }
+        if (null !== $object->getUpdated()) {
+            $data->{'updated'} = $object->getUpdated();
+        }
         if (null !== $object->getUrlPrivate()) {
             $data->{'url_private'} = $object->getUrlPrivate();
         }
@@ -485,13 +491,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
         }
+        if (null !== $object->getUserTeam()) {
+            $data->{'user_team'} = $object->getUserTeam();
+        }
         if (null !== $object->getUsername()) {
             $data->{'username'} = $object->getUsername();
-        }
-        foreach ($object as $key_1 => $value_6) {
-            if (preg_match('/.*/', $key_1)) {
-                $data->{$key_1} = $value_6;
-            }
         }
 
         return $data;

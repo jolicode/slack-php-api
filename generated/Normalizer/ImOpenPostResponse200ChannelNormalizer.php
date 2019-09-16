@@ -42,51 +42,32 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImOpenPostResponse200Channel();
-        $data = clone $data;
         if (property_exists($data, 'created') && $data->{'created'} !== null) {
             $object->setCreated($data->{'created'});
-            unset($data->{'created'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'is_im') && $data->{'is_im'} !== null) {
             $object->setIsIm($data->{'is_im'});
-            unset($data->{'is_im'});
         }
         if (property_exists($data, 'is_open') && $data->{'is_open'} !== null) {
             $object->setIsOpen($data->{'is_open'});
-            unset($data->{'is_open'});
         }
         if (property_exists($data, 'last_read') && $data->{'last_read'} !== null) {
-            $value = $data->{'last_read'};
-            if (is_string($data->{'last_read'})) {
-                $value = $data->{'last_read'};
-            }
-            $object->setLastRead($value);
-            unset($data->{'last_read'});
+            $object->setLastRead($data->{'last_read'});
         }
         if (property_exists($data, 'latest') && $data->{'latest'} !== null) {
             $object->setLatest($this->denormalizer->denormalize($data->{'latest'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
-            unset($data->{'latest'});
         }
         if (property_exists($data, 'unread_count') && $data->{'unread_count'} !== null) {
             $object->setUnreadCount($data->{'unread_count'});
-            unset($data->{'unread_count'});
         }
         if (property_exists($data, 'unread_count_display') && $data->{'unread_count_display'} !== null) {
             $object->setUnreadCountDisplay($data->{'unread_count_display'});
-            unset($data->{'unread_count_display'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
-        }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
         }
 
         return $object;
@@ -108,11 +89,7 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
             $data->{'is_open'} = $object->getIsOpen();
         }
         if (null !== $object->getLastRead()) {
-            $value = $object->getLastRead();
-            if (is_string($object->getLastRead())) {
-                $value = $object->getLastRead();
-            }
-            $data->{'last_read'} = $value;
+            $data->{'last_read'} = $object->getLastRead();
         }
         if (null !== $object->getLatest()) {
             $data->{'latest'} = $this->normalizer->normalize($object->getLatest(), 'json', $context);
@@ -125,11 +102,6 @@ class ImOpenPostResponse200ChannelNormalizer implements DenormalizerInterface, N
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
-        }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
         }
 
         return $data;

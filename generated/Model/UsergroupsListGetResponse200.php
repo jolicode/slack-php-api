@@ -10,12 +10,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsergroupsListGetResponse200 extends \ArrayObject
+class UsergroupsListGetResponse200
 {
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var ObjsSubteam[]
+     */
+    protected $usergroups;
 
     /**
      * @return bool|null
@@ -33,6 +37,26 @@ class UsergroupsListGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsSubteam[]|null
+     */
+    public function getUsergroups(): ?array
+    {
+        return $this->usergroups;
+    }
+
+    /**
+     * @param ObjsSubteam[]|null $usergroups
+     *
+     * @return self
+     */
+    public function setUsergroups(?array $usergroups): self
+    {
+        $this->usergroups = $usergroups;
 
         return $this;
     }

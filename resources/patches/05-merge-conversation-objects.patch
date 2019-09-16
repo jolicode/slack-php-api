@@ -1,0 +1,460 @@
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
+@@ -371,9 +371,15 @@
+             "type": "array"
+         },
+         "objs_conversation": {
+-            "items": [
+-                {
+-                    "additionalProperties": false,
++            "additionalProperties": false,
++            "title": "Merged: Conversation MPIM Object, Conversation IM Channel Object from conversations.* methods, or Conversation object",
++            "type": "object",
++            "required": [
++                "id",
++                "created",
++                "is_im",
++                "is_org_shared"
++            ],
+                     "properties": {
+                         "accepted_user": {
+                             "$ref": "#/definitions/defs_user_id"
+@@ -662,437 +668,11 @@
+                         },
+                         "version": {
+                             "type": "integer"
+-                        }
+-                    },
+-                    "required": [
+-                        "id",
+-                        "name",
+-                        "created",
+-                        "creator",
+-                        "is_archived",
+-                        "is_channel",
+-                        "is_general",
+-                        "is_mpim",
+-                        "is_group",
+-                        "is_org_shared",
+-                        "is_im",
+-                        "is_shared",
+-                        "is_private",
+-                        "name_normalized",
+-                        "topic",
+-                        "purpose"
+-                    ],
+-                    "title": "Conversation object",
+-                    "type": "object"
+-                },
+-                {
+-                    "additionalProperties": false,
+-                    "properties": {
+-                        "accepted_user": {
+-                            "$ref": "#/definitions/defs_user_id"
+-                        },
+-                        "connected_team_ids": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_team"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "conversation_host_id": {
+-                            "$ref": "#/definitions/defs_workspace_id"
+-                        },
+-                        "created": {
+-                            "type": "integer"
+-                        },
+-                        "creator": {
+-                            "$ref": "#/definitions/defs_user_id"
+-                        },
+-                        "display_counts": {
+-                            "additionalProperties": false,
+-                            "properties": {
+-                                "display_counts": {
+-                                    "type": "integer"
+-                                },
+-                                "guest_counts": {
+-                                    "type": "integer"
+-                                }
+-                            },
+-                            "required": [
+-                                "display_counts",
+-                                "guest_counts"
+-                            ],
+-                            "type": "object"
+-                        },
+-                        "id": {
+-                            "$ref": "#/definitions/defs_channel"
+-                        },
+-                        "internal_team_ids": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_team"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "is_archived": {
+-                            "type": "boolean"
+-                        },
+-                        "is_channel": {
+-                            "type": "boolean"
+-                        },
+-                        "is_ext_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_general": {
+-                            "type": "boolean"
+-                        },
+-                        "is_group": {
+-                            "type": "boolean"
+-                        },
+-                        "is_im": {
+-                            "type": "boolean"
+-                        },
+-                        "is_member": {
+-                            "type": "boolean"
+-                        },
+-                        "is_moved": {
+-                            "type": "integer"
+-                        },
+-                        "is_mpim": {
+-                            "enum": [
+-                                true
+-                            ],
+-                            "type": "boolean"
+-                        },
+-                        "is_open": {
+-                            "type": "boolean"
+-                        },
+-                        "is_org_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_pending_ext_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_private": {
+-                            "type": "boolean"
+-                        },
+-                        "is_read_only": {
+-                            "type": "boolean"
+-                        },
+-                        "is_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_starred": {
+-                            "type": "boolean"
+-                        },
+-                        "last_read": {
+-                            "$ref": "#/definitions/defs_ts"
+-                        },
+-                        "latest": {
+-                            "items": [
+-                                {
+-                                    "$ref": "#/definitions/objs_message"
+-                                },
+-                                {
+-                                    "type": "null"
+-                                }
+-                            ]
+-                        },
+-                        "members": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_user_id"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "name": {
+-                            "type": "string"
+-                        },
+-                        "name_normalized": {
+-                            "type": "string"
+-                        },
+-                        "num_members": {
+-                            "type": "integer"
+-                        },
+-                        "parent_conversation": {
+-                            "items": [
+-                                {
+-                                    "$ref": "#/definitions/defs_channel"
+-                                },
+-                                {
+-                                    "type": "null"
+-                                }
+-                            ]
+-                        },
+-                        "pending_connected_team_ids": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_team"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "pending_shared": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_team"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "pin_count": {
+-                            "type": "integer"
+-                        },
+-                        "previous_names": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_channel_name"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "priority": {
+-                            "type": "number"
+-                        },
+-                        "purpose": {
+-                            "additionalProperties": false,
+-                            "properties": {
+-                                "creator": {
+-                                    "$ref": "#/definitions/defs_topic_purpose_creator"
+-                                },
+-                                "last_set": {
+-                                    "type": "integer"
+-                                },
+-                                "value": {
+-                                    "type": "string"
+-                                }
+-                            },
+-                            "required": [
+-                                "value",
+-                                "creator",
+-                                "last_set"
+-                            ],
+-                            "type": "object"
+-                        },
+-                        "shared_team_ids": {
+-                            "items": {
+-                                "$ref": "#/definitions/defs_team"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "shares": {
+-                            "items": {
+-                                "additionalProperties": false,
+-                                "properties": {
+-                                    "accepted_user": {
+-                                        "$ref": "#/definitions/defs_user_id"
+-                                    },
+-                                    "is_active": {
+-                                        "type": "boolean"
+-                                    },
+-                                    "team": {
+-                                        "$ref": "#/definitions/objs_team"
+-                                    },
+-                                    "user": {
+-                                        "$ref": "#/definitions/defs_user_id"
+-                                    }
+-                                },
+-                                "required": [
+-                                    "team",
+-                                    "user",
+-                                    "is_active"
+-                                ],
+-                                "type": "object"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "timezone_count": {
+-                            "type": "integer"
+-                        },
+-                        "topic": {
+-                            "additionalProperties": false,
+-                            "properties": {
+-                                "creator": {
+-                                    "$ref": "#/definitions/defs_topic_purpose_creator"
+-                                },
+-                                "last_set": {
+-                                    "type": "integer"
+-                                },
+-                                "value": {
+-                                    "type": "string"
+-                                }
+-                            },
+-                            "required": [
+-                                "value",
+-                                "creator",
+-                                "last_set"
+-                            ],
+-                            "type": "object"
+-                        },
+-                        "unlinked": {
+-                            "title": "Field to determine whether a channel has ever been shared/disconnected in the past",
+-                            "type": "integer"
+-                        },
+-                        "unread_count": {
+-                            "type": "integer"
+-                        },
+-                        "unread_count_display": {
+-                            "type": "integer"
+-                        },
+-                        "user": {
+-                            "$ref": "#/definitions/defs_user_id"
+-                        },
+-                        "version": {
+-                            "type": "integer"
+-                        }
+-                    },
+-                    "required": [
+-                        "id",
+-                        "name",
+-                        "created",
+-                        "creator",
+-                        "is_archived",
+-                        "is_channel",
+-                        "is_general",
+-                        "is_mpim",
+-                        "is_group",
+-                        "is_org_shared",
+-                        "is_im",
+-                        "is_shared",
+-                        "is_private",
+-                        "name_normalized",
+-                        "topic",
+-                        "purpose"
+-                    ],
+-                    "title": "Conversation MPIM Object",
+-                    "type": "object"
+-                },
+-                {
+-                    "additionalProperties": false,
+-                    "properties": {
+-                        "created": {
+-                            "type": "integer"
+-                        },
+-                        "has_pins": {
+-                            "type": "boolean"
+-                        },
+-                        "id": {
+-                            "$ref": "#/definitions/defs_dm_id"
+-                        },
+-                        "is_ext_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_im": {
+-                            "type": "boolean"
+-                        },
+-                        "is_open": {
+-                            "type": "boolean"
+-                        },
+-                        "is_org_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_starred": {
+-                            "type": "boolean"
+                         },
+                         "is_user_deleted": {
+                             "type": "boolean"
+-                        },
+-                        "last_read": {
+-                            "$ref": "#/definitions/defs_ts"
+-                        },
+-                        "latest": {
+-                            "items": [
+-                                {
+-                                    "$ref": "#/definitions/objs_message"
+-                                },
+-                                {
+-                                    "type": "null"
+-                                }
+-                            ]
+-                        },
+-                        "parent_conversation": {
+-                            "items": [
+-                                {
+-                                    "$ref": "#/definitions/defs_channel"
+-                                },
+-                                {
+-                                    "type": "null"
+-                                }
+-                            ]
+-                        },
+-                        "pin_count": {
+-                            "type": "integer"
+-                        },
+-                        "priority": {
+-                            "type": "number"
+-                        },
+-                        "shares": {
+-                            "items": {
+-                                "additionalProperties": false,
+-                                "properties": {
+-                                    "date_create": {
+-                                        "type": "integer"
+-                                    },
+-                                    "id": {
+-                                        "$ref": "#/definitions/defs_team"
+-                                    },
+-                                    "is_active": {
+-                                        "type": "boolean"
+-                                    },
+-                                    "name": {
+-                                        "type": "string"
+-                                    },
+-                                    "team": {
+-                                        "$ref": "#/definitions/objs_team"
+-                                    }
+-                                },
+-                                "required": [
+-                                    "id",
+-                                    "name",
+-                                    "team",
+-                                    "date_create",
+-                                    "is_active"
+-                                ],
+-                                "type": "object"
+-                            },
+-                            "minItems": 0,
+-                            "type": "array",
+-                            "uniqueItems": true
+-                        },
+-                        "unread_count": {
+-                            "type": "integer"
+-                        },
+-                        "unread_count_display": {
+-                            "type": "integer"
+-                        },
+-                        "user": {
+-                            "$ref": "#/definitions/defs_user_id"
+-                        },
+-                        "version": {
+-                            "type": "integer"
+                         }
+-                    },
+-                    "required": [
+-                        "id",
+-                        "created",
+-                        "is_im",
+-                        "is_org_shared",
+-                        "user",
+-                        "priority"
+-                    ],
+-                    "title": "Conversation IM Channel Object from conversations.* methods",
+-                    "type": "object"
+-                }
+-            ]
++                    }
+         },
+         "objs_enterprise_user": {
+             "additionalProperties": false,

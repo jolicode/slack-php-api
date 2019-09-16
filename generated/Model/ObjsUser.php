@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsUser extends \ArrayObject
+class ObjsUser
 {
     /**
      * @var string
@@ -20,6 +20,10 @@ class ObjsUser extends \ArrayObject
      * @var bool
      */
     protected $deleted;
+    /**
+     * @var ObjsEnterpriseUser
+     */
+    protected $enterpriseUser;
     /**
      * @var bool
      */
@@ -40,6 +44,10 @@ class ObjsUser extends \ArrayObject
      * @var bool
      */
     protected $isBot;
+    /**
+     * @var bool
+     */
+    protected $isInvitedUser;
     /**
      * @var bool
      */
@@ -79,9 +87,21 @@ class ObjsUser extends \ArrayObject
     /**
      * @var string
      */
-    protected $teamId;
+    protected $team;
     /**
      * @var string
+     */
+    protected $teamId;
+    /**
+     * @var ObjsUserTeamProfile
+     */
+    protected $teamProfile;
+    /**
+     * @var string
+     */
+    protected $twoFactorType;
+    /**
+     * @var mixed
      */
     protected $tz;
     /**
@@ -96,6 +116,10 @@ class ObjsUser extends \ArrayObject
      * @var float
      */
     protected $updated;
+    /**
+     * @var string[]
+     */
+    protected $teams;
 
     /**
      * @return string|null
@@ -133,6 +157,26 @@ class ObjsUser extends \ArrayObject
     public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsEnterpriseUser|null
+     */
+    public function getEnterpriseUser(): ?ObjsEnterpriseUser
+    {
+        return $this->enterpriseUser;
+    }
+
+    /**
+     * @param ObjsEnterpriseUser|null $enterpriseUser
+     *
+     * @return self
+     */
+    public function setEnterpriseUser(?ObjsEnterpriseUser $enterpriseUser): self
+    {
+        $this->enterpriseUser = $enterpriseUser;
 
         return $this;
     }
@@ -233,6 +277,26 @@ class ObjsUser extends \ArrayObject
     public function setIsBot(?bool $isBot): self
     {
         $this->isBot = $isBot;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsInvitedUser(): ?bool
+    {
+        return $this->isInvitedUser;
+    }
+
+    /**
+     * @param bool|null $isInvitedUser
+     *
+     * @return self
+     */
+    public function setIsInvitedUser(?bool $isInvitedUser): self
+    {
+        $this->isInvitedUser = $isInvitedUser;
 
         return $this;
     }
@@ -420,6 +484,26 @@ class ObjsUser extends \ArrayObject
     /**
      * @return string|null
      */
+    public function getTeam(): ?string
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param string|null $team
+     *
+     * @return self
+     */
+    public function setTeam(?string $team): self
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getTeamId(): ?string
     {
         return $this->teamId;
@@ -438,19 +522,59 @@ class ObjsUser extends \ArrayObject
     }
 
     /**
+     * @return ObjsUserTeamProfile|null
+     */
+    public function getTeamProfile(): ?ObjsUserTeamProfile
+    {
+        return $this->teamProfile;
+    }
+
+    /**
+     * @param ObjsUserTeamProfile|null $teamProfile
+     *
+     * @return self
+     */
+    public function setTeamProfile(?ObjsUserTeamProfile $teamProfile): self
+    {
+        $this->teamProfile = $teamProfile;
+
+        return $this;
+    }
+
+    /**
      * @return string|null
      */
-    public function getTz(): ?string
+    public function getTwoFactorType(): ?string
+    {
+        return $this->twoFactorType;
+    }
+
+    /**
+     * @param string|null $twoFactorType
+     *
+     * @return self
+     */
+    public function setTwoFactorType(?string $twoFactorType): self
+    {
+        $this->twoFactorType = $twoFactorType;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTz()
     {
         return $this->tz;
     }
 
     /**
-     * @param string|null $tz
+     * @param mixed $tz
      *
      * @return self
      */
-    public function setTz(?string $tz): self
+    public function setTz($tz): self
     {
         $this->tz = $tz;
 
@@ -513,6 +637,26 @@ class ObjsUser extends \ArrayObject
     public function setUpdated(?float $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getTeams(): ?array
+    {
+        return $this->teams;
+    }
+
+    /**
+     * @param string[]|null $teams
+     *
+     * @return self
+     */
+    public function setTeams(?array $teams): self
+    {
+        $this->teams = $teams;
 
         return $this;
     }

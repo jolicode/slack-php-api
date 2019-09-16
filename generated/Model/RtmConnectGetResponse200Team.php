@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class RtmConnectGetResponse200Team extends \ArrayObject
+class RtmConnectGetResponse200Team
 {
     /**
      * @var string

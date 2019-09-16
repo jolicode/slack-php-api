@@ -42,15 +42,11 @@ class ChannelsSetTopicPostResponse200Normalizer implements DenormalizerInterface
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChannelsSetTopicPostResponse200();
-        $data = clone $data;
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'topic') && $data->{'topic'} !== null) {
+            $object->setTopic($data->{'topic'});
         }
 
         return $object;
@@ -62,10 +58,8 @@ class ChannelsSetTopicPostResponse200Normalizer implements DenormalizerInterface
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getTopic()) {
+            $data->{'topic'} = $object->getTopic();
         }
 
         return $data;

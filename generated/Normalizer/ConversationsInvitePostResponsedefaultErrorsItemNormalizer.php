@@ -42,23 +42,14 @@ class ConversationsInvitePostResponsedefaultErrorsItemNormalizer implements Deno
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem();
-        $data = clone $data;
         if (property_exists($data, 'error') && $data->{'error'} !== null) {
             $object->setError($data->{'error'});
-            unset($data->{'error'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($data->{'user'});
-            unset($data->{'user'});
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
         }
 
         return $object;
@@ -75,11 +66,6 @@ class ConversationsInvitePostResponsedefaultErrorsItemNormalizer implements Deno
         }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
         }
 
         return $data;

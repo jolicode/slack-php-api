@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Endpoint;
 class DndTeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
 {
     /**
-     * Retrieves the Do Not Disturb status for users on a team.
+     * Retrieves the Do Not Disturb status for up to 50 users on a team.
      *
      * @param array $queryParameters {
      *

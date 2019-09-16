@@ -42,27 +42,21 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200();
-        $data = clone $data;
         if (property_exists($data, 'items') && $data->{'items'} !== null) {
             $values = [];
             foreach ($data->{'items'} as $value) {
                 $values[] = $value;
             }
             $object->setItems($values);
-            unset($data->{'items'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
         if (property_exists($data, 'paging') && $data->{'paging'} !== null) {
             $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-            unset($data->{'paging'});
         }
-        foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_1;
-            }
+        if (property_exists($data, 'response_metadata') && $data->{'response_metadata'} !== null) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
         }
 
         return $object;
@@ -84,10 +78,8 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
         if (null !== $object->getPaging()) {
             $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
-        foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
-            }
+        if (null !== $object->getResponseMetadata()) {
+            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         }
 
         return $data;

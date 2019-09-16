@@ -17,6 +17,8 @@ class UsersInfoGetResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
+     * Merged user object for non enterprise type and enterprise user.
+     *
      * @var ObjsUser
      */
     protected $user;
@@ -42,6 +44,8 @@ class UsersInfoGetResponse200 extends \ArrayObject
     }
 
     /**
+     * Merged user object for non enterprise type and enterprise user.
+     *
      * @return ObjsUser|null
      */
     public function getUser(): ?ObjsUser
@@ -50,6 +54,8 @@ class UsersInfoGetResponse200 extends \ArrayObject
     }
 
     /**
+     * Merged user object for non enterprise type and enterprise user.
+     *
      * @param ObjsUser|null $user
      *
      * @return self

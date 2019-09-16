@@ -42,15 +42,20 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault();
-        $data = clone $data;
+        if (property_exists($data, 'debug_step') && $data->{'debug_step'} !== null) {
+            $object->setDebugStep($data->{'debug_step'});
+        }
+        if (property_exists($data, 'dims') && $data->{'dims'} !== null) {
+            $object->setDims($data->{'dims'});
+        }
+        if (property_exists($data, 'error') && $data->{'error'} !== null) {
+            $object->setError($data->{'error'});
+        }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
         }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        if (property_exists($data, 'time_ident') && $data->{'time_ident'} !== null) {
+            $object->setTimeIdent($data->{'time_ident'});
         }
 
         return $object;
@@ -59,13 +64,20 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getDebugStep()) {
+            $data->{'debug_step'} = $object->getDebugStep();
+        }
+        if (null !== $object->getDims()) {
+            $data->{'dims'} = $object->getDims();
+        }
+        if (null !== $object->getError()) {
+            $data->{'error'} = $object->getError();
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+        if (null !== $object->getTimeIdent()) {
+            $data->{'time_ident'} = $object->getTimeIdent();
         }
 
         return $data;

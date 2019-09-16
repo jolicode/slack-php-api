@@ -42,26 +42,20 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data->{'$ref'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
-        $data = clone $data;
         if (property_exists($data, 'field_name') && $data->{'field_name'} !== null) {
             $object->setFieldName($data->{'field_name'});
-            unset($data->{'field_name'});
         }
         if (property_exists($data, 'hint') && $data->{'hint'} !== null) {
             $object->setHint($data->{'hint'});
-            unset($data->{'hint'});
         }
         if (property_exists($data, 'id') && $data->{'id'} !== null) {
             $object->setId($data->{'id'});
-            unset($data->{'id'});
         }
         if (property_exists($data, 'is_hidden') && $data->{'is_hidden'} !== null) {
             $object->setIsHidden($data->{'is_hidden'});
-            unset($data->{'is_hidden'});
         }
         if (property_exists($data, 'label') && $data->{'label'} !== null) {
             $object->setLabel($data->{'label'});
-            unset($data->{'label'});
         }
         if (property_exists($data, 'options') && $data->{'options'} !== null) {
             $values = [];
@@ -69,11 +63,9 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
                 $values[] = $value;
             }
             $object->setOptions($values);
-            unset($data->{'options'});
         }
         if (property_exists($data, 'ordering') && $data->{'ordering'} !== null) {
             $object->setOrdering($data->{'ordering'});
-            unset($data->{'ordering'});
         }
         if (property_exists($data, 'possible_values') && $data->{'possible_values'} !== null) {
             $values_1 = [];
@@ -81,16 +73,9 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
                 $values_1[] = $value_1;
             }
             $object->setPossibleValues($values_1);
-            unset($data->{'possible_values'});
         }
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
-            unset($data->{'type'});
-        }
-        foreach ($data as $key => $value_2) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value_2;
-            }
         }
 
         return $object;
@@ -133,11 +118,6 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();
-        }
-        foreach ($object as $key => $value_2) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_2;
-            }
         }
 
         return $data;

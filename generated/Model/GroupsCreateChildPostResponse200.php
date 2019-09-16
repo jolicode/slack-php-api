@@ -10,12 +10,36 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class GroupsCreateChildPostResponse200 extends \ArrayObject
+class GroupsCreateChildPostResponse200
 {
+    /**
+     * @var ObjsGroup
+     */
+    protected $group;
     /**
      * @var bool
      */
     protected $ok;
+
+    /**
+     * @return ObjsGroup|null
+     */
+    public function getGroup(): ?ObjsGroup
+    {
+        return $this->group;
+    }
+
+    /**
+     * @param ObjsGroup|null $group
+     *
+     * @return self
+     */
+    public function setGroup(?ObjsGroup $group): self
+    {
+        $this->group = $group;
+
+        return $this;
+    }
 
     /**
      * @return bool|null

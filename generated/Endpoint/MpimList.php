@@ -17,7 +17,9 @@ class MpimList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @param array $queryParameters {
      *
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `mpim:read`
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -50,10 +52,12 @@ class MpimList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token']);
+        $optionsResolver->setDefined(['cursor', 'token', 'limit']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->setAllowedTypes('limit', ['int']);
 
         return $optionsResolver;
     }

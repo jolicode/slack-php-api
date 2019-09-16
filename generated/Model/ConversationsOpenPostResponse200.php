@@ -10,14 +10,14 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsOpenPostResponse200 extends \ArrayObject
+class ConversationsOpenPostResponse200
 {
     /**
      * @var bool
      */
     protected $alreadyOpen;
     /**
-     * @var mixed
+     * @var ObjsConversation
      */
     protected $channel;
     /**
@@ -50,19 +50,19 @@ class ConversationsOpenPostResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed
+     * @return ObjsConversation|null
      */
-    public function getChannel()
+    public function getChannel(): ?ObjsConversation
     {
         return $this->channel;
     }
 
     /**
-     * @param mixed $channel
+     * @param ObjsConversation|null $channel
      *
      * @return self
      */
-    public function setChannel($channel): self
+    public function setChannel(?ObjsConversation $channel): self
     {
         $this->channel = $channel;
 

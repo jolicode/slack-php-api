@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class BotsInfoGetResponse200Bot extends \ArrayObject
+class BotsInfoGetResponse200Bot
 {
     /**
      * @var string

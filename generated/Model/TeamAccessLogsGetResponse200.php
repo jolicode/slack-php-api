@@ -10,12 +10,40 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class TeamAccessLogsGetResponse200 extends \ArrayObject
+class TeamAccessLogsGetResponse200
 {
+    /**
+     * @var TeamAccessLogsGetResponse200LoginsItem[]
+     */
+    protected $logins;
     /**
      * @var bool
      */
     protected $ok;
+    /**
+     * @var ObjsPaging
+     */
+    protected $paging;
+
+    /**
+     * @return TeamAccessLogsGetResponse200LoginsItem[]|null
+     */
+    public function getLogins(): ?array
+    {
+        return $this->logins;
+    }
+
+    /**
+     * @param TeamAccessLogsGetResponse200LoginsItem[]|null $logins
+     *
+     * @return self
+     */
+    public function setLogins(?array $logins): self
+    {
+        $this->logins = $logins;
+
+        return $this;
+    }
 
     /**
      * @return bool|null
@@ -33,6 +61,26 @@ class TeamAccessLogsGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsPaging|null
+     */
+    public function getPaging(): ?ObjsPaging
+    {
+        return $this->paging;
+    }
+
+    /**
+     * @param ObjsPaging|null $paging
+     *
+     * @return self
+     */
+    public function setPaging(?ObjsPaging $paging): self
+    {
+        $this->paging = $paging;
 
         return $this;
     }

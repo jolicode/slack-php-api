@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class FilesCommentsDeletePostResponse200 extends \ArrayObject
+class FilesCommentsDeletePostResponse200
 {
     /**
      * @var bool

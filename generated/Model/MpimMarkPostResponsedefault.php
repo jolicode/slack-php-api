@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class MpimMarkPostResponsedefault extends \ArrayObject
+class MpimMarkPostResponsedefault
 {
     /**
      * @var string

@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ConversationsListGetResponse200 extends \ArrayObject
+class ConversationsListGetResponse200
 {
     /**
-     * @var mixed[]
+     * @var ObjsConversation[]
      */
     protected $channels;
     /**
@@ -26,7 +26,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     protected $responseMetadata;
 
     /**
-     * @return mixed[]|null
+     * @return ObjsConversation[]|null
      */
     public function getChannels(): ?array
     {
@@ -34,7 +34,7 @@ class ConversationsListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[]|null $channels
+     * @param ObjsConversation[]|null $channels
      *
      * @return self
      */

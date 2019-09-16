@@ -18,7 +18,7 @@ class PinsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to un-pin
-     *     @var float $timestamp timestamp of the message to un-pin
+     *     @var string $timestamp timestamp of the message to un-pin
      *     @var string $file file to un-pin
      *     @var string $channel Channel where the item is pinned to.
      * }
@@ -63,7 +63,7 @@ class PinsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['float']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
