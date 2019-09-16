@@ -9,10 +9,12 @@ from the [official Slack API specs](https://github.com/slackapi/slack-api-specs)
 
 ## Installation
 
-This library is built atop of [PSR-7](https://www.php-fig.org/psr/psr-7/) and [PSR-18](https://www.php-fig.org/psr/psr-18/).
-So you will need to install some implementations for those interfaces.
+This library is built atop of [PSR-7](https://www.php-fig.org/psr/psr-7/) and
+[PSR-18](https://www.php-fig.org/psr/psr-18/). So you will need to install some
+implementations for those interfaces.
+
 If no PSR-18 client or PSR-7 message factory is available yet in your project
-or you don't care which one to use, just install some default:
+or you don't know or don't care which one to use, just install some default:
 
 ```bash
 composer require symfony/http-client guzzlehttp/psr7
@@ -26,8 +28,8 @@ composer require jolicode/slack-php-api
 
 ## Usage
 
-First, you need to retrieve a token - like an OAuth AccessToken or a legacy token.
-Checkout Slack's documentation about [all differents kind of tokens](https://api.slack.com/docs/token-types).
+First, you need to retrieve a token - like an OAuth AccessToken or a legacy
+token. Checkout Slack's documentation about [all differents kind of tokens](https://api.slack.com/docs/token-types).
 
 Then, use the factory that is provided to create the client:
 
@@ -54,9 +56,13 @@ and share it with us.
 
 ### Missing data in the DTO?
 
-The Slack specification is not up to date and miss some critical parts. We do build a [better one on top of the official](doc/updating-sdk.md) but can't be perfect.
+The Slack specification is not up to date and miss some critical parts. We do
+build a [better one on top of the official](doc/updating-sdk.md) but it can't
+be perfect.
 
-What's good is that we use `\ArrayObject` as base classes so if the API return data we don't have in the mapping, you can still access it via Array like syntax:
+What's good is that some models use `\ArrayObject` as base classes so if the
+API returns data we don't have in the mapping, you can still access it via
+Array like syntax:
 
 ```php
 $results = $client->searchMessages([

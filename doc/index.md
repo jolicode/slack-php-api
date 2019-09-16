@@ -54,14 +54,14 @@ If you miss an option in a method, until Slack add it to their spec, we can
 manually add it to our [versioned spec](../resources/slack-openapi.json) then
 [regenerate](updating-sdk.md) and release a new version of the library.
 
-If you miss a property in a model, you can still access it by yourself. All the
+If you miss a property in a model, you may still access it by yourself. Some
 models extend the `ArrayObject` so you can access all its properties with the
-array notation. For example, the `usergroupsList` response does not contain yet
-the `usergroups` property but we access it this way:
+array notation. For example - until mid-2019 - the `usergroupsList` response
+did not contain the `usergroups` property but we could access it this way:
 
 ```php
 $userGroupsResponse = $client->usergroupsList();
 
-$groups = $userGroupsResponse['usergroups']
+$groups = $userGroupsResponse['usergroups'];
 ```
 
