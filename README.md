@@ -9,12 +9,13 @@ from the [official Slack API specs](https://github.com/slackapi/slack-api-specs)
 
 ## Installation
 
-This library is built atop of [PHP-HTTP](http://docs.php-http.org) and PSR-7. So you will need to install some implementations for those interfaces.
-If no PHP-HTTP adapter or PSR-7 message factory is available yet in your project
+This library is built atop of [PSR-7](https://www.php-fig.org/psr/psr-7/) and [PSR-18](https://www.php-fig.org/psr/psr-18/).
+So you will need to install some implementations for those interfaces.
+If no PSR-18 client or PSR-7 message factory is available yet in your project
 or you don't care which one to use, just install some default:
 
 ```bash
-composer require php-http/curl-client:"^1.7" guzzlehttp/psr7
+composer require symfony/http-client guzzlehttp/psr7
 ```
 
 You can now install the Slack client:

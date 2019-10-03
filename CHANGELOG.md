@@ -2,6 +2,10 @@
 
 ## Not yet released
 
+* Generate PSR-18 client instead of HttPlug client
+
+## 2.0.0 (2019-09-16)
+
 * Upgrade Jane to 4.4 https://github.com/janephp/janephp/releases/tag/v4.4.0, the new generated classes have better PHPDoc
 * **Massive specification update** from Slack, all the patches have been rewritten and the API wins a lots of changes, new objects, new API. See #45 for more details. We had big issues with polymorphic responses.
 

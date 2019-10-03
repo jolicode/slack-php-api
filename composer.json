@@ -23,15 +23,15 @@
     },
     "require": {
         "php": ">= 7.1",
-        "jane-php/json-schema-runtime": "^4.0",
-        "jane-php/open-api-runtime": "^4.0",
-        "php-http/client-implementation": "*",
+        "jane-php/json-schema-runtime": "^4.5",
+        "jane-php/open-api-runtime": "^4.5",
+        "psr/http-client-implementation": "*",
         "php-http/client-common": "^1.7 || 2.0"
     },
     "require-dev": {
-        "jane-php/jane-php": "^4.0",
-        "php-http/curl-client": "^1.7",
-        "guzzlehttp/psr7": "^1.4",
+        "jane-php/jane-php": "^4.5",
+        "symfony/http-client": "^4.3",
+        "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^2.13",
         "symfony/phpunit-bridge": "^4.1"
     }

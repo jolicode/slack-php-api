@@ -16,14 +16,14 @@ use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\Plugin\ErrorPlugin;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Http\Client\Common\PluginClient;
-use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
 use JoliCode\Slack\Api\Client;
+use Psr\Http\Client\ClientInterface;
 
 class ClientFactory
 {
-    public static function create(string $token, HttpClient $httpClient = null): Client
+    public static function create(string $token, ClientInterface $httpClient = null): Client
     {
         // Find a default HTTP client if none provided
         if (null === $httpClient) {
@@ -31,7 +31,7 @@ class ClientFactory
         }
 
         // Decorates the HTTP client with some plugins
-        $uri = UriFactoryDiscovery::find()->createUri('https://slack.com/api');
+        $uri = Psr17FactoryDiscovery::findUrlFactory()->createUri('https://slack.com/api');
         $pluginClient = new PluginClient($httpClient, [
             new ErrorPlugin(),
             new AddPathPlugin($uri),

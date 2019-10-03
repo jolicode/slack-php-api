@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Sets the read cursor in a multiparty direct message channel.
@@ -32,7 +32,7 @@ class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         $this->headerParameters = $headerParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -44,7 +44,7 @@ class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         return '/mpim.mark';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getFormBody();
     }
@@ -83,7 +83,7 @@ class MpimMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @return \JoliCode\Slack\Api\Model\MpimMarkPostResponse200|\JoliCode\Slack\Api\Model\MpimMarkPostResponsedefault|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\MpimMarkPostResponse200', 'json');
