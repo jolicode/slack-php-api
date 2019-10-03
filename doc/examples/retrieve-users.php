@@ -7,7 +7,7 @@ require_once __DIR__.'/../../vendor/autoload.php';
 
 $client = ClientFactory::create('Your token');
 
-/** @var ObjsUser $users */
+/** @var ObjsUser[] $users */
 $users = [];
 $cursor = '';
 
