@@ -16,8 +16,8 @@ use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\Plugin\ErrorPlugin;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Http\Client\Common\PluginClient;
-use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use JoliCode\Slack\Api\Client;
 use Psr\Http\Client\ClientInterface;
 
@@ -27,7 +27,7 @@ class ClientFactory
     {
         // Find a default HTTP client if none provided
         if (null === $httpClient) {
-            $httpClient = HttpClientDiscovery::find();
+            $httpClient = Psr18ClientDiscovery::find();
         }
 
         // Decorates the HTTP client with some plugins

@@ -1,5 +1,9 @@
 # Changes between versions
 
+## Not yet released
+
+* Fix PSR-18 client discovery
+
 ## 2.1.0 (2019-10-03)
 
 * Generate PSR-18 client instead of HttPlug client
