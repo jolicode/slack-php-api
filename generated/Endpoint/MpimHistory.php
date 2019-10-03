@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Fetches history of messages and events from a multiparty direct message.
@@ -31,7 +31,7 @@ class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -43,7 +43,7 @@ class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         return '/mpim.history';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -76,7 +76,7 @@ class MpimHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @return \JoliCode\Slack\Api\Model\MpimHistoryGetResponse200|\JoliCode\Slack\Api\Model\MpimHistoryGetResponsedefault|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\MpimHistoryGetResponse200', 'json');

@@ -12,4 +12,5 @@ return [
     'directory' => $directory,
     'reference' => true,
     'strict' => false,
+    'client' => 'psr18',
 ];

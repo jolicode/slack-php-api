@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ChannelsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class ChannelsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Archives a channel.
@@ -31,7 +31,7 @@ class ChannelsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $this->headerParameters = $headerParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -43,7 +43,7 @@ class ChannelsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         return '/channels.archive';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getFormBody();
     }
@@ -81,7 +81,7 @@ class ChannelsArchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @return \JoliCode\Slack\Api\Model\ChannelsArchivePostResponse200|\JoliCode\Slack\Api\Model\ChannelsArchivePostResponsedefault|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ChannelsArchivePostResponse200', 'json');

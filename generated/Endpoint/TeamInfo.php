@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class TeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class TeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Gets information about the current team.
@@ -26,7 +26,7 @@ class TeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -38,7 +38,7 @@ class TeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         return '/team.info';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -66,7 +66,7 @@ class TeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @return \JoliCode\Slack\Api\Model\TeamInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\TeamInfoGetResponse200', 'json');

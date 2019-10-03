@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7HttplugEndpoint
+class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
     /**
      * Returns list of resource grants this app has on a team.
@@ -27,7 +27,7 @@ class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpo
         $this->queryParameters = $queryParameters;
     }
 
-    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
     {
@@ -39,7 +39,7 @@ class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpo
         return '/apps.permissions.resources.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -68,7 +68,7 @@ class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpo
      *
      * @return \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault|null
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200', 'json');
