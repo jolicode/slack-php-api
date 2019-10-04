@@ -17,7 +17,7 @@ If no PSR-18 client or PSR-7 message factory is available yet in your project
 or you don't know or don't care which one to use, just install some default:
 
 ```bash
-composer require symfony/http-client guzzlehttp/psr7
+composer require symfony/http-client nyholm/psr7
 ```
 
 You can now install the Slack client:
