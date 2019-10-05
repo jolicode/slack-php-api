@@ -11,14 +11,13 @@
 
 namespace JoliCode\Slack;
 
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\AddPathPlugin;
 use Http\Client\Common\Plugin\ErrorPlugin;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use JoliCode\Slack\Api\Client;
+use JoliCode\Slack\HttpPlugin\AddSlackPathAndHostPlugin;
 use Psr\Http\Client\ClientInterface;
 
 class ClientFactory
@@ -34,8 +33,7 @@ class ClientFactory
         $uri = Psr17FactoryDiscovery::findUrlFactory()->createUri('https://slack.com/api');
         $pluginClient = new PluginClient($httpClient, [
             new ErrorPlugin(),
-            new AddPathPlugin($uri),
-            new AddHostPlugin($uri),
+            new AddSlackPathAndHostPlugin($uri),
             new HeaderAppendPlugin([
                 'Authorization' => 'Bearer '.$token,
             ]),

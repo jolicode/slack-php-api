@@ -1,5 +1,9 @@
 # Changes between versions
 
+## Not yet released
+
+* Fix api.test endpoint
+
 ## 2.1.1 (2019-10-05)
 
 * Fix PSR-18 client discovery
