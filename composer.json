@@ -26,12 +26,12 @@
         "jane-php/json-schema-runtime": "^4.5",
         "jane-php/open-api-runtime": "^4.5",
         "psr/http-client-implementation": "*",
-        "php-http/client-common": "^1.9 || 2.0",
+        "php-http/client-common": "^1.9 || ^2.0",
         "php-http/discovery": "^1.7"
     },
     "require-dev": {
         "jane-php/jane-php": "^4.5",
-        "symfony/http-client": "^4.3",
+        "symfony/http-client": "^4.3.3",
         "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^2.13",
         "symfony/phpunit-bridge": "^4.3"
