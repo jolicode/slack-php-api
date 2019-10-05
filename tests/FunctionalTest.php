@@ -13,6 +13,7 @@ namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ApiTestGetResponse200;
 use JoliCode\Slack\ClientFactory;
+use JoliCode\Slack\Exception\SlackErrorResponse;
 use PHPUnit\Framework\TestCase;
 
 class FunctionalTest extends TestCase
@@ -29,11 +30,12 @@ class FunctionalTest extends TestCase
     public function testItWorksOnTestError()
     {
         $client = ClientFactory::create('');
-        $response = $client->apiTest([
+
+        self::expectException(SlackErrorResponse::class);
+        self::expectExceptionMessage('Slack returned error code "yolo"');
+
+        $client->apiTest([
             'error' => 'yolo',
         ]);
-
-        self::assertInstanceOf(ApiTestGetResponse200::class, $response);
-        self::assertFalse($response->getOk());
     }
 }
