@@ -34,5 +34,8 @@
         "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^2.13",
         "symfony/phpunit-bridge": "^4.1"
+    },
+    "conflict": {
+        "php-http/httplug": "< 2.0"
     }
 }
