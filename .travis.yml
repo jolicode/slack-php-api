@@ -6,6 +6,10 @@ cache:
     directories:
         - $HOME/.composer/cache/files
 
+env:
+    global:
+        - TARGET=test
+
 matrix:
     fast_finish: true
     include:
