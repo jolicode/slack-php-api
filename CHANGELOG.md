@@ -1,6 +1,6 @@
 # Changes between versions
 
-## Not yet released
+## 2.1.1 (2019-10-05)
 
 * Fix PSR-18 client discovery
 * Avoid installing HTTPlug in version 1
