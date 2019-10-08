@@ -1,6 +1,6 @@
 # Changes between versions
 
-## Not yet released
+## 1.2.1 (2019-10-08)
 
 * Limit jane-php/open-api-runtime under v4.5 version (signature of Endpoint::getBody() has changed)
 
