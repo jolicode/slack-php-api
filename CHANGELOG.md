@@ -2,6 +2,8 @@
 
 ## Not yet released
 
+* Limit jane-php/open-api-runtime under v4.5 version (signature of Endpoint::getBody() has changed)
+
 ## 1.2.0 (2019-04-23)
 
 * **Specification override** Fix Timestamp type in all endpoints, allow string and number because of API inconsistency
