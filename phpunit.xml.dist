@@ -9,6 +9,7 @@
 >
     <php>
         <ini name="error_reporting" value="-1" />
+        <!--<server name="SLACK_TOKEN" value="edit_me" />-->
     </php>
 
     <testsuites>

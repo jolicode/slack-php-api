@@ -12,6 +12,7 @@
 namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ApiTestGetResponse200;
+use JoliCode\Slack\Api\Model\UsersListGetResponse200;
 use JoliCode\Slack\ClientFactory;
 use JoliCode\Slack\Exception\SlackErrorResponse;
 use PHPUnit\Framework\TestCase;
@@ -27,7 +28,7 @@ class FunctionalTest extends TestCase
         self::assertTrue($response->getOk());
     }
 
-    public function testItWorksOnTestError()
+    public function testItThrowsExceptionOnTestError()
     {
         $client = ClientFactory::create('');
 
@@ -37,5 +38,27 @@ class FunctionalTest extends TestCase
         $client->apiTest([
             'error' => 'yolo',
         ]);
+    }
+
+    public function testItWorksOnUserListWithCorrectToken()
+    {
+        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+
+        $response = $client->usersList();
+
+        self::assertInstanceOf(UsersListGetResponse200::class, $response);
+        self::assertTrue($response->getOk());
+
+        self::assertGreaterThan(2, \count($response->getMembers()));
+    }
+
+    public function testItThrowsExceptionOnUserListWithoutToken()
+    {
+        $client = ClientFactory::create('');
+
+        self::expectException(SlackErrorResponse::class);
+        self::expectExceptionMessage('Slack returned error code "not_authed"');
+
+        $client->usersList();
     }
 }
