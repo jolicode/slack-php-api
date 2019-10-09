@@ -1,6 +1,6 @@
 # Changes between versions
 
-## Not yet released
+## 2.1.2 (2019-10-09)
 
 * Fix api.test endpoint
 * Throw exception when Slack returns error code
