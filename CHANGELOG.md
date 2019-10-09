@@ -3,6 +3,7 @@
 ## Not yet released
 
 * Fix api.test endpoint
+* Throw exception when Slack returns error code
 
 ## 2.1.1 (2019-10-05)
 
