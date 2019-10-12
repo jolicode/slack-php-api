@@ -2678,13 +2678,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * List all users in a User Group.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `usergroups:read`
+     *     @var bool $include_disabled allow results that involve disabled User Groups
+     *     @var string $usergroup The encoded ID of the User Group to read.
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function usergroupsUsersList(string $fetch = self::FETCH_OBJECT)
+    public function usergroupsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUsersList(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUsersList($queryParameters), $fetch);
     }
 
     /**
