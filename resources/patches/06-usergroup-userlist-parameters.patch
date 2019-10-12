@@ -1,0 +1,30 @@
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
+@@ -21624,7 +21624,26 @@
+                     "url": "https://api.slack.com/methods/usergroups.users.list"
+                 },
+                 "operationId": "usergroups_users_list",
+-                "parameters": [],
++                "parameters": [
++                    {
++                        "description": "Authentication token. Requires scope: `usergroups:read`",
++                        "in": "query",
++                        "name": "token",
++                        "type": "string"
++                    },
++                    {
++                        "description": "Allow results that involve disabled User Groups.",
++                        "in": "query",
++                        "name": "include_disabled",
++                        "type": "boolean"
++                    },
++                    {
++                        "description": "The encoded ID of the User Group to read.",
++                        "in": "query",
++                        "name": "usergroup",
++                        "type": "string"
++                    }
++                ],
+                 "produces": [
+                     "application/json"
+                 ],

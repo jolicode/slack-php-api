@@ -12,6 +12,21 @@ namespace JoliCode\Slack\Api\Endpoint;
 
 class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
+    /**
+     * List all users in a User Group.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `usergroups:read`
+     *     @var bool $include_disabled allow results that involve disabled User Groups
+     *     @var string $usergroup The encoded ID of the User Group to read.
+     * }
+     */
+    public function __construct(array $queryParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+    }
+
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     public function getMethod(): string
@@ -32,6 +47,19 @@ class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['token', 'include_disabled', 'usergroup']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->setAllowedTypes('include_disabled', ['bool']);
+        $optionsResolver->setAllowedTypes('usergroup', ['string']);
+
+        return $optionsResolver;
     }
 
     /**
