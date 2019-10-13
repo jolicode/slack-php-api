@@ -1,6 +1,6 @@
 # Slack PHP API documentation
 
-## Hunder the hood
+## Under the hood
 
 This library mostly contains automatically generated code from the official
 [Slack OpenAPI spec](https://github.com/slackapi/slack-api-specs).
