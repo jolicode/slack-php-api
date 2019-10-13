@@ -4,7 +4,7 @@
 
 * **Specification override** The `usergroups.users.list` was missing parameters, fix #57
 
-## 2.1.2 (2019-10-09)
+## 2.2.0 (2019-10-09)
 
 * Fix api.test endpoint
 * Throw exception when Slack returns error code
