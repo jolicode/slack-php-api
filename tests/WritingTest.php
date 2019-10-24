@@ -103,7 +103,7 @@ class WritingTest extends TestCase
             'title' => 'Uploaded image',
             'filename' => 'test-image.png',
             'filetype' => 'png',
-            'file' => Stream::create(fopen(__DIR__.'/test-image.png', 'r')),
+            'file' => Stream::create(fopen(__DIR__.'/resources/test-image.png', 'r')),
         ]);
 
         $this->assertTrue($response->getOk());
