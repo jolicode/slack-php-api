@@ -11,9 +11,10 @@
 
 namespace JoliCode\Slack\Tests;
 
-use JoliCode\Slack\Api\Model\ApiTestGetResponse200;
 use JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200;
+use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
 use JoliCode\Slack\ClientFactory;
+use Nyholm\Psr7\Stream;
 use PHPUnit\Framework\TestCase;
 
 class WritingTest extends TestCase
@@ -74,10 +75,6 @@ class WritingTest extends TestCase
     public function testItCanPostAMessageAndThenAThreadResponse()
     {
         $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
-        $response = $client->apiTest();
-
-        self::assertInstanceOf(ApiTestGetResponse200::class, $response);
-        self::assertTrue($response->getOk());
 
         /** @var ChatPostMessagePostResponse200 $response */
         $response = $client->chatPostMessage([
@@ -94,5 +91,21 @@ class WritingTest extends TestCase
         ]);
 
         $this->assertTrue($response2->getOk());
+    }
+
+    public function testItCanUploadFile()
+    {
+        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+
+        /** @var FilesUploadPostResponse200 $response */
+        $response = $client->filesUpload([
+            'channels' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'title' => 'Uploaded image',
+            'filename' => 'test-image.png',
+            'filetype' => 'png',
+            'file' => Stream::create(fopen(__DIR__.'/resources/test-image.png', 'r')),
+        ]);
+
+        $this->assertTrue($response->getOk());
     }
 }

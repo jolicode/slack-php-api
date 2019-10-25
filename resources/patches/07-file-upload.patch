@@ -1,0 +1,20 @@
+--- resources/slack-openapi-patched.json
++++ resources/slack-openapi-patched.json
+@@ -12578,7 +12578,7 @@
+         "/files.upload": {
+             "post": {
+                 "consumes": [
+-                    "application/x-www-form-urlencoded"
++                    "multipart/form-data"
+                 ],
+                 "description": "Uploads or creates a file.",
+                 "externalDocs": {
+@@ -12633,7 +12633,7 @@
+                         "description": "File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.",
+                         "in": "formData",
+                         "name": "file",
+-                        "type": "string"
++                        "type": "file"
+                     },
+                     {
+                         "description": "Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.",
