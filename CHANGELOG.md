@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+
+## 2.3.0 (2019-10-25) Forum PHP edition
+
 * **Specification override** The `usergroups.users.list` was missing parameters, fix #57
+* Upgrade JanePHP and add a **Specification override** for file uploads #58
 
 ## 2.2.0 (2019-10-09)
 
