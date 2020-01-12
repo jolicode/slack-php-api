@@ -25,19 +25,11 @@ class ObjsReaction extends \ArrayObject
      */
     protected $users;
 
-    /**
-     * @return int|null
-     */
     public function getCount(): ?int
     {
         return $this->count;
     }
 
-    /**
-     * @param int|null $count
-     *
-     * @return self
-     */
     public function setCount(?int $count): self
     {
         $this->count = $count;
@@ -45,19 +37,11 @@ class ObjsReaction extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -75,8 +59,6 @@ class ObjsReaction extends \ArrayObject
 
     /**
      * @param string[]|null $users
-     *
-     * @return self
      */
     public function setUsers(?array $users): self
     {

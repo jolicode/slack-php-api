@@ -73,7 +73,6 @@ class GroupsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\GroupsHistoryGetResponse200|\JoliCode\Slack\Api\Model\GroupsHistoryGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

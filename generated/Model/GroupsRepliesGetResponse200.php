@@ -25,19 +25,11 @@ class GroupsRepliesGetResponse200
      */
     protected $ok;
 
-    /**
-     * @return bool|null
-     */
     public function getHasMore(): ?bool
     {
         return $this->hasMore;
     }
 
-    /**
-     * @param bool|null $hasMore
-     *
-     * @return self
-     */
     public function setHasMore(?bool $hasMore): self
     {
         $this->hasMore = $hasMore;
@@ -55,8 +47,6 @@ class GroupsRepliesGetResponse200
 
     /**
      * @param ObjsMessage[]|null $messages
-     *
-     * @return self
      */
     public function setMessages(?array $messages): self
     {
@@ -65,19 +55,11 @@ class GroupsRepliesGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

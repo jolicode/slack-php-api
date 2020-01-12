@@ -29,19 +29,11 @@ class ImOpenPostResponse200
      */
     protected $ok;
 
-    /**
-     * @return bool|null
-     */
     public function getAlreadyOpen(): ?bool
     {
         return $this->alreadyOpen;
     }
 
-    /**
-     * @param bool|null $alreadyOpen
-     *
-     * @return self
-     */
     public function setAlreadyOpen(?bool $alreadyOpen): self
     {
         $this->alreadyOpen = $alreadyOpen;
@@ -49,19 +41,11 @@ class ImOpenPostResponse200
         return $this;
     }
 
-    /**
-     * @return ImOpenPostResponse200Channel|null
-     */
     public function getChannel(): ?ImOpenPostResponse200Channel
     {
         return $this->channel;
     }
 
-    /**
-     * @param ImOpenPostResponse200Channel|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?ImOpenPostResponse200Channel $channel): self
     {
         $this->channel = $channel;
@@ -69,19 +53,11 @@ class ImOpenPostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getNoOp(): ?bool
     {
         return $this->noOp;
     }
 
-    /**
-     * @param bool|null $noOp
-     *
-     * @return self
-     */
     public function setNoOp(?bool $noOp): self
     {
         $this->noOp = $noOp;
@@ -89,19 +65,11 @@ class ImOpenPostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

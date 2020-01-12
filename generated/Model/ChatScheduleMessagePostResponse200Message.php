@@ -33,19 +33,11 @@ class ChatScheduleMessagePostResponse200Message
      */
     protected $username;
 
-    /**
-     * @return string|null
-     */
     public function getBotId(): ?string
     {
         return $this->botId;
     }
 
-    /**
-     * @param string|null $botId
-     *
-     * @return self
-     */
     public function setBotId(?string $botId): self
     {
         $this->botId = $botId;
@@ -53,19 +45,11 @@ class ChatScheduleMessagePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getText(): ?string
     {
         return $this->text;
     }
 
-    /**
-     * @param string|null $text
-     *
-     * @return self
-     */
     public function setText(?string $text): self
     {
         $this->text = $text;
@@ -73,19 +57,11 @@ class ChatScheduleMessagePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @return self
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;
@@ -93,19 +69,11 @@ class ChatScheduleMessagePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;
@@ -113,19 +81,11 @@ class ChatScheduleMessagePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string|null $username
-     *
-     * @return self
-     */
     public function setUsername(?string $username): self
     {
         $this->username = $username;

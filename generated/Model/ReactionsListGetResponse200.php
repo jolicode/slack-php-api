@@ -39,8 +39,6 @@ class ReactionsListGetResponse200
 
     /**
      * @param mixed[]|null $items
-     *
-     * @return self
      */
     public function setItems(?array $items): self
     {
@@ -49,19 +47,11 @@ class ReactionsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -69,19 +59,11 @@ class ReactionsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsPaging|null
-     */
     public function getPaging(): ?ObjsPaging
     {
         return $this->paging;
     }
 
-    /**
-     * @param ObjsPaging|null $paging
-     *
-     * @return self
-     */
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;
@@ -89,19 +71,11 @@ class ReactionsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsResponseMetadata|null
-     */
     public function getResponseMetadata(): ?ObjsResponseMetadata
     {
         return $this->responseMetadata;
     }
 
-    /**
-     * @param ObjsResponseMetadata|null $responseMetadata
-     *
-     * @return self
-     */
     public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;

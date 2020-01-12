@@ -21,19 +21,11 @@ class GroupsRenamePostResponse200
      */
     protected $ok;
 
-    /**
-     * @return ObjsGroup|null
-     */
     public function getChannel(): ?ObjsGroup
     {
         return $this->channel;
     }
 
-    /**
-     * @param ObjsGroup|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?ObjsGroup $channel): self
     {
         $this->channel = $channel;
@@ -41,19 +33,11 @@ class GroupsRenamePostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

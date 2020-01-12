@@ -31,8 +31,6 @@ class ObjsFileShares
 
     /**
      * @param mixed $private
-     *
-     * @return self
      */
     public function setPrivate($private): self
     {
@@ -51,8 +49,6 @@ class ObjsFileShares
 
     /**
      * @param mixed $public
-     *
-     * @return self
      */
     public function setPublic($public): self
     {

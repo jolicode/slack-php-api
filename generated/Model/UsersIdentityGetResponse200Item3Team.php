@@ -57,19 +57,11 @@ class UsersIdentityGetResponse200Item3Team
      */
     protected $name;
 
-    /**
-     * @return string|null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string|null $domain
-     *
-     * @return self
-     */
     public function setDomain(?string $domain): self
     {
         $this->domain = $domain;
@@ -77,19 +69,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -97,19 +81,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage102(): ?string
     {
         return $this->image102;
     }
 
-    /**
-     * @param string|null $image102
-     *
-     * @return self
-     */
     public function setImage102(?string $image102): self
     {
         $this->image102 = $image102;
@@ -117,19 +93,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage132(): ?string
     {
         return $this->image132;
     }
 
-    /**
-     * @param string|null $image132
-     *
-     * @return self
-     */
     public function setImage132(?string $image132): self
     {
         $this->image132 = $image132;
@@ -137,19 +105,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage230(): ?string
     {
         return $this->image230;
     }
 
-    /**
-     * @param string|null $image230
-     *
-     * @return self
-     */
     public function setImage230(?string $image230): self
     {
         $this->image230 = $image230;
@@ -157,19 +117,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage34(): ?string
     {
         return $this->image34;
     }
 
-    /**
-     * @param string|null $image34
-     *
-     * @return self
-     */
     public function setImage34(?string $image34): self
     {
         $this->image34 = $image34;
@@ -177,19 +129,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage44(): ?string
     {
         return $this->image44;
     }
 
-    /**
-     * @param string|null $image44
-     *
-     * @return self
-     */
     public function setImage44(?string $image44): self
     {
         $this->image44 = $image44;
@@ -197,19 +141,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage68(): ?string
     {
         return $this->image68;
     }
 
-    /**
-     * @param string|null $image68
-     *
-     * @return self
-     */
     public function setImage68(?string $image68): self
     {
         $this->image68 = $image68;
@@ -217,19 +153,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage88(): ?string
     {
         return $this->image88;
     }
 
-    /**
-     * @param string|null $image88
-     *
-     * @return self
-     */
     public function setImage88(?string $image88): self
     {
         $this->image88 = $image88;
@@ -237,19 +165,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getImageDefault(): ?bool
     {
         return $this->imageDefault;
     }
 
-    /**
-     * @param bool|null $imageDefault
-     *
-     * @return self
-     */
     public function setImageDefault(?bool $imageDefault): self
     {
         $this->imageDefault = $imageDefault;
@@ -257,19 +177,11 @@ class UsersIdentityGetResponse200Item3Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;

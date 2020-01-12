@@ -20,6 +20,10 @@ class ChannelsListGetResponse200
      * @var bool
      */
     protected $ok;
+    /**
+     * @var ObjsResponseMetadata
+     */
+    protected $responseMetadata;
 
     /**
      * @return ObjsChannel[]|null
@@ -31,8 +35,6 @@ class ChannelsListGetResponse200
 
     /**
      * @param ObjsChannel[]|null $channels
-     *
-     * @return self
      */
     public function setChannels(?array $channels): self
     {
@@ -41,22 +43,26 @@ class ChannelsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    public function getResponseMetadata(): ?ObjsResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

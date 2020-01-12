@@ -23,19 +23,11 @@ class UsersLookupByEmailGetResponse200 extends \ArrayObject
      */
     protected $user;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -45,8 +37,6 @@ class UsersLookupByEmailGetResponse200 extends \ArrayObject
 
     /**
      * Merged user object for non enterprise type and enterprise user.
-     *
-     * @return ObjsUser|null
      */
     public function getUser(): ?ObjsUser
     {
@@ -55,10 +45,6 @@ class UsersLookupByEmailGetResponse200 extends \ArrayObject
 
     /**
      * Merged user object for non enterprise type and enterprise user.
-     *
-     * @param ObjsUser|null $user
-     *
-     * @return self
      */
     public function setUser(?ObjsUser $user): self
     {

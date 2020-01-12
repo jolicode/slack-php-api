@@ -29,19 +29,11 @@ class ChatUpdatePostResponse200Message
      */
     protected $user;
 
-    /**
-     * @return string|null
-     */
     public function getTeam(): ?string
     {
         return $this->team;
     }
 
-    /**
-     * @param string|null $team
-     *
-     * @return self
-     */
     public function setTeam(?string $team): self
     {
         $this->team = $team;
@@ -49,19 +41,11 @@ class ChatUpdatePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getText(): ?string
     {
         return $this->text;
     }
 
-    /**
-     * @param string|null $text
-     *
-     * @return self
-     */
     public function setText(?string $text): self
     {
         $this->text = $text;
@@ -69,19 +53,11 @@ class ChatUpdatePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @return self
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;
@@ -89,19 +65,11 @@ class ChatUpdatePostResponse200Message
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;

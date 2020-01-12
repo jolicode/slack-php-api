@@ -27,8 +27,6 @@ class ObjsUserTeamProfile
 
     /**
      * @param ObjsTeamProfileField[]|null $fields
-     *
-     * @return self
      */
     public function setFields(?array $fields): self
     {

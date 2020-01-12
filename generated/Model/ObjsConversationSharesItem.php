@@ -29,19 +29,11 @@ class ObjsConversationSharesItem
      */
     protected $user;
 
-    /**
-     * @return string|null
-     */
     public function getAcceptedUser(): ?string
     {
         return $this->acceptedUser;
     }
 
-    /**
-     * @param string|null $acceptedUser
-     *
-     * @return self
-     */
     public function setAcceptedUser(?string $acceptedUser): self
     {
         $this->acceptedUser = $acceptedUser;
@@ -49,19 +41,11 @@ class ObjsConversationSharesItem
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
 
-    /**
-     * @param bool|null $isActive
-     *
-     * @return self
-     */
     public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
@@ -69,19 +53,11 @@ class ObjsConversationSharesItem
         return $this;
     }
 
-    /**
-     * @return ObjsTeam|null
-     */
     public function getTeam(): ?ObjsTeam
     {
         return $this->team;
     }
 
-    /**
-     * @param ObjsTeam|null $team
-     *
-     * @return self
-     */
     public function setTeam(?ObjsTeam $team): self
     {
         $this->team = $team;
@@ -89,19 +65,11 @@ class ObjsConversationSharesItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;

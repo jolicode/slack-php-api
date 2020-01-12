@@ -29,19 +29,11 @@ class ChannelsHistoryGetResponse200
      */
     protected $ok;
 
-    /**
-     * @return bool|null
-     */
     public function getHasMore(): ?bool
     {
         return $this->hasMore;
     }
 
-    /**
-     * @param bool|null $hasMore
-     *
-     * @return self
-     */
     public function setHasMore(?bool $hasMore): self
     {
         $this->hasMore = $hasMore;
@@ -49,19 +41,11 @@ class ChannelsHistoryGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsLimited(): ?bool
     {
         return $this->isLimited;
     }
 
-    /**
-     * @param bool|null $isLimited
-     *
-     * @return self
-     */
     public function setIsLimited(?bool $isLimited): self
     {
         $this->isLimited = $isLimited;
@@ -79,8 +63,6 @@ class ChannelsHistoryGetResponse200
 
     /**
      * @param ObjsMessage[]|null $messages
-     *
-     * @return self
      */
     public function setMessages(?array $messages): self
     {
@@ -89,19 +71,11 @@ class ChannelsHistoryGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

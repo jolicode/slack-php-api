@@ -29,19 +29,11 @@ class ConversationsHistoryGetResponse200
      */
     protected $pinCount;
 
-    /**
-     * @return bool|null
-     */
     public function getHasMore(): ?bool
     {
         return $this->hasMore;
     }
 
-    /**
-     * @param bool|null $hasMore
-     *
-     * @return self
-     */
     public function setHasMore(?bool $hasMore): self
     {
         $this->hasMore = $hasMore;
@@ -59,8 +51,6 @@ class ConversationsHistoryGetResponse200
 
     /**
      * @param ObjsMessage[]|null $messages
-     *
-     * @return self
      */
     public function setMessages(?array $messages): self
     {
@@ -69,19 +59,11 @@ class ConversationsHistoryGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -89,19 +71,11 @@ class ConversationsHistoryGetResponse200
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getPinCount(): ?int
     {
         return $this->pinCount;
     }
 
-    /**
-     * @param int|null $pinCount
-     *
-     * @return self
-     */
     public function setPinCount(?int $pinCount): self
     {
         $this->pinCount = $pinCount;

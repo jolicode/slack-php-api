@@ -189,8 +189,6 @@ class ObjsMessage
 
     /**
      * @param ObjsMessageAttachmentsItem[]|null $attachments
-     *
-     * @return self
      */
     public function setAttachments(?array $attachments): self
     {
@@ -213,8 +211,6 @@ class ObjsMessage
      * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
      *
      * @param BlocksItem[]|null $blocks
-     *
-     * @return self
      */
     public function setBlocks(?array $blocks): self
     {
@@ -233,8 +229,6 @@ class ObjsMessage
 
     /**
      * @param mixed $botId
-     *
-     * @return self
      */
     public function setBotId($botId): self
     {
@@ -243,19 +237,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getClientMsgId(): ?string
     {
         return $this->clientMsgId;
     }
 
-    /**
-     * @param string|null $clientMsgId
-     *
-     * @return self
-     */
     public function setClientMsgId(?string $clientMsgId): self
     {
         $this->clientMsgId = $clientMsgId;
@@ -263,19 +249,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return ObjsComment|null
-     */
     public function getComment(): ?ObjsComment
     {
         return $this->comment;
     }
 
-    /**
-     * @param ObjsComment|null $comment
-     *
-     * @return self
-     */
     public function setComment(?ObjsComment $comment): self
     {
         $this->comment = $comment;
@@ -283,19 +261,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getDisplayAsBot(): ?bool
     {
         return $this->displayAsBot;
     }
 
-    /**
-     * @param bool|null $displayAsBot
-     *
-     * @return self
-     */
     public function setDisplayAsBot(?bool $displayAsBot): self
     {
         $this->displayAsBot = $displayAsBot;
@@ -303,19 +273,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return ObjsFile|null
-     */
     public function getFile(): ?ObjsFile
     {
         return $this->file;
     }
 
-    /**
-     * @param ObjsFile|null $file
-     *
-     * @return self
-     */
     public function setFile(?ObjsFile $file): self
     {
         $this->file = $file;
@@ -333,8 +295,6 @@ class ObjsMessage
 
     /**
      * @param ObjsFile[]|null $files
-     *
-     * @return self
      */
     public function setFiles(?array $files): self
     {
@@ -343,19 +303,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return ObjsMessageIcons|null
-     */
     public function getIcons(): ?ObjsMessageIcons
     {
         return $this->icons;
     }
 
-    /**
-     * @param ObjsMessageIcons|null $icons
-     *
-     * @return self
-     */
     public function setIcons(?ObjsMessageIcons $icons): self
     {
         $this->icons = $icons;
@@ -363,19 +315,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getInviter(): ?string
     {
         return $this->inviter;
     }
 
-    /**
-     * @param string|null $inviter
-     *
-     * @return self
-     */
     public function setInviter(?string $inviter): self
     {
         $this->inviter = $inviter;
@@ -383,19 +327,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsDelayedMessage(): ?bool
     {
         return $this->isDelayedMessage;
     }
 
-    /**
-     * @param bool|null $isDelayedMessage
-     *
-     * @return self
-     */
     public function setIsDelayedMessage(?bool $isDelayedMessage): self
     {
         $this->isDelayedMessage = $isDelayedMessage;
@@ -403,19 +339,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsIntro(): ?bool
     {
         return $this->isIntro;
     }
 
-    /**
-     * @param bool|null $isIntro
-     *
-     * @return self
-     */
     public function setIsIntro(?bool $isIntro): self
     {
         $this->isIntro = $isIntro;
@@ -423,19 +351,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsStarred(): ?bool
     {
         return $this->isStarred;
     }
 
-    /**
-     * @param bool|null $isStarred
-     *
-     * @return self
-     */
     public function setIsStarred(?bool $isStarred): self
     {
         $this->isStarred = $isStarred;
@@ -443,19 +363,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
 
-    /**
-     * @param string|null $lastRead
-     *
-     * @return self
-     */
     public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
@@ -463,19 +375,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLatestReply(): ?string
     {
         return $this->latestReply;
     }
 
-    /**
-     * @param string|null $latestReply
-     *
-     * @return self
-     */
     public function setLatestReply(?string $latestReply): self
     {
         $this->latestReply = $latestReply;
@@ -483,19 +387,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -503,19 +399,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getOldName(): ?string
     {
         return $this->oldName;
     }
 
-    /**
-     * @param string|null $oldName
-     *
-     * @return self
-     */
     public function setOldName(?string $oldName): self
     {
         $this->oldName = $oldName;
@@ -523,19 +411,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getParentUserId(): ?string
     {
         return $this->parentUserId;
     }
 
-    /**
-     * @param string|null $parentUserId
-     *
-     * @return self
-     */
     public function setParentUserId(?string $parentUserId): self
     {
         $this->parentUserId = $parentUserId;
@@ -543,19 +423,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    /**
-     * @param string|null $permalink
-     *
-     * @return self
-     */
     public function setPermalink(?string $permalink): self
     {
         $this->permalink = $permalink;
@@ -573,8 +445,6 @@ class ObjsMessage
 
     /**
      * @param string[]|null $pinnedTo
-     *
-     * @return self
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
@@ -583,19 +453,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPurpose(): ?string
     {
         return $this->purpose;
     }
 
-    /**
-     * @param string|null $purpose
-     *
-     * @return self
-     */
     public function setPurpose(?string $purpose): self
     {
         $this->purpose = $purpose;
@@ -613,8 +475,6 @@ class ObjsMessage
 
     /**
      * @param ObjsReaction[]|null $reactions
-     *
-     * @return self
      */
     public function setReactions(?array $reactions): self
     {
@@ -633,8 +493,6 @@ class ObjsMessage
 
     /**
      * @param ObjsMessageRepliesItem[]|null $replies
-     *
-     * @return self
      */
     public function setReplies(?array $replies): self
     {
@@ -643,19 +501,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getReplyCount(): ?int
     {
         return $this->replyCount;
     }
 
-    /**
-     * @param int|null $replyCount
-     *
-     * @return self
-     */
     public function setReplyCount(?int $replyCount): self
     {
         $this->replyCount = $replyCount;
@@ -673,8 +523,6 @@ class ObjsMessage
 
     /**
      * @param string[]|null $replyUsers
-     *
-     * @return self
      */
     public function setReplyUsers(?array $replyUsers): self
     {
@@ -683,19 +531,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getReplyUsersCount(): ?int
     {
         return $this->replyUsersCount;
     }
 
-    /**
-     * @param int|null $replyUsersCount
-     *
-     * @return self
-     */
     public function setReplyUsersCount(?int $replyUsersCount): self
     {
         $this->replyUsersCount = $replyUsersCount;
@@ -703,19 +543,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSourceTeam(): ?string
     {
         return $this->sourceTeam;
     }
 
-    /**
-     * @param string|null $sourceTeam
-     *
-     * @return self
-     */
     public function setSourceTeam(?string $sourceTeam): self
     {
         $this->sourceTeam = $sourceTeam;
@@ -723,19 +555,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getSubscribed(): ?bool
     {
         return $this->subscribed;
     }
 
-    /**
-     * @param bool|null $subscribed
-     *
-     * @return self
-     */
     public function setSubscribed(?bool $subscribed): self
     {
         $this->subscribed = $subscribed;
@@ -743,19 +567,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSubtype(): ?string
     {
         return $this->subtype;
     }
 
-    /**
-     * @param string|null $subtype
-     *
-     * @return self
-     */
     public function setSubtype(?string $subtype): self
     {
         $this->subtype = $subtype;
@@ -763,19 +579,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeam(): ?string
     {
         return $this->team;
     }
 
-    /**
-     * @param string|null $team
-     *
-     * @return self
-     */
     public function setTeam(?string $team): self
     {
         $this->team = $team;
@@ -783,19 +591,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getText(): ?string
     {
         return $this->text;
     }
 
-    /**
-     * @param string|null $text
-     *
-     * @return self
-     */
     public function setText(?string $text): self
     {
         $this->text = $text;
@@ -803,19 +603,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThreadTs(): ?string
     {
         return $this->threadTs;
     }
 
-    /**
-     * @param string|null $threadTs
-     *
-     * @return self
-     */
     public function setThreadTs(?string $threadTs): self
     {
         $this->threadTs = $threadTs;
@@ -823,19 +615,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTopic(): ?string
     {
         return $this->topic;
     }
 
-    /**
-     * @param string|null $topic
-     *
-     * @return self
-     */
     public function setTopic(?string $topic): self
     {
         $this->topic = $topic;
@@ -843,19 +627,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTs(): ?string
     {
         return $this->ts;
     }
 
-    /**
-     * @param string|null $ts
-     *
-     * @return self
-     */
     public function setTs(?string $ts): self
     {
         $this->ts = $ts;
@@ -863,19 +639,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @return self
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;
@@ -883,19 +651,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUnreadCount(): ?int
     {
         return $this->unreadCount;
     }
 
-    /**
-     * @param int|null $unreadCount
-     *
-     * @return self
-     */
     public function setUnreadCount(?int $unreadCount): self
     {
         $this->unreadCount = $unreadCount;
@@ -903,19 +663,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getUpload(): ?bool
     {
         return $this->upload;
     }
 
-    /**
-     * @param bool|null $upload
-     *
-     * @return self
-     */
     public function setUpload(?bool $upload): self
     {
         $this->upload = $upload;
@@ -923,19 +675,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;
@@ -943,19 +687,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return ObjsUserProfileShort|null
-     */
     public function getUserProfile(): ?ObjsUserProfileShort
     {
         return $this->userProfile;
     }
 
-    /**
-     * @param ObjsUserProfileShort|null $userProfile
-     *
-     * @return self
-     */
     public function setUserProfile(?ObjsUserProfileShort $userProfile): self
     {
         $this->userProfile = $userProfile;
@@ -963,19 +699,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUserTeam(): ?string
     {
         return $this->userTeam;
     }
 
-    /**
-     * @param string|null $userTeam
-     *
-     * @return self
-     */
     public function setUserTeam(?string $userTeam): self
     {
         $this->userTeam = $userTeam;
@@ -983,19 +711,11 @@ class ObjsMessage
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string|null $username
-     *
-     * @return self
-     */
     public function setUsername(?string $username): self
     {
         $this->username = $username;

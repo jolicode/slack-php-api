@@ -25,19 +25,11 @@ class UsersIdentityGetResponse200Item3
      */
     protected $user;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -45,19 +37,11 @@ class UsersIdentityGetResponse200Item3
         return $this;
     }
 
-    /**
-     * @return UsersIdentityGetResponse200Item3Team|null
-     */
     public function getTeam(): ?UsersIdentityGetResponse200Item3Team
     {
         return $this->team;
     }
 
-    /**
-     * @param UsersIdentityGetResponse200Item3Team|null $team
-     *
-     * @return self
-     */
     public function setTeam(?UsersIdentityGetResponse200Item3Team $team): self
     {
         $this->team = $team;
@@ -65,19 +49,11 @@ class UsersIdentityGetResponse200Item3
         return $this;
     }
 
-    /**
-     * @return UsersIdentityGetResponse200Item3User|null
-     */
     public function getUser(): ?UsersIdentityGetResponse200Item3User
     {
         return $this->user;
     }
 
-    /**
-     * @param UsersIdentityGetResponse200Item3User|null $user
-     *
-     * @return self
-     */
     public function setUser(?UsersIdentityGetResponse200Item3User $user): self
     {
         $this->user = $user;

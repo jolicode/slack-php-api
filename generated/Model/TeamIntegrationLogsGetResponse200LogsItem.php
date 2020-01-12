@@ -57,19 +57,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
      */
     protected $userName;
 
-    /**
-     * @return string|null
-     */
     public function getAdminAppId(): ?string
     {
         return $this->adminAppId;
     }
 
-    /**
-     * @param string|null $adminAppId
-     *
-     * @return self
-     */
     public function setAdminAppId(?string $adminAppId): self
     {
         $this->adminAppId = $adminAppId;
@@ -77,19 +69,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAppId(): ?string
     {
         return $this->appId;
     }
 
-    /**
-     * @param string|null $appId
-     *
-     * @return self
-     */
     public function setAppId(?string $appId): self
     {
         $this->appId = $appId;
@@ -97,19 +81,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAppType(): ?string
     {
         return $this->appType;
     }
 
-    /**
-     * @param string|null $appType
-     *
-     * @return self
-     */
     public function setAppType(?string $appType): self
     {
         $this->appType = $appType;
@@ -117,19 +93,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getChangeType(): ?string
     {
         return $this->changeType;
     }
 
-    /**
-     * @param string|null $changeType
-     *
-     * @return self
-     */
     public function setChangeType(?string $changeType): self
     {
         $this->changeType = $changeType;
@@ -137,19 +105,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getChannel(): ?string
     {
         return $this->channel;
     }
 
-    /**
-     * @param string|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?string $channel): self
     {
         $this->channel = $channel;
@@ -157,19 +117,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDate(): ?string
     {
         return $this->date;
     }
 
-    /**
-     * @param string|null $date
-     *
-     * @return self
-     */
     public function setDate(?string $date): self
     {
         $this->date = $date;
@@ -177,19 +129,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getScope(): ?string
     {
         return $this->scope;
     }
 
-    /**
-     * @param string|null $scope
-     *
-     * @return self
-     */
     public function setScope(?string $scope): self
     {
         $this->scope = $scope;
@@ -197,19 +141,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getServiceId(): ?string
     {
         return $this->serviceId;
     }
 
-    /**
-     * @param string|null $serviceId
-     *
-     * @return self
-     */
     public function setServiceId(?string $serviceId): self
     {
         $this->serviceId = $serviceId;
@@ -217,19 +153,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getServiceType(): ?string
     {
         return $this->serviceType;
     }
 
-    /**
-     * @param string|null $serviceType
-     *
-     * @return self
-     */
     public function setServiceType(?string $serviceType): self
     {
         $this->serviceType = $serviceType;
@@ -237,19 +165,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUserId(): ?string
     {
         return $this->userId;
     }
 
-    /**
-     * @param string|null $userId
-     *
-     * @return self
-     */
     public function setUserId(?string $userId): self
     {
         $this->userId = $userId;
@@ -257,19 +177,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUserName(): ?string
     {
         return $this->userName;
     }
 
-    /**
-     * @param string|null $userName
-     *
-     * @return self
-     */
     public function setUserName(?string $userName): self
     {
         $this->userName = $userName;

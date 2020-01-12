@@ -49,19 +49,11 @@ class ObjsUserProfileShort
      */
     protected $team;
 
-    /**
-     * @return string|null
-     */
     public function getAvatarHash(): ?string
     {
         return $this->avatarHash;
     }
 
-    /**
-     * @param string|null $avatarHash
-     *
-     * @return self
-     */
     public function setAvatarHash(?string $avatarHash): self
     {
         $this->avatarHash = $avatarHash;
@@ -69,19 +61,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
-    /**
-     * @param string|null $displayName
-     *
-     * @return self
-     */
     public function setDisplayName(?string $displayName): self
     {
         $this->displayName = $displayName;
@@ -89,19 +73,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    /**
-     * @param string|null $firstName
-     *
-     * @return self
-     */
     public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
@@ -109,19 +85,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage72(): ?string
     {
         return $this->image72;
     }
 
-    /**
-     * @param string|null $image72
-     *
-     * @return self
-     */
     public function setImage72(?string $image72): self
     {
         $this->image72 = $image72;
@@ -129,19 +97,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsRestricted(): ?bool
     {
         return $this->isRestricted;
     }
 
-    /**
-     * @param bool|null $isRestricted
-     *
-     * @return self
-     */
     public function setIsRestricted(?bool $isRestricted): self
     {
         $this->isRestricted = $isRestricted;
@@ -149,19 +109,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsUltraRestricted(): ?bool
     {
         return $this->isUltraRestricted;
     }
 
-    /**
-     * @param bool|null $isUltraRestricted
-     *
-     * @return self
-     */
     public function setIsUltraRestricted(?bool $isUltraRestricted): self
     {
         $this->isUltraRestricted = $isUltraRestricted;
@@ -169,19 +121,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -189,19 +133,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRealName(): ?string
     {
         return $this->realName;
     }
 
-    /**
-     * @param string|null $realName
-     *
-     * @return self
-     */
     public function setRealName(?string $realName): self
     {
         $this->realName = $realName;
@@ -209,19 +145,11 @@ class ObjsUserProfileShort
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeam(): ?string
     {
         return $this->team;
     }
 
-    /**
-     * @param string|null $team
-     *
-     * @return self
-     */
     public function setTeam(?string $team): self
     {
         $this->team = $team;

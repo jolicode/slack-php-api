@@ -35,8 +35,6 @@ class FilesListGetResponse200
 
     /**
      * @param ObjsFile[]|null $files
-     *
-     * @return self
      */
     public function setFiles(?array $files): self
     {
@@ -45,19 +43,11 @@ class FilesListGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -65,19 +55,11 @@ class FilesListGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsPaging|null
-     */
     public function getPaging(): ?ObjsPaging
     {
         return $this->paging;
     }
 
-    /**
-     * @param ObjsPaging|null $paging
-     *
-     * @return self
-     */
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;

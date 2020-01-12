@@ -80,7 +80,6 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\ChannelsMarkPostResponse200|\JoliCode\Slack\Api\Model\ChannelsMarkPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

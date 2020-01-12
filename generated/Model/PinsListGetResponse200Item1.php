@@ -21,19 +21,11 @@ class PinsListGetResponse200Item1
      */
     protected $ok;
 
-    /**
-     * @return int|null
-     */
     public function getCount(): ?int
     {
         return $this->count;
     }
 
-    /**
-     * @param int|null $count
-     *
-     * @return self
-     */
     public function setCount(?int $count): self
     {
         $this->count = $count;
@@ -41,19 +33,11 @@ class PinsListGetResponse200Item1
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

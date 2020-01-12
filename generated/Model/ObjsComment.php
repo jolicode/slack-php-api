@@ -57,19 +57,11 @@ class ObjsComment
      */
     protected $user;
 
-    /**
-     * @return string|null
-     */
     public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    /**
-     * @param string|null $comment
-     *
-     * @return self
-     */
     public function setComment(?string $comment): self
     {
         $this->comment = $comment;
@@ -77,19 +69,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -97,19 +81,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -117,19 +93,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsIntro(): ?bool
     {
         return $this->isIntro;
     }
 
-    /**
-     * @param bool|null $isIntro
-     *
-     * @return self
-     */
     public function setIsIntro(?bool $isIntro): self
     {
         $this->isIntro = $isIntro;
@@ -137,19 +105,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsStarred(): ?bool
     {
         return $this->isStarred;
     }
 
-    /**
-     * @param bool|null $isStarred
-     *
-     * @return self
-     */
     public function setIsStarred(?bool $isStarred): self
     {
         $this->isStarred = $isStarred;
@@ -157,19 +117,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNumStars(): ?int
     {
         return $this->numStars;
     }
 
-    /**
-     * @param int|null $numStars
-     *
-     * @return self
-     */
     public function setNumStars(?int $numStars): self
     {
         $this->numStars = $numStars;
@@ -187,8 +139,6 @@ class ObjsComment
 
     /**
      * @param DefsPinnedInfoItem[]|null $pinnedInfo
-     *
-     * @return self
      */
     public function setPinnedInfo(?\ArrayObject $pinnedInfo): self
     {
@@ -207,8 +157,6 @@ class ObjsComment
 
     /**
      * @param string[]|null $pinnedTo
-     *
-     * @return self
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
@@ -227,8 +175,6 @@ class ObjsComment
 
     /**
      * @param ObjsReaction[]|null $reactions
-     *
-     * @return self
      */
     public function setReactions(?array $reactions): self
     {
@@ -237,19 +183,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getTimestamp(): ?int
     {
         return $this->timestamp;
     }
 
-    /**
-     * @param int|null $timestamp
-     *
-     * @return self
-     */
     public function setTimestamp(?int $timestamp): self
     {
         $this->timestamp = $timestamp;
@@ -257,19 +195,11 @@ class ObjsComment
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;

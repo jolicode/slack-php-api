@@ -291,8 +291,6 @@ class ObjsFile
 
     /**
      * @param string[]|null $channels
-     *
-     * @return self
      */
     public function setChannels(?array $channels): self
     {
@@ -301,19 +299,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCommentsCount(): ?int
     {
         return $this->commentsCount;
     }
 
-    /**
-     * @param int|null $commentsCount
-     *
-     * @return self
-     */
     public function setCommentsCount(?int $commentsCount): self
     {
         $this->commentsCount = $commentsCount;
@@ -321,19 +311,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -341,19 +323,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getDisplayAsBot(): ?bool
     {
         return $this->displayAsBot;
     }
 
-    /**
-     * @param bool|null $displayAsBot
-     *
-     * @return self
-     */
     public function setDisplayAsBot(?bool $displayAsBot): self
     {
         $this->displayAsBot = $displayAsBot;
@@ -361,19 +335,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getEditable(): ?bool
     {
         return $this->editable;
     }
 
-    /**
-     * @param bool|null $editable
-     *
-     * @return self
-     */
     public function setEditable(?bool $editable): self
     {
         $this->editable = $editable;
@@ -381,19 +347,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEditor(): ?string
     {
         return $this->editor;
     }
 
-    /**
-     * @param string|null $editor
-     *
-     * @return self
-     */
     public function setEditor(?string $editor): self
     {
         $this->editor = $editor;
@@ -401,19 +359,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getExternalId(): ?string
     {
         return $this->externalId;
     }
 
-    /**
-     * @param string|null $externalId
-     *
-     * @return self
-     */
     public function setExternalId(?string $externalId): self
     {
         $this->externalId = $externalId;
@@ -421,19 +371,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getExternalType(): ?string
     {
         return $this->externalType;
     }
 
-    /**
-     * @param string|null $externalType
-     *
-     * @return self
-     */
     public function setExternalType(?string $externalType): self
     {
         $this->externalType = $externalType;
@@ -441,19 +383,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getExternalUrl(): ?string
     {
         return $this->externalUrl;
     }
 
-    /**
-     * @param string|null $externalUrl
-     *
-     * @return self
-     */
     public function setExternalUrl(?string $externalUrl): self
     {
         $this->externalUrl = $externalUrl;
@@ -461,19 +395,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFiletype(): ?string
     {
         return $this->filetype;
     }
 
-    /**
-     * @param string|null $filetype
-     *
-     * @return self
-     */
     public function setFiletype(?string $filetype): self
     {
         $this->filetype = $filetype;
@@ -491,8 +417,6 @@ class ObjsFile
 
     /**
      * @param string[]|null $groups
-     *
-     * @return self
      */
     public function setGroups(?array $groups): self
     {
@@ -501,19 +425,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getHasRichPreview(): ?bool
     {
         return $this->hasRichPreview;
     }
 
-    /**
-     * @param bool|null $hasRichPreview
-     *
-     * @return self
-     */
     public function setHasRichPreview(?bool $hasRichPreview): self
     {
         $this->hasRichPreview = $hasRichPreview;
@@ -521,19 +437,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -541,19 +449,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getImageExifRotation(): ?int
     {
         return $this->imageExifRotation;
     }
 
-    /**
-     * @param int|null $imageExifRotation
-     *
-     * @return self
-     */
     public function setImageExifRotation(?int $imageExifRotation): self
     {
         $this->imageExifRotation = $imageExifRotation;
@@ -571,8 +471,6 @@ class ObjsFile
 
     /**
      * @param string[]|null $ims
-     *
-     * @return self
      */
     public function setIms(?array $ims): self
     {
@@ -581,19 +479,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsExternal(): ?bool
     {
         return $this->isExternal;
     }
 
-    /**
-     * @param bool|null $isExternal
-     *
-     * @return self
-     */
     public function setIsExternal(?bool $isExternal): self
     {
         $this->isExternal = $isExternal;
@@ -601,19 +491,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsPublic(): ?bool
     {
         return $this->isPublic;
     }
 
-    /**
-     * @param bool|null $isPublic
-     *
-     * @return self
-     */
     public function setIsPublic(?bool $isPublic): self
     {
         $this->isPublic = $isPublic;
@@ -621,19 +503,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsStarred(): ?bool
     {
         return $this->isStarred;
     }
 
-    /**
-     * @param bool|null $isStarred
-     *
-     * @return self
-     */
     public function setIsStarred(?bool $isStarred): self
     {
         $this->isStarred = $isStarred;
@@ -641,19 +515,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsTombstoned(): ?bool
     {
         return $this->isTombstoned;
     }
 
-    /**
-     * @param bool|null $isTombstoned
-     *
-     * @return self
-     */
     public function setIsTombstoned(?bool $isTombstoned): self
     {
         $this->isTombstoned = $isTombstoned;
@@ -661,19 +527,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastEditor(): ?string
     {
         return $this->lastEditor;
     }
 
-    /**
-     * @param string|null $lastEditor
-     *
-     * @return self
-     */
     public function setLastEditor(?string $lastEditor): self
     {
         $this->lastEditor = $lastEditor;
@@ -681,19 +539,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMimetype(): ?string
     {
         return $this->mimetype;
     }
 
-    /**
-     * @param string|null $mimetype
-     *
-     * @return self
-     */
     public function setMimetype(?string $mimetype): self
     {
         $this->mimetype = $mimetype;
@@ -701,19 +551,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMode(): ?string
     {
         return $this->mode;
     }
 
-    /**
-     * @param string|null $mode
-     *
-     * @return self
-     */
     public function setMode(?string $mode): self
     {
         $this->mode = $mode;
@@ -721,19 +563,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -741,19 +575,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNumStars(): ?int
     {
         return $this->numStars;
     }
 
-    /**
-     * @param int|null $numStars
-     *
-     * @return self
-     */
     public function setNumStars(?int $numStars): self
     {
         $this->numStars = $numStars;
@@ -761,19 +587,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getOriginalH(): ?int
     {
         return $this->originalH;
     }
 
-    /**
-     * @param int|null $originalH
-     *
-     * @return self
-     */
     public function setOriginalH(?int $originalH): self
     {
         $this->originalH = $originalH;
@@ -781,19 +599,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getOriginalW(): ?int
     {
         return $this->originalW;
     }
 
-    /**
-     * @param int|null $originalW
-     *
-     * @return self
-     */
     public function setOriginalW(?int $originalW): self
     {
         $this->originalW = $originalW;
@@ -801,19 +611,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPermalink(): ?string
     {
         return $this->permalink;
     }
 
-    /**
-     * @param string|null $permalink
-     *
-     * @return self
-     */
     public function setPermalink(?string $permalink): self
     {
         $this->permalink = $permalink;
@@ -821,19 +623,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPermalinkPublic(): ?string
     {
         return $this->permalinkPublic;
     }
 
-    /**
-     * @param string|null $permalinkPublic
-     *
-     * @return self
-     */
     public function setPermalinkPublic(?string $permalinkPublic): self
     {
         $this->permalinkPublic = $permalinkPublic;
@@ -851,8 +645,6 @@ class ObjsFile
 
     /**
      * @param DefsPinnedInfoItem[]|null $pinnedInfo
-     *
-     * @return self
      */
     public function setPinnedInfo(?\ArrayObject $pinnedInfo): self
     {
@@ -871,8 +663,6 @@ class ObjsFile
 
     /**
      * @param string[]|null $pinnedTo
-     *
-     * @return self
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
@@ -881,19 +671,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPrettyType(): ?string
     {
         return $this->prettyType;
     }
 
-    /**
-     * @param string|null $prettyType
-     *
-     * @return self
-     */
     public function setPrettyType(?string $prettyType): self
     {
         $this->prettyType = $prettyType;
@@ -901,6 +683,9 @@ class ObjsFile
         return $this;
     }
 
+    /**
+     * @return null
+     */
     public function getPreview()
     {
         return $this->preview;
@@ -908,8 +693,6 @@ class ObjsFile
 
     /**
      * @param null $preview
-     *
-     * @return self
      */
     public function setPreview($preview): self
     {
@@ -918,19 +701,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getPublicUrlShared(): ?bool
     {
         return $this->publicUrlShared;
     }
 
-    /**
-     * @param bool|null $publicUrlShared
-     *
-     * @return self
-     */
     public function setPublicUrlShared(?bool $publicUrlShared): self
     {
         $this->publicUrlShared = $publicUrlShared;
@@ -948,8 +723,6 @@ class ObjsFile
 
     /**
      * @param ObjsReaction[]|null $reactions
-     *
-     * @return self
      */
     public function setReactions(?array $reactions): self
     {
@@ -958,19 +731,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return ObjsFileShares|null
-     */
     public function getShares(): ?ObjsFileShares
     {
         return $this->shares;
     }
 
-    /**
-     * @param ObjsFileShares|null $shares
-     *
-     * @return self
-     */
     public function setShares(?ObjsFileShares $shares): self
     {
         $this->shares = $shares;
@@ -978,19 +743,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getSize(): ?int
     {
         return $this->size;
     }
 
-    /**
-     * @param int|null $size
-     *
-     * @return self
-     */
     public function setSize(?int $size): self
     {
         $this->size = $size;
@@ -998,19 +755,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSourceTeam(): ?string
     {
         return $this->sourceTeam;
     }
 
-    /**
-     * @param string|null $sourceTeam
-     *
-     * @return self
-     */
     public function setSourceTeam(?string $sourceTeam): self
     {
         $this->sourceTeam = $sourceTeam;
@@ -1018,19 +767,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getState(): ?string
     {
         return $this->state;
     }
 
-    /**
-     * @param string|null $state
-     *
-     * @return self
-     */
     public function setState(?string $state): self
     {
         $this->state = $state;
@@ -1038,19 +779,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb1024(): ?string
     {
         return $this->thumb1024;
     }
 
-    /**
-     * @param string|null $thumb1024
-     *
-     * @return self
-     */
     public function setThumb1024(?string $thumb1024): self
     {
         $this->thumb1024 = $thumb1024;
@@ -1058,19 +791,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb1024H(): ?int
     {
         return $this->thumb1024H;
     }
 
-    /**
-     * @param int|null $thumb1024H
-     *
-     * @return self
-     */
     public function setThumb1024H(?int $thumb1024H): self
     {
         $this->thumb1024H = $thumb1024H;
@@ -1078,19 +803,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb1024W(): ?int
     {
         return $this->thumb1024W;
     }
 
-    /**
-     * @param int|null $thumb1024W
-     *
-     * @return self
-     */
     public function setThumb1024W(?int $thumb1024W): self
     {
         $this->thumb1024W = $thumb1024W;
@@ -1098,19 +815,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb160(): ?string
     {
         return $this->thumb160;
     }
 
-    /**
-     * @param string|null $thumb160
-     *
-     * @return self
-     */
     public function setThumb160(?string $thumb160): self
     {
         $this->thumb160 = $thumb160;
@@ -1118,19 +827,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb360(): ?string
     {
         return $this->thumb360;
     }
 
-    /**
-     * @param string|null $thumb360
-     *
-     * @return self
-     */
     public function setThumb360(?string $thumb360): self
     {
         $this->thumb360 = $thumb360;
@@ -1138,19 +839,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb360H(): ?int
     {
         return $this->thumb360H;
     }
 
-    /**
-     * @param int|null $thumb360H
-     *
-     * @return self
-     */
     public function setThumb360H(?int $thumb360H): self
     {
         $this->thumb360H = $thumb360H;
@@ -1158,19 +851,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb360W(): ?int
     {
         return $this->thumb360W;
     }
 
-    /**
-     * @param int|null $thumb360W
-     *
-     * @return self
-     */
     public function setThumb360W(?int $thumb360W): self
     {
         $this->thumb360W = $thumb360W;
@@ -1178,19 +863,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb480(): ?string
     {
         return $this->thumb480;
     }
 
-    /**
-     * @param string|null $thumb480
-     *
-     * @return self
-     */
     public function setThumb480(?string $thumb480): self
     {
         $this->thumb480 = $thumb480;
@@ -1198,19 +875,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb480H(): ?int
     {
         return $this->thumb480H;
     }
 
-    /**
-     * @param int|null $thumb480H
-     *
-     * @return self
-     */
     public function setThumb480H(?int $thumb480H): self
     {
         $this->thumb480H = $thumb480H;
@@ -1218,19 +887,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb480W(): ?int
     {
         return $this->thumb480W;
     }
 
-    /**
-     * @param int|null $thumb480W
-     *
-     * @return self
-     */
     public function setThumb480W(?int $thumb480W): self
     {
         $this->thumb480W = $thumb480W;
@@ -1238,19 +899,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb64(): ?string
     {
         return $this->thumb64;
     }
 
-    /**
-     * @param string|null $thumb64
-     *
-     * @return self
-     */
     public function setThumb64(?string $thumb64): self
     {
         $this->thumb64 = $thumb64;
@@ -1258,19 +911,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb720(): ?string
     {
         return $this->thumb720;
     }
 
-    /**
-     * @param string|null $thumb720
-     *
-     * @return self
-     */
     public function setThumb720(?string $thumb720): self
     {
         $this->thumb720 = $thumb720;
@@ -1278,19 +923,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb720H(): ?int
     {
         return $this->thumb720H;
     }
 
-    /**
-     * @param int|null $thumb720H
-     *
-     * @return self
-     */
     public function setThumb720H(?int $thumb720H): self
     {
         $this->thumb720H = $thumb720H;
@@ -1298,19 +935,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb720W(): ?int
     {
         return $this->thumb720W;
     }
 
-    /**
-     * @param int|null $thumb720W
-     *
-     * @return self
-     */
     public function setThumb720W(?int $thumb720W): self
     {
         $this->thumb720W = $thumb720W;
@@ -1318,19 +947,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb80(): ?string
     {
         return $this->thumb80;
     }
 
-    /**
-     * @param string|null $thumb80
-     *
-     * @return self
-     */
     public function setThumb80(?string $thumb80): self
     {
         $this->thumb80 = $thumb80;
@@ -1338,19 +959,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb800(): ?string
     {
         return $this->thumb800;
     }
 
-    /**
-     * @param string|null $thumb800
-     *
-     * @return self
-     */
     public function setThumb800(?string $thumb800): self
     {
         $this->thumb800 = $thumb800;
@@ -1358,19 +971,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb800H(): ?int
     {
         return $this->thumb800H;
     }
 
-    /**
-     * @param int|null $thumb800H
-     *
-     * @return self
-     */
     public function setThumb800H(?int $thumb800H): self
     {
         $this->thumb800H = $thumb800H;
@@ -1378,19 +983,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb800W(): ?int
     {
         return $this->thumb800W;
     }
 
-    /**
-     * @param int|null $thumb800W
-     *
-     * @return self
-     */
     public function setThumb800W(?int $thumb800W): self
     {
         $this->thumb800W = $thumb800W;
@@ -1398,19 +995,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumb960(): ?string
     {
         return $this->thumb960;
     }
 
-    /**
-     * @param string|null $thumb960
-     *
-     * @return self
-     */
     public function setThumb960(?string $thumb960): self
     {
         $this->thumb960 = $thumb960;
@@ -1418,19 +1007,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb960H(): ?int
     {
         return $this->thumb960H;
     }
 
-    /**
-     * @param int|null $thumb960H
-     *
-     * @return self
-     */
     public function setThumb960H(?int $thumb960H): self
     {
         $this->thumb960H = $thumb960H;
@@ -1438,19 +1019,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getThumb960W(): ?int
     {
         return $this->thumb960W;
     }
 
-    /**
-     * @param int|null $thumb960W
-     *
-     * @return self
-     */
     public function setThumb960W(?int $thumb960W): self
     {
         $this->thumb960W = $thumb960W;
@@ -1458,19 +1031,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getTimestamp(): ?int
     {
         return $this->timestamp;
     }
 
-    /**
-     * @param int|null $timestamp
-     *
-     * @return self
-     */
     public function setTimestamp(?int $timestamp): self
     {
         $this->timestamp = $timestamp;
@@ -1478,19 +1043,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
     public function setTitle(?string $title): self
     {
         $this->title = $title;
@@ -1498,19 +1055,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUpdated(): ?int
     {
         return $this->updated;
     }
 
-    /**
-     * @param int|null $updated
-     *
-     * @return self
-     */
     public function setUpdated(?int $updated): self
     {
         $this->updated = $updated;
@@ -1518,19 +1067,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrlPrivate(): ?string
     {
         return $this->urlPrivate;
     }
 
-    /**
-     * @param string|null $urlPrivate
-     *
-     * @return self
-     */
     public function setUrlPrivate(?string $urlPrivate): self
     {
         $this->urlPrivate = $urlPrivate;
@@ -1538,19 +1079,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrlPrivateDownload(): ?string
     {
         return $this->urlPrivateDownload;
     }
 
-    /**
-     * @param string|null $urlPrivateDownload
-     *
-     * @return self
-     */
     public function setUrlPrivateDownload(?string $urlPrivateDownload): self
     {
         $this->urlPrivateDownload = $urlPrivateDownload;
@@ -1558,19 +1091,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;
@@ -1578,19 +1103,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUserTeam(): ?string
     {
         return $this->userTeam;
     }
 
-    /**
-     * @param string|null $userTeam
-     *
-     * @return self
-     */
     public function setUserTeam(?string $userTeam): self
     {
         $this->userTeam = $userTeam;
@@ -1598,19 +1115,11 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUsername(): ?string
     {
         return $this->username;
     }
 
-    /**
-     * @param string|null $username
-     *
-     * @return self
-     */
     public function setUsername(?string $username): self
     {
         $this->username = $username;

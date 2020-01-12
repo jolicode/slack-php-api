@@ -85,19 +85,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $ts;
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int|null $id
-     *
-     * @return self
-     */
     public function setId(?int $id): self
     {
         $this->id = $id;
@@ -105,19 +97,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCallbackId(): ?string
     {
         return $this->callbackId;
     }
 
-    /**
-     * @param string|null $callbackId
-     *
-     * @return self
-     */
     public function setCallbackId(?string $callbackId): self
     {
         $this->callbackId = $callbackId;
@@ -125,19 +109,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFallback(): ?string
     {
         return $this->fallback;
     }
 
-    /**
-     * @param string|null $fallback
-     *
-     * @return self
-     */
     public function setFallback(?string $fallback): self
     {
         $this->fallback = $fallback;
@@ -145,19 +121,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getColor(): ?string
     {
         return $this->color;
     }
 
-    /**
-     * @param string|null $color
-     *
-     * @return self
-     */
     public function setColor(?string $color): self
     {
         $this->color = $color;
@@ -165,19 +133,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPretext(): ?string
     {
         return $this->pretext;
     }
 
-    /**
-     * @param string|null $pretext
-     *
-     * @return self
-     */
     public function setPretext(?string $pretext): self
     {
         $this->pretext = $pretext;
@@ -185,19 +145,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAuthorName(): ?string
     {
         return $this->authorName;
     }
 
-    /**
-     * @param string|null $authorName
-     *
-     * @return self
-     */
     public function setAuthorName(?string $authorName): self
     {
         $this->authorName = $authorName;
@@ -205,19 +157,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAuthorLink(): ?string
     {
         return $this->authorLink;
     }
 
-    /**
-     * @param string|null $authorLink
-     *
-     * @return self
-     */
     public function setAuthorLink(?string $authorLink): self
     {
         $this->authorLink = $authorLink;
@@ -225,19 +169,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAuthorIcon(): ?string
     {
         return $this->authorIcon;
     }
 
-    /**
-     * @param string|null $authorIcon
-     *
-     * @return self
-     */
     public function setAuthorIcon(?string $authorIcon): self
     {
         $this->authorIcon = $authorIcon;
@@ -245,19 +181,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
     public function setTitle(?string $title): self
     {
         $this->title = $title;
@@ -265,19 +193,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTitleLink(): ?string
     {
         return $this->titleLink;
     }
 
-    /**
-     * @param string|null $titleLink
-     *
-     * @return self
-     */
     public function setTitleLink(?string $titleLink): self
     {
         $this->titleLink = $titleLink;
@@ -285,19 +205,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getText(): ?string
     {
         return $this->text;
     }
 
-    /**
-     * @param string|null $text
-     *
-     * @return self
-     */
     public function setText(?string $text): self
     {
         $this->text = $text;
@@ -315,8 +227,6 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     /**
      * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
-     *
-     * @return self
      */
     public function setFields(?array $fields): self
     {
@@ -335,8 +245,6 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     /**
      * @param ObjsMessageAttachmentsItemActionsItem[]|null $actions
-     *
-     * @return self
      */
     public function setActions(?array $actions): self
     {
@@ -345,19 +253,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImageUrl(): ?string
     {
         return $this->imageUrl;
     }
 
-    /**
-     * @param string|null $imageUrl
-     *
-     * @return self
-     */
     public function setImageUrl(?string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
@@ -365,19 +265,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getThumbUrl(): ?string
     {
         return $this->thumbUrl;
     }
 
-    /**
-     * @param string|null $thumbUrl
-     *
-     * @return self
-     */
     public function setThumbUrl(?string $thumbUrl): self
     {
         $this->thumbUrl = $thumbUrl;
@@ -385,19 +277,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFooter(): ?string
     {
         return $this->footer;
     }
 
-    /**
-     * @param string|null $footer
-     *
-     * @return self
-     */
     public function setFooter(?string $footer): self
     {
         $this->footer = $footer;
@@ -405,19 +289,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFooterIcon(): ?string
     {
         return $this->footerIcon;
     }
 
-    /**
-     * @param string|null $footerIcon
-     *
-     * @return self
-     */
     public function setFooterIcon(?string $footerIcon): self
     {
         $this->footerIcon = $footerIcon;
@@ -435,8 +311,6 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     /**
      * @param float|string|null $ts
-     *
-     * @return self
      */
     public function setTs($ts): self
     {

@@ -21,19 +21,11 @@ class UsersSetPhotoPostResponse200
      */
     protected $profile;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -41,19 +33,11 @@ class UsersSetPhotoPostResponse200
         return $this;
     }
 
-    /**
-     * @return UsersSetPhotoPostResponse200Profile|null
-     */
     public function getProfile(): ?UsersSetPhotoPostResponse200Profile
     {
         return $this->profile;
     }
 
-    /**
-     * @param UsersSetPhotoPostResponse200Profile|null $profile
-     *
-     * @return self
-     */
     public function setProfile(?UsersSetPhotoPostResponse200Profile $profile): self
     {
         $this->profile = $profile;

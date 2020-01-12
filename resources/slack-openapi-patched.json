@@ -5181,6 +5181,9 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                } ,
+                                "response_metadata": {
+                                    "$ref": "#/definitions/objs_response_metadata"
                                 }
                             },
                             "required": [

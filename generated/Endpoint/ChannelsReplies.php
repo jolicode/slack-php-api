@@ -65,7 +65,6 @@ class ChannelsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\ChannelsRepliesGetResponse200|\JoliCode\Slack\Api\Model\ChannelsRepliesGetResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

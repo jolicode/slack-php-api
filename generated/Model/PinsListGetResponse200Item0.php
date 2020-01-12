@@ -31,8 +31,6 @@ class PinsListGetResponse200Item0
 
     /**
      * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]|null $items
-     *
-     * @return self
      */
     public function setItems($items): self
     {
@@ -41,19 +39,11 @@ class PinsListGetResponse200Item0
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

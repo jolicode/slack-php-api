@@ -97,19 +97,11 @@ class ObjsGroup
      */
     protected $unreadCountDisplay;
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -117,19 +109,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCreator(): ?string
     {
         return $this->creator;
     }
 
-    /**
-     * @param string|null $creator
-     *
-     * @return self
-     */
     public function setCreator(?string $creator): self
     {
         $this->creator = $creator;
@@ -137,19 +121,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -157,19 +133,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsArchived(): ?bool
     {
         return $this->isArchived;
     }
 
-    /**
-     * @param bool|null $isArchived
-     *
-     * @return self
-     */
     public function setIsArchived(?bool $isArchived): self
     {
         $this->isArchived = $isArchived;
@@ -177,19 +145,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsDeleted(): ?bool
     {
         return $this->isDeleted;
     }
 
-    /**
-     * @param bool|null $isDeleted
-     *
-     * @return self
-     */
     public function setIsDeleted(?bool $isDeleted): self
     {
         $this->isDeleted = $isDeleted;
@@ -197,19 +157,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsGroup(): ?bool
     {
         return $this->isGroup;
     }
 
-    /**
-     * @param bool|null $isGroup
-     *
-     * @return self
-     */
     public function setIsGroup(?bool $isGroup): self
     {
         $this->isGroup = $isGroup;
@@ -217,19 +169,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getIsMoved(): ?int
     {
         return $this->isMoved;
     }
 
-    /**
-     * @param int|null $isMoved
-     *
-     * @return self
-     */
     public function setIsMoved(?int $isMoved): self
     {
         $this->isMoved = $isMoved;
@@ -237,19 +181,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsMpim(): ?bool
     {
         return $this->isMpim;
     }
 
-    /**
-     * @param bool|null $isMpim
-     *
-     * @return self
-     */
     public function setIsMpim(?bool $isMpim): self
     {
         $this->isMpim = $isMpim;
@@ -257,19 +193,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOpen(): ?bool
     {
         return $this->isOpen;
     }
 
-    /**
-     * @param bool|null $isOpen
-     *
-     * @return self
-     */
     public function setIsOpen(?bool $isOpen): self
     {
         $this->isOpen = $isOpen;
@@ -277,19 +205,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsPendingExtShared(): ?bool
     {
         return $this->isPendingExtShared;
     }
 
-    /**
-     * @param bool|null $isPendingExtShared
-     *
-     * @return self
-     */
     public function setIsPendingExtShared(?bool $isPendingExtShared): self
     {
         $this->isPendingExtShared = $isPendingExtShared;
@@ -297,19 +217,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
 
-    /**
-     * @param string|null $lastRead
-     *
-     * @return self
-     */
     public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
@@ -327,8 +239,6 @@ class ObjsGroup
 
     /**
      * @param mixed $latest
-     *
-     * @return self
      */
     public function setLatest($latest): self
     {
@@ -347,8 +257,6 @@ class ObjsGroup
 
     /**
      * @param string[]|null $members
-     *
-     * @return self
      */
     public function setMembers(?array $members): self
     {
@@ -357,19 +265,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -377,19 +277,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getNameNormalized(): ?string
     {
         return $this->nameNormalized;
     }
 
-    /**
-     * @param string|null $nameNormalized
-     *
-     * @return self
-     */
     public function setNameNormalized(?string $nameNormalized): self
     {
         $this->nameNormalized = $nameNormalized;
@@ -397,19 +289,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNumMembers(): ?int
     {
         return $this->numMembers;
     }
 
-    /**
-     * @param int|null $numMembers
-     *
-     * @return self
-     */
     public function setNumMembers(?int $numMembers): self
     {
         $this->numMembers = $numMembers;
@@ -417,19 +301,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getPriority(): ?float
     {
         return $this->priority;
     }
 
-    /**
-     * @param float|null $priority
-     *
-     * @return self
-     */
     public function setPriority(?float $priority): self
     {
         $this->priority = $priority;
@@ -437,19 +313,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return ObjsGroupPurpose|null
-     */
     public function getPurpose(): ?ObjsGroupPurpose
     {
         return $this->purpose;
     }
 
-    /**
-     * @param ObjsGroupPurpose|null $purpose
-     *
-     * @return self
-     */
     public function setPurpose(?ObjsGroupPurpose $purpose): self
     {
         $this->purpose = $purpose;
@@ -457,19 +325,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return ObjsGroupTopic|null
-     */
     public function getTopic(): ?ObjsGroupTopic
     {
         return $this->topic;
     }
 
-    /**
-     * @param ObjsGroupTopic|null $topic
-     *
-     * @return self
-     */
     public function setTopic(?ObjsGroupTopic $topic): self
     {
         $this->topic = $topic;
@@ -477,19 +337,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUnreadCount(): ?int
     {
         return $this->unreadCount;
     }
 
-    /**
-     * @param int|null $unreadCount
-     *
-     * @return self
-     */
     public function setUnreadCount(?int $unreadCount): self
     {
         $this->unreadCount = $unreadCount;
@@ -497,19 +349,11 @@ class ObjsGroup
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUnreadCountDisplay(): ?int
     {
         return $this->unreadCountDisplay;
     }
 
-    /**
-     * @param int|null $unreadCountDisplay
-     *
-     * @return self
-     */
     public function setUnreadCountDisplay(?int $unreadCountDisplay): self
     {
         $this->unreadCountDisplay = $unreadCountDisplay;

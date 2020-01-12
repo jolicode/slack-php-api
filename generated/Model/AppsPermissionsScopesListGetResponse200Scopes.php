@@ -51,8 +51,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $appHome
-     *
-     * @return self
      */
     public function setAppHome(?array $appHome): self
     {
@@ -71,8 +69,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $channel
-     *
-     * @return self
      */
     public function setChannel(?array $channel): self
     {
@@ -91,8 +87,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $group
-     *
-     * @return self
      */
     public function setGroup(?array $group): self
     {
@@ -111,8 +105,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $im
-     *
-     * @return self
      */
     public function setIm(?array $im): self
     {
@@ -131,8 +123,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $mpim
-     *
-     * @return self
      */
     public function setMpim(?array $mpim): self
     {
@@ -151,8 +141,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $team
-     *
-     * @return self
      */
     public function setTeam(?array $team): self
     {
@@ -171,8 +159,6 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 
     /**
      * @param string[]|null $user
-     *
-     * @return self
      */
     public function setUser(?array $user): self
     {

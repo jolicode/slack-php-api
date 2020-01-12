@@ -121,19 +121,11 @@ class ObjsUser
      */
     protected $teams;
 
-    /**
-     * @return string|null
-     */
     public function getColor(): ?string
     {
         return $this->color;
     }
 
-    /**
-     * @param string|null $color
-     *
-     * @return self
-     */
     public function setColor(?string $color): self
     {
         $this->color = $color;
@@ -141,19 +133,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    /**
-     * @param bool|null $deleted
-     *
-     * @return self
-     */
     public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
@@ -161,19 +145,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return ObjsEnterpriseUser|null
-     */
     public function getEnterpriseUser(): ?ObjsEnterpriseUser
     {
         return $this->enterpriseUser;
     }
 
-    /**
-     * @param ObjsEnterpriseUser|null $enterpriseUser
-     *
-     * @return self
-     */
     public function setEnterpriseUser(?ObjsEnterpriseUser $enterpriseUser): self
     {
         $this->enterpriseUser = $enterpriseUser;
@@ -181,19 +157,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getHas2fa(): ?bool
     {
         return $this->has2fa;
     }
 
-    /**
-     * @param bool|null $has2fa
-     *
-     * @return self
-     */
     public function setHas2fa(?bool $has2fa): self
     {
         $this->has2fa = $has2fa;
@@ -201,19 +169,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -221,19 +181,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsAdmin(): ?bool
     {
         return $this->isAdmin;
     }
 
-    /**
-     * @param bool|null $isAdmin
-     *
-     * @return self
-     */
     public function setIsAdmin(?bool $isAdmin): self
     {
         $this->isAdmin = $isAdmin;
@@ -241,19 +193,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsAppUser(): ?bool
     {
         return $this->isAppUser;
     }
 
-    /**
-     * @param bool|null $isAppUser
-     *
-     * @return self
-     */
     public function setIsAppUser(?bool $isAppUser): self
     {
         $this->isAppUser = $isAppUser;
@@ -261,19 +205,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsBot(): ?bool
     {
         return $this->isBot;
     }
 
-    /**
-     * @param bool|null $isBot
-     *
-     * @return self
-     */
     public function setIsBot(?bool $isBot): self
     {
         $this->isBot = $isBot;
@@ -281,19 +217,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsInvitedUser(): ?bool
     {
         return $this->isInvitedUser;
     }
 
-    /**
-     * @param bool|null $isInvitedUser
-     *
-     * @return self
-     */
     public function setIsInvitedUser(?bool $isInvitedUser): self
     {
         $this->isInvitedUser = $isInvitedUser;
@@ -301,19 +229,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOwner(): ?bool
     {
         return $this->isOwner;
     }
 
-    /**
-     * @param bool|null $isOwner
-     *
-     * @return self
-     */
     public function setIsOwner(?bool $isOwner): self
     {
         $this->isOwner = $isOwner;
@@ -321,19 +241,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsPrimaryOwner(): ?bool
     {
         return $this->isPrimaryOwner;
     }
 
-    /**
-     * @param bool|null $isPrimaryOwner
-     *
-     * @return self
-     */
     public function setIsPrimaryOwner(?bool $isPrimaryOwner): self
     {
         $this->isPrimaryOwner = $isPrimaryOwner;
@@ -341,19 +253,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsRestricted(): ?bool
     {
         return $this->isRestricted;
     }
 
-    /**
-     * @param bool|null $isRestricted
-     *
-     * @return self
-     */
     public function setIsRestricted(?bool $isRestricted): self
     {
         $this->isRestricted = $isRestricted;
@@ -361,19 +265,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsUltraRestricted(): ?bool
     {
         return $this->isUltraRestricted;
     }
 
-    /**
-     * @param bool|null $isUltraRestricted
-     *
-     * @return self
-     */
     public function setIsUltraRestricted(?bool $isUltraRestricted): self
     {
         $this->isUltraRestricted = $isUltraRestricted;
@@ -381,19 +277,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLocale(): ?string
     {
         return $this->locale;
     }
 
-    /**
-     * @param string|null $locale
-     *
-     * @return self
-     */
     public function setLocale(?string $locale): self
     {
         $this->locale = $locale;
@@ -401,19 +289,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -421,19 +301,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPresence(): ?string
     {
         return $this->presence;
     }
 
-    /**
-     * @param string|null $presence
-     *
-     * @return self
-     */
     public function setPresence(?string $presence): self
     {
         $this->presence = $presence;
@@ -441,19 +313,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return ObjsUserProfile|null
-     */
     public function getProfile(): ?ObjsUserProfile
     {
         return $this->profile;
     }
 
-    /**
-     * @param ObjsUserProfile|null $profile
-     *
-     * @return self
-     */
     public function setProfile(?ObjsUserProfile $profile): self
     {
         $this->profile = $profile;
@@ -461,19 +325,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRealName(): ?string
     {
         return $this->realName;
     }
 
-    /**
-     * @param string|null $realName
-     *
-     * @return self
-     */
     public function setRealName(?string $realName): self
     {
         $this->realName = $realName;
@@ -481,19 +337,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeam(): ?string
     {
         return $this->team;
     }
 
-    /**
-     * @param string|null $team
-     *
-     * @return self
-     */
     public function setTeam(?string $team): self
     {
         $this->team = $team;
@@ -501,19 +349,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeamId(): ?string
     {
         return $this->teamId;
     }
 
-    /**
-     * @param string|null $teamId
-     *
-     * @return self
-     */
     public function setTeamId(?string $teamId): self
     {
         $this->teamId = $teamId;
@@ -521,19 +361,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return ObjsUserTeamProfile|null
-     */
     public function getTeamProfile(): ?ObjsUserTeamProfile
     {
         return $this->teamProfile;
     }
 
-    /**
-     * @param ObjsUserTeamProfile|null $teamProfile
-     *
-     * @return self
-     */
     public function setTeamProfile(?ObjsUserTeamProfile $teamProfile): self
     {
         $this->teamProfile = $teamProfile;
@@ -541,19 +373,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTwoFactorType(): ?string
     {
         return $this->twoFactorType;
     }
 
-    /**
-     * @param string|null $twoFactorType
-     *
-     * @return self
-     */
     public function setTwoFactorType(?string $twoFactorType): self
     {
         $this->twoFactorType = $twoFactorType;
@@ -571,8 +395,6 @@ class ObjsUser
 
     /**
      * @param mixed $tz
-     *
-     * @return self
      */
     public function setTz($tz): self
     {
@@ -581,19 +403,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTzLabel(): ?string
     {
         return $this->tzLabel;
     }
 
-    /**
-     * @param string|null $tzLabel
-     *
-     * @return self
-     */
     public function setTzLabel(?string $tzLabel): self
     {
         $this->tzLabel = $tzLabel;
@@ -601,19 +415,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getTzOffset(): ?float
     {
         return $this->tzOffset;
     }
 
-    /**
-     * @param float|null $tzOffset
-     *
-     * @return self
-     */
     public function setTzOffset(?float $tzOffset): self
     {
         $this->tzOffset = $tzOffset;
@@ -621,19 +427,11 @@ class ObjsUser
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getUpdated(): ?float
     {
         return $this->updated;
     }
 
-    /**
-     * @param float|null $updated
-     *
-     * @return self
-     */
     public function setUpdated(?float $updated): self
     {
         $this->updated = $updated;
@@ -651,8 +449,6 @@ class ObjsUser
 
     /**
      * @param string[]|null $teams
-     *
-     * @return self
      */
     public function setTeams(?array $teams): self
     {

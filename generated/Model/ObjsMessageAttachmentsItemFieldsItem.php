@@ -25,19 +25,11 @@ class ObjsMessageAttachmentsItemFieldsItem
      */
     protected $short;
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
     public function setTitle(?string $title): self
     {
         $this->title = $title;
@@ -45,19 +37,11 @@ class ObjsMessageAttachmentsItemFieldsItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getValue(): ?string
     {
         return $this->value;
     }
 
-    /**
-     * @param string|null $value
-     *
-     * @return self
-     */
     public function setValue(?string $value): self
     {
         $this->value = $value;
@@ -65,19 +49,11 @@ class ObjsMessageAttachmentsItemFieldsItem
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getShort(): ?bool
     {
         return $this->short;
     }
 
-    /**
-     * @param bool|null $short
-     *
-     * @return self
-     */
     public function setShort(?bool $short): self
     {
         $this->short = $short;

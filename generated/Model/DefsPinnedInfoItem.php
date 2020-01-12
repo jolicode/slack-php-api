@@ -21,19 +21,11 @@ class DefsPinnedInfoItem
      */
     protected $pinnedTs;
 
-    /**
-     * @return string|null
-     */
     public function getPinnedBy(): ?string
     {
         return $this->pinnedBy;
     }
 
-    /**
-     * @param string|null $pinnedBy
-     *
-     * @return self
-     */
     public function setPinnedBy(?string $pinnedBy): self
     {
         $this->pinnedBy = $pinnedBy;
@@ -41,19 +33,11 @@ class DefsPinnedInfoItem
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getPinnedTs(): ?int
     {
         return $this->pinnedTs;
     }
 
-    /**
-     * @param int|null $pinnedTs
-     *
-     * @return self
-     */
     public function setPinnedTs(?int $pinnedTs): self
     {
         $this->pinnedTs = $pinnedTs;

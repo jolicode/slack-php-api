@@ -41,8 +41,6 @@ class UsersSetPhotoPostResponsedefault
 
     /**
      * possibly DEV/QA only.
-     *
-     * @return string|null
      */
     public function getDebugStep(): ?string
     {
@@ -51,10 +49,6 @@ class UsersSetPhotoPostResponsedefault
 
     /**
      * possibly DEV/QA only.
-     *
-     * @param string|null $debugStep
-     *
-     * @return self
      */
     public function setDebugStep(?string $debugStep): self
     {
@@ -65,8 +59,6 @@ class UsersSetPhotoPostResponsedefault
 
     /**
      * possibly DEV/QA only.
-     *
-     * @return string|null
      */
     public function getDims(): ?string
     {
@@ -75,10 +67,6 @@ class UsersSetPhotoPostResponsedefault
 
     /**
      * possibly DEV/QA only.
-     *
-     * @param string|null $dims
-     *
-     * @return self
      */
     public function setDims(?string $dims): self
     {
@@ -87,19 +75,11 @@ class UsersSetPhotoPostResponsedefault
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getError(): ?string
     {
         return $this->error;
     }
 
-    /**
-     * @param string|null $error
-     *
-     * @return self
-     */
     public function setError(?string $error): self
     {
         $this->error = $error;
@@ -107,19 +87,11 @@ class UsersSetPhotoPostResponsedefault
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -129,8 +101,6 @@ class UsersSetPhotoPostResponsedefault
 
     /**
      * possibly DEV/QA only.
-     *
-     * @return int|null
      */
     public function getTimeIdent(): ?int
     {
@@ -139,10 +109,6 @@ class UsersSetPhotoPostResponsedefault
 
     /**
      * possibly DEV/QA only.
-     *
-     * @param int|null $timeIdent
-     *
-     * @return self
      */
     public function setTimeIdent(?int $timeIdent): self
     {

@@ -233,19 +233,11 @@ class ObjsConversation
      */
     protected $isUserDeleted;
 
-    /**
-     * @return string|null
-     */
     public function getAcceptedUser(): ?string
     {
         return $this->acceptedUser;
     }
 
-    /**
-     * @param string|null $acceptedUser
-     *
-     * @return self
-     */
     public function setAcceptedUser(?string $acceptedUser): self
     {
         $this->acceptedUser = $acceptedUser;
@@ -263,8 +255,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $connectedTeamIds
-     *
-     * @return self
      */
     public function setConnectedTeamIds(?array $connectedTeamIds): self
     {
@@ -273,19 +263,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getConversationHostId(): ?string
     {
         return $this->conversationHostId;
     }
 
-    /**
-     * @param string|null $conversationHostId
-     *
-     * @return self
-     */
     public function setConversationHostId(?string $conversationHostId): self
     {
         $this->conversationHostId = $conversationHostId;
@@ -293,19 +275,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -313,19 +287,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCreator(): ?string
     {
         return $this->creator;
     }
 
-    /**
-     * @param string|null $creator
-     *
-     * @return self
-     */
     public function setCreator(?string $creator): self
     {
         $this->creator = $creator;
@@ -333,19 +299,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return ObjsConversationDisplayCounts|null
-     */
     public function getDisplayCounts(): ?ObjsConversationDisplayCounts
     {
         return $this->displayCounts;
     }
 
-    /**
-     * @param ObjsConversationDisplayCounts|null $displayCounts
-     *
-     * @return self
-     */
     public function setDisplayCounts(?ObjsConversationDisplayCounts $displayCounts): self
     {
         $this->displayCounts = $displayCounts;
@@ -353,19 +311,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEnterpriseId(): ?string
     {
         return $this->enterpriseId;
     }
 
-    /**
-     * @param string|null $enterpriseId
-     *
-     * @return self
-     */
     public function setEnterpriseId(?string $enterpriseId): self
     {
         $this->enterpriseId = $enterpriseId;
@@ -383,8 +333,6 @@ class ObjsConversation
 
     /**
      * @param mixed $externalConnections
-     *
-     * @return self
      */
     public function setExternalConnections($externalConnections): self
     {
@@ -393,19 +341,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getHasPins(): ?bool
     {
         return $this->hasPins;
     }
 
-    /**
-     * @param bool|null $hasPins
-     *
-     * @return self
-     */
     public function setHasPins(?bool $hasPins): self
     {
         $this->hasPins = $hasPins;
@@ -413,19 +353,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -443,8 +375,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $internalTeamIds
-     *
-     * @return self
      */
     public function setInternalTeamIds(?array $internalTeamIds): self
     {
@@ -453,19 +383,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsArchived(): ?bool
     {
         return $this->isArchived;
     }
 
-    /**
-     * @param bool|null $isArchived
-     *
-     * @return self
-     */
     public function setIsArchived(?bool $isArchived): self
     {
         $this->isArchived = $isArchived;
@@ -473,19 +395,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsChannel(): ?bool
     {
         return $this->isChannel;
     }
 
-    /**
-     * @param bool|null $isChannel
-     *
-     * @return self
-     */
     public function setIsChannel(?bool $isChannel): self
     {
         $this->isChannel = $isChannel;
@@ -493,19 +407,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsExtShared(): ?bool
     {
         return $this->isExtShared;
     }
 
-    /**
-     * @param bool|null $isExtShared
-     *
-     * @return self
-     */
     public function setIsExtShared(?bool $isExtShared): self
     {
         $this->isExtShared = $isExtShared;
@@ -513,19 +419,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsGeneral(): ?bool
     {
         return $this->isGeneral;
     }
 
-    /**
-     * @param bool|null $isGeneral
-     *
-     * @return self
-     */
     public function setIsGeneral(?bool $isGeneral): self
     {
         $this->isGeneral = $isGeneral;
@@ -533,19 +431,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsGlobalShared(): ?bool
     {
         return $this->isGlobalShared;
     }
 
-    /**
-     * @param bool|null $isGlobalShared
-     *
-     * @return self
-     */
     public function setIsGlobalShared(?bool $isGlobalShared): self
     {
         $this->isGlobalShared = $isGlobalShared;
@@ -553,19 +443,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsGroup(): ?bool
     {
         return $this->isGroup;
     }
 
-    /**
-     * @param bool|null $isGroup
-     *
-     * @return self
-     */
     public function setIsGroup(?bool $isGroup): self
     {
         $this->isGroup = $isGroup;
@@ -573,19 +455,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsIm(): ?bool
     {
         return $this->isIm;
     }
 
-    /**
-     * @param bool|null $isIm
-     *
-     * @return self
-     */
     public function setIsIm(?bool $isIm): self
     {
         $this->isIm = $isIm;
@@ -593,19 +467,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsMember(): ?bool
     {
         return $this->isMember;
     }
 
-    /**
-     * @param bool|null $isMember
-     *
-     * @return self
-     */
     public function setIsMember(?bool $isMember): self
     {
         $this->isMember = $isMember;
@@ -613,19 +479,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getIsMoved(): ?int
     {
         return $this->isMoved;
     }
 
-    /**
-     * @param int|null $isMoved
-     *
-     * @return self
-     */
     public function setIsMoved(?int $isMoved): self
     {
         $this->isMoved = $isMoved;
@@ -633,19 +491,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsMpim(): ?bool
     {
         return $this->isMpim;
     }
 
-    /**
-     * @param bool|null $isMpim
-     *
-     * @return self
-     */
     public function setIsMpim(?bool $isMpim): self
     {
         $this->isMpim = $isMpim;
@@ -653,19 +503,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsNonThreadable(): ?bool
     {
         return $this->isNonThreadable;
     }
 
-    /**
-     * @param bool|null $isNonThreadable
-     *
-     * @return self
-     */
     public function setIsNonThreadable(?bool $isNonThreadable): self
     {
         $this->isNonThreadable = $isNonThreadable;
@@ -673,19 +515,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOpen(): ?bool
     {
         return $this->isOpen;
     }
 
-    /**
-     * @param bool|null $isOpen
-     *
-     * @return self
-     */
     public function setIsOpen(?bool $isOpen): self
     {
         $this->isOpen = $isOpen;
@@ -693,19 +527,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOrgDefault(): ?bool
     {
         return $this->isOrgDefault;
     }
 
-    /**
-     * @param bool|null $isOrgDefault
-     *
-     * @return self
-     */
     public function setIsOrgDefault(?bool $isOrgDefault): self
     {
         $this->isOrgDefault = $isOrgDefault;
@@ -713,19 +539,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOrgMandatory(): ?bool
     {
         return $this->isOrgMandatory;
     }
 
-    /**
-     * @param bool|null $isOrgMandatory
-     *
-     * @return self
-     */
     public function setIsOrgMandatory(?bool $isOrgMandatory): self
     {
         $this->isOrgMandatory = $isOrgMandatory;
@@ -733,19 +551,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOrgShared(): ?bool
     {
         return $this->isOrgShared;
     }
 
-    /**
-     * @param bool|null $isOrgShared
-     *
-     * @return self
-     */
     public function setIsOrgShared(?bool $isOrgShared): self
     {
         $this->isOrgShared = $isOrgShared;
@@ -753,19 +563,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsPendingExtShared(): ?bool
     {
         return $this->isPendingExtShared;
     }
 
-    /**
-     * @param bool|null $isPendingExtShared
-     *
-     * @return self
-     */
     public function setIsPendingExtShared(?bool $isPendingExtShared): self
     {
         $this->isPendingExtShared = $isPendingExtShared;
@@ -773,19 +575,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsPrivate(): ?bool
     {
         return $this->isPrivate;
     }
 
-    /**
-     * @param bool|null $isPrivate
-     *
-     * @return self
-     */
     public function setIsPrivate(?bool $isPrivate): self
     {
         $this->isPrivate = $isPrivate;
@@ -793,19 +587,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsReadOnly(): ?bool
     {
         return $this->isReadOnly;
     }
 
-    /**
-     * @param bool|null $isReadOnly
-     *
-     * @return self
-     */
     public function setIsReadOnly(?bool $isReadOnly): self
     {
         $this->isReadOnly = $isReadOnly;
@@ -813,19 +599,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsShared(): ?bool
     {
         return $this->isShared;
     }
 
-    /**
-     * @param bool|null $isShared
-     *
-     * @return self
-     */
     public function setIsShared(?bool $isShared): self
     {
         $this->isShared = $isShared;
@@ -833,19 +611,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsStarred(): ?bool
     {
         return $this->isStarred;
     }
 
-    /**
-     * @param bool|null $isStarred
-     *
-     * @return self
-     */
     public function setIsStarred(?bool $isStarred): self
     {
         $this->isStarred = $isStarred;
@@ -853,19 +623,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsThreadOnly(): ?bool
     {
         return $this->isThreadOnly;
     }
 
-    /**
-     * @param bool|null $isThreadOnly
-     *
-     * @return self
-     */
     public function setIsThreadOnly(?bool $isThreadOnly): self
     {
         $this->isThreadOnly = $isThreadOnly;
@@ -873,19 +635,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastRead(): ?string
     {
         return $this->lastRead;
     }
 
-    /**
-     * @param string|null $lastRead
-     *
-     * @return self
-     */
     public function setLastRead(?string $lastRead): self
     {
         $this->lastRead = $lastRead;
@@ -903,8 +657,6 @@ class ObjsConversation
 
     /**
      * @param mixed $latest
-     *
-     * @return self
      */
     public function setLatest($latest): self
     {
@@ -923,8 +675,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $members
-     *
-     * @return self
      */
     public function setMembers(?array $members): self
     {
@@ -933,19 +683,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -953,19 +695,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getNameNormalized(): ?string
     {
         return $this->nameNormalized;
     }
 
-    /**
-     * @param string|null $nameNormalized
-     *
-     * @return self
-     */
     public function setNameNormalized(?string $nameNormalized): self
     {
         $this->nameNormalized = $nameNormalized;
@@ -973,19 +707,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNumMembers(): ?int
     {
         return $this->numMembers;
     }
 
-    /**
-     * @param int|null $numMembers
-     *
-     * @return self
-     */
     public function setNumMembers(?int $numMembers): self
     {
         $this->numMembers = $numMembers;
@@ -1003,8 +729,6 @@ class ObjsConversation
 
     /**
      * @param mixed $parentConversation
-     *
-     * @return self
      */
     public function setParentConversation($parentConversation): self
     {
@@ -1023,8 +747,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $pendingConnectedTeamIds
-     *
-     * @return self
      */
     public function setPendingConnectedTeamIds(?array $pendingConnectedTeamIds): self
     {
@@ -1043,8 +765,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $pendingShared
-     *
-     * @return self
      */
     public function setPendingShared(?array $pendingShared): self
     {
@@ -1053,19 +773,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getPinCount(): ?int
     {
         return $this->pinCount;
     }
 
-    /**
-     * @param int|null $pinCount
-     *
-     * @return self
-     */
     public function setPinCount(?int $pinCount): self
     {
         $this->pinCount = $pinCount;
@@ -1083,8 +795,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $previousNames
-     *
-     * @return self
      */
     public function setPreviousNames(?array $previousNames): self
     {
@@ -1093,19 +803,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getPriority(): ?float
     {
         return $this->priority;
     }
 
-    /**
-     * @param float|null $priority
-     *
-     * @return self
-     */
     public function setPriority(?float $priority): self
     {
         $this->priority = $priority;
@@ -1113,19 +815,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return ObjsConversationPurpose|null
-     */
     public function getPurpose(): ?ObjsConversationPurpose
     {
         return $this->purpose;
     }
 
-    /**
-     * @param ObjsConversationPurpose|null $purpose
-     *
-     * @return self
-     */
     public function setPurpose(?ObjsConversationPurpose $purpose): self
     {
         $this->purpose = $purpose;
@@ -1143,8 +837,6 @@ class ObjsConversation
 
     /**
      * @param string[]|null $sharedTeamIds
-     *
-     * @return self
      */
     public function setSharedTeamIds(?array $sharedTeamIds): self
     {
@@ -1163,8 +855,6 @@ class ObjsConversation
 
     /**
      * @param ObjsConversationSharesItem[]|null $shares
-     *
-     * @return self
      */
     public function setShares(?array $shares): self
     {
@@ -1173,19 +863,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getTimezoneCount(): ?int
     {
         return $this->timezoneCount;
     }
 
-    /**
-     * @param int|null $timezoneCount
-     *
-     * @return self
-     */
     public function setTimezoneCount(?int $timezoneCount): self
     {
         $this->timezoneCount = $timezoneCount;
@@ -1193,19 +875,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return ObjsConversationTopic|null
-     */
     public function getTopic(): ?ObjsConversationTopic
     {
         return $this->topic;
     }
 
-    /**
-     * @param ObjsConversationTopic|null $topic
-     *
-     * @return self
-     */
     public function setTopic(?ObjsConversationTopic $topic): self
     {
         $this->topic = $topic;
@@ -1213,19 +887,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUnlinked(): ?int
     {
         return $this->unlinked;
     }
 
-    /**
-     * @param int|null $unlinked
-     *
-     * @return self
-     */
     public function setUnlinked(?int $unlinked): self
     {
         $this->unlinked = $unlinked;
@@ -1233,19 +899,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUnreadCount(): ?int
     {
         return $this->unreadCount;
     }
 
-    /**
-     * @param int|null $unreadCount
-     *
-     * @return self
-     */
     public function setUnreadCount(?int $unreadCount): self
     {
         $this->unreadCount = $unreadCount;
@@ -1253,19 +911,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUnreadCountDisplay(): ?int
     {
         return $this->unreadCountDisplay;
     }
 
-    /**
-     * @param int|null $unreadCountDisplay
-     *
-     * @return self
-     */
     public function setUnreadCountDisplay(?int $unreadCountDisplay): self
     {
         $this->unreadCountDisplay = $unreadCountDisplay;
@@ -1273,19 +923,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;
@@ -1293,19 +935,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getVersion(): ?int
     {
         return $this->version;
     }
 
-    /**
-     * @param int|null $version
-     *
-     * @return self
-     */
     public function setVersion(?int $version): self
     {
         $this->version = $version;
@@ -1313,19 +947,11 @@ class ObjsConversation
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsUserDeleted(): ?bool
     {
         return $this->isUserDeleted;
     }
 
-    /**
-     * @param bool|null $isUserDeleted
-     *
-     * @return self
-     */
     public function setIsUserDeleted(?bool $isUserDeleted): self
     {
         $this->isUserDeleted = $isUserDeleted;

@@ -35,8 +35,6 @@ class ObjsResources
 
     /**
      * @param mixed[]|null $excludedIds
-     *
-     * @return self
      */
     public function setExcludedIds(?array $excludedIds): self
     {
@@ -55,8 +53,6 @@ class ObjsResources
 
     /**
      * @param mixed[]|null $ids
-     *
-     * @return self
      */
     public function setIds(?array $ids): self
     {
@@ -65,19 +61,11 @@ class ObjsResources
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getWildcard(): ?bool
     {
         return $this->wildcard;
     }
 
-    /**
-     * @param bool|null $wildcard
-     *
-     * @return self
-     */
     public function setWildcard(?bool $wildcard): self
     {
         $this->wildcard = $wildcard;

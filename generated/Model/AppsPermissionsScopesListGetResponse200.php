@@ -21,19 +21,11 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
      */
     protected $scopes;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -41,19 +33,11 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return AppsPermissionsScopesListGetResponse200Scopes|null
-     */
     public function getScopes(): ?AppsPermissionsScopesListGetResponse200Scopes
     {
         return $this->scopes;
     }
 
-    /**
-     * @param AppsPermissionsScopesListGetResponse200Scopes|null $scopes
-     *
-     * @return self
-     */
     public function setScopes(?AppsPermissionsScopesListGetResponse200Scopes $scopes): self
     {
         $this->scopes = $scopes;

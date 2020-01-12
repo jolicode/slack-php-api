@@ -25,19 +25,11 @@ class ChannelsJoinPostResponse200
      */
     protected $ok;
 
-    /**
-     * @return bool|null
-     */
     public function getAlreadyInChannel(): ?bool
     {
         return $this->alreadyInChannel;
     }
 
-    /**
-     * @param bool|null $alreadyInChannel
-     *
-     * @return self
-     */
     public function setAlreadyInChannel(?bool $alreadyInChannel): self
     {
         $this->alreadyInChannel = $alreadyInChannel;
@@ -45,19 +37,11 @@ class ChannelsJoinPostResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsChannel|null
-     */
     public function getChannel(): ?ObjsChannel
     {
         return $this->channel;
     }
 
-    /**
-     * @param ObjsChannel|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?ObjsChannel $channel): self
     {
         $this->channel = $channel;
@@ -65,19 +49,11 @@ class ChannelsJoinPostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

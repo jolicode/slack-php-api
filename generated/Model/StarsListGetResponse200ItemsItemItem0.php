@@ -29,19 +29,11 @@ class StarsListGetResponse200ItemsItemItem0
      */
     protected $type;
 
-    /**
-     * @return string|null
-     */
     public function getChannel(): ?string
     {
         return $this->channel;
     }
 
-    /**
-     * @param string|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?string $channel): self
     {
         $this->channel = $channel;
@@ -49,19 +41,11 @@ class StarsListGetResponse200ItemsItemItem0
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDateCreate(): ?int
     {
         return $this->dateCreate;
     }
 
-    /**
-     * @param int|null $dateCreate
-     *
-     * @return self
-     */
     public function setDateCreate(?int $dateCreate): self
     {
         $this->dateCreate = $dateCreate;
@@ -69,19 +53,11 @@ class StarsListGetResponse200ItemsItemItem0
         return $this;
     }
 
-    /**
-     * @return ObjsMessage|null
-     */
     public function getMessage(): ?ObjsMessage
     {
         return $this->message;
     }
 
-    /**
-     * @param ObjsMessage|null $message
-     *
-     * @return self
-     */
     public function setMessage(?ObjsMessage $message): self
     {
         $this->message = $message;
@@ -89,19 +65,11 @@ class StarsListGetResponse200ItemsItemItem0
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @return self
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;

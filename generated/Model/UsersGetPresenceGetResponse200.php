@@ -41,19 +41,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
      */
     protected $presence;
 
-    /**
-     * @return bool|null
-     */
     public function getAutoAway(): ?bool
     {
         return $this->autoAway;
     }
 
-    /**
-     * @param bool|null $autoAway
-     *
-     * @return self
-     */
     public function setAutoAway(?bool $autoAway): self
     {
         $this->autoAway = $autoAway;
@@ -61,19 +53,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getConnectionCount(): ?int
     {
         return $this->connectionCount;
     }
 
-    /**
-     * @param int|null $connectionCount
-     *
-     * @return self
-     */
     public function setConnectionCount(?int $connectionCount): self
     {
         $this->connectionCount = $connectionCount;
@@ -81,19 +65,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getLastActivity(): ?int
     {
         return $this->lastActivity;
     }
 
-    /**
-     * @param int|null $lastActivity
-     *
-     * @return self
-     */
     public function setLastActivity(?int $lastActivity): self
     {
         $this->lastActivity = $lastActivity;
@@ -101,19 +77,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getManualAway(): ?bool
     {
         return $this->manualAway;
     }
 
-    /**
-     * @param bool|null $manualAway
-     *
-     * @return self
-     */
     public function setManualAway(?bool $manualAway): self
     {
         $this->manualAway = $manualAway;
@@ -121,19 +89,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -141,19 +101,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOnline(): ?bool
     {
         return $this->online;
     }
 
-    /**
-     * @param bool|null $online
-     *
-     * @return self
-     */
     public function setOnline(?bool $online): self
     {
         $this->online = $online;
@@ -161,19 +113,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPresence(): ?string
     {
         return $this->presence;
     }
 
-    /**
-     * @param string|null $presence
-     *
-     * @return self
-     */
     public function setPresence(?string $presence): self
     {
         $this->presence = $presence;

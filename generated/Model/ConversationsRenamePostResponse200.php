@@ -21,19 +21,11 @@ class ConversationsRenamePostResponse200
      */
     protected $ok;
 
-    /**
-     * @return ObjsConversation|null
-     */
     public function getChannel(): ?ObjsConversation
     {
         return $this->channel;
     }
 
-    /**
-     * @param ObjsConversation|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?ObjsConversation $channel): self
     {
         $this->channel = $channel;
@@ -41,19 +33,11 @@ class ConversationsRenamePostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

@@ -51,8 +51,6 @@ class FilesInfoGetResponse200
 
     /**
      * @param mixed[]|null $comments
-     *
-     * @return self
      */
     public function setComments(?array $comments): self
     {
@@ -61,6 +59,9 @@ class FilesInfoGetResponse200
         return $this;
     }
 
+    /**
+     * @return null
+     */
     public function getContentHtml()
     {
         return $this->contentHtml;
@@ -68,8 +69,6 @@ class FilesInfoGetResponse200
 
     /**
      * @param null $contentHtml
-     *
-     * @return self
      */
     public function setContentHtml($contentHtml): self
     {
@@ -78,19 +77,11 @@ class FilesInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEditor(): ?string
     {
         return $this->editor;
     }
 
-    /**
-     * @param string|null $editor
-     *
-     * @return self
-     */
     public function setEditor(?string $editor): self
     {
         $this->editor = $editor;
@@ -98,19 +89,11 @@ class FilesInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsFile|null
-     */
     public function getFile(): ?ObjsFile
     {
         return $this->file;
     }
 
-    /**
-     * @param ObjsFile|null $file
-     *
-     * @return self
-     */
     public function setFile(?ObjsFile $file): self
     {
         $this->file = $file;
@@ -118,19 +101,11 @@ class FilesInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -138,19 +113,11 @@ class FilesInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsPaging|null
-     */
     public function getPaging(): ?ObjsPaging
     {
         return $this->paging;
     }
 
-    /**
-     * @param ObjsPaging|null $paging
-     *
-     * @return self
-     */
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;
@@ -158,19 +125,11 @@ class FilesInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsResponseMetadata|null
-     */
     public function getResponseMetadata(): ?ObjsResponseMetadata
     {
         return $this->responseMetadata;
     }
 
-    /**
-     * @param ObjsResponseMetadata|null $responseMetadata
-     *
-     * @return self
-     */
     public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;
