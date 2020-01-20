@@ -27,8 +27,6 @@ class ConversationsJoinPostResponse200ResponseMetadata
 
     /**
      * @param string[]|null $warnings
-     *
-     * @return self
      */
     public function setWarnings(?array $warnings): self
     {

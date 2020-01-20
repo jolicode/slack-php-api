@@ -82,7 +82,6 @@ class ImOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\ImOpenPostResponse200|\JoliCode\Slack\Api\Model\ImOpenPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

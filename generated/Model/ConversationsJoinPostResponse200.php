@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsJoinPostResponse200
 {
     /**
-     * @var ObjsConversation
+     * @var mixed
      */
     protected $channel;
     /**
@@ -30,38 +30,28 @@ class ConversationsJoinPostResponse200
     protected $warning;
 
     /**
-     * @return ObjsConversation|null
+     * @return mixed
      */
-    public function getChannel(): ?ObjsConversation
+    public function getChannel()
     {
         return $this->channel;
     }
 
     /**
-     * @param ObjsConversation|null $channel
-     *
-     * @return self
+     * @param mixed $channel
      */
-    public function setChannel(?ObjsConversation $channel): self
+    public function setChannel($channel): self
     {
         $this->channel = $channel;
 
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -69,19 +59,11 @@ class ConversationsJoinPostResponse200
         return $this;
     }
 
-    /**
-     * @return ConversationsJoinPostResponse200ResponseMetadata|null
-     */
     public function getResponseMetadata(): ?ConversationsJoinPostResponse200ResponseMetadata
     {
         return $this->responseMetadata;
     }
 
-    /**
-     * @param ConversationsJoinPostResponse200ResponseMetadata|null $responseMetadata
-     *
-     * @return self
-     */
     public function setResponseMetadata(?ConversationsJoinPostResponse200ResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;
@@ -89,19 +71,11 @@ class ConversationsJoinPostResponse200
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getWarning(): ?string
     {
         return $this->warning;
     }
 
-    /**
-     * @param string|null $warning
-     *
-     * @return self
-     */
     public function setWarning(?string $warning): self
     {
         $this->warning = $warning;

@@ -35,8 +35,6 @@ class StarsListGetResponse200
 
     /**
      * @param mixed[]|null $items
-     *
-     * @return self
      */
     public function setItems(?array $items): self
     {
@@ -45,19 +43,11 @@ class StarsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -65,19 +55,11 @@ class StarsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsPaging|null
-     */
     public function getPaging(): ?ObjsPaging
     {
         return $this->paging;
     }
 
-    /**
-     * @param ObjsPaging|null $paging
-     *
-     * @return self
-     */
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;

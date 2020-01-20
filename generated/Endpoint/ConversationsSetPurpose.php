@@ -80,7 +80,6 @@ class ConversationsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200|\JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

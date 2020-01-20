@@ -21,19 +21,11 @@ class TeamInfoGetResponse200
      */
     protected $team;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -41,19 +33,11 @@ class TeamInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsTeam|null
-     */
     public function getTeam(): ?ObjsTeam
     {
         return $this->team;
     }
 
-    /**
-     * @param ObjsTeam|null $team
-     *
-     * @return self
-     */
     public function setTeam(?ObjsTeam $team): self
     {
         $this->team = $team;

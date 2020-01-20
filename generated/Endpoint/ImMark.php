@@ -18,7 +18,7 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
      * @param array $formParameters {
      *
      *     @var string $channel direct message channel to set reading cursor in
-     *     @var string $ts Timestamp of the most recently seen message.
+     *     @var float $ts Timestamp of the most recently seen message.
      * }
      *
      * @param array $headerParameters {
@@ -61,7 +61,7 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['float']);
 
         return $optionsResolver;
     }
@@ -79,7 +79,6 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\ImMarkPostResponse200|\JoliCode\Slack\Api\Model\ImMarkPostResponsedefault|null
      */

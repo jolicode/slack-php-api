@@ -18,7 +18,7 @@ class ConversationsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * @param array $queryParameters {
      *
      *     @var bool $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
-     *     @var string $ts unique identifier of a thread's parent message
+     *     @var float $ts unique identifier of a thread's parent message
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
@@ -61,7 +61,7 @@ class ConversationsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('inclusive', ['bool']);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['float']);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
@@ -74,7 +74,6 @@ class ConversationsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200|\JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault|null
      */

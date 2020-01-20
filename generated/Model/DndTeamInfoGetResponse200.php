@@ -25,19 +25,11 @@ class DndTeamInfoGetResponse200
      */
     protected $users;
 
-    /**
-     * @return bool|null
-     */
     public function getCached(): ?bool
     {
         return $this->cached;
     }
 
-    /**
-     * @param bool|null $cached
-     *
-     * @return self
-     */
     public function setCached(?bool $cached): self
     {
         $this->cached = $cached;
@@ -45,19 +37,11 @@ class DndTeamInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -75,8 +59,6 @@ class DndTeamInfoGetResponse200
 
     /**
      * @param mixed $users
-     *
-     * @return self
      */
     public function setUsers($users): self
     {

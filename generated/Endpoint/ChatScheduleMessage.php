@@ -17,7 +17,7 @@ class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
@@ -70,7 +70,7 @@ class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(['thread_ts', 'blocks', 'attachments', 'unfurl_links', 'text', 'link_names', 'unfurl_media', 'parse', 'as_user', 'post_at', 'channel', 'reply_broadcast']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
         $optionsResolver->setAllowedTypes('unfurl_links', ['bool']);
@@ -99,7 +99,6 @@ class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault|null
      */

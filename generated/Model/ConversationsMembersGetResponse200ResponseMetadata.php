@@ -17,19 +17,11 @@ class ConversationsMembersGetResponse200ResponseMetadata
      */
     protected $nextCursor;
 
-    /**
-     * @return string|null
-     */
     public function getNextCursor(): ?string
     {
         return $this->nextCursor;
     }
 
-    /**
-     * @param string|null $nextCursor
-     *
-     * @return self
-     */
     public function setNextCursor(?string $nextCursor): self
     {
         $this->nextCursor = $nextCursor;

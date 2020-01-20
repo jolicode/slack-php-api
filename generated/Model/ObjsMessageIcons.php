@@ -17,19 +17,11 @@ class ObjsMessageIcons
      */
     protected $emoji;
 
-    /**
-     * @return string|null
-     */
     public function getEmoji(): ?string
     {
         return $this->emoji;
     }
 
-    /**
-     * @param string|null $emoji
-     *
-     * @return self
-     */
     public function setEmoji(?string $emoji): self
     {
         $this->emoji = $emoji;

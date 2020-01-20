@@ -17,7 +17,7 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @param array $formParameters {
      *
-     *     @var string $ts timestamp of the most recently seen message
+     *     @var float $ts timestamp of the most recently seen message
      *     @var string $channel Channel to set reading cursor in.
      * }
      *
@@ -60,7 +60,7 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(['ts', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;
@@ -79,7 +79,6 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\ChannelsMarkPostResponse200|\JoliCode\Slack\Api\Model\ChannelsMarkPostResponsedefault|null
      */

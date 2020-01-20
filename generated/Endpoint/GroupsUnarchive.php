@@ -78,7 +78,6 @@ class GroupsUnarchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\GroupsUnarchivePostResponse200|\JoliCode\Slack\Api\Model\GroupsUnarchivePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

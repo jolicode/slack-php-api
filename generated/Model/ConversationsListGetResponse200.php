@@ -13,7 +13,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsListGetResponse200
 {
     /**
-     * @var ObjsConversation[]
+     * @var mixed[]
      */
     protected $channels;
     /**
@@ -26,7 +26,7 @@ class ConversationsListGetResponse200
     protected $responseMetadata;
 
     /**
-     * @return ObjsConversation[]|null
+     * @return mixed[]|null
      */
     public function getChannels(): ?array
     {
@@ -34,9 +34,7 @@ class ConversationsListGetResponse200
     }
 
     /**
-     * @param ObjsConversation[]|null $channels
-     *
-     * @return self
+     * @param mixed[]|null $channels
      */
     public function setChannels(?array $channels): self
     {
@@ -45,19 +43,11 @@ class ConversationsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -65,19 +55,11 @@ class ConversationsListGetResponse200
         return $this;
     }
 
-    /**
-     * @return ConversationsListGetResponse200ResponseMetadata|null
-     */
     public function getResponseMetadata(): ?ConversationsListGetResponse200ResponseMetadata
     {
         return $this->responseMetadata;
     }
 
-    /**
-     * @param ConversationsListGetResponse200ResponseMetadata|null $responseMetadata
-     *
-     * @return self
-     */
     public function setResponseMetadata(?ConversationsListGetResponse200ResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;

@@ -21,19 +21,11 @@ class RemindersListGetResponse200
      */
     protected $reminders;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -51,8 +43,6 @@ class RemindersListGetResponse200
 
     /**
      * @param ObjsReminder[]|null $reminders
-     *
-     * @return self
      */
     public function setReminders(?array $reminders): self
     {

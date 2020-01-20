@@ -31,8 +31,6 @@ class ImListGetResponse200
 
     /**
      * @param ObjsIm[]|null $ims
-     *
-     * @return self
      */
     public function setIms(?array $ims): self
     {
@@ -41,19 +39,11 @@ class ImListGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

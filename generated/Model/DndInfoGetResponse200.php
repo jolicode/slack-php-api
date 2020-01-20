@@ -41,19 +41,11 @@ class DndInfoGetResponse200
      */
     protected $snoozeRemaining;
 
-    /**
-     * @return bool|null
-     */
     public function getDndEnabled(): ?bool
     {
         return $this->dndEnabled;
     }
 
-    /**
-     * @param bool|null $dndEnabled
-     *
-     * @return self
-     */
     public function setDndEnabled(?bool $dndEnabled): self
     {
         $this->dndEnabled = $dndEnabled;
@@ -61,19 +53,11 @@ class DndInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNextDndEndTs(): ?int
     {
         return $this->nextDndEndTs;
     }
 
-    /**
-     * @param int|null $nextDndEndTs
-     *
-     * @return self
-     */
     public function setNextDndEndTs(?int $nextDndEndTs): self
     {
         $this->nextDndEndTs = $nextDndEndTs;
@@ -81,19 +65,11 @@ class DndInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getNextDndStartTs(): ?int
     {
         return $this->nextDndStartTs;
     }
 
-    /**
-     * @param int|null $nextDndStartTs
-     *
-     * @return self
-     */
     public function setNextDndStartTs(?int $nextDndStartTs): self
     {
         $this->nextDndStartTs = $nextDndStartTs;
@@ -101,19 +77,11 @@ class DndInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -121,19 +89,11 @@ class DndInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getSnoozeEnabled(): ?bool
     {
         return $this->snoozeEnabled;
     }
 
-    /**
-     * @param bool|null $snoozeEnabled
-     *
-     * @return self
-     */
     public function setSnoozeEnabled(?bool $snoozeEnabled): self
     {
         $this->snoozeEnabled = $snoozeEnabled;
@@ -141,19 +101,11 @@ class DndInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getSnoozeEndtime(): ?int
     {
         return $this->snoozeEndtime;
     }
 
-    /**
-     * @param int|null $snoozeEndtime
-     *
-     * @return self
-     */
     public function setSnoozeEndtime(?int $snoozeEndtime): self
     {
         $this->snoozeEndtime = $snoozeEndtime;
@@ -161,19 +113,11 @@ class DndInfoGetResponse200
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getSnoozeRemaining(): ?int
     {
         return $this->snoozeRemaining;
     }
 
-    /**
-     * @param int|null $snoozeRemaining
-     *
-     * @return self
-     */
     public function setSnoozeRemaining(?int $snoozeRemaining): self
     {
         $this->snoozeRemaining = $snoozeRemaining;

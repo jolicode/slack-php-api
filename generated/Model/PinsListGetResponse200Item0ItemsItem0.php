@@ -33,19 +33,11 @@ class PinsListGetResponse200Item0ItemsItem0
      */
     protected $type;
 
-    /**
-     * @return ObjsComment|null
-     */
     public function getComment(): ?ObjsComment
     {
         return $this->comment;
     }
 
-    /**
-     * @param ObjsComment|null $comment
-     *
-     * @return self
-     */
     public function setComment(?ObjsComment $comment): self
     {
         $this->comment = $comment;
@@ -53,19 +45,11 @@ class PinsListGetResponse200Item0ItemsItem0
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -73,19 +57,11 @@ class PinsListGetResponse200Item0ItemsItem0
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCreatedBy(): ?string
     {
         return $this->createdBy;
     }
 
-    /**
-     * @param string|null $createdBy
-     *
-     * @return self
-     */
     public function setCreatedBy(?string $createdBy): self
     {
         $this->createdBy = $createdBy;
@@ -93,19 +69,11 @@ class PinsListGetResponse200Item0ItemsItem0
         return $this;
     }
 
-    /**
-     * @return ObjsFile|null
-     */
     public function getFile(): ?ObjsFile
     {
         return $this->file;
     }
 
-    /**
-     * @param ObjsFile|null $file
-     *
-     * @return self
-     */
     public function setFile(?ObjsFile $file): self
     {
         $this->file = $file;
@@ -113,19 +81,11 @@ class PinsListGetResponse200Item0ItemsItem0
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @return self
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;

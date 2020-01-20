@@ -93,19 +93,11 @@ class ObjsSubteam
      */
     protected $users;
 
-    /**
-     * @return bool|null
-     */
     public function getAutoProvision(): ?bool
     {
         return $this->autoProvision;
     }
 
-    /**
-     * @param bool|null $autoProvision
-     *
-     * @return self
-     */
     public function setAutoProvision(?bool $autoProvision): self
     {
         $this->autoProvision = $autoProvision;
@@ -123,8 +115,6 @@ class ObjsSubteam
 
     /**
      * @param mixed $autoType
-     *
-     * @return self
      */
     public function setAutoType($autoType): self
     {
@@ -133,19 +123,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCreatedBy(): ?string
     {
         return $this->createdBy;
     }
 
-    /**
-     * @param string|null $createdBy
-     *
-     * @return self
-     */
     public function setCreatedBy(?string $createdBy): self
     {
         $this->createdBy = $createdBy;
@@ -153,19 +135,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDateCreate(): ?int
     {
         return $this->dateCreate;
     }
 
-    /**
-     * @param int|null $dateCreate
-     *
-     * @return self
-     */
     public function setDateCreate(?int $dateCreate): self
     {
         $this->dateCreate = $dateCreate;
@@ -173,19 +147,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDateDelete(): ?int
     {
         return $this->dateDelete;
     }
 
-    /**
-     * @param int|null $dateDelete
-     *
-     * @return self
-     */
     public function setDateDelete(?int $dateDelete): self
     {
         $this->dateDelete = $dateDelete;
@@ -193,19 +159,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDateUpdate(): ?int
     {
         return $this->dateUpdate;
     }
 
-    /**
-     * @param int|null $dateUpdate
-     *
-     * @return self
-     */
     public function setDateUpdate(?int $dateUpdate): self
     {
         $this->dateUpdate = $dateUpdate;
@@ -223,8 +181,6 @@ class ObjsSubteam
 
     /**
      * @param mixed $deletedBy
-     *
-     * @return self
      */
     public function setDeletedBy($deletedBy): self
     {
@@ -233,19 +189,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string|null $description
-     *
-     * @return self
-     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -253,19 +201,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEnterpriseSubteamId(): ?string
     {
         return $this->enterpriseSubteamId;
     }
 
-    /**
-     * @param string|null $enterpriseSubteamId
-     *
-     * @return self
-     */
     public function setEnterpriseSubteamId(?string $enterpriseSubteamId): self
     {
         $this->enterpriseSubteamId = $enterpriseSubteamId;
@@ -273,19 +213,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getHandle(): ?string
     {
         return $this->handle;
     }
 
-    /**
-     * @param string|null $handle
-     *
-     * @return self
-     */
     public function setHandle(?string $handle): self
     {
         $this->handle = $handle;
@@ -293,19 +225,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -313,19 +237,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsExternal(): ?bool
     {
         return $this->isExternal;
     }
 
-    /**
-     * @param bool|null $isExternal
-     *
-     * @return self
-     */
     public function setIsExternal(?bool $isExternal): self
     {
         $this->isExternal = $isExternal;
@@ -333,19 +249,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsSubteam(): ?bool
     {
         return $this->isSubteam;
     }
 
-    /**
-     * @param bool|null $isSubteam
-     *
-     * @return self
-     */
     public function setIsSubteam(?bool $isSubteam): self
     {
         $this->isSubteam = $isSubteam;
@@ -353,19 +261,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsUsergroup(): ?bool
     {
         return $this->isUsergroup;
     }
 
-    /**
-     * @param bool|null $isUsergroup
-     *
-     * @return self
-     */
     public function setIsUsergroup(?bool $isUsergroup): self
     {
         $this->isUsergroup = $isUsergroup;
@@ -373,19 +273,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -393,19 +285,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return ObjsSubteamPrefs|null
-     */
     public function getPrefs(): ?ObjsSubteamPrefs
     {
         return $this->prefs;
     }
 
-    /**
-     * @param ObjsSubteamPrefs|null $prefs
-     *
-     * @return self
-     */
     public function setPrefs(?ObjsSubteamPrefs $prefs): self
     {
         $this->prefs = $prefs;
@@ -413,19 +297,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeamId(): ?string
     {
         return $this->teamId;
     }
 
-    /**
-     * @param string|null $teamId
-     *
-     * @return self
-     */
     public function setTeamId(?string $teamId): self
     {
         $this->teamId = $teamId;
@@ -433,19 +309,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUpdatedBy(): ?string
     {
         return $this->updatedBy;
     }
 
-    /**
-     * @param string|null $updatedBy
-     *
-     * @return self
-     */
     public function setUpdatedBy(?string $updatedBy): self
     {
         $this->updatedBy = $updatedBy;
@@ -453,19 +321,11 @@ class ObjsSubteam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUserCount(): ?int
     {
         return $this->userCount;
     }
 
-    /**
-     * @param int|null $userCount
-     *
-     * @return self
-     */
     public function setUserCount(?int $userCount): self
     {
         $this->userCount = $userCount;
@@ -483,8 +343,6 @@ class ObjsSubteam
 
     /**
      * @param string[]|null $users
-     *
-     * @return self
      */
     public function setUsers(?array $users): self
     {

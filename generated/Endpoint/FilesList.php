@@ -19,8 +19,8 @@ class FilesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *
      *     @var string $count
      *     @var string $channel filter files appearing in a specific channel, indicated by its ID
-     *     @var string $ts_to filter files created before this timestamp (inclusive)
-     *     @var string $ts_from filter files created after this timestamp (inclusive)
+     *     @var float $ts_to filter files created before this timestamp (inclusive)
+     *     @var float $ts_from filter files created after this timestamp (inclusive)
      *     @var string $token Authentication token. Requires scope: `files:read`
      *     @var string $user filter files created by a single user
      *     @var string $page
@@ -62,8 +62,8 @@ class FilesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('count', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('ts_to', ['string']);
-        $optionsResolver->setAllowedTypes('ts_from', ['string']);
+        $optionsResolver->setAllowedTypes('ts_to', ['float']);
+        $optionsResolver->setAllowedTypes('ts_from', ['float']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('user', ['string']);
         $optionsResolver->setAllowedTypes('page', ['string']);
@@ -74,7 +74,6 @@ class FilesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\FilesListGetResponse200|\JoliCode\Slack\Api\Model\FilesListGetResponsedefault|null
      */

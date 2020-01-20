@@ -25,19 +25,11 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
      */
     protected $responseMetadata;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -55,8 +47,6 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
 
     /**
      * @param AppsPermissionsResourcesListGetResponse200ResourcesItem[]|null $resources
-     *
-     * @return self
      */
     public function setResources(?array $resources): self
     {
@@ -65,19 +55,11 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return AppsPermissionsResourcesListGetResponse200ResponseMetadata|null
-     */
     public function getResponseMetadata(): ?AppsPermissionsResourcesListGetResponse200ResponseMetadata
     {
         return $this->responseMetadata;
     }
 
-    /**
-     * @param AppsPermissionsResourcesListGetResponse200ResponseMetadata|null $responseMetadata
-     *
-     * @return self
-     */
     public function setResponseMetadata(?AppsPermissionsResourcesListGetResponse200ResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;

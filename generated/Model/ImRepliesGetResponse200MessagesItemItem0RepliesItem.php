@@ -21,19 +21,11 @@ class ImRepliesGetResponse200MessagesItemItem0RepliesItem
      */
     protected $user;
 
-    /**
-     * @return string|null
-     */
     public function getTs(): ?string
     {
         return $this->ts;
     }
 
-    /**
-     * @param string|null $ts
-     *
-     * @return self
-     */
     public function setTs(?string $ts): self
     {
         $this->ts = $ts;
@@ -41,19 +33,11 @@ class ImRepliesGetResponse200MessagesItemItem0RepliesItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;

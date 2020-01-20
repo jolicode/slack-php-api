@@ -21,19 +21,11 @@ class AppsPermissionsInfoGetResponse200InfoIm
      */
     protected $scopes;
 
-    /**
-     * @return ObjsResources|null
-     */
     public function getResources(): ?ObjsResources
     {
         return $this->resources;
     }
 
-    /**
-     * @param ObjsResources|null $resources
-     *
-     * @return self
-     */
     public function setResources(?ObjsResources $resources): self
     {
         $this->resources = $resources;
@@ -51,8 +43,6 @@ class AppsPermissionsInfoGetResponse200InfoIm
 
     /**
      * @param string[]|null $scopes
-     *
-     * @return self
      */
     public function setScopes(?array $scopes): self
     {

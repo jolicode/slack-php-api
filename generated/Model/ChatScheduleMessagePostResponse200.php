@@ -33,19 +33,11 @@ class ChatScheduleMessagePostResponse200
      */
     protected $scheduledMessageId;
 
-    /**
-     * @return string|null
-     */
     public function getChannel(): ?string
     {
         return $this->channel;
     }
 
-    /**
-     * @param string|null $channel
-     *
-     * @return self
-     */
     public function setChannel(?string $channel): self
     {
         $this->channel = $channel;
@@ -53,19 +45,11 @@ class ChatScheduleMessagePostResponse200
         return $this;
     }
 
-    /**
-     * @return ChatScheduleMessagePostResponse200Message|null
-     */
     public function getMessage(): ?ChatScheduleMessagePostResponse200Message
     {
         return $this->message;
     }
 
-    /**
-     * @param ChatScheduleMessagePostResponse200Message|null $message
-     *
-     * @return self
-     */
     public function setMessage(?ChatScheduleMessagePostResponse200Message $message): self
     {
         $this->message = $message;
@@ -73,19 +57,11 @@ class ChatScheduleMessagePostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -93,19 +69,11 @@ class ChatScheduleMessagePostResponse200
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getPostAt(): ?int
     {
         return $this->postAt;
     }
 
-    /**
-     * @param int|null $postAt
-     *
-     * @return self
-     */
     public function setPostAt(?int $postAt): self
     {
         $this->postAt = $postAt;
@@ -113,19 +81,11 @@ class ChatScheduleMessagePostResponse200
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getScheduledMessageId(): ?string
     {
         return $this->scheduledMessageId;
     }
 
-    /**
-     * @param string|null $scheduledMessageId
-     *
-     * @return self
-     */
     public function setScheduledMessageId(?string $scheduledMessageId): self
     {
         $this->scheduledMessageId = $scheduledMessageId;

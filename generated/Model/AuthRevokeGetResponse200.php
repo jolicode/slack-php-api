@@ -21,19 +21,11 @@ class AuthRevokeGetResponse200
      */
     protected $revoked;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -41,19 +33,11 @@ class AuthRevokeGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getRevoked(): ?bool
     {
         return $this->revoked;
     }
 
-    /**
-     * @param bool|null $revoked
-     *
-     * @return self
-     */
     public function setRevoked(?bool $revoked): self
     {
         $this->revoked = $revoked;

@@ -25,19 +25,11 @@ class UsersIdentityGetResponse200Item1User
      */
     protected $name;
 
-    /**
-     * @return string|null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param string|null $email
-     *
-     * @return self
-     */
     public function setEmail(?string $email): self
     {
         $this->email = $email;
@@ -45,19 +37,11 @@ class UsersIdentityGetResponse200Item1User
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -65,19 +49,11 @@ class UsersIdentityGetResponse200Item1User
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;

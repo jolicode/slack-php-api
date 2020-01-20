@@ -145,19 +145,11 @@ class ObjsUserProfile
      */
     protected $title;
 
-    /**
-     * @return bool|null
-     */
     public function getAlwaysActive(): ?bool
     {
         return $this->alwaysActive;
     }
 
-    /**
-     * @param bool|null $alwaysActive
-     *
-     * @return self
-     */
     public function setAlwaysActive(?bool $alwaysActive): self
     {
         $this->alwaysActive = $alwaysActive;
@@ -165,19 +157,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getApiAppId(): ?string
     {
         return $this->apiAppId;
     }
 
-    /**
-     * @param string|null $apiAppId
-     *
-     * @return self
-     */
     public function setApiAppId(?string $apiAppId): self
     {
         $this->apiAppId = $apiAppId;
@@ -185,19 +169,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAvatarHash(): ?string
     {
         return $this->avatarHash;
     }
 
-    /**
-     * @param string|null $avatarHash
-     *
-     * @return self
-     */
     public function setAvatarHash(?string $avatarHash): self
     {
         $this->avatarHash = $avatarHash;
@@ -205,19 +181,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getBotId(): ?string
     {
         return $this->botId;
     }
 
-    /**
-     * @param string|null $botId
-     *
-     * @return self
-     */
     public function setBotId(?string $botId): self
     {
         $this->botId = $botId;
@@ -225,19 +193,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
-    /**
-     * @param string|null $displayName
-     *
-     * @return self
-     */
     public function setDisplayName(?string $displayName): self
     {
         $this->displayName = $displayName;
@@ -245,19 +205,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDisplayNameNormalized(): ?string
     {
         return $this->displayNameNormalized;
     }
 
-    /**
-     * @param string|null $displayNameNormalized
-     *
-     * @return self
-     */
     public function setDisplayNameNormalized(?string $displayNameNormalized): self
     {
         $this->displayNameNormalized = $displayNameNormalized;
@@ -265,19 +217,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @param string|null $email
-     *
-     * @return self
-     */
     public function setEmail(?string $email): self
     {
         $this->email = $email;
@@ -295,8 +239,6 @@ class ObjsUserProfile
 
     /**
      * @param mixed|mixed[]|null $fields
-     *
-     * @return self
      */
     public function setFields($fields): self
     {
@@ -305,19 +247,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    /**
-     * @param string|null $firstName
-     *
-     * @return self
-     */
     public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
@@ -325,19 +259,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGuestChannels(): ?string
     {
         return $this->guestChannels;
     }
 
-    /**
-     * @param string|null $guestChannels
-     *
-     * @return self
-     */
     public function setGuestChannels(?string $guestChannels): self
     {
         $this->guestChannels = $guestChannels;
@@ -345,19 +271,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getGuestExpirationTs(): ?int
     {
         return $this->guestExpirationTs;
     }
 
-    /**
-     * @param int|null $guestExpirationTs
-     *
-     * @return self
-     */
     public function setGuestExpirationTs(?int $guestExpirationTs): self
     {
         $this->guestExpirationTs = $guestExpirationTs;
@@ -365,19 +283,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGuestInvitedBy(): ?string
     {
         return $this->guestInvitedBy;
     }
 
-    /**
-     * @param string|null $guestInvitedBy
-     *
-     * @return self
-     */
     public function setGuestInvitedBy(?string $guestInvitedBy): self
     {
         $this->guestInvitedBy = $guestInvitedBy;
@@ -385,19 +295,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage1024(): ?string
     {
         return $this->image1024;
     }
 
-    /**
-     * @param string|null $image1024
-     *
-     * @return self
-     */
     public function setImage1024(?string $image1024): self
     {
         $this->image1024 = $image1024;
@@ -405,19 +307,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage192(): ?string
     {
         return $this->image192;
     }
 
-    /**
-     * @param string|null $image192
-     *
-     * @return self
-     */
     public function setImage192(?string $image192): self
     {
         $this->image192 = $image192;
@@ -425,19 +319,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage24(): ?string
     {
         return $this->image24;
     }
 
-    /**
-     * @param string|null $image24
-     *
-     * @return self
-     */
     public function setImage24(?string $image24): self
     {
         $this->image24 = $image24;
@@ -445,19 +331,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage32(): ?string
     {
         return $this->image32;
     }
 
-    /**
-     * @param string|null $image32
-     *
-     * @return self
-     */
     public function setImage32(?string $image32): self
     {
         $this->image32 = $image32;
@@ -465,19 +343,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage48(): ?string
     {
         return $this->image48;
     }
 
-    /**
-     * @param string|null $image48
-     *
-     * @return self
-     */
     public function setImage48(?string $image48): self
     {
         $this->image48 = $image48;
@@ -485,19 +355,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage512(): ?string
     {
         return $this->image512;
     }
 
-    /**
-     * @param string|null $image512
-     *
-     * @return self
-     */
     public function setImage512(?string $image512): self
     {
         $this->image512 = $image512;
@@ -505,19 +367,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImage72(): ?string
     {
         return $this->image72;
     }
 
-    /**
-     * @param string|null $image72
-     *
-     * @return self
-     */
     public function setImage72(?string $image72): self
     {
         $this->image72 = $image72;
@@ -525,19 +379,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getImageOriginal(): ?string
     {
         return $this->imageOriginal;
     }
 
-    /**
-     * @param string|null $imageOriginal
-     *
-     * @return self
-     */
     public function setImageOriginal(?string $imageOriginal): self
     {
         $this->imageOriginal = $imageOriginal;
@@ -545,19 +391,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsCustomImage(): ?bool
     {
         return $this->isCustomImage;
     }
 
-    /**
-     * @param bool|null $isCustomImage
-     *
-     * @return self
-     */
     public function setIsCustomImage(?bool $isCustomImage): self
     {
         $this->isCustomImage = $isCustomImage;
@@ -565,19 +403,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    /**
-     * @param string|null $lastName
-     *
-     * @return self
-     */
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
@@ -585,19 +415,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    /**
-     * @param string|null $phone
-     *
-     * @return self
-     */
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
@@ -605,19 +427,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRealName(): ?string
     {
         return $this->realName;
     }
 
-    /**
-     * @param string|null $realName
-     *
-     * @return self
-     */
     public function setRealName(?string $realName): self
     {
         $this->realName = $realName;
@@ -625,19 +439,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getRealNameNormalized(): ?string
     {
         return $this->realNameNormalized;
     }
 
-    /**
-     * @param string|null $realNameNormalized
-     *
-     * @return self
-     */
     public function setRealNameNormalized(?string $realNameNormalized): self
     {
         $this->realNameNormalized = $realNameNormalized;
@@ -645,19 +451,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSkype(): ?string
     {
         return $this->skype;
     }
 
-    /**
-     * @param string|null $skype
-     *
-     * @return self
-     */
     public function setSkype(?string $skype): self
     {
         $this->skype = $skype;
@@ -665,19 +463,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getStatusEmoji(): ?string
     {
         return $this->statusEmoji;
     }
 
-    /**
-     * @param string|null $statusEmoji
-     *
-     * @return self
-     */
     public function setStatusEmoji(?string $statusEmoji): self
     {
         $this->statusEmoji = $statusEmoji;
@@ -685,19 +475,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getStatusExpiration(): ?int
     {
         return $this->statusExpiration;
     }
 
-    /**
-     * @param int|null $statusExpiration
-     *
-     * @return self
-     */
     public function setStatusExpiration(?int $statusExpiration): self
     {
         $this->statusExpiration = $statusExpiration;
@@ -705,19 +487,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getStatusText(): ?string
     {
         return $this->statusText;
     }
 
-    /**
-     * @param string|null $statusText
-     *
-     * @return self
-     */
     public function setStatusText(?string $statusText): self
     {
         $this->statusText = $statusText;
@@ -725,19 +499,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getStatusTextCanonical(): ?string
     {
         return $this->statusTextCanonical;
     }
 
-    /**
-     * @param string|null $statusTextCanonical
-     *
-     * @return self
-     */
     public function setStatusTextCanonical(?string $statusTextCanonical): self
     {
         $this->statusTextCanonical = $statusTextCanonical;
@@ -745,19 +511,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeam(): ?string
     {
         return $this->team;
     }
 
-    /**
-     * @param string|null $team
-     *
-     * @return self
-     */
     public function setTeam(?string $team): self
     {
         $this->team = $team;
@@ -765,19 +523,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeams(): ?string
     {
         return $this->teams;
     }
 
-    /**
-     * @param string|null $teams
-     *
-     * @return self
-     */
     public function setTeams(?string $teams): self
     {
         $this->teams = $teams;
@@ -785,19 +535,11 @@ class ObjsUserProfile
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
     public function setTitle(?string $title): self
     {
         $this->title = $title;

@@ -17,7 +17,7 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
-     *     @var string $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
+     *     @var float $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $as_user Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false.
@@ -67,7 +67,7 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['thread_ts', 'blocks', 'attachments', 'as_user', 'parse', 'text', 'user', 'link_names', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
@@ -93,7 +93,6 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200|\JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault|null
      */

@@ -29,19 +29,11 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
      */
     protected $postAt;
 
-    /**
-     * @return string|null
-     */
     public function getChannelId(): ?string
     {
         return $this->channelId;
     }
 
-    /**
-     * @param string|null $channelId
-     *
-     * @return self
-     */
     public function setChannelId(?string $channelId): self
     {
         $this->channelId = $channelId;
@@ -49,19 +41,11 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDateCreated(): ?int
     {
         return $this->dateCreated;
     }
 
-    /**
-     * @param int|null $dateCreated
-     *
-     * @return self
-     */
     public function setDateCreated(?int $dateCreated): self
     {
         $this->dateCreated = $dateCreated;
@@ -69,19 +53,11 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -89,19 +65,11 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getPostAt(): ?int
     {
         return $this->postAt;
     }
 
-    /**
-     * @param int|null $postAt
-     *
-     * @return self
-     */
     public function setPostAt(?int $postAt): self
     {
         $this->postAt = $postAt;

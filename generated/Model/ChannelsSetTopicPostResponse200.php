@@ -21,19 +21,11 @@ class ChannelsSetTopicPostResponse200
      */
     protected $topic;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -41,19 +33,11 @@ class ChannelsSetTopicPostResponse200
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTopic(): ?string
     {
         return $this->topic;
     }
 
-    /**
-     * @param string|null $topic
-     *
-     * @return self
-     */
     public function setTopic(?string $topic): self
     {
         $this->topic = $topic;

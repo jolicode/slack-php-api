@@ -21,19 +21,11 @@ class GroupsInvitePostResponse200
      */
     protected $ok;
 
-    /**
-     * @return ObjsGroup|null
-     */
     public function getGroup(): ?ObjsGroup
     {
         return $this->group;
     }
 
-    /**
-     * @param ObjsGroup|null $group
-     *
-     * @return self
-     */
     public function setGroup(?ObjsGroup $group): self
     {
         $this->group = $group;
@@ -41,19 +33,11 @@ class GroupsInvitePostResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;

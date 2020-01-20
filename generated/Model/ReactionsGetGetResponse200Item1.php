@@ -25,19 +25,11 @@ class ReactionsGetGetResponse200Item1
      */
     protected $type;
 
-    /**
-     * @return ObjsFile|null
-     */
     public function getFile(): ?ObjsFile
     {
         return $this->file;
     }
 
-    /**
-     * @param ObjsFile|null $file
-     *
-     * @return self
-     */
     public function setFile(?ObjsFile $file): self
     {
         $this->file = $file;
@@ -45,19 +37,11 @@ class ReactionsGetGetResponse200Item1
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -65,19 +49,11 @@ class ReactionsGetGetResponse200Item1
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string|null $type
-     *
-     * @return self
-     */
     public function setType(?string $type): self
     {
         $this->type = $type;

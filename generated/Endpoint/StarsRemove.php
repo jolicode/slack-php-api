@@ -18,7 +18,7 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to remove star from
-     *     @var string $timestamp timestamp of the message to remove star from
+     *     @var float $timestamp timestamp of the message to remove star from
      *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
      *     @var string $file File to remove star from.
      * }
@@ -63,7 +63,7 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
 
@@ -83,7 +83,6 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\StarsRemovePostResponse200|\JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault|null
      */

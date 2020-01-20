@@ -29,19 +29,11 @@ class RtmConnectGetResponse200
      */
     protected $url;
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -49,19 +41,11 @@ class RtmConnectGetResponse200
         return $this;
     }
 
-    /**
-     * @return RtmConnectGetResponse200Self|null
-     */
     public function getSelf(): ?RtmConnectGetResponse200Self
     {
         return $this->self;
     }
 
-    /**
-     * @param RtmConnectGetResponse200Self|null $self
-     *
-     * @return self
-     */
     public function setSelf(?RtmConnectGetResponse200Self $self): self
     {
         $this->self = $self;
@@ -69,19 +53,11 @@ class RtmConnectGetResponse200
         return $this;
     }
 
-    /**
-     * @return RtmConnectGetResponse200Team|null
-     */
     public function getTeam(): ?RtmConnectGetResponse200Team
     {
         return $this->team;
     }
 
-    /**
-     * @param RtmConnectGetResponse200Team|null $team
-     *
-     * @return self
-     */
     public function setTeam(?RtmConnectGetResponse200Team $team): self
     {
         $this->team = $team;
@@ -89,19 +65,11 @@ class RtmConnectGetResponse200
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    /**
-     * @param string|null $url
-     *
-     * @return self
-     */
     public function setUrl(?string $url): self
     {
         $this->url = $url;

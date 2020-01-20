@@ -80,7 +80,6 @@ class ChannelsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     /**
      * {@inheritdoc}
      *
-     *
      * @return \JoliCode\Slack\Api\Model\ChannelsSetTopicPostResponse200|\JoliCode\Slack\Api\Model\ChannelsSetTopicPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)

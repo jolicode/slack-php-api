@@ -35,8 +35,6 @@ class TeamIntegrationLogsGetResponse200
 
     /**
      * @param TeamIntegrationLogsGetResponse200LogsItem[]|null $logs
-     *
-     * @return self
      */
     public function setLogs(?array $logs): self
     {
@@ -45,19 +43,11 @@ class TeamIntegrationLogsGetResponse200
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -65,19 +55,11 @@ class TeamIntegrationLogsGetResponse200
         return $this;
     }
 
-    /**
-     * @return ObjsPaging|null
-     */
     public function getPaging(): ?ObjsPaging
     {
         return $this->paging;
     }
 
-    /**
-     * @param ObjsPaging|null $paging
-     *
-     * @return self
-     */
     public function setPaging(?ObjsPaging $paging): self
     {
         $this->paging = $paging;

@@ -46,7 +46,7 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
             $object->setAlreadyOpen($data->{'already_open'});
         }
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
-            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context));
+            $object->setChannel($data->{'channel'});
         }
         if (property_exists($data, 'no_op') && $data->{'no_op'} !== null) {
             $object->setNoOp($data->{'no_op'});
@@ -65,7 +65,7 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
             $data->{'already_open'} = $object->getAlreadyOpen();
         }
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
+            $data->{'channel'} = $object->getChannel();
         }
         if (null !== $object->getNoOp()) {
             $data->{'no_op'} = $object->getNoOp();

@@ -33,19 +33,11 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
      */
     protected $userIdMap;
 
-    /**
-     * @return string|null
-     */
     public function getEnterpriseId(): ?string
     {
         return $this->enterpriseId;
     }
 
-    /**
-     * @param string|null $enterpriseId
-     *
-     * @return self
-     */
     public function setEnterpriseId(?string $enterpriseId): self
     {
         $this->enterpriseId = $enterpriseId;
@@ -63,8 +55,6 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
 
     /**
      * @param string[]|null $invalidUserIds
-     *
-     * @return self
      */
     public function setInvalidUserIds(?array $invalidUserIds): self
     {
@@ -73,19 +63,11 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -93,19 +75,11 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTeamId(): ?string
     {
         return $this->teamId;
     }
 
-    /**
-     * @param string|null $teamId
-     *
-     * @return self
-     */
     public function setTeamId(?string $teamId): self
     {
         $this->teamId = $teamId;
@@ -123,8 +97,6 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
 
     /**
      * @param mixed[]|null $userIdMap
-     *
-     * @return self
      */
     public function setUserIdMap(?\ArrayObject $userIdMap): self
     {

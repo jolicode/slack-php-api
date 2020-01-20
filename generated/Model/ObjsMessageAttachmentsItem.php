@@ -10,134 +10,38 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsMessageAttachmentsItem extends \ArrayObject
+class ObjsMessageAttachmentsItem
 {
-    /**
-     * @var int
-     */
-    protected $id;
-    /**
-     * @var string
-     */
-    protected $callbackId;
     /**
      * @var string
      */
     protected $fallback;
     /**
-     * @var string
+     * @var int
      */
-    protected $color;
+    protected $id;
     /**
-     * @var string
+     * @var int
      */
-    protected $pretext;
+    protected $imageBytes;
     /**
-     * @var string
+     * @var int
      */
-    protected $authorName;
-    /**
-     * @var string
-     */
-    protected $authorLink;
-    /**
-     * @var string
-     */
-    protected $authorIcon;
-    /**
-     * @var string
-     */
-    protected $title;
-    /**
-     * @var string
-     */
-    protected $titleLink;
-    /**
-     * @var string
-     */
-    protected $text;
-    /**
-     * @var ObjsMessageAttachmentsItemFieldsItem[]
-     */
-    protected $fields;
-    /**
-     * @var ObjsMessageAttachmentsItemActionsItem[]
-     */
-    protected $actions;
+    protected $imageHeight;
     /**
      * @var string
      */
     protected $imageUrl;
     /**
-     * @var string
+     * @var int
      */
-    protected $thumbUrl;
-    /**
-     * @var string
-     */
-    protected $footer;
-    /**
-     * @var string
-     */
-    protected $footerIcon;
-    /**
-     * @var float|string
-     */
-    protected $ts;
+    protected $imageWidth;
 
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int|null $id
-     *
-     * @return self
-     */
-    public function setId(?int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCallbackId(): ?string
-    {
-        return $this->callbackId;
-    }
-
-    /**
-     * @param string|null $callbackId
-     *
-     * @return self
-     */
-    public function setCallbackId(?string $callbackId): self
-    {
-        $this->callbackId = $callbackId;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getFallback(): ?string
     {
         return $this->fallback;
     }
 
-    /**
-     * @param string|null $fallback
-     *
-     * @return self
-     */
     public function setFallback(?string $fallback): self
     {
         $this->fallback = $fallback;
@@ -145,219 +49,47 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getColor(): ?string
+    public function getId(): ?int
     {
-        return $this->color;
+        return $this->id;
     }
 
-    /**
-     * @param string|null $color
-     *
-     * @return self
-     */
-    public function setColor(?string $color): self
+    public function setId(?int $id): self
     {
-        $this->color = $color;
+        $this->id = $id;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPretext(): ?string
+    public function getImageBytes(): ?int
     {
-        return $this->pretext;
+        return $this->imageBytes;
     }
 
-    /**
-     * @param string|null $pretext
-     *
-     * @return self
-     */
-    public function setPretext(?string $pretext): self
+    public function setImageBytes(?int $imageBytes): self
     {
-        $this->pretext = $pretext;
+        $this->imageBytes = $imageBytes;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getAuthorName(): ?string
+    public function getImageHeight(): ?int
     {
-        return $this->authorName;
+        return $this->imageHeight;
     }
 
-    /**
-     * @param string|null $authorName
-     *
-     * @return self
-     */
-    public function setAuthorName(?string $authorName): self
+    public function setImageHeight(?int $imageHeight): self
     {
-        $this->authorName = $authorName;
+        $this->imageHeight = $imageHeight;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getAuthorLink(): ?string
-    {
-        return $this->authorLink;
-    }
-
-    /**
-     * @param string|null $authorLink
-     *
-     * @return self
-     */
-    public function setAuthorLink(?string $authorLink): self
-    {
-        $this->authorLink = $authorLink;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAuthorIcon(): ?string
-    {
-        return $this->authorIcon;
-    }
-
-    /**
-     * @param string|null $authorIcon
-     *
-     * @return self
-     */
-    public function setAuthorIcon(?string $authorIcon): self
-    {
-        $this->authorIcon = $authorIcon;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string|null $title
-     *
-     * @return self
-     */
-    public function setTitle(?string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTitleLink(): ?string
-    {
-        return $this->titleLink;
-    }
-
-    /**
-     * @param string|null $titleLink
-     *
-     * @return self
-     */
-    public function setTitleLink(?string $titleLink): self
-    {
-        $this->titleLink = $titleLink;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    /**
-     * @param string|null $text
-     *
-     * @return self
-     */
-    public function setText(?string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * @return ObjsMessageAttachmentsItemFieldsItem[]|null
-     */
-    public function getFields(): ?array
-    {
-        return $this->fields;
-    }
-
-    /**
-     * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
-     *
-     * @return self
-     */
-    public function setFields(?array $fields): self
-    {
-        $this->fields = $fields;
-
-        return $this;
-    }
-
-    /**
-     * @return ObjsMessageAttachmentsItemActionsItem[]|null
-     */
-    public function getActions(): ?array
-    {
-        return $this->actions;
-    }
-
-    /**
-     * @param ObjsMessageAttachmentsItemActionsItem[]|null $actions
-     *
-     * @return self
-     */
-    public function setActions(?array $actions): self
-    {
-        $this->actions = $actions;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getImageUrl(): ?string
     {
         return $this->imageUrl;
     }
 
-    /**
-     * @param string|null $imageUrl
-     *
-     * @return self
-     */
     public function setImageUrl(?string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
@@ -365,82 +97,14 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getThumbUrl(): ?string
+    public function getImageWidth(): ?int
     {
-        return $this->thumbUrl;
+        return $this->imageWidth;
     }
 
-    /**
-     * @param string|null $thumbUrl
-     *
-     * @return self
-     */
-    public function setThumbUrl(?string $thumbUrl): self
+    public function setImageWidth(?int $imageWidth): self
     {
-        $this->thumbUrl = $thumbUrl;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFooter(): ?string
-    {
-        return $this->footer;
-    }
-
-    /**
-     * @param string|null $footer
-     *
-     * @return self
-     */
-    public function setFooter(?string $footer): self
-    {
-        $this->footer = $footer;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFooterIcon(): ?string
-    {
-        return $this->footerIcon;
-    }
-
-    /**
-     * @param string|null $footerIcon
-     *
-     * @return self
-     */
-    public function setFooterIcon(?string $footerIcon): self
-    {
-        $this->footerIcon = $footerIcon;
-
-        return $this;
-    }
-
-    /**
-     * @return float|string|null
-     */
-    public function getTs()
-    {
-        return $this->ts;
-    }
-
-    /**
-     * @param float|string|null $ts
-     *
-     * @return self
-     */
-    public function setTs($ts): self
-    {
-        $this->ts = $ts;
+        $this->imageWidth = $imageWidth;
 
         return $this;
     }

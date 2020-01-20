@@ -25,19 +25,11 @@ class RtmConnectGetResponse200Team
      */
     protected $name;
 
-    /**
-     * @return string|null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string|null $domain
-     *
-     * @return self
-     */
     public function setDomain(?string $domain): self
     {
         $this->domain = $domain;
@@ -45,19 +37,11 @@ class RtmConnectGetResponse200Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -65,19 +49,11 @@ class RtmConnectGetResponse200Team
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;

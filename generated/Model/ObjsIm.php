@@ -53,19 +53,11 @@ class ObjsIm
      */
     protected $user;
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -73,19 +65,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -93,19 +77,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsAppHome(): ?bool
     {
         return $this->isAppHome;
     }
 
-    /**
-     * @param bool|null $isAppHome
-     *
-     * @return self
-     */
     public function setIsAppHome(?bool $isAppHome): self
     {
         $this->isAppHome = $isAppHome;
@@ -113,19 +89,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsExtShared(): ?bool
     {
         return $this->isExtShared;
     }
 
-    /**
-     * @param bool|null $isExtShared
-     *
-     * @return self
-     */
     public function setIsExtShared(?bool $isExtShared): self
     {
         $this->isExtShared = $isExtShared;
@@ -133,19 +101,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsIm(): ?bool
     {
         return $this->isIm;
     }
 
-    /**
-     * @param bool|null $isIm
-     *
-     * @return self
-     */
     public function setIsIm(?bool $isIm): self
     {
         $this->isIm = $isIm;
@@ -153,19 +113,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsOrgShared(): ?bool
     {
         return $this->isOrgShared;
     }
 
-    /**
-     * @param bool|null $isOrgShared
-     *
-     * @return self
-     */
     public function setIsOrgShared(?bool $isOrgShared): self
     {
         $this->isOrgShared = $isOrgShared;
@@ -173,19 +125,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsShared(): ?bool
     {
         return $this->isShared;
     }
 
-    /**
-     * @param bool|null $isShared
-     *
-     * @return self
-     */
     public function setIsShared(?bool $isShared): self
     {
         $this->isShared = $isShared;
@@ -193,19 +137,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsUserDeleted(): ?bool
     {
         return $this->isUserDeleted;
     }
 
-    /**
-     * @param bool|null $isUserDeleted
-     *
-     * @return self
-     */
     public function setIsUserDeleted(?bool $isUserDeleted): self
     {
         $this->isUserDeleted = $isUserDeleted;
@@ -213,19 +149,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return float|null
-     */
     public function getPriority(): ?float
     {
         return $this->priority;
     }
 
-    /**
-     * @param float|null $priority
-     *
-     * @return self
-     */
     public function setPriority(?float $priority): self
     {
         $this->priority = $priority;
@@ -233,19 +161,11 @@ class ObjsIm
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUser(): ?string
     {
         return $this->user;
     }
 
-    /**
-     * @param string|null $user
-     *
-     * @return self
-     */
     public function setUser(?string $user): self
     {
         $this->user = $user;

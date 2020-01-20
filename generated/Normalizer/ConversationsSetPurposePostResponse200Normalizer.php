@@ -43,7 +43,7 @@ class ConversationsSetPurposePostResponse200Normalizer implements DenormalizerIn
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200();
         if (property_exists($data, 'channel') && $data->{'channel'} !== null) {
-            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context));
+            $object->setChannel($data->{'channel'});
         }
         if (property_exists($data, 'ok') && $data->{'ok'} !== null) {
             $object->setOk($data->{'ok'});
@@ -56,7 +56,7 @@ class ConversationsSetPurposePostResponse200Normalizer implements DenormalizerIn
     {
         $data = new \stdClass();
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
+            $data->{'channel'} = $object->getChannel();
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();

@@ -105,19 +105,11 @@ class ObjsTeam
      */
     protected $plan;
 
-    /**
-     * @return bool|null
-     */
     public function getArchived(): ?bool
     {
         return $this->archived;
     }
 
-    /**
-     * @param bool|null $archived
-     *
-     * @return self
-     */
     public function setArchived(?bool $archived): self
     {
         $this->archived = $archived;
@@ -125,19 +117,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAvatarBaseUrl(): ?string
     {
         return $this->avatarBaseUrl;
     }
 
-    /**
-     * @param string|null $avatarBaseUrl
-     *
-     * @return self
-     */
     public function setAvatarBaseUrl(?string $avatarBaseUrl): self
     {
         $this->avatarBaseUrl = $avatarBaseUrl;
@@ -145,19 +129,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCreated(): ?int
     {
         return $this->created;
     }
 
-    /**
-     * @param int|null $created
-     *
-     * @return self
-     */
     public function setCreated(?int $created): self
     {
         $this->created = $created;
@@ -165,19 +141,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getDateCreate(): ?int
     {
         return $this->dateCreate;
     }
 
-    /**
-     * @param int|null $dateCreate
-     *
-     * @return self
-     */
     public function setDateCreate(?int $dateCreate): self
     {
         $this->dateCreate = $dateCreate;
@@ -185,19 +153,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    /**
-     * @param bool|null $deleted
-     *
-     * @return self
-     */
     public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
@@ -205,19 +165,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string|null $description
-     *
-     * @return self
-     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -225,19 +177,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDiscoverable(): ?string
     {
         return $this->discoverable;
     }
 
-    /**
-     * @param string|null $discoverable
-     *
-     * @return self
-     */
     public function setDiscoverable(?string $discoverable): self
     {
         $this->discoverable = $discoverable;
@@ -245,19 +189,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDomain(): ?string
     {
         return $this->domain;
     }
 
-    /**
-     * @param string|null $domain
-     *
-     * @return self
-     */
     public function setDomain(?string $domain): self
     {
         $this->domain = $domain;
@@ -265,19 +201,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEmailDomain(): ?string
     {
         return $this->emailDomain;
     }
 
-    /**
-     * @param string|null $emailDomain
-     *
-     * @return self
-     */
     public function setEmailDomain(?string $emailDomain): self
     {
         $this->emailDomain = $emailDomain;
@@ -285,19 +213,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEnterpriseId(): ?string
     {
         return $this->enterpriseId;
     }
 
-    /**
-     * @param string|null $enterpriseId
-     *
-     * @return self
-     */
     public function setEnterpriseId(?string $enterpriseId): self
     {
         $this->enterpriseId = $enterpriseId;
@@ -305,19 +225,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getEnterpriseName(): ?string
     {
         return $this->enterpriseName;
     }
 
-    /**
-     * @param string|null $enterpriseName
-     *
-     * @return self
-     */
     public function setEnterpriseName(?string $enterpriseName): self
     {
         $this->enterpriseName = $enterpriseName;
@@ -325,19 +237,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getHasComplianceExport(): ?bool
     {
         return $this->hasComplianceExport;
     }
 
-    /**
-     * @param bool|null $hasComplianceExport
-     *
-     * @return self
-     */
     public function setHasComplianceExport(?bool $hasComplianceExport): self
     {
         $this->hasComplianceExport = $hasComplianceExport;
@@ -345,19 +249,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return ObjsIcon|null
-     */
     public function getIcon(): ?ObjsIcon
     {
         return $this->icon;
     }
 
-    /**
-     * @param ObjsIcon|null $icon
-     *
-     * @return self
-     */
     public function setIcon(?ObjsIcon $icon): self
     {
         $this->icon = $icon;
@@ -365,19 +261,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -385,19 +273,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getIsAssigned(): ?bool
     {
         return $this->isAssigned;
     }
 
-    /**
-     * @param bool|null $isAssigned
-     *
-     * @return self
-     */
     public function setIsAssigned(?bool $isAssigned): self
     {
         $this->isAssigned = $isAssigned;
@@ -405,19 +285,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getIsEnterprise(): ?int
     {
         return $this->isEnterprise;
     }
 
-    /**
-     * @param int|null $isEnterprise
-     *
-     * @return self
-     */
     public function setIsEnterprise(?int $isEnterprise): self
     {
         $this->isEnterprise = $isEnterprise;
@@ -425,19 +297,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getLimitTs(): ?int
     {
         return $this->limitTs;
     }
 
-    /**
-     * @param int|null $limitTs
-     *
-     * @return self
-     */
     public function setLimitTs(?int $limitTs): self
     {
         $this->limitTs = $limitTs;
@@ -445,19 +309,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getMessagesCount(): ?int
     {
         return $this->messagesCount;
     }
 
-    /**
-     * @param int|null $messagesCount
-     *
-     * @return self
-     */
     public function setMessagesCount(?int $messagesCount): self
     {
         $this->messagesCount = $messagesCount;
@@ -465,19 +321,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getMsgEditWindowMins(): ?int
     {
         return $this->msgEditWindowMins;
     }
 
-    /**
-     * @param int|null $msgEditWindowMins
-     *
-     * @return self
-     */
     public function setMsgEditWindowMins(?int $msgEditWindowMins): self
     {
         $this->msgEditWindowMins = $msgEditWindowMins;
@@ -485,19 +333,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -505,19 +345,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOverIntegrationsLimit(): ?bool
     {
         return $this->overIntegrationsLimit;
     }
 
-    /**
-     * @param bool|null $overIntegrationsLimit
-     *
-     * @return self
-     */
     public function setOverIntegrationsLimit(?bool $overIntegrationsLimit): self
     {
         $this->overIntegrationsLimit = $overIntegrationsLimit;
@@ -525,19 +357,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOverStorageLimit(): ?bool
     {
         return $this->overStorageLimit;
     }
 
-    /**
-     * @param bool|null $overStorageLimit
-     *
-     * @return self
-     */
     public function setOverStorageLimit(?bool $overStorageLimit): self
     {
         $this->overStorageLimit = $overStorageLimit;
@@ -545,19 +369,11 @@ class ObjsTeam
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPlan(): ?string
     {
         return $this->plan;
     }
 
-    /**
-     * @param string|null $plan
-     *
-     * @return self
-     */
     public function setPlan(?string $plan): self
     {
         $this->plan = $plan;

@@ -18,7 +18,7 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to add star to
-     *     @var string $timestamp timestamp of the message to add star to
+     *     @var float $timestamp timestamp of the message to add star to
      *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
      *     @var string $file File to add star to.
      * }
@@ -63,7 +63,7 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
 
@@ -83,7 +83,6 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\StarsAddPostResponse200|\JoliCode\Slack\Api\Model\StarsAddPostResponsedefault|null
      */

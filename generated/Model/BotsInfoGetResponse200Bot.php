@@ -41,19 +41,11 @@ class BotsInfoGetResponse200Bot
      */
     protected $userId;
 
-    /**
-     * @return string|null
-     */
     public function getAppId(): ?string
     {
         return $this->appId;
     }
 
-    /**
-     * @param string|null $appId
-     *
-     * @return self
-     */
     public function setAppId(?string $appId): self
     {
         $this->appId = $appId;
@@ -61,19 +53,11 @@ class BotsInfoGetResponse200Bot
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getDeleted(): ?bool
     {
         return $this->deleted;
     }
 
-    /**
-     * @param bool|null $deleted
-     *
-     * @return self
-     */
     public function setDeleted(?bool $deleted): self
     {
         $this->deleted = $deleted;
@@ -81,19 +65,11 @@ class BotsInfoGetResponse200Bot
         return $this;
     }
 
-    /**
-     * @return BotsInfoGetResponse200BotIcons|null
-     */
     public function getIcons(): ?BotsInfoGetResponse200BotIcons
     {
         return $this->icons;
     }
 
-    /**
-     * @param BotsInfoGetResponse200BotIcons|null $icons
-     *
-     * @return self
-     */
     public function setIcons(?BotsInfoGetResponse200BotIcons $icons): self
     {
         $this->icons = $icons;
@@ -101,19 +77,11 @@ class BotsInfoGetResponse200Bot
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param string|null $id
-     *
-     * @return self
-     */
     public function setId(?string $id): self
     {
         $this->id = $id;
@@ -121,19 +89,11 @@ class BotsInfoGetResponse200Bot
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string|null $name
-     *
-     * @return self
-     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -141,19 +101,11 @@ class BotsInfoGetResponse200Bot
         return $this;
     }
 
-    /**
-     * @return int|null
-     */
     public function getUpdated(): ?int
     {
         return $this->updated;
     }
 
-    /**
-     * @param int|null $updated
-     *
-     * @return self
-     */
     public function setUpdated(?int $updated): self
     {
         $this->updated = $updated;
@@ -161,19 +113,11 @@ class BotsInfoGetResponse200Bot
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getUserId(): ?string
     {
         return $this->userId;
     }
 
-    /**
-     * @param string|null $userId
-     *
-     * @return self
-     */
     public function setUserId(?string $userId): self
     {
         $this->userId = $userId;

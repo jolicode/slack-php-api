@@ -30,7 +30,7 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
      *     @var bool $link_names find and link channel names and usernames
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
-     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      * }
      *
@@ -86,7 +86,7 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $optionsResolver->setAllowedTypes('icon_emoji', ['string']);
         $optionsResolver->setAllowedTypes('link_names', ['bool']);
         $optionsResolver->setAllowedTypes('reply_broadcast', ['bool']);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('icon_url', ['string']);
 
         return $optionsResolver;
@@ -105,7 +105,6 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault|null
      */

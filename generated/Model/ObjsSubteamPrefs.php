@@ -31,8 +31,6 @@ class ObjsSubteamPrefs
 
     /**
      * @param string[]|null $channels
-     *
-     * @return self
      */
     public function setChannels(?array $channels): self
     {
@@ -51,8 +49,6 @@ class ObjsSubteamPrefs
 
     /**
      * @param string[]|null $groups
-     *
-     * @return self
      */
     public function setGroups(?array $groups): self
     {

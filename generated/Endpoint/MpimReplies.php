@@ -17,7 +17,7 @@ class MpimReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @param array $queryParameters {
      *
-     *     @var string $thread_ts unique identifier of a thread's parent message
+     *     @var float $thread_ts unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `mpim:history`
      *     @var string $channel Multiparty direct message channel to fetch thread from.
      * }
@@ -55,7 +55,7 @@ class MpimReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $optionsResolver->setDefined(['thread_ts', 'token', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
@@ -64,7 +64,6 @@ class MpimReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 
     /**
      * {@inheritdoc}
-     *
      *
      * @return \JoliCode\Slack\Api\Model\MpimRepliesGetResponse200|\JoliCode\Slack\Api\Model\MpimRepliesGetResponsedefault|null
      */

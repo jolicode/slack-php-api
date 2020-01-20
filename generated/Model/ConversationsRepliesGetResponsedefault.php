@@ -29,19 +29,11 @@ class ConversationsRepliesGetResponsedefault
      */
     protected $provided;
 
-    /**
-     * @return string|null
-     */
     public function getError(): ?string
     {
         return $this->error;
     }
 
-    /**
-     * @param string|null $error
-     *
-     * @return self
-     */
     public function setError(?string $error): self
     {
         $this->error = $error;
@@ -49,19 +41,11 @@ class ConversationsRepliesGetResponsedefault
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getNeeded(): ?string
     {
         return $this->needed;
     }
 
-    /**
-     * @param string|null $needed
-     *
-     * @return self
-     */
     public function setNeeded(?string $needed): self
     {
         $this->needed = $needed;
@@ -69,19 +53,11 @@ class ConversationsRepliesGetResponsedefault
         return $this;
     }
 
-    /**
-     * @return bool|null
-     */
     public function getOk(): ?bool
     {
         return $this->ok;
     }
 
-    /**
-     * @param bool|null $ok
-     *
-     * @return self
-     */
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
@@ -89,19 +65,11 @@ class ConversationsRepliesGetResponsedefault
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getProvided(): ?string
     {
         return $this->provided;
     }
 
-    /**
-     * @param string|null $provided
-     *
-     * @return self
-     */
     public function setProvided(?string $provided): self
     {
         $this->provided = $provided;
