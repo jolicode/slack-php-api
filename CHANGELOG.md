@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Upgrade JanePHP to v5.3 and PHP 7.2
 
 ## 2.3.0 (2019-10-25) Forum PHP edition
 
