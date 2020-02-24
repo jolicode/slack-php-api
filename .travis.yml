@@ -13,14 +13,15 @@ env:
 matrix:
     fast_finish: true
     include:
-        - php: 7.1
+        - php: 7.2
           env: TARGET=spec_diff
-        - php: 7.1
+        - php: 7.2
           env: TARGET=cs_dry_run
-        - php: 7.1
+        - php: 7.2
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER=weak
         - php: 7.2
         - php: 7.3
+        - php: 7.4
 
 install:
     - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction

@@ -11,7 +11,7 @@ test: ## Run test suite
 	./vendor/bin/simple-phpunit
 
 jane: ## Generate the SDK
-	rm -rf generated/* && vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
+	./vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
 
 .PHONY: help
 

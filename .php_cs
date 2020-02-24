@@ -16,6 +16,7 @@ return PhpCsFixer\Config::create()
         '@Symfony:risky' => true,
         'header_comment' => array('header' => $header),
         'array_syntax' => array('syntax' => 'short'),
+        'declare_strict_types' => true,
         'ordered_class_elements' => true,
         'ordered_imports' => true,
         'heredoc_to_nowdoc' => true,
@@ -36,8 +37,6 @@ return PhpCsFixer\Config::create()
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->in(__DIR__)
-            ->exclude('generated')
-            ->exclude('generated_ci')
             ->exclude('doc')
     )
 ;
