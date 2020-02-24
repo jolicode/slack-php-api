@@ -1,6 +1,6 @@
 # Changes between versions
 
-## Unreleased
+## 2.4.0 (2020-02-24)
 
 * Upgrade JanePHP to v5.3 and PHP 7.2
 
