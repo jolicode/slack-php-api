@@ -50,5 +50,4 @@ SDK:
 
 ```bash
 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
-vendor/bin/php-cs-fixer fix
 ```

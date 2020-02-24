@@ -13,4 +13,7 @@ return [
     'reference' => true,
     'strict' => false,
     'client' => 'psr18',
+    'clean-generated' => true,
+    'use-fixer' => true,
+    'fixer-config-file' => __DIR__ . '/.php_cs',
 ];

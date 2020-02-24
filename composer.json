@@ -23,14 +23,14 @@
     },
     "require": {
         "php": ">= 7.2",
-        "jane-php/open-api-runtime": "^5.3",
+        "jane-php/open-api-runtime": "^5.3.0",
         "psr/http-client-implementation": "*",
         "php-http/client-common": "^1.9 || ^2.0",
         "php-http/discovery": "^1.7",
         "php-http/multipart-stream-builder": "^1.1"
     },
     "require-dev": {
-        "jane-php/open-api-2": "^5.3",
+        "jane-php/open-api-2": "^5.3.1",
         "symfony/http-client": "^4.3.3",
         "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^2.13",
