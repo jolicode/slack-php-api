@@ -38,32 +38,29 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsSubteamPrefs();
-        if (property_exists($data, 'channels') && null !== $data->{'channels'}) {
+        if (\array_key_exists('channels', $data) && null !== $data['channels']) {
             $values = [];
-            foreach ($data->{'channels'} as $value) {
+            foreach ($data['channels'] as $value) {
                 $values[] = $value;
             }
             $object->setChannels($values);
-        } elseif (property_exists($data, 'channels') && null === $data->{'channels'}) {
+        } elseif (\array_key_exists('channels', $data) && null === $data['channels']) {
             $object->setChannels(null);
         }
-        if (property_exists($data, 'groups') && null !== $data->{'groups'}) {
+        if (\array_key_exists('groups', $data) && null !== $data['groups']) {
             $values_1 = [];
-            foreach ($data->{'groups'} as $value_1) {
+            foreach ($data['groups'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setGroups($values_1);
-        } elseif (property_exists($data, 'groups') && null === $data->{'groups'}) {
+        } elseif (\array_key_exists('groups', $data) && null === $data['groups']) {
             $object->setGroups(null);
         }
 
@@ -72,24 +69,24 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannels()) {
             $values = [];
             foreach ($object->getChannels() as $value) {
                 $values[] = $value;
             }
-            $data->{'channels'} = $values;
+            $data['channels'] = $values;
         } else {
-            $data->{'channels'} = null;
+            $data['channels'] = null;
         }
         if (null !== $object->getGroups()) {
             $values_1 = [];
             foreach ($object->getGroups() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'groups'} = $values_1;
+            $data['groups'] = $values_1;
         } else {
-            $data->{'groups'} = null;
+            $data['groups'] = null;
         }
 
         return $data;

@@ -38,81 +38,78 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsComment();
-        if (property_exists($data, 'comment') && null !== $data->{'comment'}) {
-            $object->setComment($data->{'comment'});
-        } elseif (property_exists($data, 'comment') && null === $data->{'comment'}) {
+        if (\array_key_exists('comment', $data) && null !== $data['comment']) {
+            $object->setComment($data['comment']);
+        } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
             $object->setComment(null);
         }
-        if (property_exists($data, 'created') && null !== $data->{'created'}) {
-            $object->setCreated($data->{'created'});
-        } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
+        if (\array_key_exists('created', $data) && null !== $data['created']) {
+            $object->setCreated($data['created']);
+        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
             $object->setCreated(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'is_intro') && null !== $data->{'is_intro'}) {
-            $object->setIsIntro($data->{'is_intro'});
-        } elseif (property_exists($data, 'is_intro') && null === $data->{'is_intro'}) {
+        if (\array_key_exists('is_intro', $data) && null !== $data['is_intro']) {
+            $object->setIsIntro($data['is_intro']);
+        } elseif (\array_key_exists('is_intro', $data) && null === $data['is_intro']) {
             $object->setIsIntro(null);
         }
-        if (property_exists($data, 'is_starred') && null !== $data->{'is_starred'}) {
-            $object->setIsStarred($data->{'is_starred'});
-        } elseif (property_exists($data, 'is_starred') && null === $data->{'is_starred'}) {
+        if (\array_key_exists('is_starred', $data) && null !== $data['is_starred']) {
+            $object->setIsStarred($data['is_starred']);
+        } elseif (\array_key_exists('is_starred', $data) && null === $data['is_starred']) {
             $object->setIsStarred(null);
         }
-        if (property_exists($data, 'num_stars') && null !== $data->{'num_stars'}) {
-            $object->setNumStars($data->{'num_stars'});
-        } elseif (property_exists($data, 'num_stars') && null === $data->{'num_stars'}) {
+        if (\array_key_exists('num_stars', $data) && null !== $data['num_stars']) {
+            $object->setNumStars($data['num_stars']);
+        } elseif (\array_key_exists('num_stars', $data) && null === $data['num_stars']) {
             $object->setNumStars(null);
         }
-        if (property_exists($data, 'pinned_info') && null !== $data->{'pinned_info'}) {
+        if (\array_key_exists('pinned_info', $data) && null !== $data['pinned_info']) {
             $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'pinned_info'} as $key => $value) {
+            foreach ($data['pinned_info'] as $key => $value) {
                 $values[$key] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
             }
             $object->setPinnedInfo($values);
-        } elseif (property_exists($data, 'pinned_info') && null === $data->{'pinned_info'}) {
+        } elseif (\array_key_exists('pinned_info', $data) && null === $data['pinned_info']) {
             $object->setPinnedInfo(null);
         }
-        if (property_exists($data, 'pinned_to') && null !== $data->{'pinned_to'}) {
+        if (\array_key_exists('pinned_to', $data) && null !== $data['pinned_to']) {
             $values_1 = [];
-            foreach ($data->{'pinned_to'} as $value_1) {
+            foreach ($data['pinned_to'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setPinnedTo($values_1);
-        } elseif (property_exists($data, 'pinned_to') && null === $data->{'pinned_to'}) {
+        } elseif (\array_key_exists('pinned_to', $data) && null === $data['pinned_to']) {
             $object->setPinnedTo(null);
         }
-        if (property_exists($data, 'reactions') && null !== $data->{'reactions'}) {
+        if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
             $values_2 = [];
-            foreach ($data->{'reactions'} as $value_2) {
+            foreach ($data['reactions'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
             $object->setReactions($values_2);
-        } elseif (property_exists($data, 'reactions') && null === $data->{'reactions'}) {
+        } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
             $object->setReactions(null);
         }
-        if (property_exists($data, 'timestamp') && null !== $data->{'timestamp'}) {
-            $object->setTimestamp($data->{'timestamp'});
-        } elseif (property_exists($data, 'timestamp') && null === $data->{'timestamp'}) {
+        if (\array_key_exists('timestamp', $data) && null !== $data['timestamp']) {
+            $object->setTimestamp($data['timestamp']);
+        } elseif (\array_key_exists('timestamp', $data) && null === $data['timestamp']) {
             $object->setTimestamp(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
 
@@ -121,73 +118,73 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getComment()) {
-            $data->{'comment'} = $object->getComment();
+            $data['comment'] = $object->getComment();
         } else {
-            $data->{'comment'} = null;
+            $data['comment'] = null;
         }
         if (null !== $object->getCreated()) {
-            $data->{'created'} = $object->getCreated();
+            $data['created'] = $object->getCreated();
         } else {
-            $data->{'created'} = null;
+            $data['created'] = null;
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         } else {
-            $data->{'id'} = null;
+            $data['id'] = null;
         }
         if (null !== $object->getIsIntro()) {
-            $data->{'is_intro'} = $object->getIsIntro();
+            $data['is_intro'] = $object->getIsIntro();
         } else {
-            $data->{'is_intro'} = null;
+            $data['is_intro'] = null;
         }
         if (null !== $object->getIsStarred()) {
-            $data->{'is_starred'} = $object->getIsStarred();
+            $data['is_starred'] = $object->getIsStarred();
         } else {
-            $data->{'is_starred'} = null;
+            $data['is_starred'] = null;
         }
         if (null !== $object->getNumStars()) {
-            $data->{'num_stars'} = $object->getNumStars();
+            $data['num_stars'] = $object->getNumStars();
         } else {
-            $data->{'num_stars'} = null;
+            $data['num_stars'] = null;
         }
         if (null !== $object->getPinnedInfo()) {
-            $values = new \stdClass();
+            $values = [];
             foreach ($object->getPinnedInfo() as $key => $value) {
-                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
+                $values[$key] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'pinned_info'} = $values;
+            $data['pinned_info'] = $values;
         } else {
-            $data->{'pinned_info'} = null;
+            $data['pinned_info'] = null;
         }
         if (null !== $object->getPinnedTo()) {
             $values_1 = [];
             foreach ($object->getPinnedTo() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'pinned_to'} = $values_1;
+            $data['pinned_to'] = $values_1;
         } else {
-            $data->{'pinned_to'} = null;
+            $data['pinned_to'] = null;
         }
         if (null !== $object->getReactions()) {
             $values_2 = [];
             foreach ($object->getReactions() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $data->{'reactions'} = $values_2;
+            $data['reactions'] = $values_2;
         } else {
-            $data->{'reactions'} = null;
+            $data['reactions'] = null;
         }
         if (null !== $object->getTimestamp()) {
-            $data->{'timestamp'} = $object->getTimestamp();
+            $data['timestamp'] = $object->getTimestamp();
         } else {
-            $data->{'timestamp'} = null;
+            $data['timestamp'] = null;
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
+            $data['user'] = $object->getUser();
         } else {
-            $data->{'user'} = null;
+            $data['user'] = null;
         }
 
         return $data;

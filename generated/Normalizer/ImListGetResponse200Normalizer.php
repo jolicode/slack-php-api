@@ -38,28 +38,25 @@ class ImListGetResponse200Normalizer implements DenormalizerInterface, Normalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImListGetResponse200();
-        if (property_exists($data, 'ims') && null !== $data->{'ims'}) {
+        if (\array_key_exists('ims', $data) && null !== $data['ims']) {
             $values = [];
-            foreach ($data->{'ims'} as $value) {
+            foreach ($data['ims'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsIm', 'json', $context);
             }
             $object->setIms($values);
-        } elseif (property_exists($data, 'ims') && null === $data->{'ims'}) {
+        } elseif (\array_key_exists('ims', $data) && null === $data['ims']) {
             $object->setIms(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -68,20 +65,20 @@ class ImListGetResponse200Normalizer implements DenormalizerInterface, Normalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getIms()) {
             $values = [];
             foreach ($object->getIms() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'ims'} = $values;
+            $data['ims'] = $values;
         } else {
-            $data->{'ims'} = null;
+            $data['ims'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

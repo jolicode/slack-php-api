@@ -38,33 +38,30 @@ class TeamAccessLogsGetResponse200Normalizer implements DenormalizerInterface, N
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200();
-        if (property_exists($data, 'logins') && null !== $data->{'logins'}) {
+        if (\array_key_exists('logins', $data) && null !== $data['logins']) {
             $values = [];
-            foreach ($data->{'logins'} as $value) {
+            foreach ($data['logins'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\TeamAccessLogsGetResponse200LoginsItem', 'json', $context);
             }
             $object->setLogins($values);
-        } elseif (property_exists($data, 'logins') && null === $data->{'logins'}) {
+        } elseif (\array_key_exists('logins', $data) && null === $data['logins']) {
             $object->setLogins(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'paging') && null !== $data->{'paging'}) {
-            $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-        } elseif (property_exists($data, 'paging') && null === $data->{'paging'}) {
+        if (\array_key_exists('paging', $data) && null !== $data['paging']) {
+            $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
+        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
             $object->setPaging(null);
         }
 
@@ -73,25 +70,25 @@ class TeamAccessLogsGetResponse200Normalizer implements DenormalizerInterface, N
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getLogins()) {
             $values = [];
             foreach ($object->getLogins() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'logins'} = $values;
+            $data['logins'] = $values;
         } else {
-            $data->{'logins'} = null;
+            $data['logins'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getPaging()) {
-            $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
+            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         } else {
-            $data->{'paging'} = null;
+            $data['paging'] = null;
         }
 
         return $data;

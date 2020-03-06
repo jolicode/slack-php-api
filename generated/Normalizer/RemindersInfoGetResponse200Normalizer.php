@@ -38,24 +38,21 @@ class RemindersInfoGetResponse200Normalizer implements DenormalizerInterface, No
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RemindersInfoGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'reminder') && null !== $data->{'reminder'}) {
-            $object->setReminder($this->denormalizer->denormalize($data->{'reminder'}, 'JoliCode\\Slack\\Api\\Model\\ObjsReminder', 'json', $context));
-        } elseif (property_exists($data, 'reminder') && null === $data->{'reminder'}) {
+        if (\array_key_exists('reminder', $data) && null !== $data['reminder']) {
+            $object->setReminder($this->denormalizer->denormalize($data['reminder'], 'JoliCode\\Slack\\Api\\Model\\ObjsReminder', 'json', $context));
+        } elseif (\array_key_exists('reminder', $data) && null === $data['reminder']) {
             $object->setReminder(null);
         }
 
@@ -64,16 +61,16 @@ class RemindersInfoGetResponse200Normalizer implements DenormalizerInterface, No
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getReminder()) {
-            $data->{'reminder'} = $this->normalizer->normalize($object->getReminder(), 'json', $context);
+            $data['reminder'] = $this->normalizer->normalize($object->getReminder(), 'json', $context);
         } else {
-            $data->{'reminder'} = null;
+            $data['reminder'] = null;
         }
 
         return $data;

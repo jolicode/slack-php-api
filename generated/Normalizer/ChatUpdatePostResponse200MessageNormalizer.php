@@ -38,34 +38,31 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message();
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($data->{'team'});
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($data['team']);
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'text') && null !== $data->{'text'}) {
-            $object->setText($data->{'text'});
-        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+        if (\array_key_exists('text', $data) && null !== $data['text']) {
+            $object->setText($data['text']);
+        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
             $object->setText(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
 
@@ -74,26 +71,26 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $object->getTeam();
+            $data['team'] = $object->getTeam();
         } else {
-            $data->{'team'} = null;
+            $data['team'] = null;
         }
         if (null !== $object->getText()) {
-            $data->{'text'} = $object->getText();
+            $data['text'] = $object->getText();
         } else {
-            $data->{'text'} = null;
+            $data['text'] = null;
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         } else {
-            $data->{'type'} = null;
+            $data['type'] = null;
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
+            $data['user'] = $object->getUser();
         } else {
-            $data->{'user'} = null;
+            $data['user'] = null;
         }
 
         return $data;

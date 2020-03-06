@@ -38,24 +38,21 @@ class DefsPinnedInfoItemNormalizer implements DenormalizerInterface, NormalizerI
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DefsPinnedInfoItem();
-        if (property_exists($data, 'pinned_by') && null !== $data->{'pinned_by'}) {
-            $object->setPinnedBy($data->{'pinned_by'});
-        } elseif (property_exists($data, 'pinned_by') && null === $data->{'pinned_by'}) {
+        if (\array_key_exists('pinned_by', $data) && null !== $data['pinned_by']) {
+            $object->setPinnedBy($data['pinned_by']);
+        } elseif (\array_key_exists('pinned_by', $data) && null === $data['pinned_by']) {
             $object->setPinnedBy(null);
         }
-        if (property_exists($data, 'pinned_ts') && null !== $data->{'pinned_ts'}) {
-            $object->setPinnedTs($data->{'pinned_ts'});
-        } elseif (property_exists($data, 'pinned_ts') && null === $data->{'pinned_ts'}) {
+        if (\array_key_exists('pinned_ts', $data) && null !== $data['pinned_ts']) {
+            $object->setPinnedTs($data['pinned_ts']);
+        } elseif (\array_key_exists('pinned_ts', $data) && null === $data['pinned_ts']) {
             $object->setPinnedTs(null);
         }
 
@@ -64,16 +61,16 @@ class DefsPinnedInfoItemNormalizer implements DenormalizerInterface, NormalizerI
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getPinnedBy()) {
-            $data->{'pinned_by'} = $object->getPinnedBy();
+            $data['pinned_by'] = $object->getPinnedBy();
         } else {
-            $data->{'pinned_by'} = null;
+            $data['pinned_by'] = null;
         }
         if (null !== $object->getPinnedTs()) {
-            $data->{'pinned_ts'} = $object->getPinnedTs();
+            $data['pinned_ts'] = $object->getPinnedTs();
         } else {
-            $data->{'pinned_ts'} = null;
+            $data['pinned_ts'] = null;
         }
 
         return $data;

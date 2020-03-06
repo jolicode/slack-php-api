@@ -38,19 +38,16 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsResponseMetadata();
-        if (property_exists($data, 'next_cursor') && null !== $data->{'next_cursor'}) {
-            $object->setNextCursor($data->{'next_cursor'});
-        } elseif (property_exists($data, 'next_cursor') && null === $data->{'next_cursor'}) {
+        if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
+            $object->setNextCursor($data['next_cursor']);
+        } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
             $object->setNextCursor(null);
         }
 
@@ -59,11 +56,11 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getNextCursor()) {
-            $data->{'next_cursor'} = $object->getNextCursor();
+            $data['next_cursor'] = $object->getNextCursor();
         } else {
-            $data->{'next_cursor'} = null;
+            $data['next_cursor'] = null;
         }
 
         return $data;

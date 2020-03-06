@@ -38,24 +38,21 @@ class TeamBillableInfoGetResponse200Normalizer implements DenormalizerInterface,
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200();
-        if (property_exists($data, 'billable_info') && null !== $data->{'billable_info'}) {
-            $object->setBillableInfo($data->{'billable_info'});
-        } elseif (property_exists($data, 'billable_info') && null === $data->{'billable_info'}) {
+        if (\array_key_exists('billable_info', $data) && null !== $data['billable_info']) {
+            $object->setBillableInfo($data['billable_info']);
+        } elseif (\array_key_exists('billable_info', $data) && null === $data['billable_info']) {
             $object->setBillableInfo(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -64,16 +61,16 @@ class TeamBillableInfoGetResponse200Normalizer implements DenormalizerInterface,
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getBillableInfo()) {
-            $data->{'billable_info'} = $object->getBillableInfo();
+            $data['billable_info'] = $object->getBillableInfo();
         } else {
-            $data->{'billable_info'} = null;
+            $data['billable_info'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

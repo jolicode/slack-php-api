@@ -38,24 +38,21 @@ class ConversationsLeavePostResponse200Normalizer implements DenormalizerInterfa
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200();
-        if (property_exists($data, 'not_in_channel') && null !== $data->{'not_in_channel'}) {
-            $object->setNotInChannel($data->{'not_in_channel'});
-        } elseif (property_exists($data, 'not_in_channel') && null === $data->{'not_in_channel'}) {
+        if (\array_key_exists('not_in_channel', $data) && null !== $data['not_in_channel']) {
+            $object->setNotInChannel($data['not_in_channel']);
+        } elseif (\array_key_exists('not_in_channel', $data) && null === $data['not_in_channel']) {
             $object->setNotInChannel(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -64,16 +61,16 @@ class ConversationsLeavePostResponse200Normalizer implements DenormalizerInterfa
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getNotInChannel()) {
-            $data->{'not_in_channel'} = $object->getNotInChannel();
+            $data['not_in_channel'] = $object->getNotInChannel();
         } else {
-            $data->{'not_in_channel'} = null;
+            $data['not_in_channel'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

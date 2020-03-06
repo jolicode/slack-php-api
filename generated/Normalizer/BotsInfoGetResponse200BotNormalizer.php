@@ -38,49 +38,46 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot();
-        if (property_exists($data, 'app_id') && null !== $data->{'app_id'}) {
-            $object->setAppId($data->{'app_id'});
-        } elseif (property_exists($data, 'app_id') && null === $data->{'app_id'}) {
+        if (\array_key_exists('app_id', $data) && null !== $data['app_id']) {
+            $object->setAppId($data['app_id']);
+        } elseif (\array_key_exists('app_id', $data) && null === $data['app_id']) {
             $object->setAppId(null);
         }
-        if (property_exists($data, 'deleted') && null !== $data->{'deleted'}) {
-            $object->setDeleted($data->{'deleted'});
-        } elseif (property_exists($data, 'deleted') && null === $data->{'deleted'}) {
+        if (\array_key_exists('deleted', $data) && null !== $data['deleted']) {
+            $object->setDeleted($data['deleted']);
+        } elseif (\array_key_exists('deleted', $data) && null === $data['deleted']) {
             $object->setDeleted(null);
         }
-        if (property_exists($data, 'icons') && null !== $data->{'icons'}) {
-            $object->setIcons($this->denormalizer->denormalize($data->{'icons'}, 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200BotIcons', 'json', $context));
-        } elseif (property_exists($data, 'icons') && null === $data->{'icons'}) {
+        if (\array_key_exists('icons', $data) && null !== $data['icons']) {
+            $object->setIcons($this->denormalizer->denormalize($data['icons'], 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200BotIcons', 'json', $context));
+        } elseif (\array_key_exists('icons', $data) && null === $data['icons']) {
             $object->setIcons(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'name') && null !== $data->{'name'}) {
-            $object->setName($data->{'name'});
-        } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
-        if (property_exists($data, 'updated') && null !== $data->{'updated'}) {
-            $object->setUpdated($data->{'updated'});
-        } elseif (property_exists($data, 'updated') && null === $data->{'updated'}) {
+        if (\array_key_exists('updated', $data) && null !== $data['updated']) {
+            $object->setUpdated($data['updated']);
+        } elseif (\array_key_exists('updated', $data) && null === $data['updated']) {
             $object->setUpdated(null);
         }
-        if (property_exists($data, 'user_id') && null !== $data->{'user_id'}) {
-            $object->setUserId($data->{'user_id'});
-        } elseif (property_exists($data, 'user_id') && null === $data->{'user_id'}) {
+        if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
+            $object->setUserId($data['user_id']);
+        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
             $object->setUserId(null);
         }
 
@@ -89,41 +86,41 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getAppId()) {
-            $data->{'app_id'} = $object->getAppId();
+            $data['app_id'] = $object->getAppId();
         } else {
-            $data->{'app_id'} = null;
+            $data['app_id'] = null;
         }
         if (null !== $object->getDeleted()) {
-            $data->{'deleted'} = $object->getDeleted();
+            $data['deleted'] = $object->getDeleted();
         } else {
-            $data->{'deleted'} = null;
+            $data['deleted'] = null;
         }
         if (null !== $object->getIcons()) {
-            $data->{'icons'} = $this->normalizer->normalize($object->getIcons(), 'json', $context);
+            $data['icons'] = $this->normalizer->normalize($object->getIcons(), 'json', $context);
         } else {
-            $data->{'icons'} = null;
+            $data['icons'] = null;
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         } else {
-            $data->{'id'} = null;
+            $data['id'] = null;
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         } else {
-            $data->{'name'} = null;
+            $data['name'] = null;
         }
         if (null !== $object->getUpdated()) {
-            $data->{'updated'} = $object->getUpdated();
+            $data['updated'] = $object->getUpdated();
         } else {
-            $data->{'updated'} = null;
+            $data['updated'] = null;
         }
         if (null !== $object->getUserId()) {
-            $data->{'user_id'} = $object->getUserId();
+            $data['user_id'] = $object->getUserId();
         } else {
-            $data->{'user_id'} = null;
+            $data['user_id'] = null;
         }
 
         return $data;

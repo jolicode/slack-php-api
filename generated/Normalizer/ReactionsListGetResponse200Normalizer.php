@@ -38,38 +38,35 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200();
-        if (property_exists($data, 'items') && null !== $data->{'items'}) {
+        if (\array_key_exists('items', $data) && null !== $data['items']) {
             $values = [];
-            foreach ($data->{'items'} as $value) {
+            foreach ($data['items'] as $value) {
                 $values[] = $value;
             }
             $object->setItems($values);
-        } elseif (property_exists($data, 'items') && null === $data->{'items'}) {
+        } elseif (\array_key_exists('items', $data) && null === $data['items']) {
             $object->setItems(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'paging') && null !== $data->{'paging'}) {
-            $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-        } elseif (property_exists($data, 'paging') && null === $data->{'paging'}) {
+        if (\array_key_exists('paging', $data) && null !== $data['paging']) {
+            $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
+        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
             $object->setPaging(null);
         }
-        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
-        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+        if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
+        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
             $object->setResponseMetadata(null);
         }
 
@@ -78,30 +75,30 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getItems()) {
             $values = [];
             foreach ($object->getItems() as $value) {
                 $values[] = $value;
             }
-            $data->{'items'} = $values;
+            $data['items'] = $values;
         } else {
-            $data->{'items'} = null;
+            $data['items'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getPaging()) {
-            $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
+            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         } else {
-            $data->{'paging'} = null;
+            $data['paging'] = null;
         }
         if (null !== $object->getResponseMetadata()) {
-            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+            $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         } else {
-            $data->{'response_metadata'} = null;
+            $data['response_metadata'] = null;
         }
 
         return $data;

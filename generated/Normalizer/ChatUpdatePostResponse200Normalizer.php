@@ -38,39 +38,36 @@ class ChatUpdatePostResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200();
-        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($data->{'channel'});
-        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($data['channel']);
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
         }
-        if (property_exists($data, 'message') && null !== $data->{'message'}) {
-            $object->setMessage($this->denormalizer->denormalize($data->{'message'}, 'JoliCode\\Slack\\Api\\Model\\ChatUpdatePostResponse200Message', 'json', $context));
-        } elseif (property_exists($data, 'message') && null === $data->{'message'}) {
+        if (\array_key_exists('message', $data) && null !== $data['message']) {
+            $object->setMessage($this->denormalizer->denormalize($data['message'], 'JoliCode\\Slack\\Api\\Model\\ChatUpdatePostResponse200Message', 'json', $context));
+        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
             $object->setMessage(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'text') && null !== $data->{'text'}) {
-            $object->setText($data->{'text'});
-        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+        if (\array_key_exists('text', $data) && null !== $data['text']) {
+            $object->setText($data['text']);
+        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
             $object->setText(null);
         }
-        if (property_exists($data, 'ts') && null !== $data->{'ts'}) {
-            $object->setTs($data->{'ts'});
-        } elseif (property_exists($data, 'ts') && null === $data->{'ts'}) {
+        if (\array_key_exists('ts', $data) && null !== $data['ts']) {
+            $object->setTs($data['ts']);
+        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
             $object->setTs(null);
         }
 
@@ -79,31 +76,31 @@ class ChatUpdatePostResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
+            $data['channel'] = $object->getChannel();
         } else {
-            $data->{'channel'} = null;
+            $data['channel'] = null;
         }
         if (null !== $object->getMessage()) {
-            $data->{'message'} = $this->normalizer->normalize($object->getMessage(), 'json', $context);
+            $data['message'] = $this->normalizer->normalize($object->getMessage(), 'json', $context);
         } else {
-            $data->{'message'} = null;
+            $data['message'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getText()) {
-            $data->{'text'} = $object->getText();
+            $data['text'] = $object->getText();
         } else {
-            $data->{'text'} = null;
+            $data['text'] = null;
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $data['ts'] = $object->getTs();
         } else {
-            $data->{'ts'} = null;
+            $data['ts'] = null;
         }
 
         return $data;

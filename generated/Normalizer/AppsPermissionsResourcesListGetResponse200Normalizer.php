@@ -38,41 +38,37 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200();
-        $data = clone $data;
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+            unset($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'resources') && null !== $data->{'resources'}) {
+        if (\array_key_exists('resources', $data) && null !== $data['resources']) {
             $values = [];
-            foreach ($data->{'resources'} as $value) {
+            foreach ($data['resources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResourcesItem', 'json', $context);
             }
             $object->setResources($values);
-            unset($data->{'resources'});
-        } elseif (property_exists($data, 'resources') && null === $data->{'resources'}) {
+            unset($data['resources']);
+        } elseif (\array_key_exists('resources', $data) && null === $data['resources']) {
             $object->setResources(null);
         }
-        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResponseMetadata', 'json', $context));
-            unset($data->{'response_metadata'});
-        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+        if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResponseMetadata', 'json', $context));
+            unset($data['response_metadata']);
+        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
             $object->setResponseMetadata(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -82,29 +78,29 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getResources()) {
             $values = [];
             foreach ($object->getResources() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'resources'} = $values;
+            $data['resources'] = $values;
         } else {
-            $data->{'resources'} = null;
+            $data['resources'] = null;
         }
         if (null !== $object->getResponseMetadata()) {
-            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+            $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         } else {
-            $data->{'response_metadata'} = null;
+            $data['response_metadata'] = null;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

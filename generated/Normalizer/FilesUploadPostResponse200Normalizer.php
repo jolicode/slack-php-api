@@ -38,24 +38,21 @@ class FilesUploadPostResponse200Normalizer implements DenormalizerInterface, Nor
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesUploadPostResponse200();
-        if (property_exists($data, 'file') && null !== $data->{'file'}) {
-            $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-        } elseif (property_exists($data, 'file') && null === $data->{'file'}) {
+        if (\array_key_exists('file', $data) && null !== $data['file']) {
+            $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
+        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
             $object->setFile(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -64,16 +61,16 @@ class FilesUploadPostResponse200Normalizer implements DenormalizerInterface, Nor
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getFile()) {
-            $data->{'file'} = $this->normalizer->normalize($object->getFile(), 'json', $context);
+            $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         } else {
-            $data->{'file'} = null;
+            $data['file'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

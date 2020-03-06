@@ -38,28 +38,25 @@ class AppsPermissionsInfoGetResponse200InfoTeamNormalizer implements Denormalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam();
-        if (property_exists($data, 'resources') && null !== $data->{'resources'}) {
-            $object->setResources($this->denormalizer->denormalize($data->{'resources'}, 'JoliCode\\Slack\\Api\\Model\\ObjsResources', 'json', $context));
-        } elseif (property_exists($data, 'resources') && null === $data->{'resources'}) {
+        if (\array_key_exists('resources', $data) && null !== $data['resources']) {
+            $object->setResources($this->denormalizer->denormalize($data['resources'], 'JoliCode\\Slack\\Api\\Model\\ObjsResources', 'json', $context));
+        } elseif (\array_key_exists('resources', $data) && null === $data['resources']) {
             $object->setResources(null);
         }
-        if (property_exists($data, 'scopes') && null !== $data->{'scopes'}) {
+        if (\array_key_exists('scopes', $data) && null !== $data['scopes']) {
             $values = [];
-            foreach ($data->{'scopes'} as $value) {
+            foreach ($data['scopes'] as $value) {
                 $values[] = $value;
             }
             $object->setScopes($values);
-        } elseif (property_exists($data, 'scopes') && null === $data->{'scopes'}) {
+        } elseif (\array_key_exists('scopes', $data) && null === $data['scopes']) {
             $object->setScopes(null);
         }
 
@@ -68,20 +65,20 @@ class AppsPermissionsInfoGetResponse200InfoTeamNormalizer implements Denormalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getResources()) {
-            $data->{'resources'} = $this->normalizer->normalize($object->getResources(), 'json', $context);
+            $data['resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         } else {
-            $data->{'resources'} = null;
+            $data['resources'] = null;
         }
         if (null !== $object->getScopes()) {
             $values = [];
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;
             }
-            $data->{'scopes'} = $values;
+            $data['scopes'] = $values;
         } else {
-            $data->{'scopes'} = null;
+            $data['scopes'] = null;
         }
 
         return $data;

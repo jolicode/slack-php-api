@@ -38,59 +38,56 @@ class UsersSetPhotoPostResponse200ProfileNormalizer implements DenormalizerInter
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile();
-        if (property_exists($data, 'avatar_hash') && null !== $data->{'avatar_hash'}) {
-            $object->setAvatarHash($data->{'avatar_hash'});
-        } elseif (property_exists($data, 'avatar_hash') && null === $data->{'avatar_hash'}) {
+        if (\array_key_exists('avatar_hash', $data) && null !== $data['avatar_hash']) {
+            $object->setAvatarHash($data['avatar_hash']);
+        } elseif (\array_key_exists('avatar_hash', $data) && null === $data['avatar_hash']) {
             $object->setAvatarHash(null);
         }
-        if (property_exists($data, 'image_1024') && null !== $data->{'image_1024'}) {
-            $object->setImage1024($data->{'image_1024'});
-        } elseif (property_exists($data, 'image_1024') && null === $data->{'image_1024'}) {
+        if (\array_key_exists('image_1024', $data) && null !== $data['image_1024']) {
+            $object->setImage1024($data['image_1024']);
+        } elseif (\array_key_exists('image_1024', $data) && null === $data['image_1024']) {
             $object->setImage1024(null);
         }
-        if (property_exists($data, 'image_192') && null !== $data->{'image_192'}) {
-            $object->setImage192($data->{'image_192'});
-        } elseif (property_exists($data, 'image_192') && null === $data->{'image_192'}) {
+        if (\array_key_exists('image_192', $data) && null !== $data['image_192']) {
+            $object->setImage192($data['image_192']);
+        } elseif (\array_key_exists('image_192', $data) && null === $data['image_192']) {
             $object->setImage192(null);
         }
-        if (property_exists($data, 'image_24') && null !== $data->{'image_24'}) {
-            $object->setImage24($data->{'image_24'});
-        } elseif (property_exists($data, 'image_24') && null === $data->{'image_24'}) {
+        if (\array_key_exists('image_24', $data) && null !== $data['image_24']) {
+            $object->setImage24($data['image_24']);
+        } elseif (\array_key_exists('image_24', $data) && null === $data['image_24']) {
             $object->setImage24(null);
         }
-        if (property_exists($data, 'image_32') && null !== $data->{'image_32'}) {
-            $object->setImage32($data->{'image_32'});
-        } elseif (property_exists($data, 'image_32') && null === $data->{'image_32'}) {
+        if (\array_key_exists('image_32', $data) && null !== $data['image_32']) {
+            $object->setImage32($data['image_32']);
+        } elseif (\array_key_exists('image_32', $data) && null === $data['image_32']) {
             $object->setImage32(null);
         }
-        if (property_exists($data, 'image_48') && null !== $data->{'image_48'}) {
-            $object->setImage48($data->{'image_48'});
-        } elseif (property_exists($data, 'image_48') && null === $data->{'image_48'}) {
+        if (\array_key_exists('image_48', $data) && null !== $data['image_48']) {
+            $object->setImage48($data['image_48']);
+        } elseif (\array_key_exists('image_48', $data) && null === $data['image_48']) {
             $object->setImage48(null);
         }
-        if (property_exists($data, 'image_512') && null !== $data->{'image_512'}) {
-            $object->setImage512($data->{'image_512'});
-        } elseif (property_exists($data, 'image_512') && null === $data->{'image_512'}) {
+        if (\array_key_exists('image_512', $data) && null !== $data['image_512']) {
+            $object->setImage512($data['image_512']);
+        } elseif (\array_key_exists('image_512', $data) && null === $data['image_512']) {
             $object->setImage512(null);
         }
-        if (property_exists($data, 'image_72') && null !== $data->{'image_72'}) {
-            $object->setImage72($data->{'image_72'});
-        } elseif (property_exists($data, 'image_72') && null === $data->{'image_72'}) {
+        if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
+            $object->setImage72($data['image_72']);
+        } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
             $object->setImage72(null);
         }
-        if (property_exists($data, 'image_original') && null !== $data->{'image_original'}) {
-            $object->setImageOriginal($data->{'image_original'});
-        } elseif (property_exists($data, 'image_original') && null === $data->{'image_original'}) {
+        if (\array_key_exists('image_original', $data) && null !== $data['image_original']) {
+            $object->setImageOriginal($data['image_original']);
+        } elseif (\array_key_exists('image_original', $data) && null === $data['image_original']) {
             $object->setImageOriginal(null);
         }
 
@@ -99,51 +96,51 @@ class UsersSetPhotoPostResponse200ProfileNormalizer implements DenormalizerInter
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getAvatarHash()) {
-            $data->{'avatar_hash'} = $object->getAvatarHash();
+            $data['avatar_hash'] = $object->getAvatarHash();
         } else {
-            $data->{'avatar_hash'} = null;
+            $data['avatar_hash'] = null;
         }
         if (null !== $object->getImage1024()) {
-            $data->{'image_1024'} = $object->getImage1024();
+            $data['image_1024'] = $object->getImage1024();
         } else {
-            $data->{'image_1024'} = null;
+            $data['image_1024'] = null;
         }
         if (null !== $object->getImage192()) {
-            $data->{'image_192'} = $object->getImage192();
+            $data['image_192'] = $object->getImage192();
         } else {
-            $data->{'image_192'} = null;
+            $data['image_192'] = null;
         }
         if (null !== $object->getImage24()) {
-            $data->{'image_24'} = $object->getImage24();
+            $data['image_24'] = $object->getImage24();
         } else {
-            $data->{'image_24'} = null;
+            $data['image_24'] = null;
         }
         if (null !== $object->getImage32()) {
-            $data->{'image_32'} = $object->getImage32();
+            $data['image_32'] = $object->getImage32();
         } else {
-            $data->{'image_32'} = null;
+            $data['image_32'] = null;
         }
         if (null !== $object->getImage48()) {
-            $data->{'image_48'} = $object->getImage48();
+            $data['image_48'] = $object->getImage48();
         } else {
-            $data->{'image_48'} = null;
+            $data['image_48'] = null;
         }
         if (null !== $object->getImage512()) {
-            $data->{'image_512'} = $object->getImage512();
+            $data['image_512'] = $object->getImage512();
         } else {
-            $data->{'image_512'} = null;
+            $data['image_512'] = null;
         }
         if (null !== $object->getImage72()) {
-            $data->{'image_72'} = $object->getImage72();
+            $data['image_72'] = $object->getImage72();
         } else {
-            $data->{'image_72'} = null;
+            $data['image_72'] = null;
         }
         if (null !== $object->getImageOriginal()) {
-            $data->{'image_original'} = $object->getImageOriginal();
+            $data['image_original'] = $object->getImageOriginal();
         } else {
-            $data->{'image_original'} = null;
+            $data['image_original'] = null;
         }
 
         return $data;

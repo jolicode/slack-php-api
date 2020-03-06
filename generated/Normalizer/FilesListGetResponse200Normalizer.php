@@ -38,33 +38,30 @@ class FilesListGetResponse200Normalizer implements DenormalizerInterface, Normal
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesListGetResponse200();
-        if (property_exists($data, 'files') && null !== $data->{'files'}) {
+        if (\array_key_exists('files', $data) && null !== $data['files']) {
             $values = [];
-            foreach ($data->{'files'} as $value) {
+            foreach ($data['files'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context);
             }
             $object->setFiles($values);
-        } elseif (property_exists($data, 'files') && null === $data->{'files'}) {
+        } elseif (\array_key_exists('files', $data) && null === $data['files']) {
             $object->setFiles(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'paging') && null !== $data->{'paging'}) {
-            $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-        } elseif (property_exists($data, 'paging') && null === $data->{'paging'}) {
+        if (\array_key_exists('paging', $data) && null !== $data['paging']) {
+            $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
+        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
             $object->setPaging(null);
         }
 
@@ -73,25 +70,25 @@ class FilesListGetResponse200Normalizer implements DenormalizerInterface, Normal
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getFiles()) {
             $values = [];
             foreach ($object->getFiles() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'files'} = $values;
+            $data['files'] = $values;
         } else {
-            $data->{'files'} = null;
+            $data['files'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getPaging()) {
-            $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
+            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         } else {
-            $data->{'paging'} = null;
+            $data['paging'] = null;
         }
 
         return $data;

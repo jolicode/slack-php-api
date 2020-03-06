@@ -38,28 +38,25 @@ class GroupsListGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\GroupsListGetResponse200();
-        if (property_exists($data, 'groups') && null !== $data->{'groups'}) {
+        if (\array_key_exists('groups', $data) && null !== $data['groups']) {
             $values = [];
-            foreach ($data->{'groups'} as $value) {
+            foreach ($data['groups'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsGroup', 'json', $context);
             }
             $object->setGroups($values);
-        } elseif (property_exists($data, 'groups') && null === $data->{'groups'}) {
+        } elseif (\array_key_exists('groups', $data) && null === $data['groups']) {
             $object->setGroups(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -68,20 +65,20 @@ class GroupsListGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getGroups()) {
             $values = [];
             foreach ($object->getGroups() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'groups'} = $values;
+            $data['groups'] = $values;
         } else {
-            $data->{'groups'} = null;
+            $data['groups'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

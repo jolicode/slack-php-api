@@ -38,24 +38,21 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200();
-        if (property_exists($data, 'message_ts') && null !== $data->{'message_ts'}) {
-            $object->setMessageTs($data->{'message_ts'});
-        } elseif (property_exists($data, 'message_ts') && null === $data->{'message_ts'}) {
+        if (\array_key_exists('message_ts', $data) && null !== $data['message_ts']) {
+            $object->setMessageTs($data['message_ts']);
+        } elseif (\array_key_exists('message_ts', $data) && null === $data['message_ts']) {
             $object->setMessageTs(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -64,16 +61,16 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getMessageTs()) {
-            $data->{'message_ts'} = $object->getMessageTs();
+            $data['message_ts'] = $object->getMessageTs();
         } else {
-            $data->{'message_ts'} = null;
+            $data['message_ts'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

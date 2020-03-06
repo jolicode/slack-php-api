@@ -38,23 +38,20 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUserTeamProfile();
-        if (property_exists($data, 'fields') && null !== $data->{'fields'}) {
+        if (\array_key_exists('fields', $data) && null !== $data['fields']) {
             $values = [];
-            foreach ($data->{'fields'} as $value) {
+            foreach ($data['fields'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileField', 'json', $context);
             }
             $object->setFields($values);
-        } elseif (property_exists($data, 'fields') && null === $data->{'fields'}) {
+        } elseif (\array_key_exists('fields', $data) && null === $data['fields']) {
             $object->setFields(null);
         }
 
@@ -63,15 +60,15 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getFields()) {
             $values = [];
             foreach ($object->getFields() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'fields'} = $values;
+            $data['fields'] = $values;
         } else {
-            $data->{'fields'} = null;
+            $data['fields'] = null;
         }
 
         return $data;

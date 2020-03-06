@@ -38,33 +38,30 @@ class ChatScheduledMessagesListGetResponse200Normalizer implements DenormalizerI
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponse200ResponseMetadata', 'json', $context));
-        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+        if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponse200ResponseMetadata', 'json', $context));
+        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
             $object->setResponseMetadata(null);
         }
-        if (property_exists($data, 'scheduled_messages') && null !== $data->{'scheduled_messages'}) {
+        if (\array_key_exists('scheduled_messages', $data) && null !== $data['scheduled_messages']) {
             $values = [];
-            foreach ($data->{'scheduled_messages'} as $value) {
+            foreach ($data['scheduled_messages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem', 'json', $context);
             }
             $object->setScheduledMessages($values);
-        } elseif (property_exists($data, 'scheduled_messages') && null === $data->{'scheduled_messages'}) {
+        } elseif (\array_key_exists('scheduled_messages', $data) && null === $data['scheduled_messages']) {
             $object->setScheduledMessages(null);
         }
 
@@ -73,25 +70,25 @@ class ChatScheduledMessagesListGetResponse200Normalizer implements DenormalizerI
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getResponseMetadata()) {
-            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+            $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         } else {
-            $data->{'response_metadata'} = null;
+            $data['response_metadata'] = null;
         }
         if (null !== $object->getScheduledMessages()) {
             $values = [];
             foreach ($object->getScheduledMessages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'scheduled_messages'} = $values;
+            $data['scheduled_messages'] = $values;
         } else {
-            $data->{'scheduled_messages'} = null;
+            $data['scheduled_messages'] = null;
         }
 
         return $data;

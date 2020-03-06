@@ -38,44 +38,41 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($data->{'team'});
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($data['team']);
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
-            $object->setTeamId($data->{'team_id'});
-        } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
+        if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
+            $object->setTeamId($data['team_id']);
+        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
             $object->setTeamId(null);
         }
-        if (property_exists($data, 'url') && null !== $data->{'url'}) {
-            $object->setUrl($data->{'url'});
-        } elseif (property_exists($data, 'url') && null === $data->{'url'}) {
+        if (\array_key_exists('url', $data) && null !== $data['url']) {
+            $object->setUrl($data['url']);
+        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
             $object->setUrl(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
-        if (property_exists($data, 'user_id') && null !== $data->{'user_id'}) {
-            $object->setUserId($data->{'user_id'});
-        } elseif (property_exists($data, 'user_id') && null === $data->{'user_id'}) {
+        if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
+            $object->setUserId($data['user_id']);
+        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
             $object->setUserId(null);
         }
 
@@ -84,36 +81,36 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $object->getTeam();
+            $data['team'] = $object->getTeam();
         } else {
-            $data->{'team'} = null;
+            $data['team'] = null;
         }
         if (null !== $object->getTeamId()) {
-            $data->{'team_id'} = $object->getTeamId();
+            $data['team_id'] = $object->getTeamId();
         } else {
-            $data->{'team_id'} = null;
+            $data['team_id'] = null;
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
+            $data['url'] = $object->getUrl();
         } else {
-            $data->{'url'} = null;
+            $data['url'] = null;
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
+            $data['user'] = $object->getUser();
         } else {
-            $data->{'user'} = null;
+            $data['user'] = null;
         }
         if (null !== $object->getUserId()) {
-            $data->{'user_id'} = $object->getUserId();
+            $data['user_id'] = $object->getUserId();
         } else {
-            $data->{'user_id'} = null;
+            $data['user_id'] = null;
         }
 
         return $data;

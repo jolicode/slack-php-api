@@ -38,28 +38,25 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RemindersListGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'reminders') && null !== $data->{'reminders'}) {
+        if (\array_key_exists('reminders', $data) && null !== $data['reminders']) {
             $values = [];
-            foreach ($data->{'reminders'} as $value) {
+            foreach ($data['reminders'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsReminder', 'json', $context);
             }
             $object->setReminders($values);
-        } elseif (property_exists($data, 'reminders') && null === $data->{'reminders'}) {
+        } elseif (\array_key_exists('reminders', $data) && null === $data['reminders']) {
             $object->setReminders(null);
         }
 
@@ -68,20 +65,20 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getReminders()) {
             $values = [];
             foreach ($object->getReminders() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'reminders'} = $values;
+            $data['reminders'] = $values;
         } else {
-            $data->{'reminders'} = null;
+            $data['reminders'] = null;
         }
 
         return $data;

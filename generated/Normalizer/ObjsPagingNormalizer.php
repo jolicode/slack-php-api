@@ -38,44 +38,41 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsPaging();
-        if (property_exists($data, 'count') && null !== $data->{'count'}) {
-            $object->setCount($data->{'count'});
-        } elseif (property_exists($data, 'count') && null === $data->{'count'}) {
+        if (\array_key_exists('count', $data) && null !== $data['count']) {
+            $object->setCount($data['count']);
+        } elseif (\array_key_exists('count', $data) && null === $data['count']) {
             $object->setCount(null);
         }
-        if (property_exists($data, 'page') && null !== $data->{'page'}) {
-            $object->setPage($data->{'page'});
-        } elseif (property_exists($data, 'page') && null === $data->{'page'}) {
+        if (\array_key_exists('page', $data) && null !== $data['page']) {
+            $object->setPage($data['page']);
+        } elseif (\array_key_exists('page', $data) && null === $data['page']) {
             $object->setPage(null);
         }
-        if (property_exists($data, 'pages') && null !== $data->{'pages'}) {
-            $object->setPages($data->{'pages'});
-        } elseif (property_exists($data, 'pages') && null === $data->{'pages'}) {
+        if (\array_key_exists('pages', $data) && null !== $data['pages']) {
+            $object->setPages($data['pages']);
+        } elseif (\array_key_exists('pages', $data) && null === $data['pages']) {
             $object->setPages(null);
         }
-        if (property_exists($data, 'per_page') && null !== $data->{'per_page'}) {
-            $object->setPerPage($data->{'per_page'});
-        } elseif (property_exists($data, 'per_page') && null === $data->{'per_page'}) {
+        if (\array_key_exists('per_page', $data) && null !== $data['per_page']) {
+            $object->setPerPage($data['per_page']);
+        } elseif (\array_key_exists('per_page', $data) && null === $data['per_page']) {
             $object->setPerPage(null);
         }
-        if (property_exists($data, 'spill') && null !== $data->{'spill'}) {
-            $object->setSpill($data->{'spill'});
-        } elseif (property_exists($data, 'spill') && null === $data->{'spill'}) {
+        if (\array_key_exists('spill', $data) && null !== $data['spill']) {
+            $object->setSpill($data['spill']);
+        } elseif (\array_key_exists('spill', $data) && null === $data['spill']) {
             $object->setSpill(null);
         }
-        if (property_exists($data, 'total') && null !== $data->{'total'}) {
-            $object->setTotal($data->{'total'});
-        } elseif (property_exists($data, 'total') && null === $data->{'total'}) {
+        if (\array_key_exists('total', $data) && null !== $data['total']) {
+            $object->setTotal($data['total']);
+        } elseif (\array_key_exists('total', $data) && null === $data['total']) {
             $object->setTotal(null);
         }
 
@@ -84,36 +81,36 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCount()) {
-            $data->{'count'} = $object->getCount();
+            $data['count'] = $object->getCount();
         } else {
-            $data->{'count'} = null;
+            $data['count'] = null;
         }
         if (null !== $object->getPage()) {
-            $data->{'page'} = $object->getPage();
+            $data['page'] = $object->getPage();
         } else {
-            $data->{'page'} = null;
+            $data['page'] = null;
         }
         if (null !== $object->getPages()) {
-            $data->{'pages'} = $object->getPages();
+            $data['pages'] = $object->getPages();
         } else {
-            $data->{'pages'} = null;
+            $data['pages'] = null;
         }
         if (null !== $object->getPerPage()) {
-            $data->{'per_page'} = $object->getPerPage();
+            $data['per_page'] = $object->getPerPage();
         } else {
-            $data->{'per_page'} = null;
+            $data['per_page'] = null;
         }
         if (null !== $object->getSpill()) {
-            $data->{'spill'} = $object->getSpill();
+            $data['spill'] = $object->getSpill();
         } else {
-            $data->{'spill'} = null;
+            $data['spill'] = null;
         }
         if (null !== $object->getTotal()) {
-            $data->{'total'} = $object->getTotal();
+            $data['total'] = $object->getTotal();
         } else {
-            $data->{'total'} = null;
+            $data['total'] = null;
         }
 
         return $data;

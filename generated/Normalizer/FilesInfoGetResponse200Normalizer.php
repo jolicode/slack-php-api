@@ -38,53 +38,50 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesInfoGetResponse200();
-        if (property_exists($data, 'comments') && null !== $data->{'comments'}) {
+        if (\array_key_exists('comments', $data) && null !== $data['comments']) {
             $values = [];
-            foreach ($data->{'comments'} as $value) {
+            foreach ($data['comments'] as $value) {
                 $values[] = $value;
             }
             $object->setComments($values);
-        } elseif (property_exists($data, 'comments') && null === $data->{'comments'}) {
+        } elseif (\array_key_exists('comments', $data) && null === $data['comments']) {
             $object->setComments(null);
         }
-        if (property_exists($data, 'content_html') && null !== $data->{'content_html'}) {
-            $object->setContentHtml($data->{'content_html'});
-        } elseif (property_exists($data, 'content_html') && null === $data->{'content_html'}) {
+        if (\array_key_exists('content_html', $data) && null !== $data['content_html']) {
+            $object->setContentHtml($data['content_html']);
+        } elseif (\array_key_exists('content_html', $data) && null === $data['content_html']) {
             $object->setContentHtml(null);
         }
-        if (property_exists($data, 'editor') && null !== $data->{'editor'}) {
-            $object->setEditor($data->{'editor'});
-        } elseif (property_exists($data, 'editor') && null === $data->{'editor'}) {
+        if (\array_key_exists('editor', $data) && null !== $data['editor']) {
+            $object->setEditor($data['editor']);
+        } elseif (\array_key_exists('editor', $data) && null === $data['editor']) {
             $object->setEditor(null);
         }
-        if (property_exists($data, 'file') && null !== $data->{'file'}) {
-            $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-        } elseif (property_exists($data, 'file') && null === $data->{'file'}) {
+        if (\array_key_exists('file', $data) && null !== $data['file']) {
+            $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
+        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
             $object->setFile(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'paging') && null !== $data->{'paging'}) {
-            $object->setPaging($this->denormalizer->denormalize($data->{'paging'}, 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
-        } elseif (property_exists($data, 'paging') && null === $data->{'paging'}) {
+        if (\array_key_exists('paging', $data) && null !== $data['paging']) {
+            $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\\Slack\\Api\\Model\\ObjsPaging', 'json', $context));
+        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
             $object->setPaging(null);
         }
-        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
-        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+        if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
+        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
             $object->setResponseMetadata(null);
         }
 
@@ -93,45 +90,45 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getComments()) {
             $values = [];
             foreach ($object->getComments() as $value) {
                 $values[] = $value;
             }
-            $data->{'comments'} = $values;
+            $data['comments'] = $values;
         } else {
-            $data->{'comments'} = null;
+            $data['comments'] = null;
         }
         if (null !== $object->getContentHtml()) {
-            $data->{'content_html'} = $object->getContentHtml();
+            $data['content_html'] = $object->getContentHtml();
         } else {
-            $data->{'content_html'} = null;
+            $data['content_html'] = null;
         }
         if (null !== $object->getEditor()) {
-            $data->{'editor'} = $object->getEditor();
+            $data['editor'] = $object->getEditor();
         } else {
-            $data->{'editor'} = null;
+            $data['editor'] = null;
         }
         if (null !== $object->getFile()) {
-            $data->{'file'} = $this->normalizer->normalize($object->getFile(), 'json', $context);
+            $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         } else {
-            $data->{'file'} = null;
+            $data['file'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getPaging()) {
-            $data->{'paging'} = $this->normalizer->normalize($object->getPaging(), 'json', $context);
+            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         } else {
-            $data->{'paging'} = null;
+            $data['paging'] = null;
         }
         if (null !== $object->getResponseMetadata()) {
-            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+            $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         } else {
-            $data->{'response_metadata'} = null;
+            $data['response_metadata'] = null;
         }
 
         return $data;

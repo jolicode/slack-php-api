@@ -38,34 +38,31 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem();
-        if (property_exists($data, 'channel_id') && null !== $data->{'channel_id'}) {
-            $object->setChannelId($data->{'channel_id'});
-        } elseif (property_exists($data, 'channel_id') && null === $data->{'channel_id'}) {
+        if (\array_key_exists('channel_id', $data) && null !== $data['channel_id']) {
+            $object->setChannelId($data['channel_id']);
+        } elseif (\array_key_exists('channel_id', $data) && null === $data['channel_id']) {
             $object->setChannelId(null);
         }
-        if (property_exists($data, 'date_created') && null !== $data->{'date_created'}) {
-            $object->setDateCreated($data->{'date_created'});
-        } elseif (property_exists($data, 'date_created') && null === $data->{'date_created'}) {
+        if (\array_key_exists('date_created', $data) && null !== $data['date_created']) {
+            $object->setDateCreated($data['date_created']);
+        } elseif (\array_key_exists('date_created', $data) && null === $data['date_created']) {
             $object->setDateCreated(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'post_at') && null !== $data->{'post_at'}) {
-            $object->setPostAt($data->{'post_at'});
-        } elseif (property_exists($data, 'post_at') && null === $data->{'post_at'}) {
+        if (\array_key_exists('post_at', $data) && null !== $data['post_at']) {
+            $object->setPostAt($data['post_at']);
+        } elseif (\array_key_exists('post_at', $data) && null === $data['post_at']) {
             $object->setPostAt(null);
         }
 
@@ -74,26 +71,26 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannelId()) {
-            $data->{'channel_id'} = $object->getChannelId();
+            $data['channel_id'] = $object->getChannelId();
         } else {
-            $data->{'channel_id'} = null;
+            $data['channel_id'] = null;
         }
         if (null !== $object->getDateCreated()) {
-            $data->{'date_created'} = $object->getDateCreated();
+            $data['date_created'] = $object->getDateCreated();
         } else {
-            $data->{'date_created'} = null;
+            $data['date_created'] = null;
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         } else {
-            $data->{'id'} = null;
+            $data['id'] = null;
         }
         if (null !== $object->getPostAt()) {
-            $data->{'post_at'} = $object->getPostAt();
+            $data['post_at'] = $object->getPostAt();
         } else {
-            $data->{'post_at'} = null;
+            $data['post_at'] = null;
         }
 
         return $data;

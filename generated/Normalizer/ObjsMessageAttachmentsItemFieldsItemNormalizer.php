@@ -38,29 +38,26 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem();
-        if (property_exists($data, 'title') && null !== $data->{'title'}) {
-            $object->setTitle($data->{'title'});
-        } elseif (property_exists($data, 'title') && null === $data->{'title'}) {
+        if (\array_key_exists('title', $data) && null !== $data['title']) {
+            $object->setTitle($data['title']);
+        } elseif (\array_key_exists('title', $data) && null === $data['title']) {
             $object->setTitle(null);
         }
-        if (property_exists($data, 'value') && null !== $data->{'value'}) {
-            $object->setValue($data->{'value'});
-        } elseif (property_exists($data, 'value') && null === $data->{'value'}) {
+        if (\array_key_exists('value', $data) && null !== $data['value']) {
+            $object->setValue($data['value']);
+        } elseif (\array_key_exists('value', $data) && null === $data['value']) {
             $object->setValue(null);
         }
-        if (property_exists($data, 'short') && null !== $data->{'short'}) {
-            $object->setShort($data->{'short'});
-        } elseif (property_exists($data, 'short') && null === $data->{'short'}) {
+        if (\array_key_exists('short', $data) && null !== $data['short']) {
+            $object->setShort($data['short']);
+        } elseif (\array_key_exists('short', $data) && null === $data['short']) {
             $object->setShort(null);
         }
 
@@ -69,21 +66,21 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
+            $data['title'] = $object->getTitle();
         } else {
-            $data->{'title'} = null;
+            $data['title'] = null;
         }
         if (null !== $object->getValue()) {
-            $data->{'value'} = $object->getValue();
+            $data['value'] = $object->getValue();
         } else {
-            $data->{'value'} = null;
+            $data['value'] = null;
         }
         if (null !== $object->getShort()) {
-            $data->{'short'} = $object->getShort();
+            $data['short'] = $object->getShort();
         } else {
-            $data->{'short'} = null;
+            $data['short'] = null;
         }
 
         return $data;

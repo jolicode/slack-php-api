@@ -38,24 +38,21 @@ class ObjsMessageRepliesItemNormalizer implements DenormalizerInterface, Normali
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageRepliesItem();
-        if (property_exists($data, 'ts') && null !== $data->{'ts'}) {
-            $object->setTs($data->{'ts'});
-        } elseif (property_exists($data, 'ts') && null === $data->{'ts'}) {
+        if (\array_key_exists('ts', $data) && null !== $data['ts']) {
+            $object->setTs($data['ts']);
+        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
             $object->setTs(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
 
@@ -64,16 +61,16 @@ class ObjsMessageRepliesItemNormalizer implements DenormalizerInterface, Normali
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
+            $data['ts'] = $object->getTs();
         } else {
-            $data->{'ts'} = null;
+            $data['ts'] = null;
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
+            $data['user'] = $object->getUser();
         } else {
-            $data->{'user'} = null;
+            $data['user'] = null;
         }
 
         return $data;

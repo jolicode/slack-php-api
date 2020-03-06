@@ -38,67 +38,64 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
-        if (property_exists($data, 'field_name') && null !== $data->{'field_name'}) {
-            $object->setFieldName($data->{'field_name'});
-        } elseif (property_exists($data, 'field_name') && null === $data->{'field_name'}) {
+        if (\array_key_exists('field_name', $data) && null !== $data['field_name']) {
+            $object->setFieldName($data['field_name']);
+        } elseif (\array_key_exists('field_name', $data) && null === $data['field_name']) {
             $object->setFieldName(null);
         }
-        if (property_exists($data, 'hint') && null !== $data->{'hint'}) {
-            $object->setHint($data->{'hint'});
-        } elseif (property_exists($data, 'hint') && null === $data->{'hint'}) {
+        if (\array_key_exists('hint', $data) && null !== $data['hint']) {
+            $object->setHint($data['hint']);
+        } elseif (\array_key_exists('hint', $data) && null === $data['hint']) {
             $object->setHint(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'is_hidden') && null !== $data->{'is_hidden'}) {
-            $object->setIsHidden($data->{'is_hidden'});
-        } elseif (property_exists($data, 'is_hidden') && null === $data->{'is_hidden'}) {
+        if (\array_key_exists('is_hidden', $data) && null !== $data['is_hidden']) {
+            $object->setIsHidden($data['is_hidden']);
+        } elseif (\array_key_exists('is_hidden', $data) && null === $data['is_hidden']) {
             $object->setIsHidden(null);
         }
-        if (property_exists($data, 'label') && null !== $data->{'label'}) {
-            $object->setLabel($data->{'label'});
-        } elseif (property_exists($data, 'label') && null === $data->{'label'}) {
+        if (\array_key_exists('label', $data) && null !== $data['label']) {
+            $object->setLabel($data['label']);
+        } elseif (\array_key_exists('label', $data) && null === $data['label']) {
             $object->setLabel(null);
         }
-        if (property_exists($data, 'options') && null !== $data->{'options'}) {
+        if (\array_key_exists('options', $data) && null !== $data['options']) {
             $values = [];
-            foreach ($data->{'options'} as $value) {
+            foreach ($data['options'] as $value) {
                 $values[] = $value;
             }
             $object->setOptions($values);
-        } elseif (property_exists($data, 'options') && null === $data->{'options'}) {
+        } elseif (\array_key_exists('options', $data) && null === $data['options']) {
             $object->setOptions(null);
         }
-        if (property_exists($data, 'ordering') && null !== $data->{'ordering'}) {
-            $object->setOrdering($data->{'ordering'});
-        } elseif (property_exists($data, 'ordering') && null === $data->{'ordering'}) {
+        if (\array_key_exists('ordering', $data) && null !== $data['ordering']) {
+            $object->setOrdering($data['ordering']);
+        } elseif (\array_key_exists('ordering', $data) && null === $data['ordering']) {
             $object->setOrdering(null);
         }
-        if (property_exists($data, 'possible_values') && null !== $data->{'possible_values'}) {
+        if (\array_key_exists('possible_values', $data) && null !== $data['possible_values']) {
             $values_1 = [];
-            foreach ($data->{'possible_values'} as $value_1) {
+            foreach ($data['possible_values'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setPossibleValues($values_1);
-        } elseif (property_exists($data, 'possible_values') && null === $data->{'possible_values'}) {
+        } elseif (\array_key_exists('possible_values', $data) && null === $data['possible_values']) {
             $object->setPossibleValues(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
         }
 
@@ -107,59 +104,59 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getFieldName()) {
-            $data->{'field_name'} = $object->getFieldName();
+            $data['field_name'] = $object->getFieldName();
         } else {
-            $data->{'field_name'} = null;
+            $data['field_name'] = null;
         }
         if (null !== $object->getHint()) {
-            $data->{'hint'} = $object->getHint();
+            $data['hint'] = $object->getHint();
         } else {
-            $data->{'hint'} = null;
+            $data['hint'] = null;
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         } else {
-            $data->{'id'} = null;
+            $data['id'] = null;
         }
         if (null !== $object->getIsHidden()) {
-            $data->{'is_hidden'} = $object->getIsHidden();
+            $data['is_hidden'] = $object->getIsHidden();
         } else {
-            $data->{'is_hidden'} = null;
+            $data['is_hidden'] = null;
         }
         if (null !== $object->getLabel()) {
-            $data->{'label'} = $object->getLabel();
+            $data['label'] = $object->getLabel();
         } else {
-            $data->{'label'} = null;
+            $data['label'] = null;
         }
         if (null !== $object->getOptions()) {
             $values = [];
             foreach ($object->getOptions() as $value) {
                 $values[] = $value;
             }
-            $data->{'options'} = $values;
+            $data['options'] = $values;
         } else {
-            $data->{'options'} = null;
+            $data['options'] = null;
         }
         if (null !== $object->getOrdering()) {
-            $data->{'ordering'} = $object->getOrdering();
+            $data['ordering'] = $object->getOrdering();
         } else {
-            $data->{'ordering'} = null;
+            $data['ordering'] = null;
         }
         if (null !== $object->getPossibleValues()) {
             $values_1 = [];
             foreach ($object->getPossibleValues() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'possible_values'} = $values_1;
+            $data['possible_values'] = $values_1;
         } else {
-            $data->{'possible_values'} = null;
+            $data['possible_values'] = null;
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+            $data['type'] = $object->getType();
         } else {
-            $data->{'type'} = null;
+            $data['type'] = null;
         }
 
         return $data;

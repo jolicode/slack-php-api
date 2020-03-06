@@ -38,31 +38,27 @@ class UsersInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersInfoGetResponse200();
-        $data = clone $data;
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+            unset($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUser', 'json', $context));
-            unset($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($this->denormalizer->denormalize($data['user'], 'JoliCode\\Slack\\Api\\Model\\ObjsUser', 'json', $context));
+            unset($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -72,20 +68,20 @@ class UsersInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $this->normalizer->normalize($object->getUser(), 'json', $context);
+            $data['user'] = $this->normalizer->normalize($object->getUser(), 'json', $context);
         } else {
-            $data->{'user'} = null;
+            $data['user'] = null;
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

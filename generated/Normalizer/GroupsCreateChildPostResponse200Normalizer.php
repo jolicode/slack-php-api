@@ -38,24 +38,21 @@ class GroupsCreateChildPostResponse200Normalizer implements DenormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\GroupsCreateChildPostResponse200();
-        if (property_exists($data, 'group') && null !== $data->{'group'}) {
-            $object->setGroup($this->denormalizer->denormalize($data->{'group'}, 'JoliCode\\Slack\\Api\\Model\\ObjsGroup', 'json', $context));
-        } elseif (property_exists($data, 'group') && null === $data->{'group'}) {
+        if (\array_key_exists('group', $data) && null !== $data['group']) {
+            $object->setGroup($this->denormalizer->denormalize($data['group'], 'JoliCode\\Slack\\Api\\Model\\ObjsGroup', 'json', $context));
+        } elseif (\array_key_exists('group', $data) && null === $data['group']) {
             $object->setGroup(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -64,16 +61,16 @@ class GroupsCreateChildPostResponse200Normalizer implements DenormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getGroup()) {
-            $data->{'group'} = $this->normalizer->normalize($object->getGroup(), 'json', $context);
+            $data['group'] = $this->normalizer->normalize($object->getGroup(), 'json', $context);
         } else {
-            $data->{'group'} = null;
+            $data['group'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

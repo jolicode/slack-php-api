@@ -38,34 +38,31 @@ class ConversationsRenamePostResponsedefaultNormalizer implements DenormalizerIn
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault();
-        if (property_exists($data, 'error') && null !== $data->{'error'}) {
-            $object->setError($data->{'error'});
-        } elseif (property_exists($data, 'error') && null === $data->{'error'}) {
+        if (\array_key_exists('error', $data) && null !== $data['error']) {
+            $object->setError($data['error']);
+        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
             $object->setError(null);
         }
-        if (property_exists($data, 'needed') && null !== $data->{'needed'}) {
-            $object->setNeeded($data->{'needed'});
-        } elseif (property_exists($data, 'needed') && null === $data->{'needed'}) {
+        if (\array_key_exists('needed', $data) && null !== $data['needed']) {
+            $object->setNeeded($data['needed']);
+        } elseif (\array_key_exists('needed', $data) && null === $data['needed']) {
             $object->setNeeded(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'provided') && null !== $data->{'provided'}) {
-            $object->setProvided($data->{'provided'});
-        } elseif (property_exists($data, 'provided') && null === $data->{'provided'}) {
+        if (\array_key_exists('provided', $data) && null !== $data['provided']) {
+            $object->setProvided($data['provided']);
+        } elseif (\array_key_exists('provided', $data) && null === $data['provided']) {
             $object->setProvided(null);
         }
 
@@ -74,26 +71,26 @@ class ConversationsRenamePostResponsedefaultNormalizer implements DenormalizerIn
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getError()) {
-            $data->{'error'} = $object->getError();
+            $data['error'] = $object->getError();
         } else {
-            $data->{'error'} = null;
+            $data['error'] = null;
         }
         if (null !== $object->getNeeded()) {
-            $data->{'needed'} = $object->getNeeded();
+            $data['needed'] = $object->getNeeded();
         } else {
-            $data->{'needed'} = null;
+            $data['needed'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getProvided()) {
-            $data->{'provided'} = $object->getProvided();
+            $data['provided'] = $object->getProvided();
         } else {
-            $data->{'provided'} = null;
+            $data['provided'] = null;
         }
 
         return $data;

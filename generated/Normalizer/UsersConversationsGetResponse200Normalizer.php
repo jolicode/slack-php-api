@@ -38,41 +38,37 @@ class UsersConversationsGetResponse200Normalizer implements DenormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200();
-        $data = clone $data;
-        if (property_exists($data, 'channels') && null !== $data->{'channels'}) {
+        if (\array_key_exists('channels', $data) && null !== $data['channels']) {
             $values = [];
-            foreach ($data->{'channels'} as $value) {
+            foreach ($data['channels'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context);
             }
             $object->setChannels($values);
-            unset($data->{'channels'});
-        } elseif (property_exists($data, 'channels') && null === $data->{'channels'}) {
+            unset($data['channels']);
+        } elseif (\array_key_exists('channels', $data) && null === $data['channels']) {
             $object->setChannels(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+            unset($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\UsersConversationsGetResponse200ResponseMetadata', 'json', $context));
-            unset($data->{'response_metadata'});
-        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+        if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\UsersConversationsGetResponse200ResponseMetadata', 'json', $context));
+            unset($data['response_metadata']);
+        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
             $object->setResponseMetadata(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -82,29 +78,29 @@ class UsersConversationsGetResponse200Normalizer implements DenormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannels()) {
             $values = [];
             foreach ($object->getChannels() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'channels'} = $values;
+            $data['channels'] = $values;
         } else {
-            $data->{'channels'} = null;
+            $data['channels'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getResponseMetadata()) {
-            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+            $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         } else {
-            $data->{'response_metadata'} = null;
+            $data['response_metadata'] = null;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

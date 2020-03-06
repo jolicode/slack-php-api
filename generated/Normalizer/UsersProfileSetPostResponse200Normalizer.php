@@ -38,29 +38,26 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'profile') && null !== $data->{'profile'}) {
-            $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
-        } elseif (property_exists($data, 'profile') && null === $data->{'profile'}) {
+        if (\array_key_exists('profile', $data) && null !== $data['profile']) {
+            $object->setProfile($this->denormalizer->denormalize($data['profile'], 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
+        } elseif (\array_key_exists('profile', $data) && null === $data['profile']) {
             $object->setProfile(null);
         }
-        if (property_exists($data, 'username') && null !== $data->{'username'}) {
-            $object->setUsername($data->{'username'});
-        } elseif (property_exists($data, 'username') && null === $data->{'username'}) {
+        if (\array_key_exists('username', $data) && null !== $data['username']) {
+            $object->setUsername($data['username']);
+        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
             $object->setUsername(null);
         }
 
@@ -69,21 +66,21 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getProfile()) {
-            $data->{'profile'} = $this->normalizer->normalize($object->getProfile(), 'json', $context);
+            $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
         } else {
-            $data->{'profile'} = null;
+            $data['profile'] = null;
         }
         if (null !== $object->getUsername()) {
-            $data->{'username'} = $object->getUsername();
+            $data['username'] = $object->getUsername();
         } else {
-            $data->{'username'} = null;
+            $data['username'] = null;
         }
 
         return $data;

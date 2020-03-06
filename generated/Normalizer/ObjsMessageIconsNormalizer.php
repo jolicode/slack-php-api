@@ -38,19 +38,16 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageIcons();
-        if (property_exists($data, 'emoji') && null !== $data->{'emoji'}) {
-            $object->setEmoji($data->{'emoji'});
-        } elseif (property_exists($data, 'emoji') && null === $data->{'emoji'}) {
+        if (\array_key_exists('emoji', $data) && null !== $data['emoji']) {
+            $object->setEmoji($data['emoji']);
+        } elseif (\array_key_exists('emoji', $data) && null === $data['emoji']) {
             $object->setEmoji(null);
         }
 
@@ -59,11 +56,11 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getEmoji()) {
-            $data->{'emoji'} = $object->getEmoji();
+            $data['emoji'] = $object->getEmoji();
         } else {
-            $data->{'emoji'} = null;
+            $data['emoji'] = null;
         }
 
         return $data;

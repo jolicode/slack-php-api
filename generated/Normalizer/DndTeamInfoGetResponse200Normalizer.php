@@ -38,29 +38,26 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200();
-        if (property_exists($data, 'cached') && null !== $data->{'cached'}) {
-            $object->setCached($data->{'cached'});
-        } elseif (property_exists($data, 'cached') && null === $data->{'cached'}) {
+        if (\array_key_exists('cached', $data) && null !== $data['cached']) {
+            $object->setCached($data['cached']);
+        } elseif (\array_key_exists('cached', $data) && null === $data['cached']) {
             $object->setCached(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'users') && null !== $data->{'users'}) {
-            $object->setUsers($data->{'users'});
-        } elseif (property_exists($data, 'users') && null === $data->{'users'}) {
+        if (\array_key_exists('users', $data) && null !== $data['users']) {
+            $object->setUsers($data['users']);
+        } elseif (\array_key_exists('users', $data) && null === $data['users']) {
             $object->setUsers(null);
         }
 
@@ -69,21 +66,21 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCached()) {
-            $data->{'cached'} = $object->getCached();
+            $data['cached'] = $object->getCached();
         } else {
-            $data->{'cached'} = null;
+            $data['cached'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getUsers()) {
-            $data->{'users'} = $object->getUsers();
+            $data['users'] = $object->getUsers();
         } else {
-            $data->{'users'} = null;
+            $data['users'] = null;
         }
 
         return $data;

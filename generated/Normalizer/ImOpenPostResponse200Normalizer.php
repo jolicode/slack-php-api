@@ -38,34 +38,31 @@ class ImOpenPostResponse200Normalizer implements DenormalizerInterface, Normaliz
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImOpenPostResponse200();
-        if (property_exists($data, 'already_open') && null !== $data->{'already_open'}) {
-            $object->setAlreadyOpen($data->{'already_open'});
-        } elseif (property_exists($data, 'already_open') && null === $data->{'already_open'}) {
+        if (\array_key_exists('already_open', $data) && null !== $data['already_open']) {
+            $object->setAlreadyOpen($data['already_open']);
+        } elseif (\array_key_exists('already_open', $data) && null === $data['already_open']) {
             $object->setAlreadyOpen(null);
         }
-        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ImOpenPostResponse200Channel', 'json', $context));
-        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($this->denormalizer->denormalize($data['channel'], 'JoliCode\\Slack\\Api\\Model\\ImOpenPostResponse200Channel', 'json', $context));
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
         }
-        if (property_exists($data, 'no_op') && null !== $data->{'no_op'}) {
-            $object->setNoOp($data->{'no_op'});
-        } elseif (property_exists($data, 'no_op') && null === $data->{'no_op'}) {
+        if (\array_key_exists('no_op', $data) && null !== $data['no_op']) {
+            $object->setNoOp($data['no_op']);
+        } elseif (\array_key_exists('no_op', $data) && null === $data['no_op']) {
             $object->setNoOp(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -74,26 +71,26 @@ class ImOpenPostResponse200Normalizer implements DenormalizerInterface, Normaliz
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getAlreadyOpen()) {
-            $data->{'already_open'} = $object->getAlreadyOpen();
+            $data['already_open'] = $object->getAlreadyOpen();
         } else {
-            $data->{'already_open'} = null;
+            $data['already_open'] = null;
         }
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
+            $data['channel'] = $this->normalizer->normalize($object->getChannel(), 'json', $context);
         } else {
-            $data->{'channel'} = null;
+            $data['channel'] = null;
         }
         if (null !== $object->getNoOp()) {
-            $data->{'no_op'} = $object->getNoOp();
+            $data['no_op'] = $object->getNoOp();
         } else {
-            $data->{'no_op'} = null;
+            $data['no_op'] = null;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
 
         return $data;

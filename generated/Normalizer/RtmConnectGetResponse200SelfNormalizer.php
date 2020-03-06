@@ -38,24 +38,21 @@ class RtmConnectGetResponse200SelfNormalizer implements DenormalizerInterface, N
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self();
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'name') && null !== $data->{'name'}) {
-            $object->setName($data->{'name'});
-        } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
 
@@ -64,16 +61,16 @@ class RtmConnectGetResponse200SelfNormalizer implements DenormalizerInterface, N
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
+            $data['id'] = $object->getId();
         } else {
-            $data->{'id'} = null;
+            $data['id'] = null;
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
+            $data['name'] = $object->getName();
         } else {
-            $data->{'name'} = null;
+            $data['name'] = null;
         }
 
         return $data;

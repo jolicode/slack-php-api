@@ -38,24 +38,21 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamInfoGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
 
@@ -64,16 +61,16 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+            $data['ok'] = $object->getOk();
         } else {
-            $data->{'ok'} = null;
+            $data['ok'] = null;
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $this->normalizer->normalize($object->getTeam(), 'json', $context);
+            $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
         } else {
-            $data->{'team'} = null;
+            $data['team'] = null;
         }
 
         return $data;
