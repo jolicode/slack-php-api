@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -46,11 +48,8 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
         }
         $object = new \JoliCode\Slack\Api\Model\FilesInfoGetResponse200();
         if (\array_key_exists('comments', $data) && null !== $data['comments']) {
-            $values = [];
-            foreach ($data['comments'] as $value) {
-                $values[] = $value;
-            }
-            $object->setComments($values);
+            $value = $data['comments'];
+            $object->setComments($value);
         } elseif (\array_key_exists('comments', $data) && null === $data['comments']) {
             $object->setComments(null);
         }
@@ -92,11 +91,8 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $data = [];
         if (null !== $object->getComments()) {
-            $values = [];
-            foreach ($object->getComments() as $value) {
-                $values[] = $value;
-            }
-            $data['comments'] = $values;
+            $value = $object->getComments();
+            $data['comments'] = $value;
         } else {
             $data['comments'] = null;
         }

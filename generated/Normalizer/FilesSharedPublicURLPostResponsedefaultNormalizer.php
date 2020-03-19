@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class FilesSharedPublicURLPostResponsedefaultNormalizer implements DenormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {

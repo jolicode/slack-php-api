@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -82,7 +84,7 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('fields', $data) && null !== $data['fields']) {
             $value = $data['fields'];
-            if (\is_array($data['fields'])) {
+            if (\is_array($data['fields']) && $this->isOnlyNumericKeys($data['fields'])) {
                 $values = [];
                 foreach ($data['fields'] as $value_1) {
                     $values[] = $value_1;
