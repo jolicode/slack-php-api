@@ -17010,6 +17010,48 @@
                             "properties": {
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "access_token": {
+                                    "type": "string"
+                                },
+                                "scope": {
+                                    "type": "string"
+                                },
+                                "team_id": {
+                                    "$ref": "#/definitions/defs_team"
+                                },
+                                "team_name": {
+                                    "type": "string"
+                                },
+                                "enterprise_id": {
+                                    "$ref": "#/definitions/defs_enterprise_id"
+                                },
+                                "incoming_webhook": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "channel": {
+                                            "type": "string"
+                                        },
+                                        "configuration_url": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "bot": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                        "bot_user_id": {
+                                            "$ref": "#/definitions/defs_user_id"
+                                        },
+                                        "bot_access_token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -17132,6 +17174,51 @@
                             "properties": {
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "access_token": {
+                                    "type": "string"
+                                },
+                                "app_id": {
+                                    "$ref": "#/definitions/defs_app_id"
+                                },
+                                "app_user_id": {
+                                    "$ref": "#/definitions/defs_user_id"
+                                },
+                                "authorizing_user_id": {
+                                    "$ref": "#/definitions/defs_user_id"
+                                },
+                                "installer_user_id": {
+                                    "$ref": "#/definitions/defs_user_id"
+                                },
+                                "permissions": {
+                                    "items": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                            "resource_id": {
+                                                "type": "string"
+                                            },
+                                            "resource_type": {
+                                                "type": "string"
+                                            },
+                                            "scopes": {
+                                                "$ref": "#/definitions/objs_scopes"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "single_channel_id": {
+                                    "$ref": "#/definitions/defs_channel"
+                                },
+                                "team_id": {
+                                    "$ref": "#/definitions/defs_team"
+                                },
+                                "team_name": {
+                                    "type": "string"
+                                },
+                                "token_type": {
+                                    "type": "string"
                                 }
                             },
                             "required": [

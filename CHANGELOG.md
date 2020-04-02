@@ -1,5 +1,10 @@
 # Changes between versions
 
+## Not yet released
+
+* Update specification to latest version (ids are now longer than 8 chars)
+* **Specification override** Add missing description for `oauth.token` and `oauth.access`, fix #71
+
 ## 2.4.0 (2020-02-24)
 
 * Upgrade JanePHP to v5.3 and PHP 7.2
