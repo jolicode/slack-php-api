@@ -53,6 +53,60 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
         }
+        if (property_exists($data, 'access_token') && null !== $data->{'access_token'}) {
+            $object->setAccessToken($data->{'access_token'});
+        } elseif (property_exists($data, 'access_token') && null === $data->{'access_token'}) {
+            $object->setAccessToken(null);
+        }
+        if (property_exists($data, 'app_id') && null !== $data->{'app_id'}) {
+            $object->setAppId($data->{'app_id'});
+        } elseif (property_exists($data, 'app_id') && null === $data->{'app_id'}) {
+            $object->setAppId(null);
+        }
+        if (property_exists($data, 'app_user_id') && null !== $data->{'app_user_id'}) {
+            $object->setAppUserId($data->{'app_user_id'});
+        } elseif (property_exists($data, 'app_user_id') && null === $data->{'app_user_id'}) {
+            $object->setAppUserId(null);
+        }
+        if (property_exists($data, 'authorizing_user_id') && null !== $data->{'authorizing_user_id'}) {
+            $object->setAuthorizingUserId($data->{'authorizing_user_id'});
+        } elseif (property_exists($data, 'authorizing_user_id') && null === $data->{'authorizing_user_id'}) {
+            $object->setAuthorizingUserId(null);
+        }
+        if (property_exists($data, 'installer_user_id') && null !== $data->{'installer_user_id'}) {
+            $object->setInstallerUserId($data->{'installer_user_id'});
+        } elseif (property_exists($data, 'installer_user_id') && null === $data->{'installer_user_id'}) {
+            $object->setInstallerUserId(null);
+        }
+        if (property_exists($data, 'permissions') && null !== $data->{'permissions'}) {
+            $values = [];
+            foreach ($data->{'permissions'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\OauthTokenGetResponse200PermissionsItem', 'json', $context);
+            }
+            $object->setPermissions($values);
+        } elseif (property_exists($data, 'permissions') && null === $data->{'permissions'}) {
+            $object->setPermissions(null);
+        }
+        if (property_exists($data, 'single_channel_id') && null !== $data->{'single_channel_id'}) {
+            $object->setSingleChannelId($data->{'single_channel_id'});
+        } elseif (property_exists($data, 'single_channel_id') && null === $data->{'single_channel_id'}) {
+            $object->setSingleChannelId(null);
+        }
+        if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
+            $object->setTeamId($data->{'team_id'});
+        } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
+            $object->setTeamId(null);
+        }
+        if (property_exists($data, 'team_name') && null !== $data->{'team_name'}) {
+            $object->setTeamName($data->{'team_name'});
+        } elseif (property_exists($data, 'team_name') && null === $data->{'team_name'}) {
+            $object->setTeamName(null);
+        }
+        if (property_exists($data, 'token_type') && null !== $data->{'token_type'}) {
+            $object->setTokenType($data->{'token_type'});
+        } elseif (property_exists($data, 'token_type') && null === $data->{'token_type'}) {
+            $object->setTokenType(null);
+        }
 
         return $object;
     }
@@ -64,6 +118,60 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
+        }
+        if (null !== $object->getAccessToken()) {
+            $data->{'access_token'} = $object->getAccessToken();
+        } else {
+            $data->{'access_token'} = null;
+        }
+        if (null !== $object->getAppId()) {
+            $data->{'app_id'} = $object->getAppId();
+        } else {
+            $data->{'app_id'} = null;
+        }
+        if (null !== $object->getAppUserId()) {
+            $data->{'app_user_id'} = $object->getAppUserId();
+        } else {
+            $data->{'app_user_id'} = null;
+        }
+        if (null !== $object->getAuthorizingUserId()) {
+            $data->{'authorizing_user_id'} = $object->getAuthorizingUserId();
+        } else {
+            $data->{'authorizing_user_id'} = null;
+        }
+        if (null !== $object->getInstallerUserId()) {
+            $data->{'installer_user_id'} = $object->getInstallerUserId();
+        } else {
+            $data->{'installer_user_id'} = null;
+        }
+        if (null !== $object->getPermissions()) {
+            $values = [];
+            foreach ($object->getPermissions() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'permissions'} = $values;
+        } else {
+            $data->{'permissions'} = null;
+        }
+        if (null !== $object->getSingleChannelId()) {
+            $data->{'single_channel_id'} = $object->getSingleChannelId();
+        } else {
+            $data->{'single_channel_id'} = null;
+        }
+        if (null !== $object->getTeamId()) {
+            $data->{'team_id'} = $object->getTeamId();
+        } else {
+            $data->{'team_id'} = null;
+        }
+        if (null !== $object->getTeamName()) {
+            $data->{'team_name'} = $object->getTeamName();
+        } else {
+            $data->{'team_name'} = null;
+        }
+        if (null !== $object->getTokenType()) {
+            $data->{'token_type'} = $object->getTokenType();
+        } else {
+            $data->{'token_type'} = null;
         }
 
         return $data;

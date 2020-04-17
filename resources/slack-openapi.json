@@ -19,22 +19,22 @@
             "type": "array"
         },
         "defs_app_id": {
-            "pattern": "^A[A-Z0-9]{8}$",
+            "pattern": "^A[A-Z0-9]{8,}$",
             "title": "App ID",
             "type": "string"
         },
         "defs_bot_id": {
-            "pattern": "^B[A-Z0-9]{8}$",
+            "pattern": "^B[A-Z0-9]{8,}$",
             "title": "Bot User ID",
             "type": "string"
         },
         "defs_channel": {
-            "pattern": "^[CGD][A-Z0-9]{8}$",
+            "pattern": "^[CGD][A-Z0-9]{8,}$",
             "title": "Channel-like conversation ID",
             "type": "string"
         },
         "defs_channel_id": {
-            "pattern": "^[C][A-Z0-9]{8}$",
+            "pattern": "^[C][A-Z0-9]{8,}$",
             "title": "Channel ID",
             "type": "string"
         },
@@ -43,17 +43,17 @@
             "type": "string"
         },
         "defs_comment_id": {
-            "pattern": "^Fc[A-Z0-9]{8}$",
+            "pattern": "^Fc[A-Z0-9]{8,}$",
             "title": "File Comment ID",
             "type": "string"
         },
         "defs_dm_id": {
-            "pattern": "^[D][A-Z0-9]{8}$",
+            "pattern": "^[D][A-Z0-9]{8,}$",
             "title": "Direct Message Channel ID",
             "type": "string"
         },
         "defs_enterprise_id": {
-            "pattern": "^[E][A-Z0-9]{8}$",
+            "pattern": "^[E][A-Z0-9]{8,}$",
             "title": "Enterprise ID",
             "type": "string"
         },
@@ -62,17 +62,17 @@
             "type": "string"
         },
         "defs_enterprise_user_id": {
-            "pattern": "^[W][A-Z0-9]{8}$",
+            "pattern": "^[W][A-Z0-9]{8,}$",
             "title": "Enterprise User ID",
             "type": "string"
         },
         "defs_file_id": {
-            "pattern": "^[F][A-Z0-9]{8}$",
+            "pattern": "^[F][A-Z0-9]{8,}$",
             "title": "File ID",
             "type": "string"
         },
         "defs_group_id": {
-            "pattern": "^[G][A-Z0-9]{8}$",
+            "pattern": "^[G][A-Z0-9]{8,}$",
             "title": "Private Channel ID",
             "type": "string"
         },
@@ -111,22 +111,22 @@
             "type": "object"
         },
         "defs_reminder_id": {
-            "pattern": "^Rm[A-Z0-9]{8}$",
+            "pattern": "^Rm[A-Z0-9]{8,}$",
             "title": "Reminder ID",
             "type": "string"
         },
         "defs_subteam_id": {
-            "pattern": "^S[A-Z0-9]{8}$",
+            "pattern": "^S[A-Z0-9]{8,}$",
             "title": "Subteam ID",
             "type": "string"
         },
         "defs_team": {
-            "pattern": "^[T][A-Z0-9]{8}$",
+            "pattern": "^[T][A-Z0-9]{8,}$",
             "title": "Team ID",
             "type": "string"
         },
         "defs_topic_purpose_creator": {
-            "pattern": "^[UW][A-Z0-9]{8}$|^$",
+            "pattern": "^[UW][A-Z0-9]{8,}$|^$",
             "title": "User ID or empty string, used for topic and purpose creation",
             "type": "string"
         },
@@ -136,12 +136,12 @@
             "type": "string"
         },
         "defs_user_id": {
-            "pattern": "^[UW][A-Z0-9]{8}$",
+            "pattern": "^[UW][A-Z0-9]{8,}$",
             "title": "User ID",
             "type": "string"
         },
         "defs_workspace_id": {
-            "pattern": "^[TE][A-Z0-9]{8}$",
+            "pattern": "^[TE][A-Z0-9]{8,}$",
             "title": "Team or Enterprise ID",
             "type": "string"
         },
@@ -7740,7 +7740,7 @@
                                     "type": "integer"
                                 },
                                 "scheduled_message_id": {
-                                    "pattern": "^[Q][A-Z0-9]{8}$",
+                                    "pattern": "^[Q][A-Z0-9]{8,}$",
                                     "title": "Scheduled Message ID",
                                     "type": "string"
                                 }
@@ -7936,7 +7936,7 @@
                                                 "type": "integer"
                                             },
                                             "id": {
-                                                "pattern": "^[Q][A-Z0-9]{8}$",
+                                                "pattern": "^[Q][A-Z0-9]{8,}$",
                                                 "type": "string"
                                             },
                                             "post_at": {
