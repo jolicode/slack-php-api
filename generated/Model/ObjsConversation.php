@@ -152,6 +152,10 @@ class ObjsConversation
      */
     protected $latest;
     /**
+     * @var string|null
+     */
+    protected $locale;
+    /**
      * @var string[]|null
      */
     protected $members;
@@ -664,6 +668,18 @@ class ObjsConversation
     public function setLatest($latest): self
     {
         $this->latest = $latest;
+
+        return $this;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(?string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }

@@ -517,6 +517,9 @@
                                 }
                             ]
                         },
+                        "locale": {
+                            "type": "string"
+                        },
                         "members": {
                             "items": {
                                 "$ref": "#/definitions/defs_user_id"
@@ -727,6 +730,10 @@
                 "created": {
                     "type": "integer"
                 },
+                "deanimate_gif": {
+                    "format": "uri",
+                    "type": "string"
+                },
                 "display_as_bot": {
                     "type": "boolean"
                 },
@@ -822,6 +829,10 @@
                     },
                     "type": "array"
                 },
+                "pjpeg": {
+                    "format": "uri",
+                    "type": "string"
+                },
                 "pretty_type": {
                     "type": "string"
                 },
@@ -841,10 +852,30 @@
                     "additionalProperties": false,
                     "properties": {
                         "private": {
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                "^[CGD][A-Z0-9]{8,}$": {
+                                    "items": {
+                                        "additionalProperties": true,
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
                         },
                         "public": {
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "patternProperties": {
+                                "^[CGD][A-Z0-9]{8,}$": {
+                                    "items": {
+                                        "additionalProperties": true,
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -873,6 +904,10 @@
                     "type": "string"
                 },
                 "thumb_360": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "thumb_360_gif": {
                     "format": "uri",
                     "type": "string"
                 },
@@ -1831,10 +1866,8 @@
                     "type": "string"
                 },
                 "options": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "additionalProperties": true,
+                    "type": "object"
                 },
                 "ordering": {
                     "type": "number"
@@ -2227,7 +2260,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -2296,6 +2329,9 @@
                             "properties": {
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "args": {
+                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -2327,6 +2363,9 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_false"
+                                },
+                                "args": {
+                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -3138,7 +3177,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -3236,7 +3275,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -4023,6 +4062,9 @@
                             "additionalProperties": false,
                             "description": "Schema for error response channels.create method",
                             "properties": {
+                                "detail": {
+                                    "type": "string"
+                                },
                                 "error": {
                                     "enum": [
                                         "name_taken",
@@ -7244,8 +7286,28 @@
                                 "message": {
                                     "additionalProperties": false,
                                     "properties": {
+                                        "attachments": {
+                                            "items": {
+                                                "properties": {
+                                                    "fallback": {
+                                                        "type": "string"
+                                                    },
+                                                    "id": {
+                                                        "type":  "integer"
+                                                    },
+                                                    "text":  {
+                                                        "type":  "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "type": "array"
+                                        },
                                         "bot_id": {
                                             "$ref": "#/definitions/defs_bot_id"
+                                        },
+                                        "subtype": {
+                                            "type": "string"
                                         },
                                         "text": {
                                             "type": "string"
@@ -7273,7 +7335,7 @@
                                 },
                                 "post_at": {
                                     "pattern": "^\\d{10}$",
-                                    "type": "integer"
+                                    "type": "string"
                                 },
                                 "scheduled_message_id": {
                                     "pattern": "^[Q][A-Z0-9]{8,}$",
@@ -7435,7 +7497,7 @@
                                     {
                                         "channel_id": "C1H9RESGL",
                                         "date_created": 1551891734,
-                                        "id": 1298393284,
+                                        "id":   1298393284,
                                         "post_at": 1551991428
                                     }
                                 ]
@@ -7473,7 +7535,7 @@
                                             },
                                             "id": {
                                                 "pattern": "^[Q][A-Z0-9]{8,}$",
-                                                "type": "string"
+                                                "type": "integer"
                                             },
                                             "post_at": {
                                                 "pattern": "^\\d{10}$",
@@ -8459,6 +8521,18 @@
                                 },
                                 "pin_count": {
                                     "type": "integer"
+                                },
+                                "response_metadata": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "next_cursor": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "next_cursor"
+                                    ],
+                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -10382,6 +10456,18 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "response_metadata": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "next_cursor": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "next_cursor"
+                                    ],
+                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -11491,6 +11577,22 @@
                                 },
                                 "users": {
                                     "additionalProperties": false,
+                                    "patternProperties": {
+                                        "^[UW][A-Z0-9]{8,}$": {
+                                            "properties": {
+                                                "dnd_enabled": {
+                                                    "type": "boolean"
+                                                },
+                                                "next_dnd_end_ts": {
+                                                    "type": "integer"
+                                                },
+                                                "next_dnd_start_ts": {
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
                                     "type": "object"
                                 }
                             },
@@ -11618,7 +11720,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -13252,6 +13354,9 @@
                             "properties": {
                                 "has_more": {
                                     "type": "boolean"
+                                },
+                                "latest": {
+                                    "$ref": "#/definitions/defs_ts"
                                 },
                                 "messages": {
                                     "items": {
@@ -15048,6 +15153,9 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "latest": {
+                                    "$ref": "#/definitions/defs_ts"
                                 }
                             },
                             "required": [
@@ -15239,6 +15347,18 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "response_metadata": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "next_cursor": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "next_cursor"
+                                    ],
+                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -16227,6 +16347,9 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "latest": {
+                                    "$ref": "#/definitions/defs_ts"
                                 }
                             },
                             "required": [
@@ -17076,7 +17199,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -17243,7 +17366,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -18007,7 +18130,7 @@
                         },
                         "schema": {
                             "description": "Schema for successful response from reactions.get method",
-                            "items": [
+                            "oneOf": [
                                 {
                                     "additionalProperties": false,
                                     "properties": {
@@ -18083,8 +18206,7 @@
                                     ]
                                 }
                             ],
-                            "title": "reactions.get success schema",
-                            "type": "object"
+                            "title": "reactions.get success schema"
                         }
                     },
                     "default": {
@@ -19511,7 +19633,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [
@@ -23697,7 +23819,7 @@
                             "description": "Verbose schema not yet ready for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_true"
+                                    "$ref": "#/definitions/defs_ok_false"
                                 }
                             },
                             "required": [

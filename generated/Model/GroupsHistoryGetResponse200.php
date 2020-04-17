@@ -20,6 +20,10 @@ class GroupsHistoryGetResponse200
      */
     protected $hasMore;
     /**
+     * @var string|null
+     */
+    protected $latest;
+    /**
      * @var ObjsMessage[]|null
      */
     protected $messages;
@@ -36,6 +40,18 @@ class GroupsHistoryGetResponse200
     public function setHasMore(?bool $hasMore): self
     {
         $this->hasMore = $hasMore;
+
+        return $this;
+    }
+
+    public function getLatest(): ?string
+    {
+        return $this->latest;
+    }
+
+    public function setLatest(?string $latest): self
+    {
+        $this->latest = $latest;
 
         return $this;
     }

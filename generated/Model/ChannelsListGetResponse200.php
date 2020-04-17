@@ -24,7 +24,7 @@ class ChannelsListGetResponse200
      */
     protected $ok;
     /**
-     * @var ObjsResponseMetadata
+     * @var ObjsResponseMetadata|null
      */
     protected $responseMetadata;
 

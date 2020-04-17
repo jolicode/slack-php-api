@@ -72,6 +72,11 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
         } elseif (property_exists($data, 'pin_count') && null === $data->{'pin_count'}) {
             $object->setPinCount(null);
         }
+        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200ResponseMetadata', 'json', $context));
+        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+            $object->setResponseMetadata(null);
+        }
 
         return $object;
     }
@@ -102,6 +107,11 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
             $data->{'pin_count'} = $object->getPinCount();
         } else {
             $data->{'pin_count'} = null;
+        }
+        if (null !== $object->getResponseMetadata()) {
+            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+        } else {
+            $data->{'response_metadata'} = null;
         }
 
         return $data;

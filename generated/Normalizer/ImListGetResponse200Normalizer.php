@@ -62,6 +62,11 @@ class ImListGetResponse200Normalizer implements DenormalizerInterface, Normalize
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
         }
+        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
+            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ImListGetResponse200ResponseMetadata', 'json', $context));
+        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
+            $object->setResponseMetadata(null);
+        }
 
         return $object;
     }
@@ -82,6 +87,11 @@ class ImListGetResponse200Normalizer implements DenormalizerInterface, Normalize
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
+        }
+        if (null !== $object->getResponseMetadata()) {
+            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
+        } else {
+            $data->{'response_metadata'} = null;
         }
 
         return $data;

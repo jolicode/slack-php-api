@@ -36,7 +36,7 @@ class ObjsTeamProfileField
      */
     protected $label;
     /**
-     * @var string[]|null
+     * @var mixed[]|null
      */
     protected $options;
     /**
@@ -113,17 +113,17 @@ class ObjsTeamProfileField
     }
 
     /**
-     * @return string[]|null
+     * @return mixed[]|null
      */
-    public function getOptions(): ?array
+    public function getOptions(): ?\ArrayObject
     {
         return $this->options;
     }
 
     /**
-     * @param string[]|null $options
+     * @param mixed[]|null $options
      */
-    public function setOptions(?array $options): self
+    public function setOptions(?\ArrayObject $options): self
     {
         $this->options = $options;
 

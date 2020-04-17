@@ -61,6 +61,12 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
         }
+        if (property_exists($data, 'args') && null !== $data->{'args'}) {
+            $object->setArgs($data->{'args'});
+            unset($data->{'args'});
+        } elseif (property_exists($data, 'args') && null === $data->{'args'}) {
+            $object->setArgs(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', $key)) {
                 $object[$key] = $value;
@@ -82,6 +88,11 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
+        }
+        if (null !== $object->getArgs()) {
+            $data->{'args'} = $object->getArgs();
+        } else {
+            $data->{'args'} = null;
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {
