@@ -62,7 +62,7 @@ class ChannelsListGetResponse200Normalizer implements DenormalizerInterface, Nor
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'response_metadata') && $data->{'response_metadata'} !== null) {
+        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
             $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata', 'json', $context));
         }
 
