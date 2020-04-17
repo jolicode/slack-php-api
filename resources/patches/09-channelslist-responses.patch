@@ -1,0 +1,12 @@
+--- resources/slack-openapi-patched.json 2020-01-10 19:10:33.020307516 +0100
++++ resources/slack-openapi-patched.json 2020-01-10 19:10:56.296475732 +0100
+@@ -5181,6 +5181,9 @@
+                                 },
+                                 "ok": {
+                                     "$ref": "#/definitions/defs_ok_true"
++                                } ,
++                                "response_metadata": {
++                                    "$ref": "#/definitions/objs_response_metadata"
+                                 }
+                             },
+                             "required": [

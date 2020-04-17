@@ -4,6 +4,7 @@
 
 * Update specification to latest version (ids are now longer than 8 chars)
 * **Specification override** Add missing description for `oauth.token` and `oauth.access`, fix #71
+* **Specification override** Add missing `response_metadata` for `channels.list`
 
 ## 2.4.0 (2020-02-24)
 
