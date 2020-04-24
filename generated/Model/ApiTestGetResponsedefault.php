@@ -23,6 +23,10 @@ class ApiTestGetResponsedefault extends \ArrayObject
      * @var bool|null
      */
     protected $ok;
+    /**
+     * @var mixed|null
+     */
+    protected $args;
 
     public function getError(): ?string
     {
@@ -44,6 +48,24 @@ class ApiTestGetResponsedefault extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArgs()
+    {
+        return $this->args;
+    }
+
+    /**
+     * @param mixed $args
+     */
+    public function setArgs($args): self
+    {
+        $this->args = $args;
 
         return $this;
     }

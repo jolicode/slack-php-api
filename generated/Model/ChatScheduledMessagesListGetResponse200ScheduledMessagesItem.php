@@ -24,7 +24,7 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
      */
     protected $dateCreated;
     /**
-     * @var string|null
+     * @var int|null
      */
     protected $id;
     /**
@@ -56,12 +56,12 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
         return $this;
     }
 
-    public function getId(): ?string
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(?string $id): self
+    public function setId(?int $id): self
     {
         $this->id = $id;
 

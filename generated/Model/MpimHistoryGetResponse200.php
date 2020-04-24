@@ -27,6 +27,10 @@ class MpimHistoryGetResponse200
      * @var bool|null
      */
     protected $ok;
+    /**
+     * @var string|null
+     */
+    protected $latest;
 
     public function getHasMore(): ?bool
     {
@@ -66,6 +70,18 @@ class MpimHistoryGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    public function getLatest(): ?string
+    {
+        return $this->latest;
+    }
+
+    public function setLatest(?string $latest): self
+    {
+        $this->latest = $latest;
 
         return $this;
     }

@@ -16,9 +16,17 @@ namespace JoliCode\Slack\Api\Model;
 class ChatScheduleMessagePostResponse200Message
 {
     /**
+     * @var ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
+     */
+    protected $attachments;
+    /**
      * @var string|null
      */
     protected $botId;
+    /**
+     * @var string|null
+     */
+    protected $subtype;
     /**
      * @var string|null
      */
@@ -36,6 +44,24 @@ class ChatScheduleMessagePostResponse200Message
      */
     protected $username;
 
+    /**
+     * @return ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
+     */
+    public function getAttachments(): ?array
+    {
+        return $this->attachments;
+    }
+
+    /**
+     * @param ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null $attachments
+     */
+    public function setAttachments(?array $attachments): self
+    {
+        $this->attachments = $attachments;
+
+        return $this;
+    }
+
     public function getBotId(): ?string
     {
         return $this->botId;
@@ -44,6 +70,18 @@ class ChatScheduleMessagePostResponse200Message
     public function setBotId(?string $botId): self
     {
         $this->botId = $botId;
+
+        return $this;
+    }
+
+    public function getSubtype(): ?string
+    {
+        return $this->subtype;
+    }
+
+    public function setSubtype(?string $subtype): self
+    {
+        $this->subtype = $subtype;
 
         return $this;
     }

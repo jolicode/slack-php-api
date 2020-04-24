@@ -23,6 +23,10 @@ class ImListGetResponse200
      * @var bool|null
      */
     protected $ok;
+    /**
+     * @var ImListGetResponse200ResponseMetadata|null
+     */
+    protected $responseMetadata;
 
     /**
      * @return ObjsIm[]|null
@@ -50,6 +54,18 @@ class ImListGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    public function getResponseMetadata(): ?ImListGetResponse200ResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    public function setResponseMetadata(?ImListGetResponse200ResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }
