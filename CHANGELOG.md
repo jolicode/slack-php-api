@@ -1,6 +1,6 @@
 # Changes between versions
 
-## Not yet released
+## 2.5.0 (2020-04-29)
 
 * Update specification to latest version (ids are now longer than 8 chars)
 * **Specification override** Add missing description for `oauth.token` and `oauth.access`, fix #71
