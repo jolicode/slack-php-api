@@ -1,0 +1,254 @@
+diff --git a/resources/slack-openapi-patched.json b/resources/slack-openapi-patched.json
+index e0b80d0..b2891dc 100644
+--- a/resources/slack-openapi-patched.json
++++ b/resources/slack-openapi-patched.json
+@@ -11403,120 +11403,135 @@
+                 ]
+             }
+         },
+-        "/dnd.setSnooze": {
+-            "post": {
+-                "consumes": [
+-                    "application/x-www-form-urlencoded"
+-                ],
+-                "description": "Turns on Do Not Disturb mode for the current user, or changes its duration.",
+-                "externalDocs": {
+-                    "description": "API method documentation",
+-                    "url": "https://api.slack.com/methods/dnd.setSnooze"
+-                },
+-                "operationId": "dnd_setSnooze",
+-                "parameters": [],
+-                "produces": [
+-                    "application/json"
+-                ],
+-                "responses": {
+-                    "200": {
+-                        "description": "Typical success response",
+-                        "examples": {
+-                            "application/json": {
+-                                "ok": true
+-                            }
+-                        },
+-                        "schema": {
+-                            "additionalProperties": false,
+-                            "description": "Schema for successful response from dnd.setSnooze method",
+-                            "properties": {
+-                                "ok": {
+-                                    "$ref": "#/definitions/defs_ok_true"
+-                                },
+-                                "snooze_enabled": {
+-                                    "type": "boolean"
+-                                },
+-                                "snooze_endtime": {
+-                                    "type": "integer"
+-                                },
+-                                "snooze_remaining": {
+-                                    "type": "integer"
+-                                }
+-                            },
+-                            "required": [
+-                                "ok",
+-                                "snooze_enabled",
+-                                "snooze_endtime",
+-                                "snooze_remaining"
+-                            ],
+-                            "title": "dnd.setSnooze schema",
+-                            "type": "object"
+-                        }
+-                    },
+-                    "default": {
+-                        "description": "Typical error response",
+-                        "examples": {
+-                            "application/json": {
+-                                "error": "invalid_auth",
+-                                "ok": false
+-                            }
+-                        },
+-                        "schema": {
+-                            "additionalProperties": false,
+-                            "description": "Schema for error response from dnd.setSnooze method",
+-                            "properties": {
+-                                "error": {
+-                                    "enum": [
+-                                        "missing_duration",
+-                                        "snooze_failed",
+-                                        "not_authed",
+-                                        "invalid_auth",
+-                                        "account_inactive",
+-                                        "token_revoked",
+-                                        "no_permission",
+-                                        "org_login_required",
+-                                        "user_is_bot",
+-                                        "invalid_arg_name",
+-                                        "invalid_array_arg",
+-                                        "invalid_charset",
+-                                        "invalid_form_data",
+-                                        "invalid_post_type",
+-                                        "missing_post_type",
+-                                        "team_added_to_org",
+-                                        "invalid_json",
+-                                        "json_not_object",
+-                                        "request_timeout",
+-                                        "upgrade_required",
+-                                        "too_long",
+-                                        "fatal_error"
+-                                    ],
+-                                    "type": "string"
+-                                },
+-                                "ok": {
+-                                    "$ref": "#/definitions/defs_ok_false"
+-                                }
+-                            },
+-                            "required": [
+-                                "ok",
+-                                "error"
+-                            ],
+-                            "title": "dnd.setSnooze error schema",
+-                            "type": "object"
+-                        }
+-                    }
+-                },
+-                "security": [
+-                    {
+-                        "slackAuth": [
+-                            "dnd:write"
+-                        ]
+-                    }
+-                ],
+-                "tags": [
+-                    "dnd"
+-                ]
+-            }
+-        },
++		"/dnd.setSnooze": {
++			"post": {
++				"consumes": [
++					"application/x-www-form-urlencoded"
++				],
++				"description": "Turns on Do Not Disturb mode for the current user, or changes its duration.",
++				"externalDocs": {
++					"description": "API method documentation",
++					"url": "https://api.slack.com/methods/dnd.setSnooze"
++				},
++				"operationId": "dnd_setSnooze",
++				"parameters": [
++					{
++						"description": "Number of minutes, from now, to snooze until.",
++						"in": "formData",
++						"name": "num_minutes",
++						"required": true,
++						"type": "string"
++					},
++					{
++						"description": "Authentication token. Requires scope: `dnd:write`",
++						"in": "formData",
++						"name": "token",
++						"required": true,
++						"type": "string"
++					}
++				],
++				"produces": [
++					"application/json"
++				],
++				"responses": {
++					"200": {
++						"description": "Typical success response",
++						"examples": {
++							"application/json": {
++								"ok": true
++							}
++						},
++						"schema": {
++							"additionalProperties": false,
++							"description": "Schema for successful response from dnd.setSnooze method",
++							"properties": {
++								"ok": {
++									"$ref": "#/definitions/defs_ok_true"
++								},
++								"snooze_enabled": {
++									"type": "boolean"
++								},
++								"snooze_endtime": {
++									"type": "integer"
++								},
++								"snooze_remaining": {
++									"type": "integer"
++								}
++							},
++							"required": [
++								"ok",
++								"snooze_enabled",
++								"snooze_endtime",
++								"snooze_remaining"
++							],
++							"title": "dnd.setSnooze schema",
++							"type": "object"
++						}
++					},
++					"default": {
++						"description": "Typical error response",
++						"examples": {
++							"application/json": {
++								"error": "invalid_auth",
++								"ok": false
++							}
++						},
++						"schema": {
++							"additionalProperties": false,
++							"description": "Schema for error response from dnd.setSnooze method",
++							"properties": {
++								"error": {
++									"enum": [
++										"missing_duration",
++										"snooze_failed",
++										"not_authed",
++										"invalid_auth",
++										"account_inactive",
++										"token_revoked",
++										"no_permission",
++										"org_login_required",
++										"user_is_bot",
++										"invalid_arg_name",
++										"invalid_array_arg",
++										"invalid_charset",
++										"invalid_form_data",
++										"invalid_post_type",
++										"missing_post_type",
++										"team_added_to_org",
++										"invalid_json",
++										"json_not_object",
++										"request_timeout",
++										"upgrade_required",
++										"too_long",
++										"fatal_error"
++									],
++									"type": "string"
++								},
++								"ok": {
++									"$ref": "#/definitions/defs_ok_false"
++								}
++							},
++							"required": [
++								"ok",
++								"error"
++							],
++							"title": "dnd.setSnooze error schema",
++							"type": "object"
++						}
++					}
++				},
++				"security": [
++					{
++						"slackAuth": [
++							"dnd:write"
++						]
++					}
++				],
++				"tags": [
++					"dnd"
++				]
++			}
++		},
+         "/dnd.teamInfo": {
+             "get": {
+                 "consumes": [

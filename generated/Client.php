@@ -1239,13 +1239,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Turns on Do Not Disturb mode for the current user, or changes its duration.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $num_minutes number of minutes, from now, to snooze until
+     *     @var string $token Authentication token. Requires scope: `dnd:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndSetSnooze(string $fetch = self::FETCH_OBJECT)
+    public function dndSetSnooze(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze($formParameters), $fetch);
     }
 
     /**
