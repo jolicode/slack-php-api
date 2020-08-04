@@ -1533,9 +1533,9 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
      *     @var int $limit maximum number of original entries to return
-     *     @var float $oldest A UNIX timestamp of the oldest value in the time range
+     *     @var string $oldest A UNIX timestamp of the oldest value in the time range
      *     @var string $channel The channel of the scheduled messages
-     *     @var float $latest A UNIX timestamp of the latest value in the time range
+     *     @var string $latest A UNIX timestamp of the latest value in the time range
      * }
      *
      * @param array $headerParameters {
@@ -2191,8 +2191,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $count
      *     @var string $channel filter files appearing in a specific channel, indicated by its ID
-     *     @var float $ts_to filter files created before this timestamp (inclusive)
-     *     @var float $ts_from filter files created after this timestamp (inclusive)
+     *     @var string $ts_to filter files created before this timestamp (inclusive)
+     *     @var string $ts_from filter files created after this timestamp (inclusive)
      *     @var string $token Authentication token. Requires scope: `files:read`
      *     @var string $user filter files created by a single user
      *     @var bool $show_files_hidden_by_limit show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit
@@ -3100,7 +3100,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var float $timestamp timestamp of the message to pin
+     *     @var string $timestamp timestamp of the message to pin
      *     @var string $channel Channel to pin the item in.
      * }
      *
@@ -3142,7 +3142,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to un-pin
-     *     @var float $timestamp timestamp of the message to un-pin
+     *     @var string $timestamp timestamp of the message to un-pin
      *     @var string $file file to un-pin
      *     @var string $channel Channel where the item is pinned to.
      * }
@@ -3453,7 +3453,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @param array $formParameters {
      *
      *     @var string $file_comment file comment to remove star from
-     *     @var float $timestamp timestamp of the message to remove star from
+     *     @var string $timestamp timestamp of the message to remove star from
      *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
      *     @var string $file File to remove star from.
      * }
