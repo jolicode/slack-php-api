@@ -17161,7 +17161,7 @@
         "/files.upload": {
             "post": {
                 "consumes": [
-                    "application/x-www-form-urlencoded"
+                    "multipart/form-data"
                 ],
                 "description": "Uploads or creates a file.",
                 "externalDocs": {
@@ -17216,7 +17216,7 @@
                         "description": "File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.",
                         "in": "formData",
                         "name": "file",
-                        "type": "string"
+                        "type": "file"
                     },
                     {
                         "description": "Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.",

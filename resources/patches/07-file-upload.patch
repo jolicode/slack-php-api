@@ -1,6 +1,6 @@
 --- resources/slack-openapi-patched.json
 +++ resources/slack-openapi-patched.json
-@@ -12578,7 +12578,7 @@
+@@ -17161,7 +17161,7 @@
          "/files.upload": {
              "post": {
                  "consumes": [
@@ -9,7 +9,7 @@
                  ],
                  "description": "Uploads or creates a file.",
                  "externalDocs": {
-@@ -12633,7 +12633,7 @@
+@@ -17216,7 +17216,7 @@
                          "description": "File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.",
                          "in": "formData",
                          "name": "file",
