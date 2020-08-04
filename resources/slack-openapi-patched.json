@@ -2306,7 +2306,6 @@
                         "description": "Authentication token. Requires scope: `admin.apps:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -2407,7 +2406,6 @@
                         "description": "Authentication token. Requires scope: `admin.apps:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -2560,7 +2558,6 @@
                         "description": "Authentication token. Requires scope: `admin.apps:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -2715,7 +2712,6 @@
                         "description": "Authentication token. Requires scope: `admin.apps:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -2816,7 +2812,6 @@
                         "description": "Authentication token. Requires scope: `admin.apps:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -2968,7 +2963,6 @@
                         "description": "Authentication token. Requires scope: `admin.conversations:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3076,7 +3070,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3166,7 +3159,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3269,7 +3261,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3390,7 +3381,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3487,7 +3477,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3578,7 +3567,6 @@
                         "description": "Authentication token. Requires scope: `admin.invites:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3681,7 +3669,6 @@
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3783,7 +3770,6 @@
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3879,7 +3865,6 @@
                         "description": "Authentication token. Requires scope: `admin.invites:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3982,7 +3967,6 @@
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4083,7 +4067,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4189,7 +4172,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4299,7 +4281,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4405,7 +4386,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4504,7 +4484,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4610,7 +4589,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4701,7 +4679,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4799,7 +4776,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4896,7 +4872,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -4994,7 +4969,6 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5112,7 +5086,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5228,7 +5201,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5355,7 +5327,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:read`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5464,7 +5435,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5568,7 +5538,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5665,7 +5634,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5770,7 +5738,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5868,7 +5835,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -5966,7 +5932,6 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -6417,7 +6382,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -6542,7 +6506,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -6715,7 +6678,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6881,7 +6843,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -6995,7 +6956,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -7219,7 +7179,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -7331,7 +7290,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -7461,7 +7419,6 @@
                         "description": "Authentication token. Requires scope: `users:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -9680,7 +9637,6 @@
                         "description": "Authentication token. Requires scope: `channels:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -9818,7 +9774,6 @@
                         "description": "Authentication token. Requires scope: `channels:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -9942,7 +9897,6 @@
                         "description": "Authentication token. Requires scope: `channels:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -10204,7 +10158,6 @@
                         "description": "Authentication token. Requires scope: `chat:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -10330,7 +10283,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -10638,7 +10590,6 @@
                         "description": "Authentication token. Requires scope: `chat:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -10875,7 +10826,6 @@
                         "description": "Authentication token. Requires scope: `chat:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -11528,7 +11478,6 @@
                         "description": "Authentication token. Requires scope: `links:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -11678,7 +11627,6 @@
                         "description": "Authentication token. Requires scope: `chat:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -14839,7 +14787,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -14969,7 +14916,6 @@
                         "description": "Authentication token. Requires scope: `dnd:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -15078,7 +15024,6 @@
                         "description": "Authentication token. Requires scope: `dnd:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -15346,7 +15291,6 @@
                         "description": "Authentication token. Requires scope: `dnd:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -15615,7 +15559,6 @@
                         "description": "Authentication token. Requires scope: `emoji:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -18304,7 +18247,6 @@
                         "description": "Authentication token. Requires scope: `groups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -18432,7 +18374,6 @@
                         "description": "Authentication token. Requires scope: `groups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -19570,7 +19511,6 @@
                         "description": "Authentication token. Requires scope: `im:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -20076,7 +20016,6 @@
                         "description": "Authentication token. Requires scope: `im:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -20640,7 +20579,6 @@
                         "description": "Authentication token. Requires scope: `tokens.basic`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -20795,7 +20733,6 @@
                         "description": "Authentication token. Requires scope: `mpim:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -22669,7 +22606,6 @@
                         "description": "Authentication token. Requires scope: `reactions:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -22811,7 +22747,6 @@
                         "description": "Authentication token. Requires scope: `reactions:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -23037,7 +22972,6 @@
                         "description": "Authentication token. Requires scope: `reactions:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -23346,7 +23280,6 @@
                         "description": "Authentication token. Requires scope: `reactions:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -24070,7 +24003,6 @@
                         "description": "Authentication token. Requires scope: `rtm:stream`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -24259,7 +24191,6 @@
                         "description": "Authentication token. Requires scope: `search:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -24427,7 +24358,6 @@
                         "description": "Authentication token. Requires scope: `stars:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -24979,7 +24909,6 @@
                         "description": "Authentication token. Requires scope: `admin`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -25189,7 +25118,6 @@
                         "description": "Authentication token. Requires scope: `admin`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -25308,7 +25236,6 @@
                         "description": "Authentication token. Requires scope: `team:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -25457,7 +25384,6 @@
                         "description": "Authentication token. Requires scope: `admin`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -25639,7 +25565,6 @@
                         "description": "Authentication token. Requires scope: `users.profile:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -25852,7 +25777,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -25979,7 +25903,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -26106,7 +26029,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -26239,7 +26161,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -26452,7 +26373,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -26611,7 +26531,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -26754,7 +26673,6 @@
                         "description": "Authentication token. Requires scope: `usergroups:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -27137,7 +27055,6 @@
                         "description": "Authentication token. Requires scope: `users.profile:write`",
                         "in": "formData",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -27244,7 +27161,6 @@
                         "description": "Authentication token. Requires scope: `users:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -27717,7 +27633,6 @@
                         "description": "Authentication token. Requires scope: `users:read`",
                         "in": "query",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -28557,7 +28472,6 @@
                         "description": "Authentication token. Requires scope: `users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -28840,7 +28754,6 @@
                         "description": "Authentication token. Requires scope: `users:write`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -28955,7 +28868,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -29104,7 +29016,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -29237,7 +29148,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {
@@ -29398,7 +29308,6 @@
                         "description": "Authentication token. Requires scope: `none`",
                         "in": "header",
                         "name": "token",
-                        "required": true,
                         "type": "string"
                     },
                     {

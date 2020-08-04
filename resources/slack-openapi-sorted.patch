@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2020-08-04 18:15:33.544964240 +0200
-+++ resources/slack-openapi-patched.json	2020-08-04 18:20:11.359188514 +0200
+--- resources/slack-openapi-sorted.json	2020-08-04 19:14:54.912874701 +0200
++++ resources/slack-openapi-patched.json	2020-08-04 20:58:05.960245376 +0200
 @@ -415,763 +415,331 @@
              ],
              "title": "File Comment Object",
@@ -123,8 +123,8 @@
 -                            "type": "boolean"
 -                        },
 -                        "is_moved": {
-                             "type": "integer"
-                         },
+-                            "type": "integer"
+-                        },
 -                        "is_mpim": {
 -                            "enum": [
 -                                false
@@ -291,8 +291,8 @@
 -                            "uniqueItems": true
 -                        },
 -                        "timezone_count": {
--                            "type": "integer"
--                        },
+                             "type": "integer"
+                         },
 -                        "topic": {
 -                            "additionalProperties": false,
 -                            "properties": {
@@ -1452,11 +1452,11 @@
 +                },
 +                "deleted": {
 +                    "type": "boolean"
-                 },
--                {
++                },
 +                "enterprise_user": {
 +                    "$ref": "#/definitions/objs_enterprise_user"
-+                },
+                 },
+-                {
 +                "has_2fa": {
 +                    "type": "boolean"
 +                },
@@ -1687,7 +1687,29 @@
                  "api_app_id": {
                      "$ref": "#/definitions/defs_app_id"
                  },
-@@ -2783,21 +2331,21 @@
+@@ -2751,21 +2299,20 @@
+                 "parameters": [
+                     {
+                         "in": "formData",
+                         "name": "team_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.apps:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The id of the app to approve.",
+                         "in": "formData",
+                         "name": "app_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "The id of the request to approve.",
+@@ -2783,21 +2330,21 @@
                          "examples": {
                              "application/json": {
                                  "ok": true
@@ -1710,7 +1732,29 @@
                          }
                      },
                      "default": {
-@@ -2932,20 +2480,23 @@
+@@ -2852,21 +2399,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.apps:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "in": "query",
+@@ -2932,20 +2478,23 @@
                                  "ok": true,
                                  "response_metadata": {
                                      "next_cursor": ""
@@ -1734,7 +1778,733 @@
                              "title": "Default success template",
                              "type": "object"
                          }
-@@ -6532,20 +6083,23 @@
+@@ -3002,21 +2551,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.apps:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "in": "query",
+@@ -3157,21 +2705,20 @@
+                 "parameters": [
+                     {
+                         "in": "formData",
+                         "name": "team_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.apps:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The id of the app to restrict.",
+                         "in": "formData",
+                         "name": "app_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "The id of the request to restrict.",
+@@ -3258,21 +2805,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.apps:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "in": "query",
+@@ -3410,21 +2956,20 @@
+                         "description": "The encoded `channel_id` to add or remove to workspaces.",
+                         "in": "formData",
+                         "name": "channel_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.conversations:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "True if channel has to be converted to an org channel",
+                         "in": "formData",
+                         "name": "org_channel",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.",
+@@ -3518,21 +3063,20 @@
+                         "description": "The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best.",
+                         "in": "formData",
+                         "name": "url",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
+                         "in": "formData",
+                         "name": "name",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -3608,21 +3152,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.emoji.addAlias"
+                 },
+                 "operationId": "admin_emoji_addAlias",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.",
+                         "in": "formData",
+                         "name": "name",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -3711,21 +3254,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     }
+                 ],
+                 "produces": [
+@@ -3832,21 +3374,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.emoji.remove"
+                 },
+                 "operationId": "admin_emoji_remove",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
+                         "in": "formData",
+                         "name": "name",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -3929,21 +3470,20 @@
+                         "description": "The new name of the emoji.",
+                         "in": "formData",
+                         "name": "new_name",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
+                         "in": "formData",
+                         "name": "name",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -4020,21 +3560,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.inviteRequests.approve"
+                 },
+                 "operationId": "admin_inviteRequests_approve",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.invites:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID for the workspace where the invite request was made.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID of the request to invite.",
+@@ -4123,21 +3662,20 @@
+                     {
+                         "description": "Value of the `next_cursor` field sent as part of the previous API response",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.invites:read`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "ID for the workspace where the invite requests were made.",
+@@ -4225,21 +3763,20 @@
+                     {
+                         "description": "Value of the `next_cursor` field sent as part of the previous api response",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.invites:read`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "ID for the workspace where the invite requests were made.",
+@@ -4321,21 +3858,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.inviteRequests.deny"
+                 },
+                 "operationId": "admin_inviteRequests_deny",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.invites:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID for the workspace where the invite request was made.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID of the request to invite.",
+@@ -4424,21 +3960,20 @@
+                     {
+                         "description": "Value of the `next_cursor` field sent as part of the previous API response",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.invites:read`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "ID for the workspace where the invite requests were made.",
+@@ -4525,21 +4060,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "in": "query",
+@@ -4631,21 +4165,20 @@
+                         "description": "Team domain (for example, slacksoftballteam).",
+                         "in": "formData",
+                         "name": "team_domain",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Description for the team.",
+                         "in": "formData",
+                         "name": "team_description",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Team name (for example, Slack Softball Team).",
+@@ -4741,21 +4274,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:read`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Must be between 1 - 100 both inclusive.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     }
+                 ],
+                 "produces": [
+@@ -4847,21 +4379,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "in": "query",
+@@ -4946,21 +4477,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.teams.settings.info"
+                 },
+                 "operationId": "admin_teams_settings_info",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:read`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "in": "query",
+                         "name": "team_id",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -5052,21 +4582,20 @@
+                         "description": "An array of channel IDs.",
+                         "in": "formData",
+                         "name": "channel_ids",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID for the workspace to set the default channel for.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -5143,21 +4672,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.teams.settings.setDescription"
+                 },
+                 "operationId": "admin_teams_settings_setDescription",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID for the workspace to set the description for.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -5241,21 +4769,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.teams.settings.setDiscoverability"
+                 },
+                 "operationId": "admin_teams_settings_setDiscoverability",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The ID of the workspace to set discoverability on.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -5338,21 +4865,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.teams.settings.setIcon"
+                 },
+                 "operationId": "admin_teams_settings_setIcon",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Image URL for the icon",
+                         "in": "formData",
+                         "name": "image_url",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -5436,21 +4962,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.teams.settings.setName"
+                 },
+                 "operationId": "admin_teams_settings_setName",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.teams:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "ID for the workspace to set the name for.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -5554,21 +5079,20 @@
+                         "description": "The ID (`T1234`) of the workspace.",
+                         "in": "formData",
+                         "name": "team_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "True if user should be added to the workspace as a single-channel guest.",
+                         "in": "formData",
+                         "name": "is_ultra_restricted",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "True if user should be added to the workspace as a guest.",
+@@ -5670,21 +5194,20 @@
+                     {
+                         "description": "Full name of the user.",
+                         "in": "formData",
+                         "name": "real_name",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Is this user a single channel guest user? (default: false)",
+                         "in": "formData",
+                         "name": "is_ultra_restricted",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "An optional message to send to the user in the invite email.",
+@@ -5797,21 +5320,20 @@
+                     {
+                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:read`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Limit for how many users to be retrieved per page",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "The ID (`T1234`) of the workspace.",
+@@ -5906,21 +5428,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.users.remove"
+                 },
+                 "operationId": "admin_users_remove",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The ID of the user to remove.",
+                         "in": "formData",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -6010,21 +5531,20 @@
+                     {
+                         "description": "Only expire mobile sessions (default: false)",
+                         "in": "formData",
+                         "name": "mobile_only",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The ID of the user to wipe sessions for",
+                         "in": "formData",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -6107,21 +5627,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.users.setAdmin"
+                 },
+                 "operationId": "admin_users_setAdmin",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The ID of the user to designate as an admin.",
+                         "in": "formData",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -6212,21 +5731,20 @@
+                         "description": "Timestamp when guest account should be disabled.",
+                         "in": "formData",
+                         "name": "expiration_ts",
+                         "required": true,
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The ID of the user to set an expiration for.",
+                         "in": "formData",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -6310,21 +5828,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.users.setOwner"
+                 },
+                 "operationId": "admin_users_setOwner",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Id of the user to promote to owner.",
+                         "in": "formData",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -6408,21 +5925,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/admin.users.setRegular"
+                 },
+                 "operationId": "admin_users_setRegular",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin.users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The ID of the user to designate as a regular user.",
+                         "in": "formData",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -6532,20 +6048,23 @@
                              "application/json": {
                                  "ok": true
                              }
@@ -1758,7 +2528,7 @@
                              "title": "api.test success schema",
                              "type": "object"
                          }
-@@ -6560,20 +6114,23 @@
+@@ -6560,20 +6079,23 @@
                                  "error": "my_error",
                                  "ok": false
                              }
@@ -1782,7 +2552,183 @@
                              "required": [
                                  "error",
                                  "ok"
-@@ -8288,20 +7845,23 @@
+@@ -6853,21 +6375,20 @@
+                         "description": "A comma separated list of scopes to request for",
+                         "in": "query",
+                         "name": "scopes",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Token used to trigger the permissions API",
+                         "in": "query",
+                         "name": "trigger_id",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -6978,21 +6499,20 @@
+                     {
+                         "description": "Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more detail.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     }
+                 ],
+                 "produces": [
+@@ -7151,21 +6671,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/apps.permissions.scopes.list"
+                 },
+                 "operationId": "apps_permissions_scopes_list",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical successful paginated response",
+                         "examples": {
+@@ -7317,21 +6836,20 @@
+                     {
+                         "description": "Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more detail.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     }
+                 ],
+                 "produces": [
+@@ -7431,21 +6949,20 @@
+                         "description": "A comma separated list of user scopes to request for",
+                         "in": "query",
+                         "name": "scopes",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The user this scope is being requested for",
+                         "in": "query",
+                         "name": "user",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -7655,21 +7172,20 @@
+                     {
+                         "description": "Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.",
+                         "in": "query",
+                         "name": "test",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -7767,21 +7283,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/auth.test"
+                 },
+                 "operationId": "auth_test",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Standard success response when used with a user token",
+                         "examples": {
+@@ -7897,21 +7412,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/bots.info"
+                 },
+                 "operationId": "bots_info",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Bot user to get info on",
+                         "in": "query",
+                         "name": "bot",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -8288,20 +7802,23 @@
                              "application/json": {
                                  "detail": "Value passed for `name` contained unallowed special characters.",
                                  "error": "invalid_name_specials",
@@ -1806,7 +2752,7 @@
                                          "invalid_form_data",
                                          "invalid_json",
                                          "invalid_name",
-@@ -9553,21 +9113,21 @@
+@@ -9553,21 +9070,21 @@
                      {
                          "description": "Authentication token. Requires scope: `channels:write`",
                          "in": "header",
@@ -1829,7 +2775,7 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -9831,21 +9391,21 @@
+@@ -9831,21 +9348,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/channels.replies"
@@ -1852,7 +2798,73 @@
                      {
                          "description": "Channel to fetch thread from",
                          "in": "query",
-@@ -10505,21 +10065,21 @@
+@@ -10113,21 +9630,20 @@
+                     {
+                         "description": "if it is true, treat this like a message and not an unescaped thing",
+                         "in": "formData",
+                         "name": "name_tagging",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `channels:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The new purpose",
+                         "in": "formData",
+                         "name": "purpose",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -10251,21 +9767,20 @@
+                         "description": "The new topic",
+                         "in": "formData",
+                         "name": "topic",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `channels:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Channel to set the topic of",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -10375,21 +9890,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/channels.unarchive"
+                 },
+                 "operationId": "channels_unarchive",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `channels:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Channel to unarchive",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -10505,21 +10019,21 @@
                      {
                          "description": "Authentication token. Requires scope: `chat:write`",
                          "in": "header",
@@ -1875,7 +2887,95 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -11449,21 +11009,21 @@
+@@ -10637,21 +10151,20 @@
+                     {
+                         "description": "Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.",
+                         "in": "formData",
+                         "name": "as_user",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `chat:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The channel the scheduled_message is posting to",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -10763,21 +10276,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/chat.getPermalink"
+                 },
+                 "operationId": "chat_getPermalink",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "A message's `ts` value, uniquely identifying it within a channel",
+                         "in": "query",
+                         "name": "message_ts",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -11071,21 +10583,20 @@
+                     {
+                         "description": "Change how messages are treated. Defaults to `none`. See [below](#formatting).",
+                         "in": "formData",
+                         "name": "parse",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `chat:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.",
+                         "in": "formData",
+                         "name": "text",
+                         "type": "string"
+                     },
+                     {
+                         "description": "`id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.",
+@@ -11308,21 +10819,20 @@
+                     {
+                         "description": "Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.",
+                         "in": "formData",
+                         "name": "username",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `chat:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.",
+                         "in": "formData",
+                         "name": "icon_url",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -11449,21 +10959,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/chat.scheduleMessage"
@@ -1898,7 +2998,7 @@
                      {
                          "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.",
                          "in": "formData",
-@@ -11562,26 +11122,46 @@
+@@ -11562,26 +11072,46 @@
                          "schema": {
                              "additionalProperties": false,
                              "description": "Schema for successful response of chat.scheduleMessage method",
@@ -1945,7 +3045,7 @@
                                              "type": "string"
                                          },
                                          "user": {
-@@ -11598,21 +11178,21 @@
+@@ -11598,21 +11128,21 @@
                                          "type",
                                          "user"
                                      ],
@@ -1968,7 +3068,7 @@
                              "required": [
                                  "channel",
                                  "message",
-@@ -11729,33 +11309,33 @@
+@@ -11729,33 +11259,33 @@
                      {
                          "description": "Maximum number of original entries to return.",
                          "in": "query",
@@ -2004,7 +3104,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-@@ -11799,21 +11379,21 @@
+@@ -11799,21 +11329,21 @@
                                          "properties": {
                                              "channel_id": {
                                                  "$ref": "#/definitions/defs_channel_id"
@@ -2027,7 +3127,51 @@
                                              }
                                          },
                                          "required": [
-@@ -12808,20 +12388,32 @@
+@@ -11941,21 +11471,20 @@
+                     {
+                         "description": "Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded.",
+                         "in": "formData",
+                         "name": "user_auth_url",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `links:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Channel ID of the message",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -12091,21 +11620,20 @@
+                     {
+                         "description": "Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. See [below](#formatting).",
+                         "in": "formData",
+                         "name": "parse",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `chat:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.",
+                         "in": "formData",
+                         "name": "text",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).",
+@@ -12808,20 +12336,32 @@
                                      },
                                      "minItems": 1,
                                      "type": "array",
@@ -2060,7 +3204,7 @@
                                  "ok",
                                  "pin_count"
                              ],
-@@ -14518,21 +14110,21 @@
+@@ -14518,21 +14058,21 @@
                      {
                          "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
                          "in": "query",
@@ -2083,7 +3227,7 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:history`",
                          "in": "query",
-@@ -14739,20 +14331,32 @@
+@@ -14739,20 +14279,32 @@
                                                      "user"
                                                  ],
                                                  "type": "object"
@@ -2116,7 +3260,95 @@
                              "type": "object"
                          }
                      },
-@@ -15901,20 +15505,36 @@
+@@ -15228,21 +14780,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/dialog.open"
+                 },
+                 "operationId": "dialog_open",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Exchange a trigger to post to the user.",
+                         "in": "query",
+                         "name": "trigger_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -15358,21 +14909,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/dnd.endDnd"
+                 },
+                 "operationId": "dnd_endDnd",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `dnd:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -15467,21 +15017,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/dnd.endSnooze"
+                 },
+                 "operationId": "dnd_endSnooze",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `dnd:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -15735,21 +15284,20 @@
+                         "description": "Number of minutes, from now, to snooze until.",
+                         "in": "formData",
+                         "name": "num_minutes",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `dnd:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -15901,20 +15449,36 @@
                              "description": "Schema for successful response from dnd.teamInfo method",
                              "properties": {
                                  "cached": {
@@ -2153,7 +3385,29 @@
                              "title": "dnd.teamInfo success schema",
                              "type": "object"
                          }
-@@ -16529,27 +16149,27 @@
+@@ -15988,21 +15552,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/emoji.list"
+                 },
+                 "operationId": "emoji_list",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `emoji:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -16529,27 +16092,27 @@
                      {
                          "description": "Filter files appearing in a specific channel, indicated by its ID.",
                          "in": "query",
@@ -2183,7 +3437,7 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
-@@ -17642,21 +17262,21 @@
+@@ -17642,21 +17205,21 @@
                      }
                  ],
                  "tags": [
@@ -2206,7 +3460,7 @@
                  "parameters": [
                      {
                          "description": "Comma-separated list of channel names or IDs where the file will be shared.",
-@@ -17697,27 +17317,27 @@
+@@ -17697,27 +17260,27 @@
                      {
                          "description": "Authentication token. Requires scope: `files:write:user`",
                          "in": "formData",
@@ -2236,7 +3490,7 @@
                          "description": "Success response after uploading a file to a channel with an initial message",
                          "examples": {
                              "application/json": {
-@@ -18327,20 +17947,23 @@
+@@ -18327,20 +17890,23 @@
                                              "type": "integer"
                                          },
                                          {
@@ -2260,7 +3514,51 @@
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
-@@ -19062,21 +18685,21 @@
+@@ -18674,21 +18240,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/groups.kick"
+                 },
+                 "operationId": "groups_kick",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `groups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "User to remove from private channel.",
+                         "in": "formData",
+                         "name": "user",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -18802,21 +18367,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/groups.leave"
+                 },
+                 "operationId": "groups_leave",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `groups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Private channel to leave",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -19062,21 +18626,21 @@
                      {
                          "description": "Authentication token. Requires scope: `groups:write`",
                          "in": "header",
@@ -2283,7 +3581,7 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -19420,21 +19043,21 @@
+@@ -19420,21 +18984,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/groups.replies"
@@ -2306,7 +3604,29 @@
                      {
                          "description": "Private channel to fetch thread from",
                          "in": "query",
-@@ -20152,20 +19775,23 @@
+@@ -19940,21 +19504,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/im.close"
+                 },
+                 "operationId": "im_close",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `im:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Direct message channel to close.",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -20152,20 +19715,23 @@
                                              "type": "integer"
                                          },
                                          {
@@ -2330,7 +3650,29 @@
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
-@@ -20645,20 +20271,32 @@
+@@ -20443,21 +20009,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/im.mark"
+                 },
+                 "operationId": "im_mark",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `im:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Direct message channel to set reading cursor in.",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -20645,20 +20210,32 @@
                                      "required": [
                                          "id"
                                      ],
@@ -2363,7 +3705,7 @@
                              "type": "object"
                          }
                      },
-@@ -20731,21 +20369,21 @@
+@@ -20731,21 +20308,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/im.replies"
@@ -2386,7 +3728,51 @@
                      {
                          "description": "Direct message channel to fetch thread from",
                          "in": "query",
-@@ -21355,20 +20993,23 @@
+@@ -20995,21 +20572,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/migration.exchange"
+                 },
+                 "operationId": "migration_exchange",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `tokens.basic`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.",
+                         "in": "query",
+                         "name": "to_old",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "A comma-separated list of user ids, up to 400 per request",
+@@ -21150,21 +20726,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/mpim.close"
+                 },
+                 "operationId": "mpim_close",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `mpim:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "MPIM to close.",
+                         "in": "formData",
+                         "name": "channel",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -21355,20 +20930,23 @@
                                              "type": "integer"
                                          },
                                          {
@@ -2410,7 +3796,7 @@
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
-@@ -21593,21 +21234,21 @@
+@@ -21593,21 +21171,21 @@
                      {
                          "description": "Authentication token. Requires scope: `mpim:write`",
                          "in": "header",
@@ -2433,7 +3819,7 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -21737,20 +21378,23 @@
+@@ -21737,20 +21315,23 @@
                                  "ok": true
                              }
                          },
@@ -2457,7 +3843,7 @@
                              ],
                              "title": "mpim.open success schema",
                              "type": "object"
-@@ -21825,21 +21469,21 @@
+@@ -21825,21 +21406,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/mpim.replies"
@@ -2480,7 +3866,7 @@
                      {
                          "description": "Multiparty direct message channel to fetch thread from.",
                          "in": "query",
-@@ -22142,22 +21786,64 @@
+@@ -22142,22 +21723,64 @@
                                  "enterprise_id": null,
                                  "scope": "groups:write",
                                  "team_id": "TXXXXXXXXX",
@@ -2545,7 +3931,7 @@
                          }
                      },
                      "default": {
-@@ -22266,22 +21952,67 @@
+@@ -22266,22 +21889,67 @@
                                  "single_channel_id": "C061EG9T2",
                                  "team_id": "T061EG9Z9",
                                  "team_name": "Subarachnoid Workspace",
@@ -2613,7 +3999,7 @@
                          }
                      },
                      "default": {
-@@ -22450,21 +22181,21 @@
+@@ -22450,21 +22118,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.add"
@@ -2636,7 +4022,7 @@
                      {
                          "description": "Channel to pin the item in.",
                          "in": "formData",
-@@ -22796,21 +22527,21 @@
+@@ -22796,21 +22464,21 @@
                      {
                          "description": "File comment to un-pin.",
                          "in": "formData",
@@ -2659,7 +4045,51 @@
                      {
                          "description": "File to un-pin.",
                          "in": "formData",
-@@ -23126,21 +22857,21 @@
+@@ -22931,21 +22599,20 @@
+                         "description": "Timestamp of the message to add reaction to.",
+                         "in": "formData",
+                         "name": "timestamp",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `reactions:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Reaction (emoji) name.",
+                         "in": "formData",
+                         "name": "name",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -23073,21 +22740,20 @@
+                     {
+                         "description": "Timestamp of the message to get reactions for.",
+                         "in": "query",
+                         "name": "timestamp",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `reactions:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "File to get reactions for.",
+                         "in": "query",
+                         "name": "file",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Channel where the message to get reactions for was posted.",
+@@ -23126,21 +22792,21 @@
                                      "timestamp": 1507850315,
                                      "title": "computer.gif",
                                      "user": "U2U85N1RV"
@@ -2682,7 +4112,7 @@
                                              "$ref": "#/definitions/objs_message"
                                          },
                                          "ok": {
-@@ -23202,22 +22933,21 @@
+@@ -23202,22 +22868,21 @@
                                          }
                                      },
                                      "required": [
@@ -2706,7 +4136,117 @@
                                  "ok": false
                              }
                          },
-@@ -25107,21 +24837,21 @@
+@@ -23300,21 +22965,20 @@
+                     {
+                         "description": "Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more details.",
+                         "in": "query",
+                         "name": "cursor",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `reactions:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Show reactions made by this user. Defaults to the authed user.",
+@@ -23609,21 +23273,20 @@
+                     {
+                         "description": "Timestamp of the message to remove reaction from.",
+                         "in": "formData",
+                         "name": "timestamp",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `reactions:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "File to remove reaction from.",
+                         "in": "formData",
+                         "name": "file",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Channel where the message to remove reaction from was posted.",
+@@ -24333,21 +23996,20 @@
+                     {
+                         "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).",
+                         "in": "query",
+                         "name": "presence_sub",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `rtm:stream`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).",
+                         "in": "query",
+                         "name": "batch_presence_aware",
+                         "type": "boolean"
+                     }
+                 ],
+                 "produces": [
+@@ -24522,21 +24184,20 @@
+                     {
+                         "description": "Pass the number of results you want per \"page\". Maximum of `100`.",
+                         "in": "query",
+                         "name": "count",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `search:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Pass a value of `true` to enable query highlight markers (see below).",
+                         "in": "query",
+                         "name": "highlight",
+                         "type": "boolean"
+                     },
+                     {
+                         "in": "query",
+@@ -24690,21 +24351,20 @@
+                     {
+                         "description": "Timestamp of the message to add star to.",
+                         "in": "formData",
+                         "name": "timestamp",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `stars:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "File to add star to.",
+                         "in": "formData",
+                         "name": "file",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Channel to add star to, or channel where the message to add star to was posted (used with `timestamp`).",
+@@ -25107,21 +24767,21 @@
                      {
                          "description": "File comment to remove star from.",
                          "in": "formData",
@@ -2729,8 +4269,238 @@
                      {
                          "description": "Channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`).",
                          "in": "formData",
-@@ -26884,21 +26614,21 @@
-                         "required": true,
+@@ -25242,21 +24902,20 @@
+                 "parameters": [
+                     {
+                         "in": "query",
+                         "name": "count",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "in": "query",
+                         "name": "page",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "End of time range of logs to include in results (inclusive).",
+                         "in": "query",
+@@ -25452,21 +25111,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/team.billableInfo"
+                 },
+                 "operationId": "team_billableInfo",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `admin`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "A user to retrieve the billable information for. Defaults to all users.",
+                         "in": "query",
+                         "name": "user",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -25571,21 +25229,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/team.info"
+                 },
+                 "operationId": "team_info",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `team:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels",
+                         "in": "query",
+                         "name": "team",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -25720,21 +25377,20 @@
+                     {
+                         "description": "Filter logs to this Slack app. Defaults to all logs.",
+                         "in": "query",
+                         "name": "app_id",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `admin`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Filter logs generated by this user\u2019s actions. Defaults to all logs.",
+                         "in": "query",
+                         "name": "user",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Filter logs to this service. Defaults to all logs.",
+@@ -25902,21 +25558,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/team.profile.get"
+                 },
+                 "operationId": "team_profile_get",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users.profile:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Filter by visibility.",
+                         "in": "query",
+                         "name": "visibility",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -26115,21 +25770,20 @@
+                     {
+                         "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.",
+                         "in": "formData",
+                         "name": "channels",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Include the number of users in each User Group.",
+                         "in": "formData",
+                         "name": "include_count",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "A name for the User Group. Must be unique among User Groups.",
+@@ -26242,21 +25896,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/usergroups.disable"
+                 },
+                 "operationId": "usergroups_disable",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Include the number of users in the User Group.",
+                         "in": "formData",
+                         "name": "include_count",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The encoded ID of the User Group to disable.",
+@@ -26369,21 +26022,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/usergroups.enable"
+                 },
+                 "operationId": "usergroups_enable",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Include the number of users in the User Group.",
+                         "in": "formData",
+                         "name": "include_count",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The encoded ID of the User Group to enable.",
+@@ -26502,21 +26154,20 @@
+                     {
+                         "description": "Include the list of users for each User Group.",
+                         "in": "query",
+                         "name": "include_users",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Include the number of users in each User Group.",
+                         "in": "query",
+                         "name": "include_count",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Include disabled User Groups.",
+@@ -26715,21 +26366,20 @@
+                     {
+                         "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.",
+                         "in": "formData",
+                         "name": "channels",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Include the number of users in the User Group.",
+                         "in": "formData",
+                         "name": "include_count",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The encoded ID of the User Group to update.",
+@@ -26874,31 +26524,30 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/usergroups.users.list"
+                 },
+                 "operationId": "usergroups_users_list",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
                          "type": "string"
                      },
                      {
@@ -2752,3 +4522,223 @@
                      "application/json"
                  ],
                  "responses": {
+@@ -27017,21 +26666,20 @@
+                         "description": "A comma separated string of encoded user IDs that represent the entire list of users for the User Group.",
+                         "in": "formData",
+                         "name": "users",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `usergroups:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Include the number of users in the User Group.",
+                         "in": "formData",
+                         "name": "include_count",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The encoded ID of the User Group to update.",
+@@ -27400,21 +27048,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/users.deletePhoto"
+                 },
+                 "operationId": "users_deletePhoto",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users.profile:write`",
+                         "in": "formData",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -27507,21 +27154,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/users.getPresence"
+                 },
+                 "operationId": "users_getPresence",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "User to get presence info on. Defaults to the authed user.",
+                         "in": "query",
+                         "name": "user",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+@@ -27980,21 +27626,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/users.info"
+                 },
+                 "operationId": "users_info",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users:read`",
+                         "in": "query",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "User to get info on",
+                         "in": "query",
+                         "name": "user",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
+@@ -28820,21 +28465,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/users.setActive"
+                 },
+                 "operationId": "users_setActive",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "examples": {
+@@ -29103,21 +28747,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/users.setPresence"
+                 },
+                 "operationId": "users_setPresence",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `users:write`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Either `auto` or `away`",
+                         "in": "formData",
+                         "name": "presence",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+@@ -29218,21 +28861,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/views.open"
+                 },
+                 "operationId": "views_open",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Exchange a trigger to post to the user.",
+                         "in": "query",
+                         "name": "trigger_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -29367,21 +29009,20 @@
+                     {
+                         "description": "A string that represents view state to protect against possible race conditions.",
+                         "in": "query",
+                         "name": "hash",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "`id` of the user you want publish a view to.",
+                         "in": "query",
+                         "name": "user_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -29500,21 +29141,20 @@
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/views.push"
+                 },
+                 "operationId": "views_push",
+                 "parameters": [
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "Exchange a trigger to post to the user.",
+                         "in": "query",
+                         "name": "trigger_id",
+                         "required": true,
+                         "type": "string"
+                     },
+                     {
+@@ -29661,21 +29301,20 @@
+                     {
+                         "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
+                         "in": "query",
+                         "name": "view_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `none`",
+                         "in": "header",
+                         "name": "token",
+-                        "required": true,
+                         "type": "string"
+                     },
+                     {
+                         "description": "A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.",
+                         "in": "query",
+                         "name": "external_id",
+                         "type": "string"
+                     },
+                     {
+                         "description": "A [view payload](/reference/surfaces/views) This must be a JSON-encoded string.",
