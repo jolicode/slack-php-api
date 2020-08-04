@@ -77,7 +77,7 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

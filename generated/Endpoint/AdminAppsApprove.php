@@ -75,7 +75,7 @@ class AdminAppsApprove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

@@ -55,7 +55,7 @@ class AdminEmojiRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['token', 'name']);
-        $optionsResolver->setRequired(['token', 'name']);
+        $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('name', ['string']);

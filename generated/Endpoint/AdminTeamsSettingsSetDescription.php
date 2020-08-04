@@ -73,7 +73,7 @@ class AdminTeamsSettingsSetDescription extends \Jane\OpenApiRuntime\Client\BaseE
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

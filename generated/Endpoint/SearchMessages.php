@@ -60,7 +60,7 @@ class SearchMessages extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['sort_dir', 'query', 'sort', 'count', 'token', 'highlight', 'page']);
-        $optionsResolver->setRequired(['query', 'token']);
+        $optionsResolver->setRequired(['query']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('sort_dir', ['string']);
         $optionsResolver->setAllowedTypes('query', ['string']);

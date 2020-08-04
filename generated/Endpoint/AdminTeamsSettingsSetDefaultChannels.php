@@ -56,7 +56,7 @@ class AdminTeamsSettingsSetDefaultChannels extends \Jane\OpenApiRuntime\Client\B
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['channel_ids', 'token', 'team_id']);
-        $optionsResolver->setRequired(['channel_ids', 'token', 'team_id']);
+        $optionsResolver->setRequired(['channel_ids', 'team_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel_ids', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

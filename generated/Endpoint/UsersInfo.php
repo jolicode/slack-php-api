@@ -56,7 +56,7 @@ class UsersInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'user', 'include_locale']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('user', ['string']);

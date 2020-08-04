@@ -56,7 +56,7 @@ class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpo
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['cursor', 'token', 'limit']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

@@ -57,7 +57,7 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['count', 'token', 'page', 'before']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('count', ['int']);
         $optionsResolver->setAllowedTypes('token', ['string']);

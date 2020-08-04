@@ -56,7 +56,7 @@ class AdminEmojiAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['url', 'token', 'name']);
-        $optionsResolver->setRequired(['url', 'token', 'name']);
+        $optionsResolver->setRequired(['url', 'name']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('url', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

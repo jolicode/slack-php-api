@@ -57,7 +57,7 @@ class AppsPermissionsUsersRequest extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['scopes', 'token', 'user', 'trigger_id']);
-        $optionsResolver->setRequired(['scopes', 'token', 'user', 'trigger_id']);
+        $optionsResolver->setRequired(['scopes', 'user', 'trigger_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('scopes', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

@@ -55,7 +55,7 @@ class TeamInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'team']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('team', ['string']);

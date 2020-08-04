@@ -75,7 +75,7 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

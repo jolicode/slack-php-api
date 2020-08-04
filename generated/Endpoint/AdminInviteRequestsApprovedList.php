@@ -75,7 +75,7 @@ class AdminInviteRequestsApprovedList extends \Jane\OpenApiRuntime\Client\BaseEn
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

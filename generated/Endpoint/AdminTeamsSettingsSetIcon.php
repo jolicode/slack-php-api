@@ -56,7 +56,7 @@ class AdminTeamsSettingsSetIcon extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['token', 'image_url', 'team_id']);
-        $optionsResolver->setRequired(['token', 'image_url', 'team_id']);
+        $optionsResolver->setRequired(['image_url', 'team_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('image_url', ['string']);

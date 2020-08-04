@@ -71,7 +71,7 @@ class GroupsLeave extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

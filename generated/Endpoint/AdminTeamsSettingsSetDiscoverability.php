@@ -73,7 +73,7 @@ class AdminTeamsSettingsSetDiscoverability extends \Jane\OpenApiRuntime\Client\B
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

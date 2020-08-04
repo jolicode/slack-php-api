@@ -56,7 +56,7 @@ class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'include_disabled', 'usergroup']);
-        $optionsResolver->setRequired(['token', 'usergroup']);
+        $optionsResolver->setRequired(['usergroup']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('include_disabled', ['bool']);

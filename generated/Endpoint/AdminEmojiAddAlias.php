@@ -56,7 +56,7 @@ class AdminEmojiAddAlias extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['token', 'name', 'alias_for']);
-        $optionsResolver->setRequired(['token', 'name', 'alias_for']);
+        $optionsResolver->setRequired(['name', 'alias_for']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('name', ['string']);

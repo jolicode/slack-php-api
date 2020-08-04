@@ -56,7 +56,7 @@ class MigrationExchange extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'to_old', 'users']);
-        $optionsResolver->setRequired(['token', 'users']);
+        $optionsResolver->setRequired(['users']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('to_old', ['bool']);

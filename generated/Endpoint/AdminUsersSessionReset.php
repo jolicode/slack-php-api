@@ -75,7 +75,7 @@ class AdminUsersSessionReset extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

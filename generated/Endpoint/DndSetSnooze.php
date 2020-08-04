@@ -55,7 +55,7 @@ class DndSetSnooze extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['num_minutes', 'token']);
-        $optionsResolver->setRequired(['num_minutes', 'token']);
+        $optionsResolver->setRequired(['num_minutes']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('num_minutes', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

@@ -73,7 +73,7 @@ class UsergroupsDisable extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

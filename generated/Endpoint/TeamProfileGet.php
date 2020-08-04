@@ -55,7 +55,7 @@ class TeamProfileGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'visibility']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('visibility', ['string']);

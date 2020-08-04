@@ -56,7 +56,7 @@ class AdminEmojiRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['new_name', 'token', 'name']);
-        $optionsResolver->setRequired(['new_name', 'token', 'name']);
+        $optionsResolver->setRequired(['new_name', 'name']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('new_name', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

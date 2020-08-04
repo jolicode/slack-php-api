@@ -60,7 +60,7 @@ class TeamIntegrationLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['count', 'change_type', 'app_id', 'token', 'user', 'service_id', 'page']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('count', ['int']);
         $optionsResolver->setAllowedTypes('change_type', ['string']);

@@ -56,7 +56,7 @@ class AdminEmojiList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['cursor', 'token', 'limit']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

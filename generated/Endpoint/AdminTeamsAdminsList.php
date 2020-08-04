@@ -57,7 +57,7 @@ class AdminTeamsAdminsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['cursor', 'token', 'limit', 'team_id']);
-        $optionsResolver->setRequired(['token', 'team_id']);
+        $optionsResolver->setRequired(['team_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);

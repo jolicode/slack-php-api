@@ -54,7 +54,7 @@ class AppsPermissionsScopesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

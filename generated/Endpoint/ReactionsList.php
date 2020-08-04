@@ -60,7 +60,7 @@ class ReactionsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['count', 'full', 'cursor', 'token', 'limit', 'user', 'page']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('count', ['int']);
         $optionsResolver->setAllowedTypes('full', ['bool']);

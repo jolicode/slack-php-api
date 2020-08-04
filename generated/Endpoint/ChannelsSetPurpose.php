@@ -75,7 +75,7 @@ class ChannelsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 
