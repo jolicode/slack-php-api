@@ -48,6 +48,11 @@ class ChannelsCreatePostResponsedefaultNormalizer implements DenormalizerInterfa
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChannelsCreatePostResponsedefault();
+        if (property_exists($data, 'detail') && null !== $data->{'detail'}) {
+            $object->setDetail($data->{'detail'});
+        } elseif (property_exists($data, 'detail') && null === $data->{'detail'}) {
+            $object->setDetail(null);
+        }
         if (property_exists($data, 'error') && null !== $data->{'error'}) {
             $object->setError($data->{'error'});
         } elseif (property_exists($data, 'error') && null === $data->{'error'}) {
@@ -65,6 +70,11 @@ class ChannelsCreatePostResponsedefaultNormalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getDetail()) {
+            $data->{'detail'} = $object->getDetail();
+        } else {
+            $data->{'detail'} = null;
+        }
         if (null !== $object->getError()) {
             $data->{'error'} = $object->getError();
         } else {

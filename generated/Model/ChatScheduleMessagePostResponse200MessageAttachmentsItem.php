@@ -13,49 +13,29 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
+class ChatScheduleMessagePostResponse200MessageAttachmentsItem
 {
     /**
      * @var string|null
      */
-    protected $channelId;
-    /**
-     * @var int|null
-     */
-    protected $dateCreated;
+    protected $fallback;
     /**
      * @var int|null
      */
     protected $id;
     /**
-     * @var int|null
-     */
-    protected $postAt;
-    /**
      * @var string|null
      */
     protected $text;
 
-    public function getChannelId(): ?string
+    public function getFallback(): ?string
     {
-        return $this->channelId;
+        return $this->fallback;
     }
 
-    public function setChannelId(?string $channelId): self
+    public function setFallback(?string $fallback): self
     {
-        $this->channelId = $channelId;
-
-        return $this;
-    }
-
-    public function getDateCreated(): ?int
-    {
-        return $this->dateCreated;
-    }
-
-    public function setDateCreated(?int $dateCreated): self
-    {
-        $this->dateCreated = $dateCreated;
+        $this->fallback = $fallback;
 
         return $this;
     }
@@ -68,18 +48,6 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
     public function setId(?int $id): self
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    public function getPostAt(): ?int
-    {
-        return $this->postAt;
-    }
-
-    public function setPostAt(?int $postAt): self
-    {
-        $this->postAt = $postAt;
 
         return $this;
     }

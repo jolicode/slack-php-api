@@ -77,6 +77,11 @@ class ImHistoryGetResponse200Normalizer implements DenormalizerInterface, Normal
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
         }
+        if (property_exists($data, 'latest') && null !== $data->{'latest'}) {
+            $object->setLatest($data->{'latest'});
+        } elseif (property_exists($data, 'latest') && null === $data->{'latest'}) {
+            $object->setLatest(null);
+        }
 
         return $object;
     }
@@ -112,6 +117,11 @@ class ImHistoryGetResponse200Normalizer implements DenormalizerInterface, Normal
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
+        }
+        if (null !== $object->getLatest()) {
+            $data->{'latest'} = $object->getLatest();
+        } else {
+            $data->{'latest'} = null;
         }
 
         return $data;

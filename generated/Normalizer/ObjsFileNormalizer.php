@@ -72,6 +72,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (property_exists($data, 'date_delete') && null === $data->{'date_delete'}) {
             $object->setDateDelete(null);
         }
+        if (property_exists($data, 'deanimate_gif') && null !== $data->{'deanimate_gif'}) {
+            $object->setDeanimateGif($data->{'deanimate_gif'});
+        } elseif (property_exists($data, 'deanimate_gif') && null === $data->{'deanimate_gif'}) {
+            $object->setDeanimateGif(null);
+        }
         if (property_exists($data, 'display_as_bot') && null !== $data->{'display_as_bot'}) {
             $object->setDisplayAsBot($data->{'display_as_bot'});
         } elseif (property_exists($data, 'display_as_bot') && null === $data->{'display_as_bot'}) {
@@ -224,6 +229,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (property_exists($data, 'pinned_to') && null === $data->{'pinned_to'}) {
             $object->setPinnedTo(null);
         }
+        if (property_exists($data, 'pjpeg') && null !== $data->{'pjpeg'}) {
+            $object->setPjpeg($data->{'pjpeg'});
+        } elseif (property_exists($data, 'pjpeg') && null === $data->{'pjpeg'}) {
+            $object->setPjpeg(null);
+        }
         if (property_exists($data, 'pretty_type') && null !== $data->{'pretty_type'}) {
             $object->setPrettyType($data->{'pretty_type'});
         } elseif (property_exists($data, 'pretty_type') && null === $data->{'pretty_type'}) {
@@ -292,6 +302,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setThumb360($data->{'thumb_360'});
         } elseif (property_exists($data, 'thumb_360') && null === $data->{'thumb_360'}) {
             $object->setThumb360(null);
+        }
+        if (property_exists($data, 'thumb_360_gif') && null !== $data->{'thumb_360_gif'}) {
+            $object->setThumb360Gif($data->{'thumb_360_gif'});
+        } elseif (property_exists($data, 'thumb_360_gif') && null === $data->{'thumb_360_gif'}) {
+            $object->setThumb360Gif(null);
         }
         if (property_exists($data, 'thumb_360_h') && null !== $data->{'thumb_360_h'}) {
             $object->setThumb360H($data->{'thumb_360_h'});
@@ -449,6 +464,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } else {
             $data->{'date_delete'} = null;
         }
+        if (null !== $object->getDeanimateGif()) {
+            $data->{'deanimate_gif'} = $object->getDeanimateGif();
+        } else {
+            $data->{'deanimate_gif'} = null;
+        }
         if (null !== $object->getDisplayAsBot()) {
             $data->{'display_as_bot'} = $object->getDisplayAsBot();
         } else {
@@ -601,6 +621,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } else {
             $data->{'pinned_to'} = null;
         }
+        if (null !== $object->getPjpeg()) {
+            $data->{'pjpeg'} = $object->getPjpeg();
+        } else {
+            $data->{'pjpeg'} = null;
+        }
         if (null !== $object->getPrettyType()) {
             $data->{'pretty_type'} = $object->getPrettyType();
         } else {
@@ -669,6 +694,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data->{'thumb_360'} = $object->getThumb360();
         } else {
             $data->{'thumb_360'} = null;
+        }
+        if (null !== $object->getThumb360Gif()) {
+            $data->{'thumb_360_gif'} = $object->getThumb360Gif();
+        } else {
+            $data->{'thumb_360_gif'} = null;
         }
         if (null !== $object->getThumb360H()) {
             $data->{'thumb_360_h'} = $object->getThumb360H();

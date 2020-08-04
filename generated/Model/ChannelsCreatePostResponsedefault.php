@@ -18,11 +18,27 @@ class ChannelsCreatePostResponsedefault
     /**
      * @var string|null
      */
+    protected $detail;
+    /**
+     * @var string|null
+     */
     protected $error;
     /**
      * @var bool|null
      */
     protected $ok;
+
+    public function getDetail(): ?string
+    {
+        return $this->detail;
+    }
+
+    public function setDetail(?string $detail): self
+    {
+        $this->detail = $detail;
+
+        return $this;
+    }
 
     public function getError(): ?string
     {

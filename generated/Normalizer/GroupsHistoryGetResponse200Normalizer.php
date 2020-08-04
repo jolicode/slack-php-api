@@ -63,6 +63,11 @@ class GroupsHistoryGetResponse200Normalizer implements DenormalizerInterface, No
         } elseif (property_exists($data, 'has_more') && null === $data->{'has_more'}) {
             $object->setHasMore(null);
         }
+        if (property_exists($data, 'latest') && null !== $data->{'latest'}) {
+            $object->setLatest($data->{'latest'});
+        } elseif (property_exists($data, 'latest') && null === $data->{'latest'}) {
+            $object->setLatest(null);
+        }
         if (property_exists($data, 'messages') && null !== $data->{'messages'}) {
             $values = [];
             foreach ($data->{'messages'} as $value) {
@@ -98,6 +103,11 @@ class GroupsHistoryGetResponse200Normalizer implements DenormalizerInterface, No
             $data->{'has_more'} = $object->getHasMore();
         } else {
             $data->{'has_more'} = null;
+        }
+        if (null !== $object->getLatest()) {
+            $data->{'latest'} = $object->getLatest();
+        } else {
+            $data->{'latest'} = null;
         }
         if (null !== $object->getMessages()) {
             $values = [];

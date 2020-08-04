@@ -31,6 +31,10 @@ class ImOpenPostResponse200
      * @var bool|null
      */
     protected $ok;
+    /**
+     * @var ImOpenPostResponse200ResponseMetadata|null
+     */
+    protected $responseMetadata;
 
     public function getAlreadyOpen(): ?bool
     {
@@ -76,6 +80,18 @@ class ImOpenPostResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    public function getResponseMetadata(): ?ImOpenPostResponse200ResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    public function setResponseMetadata(?ImOpenPostResponse200ResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

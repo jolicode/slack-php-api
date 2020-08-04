@@ -21,19 +21,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ReactionsGetGetResponse200Item1Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ReactionsGetGetResponse200Item1' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200MessageAttachmentsItem' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ReactionsGetGetResponse200Item1' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200MessageAttachmentsItem' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -47,21 +47,21 @@ class ReactionsGetGetResponse200Item1Normalizer implements DenormalizerInterface
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ReactionsGetGetResponse200Item1();
-        if (property_exists($data, 'file') && null !== $data->{'file'}) {
-            $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-        } elseif (property_exists($data, 'file') && null === $data->{'file'}) {
-            $object->setFile(null);
+        $object = new \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem();
+        if (property_exists($data, 'fallback') && null !== $data->{'fallback'}) {
+            $object->setFallback($data->{'fallback'});
+        } elseif (property_exists($data, 'fallback') && null === $data->{'fallback'}) {
+            $object->setFallback(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
-            $object->setOk(null);
+        if (property_exists($data, 'id') && null !== $data->{'id'}) {
+            $object->setId($data->{'id'});
+        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+            $object->setId(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
-            $object->setType(null);
+        if (property_exists($data, 'text') && null !== $data->{'text'}) {
+            $object->setText($data->{'text'});
+        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+            $object->setText(null);
         }
 
         return $object;
@@ -70,20 +70,20 @@ class ReactionsGetGetResponse200Item1Normalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getFile()) {
-            $data->{'file'} = $this->normalizer->normalize($object->getFile(), 'json', $context);
+        if (null !== $object->getFallback()) {
+            $data->{'fallback'} = $object->getFallback();
         } else {
-            $data->{'file'} = null;
+            $data->{'fallback'} = null;
         }
-        if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+        if (null !== $object->getId()) {
+            $data->{'id'} = $object->getId();
         } else {
-            $data->{'ok'} = null;
+            $data->{'id'} = null;
         }
-        if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
+        if (null !== $object->getText()) {
+            $data->{'text'} = $object->getText();
         } else {
-            $data->{'type'} = null;
+            $data->{'text'} = null;
         }
 
         return $data;

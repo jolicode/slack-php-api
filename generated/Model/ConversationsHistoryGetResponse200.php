@@ -39,6 +39,10 @@ class ConversationsHistoryGetResponse200
      * @var int|null
      */
     protected $pinCount;
+    /**
+     * @var ConversationsHistoryGetResponse200ResponseMetadata|null
+     */
+    protected $responseMetadata;
 
     public function getChannelActionsCount(): ?int
     {
@@ -120,6 +124,18 @@ class ConversationsHistoryGetResponse200
     public function setPinCount(?int $pinCount): self
     {
         $this->pinCount = $pinCount;
+
+        return $this;
+    }
+
+    public function getResponseMetadata(): ?ConversationsHistoryGetResponse200ResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    public function setResponseMetadata(?ConversationsHistoryGetResponse200ResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

@@ -32,6 +32,10 @@ class ObjsFile
      */
     protected $dateDelete;
     /**
+     * @var string|null
+     */
+    protected $deanimateGif;
+    /**
      * @var bool|null
      */
     protected $displayAsBot;
@@ -146,6 +150,10 @@ class ObjsFile
     /**
      * @var string|null
      */
+    protected $pjpeg;
+    /**
+     * @var string|null
+     */
     protected $prettyType;
     /**
      * @var string|null
@@ -195,6 +203,10 @@ class ObjsFile
      * @var string|null
      */
     protected $thumb360;
+    /**
+     * @var string|null
+     */
+    protected $thumb360Gif;
     /**
      * @var int|null
      */
@@ -346,6 +358,18 @@ class ObjsFile
     public function setDateDelete(?int $dateDelete): self
     {
         $this->dateDelete = $dateDelete;
+
+        return $this;
+    }
+
+    public function getDeanimateGif(): ?string
+    {
+        return $this->deanimateGif;
+    }
+
+    public function setDeanimateGif(?string $deanimateGif): self
+    {
+        $this->deanimateGif = $deanimateGif;
 
         return $this;
     }
@@ -710,6 +734,18 @@ class ObjsFile
         return $this;
     }
 
+    public function getPjpeg(): ?string
+    {
+        return $this->pjpeg;
+    }
+
+    public function setPjpeg(?string $pjpeg): self
+    {
+        $this->pjpeg = $pjpeg;
+
+        return $this;
+    }
+
     public function getPrettyType(): ?string
     {
         return $this->prettyType;
@@ -868,6 +904,18 @@ class ObjsFile
     public function setThumb360(?string $thumb360): self
     {
         $this->thumb360 = $thumb360;
+
+        return $this;
+    }
+
+    public function getThumb360Gif(): ?string
+    {
+        return $this->thumb360Gif;
+    }
+
+    public function setThumb360Gif(?string $thumb360Gif): self
+    {
+        $this->thumb360Gif = $thumb360Gif;
 
         return $this;
     }

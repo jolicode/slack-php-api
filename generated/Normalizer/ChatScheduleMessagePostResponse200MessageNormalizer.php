@@ -48,6 +48,15 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message();
+        if (property_exists($data, 'attachments') && null !== $data->{'attachments'}) {
+            $values = [];
+            foreach ($data->{'attachments'} as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200MessageAttachmentsItem', 'json', $context);
+            }
+            $object->setAttachments($values);
+        } elseif (property_exists($data, 'attachments') && null === $data->{'attachments'}) {
+            $object->setAttachments(null);
+        }
         if (property_exists($data, 'bot_id') && null !== $data->{'bot_id'}) {
             $object->setBotId($data->{'bot_id'});
         } elseif (property_exists($data, 'bot_id') && null === $data->{'bot_id'}) {
@@ -57,6 +66,11 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
             $object->setBotProfile($this->denormalizer->denormalize($data->{'bot_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsBotProfile', 'json', $context));
         } elseif (property_exists($data, 'bot_profile') && null === $data->{'bot_profile'}) {
             $object->setBotProfile(null);
+        }
+        if (property_exists($data, 'subtype') && null !== $data->{'subtype'}) {
+            $object->setSubtype($data->{'subtype'});
+        } elseif (property_exists($data, 'subtype') && null === $data->{'subtype'}) {
+            $object->setSubtype(null);
         }
         if (property_exists($data, 'team') && null !== $data->{'team'}) {
             $object->setTeam($data->{'team'});
@@ -90,6 +104,15 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getAttachments()) {
+            $values = [];
+            foreach ($object->getAttachments() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data->{'attachments'} = $values;
+        } else {
+            $data->{'attachments'} = null;
+        }
         if (null !== $object->getBotId()) {
             $data->{'bot_id'} = $object->getBotId();
         } else {
@@ -99,6 +122,11 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
             $data->{'bot_profile'} = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
         } else {
             $data->{'bot_profile'} = null;
+        }
+        if (null !== $object->getSubtype()) {
+            $data->{'subtype'} = $object->getSubtype();
+        } else {
+            $data->{'subtype'} = null;
         }
         if (null !== $object->getTeam()) {
             $data->{'team'} = $object->getTeam();

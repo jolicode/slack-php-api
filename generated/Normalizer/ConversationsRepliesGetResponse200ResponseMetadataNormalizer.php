@@ -21,19 +21,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class AdminAppsApprovedListGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ConversationsRepliesGetResponse200ResponseMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\AdminAppsApprovedListGetResponse200' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200ResponseMetadata' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminAppsApprovedListGetResponse200' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200ResponseMetadata' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -47,24 +47,11 @@ class AdminAppsApprovedListGetResponse200Normalizer implements DenormalizerInter
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200();
-        $data = clone $data;
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
-            $object->setOk(null);
-        }
-        if (property_exists($data, 'args') && null !== $data->{'args'}) {
-            $object->setArgs($data->{'args'});
-            unset($data->{'args'});
-        } elseif (property_exists($data, 'args') && null === $data->{'args'}) {
-            $object->setArgs(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $object[$key] = $value;
-            }
+        $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata();
+        if (property_exists($data, 'next_cursor') && null !== $data->{'next_cursor'}) {
+            $object->setNextCursor($data->{'next_cursor'});
+        } elseif (property_exists($data, 'next_cursor') && null === $data->{'next_cursor'}) {
+            $object->setNextCursor(null);
         }
 
         return $object;
@@ -73,20 +60,10 @@ class AdminAppsApprovedListGetResponse200Normalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
+        if (null !== $object->getNextCursor()) {
+            $data->{'next_cursor'} = $object->getNextCursor();
         } else {
-            $data->{'ok'} = null;
-        }
-        if (null !== $object->getArgs()) {
-            $data->{'args'} = $object->getArgs();
-        } else {
-            $data->{'args'} = null;
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
-            }
+            $data->{'next_cursor'} = null;
         }
 
         return $data;
