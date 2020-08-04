@@ -2392,7 +2392,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $filename filename of file
      *     @var string $content File contents via a POST variable. If omitting this parameter, you must provide a `file`.
      *     @var string $token Authentication token. Requires scope: `files:write:user`
-     *     @var string $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
+     *     @var string|resource|\Psr\Http\Message\StreamInterface $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
      *     @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
      * }
      *
