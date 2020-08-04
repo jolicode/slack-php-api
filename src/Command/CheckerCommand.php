@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of JoliCode's Slack PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Slack\Command;
 
 use JoliCode\Slack\Checker\SchemaChecker;
@@ -21,7 +32,7 @@ class CheckerCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $result = (new SchemaChecker())->check(__DIR__ . '/../../resources/slack-openapi-patched.json');
+        $result = (new SchemaChecker())->check(__DIR__.'/../../resources/slack-openapi-patched.json');
         $rows = [];
 
         foreach ($result as $path => $methods) {

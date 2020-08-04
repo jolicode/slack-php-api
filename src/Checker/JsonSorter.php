@@ -22,9 +22,9 @@ class JsonSorter
 
     public static function recursiveAlphabeticalSort($item)
     {
-        if (is_object($item)) {
+        if (\is_object($item)) {
             $asArray = (array) $item;
-            if (count($asArray) === 0) {
+            if (0 === \count($asArray)) {
                 return $item;
             }
 
@@ -33,7 +33,7 @@ class JsonSorter
             }
 
             $item = $asArray;
-        } elseif (!is_array($item)) {
+        } elseif (!\is_array($item)) {
             return $item;
         } else {
             foreach ($item as $key => $value) {
@@ -44,7 +44,7 @@ class JsonSorter
         if (self::isCollection($item)) {
             $types = array_unique(array_map('getType', $item));
 
-            if (count($types) === 1 && in_array($types[0], ['string', 'int'])) {
+            if (1 === \count($types) && \in_array($types[0], ['string', 'int'], true)) {
                 sort($item, SORT_STRING);
             }
         } else {

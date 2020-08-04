@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of JoliCode's Slack PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Slack\Command;
 
 use JoliCode\Slack\Checker\JsonSorter;
@@ -24,10 +35,10 @@ class GeneratePatchCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // ensure the patched specification is alphabetically sorted
-        $content = file_get_contents(__DIR__ . '/../../resources/slack-openapi-patched.json');
+        $content = file_get_contents(__DIR__.'/../../resources/slack-openapi-patched.json');
         $specification = json_decode($content);
         $specification = JsonSorter::recursiveAlphabeticalSort($specification);
-        file_put_contents(__DIR__ . '/../../resources/slack-openapi-patched.json', json_encode($specification, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        file_put_contents(__DIR__.'/../../resources/slack-openapi-patched.json', json_encode($specification, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
         // generate a patch using a diff between the sorted and the patched specifications
         $io = new SymfonyStyle($input, $output);
@@ -35,9 +46,9 @@ class GeneratePatchCommand extends Command
         $process = Process::fromShellCommandline($diffCommand);
         $process->run();
 
-        if ($process->getExitCode() === 0) {
+        if (0 === $process->getExitCode()) {
             $io->warning('No diff found');
-        } elseif ($process->getExitCode() === 1) {
+        } elseif (1 === $process->getExitCode()) {
             $io->success('Generated a patch');
         } else {
             $io->error('Could not generate the patch');

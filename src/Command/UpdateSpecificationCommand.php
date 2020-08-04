@@ -1,5 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of JoliCode's Slack PHP API project.
+ *
+ * (c) JoliCode <coucou@jolicode.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace JoliCode\Slack\Command;
 
 use JoliCode\Slack\Checker\JsonSorter;
@@ -27,18 +38,18 @@ class UpdateSpecificationCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         // download official Slack OpenAPI spec and save it
-        $content = HttpClient::create()->request('GET','https://api.slack.com/specs/openapi/v2/slack_web.json', [
+        $content = HttpClient::create()->request('GET', 'https://api.slack.com/specs/openapi/v2/slack_web.json', [
             'headers' => [
                 'Accept' => 'application/json',
             ],
         ])->getContent();
-        file_put_contents(__DIR__ . '/../../resources/slack-openapi.json', $content);
+        file_put_contents(__DIR__.'/../../resources/slack-openapi.json', $content);
         $output->writeln('<info>Downloaded and saved a new specification version</info>');
 
         // sort the spec file
         $specification = json_decode($content);
         $specification = JsonSorter::recursiveAlphabeticalSort($specification);
-        file_put_contents(__DIR__ . '/../../resources/slack-openapi-sorted.json', json_encode($specification, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        file_put_contents(__DIR__.'/../../resources/slack-openapi-sorted.json', json_encode($specification, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
         $output->writeln('<info>Sorted the official specification by keys</info>');
 
         // apply the patches to the sorted spec
