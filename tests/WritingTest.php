@@ -33,9 +33,7 @@ class WritingTest extends TestCase
                 'fallback' => 'JoliCode',
                 'image_url' => 'https://jolicode.com/images/valeurs_huma.png',
             ]]),
-            ], [
-                'token' => $_SERVER['SLACK_TOKEN'],
-            ]);
+        ]);
 
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
         self::assertContains($response->getMessage()->getAttachments()[0]->getImageUrl(), 'https://jolicode.com/images/valeurs_huma.png');
@@ -70,8 +68,6 @@ class WritingTest extends TestCase
                     ],
                 ],
             ]),
-        ], [
-            'token' => $_SERVER['SLACK_TOKEN'],
         ]);
 
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
@@ -87,8 +83,6 @@ class WritingTest extends TestCase
             'username' => 'User A',
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
             'text' => 'First message',
-        ], [
-            'token' => $_SERVER['SLACK_TOKEN'],
         ]);
 
         $response2 = $client->chatPostMessage([
@@ -96,8 +90,6 @@ class WritingTest extends TestCase
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
             'text' => 'First response in a Thread',
             'thread_ts' => $response->getMessage()->getTs(),
-        ], [
-            'token' => $_SERVER['SLACK_TOKEN'],
         ]);
 
         $this->assertTrue($response2->getOk());
