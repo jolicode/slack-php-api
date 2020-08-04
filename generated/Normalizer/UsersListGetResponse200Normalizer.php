@@ -56,7 +56,7 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
         if (property_exists($data, 'members') && null !== $data->{'members'}) {
             $values = [];
             foreach ($data->{'members'} as $value) {
-                $values[] = $value;
+                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsUser', 'json', $context);
             }
             $object->setMembers($values);
         } elseif (property_exists($data, 'members') && null === $data->{'members'}) {
@@ -87,7 +87,7 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
         if (null !== $object->getMembers()) {
             $values = [];
             foreach ($object->getMembers() as $value) {
-                $values[] = $value;
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'members'} = $values;
         } else {

@@ -20,7 +20,7 @@ class UsersListGetResponse200
      */
     protected $cacheTs;
     /**
-     * @var mixed[]|null
+     * @var ObjsUser[]|null
      */
     protected $members;
     /**
@@ -45,7 +45,7 @@ class UsersListGetResponse200
     }
 
     /**
-     * @return mixed[]|null
+     * @return ObjsUser[]|null
      */
     public function getMembers(): ?array
     {
@@ -53,7 +53,7 @@ class UsersListGetResponse200
     }
 
     /**
-     * @param mixed[]|null $members
+     * @param ObjsUser[]|null $members
      */
     public function setMembers(?array $members): self
     {

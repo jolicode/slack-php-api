@@ -13,11 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsUserItem1
+class ObjsUser
 {
     /**
-     * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
-     *
      * @var string|null
      */
     protected $color;
@@ -52,7 +50,7 @@ class ObjsUserItem1
     /**
      * @var bool|null
      */
-    protected $isExternal;
+    protected $isInvitedUser;
     /**
      * @var bool|null
      */
@@ -92,15 +90,15 @@ class ObjsUserItem1
     /**
      * @var string|null
      */
+    protected $team;
+    /**
+     * @var string|null
+     */
     protected $teamId;
     /**
-     * @var ObjsUserItem1TeamProfile|null
+     * @var ObjsUserTeamProfile|null
      */
     protected $teamProfile;
-    /**
-     * @var string[]|null
-     */
-    protected $teams;
     /**
      * @var string|null
      */
@@ -121,18 +119,16 @@ class ObjsUserItem1
      * @var float|null
      */
     protected $updated;
-
     /**
-     * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
+     * @var string[]|null
      */
+    protected $teams;
+
     public function getColor(): ?string
     {
         return $this->color;
     }
 
-    /**
-     * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
-     */
     public function setColor(?string $color): self
     {
         $this->color = $color;
@@ -224,14 +220,14 @@ class ObjsUserItem1
         return $this;
     }
 
-    public function getIsExternal(): ?bool
+    public function getIsInvitedUser(): ?bool
     {
-        return $this->isExternal;
+        return $this->isInvitedUser;
     }
 
-    public function setIsExternal(?bool $isExternal): self
+    public function setIsInvitedUser(?bool $isInvitedUser): self
     {
-        $this->isExternal = $isExternal;
+        $this->isInvitedUser = $isInvitedUser;
 
         return $this;
     }
@@ -344,6 +340,18 @@ class ObjsUserItem1
         return $this;
     }
 
+    public function getTeam(): ?string
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?string $team): self
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
     public function getTeamId(): ?string
     {
         return $this->teamId;
@@ -356,32 +364,14 @@ class ObjsUserItem1
         return $this;
     }
 
-    public function getTeamProfile(): ?ObjsUserItem1TeamProfile
+    public function getTeamProfile(): ?ObjsUserTeamProfile
     {
         return $this->teamProfile;
     }
 
-    public function setTeamProfile(?ObjsUserItem1TeamProfile $teamProfile): self
+    public function setTeamProfile(?ObjsUserTeamProfile $teamProfile): self
     {
         $this->teamProfile = $teamProfile;
-
-        return $this;
-    }
-
-    /**
-     * @return string[]|null
-     */
-    public function getTeams(): ?array
-    {
-        return $this->teams;
-    }
-
-    /**
-     * @param string[]|null $teams
-     */
-    public function setTeams(?array $teams): self
-    {
-        $this->teams = $teams;
 
         return $this;
     }
@@ -448,6 +438,24 @@ class ObjsUserItem1
     public function setUpdated(?float $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getTeams(): ?array
+    {
+        return $this->teams;
+    }
+
+    /**
+     * @param string[]|null $teams
+     */
+    public function setTeams(?array $teams): self
+    {
+        $this->teams = $teams;
 
         return $this;
     }

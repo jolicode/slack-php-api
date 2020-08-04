@@ -21,19 +21,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem1' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\ObjsUser' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem1' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUser' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -47,7 +47,7 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsUserItem1();
+        $object = new \JoliCode\Slack\Api\Model\ObjsUser();
         if (property_exists($data, 'color') && null !== $data->{'color'}) {
             $object->setColor($data->{'color'});
         } elseif (property_exists($data, 'color') && null === $data->{'color'}) {
@@ -88,10 +88,10 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
         } elseif (property_exists($data, 'is_bot') && null === $data->{'is_bot'}) {
             $object->setIsBot(null);
         }
-        if (property_exists($data, 'is_external') && null !== $data->{'is_external'}) {
-            $object->setIsExternal($data->{'is_external'});
-        } elseif (property_exists($data, 'is_external') && null === $data->{'is_external'}) {
-            $object->setIsExternal(null);
+        if (property_exists($data, 'is_invited_user') && null !== $data->{'is_invited_user'}) {
+            $object->setIsInvitedUser($data->{'is_invited_user'});
+        } elseif (property_exists($data, 'is_invited_user') && null === $data->{'is_invited_user'}) {
+            $object->setIsInvitedUser(null);
         }
         if (property_exists($data, 'is_owner') && null !== $data->{'is_owner'}) {
             $object->setIsOwner($data->{'is_owner'});
@@ -138,24 +138,20 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
         } elseif (property_exists($data, 'real_name') && null === $data->{'real_name'}) {
             $object->setRealName(null);
         }
+        if (property_exists($data, 'team') && null !== $data->{'team'}) {
+            $object->setTeam($data->{'team'});
+        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+            $object->setTeam(null);
+        }
         if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
             $object->setTeamId($data->{'team_id'});
         } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
             $object->setTeamId(null);
         }
         if (property_exists($data, 'team_profile') && null !== $data->{'team_profile'}) {
-            $object->setTeamProfile($this->denormalizer->denormalize($data->{'team_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserItem1TeamProfile', 'json', $context));
+            $object->setTeamProfile($this->denormalizer->denormalize($data->{'team_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile', 'json', $context));
         } elseif (property_exists($data, 'team_profile') && null === $data->{'team_profile'}) {
             $object->setTeamProfile(null);
-        }
-        if (property_exists($data, 'teams') && null !== $data->{'teams'}) {
-            $values = [];
-            foreach ($data->{'teams'} as $value) {
-                $values[] = $value;
-            }
-            $object->setTeams($values);
-        } elseif (property_exists($data, 'teams') && null === $data->{'teams'}) {
-            $object->setTeams(null);
         }
         if (property_exists($data, 'two_factor_type') && null !== $data->{'two_factor_type'}) {
             $object->setTwoFactorType($data->{'two_factor_type'});
@@ -181,6 +177,15 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
             $object->setUpdated($data->{'updated'});
         } elseif (property_exists($data, 'updated') && null === $data->{'updated'}) {
             $object->setUpdated(null);
+        }
+        if (property_exists($data, 'teams') && null !== $data->{'teams'}) {
+            $values = [];
+            foreach ($data->{'teams'} as $value) {
+                $values[] = $value;
+            }
+            $object->setTeams($values);
+        } elseif (property_exists($data, 'teams') && null === $data->{'teams'}) {
+            $object->setTeams(null);
         }
 
         return $object;
@@ -229,10 +234,10 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
         } else {
             $data->{'is_bot'} = null;
         }
-        if (null !== $object->getIsExternal()) {
-            $data->{'is_external'} = $object->getIsExternal();
+        if (null !== $object->getIsInvitedUser()) {
+            $data->{'is_invited_user'} = $object->getIsInvitedUser();
         } else {
-            $data->{'is_external'} = null;
+            $data->{'is_invited_user'} = null;
         }
         if (null !== $object->getIsOwner()) {
             $data->{'is_owner'} = $object->getIsOwner();
@@ -279,6 +284,11 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
         } else {
             $data->{'real_name'} = null;
         }
+        if (null !== $object->getTeam()) {
+            $data->{'team'} = $object->getTeam();
+        } else {
+            $data->{'team'} = null;
+        }
         if (null !== $object->getTeamId()) {
             $data->{'team_id'} = $object->getTeamId();
         } else {
@@ -288,15 +298,6 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
             $data->{'team_profile'} = $this->normalizer->normalize($object->getTeamProfile(), 'json', $context);
         } else {
             $data->{'team_profile'} = null;
-        }
-        if (null !== $object->getTeams()) {
-            $values = [];
-            foreach ($object->getTeams() as $value) {
-                $values[] = $value;
-            }
-            $data->{'teams'} = $values;
-        } else {
-            $data->{'teams'} = null;
         }
         if (null !== $object->getTwoFactorType()) {
             $data->{'two_factor_type'} = $object->getTwoFactorType();
@@ -322,6 +323,15 @@ class ObjsUserItem1Normalizer implements DenormalizerInterface, NormalizerInterf
             $data->{'updated'} = $object->getUpdated();
         } else {
             $data->{'updated'} = null;
+        }
+        if (null !== $object->getTeams()) {
+            $values = [];
+            foreach ($object->getTeams() as $value) {
+                $values[] = $value;
+            }
+            $data->{'teams'} = $values;
+        } else {
+            $data->{'teams'} = null;
         }
 
         return $data;
