@@ -122,6 +122,7 @@ class ReadingTest extends TestCase
         $results = $client->searchMessages([
             'query' => 'Message with attachment',
             'count' => '1',
+            'token' => $_SERVER['SLACK_TOKEN'],
         ]);
 
         self::assertInstanceOf(SearchMessagesGetResponse200::class, $results);
