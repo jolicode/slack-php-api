@@ -148,6 +148,10 @@ class ObjsConversation
      */
     protected $isThreadOnly;
     /**
+     * @var bool|null
+     */
+    protected $isUserDeleted;
+    /**
      * @var string|null
      */
     protected $lastRead;
@@ -243,10 +247,6 @@ class ObjsConversation
      * @var int|null
      */
     protected $version;
-    /**
-     * @var bool|null
-     */
-    protected $isUserDeleted;
 
     public function getAcceptedUser(): ?string
     {
@@ -662,6 +662,18 @@ class ObjsConversation
         return $this;
     }
 
+    public function getIsUserDeleted(): ?bool
+    {
+        return $this->isUserDeleted;
+    }
+
+    public function setIsUserDeleted(?bool $isUserDeleted): self
+    {
+        $this->isUserDeleted = $isUserDeleted;
+
+        return $this;
+    }
+
     public function getLastRead(): ?string
     {
         return $this->lastRead;
@@ -994,18 +1006,6 @@ class ObjsConversation
     public function setVersion(?int $version): self
     {
         $this->version = $version;
-
-        return $this;
-    }
-
-    public function getIsUserDeleted(): ?bool
-    {
-        return $this->isUserDeleted;
-    }
-
-    public function setIsUserDeleted(?bool $isUserDeleted): self
-    {
-        $this->isUserDeleted = $isUserDeleted;
 
         return $this;
     }

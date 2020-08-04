@@ -26,6 +26,10 @@ class ObjsMessageAttachmentsItemActionsItem
     /**
      * @var string|null
      */
+    protected $style;
+    /**
+     * @var string|null
+     */
     protected $text;
     /**
      * @var string|null
@@ -35,10 +39,6 @@ class ObjsMessageAttachmentsItemActionsItem
      * @var string|null
      */
     protected $value;
-    /**
-     * @var string|null
-     */
-    protected $style;
 
     public function getId(): ?string
     {
@@ -60,6 +60,18 @@ class ObjsMessageAttachmentsItemActionsItem
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setStyle(?string $style): self
+    {
+        $this->style = $style;
 
         return $this;
     }
@@ -96,18 +108,6 @@ class ObjsMessageAttachmentsItemActionsItem
     public function setValue(?string $value): self
     {
         $this->value = $value;
-
-        return $this;
-    }
-
-    public function getStyle(): ?string
-    {
-        return $this->style;
-    }
-
-    public function setStyle(?string $style): self
-    {
-        $this->style = $style;
 
         return $this;
     }

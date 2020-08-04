@@ -221,6 +221,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (property_exists($data, 'is_thread_only') && null === $data->{'is_thread_only'}) {
             $object->setIsThreadOnly(null);
         }
+        if (property_exists($data, 'is_user_deleted') && null !== $data->{'is_user_deleted'}) {
+            $object->setIsUserDeleted($data->{'is_user_deleted'});
+        } elseif (property_exists($data, 'is_user_deleted') && null === $data->{'is_user_deleted'}) {
+            $object->setIsUserDeleted(null);
+        }
         if (property_exists($data, 'last_read') && null !== $data->{'last_read'}) {
             $object->setLastRead($data->{'last_read'});
         } elseif (property_exists($data, 'last_read') && null === $data->{'last_read'}) {
@@ -364,11 +369,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setVersion($data->{'version'});
         } elseif (property_exists($data, 'version') && null === $data->{'version'}) {
             $object->setVersion(null);
-        }
-        if (property_exists($data, 'is_user_deleted') && null !== $data->{'is_user_deleted'}) {
-            $object->setIsUserDeleted($data->{'is_user_deleted'});
-        } elseif (property_exists($data, 'is_user_deleted') && null === $data->{'is_user_deleted'}) {
-            $object->setIsUserDeleted(null);
         }
 
         return $object;
@@ -550,6 +550,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } else {
             $data->{'is_thread_only'} = null;
         }
+        if (null !== $object->getIsUserDeleted()) {
+            $data->{'is_user_deleted'} = $object->getIsUserDeleted();
+        } else {
+            $data->{'is_user_deleted'} = null;
+        }
         if (null !== $object->getLastRead()) {
             $data->{'last_read'} = $object->getLastRead();
         } else {
@@ -693,11 +698,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $data->{'version'} = $object->getVersion();
         } else {
             $data->{'version'} = null;
-        }
-        if (null !== $object->getIsUserDeleted()) {
-            $data->{'is_user_deleted'} = $object->getIsUserDeleted();
-        } else {
-            $data->{'is_user_deleted'} = null;
         }
 
         return $data;

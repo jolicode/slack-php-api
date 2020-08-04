@@ -49,12 +49,6 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
         }
         $object = new \JoliCode\Slack\Api\Model\OauthAccessGetResponse200IncomingWebhook();
         $data = clone $data;
-        if (property_exists($data, 'url') && null !== $data->{'url'}) {
-            $object->setUrl($data->{'url'});
-            unset($data->{'url'});
-        } elseif (property_exists($data, 'url') && null === $data->{'url'}) {
-            $object->setUrl(null);
-        }
         if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
             $object->setChannel($data->{'channel'});
             unset($data->{'channel'});
@@ -66,6 +60,12 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
             unset($data->{'configuration_url'});
         } elseif (property_exists($data, 'configuration_url') && null === $data->{'configuration_url'}) {
             $object->setConfigurationUrl(null);
+        }
+        if (property_exists($data, 'url') && null !== $data->{'url'}) {
+            $object->setUrl($data->{'url'});
+            unset($data->{'url'});
+        } elseif (property_exists($data, 'url') && null === $data->{'url'}) {
+            $object->setUrl(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', $key)) {
@@ -79,11 +79,6 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        } else {
-            $data->{'url'} = null;
-        }
         if (null !== $object->getChannel()) {
             $data->{'channel'} = $object->getChannel();
         } else {
@@ -93,6 +88,11 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
             $data->{'configuration_url'} = $object->getConfigurationUrl();
         } else {
             $data->{'configuration_url'} = null;
+        }
+        if (null !== $object->getUrl()) {
+            $data->{'url'} = $object->getUrl();
+        } else {
+            $data->{'url'} = null;
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {

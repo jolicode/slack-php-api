@@ -153,6 +153,15 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (property_exists($data, 'team_profile') && null === $data->{'team_profile'}) {
             $object->setTeamProfile(null);
         }
+        if (property_exists($data, 'teams') && null !== $data->{'teams'}) {
+            $values = [];
+            foreach ($data->{'teams'} as $value) {
+                $values[] = $value;
+            }
+            $object->setTeams($values);
+        } elseif (property_exists($data, 'teams') && null === $data->{'teams'}) {
+            $object->setTeams(null);
+        }
         if (property_exists($data, 'two_factor_type') && null !== $data->{'two_factor_type'}) {
             $object->setTwoFactorType($data->{'two_factor_type'});
         } elseif (property_exists($data, 'two_factor_type') && null === $data->{'two_factor_type'}) {
@@ -177,15 +186,6 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setUpdated($data->{'updated'});
         } elseif (property_exists($data, 'updated') && null === $data->{'updated'}) {
             $object->setUpdated(null);
-        }
-        if (property_exists($data, 'teams') && null !== $data->{'teams'}) {
-            $values = [];
-            foreach ($data->{'teams'} as $value) {
-                $values[] = $value;
-            }
-            $object->setTeams($values);
-        } elseif (property_exists($data, 'teams') && null === $data->{'teams'}) {
-            $object->setTeams(null);
         }
 
         return $object;
@@ -299,6 +299,15 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } else {
             $data->{'team_profile'} = null;
         }
+        if (null !== $object->getTeams()) {
+            $values = [];
+            foreach ($object->getTeams() as $value) {
+                $values[] = $value;
+            }
+            $data->{'teams'} = $values;
+        } else {
+            $data->{'teams'} = null;
+        }
         if (null !== $object->getTwoFactorType()) {
             $data->{'two_factor_type'} = $object->getTwoFactorType();
         } else {
@@ -323,15 +332,6 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data->{'updated'} = $object->getUpdated();
         } else {
             $data->{'updated'} = null;
-        }
-        if (null !== $object->getTeams()) {
-            $values = [];
-            foreach ($object->getTeams() as $value) {
-                $values[] = $value;
-            }
-            $data->{'teams'} = $values;
-        } else {
-            $data->{'teams'} = null;
         }
 
         return $data;

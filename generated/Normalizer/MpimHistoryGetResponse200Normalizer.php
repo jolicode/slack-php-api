@@ -63,6 +63,11 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
         } elseif (property_exists($data, 'has_more') && null === $data->{'has_more'}) {
             $object->setHasMore(null);
         }
+        if (property_exists($data, 'latest') && null !== $data->{'latest'}) {
+            $object->setLatest($data->{'latest'});
+        } elseif (property_exists($data, 'latest') && null === $data->{'latest'}) {
+            $object->setLatest(null);
+        }
         if (property_exists($data, 'messages') && null !== $data->{'messages'}) {
             $values = [];
             foreach ($data->{'messages'} as $value) {
@@ -76,11 +81,6 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
             $object->setOk($data->{'ok'});
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
-        }
-        if (property_exists($data, 'latest') && null !== $data->{'latest'}) {
-            $object->setLatest($data->{'latest'});
-        } elseif (property_exists($data, 'latest') && null === $data->{'latest'}) {
-            $object->setLatest(null);
         }
 
         return $object;
@@ -104,6 +104,11 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
         } else {
             $data->{'has_more'} = null;
         }
+        if (null !== $object->getLatest()) {
+            $data->{'latest'} = $object->getLatest();
+        } else {
+            $data->{'latest'} = null;
+        }
         if (null !== $object->getMessages()) {
             $values = [];
             foreach ($object->getMessages() as $value) {
@@ -117,11 +122,6 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
-        }
-        if (null !== $object->getLatest()) {
-            $data->{'latest'} = $object->getLatest();
-        } else {
-            $data->{'latest'} = null;
         }
 
         return $data;

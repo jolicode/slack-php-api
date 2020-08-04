@@ -49,12 +49,6 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
         }
         $object = new \JoliCode\Slack\Api\Model\OauthTokenGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
-            $object->setOk(null);
-        }
         if (property_exists($data, 'access_token') && null !== $data->{'access_token'}) {
             $object->setAccessToken($data->{'access_token'});
             unset($data->{'access_token'});
@@ -84,6 +78,12 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
             unset($data->{'installer_user_id'});
         } elseif (property_exists($data, 'installer_user_id') && null === $data->{'installer_user_id'}) {
             $object->setInstallerUserId(null);
+        }
+        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
+            $object->setOk($data->{'ok'});
+            unset($data->{'ok'});
+        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+            $object->setOk(null);
         }
         if (property_exists($data, 'permissions') && null !== $data->{'permissions'}) {
             $values = [];
@@ -131,11 +131,6 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
-        }
         if (null !== $object->getAccessToken()) {
             $data->{'access_token'} = $object->getAccessToken();
         } else {
@@ -160,6 +155,11 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data->{'installer_user_id'} = $object->getInstallerUserId();
         } else {
             $data->{'installer_user_id'} = null;
+        }
+        if (null !== $object->getOk()) {
+            $data->{'ok'} = $object->getOk();
+        } else {
+            $data->{'ok'} = null;
         }
         if (null !== $object->getPermissions()) {
             $values = [];

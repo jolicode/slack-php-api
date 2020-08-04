@@ -28,6 +28,10 @@ class MpimHistoryGetResponse200
      */
     protected $hasMore;
     /**
+     * @var string|null
+     */
+    protected $latest;
+    /**
      * @var ObjsMessage[]|null
      */
     protected $messages;
@@ -35,10 +39,6 @@ class MpimHistoryGetResponse200
      * @var bool|null
      */
     protected $ok;
-    /**
-     * @var string|null
-     */
-    protected $latest;
 
     public function getChannelActionsCount(): ?int
     {
@@ -82,6 +82,18 @@ class MpimHistoryGetResponse200
         return $this;
     }
 
+    public function getLatest(): ?string
+    {
+        return $this->latest;
+    }
+
+    public function setLatest(?string $latest): self
+    {
+        $this->latest = $latest;
+
+        return $this;
+    }
+
     /**
      * @return ObjsMessage[]|null
      */
@@ -108,18 +120,6 @@ class MpimHistoryGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getLatest(): ?string
-    {
-        return $this->latest;
-    }
-
-    public function setLatest(?string $latest): self
-    {
-        $this->latest = $latest;
 
         return $this;
     }

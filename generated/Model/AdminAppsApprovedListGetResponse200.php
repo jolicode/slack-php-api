@@ -16,25 +16,13 @@ namespace JoliCode\Slack\Api\Model;
 class AdminAppsApprovedListGetResponse200 extends \ArrayObject
 {
     /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
      * @var mixed|null
      */
     protected $args;
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->ok = $ok;
-
-        return $this;
-    }
+    /**
+     * @var bool|null
+     */
+    protected $ok;
 
     /**
      * @return mixed
@@ -50,6 +38,18 @@ class AdminAppsApprovedListGetResponse200 extends \ArrayObject
     public function setArgs($args): self
     {
         $this->args = $args;
+
+        return $this;
+    }
+
+    public function getOk(): ?bool
+    {
+        return $this->ok;
+    }
+
+    public function setOk(?bool $ok): self
+    {
+        $this->ok = $ok;
 
         return $this;
     }
