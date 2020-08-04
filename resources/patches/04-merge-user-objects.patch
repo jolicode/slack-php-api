@@ -1,6 +1,6 @@
 --- resources/slack-openapi-patched.json
 +++ resources/slack-openapi-patched.json
-@@ -2288,245 +2288,128 @@
+@@ -2367,251 +2367,128 @@
              "type": "object"
          },
          "objs_user": {
@@ -32,6 +32,9 @@
 -                            "type": "boolean"
 -                        },
 -                        "is_bot": {
+-                            "type": "boolean"
+-                        },
+-                        "is_external": {
 -                            "type": "boolean"
 -                        },
 -                        "is_invited_user": {
@@ -223,6 +226,9 @@
 -                            "type": "boolean"
 -                        },
 -                        "is_bot": {
+-                            "type": "boolean"
+-                        },
+-                        "is_external": {
 -                            "type": "boolean"
 -                        },
 -                        "is_owner": {
