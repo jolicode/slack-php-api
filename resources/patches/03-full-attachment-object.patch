@@ -1,6 +1,6 @@
 --- resources/slack-openapi-patched.json
 +++ resources/slack-openapi-patched.json
-@@ -1586,30 +1586,100 @@
+@@ -1681,30 +1681,100 @@
              "properties": {
                  "attachments": {
                      "items": {
