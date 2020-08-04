@@ -38,6 +38,7 @@
         "opis/json-schema": "^1.0",
         "symfony/console": "5.1.x-dev",
         "symfony/contracts": "2.1.x-dev",
+        "symfony/process": "^5.1",
         "symfony/string": "5.1.x-dev"
     },
     "conflict": {

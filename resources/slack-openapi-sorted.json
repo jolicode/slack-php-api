@@ -422,317 +422,749 @@
             "type": "array"
         },
         "objs_conversation": {
-            "additionalProperties": false,
-            "properties": {
-                "accepted_user": {
-                    "$ref": "#/definitions/defs_user_id"
-                },
-                "connected_team_ids": {
-                    "items": {
-                        "$ref": "#/definitions/defs_workspace_id"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "conversation_host_id": {
-                    "$ref": "#/definitions/defs_workspace_id"
-                },
-                "created": {
-                    "type": "integer"
-                },
-                "creator": {
-                    "$ref": "#/definitions/defs_user_id"
-                },
-                "display_counts": {
+            "items": [
+                {
                     "additionalProperties": false,
                     "properties": {
+                        "accepted_user": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "connected_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_workspace_id"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "conversation_host_id": {
+                            "$ref": "#/definitions/defs_workspace_id"
+                        },
+                        "created": {
+                            "type": "integer"
+                        },
+                        "creator": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
                         "display_counts": {
-                            "type": "integer"
+                            "additionalProperties": false,
+                            "properties": {
+                                "display_counts": {
+                                    "type": "integer"
+                                },
+                                "guest_counts": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "display_counts",
+                                "guest_counts"
+                            ],
+                            "type": "object"
                         },
-                        "guest_counts": {
-                            "type": "integer"
-                        }
-                    },
-                    "required": [
-                        "display_counts",
-                        "guest_counts"
-                    ],
-                    "type": "object"
-                },
-                "enterprise_id": {
-                    "$ref": "#/definitions/defs_enterprise_id"
-                },
-                "external_connections": {
-                    "additionalProperties": false,
-                    "type": "object"
-                },
-                "has_pins": {
-                    "type": "boolean"
-                },
-                "id": {
-                    "$ref": "#/definitions/defs_channel"
-                },
-                "internal_team_ids": {
-                    "items": {
-                        "$ref": "#/definitions/defs_team"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "is_archived": {
-                    "type": "boolean"
-                },
-                "is_channel": {
-                    "type": "boolean"
-                },
-                "is_ext_shared": {
-                    "type": "boolean"
-                },
-                "is_frozen": {
-                    "type": "boolean"
-                },
-                "is_general": {
-                    "type": "boolean"
-                },
-                "is_global_shared": {
-                    "type": "boolean"
-                },
-                "is_group": {
-                    "type": "boolean"
-                },
-                "is_im": {
-                    "type": "boolean"
-                },
-                "is_member": {
-                    "type": "boolean"
-                },
-                "is_moved": {
-                    "type": "integer"
-                },
-                "is_mpim": {
-                    "enum": [
-                        false
-                    ],
-                    "type": "boolean"
-                },
-                "is_non_threadable": {
-                    "type": "boolean"
-                },
-                "is_open": {
-                    "type": "boolean"
-                },
-                "is_org_default": {
-                    "type": "boolean"
-                },
-                "is_org_mandatory": {
-                    "type": "boolean"
-                },
-                "is_org_shared": {
-                    "type": "boolean"
-                },
-                "is_pending_ext_shared": {
-                    "type": "boolean"
-                },
-                "is_private": {
-                    "type": "boolean"
-                },
-                "is_read_only": {
-                    "type": "boolean"
-                },
-                "is_shared": {
-                    "type": "boolean"
-                },
-                "is_starred": {
-                    "type": "boolean"
-                },
-                "is_thread_only": {
-                    "type": "boolean"
-                },
-                "is_user_deleted": {
-                    "type": "boolean"
-                },
-                "last_read": {
-                    "$ref": "#/definitions/defs_ts"
-                },
-                "latest": {
-                    "items": [
-                        {
-                            "$ref": "#/definitions/objs_message"
+                        "enterprise_id": {
+                            "$ref": "#/definitions/defs_enterprise_id"
                         },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "locale": {
-                    "type": "string"
-                },
-                "members": {
-                    "items": {
-                        "$ref": "#/definitions/defs_user_id"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "name": {
-                    "type": "string"
-                },
-                "name_normalized": {
-                    "type": "string"
-                },
-                "num_members": {
-                    "type": "integer"
-                },
-                "parent_conversation": {
-                    "items": [
-                        {
+                        "external_connections": {
+                            "additionalProperties": false,
+                            "type": "object"
+                        },
+                        "has_pins": {
+                            "type": "boolean"
+                        },
+                        "id": {
                             "$ref": "#/definitions/defs_channel"
                         },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "pending_connected_team_ids": {
-                    "items": {
-                        "$ref": "#/definitions/defs_team"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "pending_shared": {
-                    "items": {
-                        "$ref": "#/definitions/defs_team"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "pin_count": {
-                    "type": "integer"
-                },
-                "previous_names": {
-                    "items": {
-                        "$ref": "#/definitions/defs_channel_name"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "priority": {
-                    "type": "number"
-                },
-                "purpose": {
-                    "additionalProperties": false,
-                    "properties": {
-                        "creator": {
-                            "$ref": "#/definitions/defs_topic_purpose_creator"
+                        "internal_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
                         },
-                        "last_set": {
+                        "is_archived": {
+                            "type": "boolean"
+                        },
+                        "is_channel": {
+                            "type": "boolean"
+                        },
+                        "is_ext_shared": {
+                            "type": "boolean"
+                        },
+                        "is_frozen": {
+                            "type": "boolean"
+                        },
+                        "is_general": {
+                            "type": "boolean"
+                        },
+                        "is_global_shared": {
+                            "type": "boolean"
+                        },
+                        "is_group": {
+                            "type": "boolean"
+                        },
+                        "is_im": {
+                            "type": "boolean"
+                        },
+                        "is_member": {
+                            "type": "boolean"
+                        },
+                        "is_moved": {
                             "type": "integer"
                         },
-                        "value": {
+                        "is_mpim": {
+                            "enum": [
+                                false
+                            ],
+                            "type": "boolean"
+                        },
+                        "is_non_threadable": {
+                            "type": "boolean"
+                        },
+                        "is_open": {
+                            "type": "boolean"
+                        },
+                        "is_org_default": {
+                            "type": "boolean"
+                        },
+                        "is_org_mandatory": {
+                            "type": "boolean"
+                        },
+                        "is_org_shared": {
+                            "type": "boolean"
+                        },
+                        "is_pending_ext_shared": {
+                            "type": "boolean"
+                        },
+                        "is_private": {
+                            "type": "boolean"
+                        },
+                        "is_read_only": {
+                            "type": "boolean"
+                        },
+                        "is_shared": {
+                            "type": "boolean"
+                        },
+                        "is_starred": {
+                            "type": "boolean"
+                        },
+                        "is_thread_only": {
+                            "type": "boolean"
+                        },
+                        "last_read": {
+                            "$ref": "#/definitions/defs_ts"
+                        },
+                        "latest": {
+                            "items": [
+                                {
+                                    "$ref": "#/definitions/objs_message"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "members": {
+                            "items": {
+                                "$ref": "#/definitions/defs_user_id"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "name": {
                             "type": "string"
+                        },
+                        "name_normalized": {
+                            "type": "string"
+                        },
+                        "num_members": {
+                            "type": "integer"
+                        },
+                        "parent_conversation": {
+                            "items": [
+                                {
+                                    "$ref": "#/definitions/defs_channel"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "pending_connected_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "pending_shared": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "pin_count": {
+                            "type": "integer"
+                        },
+                        "previous_names": {
+                            "items": {
+                                "$ref": "#/definitions/defs_channel_name"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "priority": {
+                            "type": "number"
+                        },
+                        "purpose": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "creator": {
+                                    "$ref": "#/definitions/defs_topic_purpose_creator"
+                                },
+                                "last_set": {
+                                    "type": "integer"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "creator",
+                                "last_set",
+                                "value"
+                            ],
+                            "type": "object"
+                        },
+                        "shared_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "shares": {
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "accepted_user": {
+                                        "$ref": "#/definitions/defs_user_id"
+                                    },
+                                    "is_active": {
+                                        "type": "boolean"
+                                    },
+                                    "team": {
+                                        "$ref": "#/definitions/objs_team"
+                                    },
+                                    "user": {
+                                        "$ref": "#/definitions/defs_user_id"
+                                    }
+                                },
+                                "required": [
+                                    "is_active",
+                                    "team",
+                                    "user"
+                                ],
+                                "type": "object"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "timezone_count": {
+                            "type": "integer"
+                        },
+                        "topic": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "creator": {
+                                    "$ref": "#/definitions/defs_topic_purpose_creator"
+                                },
+                                "last_set": {
+                                    "type": "integer"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "creator",
+                                "last_set",
+                                "value"
+                            ],
+                            "type": "object"
+                        },
+                        "unlinked": {
+                            "title": "Field to determine whether a channel has ever been shared/disconnected in the past",
+                            "type": "integer"
+                        },
+                        "unread_count": {
+                            "type": "integer"
+                        },
+                        "unread_count_display": {
+                            "type": "integer"
+                        },
+                        "use_case": {
+                            "type": "string"
+                        },
+                        "user": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "version": {
+                            "type": "integer"
                         }
                     },
                     "required": [
+                        "created",
                         "creator",
-                        "last_set",
-                        "value"
+                        "id",
+                        "is_archived",
+                        "is_channel",
+                        "is_general",
+                        "is_group",
+                        "is_im",
+                        "is_mpim",
+                        "is_org_shared",
+                        "is_private",
+                        "is_shared",
+                        "name",
+                        "name_normalized",
+                        "purpose",
+                        "topic"
                     ],
+                    "title": "Conversation object",
                     "type": "object"
                 },
-                "shared_team_ids": {
-                    "items": {
-                        "$ref": "#/definitions/defs_team"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "shares": {
-                    "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "accepted_user": {
-                                "$ref": "#/definitions/defs_user_id"
-                            },
-                            "is_active": {
-                                "type": "boolean"
-                            },
-                            "team": {
-                                "$ref": "#/definitions/objs_team"
-                            },
-                            "user": {
-                                "$ref": "#/definitions/defs_user_id"
-                            }
-                        },
-                        "required": [
-                            "is_active",
-                            "team",
-                            "user"
-                        ],
-                        "type": "object"
-                    },
-                    "minItems": 0,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "timezone_count": {
-                    "type": "integer"
-                },
-                "topic": {
+                {
                     "additionalProperties": false,
                     "properties": {
-                        "creator": {
-                            "$ref": "#/definitions/defs_topic_purpose_creator"
+                        "accepted_user": {
+                            "$ref": "#/definitions/defs_user_id"
                         },
-                        "last_set": {
+                        "connected_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "conversation_host_id": {
+                            "$ref": "#/definitions/defs_workspace_id"
+                        },
+                        "created": {
                             "type": "integer"
                         },
-                        "value": {
+                        "creator": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "display_counts": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "display_counts": {
+                                    "type": "integer"
+                                },
+                                "guest_counts": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "display_counts",
+                                "guest_counts"
+                            ],
+                            "type": "object"
+                        },
+                        "id": {
+                            "$ref": "#/definitions/defs_channel"
+                        },
+                        "internal_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "is_archived": {
+                            "type": "boolean"
+                        },
+                        "is_channel": {
+                            "type": "boolean"
+                        },
+                        "is_ext_shared": {
+                            "type": "boolean"
+                        },
+                        "is_frozen": {
+                            "type": "boolean"
+                        },
+                        "is_general": {
+                            "type": "boolean"
+                        },
+                        "is_group": {
+                            "type": "boolean"
+                        },
+                        "is_im": {
+                            "type": "boolean"
+                        },
+                        "is_member": {
+                            "type": "boolean"
+                        },
+                        "is_moved": {
+                            "type": "integer"
+                        },
+                        "is_mpim": {
+                            "enum": [
+                                true
+                            ],
+                            "type": "boolean"
+                        },
+                        "is_non_threadable": {
+                            "type": "boolean"
+                        },
+                        "is_open": {
+                            "type": "boolean"
+                        },
+                        "is_org_shared": {
+                            "type": "boolean"
+                        },
+                        "is_pending_ext_shared": {
+                            "type": "boolean"
+                        },
+                        "is_private": {
+                            "type": "boolean"
+                        },
+                        "is_read_only": {
+                            "type": "boolean"
+                        },
+                        "is_shared": {
+                            "type": "boolean"
+                        },
+                        "is_starred": {
+                            "type": "boolean"
+                        },
+                        "is_thread_only": {
+                            "type": "boolean"
+                        },
+                        "last_read": {
+                            "$ref": "#/definitions/defs_ts"
+                        },
+                        "latest": {
+                            "items": [
+                                {
+                                    "$ref": "#/definitions/objs_message"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "members": {
+                            "items": {
+                                "$ref": "#/definitions/defs_user_id"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "name": {
                             "type": "string"
+                        },
+                        "name_normalized": {
+                            "type": "string"
+                        },
+                        "num_members": {
+                            "type": "integer"
+                        },
+                        "parent_conversation": {
+                            "items": [
+                                {
+                                    "$ref": "#/definitions/defs_channel"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "pending_connected_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "pending_shared": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "pin_count": {
+                            "type": "integer"
+                        },
+                        "previous_names": {
+                            "items": {
+                                "$ref": "#/definitions/defs_channel_name"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "priority": {
+                            "type": "number"
+                        },
+                        "purpose": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "creator": {
+                                    "$ref": "#/definitions/defs_topic_purpose_creator"
+                                },
+                                "last_set": {
+                                    "type": "integer"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "creator",
+                                "last_set",
+                                "value"
+                            ],
+                            "type": "object"
+                        },
+                        "shared_team_ids": {
+                            "items": {
+                                "$ref": "#/definitions/defs_team"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "shares": {
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "accepted_user": {
+                                        "$ref": "#/definitions/defs_user_id"
+                                    },
+                                    "is_active": {
+                                        "type": "boolean"
+                                    },
+                                    "team": {
+                                        "$ref": "#/definitions/objs_team"
+                                    },
+                                    "user": {
+                                        "$ref": "#/definitions/defs_user_id"
+                                    }
+                                },
+                                "required": [
+                                    "is_active",
+                                    "team",
+                                    "user"
+                                ],
+                                "type": "object"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "timezone_count": {
+                            "type": "integer"
+                        },
+                        "topic": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "creator": {
+                                    "$ref": "#/definitions/defs_topic_purpose_creator"
+                                },
+                                "last_set": {
+                                    "type": "integer"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "creator",
+                                "last_set",
+                                "value"
+                            ],
+                            "type": "object"
+                        },
+                        "unlinked": {
+                            "title": "Field to determine whether a channel has ever been shared/disconnected in the past",
+                            "type": "integer"
+                        },
+                        "unread_count": {
+                            "type": "integer"
+                        },
+                        "unread_count_display": {
+                            "type": "integer"
+                        },
+                        "user": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "version": {
+                            "type": "integer"
                         }
                     },
                     "required": [
+                        "created",
                         "creator",
-                        "last_set",
-                        "value"
+                        "id",
+                        "is_archived",
+                        "is_channel",
+                        "is_general",
+                        "is_group",
+                        "is_im",
+                        "is_mpim",
+                        "is_org_shared",
+                        "is_private",
+                        "is_shared",
+                        "name",
+                        "name_normalized",
+                        "purpose",
+                        "topic"
                     ],
+                    "title": "Conversation MPIM Object",
                     "type": "object"
                 },
-                "unlinked": {
-                    "title": "Field to determine whether a channel has ever been shared/disconnected in the past",
-                    "type": "integer"
-                },
-                "unread_count": {
-                    "type": "integer"
-                },
-                "unread_count_display": {
-                    "type": "integer"
-                },
-                "use_case": {
-                    "type": "string"
-                },
-                "user": {
-                    "$ref": "#/definitions/defs_user_id"
-                },
-                "version": {
-                    "type": "integer"
+                {
+                    "additionalProperties": false,
+                    "properties": {
+                        "created": {
+                            "type": "integer"
+                        },
+                        "has_pins": {
+                            "type": "boolean"
+                        },
+                        "id": {
+                            "$ref": "#/definitions/defs_dm_id"
+                        },
+                        "is_archived": {
+                            "type": "boolean"
+                        },
+                        "is_ext_shared": {
+                            "type": "boolean"
+                        },
+                        "is_frozen": {
+                            "type": "boolean"
+                        },
+                        "is_im": {
+                            "type": "boolean"
+                        },
+                        "is_open": {
+                            "type": "boolean"
+                        },
+                        "is_org_shared": {
+                            "type": "boolean"
+                        },
+                        "is_shared": {
+                            "type": "boolean"
+                        },
+                        "is_starred": {
+                            "type": "boolean"
+                        },
+                        "is_user_deleted": {
+                            "type": "boolean"
+                        },
+                        "last_read": {
+                            "$ref": "#/definitions/defs_ts"
+                        },
+                        "latest": {
+                            "items": [
+                                {
+                                    "$ref": "#/definitions/objs_message"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "parent_conversation": {
+                            "items": [
+                                {
+                                    "$ref": "#/definitions/defs_channel"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        },
+                        "pin_count": {
+                            "type": "integer"
+                        },
+                        "priority": {
+                            "type": "number"
+                        },
+                        "shares": {
+                            "items": {
+                                "additionalProperties": false,
+                                "properties": {
+                                    "date_create": {
+                                        "type": "integer"
+                                    },
+                                    "id": {
+                                        "$ref": "#/definitions/defs_team"
+                                    },
+                                    "is_active": {
+                                        "type": "boolean"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "team": {
+                                        "$ref": "#/definitions/objs_team"
+                                    }
+                                },
+                                "required": [
+                                    "date_create",
+                                    "id",
+                                    "is_active",
+                                    "name",
+                                    "team"
+                                ],
+                                "type": "object"
+                            },
+                            "minItems": 0,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "unread_count": {
+                            "type": "integer"
+                        },
+                        "unread_count_display": {
+                            "type": "integer"
+                        },
+                        "user": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "version": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "created",
+                        "id",
+                        "is_im",
+                        "is_org_shared",
+                        "priority",
+                        "user"
+                    ],
+                    "title": "Conversation IM Channel Object from conversations.* methods",
+                    "type": "object"
                 }
-            },
-            "required": [
-                "created",
-                "id",
-                "is_im",
-                "is_org_shared"
-            ],
-            "title": "Merged: Conversation MPIM Object, Conversation IM Channel Object from conversations.* methods, or Conversation object",
-            "type": "object"
+            ]
         },
         "objs_enterprise_user": {
             "additionalProperties": false,
@@ -789,10 +1221,6 @@
                 },
                 "date_delete": {
                     "type": "integer"
-                },
-                "deanimate_gif": {
-                    "format": "uri",
-                    "type": "string"
                 },
                 "display_as_bot": {
                     "type": "boolean"
@@ -892,10 +1320,6 @@
                     },
                     "type": "array"
                 },
-                "pjpeg": {
-                    "format": "uri",
-                    "type": "string"
-                },
                 "pretty_type": {
                     "type": "string"
                 },
@@ -915,30 +1339,10 @@
                     "additionalProperties": false,
                     "properties": {
                         "private": {
-                            "additionalProperties": false,
-                            "patternProperties": {
-                                "^[CGD][A-Z0-9]{8,}$": {
-                                    "items": {
-                                        "additionalProperties": true,
-                                        "type": "object"
-                                    },
-                                    "type": "array"
-                                }
-                            },
-                            "type": "object"
+                            "additionalProperties": false
                         },
                         "public": {
-                            "additionalProperties": false,
-                            "patternProperties": {
-                                "^[CGD][A-Z0-9]{8,}$": {
-                                    "items": {
-                                        "additionalProperties": true,
-                                        "type": "object"
-                                    },
-                                    "type": "array"
-                                }
-                            },
-                            "type": "object"
+                            "additionalProperties": false
                         }
                     },
                     "type": "object"
@@ -967,10 +1371,6 @@
                     "type": "string"
                 },
                 "thumb_360": {
-                    "format": "uri",
-                    "type": "string"
-                },
-                "thumb_360_gif": {
                     "format": "uri",
                     "type": "string"
                 },
@@ -1281,103 +1681,30 @@
             "properties": {
                 "attachments": {
                     "items": {
-                        "additionalProperties": true,
+                        "additionalProperties": false,
                         "properties": {
-                            "actions": {
-                                "items": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "string"
-                                        },
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "style": {
-                                            "type": "string"
-                                        },
-                                        "text": {
-                                            "type": "string"
-                                        },
-                                        "type": {
-                                            "type": "string"
-                                        },
-                                        "value": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "type": "array"
-                            },
-                            "author_icon": {
-                                "type": "string"
-                            },
-                            "author_link": {
-                                "type": "string"
-                            },
-                            "author_name": {
-                                "type": "string"
-                            },
-                            "callback_id": {
-                                "type": "string"
-                            },
-                            "color": {
-                                "type": "string"
-                            },
                             "fallback": {
-                                "type": "string"
-                            },
-                            "fields": {
-                                "items": {
-                                    "properties": {
-                                        "short": {
-                                            "type": "boolean"
-                                        },
-                                        "title": {
-                                            "type": "string"
-                                        },
-                                        "value": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "type": "array"
-                            },
-                            "footer": {
-                                "type": "string"
-                            },
-                            "footer_icon": {
                                 "type": "string"
                             },
                             "id": {
                                 "type": "integer"
                             },
+                            "image_bytes": {
+                                "type": "integer"
+                            },
+                            "image_height": {
+                                "type": "integer"
+                            },
                             "image_url": {
                                 "type": "string"
                             },
-                            "pretext": {
-                                "type": "string"
-                            },
-                            "text": {
-                                "type": "string"
-                            },
-                            "thumb_url": {
-                                "type": "string"
-                            },
-                            "title": {
-                                "type": "string"
-                            },
-                            "title_link": {
-                                "type": "string"
-                            },
-                            "ts": {
-                                "type": [
-                                    "number",
-                                    "string"
-                                ]
+                            "image_width": {
+                                "type": "integer"
                             }
                         },
+                        "required": [
+                            "id"
+                        ],
                         "type": "object"
                     },
                     "minItems": 1,
@@ -1933,8 +2260,10 @@
                     "type": "string"
                 },
                 "options": {
-                    "additionalProperties": true,
-                    "type": "object"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "ordering": {
                     "type": "number"
@@ -1968,128 +2297,251 @@
             "type": "object"
         },
         "objs_user": {
-            "additionalProperties": false,
-            "description": "Merged user object for non enterprise type and enterprise user",
-            "properties": {
-                "color": {
-                    "pattern": "^[a-fA-F0-9]{6}$",
-                    "type": "string"
-                },
-                "deleted": {
-                    "type": "boolean"
-                },
-                "enterprise_user": {
-                    "$ref": "#/definitions/objs_enterprise_user"
-                },
-                "has_2fa": {
-                    "type": "boolean"
-                },
-                "id": {
-                    "$ref": "#/definitions/defs_user_id"
-                },
-                "is_admin": {
-                    "type": "boolean"
-                },
-                "is_app_user": {
-                    "type": "boolean"
-                },
-                "is_bot": {
-                    "type": "boolean"
-                },
-                "is_invited_user": {
-                    "type": "boolean"
-                },
-                "is_owner": {
-                    "type": "boolean"
-                },
-                "is_primary_owner": {
-                    "type": "boolean"
-                },
-                "is_restricted": {
-                    "type": "boolean"
-                },
-                "is_ultra_restricted": {
-                    "type": "boolean"
-                },
-                "locale": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "presence": {
-                    "type": "string"
-                },
-                "profile": {
-                    "$ref": "#/definitions/objs_user_profile"
-                },
-                "real_name": {
-                    "type": "string"
-                },
-                "team": {
-                    "$ref": "#/definitions/defs_team"
-                },
-                "team_id": {
-                    "$ref": "#/definitions/defs_team"
-                },
-                "team_profile": {
+            "items": [
+                {
                     "additionalProperties": false,
+                    "description": "user object for non enterprise type",
                     "properties": {
-                        "fields": {
+                        "color": {
+                            "pattern": "^[a-fA-F0-9]{6}$",
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean"
+                        },
+                        "enterprise_user": {
+                            "$ref": "#/definitions/objs_enterprise_user"
+                        },
+                        "has_2fa": {
+                            "type": "boolean"
+                        },
+                        "id": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "is_admin": {
+                            "type": "boolean"
+                        },
+                        "is_app_user": {
+                            "type": "boolean"
+                        },
+                        "is_bot": {
+                            "type": "boolean"
+                        },
+                        "is_external": {
+                            "type": "boolean"
+                        },
+                        "is_invited_user": {
+                            "type": "boolean"
+                        },
+                        "is_owner": {
+                            "type": "boolean"
+                        },
+                        "is_primary_owner": {
+                            "type": "boolean"
+                        },
+                        "is_restricted": {
+                            "type": "boolean"
+                        },
+                        "is_ultra_restricted": {
+                            "type": "boolean"
+                        },
+                        "locale": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "presence": {
+                            "type": "string"
+                        },
+                        "profile": {
+                            "$ref": "#/definitions/objs_user_profile"
+                        },
+                        "real_name": {
+                            "type": "string"
+                        },
+                        "team": {
+                            "$ref": "#/definitions/defs_team"
+                        },
+                        "team_id": {
+                            "$ref": "#/definitions/defs_team"
+                        },
+                        "team_profile": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "fields": {
+                                    "items": {
+                                        "$ref": "#/definitions/objs_team_profile_field"
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true
+                                }
+                            },
+                            "required": [
+                                "fields"
+                            ],
+                            "type": "object"
+                        },
+                        "two_factor_type": {
+                            "type": "string"
+                        },
+                        "tz": {
+                            "items": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "tz_label": {
+                            "type": "string"
+                        },
+                        "tz_offset": {
+                            "type": "number"
+                        },
+                        "updated": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "deleted",
+                        "id",
+                        "is_app_user",
+                        "is_bot",
+                        "name",
+                        "profile",
+                        "updated"
+                    ],
+                    "type": "object"
+                },
+                {
+                    "additionalProperties": false,
+                    "description": "enterprise user",
+                    "properties": {
+                        "color": {
+                            "description": "refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559",
+                            "pattern": "^$",
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean"
+                        },
+                        "enterprise_user": {
+                            "$ref": "#/definitions/objs_enterprise_user"
+                        },
+                        "has_2fa": {
+                            "type": "boolean"
+                        },
+                        "id": {
+                            "$ref": "#/definitions/defs_user_id"
+                        },
+                        "is_admin": {
+                            "type": "boolean"
+                        },
+                        "is_app_user": {
+                            "type": "boolean"
+                        },
+                        "is_bot": {
+                            "type": "boolean"
+                        },
+                        "is_external": {
+                            "type": "boolean"
+                        },
+                        "is_owner": {
+                            "type": "boolean"
+                        },
+                        "is_primary_owner": {
+                            "type": "boolean"
+                        },
+                        "is_restricted": {
+                            "type": "boolean"
+                        },
+                        "is_ultra_restricted": {
+                            "type": "boolean"
+                        },
+                        "locale": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "presence": {
+                            "type": "string"
+                        },
+                        "profile": {
+                            "$ref": "#/definitions/objs_user_profile"
+                        },
+                        "real_name": {
+                            "type": "string"
+                        },
+                        "team_id": {
+                            "$ref": "#/definitions/defs_team"
+                        },
+                        "team_profile": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "fields": {
+                                    "items": {
+                                        "$ref": "#/definitions/objs_team_profile_field"
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true
+                                }
+                            },
+                            "required": [
+                                "fields"
+                            ],
+                            "type": "object"
+                        },
+                        "teams": {
                             "items": {
-                                "$ref": "#/definitions/objs_team_profile_field"
+                                "$ref": "#/definitions/defs_workspace_id"
                             },
                             "minItems": 1,
                             "type": "array",
                             "uniqueItems": true
+                        },
+                        "two_factor_type": {
+                            "type": "string"
+                        },
+                        "tz": {
+                            "items": [
+                                {
+                                    "type": "null"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "tz_label": {
+                            "type": "string"
+                        },
+                        "tz_offset": {
+                            "type": "number"
+                        },
+                        "updated": {
+                            "type": "number"
                         }
                     },
                     "required": [
-                        "fields"
+                        "deleted",
+                        "id",
+                        "is_app_user",
+                        "is_bot",
+                        "is_restricted",
+                        "is_ultra_restricted",
+                        "name",
+                        "profile",
+                        "updated"
                     ],
                     "type": "object"
-                },
-                "teams": {
-                    "items": {
-                        "$ref": "#/definitions/defs_workspace_id"
-                    },
-                    "minItems": 1,
-                    "type": "array",
-                    "uniqueItems": true
-                },
-                "two_factor_type": {
-                    "type": "string"
-                },
-                "tz": {
-                    "items": [
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "tz_label": {
-                    "type": "string"
-                },
-                "tz_offset": {
-                    "type": "number"
-                },
-                "updated": {
-                    "type": "number"
                 }
-            },
-            "required": [
-                "deleted",
-                "id",
-                "is_app_user",
-                "is_bot",
-                "name",
-                "profile",
-                "updated"
-            ],
-            "type": "object"
+            ]
         },
         "objs_user_profile": {
             "additionalProperties": false,
@@ -2338,7 +2790,7 @@
                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                             "properties": {
                                 "ok": {
-                                    "$ref": "#/definitions/defs_ok_false"
+                                    "$ref": "#/definitions/defs_ok_true"
                                 }
                             },
                             "required": [
@@ -2487,9 +2939,6 @@
                             "additionalProperties": true,
                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                             "properties": {
-                                "args": {
-                                    "type": "object"
-                                },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
                                 }
@@ -6090,9 +6539,6 @@
                             },
                             "description": "Schema for successful response api.test method",
                             "properties": {
-                                "args": {
-                                    "type": "object"
-                                },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
                                 }
@@ -6121,9 +6567,6 @@
                             },
                             "description": "Schema for error response api.test method",
                             "properties": {
-                                "args": {
-                                    "type": "object"
-                                },
                                 "error": {
                                     "type": "string"
                                 },
@@ -7852,9 +8295,6 @@
                             "additionalProperties": false,
                             "description": "Schema for error response channels.create method",
                             "properties": {
-                                "detail": {
-                                    "type": "string"
-                                },
                                 "error": {
                                     "enum": [
                                         "account_inactive",
@@ -9120,7 +9560,7 @@
                         "description": "Timestamp of the most recently seen message.",
                         "in": "formData",
                         "name": "ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Channel to set reading cursor in.",
@@ -9398,7 +9838,7 @@
                         "description": "Unique identifier of a thread's parent message",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `channels:history`",
@@ -10072,7 +10512,7 @@
                         "description": "Timestamp of the message to be deleted.",
                         "in": "formData",
                         "name": "ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Channel containing the message to be deleted.",
@@ -11016,7 +11456,7 @@
                         "description": "Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.",
                         "in": "formData",
                         "name": "thread_ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
@@ -11129,31 +11569,11 @@
                                 "message": {
                                     "additionalProperties": false,
                                     "properties": {
-                                        "attachments": {
-                                            "items": {
-                                                "properties": {
-                                                    "fallback": {
-                                                        "type": "string"
-                                                    },
-                                                    "id": {
-                                                        "type": "integer"
-                                                    },
-                                                    "text": {
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            },
-                                            "type": "array"
-                                        },
                                         "bot_id": {
                                             "$ref": "#/definitions/defs_bot_id"
                                         },
                                         "bot_profile": {
                                             "$ref": "#/definitions/objs_bot_profile"
-                                        },
-                                        "subtype": {
-                                            "type": "string"
                                         },
                                         "team": {
                                             "$ref": "#/definitions/defs_team"
@@ -11185,7 +11605,7 @@
                                 },
                                 "post_at": {
                                     "pattern": "^\\d{10}$",
-                                    "type": "string"
+                                    "type": "integer"
                                 },
                                 "scheduled_message_id": {
                                     "pattern": "^[Q][A-Z0-9]{8,}$",
@@ -11316,7 +11736,7 @@
                         "description": "A UNIX timestamp of the oldest value in the time range",
                         "in": "query",
                         "name": "oldest",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "The channel of the scheduled messages",
@@ -11328,7 +11748,7 @@
                         "description": "A UNIX timestamp of the latest value in the time range",
                         "in": "query",
                         "name": "latest",
-                        "type": "string"
+                        "type": "number"
                     }
                 ],
                 "produces": [
@@ -11386,7 +11806,7 @@
                                             },
                                             "id": {
                                                 "pattern": "^[Q][A-Z0-9]{8,}$",
-                                                "type": "integer"
+                                                "type": "string"
                                             },
                                             "post_at": {
                                                 "pattern": "^\\d{10}$",
@@ -12395,18 +12815,6 @@
                                 },
                                 "pin_count": {
                                     "type": "integer"
-                                },
-                                "response_metadata": {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "next_cursor": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "next_cursor"
-                                    ],
-                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -14117,7 +14525,7 @@
                         "description": "Unique identifier of a thread's parent message.",
                         "in": "query",
                         "name": "ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more detail.",
@@ -14338,18 +14746,6 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
-                                },
-                                "response_metadata": {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "next_cursor": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "next_cursor"
-                                    ],
-                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -15512,22 +15908,6 @@
                                 },
                                 "users": {
                                     "additionalProperties": false,
-                                    "patternProperties": {
-                                        "^[UW][A-Z0-9]{8,}$": {
-                                            "properties": {
-                                                "dnd_enabled": {
-                                                    "type": "boolean"
-                                                },
-                                                "next_dnd_end_ts": {
-                                                    "type": "integer"
-                                                },
-                                                "next_dnd_start_ts": {
-                                                    "type": "integer"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
                                     "type": "object"
                                 }
                             },
@@ -16156,13 +16536,13 @@
                         "description": "Filter files created before this timestamp (inclusive).",
                         "in": "query",
                         "name": "ts_to",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Filter files created after this timestamp (inclusive).",
                         "in": "query",
                         "name": "ts_from",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `files:read`",
@@ -17269,7 +17649,7 @@
         "/files.upload": {
             "post": {
                 "consumes": [
-                    "multipart/form-data"
+                    "application/x-www-form-urlencoded"
                 ],
                 "description": "Uploads or creates a file.",
                 "externalDocs": {
@@ -17324,13 +17704,13 @@
                         "description": "File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.",
                         "in": "formData",
                         "name": "file",
-                        "type": "file"
+                        "type": "string"
                     },
                     {
                         "description": "Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.",
                         "in": "formData",
                         "name": "thread_ts",
-                        "type": "string"
+                        "type": "number"
                     }
                 ],
                 "produces": [
@@ -17953,9 +18333,6 @@
                                 },
                                 "has_more": {
                                     "type": "boolean"
-                                },
-                                "latest": {
-                                    "$ref": "#/definitions/defs_ts"
                                 },
                                 "messages": {
                                     "items": {
@@ -18692,7 +19069,7 @@
                         "description": "Timestamp of the most recently seen message.",
                         "in": "formData",
                         "name": "ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Private channel to set reading cursor in.",
@@ -19050,7 +19427,7 @@
                         "description": "Unique identifier of a thread's parent message",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `groups:history`",
@@ -19782,9 +20159,6 @@
                                 "has_more": {
                                     "type": "boolean"
                                 },
-                                "latest": {
-                                    "$ref": "#/definitions/defs_ts"
-                                },
                                 "messages": {
                                     "items": {
                                         "$ref": "#/definitions/objs_message"
@@ -20278,18 +20652,6 @@
                                 },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
-                                },
-                                "response_metadata": {
-                                    "additionalProperties": false,
-                                    "properties": {
-                                        "next_cursor": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "next_cursor"
-                                    ],
-                                    "type": "object"
                                 }
                             },
                             "required": [
@@ -20376,7 +20738,7 @@
                         "description": "Unique identifier of a thread's parent message",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `im:history`",
@@ -21000,9 +21362,6 @@
                                 "has_more": {
                                     "type": "boolean"
                                 },
-                                "latest": {
-                                    "$ref": "#/definitions/defs_ts"
-                                },
                                 "messages": {
                                     "items": {
                                         "$ref": "#/definitions/objs_message"
@@ -21241,7 +21600,7 @@
                         "description": "Timestamp of the most recently seen message.",
                         "in": "formData",
                         "name": "ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "multiparty direct message channel to set reading cursor in.",
@@ -21385,9 +21744,6 @@
                                 "group": {
                                     "$ref": "#/definitions/objs_group"
                                 },
-                                "latest": {
-                                    "$ref": "#/definitions/defs_ts"
-                                },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
                                 }
@@ -21476,7 +21832,7 @@
                         "description": "Unique identifier of a thread's parent message.",
                         "in": "query",
                         "name": "thread_ts",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `mpim:history`",
@@ -21793,50 +22149,8 @@
                             "additionalProperties": true,
                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                             "properties": {
-                                "access_token": {
-                                    "type": "string"
-                                },
-                                "bot": {
-                                    "additionalProperties": true,
-                                    "properties": {
-                                        "bot_access_token": {
-                                            "type": "string"
-                                        },
-                                        "bot_user_id": {
-                                            "$ref": "#/definitions/defs_user_id"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "enterprise_id": {
-                                    "$ref": "#/definitions/defs_enterprise_id"
-                                },
-                                "incoming_webhook": {
-                                    "additionalProperties": true,
-                                    "properties": {
-                                        "channel": {
-                                            "type": "string"
-                                        },
-                                        "configuration_url": {
-                                            "type": "string"
-                                        },
-                                        "url": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
-                                },
-                                "scope": {
-                                    "type": "string"
-                                },
-                                "team_id": {
-                                    "$ref": "#/definitions/defs_team"
-                                },
-                                "team_name": {
-                                    "type": "string"
                                 }
                             },
                             "required": [
@@ -21959,53 +22273,8 @@
                             "additionalProperties": true,
                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                             "properties": {
-                                "access_token": {
-                                    "type": "string"
-                                },
-                                "app_id": {
-                                    "$ref": "#/definitions/defs_app_id"
-                                },
-                                "app_user_id": {
-                                    "$ref": "#/definitions/defs_user_id"
-                                },
-                                "authorizing_user_id": {
-                                    "$ref": "#/definitions/defs_user_id"
-                                },
-                                "installer_user_id": {
-                                    "$ref": "#/definitions/defs_user_id"
-                                },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
-                                },
-                                "permissions": {
-                                    "items": {
-                                        "additionalProperties": true,
-                                        "properties": {
-                                            "resource_id": {
-                                                "type": "string"
-                                            },
-                                            "resource_type": {
-                                                "type": "string"
-                                            },
-                                            "scopes": {
-                                                "$ref": "#/definitions/objs_scopes"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "type": "array"
-                                },
-                                "single_channel_id": {
-                                    "$ref": "#/definitions/defs_channel"
-                                },
-                                "team_id": {
-                                    "$ref": "#/definitions/defs_team"
-                                },
-                                "team_name": {
-                                    "type": "string"
-                                },
-                                "token_type": {
-                                    "type": "string"
                                 }
                             },
                             "required": [
@@ -22188,7 +22457,7 @@
                         "description": "Timestamp of the message to pin.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `pins:write`",
@@ -22534,7 +22803,7 @@
                         "description": "Timestamp of the message to un-pin.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `pins:write`",
@@ -22864,7 +23133,7 @@
                         },
                         "schema": {
                             "description": "Schema for successful response from reactions.get method",
-                            "oneOf": [
+                            "items": [
                                 {
                                     "additionalProperties": false,
                                     "properties": {
@@ -22940,7 +23209,8 @@
                                     ]
                                 }
                             ],
-                            "title": "reactions.get success schema"
+                            "title": "reactions.get success schema",
+                            "type": "object"
                         }
                     },
                     "default": {
@@ -24844,7 +25114,7 @@
                         "description": "Timestamp of the message to remove star from.",
                         "in": "formData",
                         "name": "timestamp",
-                        "type": "string"
+                        "type": "number"
                     },
                     {
                         "description": "Authentication token. Requires scope: `stars:write`",
@@ -26621,7 +26891,7 @@
                         "type": "boolean"
                     },
                     {
-                        "description": "The encoded ID of the User Group to read.",
+                        "description": "The encoded ID of the User Group to update.",
                         "in": "query",
                         "name": "usergroup",
                         "required": true,

@@ -1,18 +1,27 @@
-#!/usr/bin/env php
 <?php
 
+namespace JoliCode\Slack\Command;
+
 use JoliCode\Slack\Checker\SchemaChecker;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-require dirname(__DIR__).'/vendor/autoload.php';
+class CheckerCommand extends Command
+{
+    protected static $defaultName = 'checker';
 
-use Symfony\Component\Console\SingleCommandApplication;
+    protected function configure()
+    {
+        $this
+            ->setDescription('Checks the patched file and displays a summary table.')
+        ;
+    }
 
-(new SingleCommandApplication())
-    ->setCode(function (InputInterface $input, OutputInterface $output) {
-        $result = (new SchemaChecker())->check(__DIR__.'/../resources/slack-openapi-patched.json');
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $result = (new SchemaChecker())->check(__DIR__ . '/../../resources/slack-openapi-patched.json');
         $rows = [];
 
         foreach ($result as $path => $methods) {
@@ -21,6 +30,7 @@ use Symfony\Component\Console\SingleCommandApplication;
                     if (!$summary['errors']) {
                         continue;
                     }
+
                     foreach ($summary['errors'] as $error) {
                         $rows[] = [$path, strtoupper($method), $response, $error['property'], $error['error']];
                     }
@@ -31,8 +41,9 @@ use Symfony\Component\Console\SingleCommandApplication;
         $table = new Table($output);
         $table
             ->setHeaders(['Path', 'Method', 'Response', 'Property', 'Errors'])
-            ->setRows($rows)
-        ;
+            ->setRows($rows);
         $table->render();
-    })
-    ->run();
+
+        return Command::SUCCESS;
+    }
+}
