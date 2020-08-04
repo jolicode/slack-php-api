@@ -56,6 +56,14 @@ class ObjsGroup
      */
     protected $isPendingExtShared;
     /**
+     * @var bool|null
+     */
+    protected $isReadOnly;
+    /**
+     * @var bool|null
+     */
+    protected $isThreadOnly;
+    /**
      * @var string|null
      */
     protected $lastRead;
@@ -79,6 +87,10 @@ class ObjsGroup
      * @var int|null
      */
     protected $numMembers;
+    /**
+     * @var string|null
+     */
+    protected $parentGroup;
     /**
      * @var float|null
      */
@@ -220,6 +232,30 @@ class ObjsGroup
         return $this;
     }
 
+    public function getIsReadOnly(): ?bool
+    {
+        return $this->isReadOnly;
+    }
+
+    public function setIsReadOnly(?bool $isReadOnly): self
+    {
+        $this->isReadOnly = $isReadOnly;
+
+        return $this;
+    }
+
+    public function getIsThreadOnly(): ?bool
+    {
+        return $this->isThreadOnly;
+    }
+
+    public function setIsThreadOnly(?bool $isThreadOnly): self
+    {
+        $this->isThreadOnly = $isThreadOnly;
+
+        return $this;
+    }
+
     public function getLastRead(): ?string
     {
         return $this->lastRead;
@@ -300,6 +336,18 @@ class ObjsGroup
     public function setNumMembers(?int $numMembers): self
     {
         $this->numMembers = $numMembers;
+
+        return $this;
+    }
+
+    public function getParentGroup(): ?string
+    {
+        return $this->parentGroup;
+    }
+
+    public function setParentGroup(?string $parentGroup): self
+    {
+        $this->parentGroup = $parentGroup;
 
         return $this;
     }

@@ -71,6 +71,11 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         } elseif (property_exists($data, 'bot_id') && null === $data->{'bot_id'}) {
             $object->setBotId(null);
         }
+        if (property_exists($data, 'bot_profile') && null !== $data->{'bot_profile'}) {
+            $object->setBotProfile($this->denormalizer->denormalize($data->{'bot_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsBotProfile', 'json', $context));
+        } elseif (property_exists($data, 'bot_profile') && null === $data->{'bot_profile'}) {
+            $object->setBotProfile(null);
+        }
         if (property_exists($data, 'client_msg_id') && null !== $data->{'client_msg_id'}) {
             $object->setClientMsgId($data->{'client_msg_id'});
         } elseif (property_exists($data, 'client_msg_id') && null === $data->{'client_msg_id'}) {
@@ -178,26 +183,17 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         } elseif (property_exists($data, 'reactions') && null === $data->{'reactions'}) {
             $object->setReactions(null);
         }
-        if (property_exists($data, 'replies') && null !== $data->{'replies'}) {
-            $values_5 = [];
-            foreach ($data->{'replies'} as $value_5) {
-                $values_5[] = $this->denormalizer->denormalize($value_5, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageRepliesItem', 'json', $context);
-            }
-            $object->setReplies($values_5);
-        } elseif (property_exists($data, 'replies') && null === $data->{'replies'}) {
-            $object->setReplies(null);
-        }
         if (property_exists($data, 'reply_count') && null !== $data->{'reply_count'}) {
             $object->setReplyCount($data->{'reply_count'});
         } elseif (property_exists($data, 'reply_count') && null === $data->{'reply_count'}) {
             $object->setReplyCount(null);
         }
         if (property_exists($data, 'reply_users') && null !== $data->{'reply_users'}) {
-            $values_6 = [];
-            foreach ($data->{'reply_users'} as $value_6) {
-                $values_6[] = $value_6;
+            $values_5 = [];
+            foreach ($data->{'reply_users'} as $value_5) {
+                $values_5[] = $value_5;
             }
-            $object->setReplyUsers($values_6);
+            $object->setReplyUsers($values_5);
         } elseif (property_exists($data, 'reply_users') && null === $data->{'reply_users'}) {
             $object->setReplyUsers(null);
         }
@@ -311,6 +307,11 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         } else {
             $data->{'bot_id'} = null;
         }
+        if (null !== $object->getBotProfile()) {
+            $data->{'bot_profile'} = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
+        } else {
+            $data->{'bot_profile'} = null;
+        }
         if (null !== $object->getClientMsgId()) {
             $data->{'client_msg_id'} = $object->getClientMsgId();
         } else {
@@ -418,26 +419,17 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         } else {
             $data->{'reactions'} = null;
         }
-        if (null !== $object->getReplies()) {
-            $values_5 = [];
-            foreach ($object->getReplies() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
-            }
-            $data->{'replies'} = $values_5;
-        } else {
-            $data->{'replies'} = null;
-        }
         if (null !== $object->getReplyCount()) {
             $data->{'reply_count'} = $object->getReplyCount();
         } else {
             $data->{'reply_count'} = null;
         }
         if (null !== $object->getReplyUsers()) {
-            $values_6 = [];
-            foreach ($object->getReplyUsers() as $value_6) {
-                $values_6[] = $value_6;
+            $values_5 = [];
+            foreach ($object->getReplyUsers() as $value_5) {
+                $values_5[] = $value_5;
             }
-            $data->{'reply_users'} = $values_6;
+            $data->{'reply_users'} = $values_5;
         } else {
             $data->{'reply_users'} = null;
         }

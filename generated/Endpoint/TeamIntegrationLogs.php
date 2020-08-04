@@ -22,7 +22,7 @@ class TeamIntegrationLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $queryParameters {
      *
-     *     @var string $count
+     *     @var int $count
      *     @var string $change_type Filter logs with this change type. Defaults to all logs.
      *     @var int $app_id Filter logs to this Slack app. Defaults to all logs.
      *     @var string $token Authentication token. Requires scope: `admin`
@@ -60,9 +60,9 @@ class TeamIntegrationLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['count', 'change_type', 'app_id', 'token', 'user', 'service_id', 'page']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('count', ['string']);
+        $optionsResolver->setAllowedTypes('count', ['int']);
         $optionsResolver->setAllowedTypes('change_type', ['string']);
         $optionsResolver->setAllowedTypes('app_id', ['int']);
         $optionsResolver->setAllowedTypes('token', ['string']);

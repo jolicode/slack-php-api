@@ -54,7 +54,7 @@ class EmojiList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

@@ -62,7 +62,7 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['users', 'include_count', 'usergroup']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['users', 'usergroup']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('users', ['string']);
         $optionsResolver->setAllowedTypes('include_count', ['bool']);
@@ -75,7 +75,7 @@ class UsergroupsUsersUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

@@ -22,7 +22,7 @@ class GroupsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @param array $queryParameters {
      *
-     *     @var string $thread_ts Unique identifier of a thread's parent message
+     *     @var float $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `groups:history`
      *     @var string $channel Private channel to fetch thread from
      * }
@@ -58,7 +58,7 @@ class GroupsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $optionsResolver->setDefined(['thread_ts', 'token', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

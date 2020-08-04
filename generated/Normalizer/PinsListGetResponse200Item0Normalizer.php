@@ -62,12 +62,6 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
                     $values_1[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem1', 'json', $context);
                 }
                 $value = $values_1;
-            } elseif (\is_array($data->{'items'})) {
-                $values_2 = [];
-                foreach ($data->{'items'} as $value_3) {
-                    $values_2[] = $this->denormalizer->denormalize($value_3, 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem2', 'json', $context);
-                }
-                $value = $values_2;
             }
             $object->setItems($value);
         } elseif (property_exists($data, 'items') && null === $data->{'items'}) {
@@ -99,12 +93,6 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
                     $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
                 }
                 $value = $values_1;
-            } elseif (\is_array($object->getItems())) {
-                $values_2 = [];
-                foreach ($object->getItems() as $value_3) {
-                    $values_2[] = $this->normalizer->normalize($value_3, 'json', $context);
-                }
-                $value = $values_2;
             }
             $data->{'items'} = $value;
         } else {

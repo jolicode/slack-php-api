@@ -16,7 +16,7 @@ namespace JoliCode\Slack\Api\Model;
 class PinsListGetResponse200Item0
 {
     /**
-     * @var PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]|null
+     * @var PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null
      */
     protected $items;
     /**
@@ -25,7 +25,7 @@ class PinsListGetResponse200Item0
     protected $ok;
 
     /**
-     * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]|null
+     * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null
      */
     public function getItems()
     {
@@ -33,7 +33,7 @@ class PinsListGetResponse200Item0
     }
 
     /**
-     * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|PinsListGetResponse200Item0ItemsItem2[]|null $items
+     * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null $items
      */
     public function setItems($items): self
     {

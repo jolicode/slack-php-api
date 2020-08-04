@@ -16,17 +16,17 @@ namespace JoliCode\Slack\Api\Model;
 class ChatScheduleMessagePostResponse200Message
 {
     /**
-     * @var ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
-     */
-    protected $attachments;
-    /**
      * @var string|null
      */
     protected $botId;
     /**
+     * @var ObjsBotProfile|null
+     */
+    protected $botProfile;
+    /**
      * @var string|null
      */
-    protected $subtype;
+    protected $team;
     /**
      * @var string|null
      */
@@ -44,24 +44,6 @@ class ChatScheduleMessagePostResponse200Message
      */
     protected $username;
 
-    /**
-     * @return ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
-     */
-    public function getAttachments(): ?array
-    {
-        return $this->attachments;
-    }
-
-    /**
-     * @param ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null $attachments
-     */
-    public function setAttachments(?array $attachments): self
-    {
-        $this->attachments = $attachments;
-
-        return $this;
-    }
-
     public function getBotId(): ?string
     {
         return $this->botId;
@@ -74,14 +56,26 @@ class ChatScheduleMessagePostResponse200Message
         return $this;
     }
 
-    public function getSubtype(): ?string
+    public function getBotProfile(): ?ObjsBotProfile
     {
-        return $this->subtype;
+        return $this->botProfile;
     }
 
-    public function setSubtype(?string $subtype): self
+    public function setBotProfile(?ObjsBotProfile $botProfile): self
     {
-        $this->subtype = $subtype;
+        $this->botProfile = $botProfile;
+
+        return $this;
+    }
+
+    public function getTeam(): ?string
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?string $team): self
+    {
+        $this->team = $team;
 
         return $this;
     }

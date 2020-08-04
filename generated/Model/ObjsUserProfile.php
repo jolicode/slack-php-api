@@ -52,10 +52,6 @@ class ObjsUserProfile
      */
     protected $firstName;
     /**
-     * @var string|null
-     */
-    protected $guestChannels;
-    /**
      * @var int|null
      */
     protected $guestExpirationTs;
@@ -258,18 +254,6 @@ class ObjsUserProfile
     public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getGuestChannels(): ?string
-    {
-        return $this->guestChannels;
-    }
-
-    public function setGuestChannels(?string $guestChannels): self
-    {
-        $this->guestChannels = $guestChannels;
 
         return $this;
     }

@@ -16,6 +16,14 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsHistoryGetResponse200
 {
     /**
+     * @var int|null
+     */
+    protected $channelActionsCount;
+    /**
+     * @var mixed|null
+     */
+    protected $channelActionsTs;
+    /**
      * @var bool|null
      */
     protected $hasMore;
@@ -31,10 +39,36 @@ class ConversationsHistoryGetResponse200
      * @var int|null
      */
     protected $pinCount;
+
+    public function getChannelActionsCount(): ?int
+    {
+        return $this->channelActionsCount;
+    }
+
+    public function setChannelActionsCount(?int $channelActionsCount): self
+    {
+        $this->channelActionsCount = $channelActionsCount;
+
+        return $this;
+    }
+
     /**
-     * @var ConversationsHistoryGetResponse200ResponseMetadata|null
+     * @return mixed
      */
-    protected $responseMetadata;
+    public function getChannelActionsTs()
+    {
+        return $this->channelActionsTs;
+    }
+
+    /**
+     * @param mixed $channelActionsTs
+     */
+    public function setChannelActionsTs($channelActionsTs): self
+    {
+        $this->channelActionsTs = $channelActionsTs;
+
+        return $this;
+    }
 
     public function getHasMore(): ?bool
     {
@@ -86,18 +120,6 @@ class ConversationsHistoryGetResponse200
     public function setPinCount(?int $pinCount): self
     {
         $this->pinCount = $pinCount;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?ConversationsHistoryGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?ConversationsHistoryGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

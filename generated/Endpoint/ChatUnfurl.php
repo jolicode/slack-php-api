@@ -65,7 +65,7 @@ class ChatUnfurl extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['user_auth_message', 'user_auth_required', 'unfurls', 'ts', 'user_auth_url', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['ts', 'channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('user_auth_message', ['string']);
         $optionsResolver->setAllowedTypes('user_auth_required', ['bool']);
@@ -81,7 +81,7 @@ class ChatUnfurl extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

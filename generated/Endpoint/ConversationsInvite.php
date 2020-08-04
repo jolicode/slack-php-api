@@ -22,7 +22,7 @@ class ConversationsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $users A comma separated list of user IDs. Up to 30 users may be listed.
+     *     @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
      *     @var string $channel The ID of the public or private channel to invite user(s) to.
      * }
      *

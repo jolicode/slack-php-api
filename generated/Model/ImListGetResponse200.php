@@ -24,7 +24,7 @@ class ImListGetResponse200
      */
     protected $ok;
     /**
-     * @var ImListGetResponse200ResponseMetadata|null
+     * @var ObjsResponseMetadata|null
      */
     protected $responseMetadata;
 
@@ -58,12 +58,12 @@ class ImListGetResponse200
         return $this;
     }
 
-    public function getResponseMetadata(): ?ImListGetResponse200ResponseMetadata
+    public function getResponseMetadata(): ?ObjsResponseMetadata
     {
         return $this->responseMetadata;
     }
 
-    public function setResponseMetadata(?ImListGetResponse200ResponseMetadata $responseMetadata): self
+    public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
         $this->responseMetadata = $responseMetadata;
 

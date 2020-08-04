@@ -16,7 +16,7 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsSetPurposePostResponse200
 {
     /**
-     * @var ObjsConversation|null
+     * @var mixed|null
      */
     protected $channel;
     /**
@@ -24,12 +24,18 @@ class ConversationsSetPurposePostResponse200
      */
     protected $ok;
 
-    public function getChannel(): ?ObjsConversation
+    /**
+     * @return mixed
+     */
+    public function getChannel()
     {
         return $this->channel;
     }
 
-    public function setChannel(?ObjsConversation $channel): self
+    /**
+     * @param mixed $channel
+     */
+    public function setChannel($channel): self
     {
         $this->channel = $channel;
 

@@ -51,7 +51,7 @@ class ConversationsListGetResponse200Normalizer implements DenormalizerInterface
         if (property_exists($data, 'channels') && null !== $data->{'channels'}) {
             $values = [];
             foreach ($data->{'channels'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context);
+                $values[] = $value;
             }
             $object->setChannels($values);
         } elseif (property_exists($data, 'channels') && null === $data->{'channels'}) {
@@ -77,7 +77,7 @@ class ConversationsListGetResponse200Normalizer implements DenormalizerInterface
         if (null !== $object->getChannels()) {
             $values = [];
             foreach ($object->getChannels() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = $value;
             }
             $data->{'channels'} = $values;
         } else {

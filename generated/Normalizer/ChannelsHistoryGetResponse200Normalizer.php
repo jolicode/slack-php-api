@@ -48,6 +48,16 @@ class ChannelsHistoryGetResponse200Normalizer implements DenormalizerInterface, 
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChannelsHistoryGetResponse200();
+        if (property_exists($data, 'channel_actions_count') && null !== $data->{'channel_actions_count'}) {
+            $object->setChannelActionsCount($data->{'channel_actions_count'});
+        } elseif (property_exists($data, 'channel_actions_count') && null === $data->{'channel_actions_count'}) {
+            $object->setChannelActionsCount(null);
+        }
+        if (property_exists($data, 'channel_actions_ts') && null !== $data->{'channel_actions_ts'}) {
+            $object->setChannelActionsTs($data->{'channel_actions_ts'});
+        } elseif (property_exists($data, 'channel_actions_ts') && null === $data->{'channel_actions_ts'}) {
+            $object->setChannelActionsTs(null);
+        }
         if (property_exists($data, 'has_more') && null !== $data->{'has_more'}) {
             $object->setHasMore($data->{'has_more'});
         } elseif (property_exists($data, 'has_more') && null === $data->{'has_more'}) {
@@ -79,6 +89,16 @@ class ChannelsHistoryGetResponse200Normalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getChannelActionsCount()) {
+            $data->{'channel_actions_count'} = $object->getChannelActionsCount();
+        } else {
+            $data->{'channel_actions_count'} = null;
+        }
+        if (null !== $object->getChannelActionsTs()) {
+            $data->{'channel_actions_ts'} = $object->getChannelActionsTs();
+        } else {
+            $data->{'channel_actions_ts'} = null;
+        }
         if (null !== $object->getHasMore()) {
             $data->{'has_more'} = $object->getHasMore();
         } else {

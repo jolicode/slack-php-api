@@ -65,7 +65,7 @@ class UsergroupsUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['handle', 'description', 'channels', 'include_count', 'usergroup', 'name']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['usergroup']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('handle', ['string']);
         $optionsResolver->setAllowedTypes('description', ['string']);
@@ -81,7 +81,7 @@ class UsergroupsUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

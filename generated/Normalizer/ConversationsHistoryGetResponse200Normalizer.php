@@ -48,6 +48,16 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200();
+        if (property_exists($data, 'channel_actions_count') && null !== $data->{'channel_actions_count'}) {
+            $object->setChannelActionsCount($data->{'channel_actions_count'});
+        } elseif (property_exists($data, 'channel_actions_count') && null === $data->{'channel_actions_count'}) {
+            $object->setChannelActionsCount(null);
+        }
+        if (property_exists($data, 'channel_actions_ts') && null !== $data->{'channel_actions_ts'}) {
+            $object->setChannelActionsTs($data->{'channel_actions_ts'});
+        } elseif (property_exists($data, 'channel_actions_ts') && null === $data->{'channel_actions_ts'}) {
+            $object->setChannelActionsTs(null);
+        }
         if (property_exists($data, 'has_more') && null !== $data->{'has_more'}) {
             $object->setHasMore($data->{'has_more'});
         } elseif (property_exists($data, 'has_more') && null === $data->{'has_more'}) {
@@ -72,11 +82,6 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
         } elseif (property_exists($data, 'pin_count') && null === $data->{'pin_count'}) {
             $object->setPinCount(null);
         }
-        if (property_exists($data, 'response_metadata') && null !== $data->{'response_metadata'}) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data->{'response_metadata'}, 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200ResponseMetadata', 'json', $context));
-        } elseif (property_exists($data, 'response_metadata') && null === $data->{'response_metadata'}) {
-            $object->setResponseMetadata(null);
-        }
 
         return $object;
     }
@@ -84,6 +89,16 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getChannelActionsCount()) {
+            $data->{'channel_actions_count'} = $object->getChannelActionsCount();
+        } else {
+            $data->{'channel_actions_count'} = null;
+        }
+        if (null !== $object->getChannelActionsTs()) {
+            $data->{'channel_actions_ts'} = $object->getChannelActionsTs();
+        } else {
+            $data->{'channel_actions_ts'} = null;
+        }
         if (null !== $object->getHasMore()) {
             $data->{'has_more'} = $object->getHasMore();
         } else {
@@ -107,11 +122,6 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
             $data->{'pin_count'} = $object->getPinCount();
         } else {
             $data->{'pin_count'} = null;
-        }
-        if (null !== $object->getResponseMetadata()) {
-            $data->{'response_metadata'} = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
-        } else {
-            $data->{'response_metadata'} = null;
         }
 
         return $data;

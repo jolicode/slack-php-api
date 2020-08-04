@@ -27,10 +27,6 @@ class ConversationsRepliesGetResponse200
      * @var bool|null
      */
     protected $ok;
-    /**
-     * @var ConversationsRepliesGetResponse200ResponseMetadata|null
-     */
-    protected $responseMetadata;
 
     public function getHasMore(): ?bool
     {
@@ -70,18 +66,6 @@ class ConversationsRepliesGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?ConversationsRepliesGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?ConversationsRepliesGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

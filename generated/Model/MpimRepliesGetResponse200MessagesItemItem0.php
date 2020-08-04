@@ -24,10 +24,6 @@ class MpimRepliesGetResponse200MessagesItemItem0
      */
     protected $latestReply;
     /**
-     * @var MpimRepliesGetResponse200MessagesItemItem0RepliesItem[]|null
-     */
-    protected $replies;
-    /**
      * @var int|null
      */
     protected $replyCount;
@@ -104,24 +100,6 @@ class MpimRepliesGetResponse200MessagesItemItem0
     public function setLatestReply(?string $latestReply): self
     {
         $this->latestReply = $latestReply;
-
-        return $this;
-    }
-
-    /**
-     * @return MpimRepliesGetResponse200MessagesItemItem0RepliesItem[]|null
-     */
-    public function getReplies(): ?array
-    {
-        return $this->replies;
-    }
-
-    /**
-     * @param MpimRepliesGetResponse200MessagesItemItem0RepliesItem[]|null $replies
-     */
-    public function setReplies(?array $replies): self
-    {
-        $this->replies = $replies;
 
         return $this;
     }

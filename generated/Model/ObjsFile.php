@@ -28,9 +28,9 @@ class ObjsFile
      */
     protected $created;
     /**
-     * @var string|null
+     * @var int|null
      */
-    protected $deanimateGif;
+    protected $dateDelete;
     /**
      * @var bool|null
      */
@@ -112,6 +112,10 @@ class ObjsFile
      */
     protected $name;
     /**
+     * @var bool|null
+     */
+    protected $nonOwnerEditable;
+    /**
      * @var int|null
      */
     protected $numStars;
@@ -132,7 +136,7 @@ class ObjsFile
      */
     protected $permalinkPublic;
     /**
-     * @var DefsPinnedInfoItem[]|null
+     * @var mixed|null
      */
     protected $pinnedInfo;
     /**
@@ -142,13 +146,9 @@ class ObjsFile
     /**
      * @var string|null
      */
-    protected $pjpeg;
-    /**
-     * @var string|null
-     */
     protected $prettyType;
     /**
-     * @var null
+     * @var string|null
      */
     protected $preview;
     /**
@@ -195,10 +195,6 @@ class ObjsFile
      * @var string|null
      */
     protected $thumb360;
-    /**
-     * @var string|null
-     */
-    protected $thumb360Gif;
     /**
      * @var int|null
      */
@@ -263,6 +259,10 @@ class ObjsFile
      * @var int|null
      */
     protected $thumb960W;
+    /**
+     * @var string|null
+     */
+    protected $thumbTiny;
     /**
      * @var int|null
      */
@@ -338,14 +338,14 @@ class ObjsFile
         return $this;
     }
 
-    public function getDeanimateGif(): ?string
+    public function getDateDelete(): ?int
     {
-        return $this->deanimateGif;
+        return $this->dateDelete;
     }
 
-    public function setDeanimateGif(?string $deanimateGif): self
+    public function setDateDelete(?int $dateDelete): self
     {
-        $this->deanimateGif = $deanimateGif;
+        $this->dateDelete = $dateDelete;
 
         return $this;
     }
@@ -602,6 +602,18 @@ class ObjsFile
         return $this;
     }
 
+    public function getNonOwnerEditable(): ?bool
+    {
+        return $this->nonOwnerEditable;
+    }
+
+    public function setNonOwnerEditable(?bool $nonOwnerEditable): self
+    {
+        $this->nonOwnerEditable = $nonOwnerEditable;
+
+        return $this;
+    }
+
     public function getNumStars(): ?int
     {
         return $this->numStars;
@@ -663,17 +675,17 @@ class ObjsFile
     }
 
     /**
-     * @return DefsPinnedInfoItem[]|null
+     * @return mixed
      */
-    public function getPinnedInfo(): ?\ArrayObject
+    public function getPinnedInfo()
     {
         return $this->pinnedInfo;
     }
 
     /**
-     * @param DefsPinnedInfoItem[]|null $pinnedInfo
+     * @param mixed $pinnedInfo
      */
-    public function setPinnedInfo(?\ArrayObject $pinnedInfo): self
+    public function setPinnedInfo($pinnedInfo): self
     {
         $this->pinnedInfo = $pinnedInfo;
 
@@ -698,18 +710,6 @@ class ObjsFile
         return $this;
     }
 
-    public function getPjpeg(): ?string
-    {
-        return $this->pjpeg;
-    }
-
-    public function setPjpeg(?string $pjpeg): self
-    {
-        $this->pjpeg = $pjpeg;
-
-        return $this;
-    }
-
     public function getPrettyType(): ?string
     {
         return $this->prettyType;
@@ -722,18 +722,12 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return null
-     */
-    public function getPreview()
+    public function getPreview(): ?string
     {
         return $this->preview;
     }
 
-    /**
-     * @param null $preview
-     */
-    public function setPreview($preview): self
+    public function setPreview(?string $preview): self
     {
         $this->preview = $preview;
 
@@ -874,18 +868,6 @@ class ObjsFile
     public function setThumb360(?string $thumb360): self
     {
         $this->thumb360 = $thumb360;
-
-        return $this;
-    }
-
-    public function getThumb360Gif(): ?string
-    {
-        return $this->thumb360Gif;
-    }
-
-    public function setThumb360Gif(?string $thumb360Gif): self
-    {
-        $this->thumb360Gif = $thumb360Gif;
 
         return $this;
     }
@@ -1078,6 +1060,18 @@ class ObjsFile
     public function setThumb960W(?int $thumb960W): self
     {
         $this->thumb960W = $thumb960W;
+
+        return $this;
+    }
+
+    public function getThumbTiny(): ?string
+    {
+        return $this->thumbTiny;
+    }
+
+    public function setThumbTiny(?string $thumbTiny): self
+    {
+        $this->thumbTiny = $thumbTiny;
 
         return $this;
     }

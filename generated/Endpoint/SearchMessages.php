@@ -25,10 +25,10 @@ class SearchMessages extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
      *     @var string $query search query
      *     @var string $sort return matches sorted by either `score` or `timestamp`
-     *     @var string $count Pass the number of results you want per "page". Maximum of `100`.
+     *     @var int $count Pass the number of results you want per "page". Maximum of `100`.
      *     @var string $token Authentication token. Requires scope: `search:read`
      *     @var bool $highlight pass a value of `true` to enable query highlight markers (see below)
-     *     @var string $page
+     *     @var int $page
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,15 +60,15 @@ class SearchMessages extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['sort_dir', 'query', 'sort', 'count', 'token', 'highlight', 'page']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['query', 'token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('sort_dir', ['string']);
         $optionsResolver->setAllowedTypes('query', ['string']);
         $optionsResolver->setAllowedTypes('sort', ['string']);
-        $optionsResolver->setAllowedTypes('count', ['string']);
+        $optionsResolver->setAllowedTypes('count', ['int']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('highlight', ['bool']);
-        $optionsResolver->setAllowedTypes('page', ['string']);
+        $optionsResolver->setAllowedTypes('page', ['int']);
 
         return $optionsResolver;
     }

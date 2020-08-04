@@ -22,7 +22,7 @@ class GroupsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param array $formParameters {
      *
-     *     @var string $ts timestamp of the most recently seen message
+     *     @var float $ts timestamp of the most recently seen message
      *     @var string $channel Private channel to set reading cursor in.
      * }
      *
@@ -63,7 +63,7 @@ class GroupsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         $optionsResolver->setDefined(['ts', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->setAllowedTypes('ts', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

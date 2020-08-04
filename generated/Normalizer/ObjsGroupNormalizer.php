@@ -98,6 +98,16 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         } elseif (property_exists($data, 'is_pending_ext_shared') && null === $data->{'is_pending_ext_shared'}) {
             $object->setIsPendingExtShared(null);
         }
+        if (property_exists($data, 'is_read_only') && null !== $data->{'is_read_only'}) {
+            $object->setIsReadOnly($data->{'is_read_only'});
+        } elseif (property_exists($data, 'is_read_only') && null === $data->{'is_read_only'}) {
+            $object->setIsReadOnly(null);
+        }
+        if (property_exists($data, 'is_thread_only') && null !== $data->{'is_thread_only'}) {
+            $object->setIsThreadOnly($data->{'is_thread_only'});
+        } elseif (property_exists($data, 'is_thread_only') && null === $data->{'is_thread_only'}) {
+            $object->setIsThreadOnly(null);
+        }
         if (property_exists($data, 'last_read') && null !== $data->{'last_read'}) {
             $object->setLastRead($data->{'last_read'});
         } elseif (property_exists($data, 'last_read') && null === $data->{'last_read'}) {
@@ -131,6 +141,11 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setNumMembers($data->{'num_members'});
         } elseif (property_exists($data, 'num_members') && null === $data->{'num_members'}) {
             $object->setNumMembers(null);
+        }
+        if (property_exists($data, 'parent_group') && null !== $data->{'parent_group'}) {
+            $object->setParentGroup($data->{'parent_group'});
+        } elseif (property_exists($data, 'parent_group') && null === $data->{'parent_group'}) {
+            $object->setParentGroup(null);
         }
         if (property_exists($data, 'priority') && null !== $data->{'priority'}) {
             $object->setPriority($data->{'priority'});
@@ -214,6 +229,16 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
         } else {
             $data->{'is_pending_ext_shared'} = null;
         }
+        if (null !== $object->getIsReadOnly()) {
+            $data->{'is_read_only'} = $object->getIsReadOnly();
+        } else {
+            $data->{'is_read_only'} = null;
+        }
+        if (null !== $object->getIsThreadOnly()) {
+            $data->{'is_thread_only'} = $object->getIsThreadOnly();
+        } else {
+            $data->{'is_thread_only'} = null;
+        }
         if (null !== $object->getLastRead()) {
             $data->{'last_read'} = $object->getLastRead();
         } else {
@@ -247,6 +272,11 @@ class ObjsGroupNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data->{'num_members'} = $object->getNumMembers();
         } else {
             $data->{'num_members'} = null;
+        }
+        if (null !== $object->getParentGroup()) {
+            $data->{'parent_group'} = $object->getParentGroup();
+        } else {
+            $data->{'parent_group'} = null;
         }
         if (null !== $object->getPriority()) {
             $data->{'priority'} = $object->getPriority();

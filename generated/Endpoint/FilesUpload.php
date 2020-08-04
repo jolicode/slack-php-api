@@ -29,8 +29,8 @@ class FilesUpload extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *     @var string $filename filename of file
      *     @var string $content File contents via a POST variable. If omitting this parameter, you must provide a `file`.
      *     @var string $token Authentication token. Requires scope: `files:write:user`
-     *     @var string|resource|\Psr\Http\Message\StreamInterface $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
-     *     @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
+     *     @var string $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
+     *     @var float $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
      * }
      */
     public function __construct(array $formParameters = [])
@@ -50,7 +50,7 @@ class FilesUpload extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return $this->getMultipartBody($streamFactory);
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -71,8 +71,8 @@ class FilesUpload extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         $optionsResolver->setAllowedTypes('filename', ['string']);
         $optionsResolver->setAllowedTypes('content', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
 
         return $optionsResolver;
     }

@@ -30,7 +30,15 @@ class ObjsIm
     /**
      * @var bool|null
      */
+    protected $isArchived;
+    /**
+     * @var bool|null
+     */
     protected $isExtShared;
+    /**
+     * @var bool|null
+     */
+    protected $isFrozen;
     /**
      * @var bool|null
      */
@@ -92,6 +100,18 @@ class ObjsIm
         return $this;
     }
 
+    public function getIsArchived(): ?bool
+    {
+        return $this->isArchived;
+    }
+
+    public function setIsArchived(?bool $isArchived): self
+    {
+        $this->isArchived = $isArchived;
+
+        return $this;
+    }
+
     public function getIsExtShared(): ?bool
     {
         return $this->isExtShared;
@@ -100,6 +120,18 @@ class ObjsIm
     public function setIsExtShared(?bool $isExtShared): self
     {
         $this->isExtShared = $isExtShared;
+
+        return $this;
+    }
+
+    public function getIsFrozen(): ?bool
+    {
+        return $this->isFrozen;
+    }
+
+    public function setIsFrozen(?bool $isFrozen): self
+    {
+        $this->isFrozen = $isFrozen;
 
         return $this;
     }

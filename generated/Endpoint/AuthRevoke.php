@@ -55,7 +55,7 @@ class AuthRevoke extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['test', 'token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('test', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);

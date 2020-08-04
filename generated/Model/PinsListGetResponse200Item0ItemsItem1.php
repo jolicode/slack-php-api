@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class PinsListGetResponse200Item0ItemsItem1
 {
     /**
+     * @var string|null
+     */
+    protected $channel;
+    /**
      * @var int|null
      */
     protected $created;
@@ -24,13 +28,25 @@ class PinsListGetResponse200Item0ItemsItem1
      */
     protected $createdBy;
     /**
-     * @var ObjsFile|null
+     * @var ObjsMessage|null
      */
-    protected $file;
+    protected $message;
     /**
      * @var string|null
      */
     protected $type;
+
+    public function getChannel(): ?string
+    {
+        return $this->channel;
+    }
+
+    public function setChannel(?string $channel): self
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
 
     public function getCreated(): ?int
     {
@@ -56,14 +72,14 @@ class PinsListGetResponse200Item0ItemsItem1
         return $this;
     }
 
-    public function getFile(): ?ObjsFile
+    public function getMessage(): ?ObjsMessage
     {
-        return $this->file;
+        return $this->message;
     }
 
-    public function setFile(?ObjsFile $file): self
+    public function setMessage(?ObjsMessage $message): self
     {
-        $this->file = $file;
+        $this->message = $message;
 
         return $this;
     }

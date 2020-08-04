@@ -48,10 +48,17 @@ class AppsPermissionsUsersRequestGetResponse200Normalizer implements Denormalize
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200();
+        $data = clone $data;
         if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
             $object->setOk($data->{'ok'});
+            unset($data->{'ok'});
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -64,6 +71,11 @@ class AppsPermissionsUsersRequestGetResponse200Normalizer implements Denormalize
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', $key)) {
+                $data->{$key} = $value;
+            }
         }
 
         return $data;

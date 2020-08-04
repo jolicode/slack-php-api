@@ -20,7 +20,7 @@ class ConversationsOpenPostResponse200
      */
     protected $alreadyOpen;
     /**
-     * @var ObjsConversation|null
+     * @var mixed|null
      */
     protected $channel;
     /**
@@ -44,12 +44,18 @@ class ConversationsOpenPostResponse200
         return $this;
     }
 
-    public function getChannel(): ?ObjsConversation
+    /**
+     * @return mixed
+     */
+    public function getChannel()
     {
         return $this->channel;
     }
 
-    public function setChannel(?ObjsConversation $channel): self
+    /**
+     * @param mixed $channel
+     */
+    public function setChannel($channel): self
     {
         $this->channel = $channel;
 

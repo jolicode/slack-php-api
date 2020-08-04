@@ -59,7 +59,7 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['full', 'file_comment', 'timestamp', 'token', 'file', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('full', ['bool']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);

@@ -30,6 +30,10 @@ class ObjsMessage
      */
     protected $botId;
     /**
+     * @var ObjsBotProfile|null
+     */
+    protected $botProfile;
+    /**
      * @var string|null
      */
     protected $clientMsgId;
@@ -105,10 +109,6 @@ class ObjsMessage
      * @var ObjsReaction[]|null
      */
     protected $reactions;
-    /**
-     * @var ObjsMessageRepliesItem[]|null
-     */
-    protected $replies;
     /**
      * @var int|null
      */
@@ -236,6 +236,18 @@ class ObjsMessage
     public function setBotId($botId): self
     {
         $this->botId = $botId;
+
+        return $this;
+    }
+
+    public function getBotProfile(): ?ObjsBotProfile
+    {
+        return $this->botProfile;
+    }
+
+    public function setBotProfile(?ObjsBotProfile $botProfile): self
+    {
+        $this->botProfile = $botProfile;
 
         return $this;
     }
@@ -482,24 +494,6 @@ class ObjsMessage
     public function setReactions(?array $reactions): self
     {
         $this->reactions = $reactions;
-
-        return $this;
-    }
-
-    /**
-     * @return ObjsMessageRepliesItem[]|null
-     */
-    public function getReplies(): ?array
-    {
-        return $this->replies;
-    }
-
-    /**
-     * @param ObjsMessageRepliesItem[]|null $replies
-     */
-    public function setReplies(?array $replies): self
-    {
-        $this->replies = $replies;
 
         return $this;
     }

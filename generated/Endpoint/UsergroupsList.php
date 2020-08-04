@@ -57,7 +57,7 @@ class UsergroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['include_users', 'token', 'include_count', 'include_disabled']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('include_users', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);

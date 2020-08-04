@@ -48,11 +48,6 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0();
-        if (property_exists($data, 'comment') && null !== $data->{'comment'}) {
-            $object->setComment($this->denormalizer->denormalize($data->{'comment'}, 'JoliCode\\Slack\\Api\\Model\\ObjsComment', 'json', $context));
-        } elseif (property_exists($data, 'comment') && null === $data->{'comment'}) {
-            $object->setComment(null);
-        }
         if (property_exists($data, 'created') && null !== $data->{'created'}) {
             $object->setCreated($data->{'created'});
         } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
@@ -80,11 +75,6 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getComment()) {
-            $data->{'comment'} = $this->normalizer->normalize($object->getComment(), 'json', $context);
-        } else {
-            $data->{'comment'} = null;
-        }
         if (null !== $object->getCreated()) {
             $data->{'created'} = $object->getCreated();
         } else {

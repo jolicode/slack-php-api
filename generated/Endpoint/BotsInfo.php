@@ -55,7 +55,7 @@ class BotsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'bot']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('bot', ['string']);

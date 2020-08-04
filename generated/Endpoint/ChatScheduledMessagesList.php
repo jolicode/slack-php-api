@@ -24,9 +24,9 @@ class ChatScheduledMessagesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *
      *     @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
      *     @var int $limit maximum number of original entries to return
-     *     @var string $oldest A UNIX timestamp of the oldest value in the time range
+     *     @var float $oldest A UNIX timestamp of the oldest value in the time range
      *     @var string $channel The channel of the scheduled messages
-     *     @var string $latest A UNIX timestamp of the latest value in the time range
+     *     @var float $latest A UNIX timestamp of the latest value in the time range
      * }
      *
      * @param array $headerParameters {
@@ -68,9 +68,9 @@ class ChatScheduledMessagesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
-        $optionsResolver->setAllowedTypes('oldest', ['string']);
+        $optionsResolver->setAllowedTypes('oldest', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('latest', ['string']);
+        $optionsResolver->setAllowedTypes('latest', ['float']);
 
         return $optionsResolver;
     }

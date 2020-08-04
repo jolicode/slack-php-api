@@ -60,7 +60,7 @@ class UsersSetPresence extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['presence']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['presence']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('presence', ['string']);
 
@@ -71,7 +71,7 @@ class UsersSetPresence extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

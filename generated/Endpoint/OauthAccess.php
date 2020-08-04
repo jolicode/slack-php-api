@@ -23,10 +23,11 @@ class OauthAccess extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      * @param array $queryParameters {
      *
      *     @var string $code the `code` param returned via the OAuth callback
+     *     @var string $token Authentication token. Requires scope: `none`
      *     @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     *     @var bool $single_channel Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
      *     @var string $client_id issued when you created your application
-     *     @var string $client_secret issued when you created your application
-     *     @var bool $single_channel Request the user to add your app only to a single channel.
+     *     @var string $client_secret Issued when you created your application.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -57,14 +58,15 @@ class OauthAccess extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['code', 'redirect_uri', 'client_id', 'client_secret', 'single_channel']);
+        $optionsResolver->setDefined(['code', 'token', 'redirect_uri', 'single_channel', 'client_id', 'client_secret']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('code', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('redirect_uri', ['string']);
+        $optionsResolver->setAllowedTypes('single_channel', ['bool']);
         $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('client_secret', ['string']);
-        $optionsResolver->setAllowedTypes('single_channel', ['bool']);
 
         return $optionsResolver;
     }

@@ -58,26 +58,17 @@ class ChannelsRepliesGetResponse200MessagesItemItem0Normalizer implements Denorm
         } elseif (property_exists($data, 'latest_reply') && null === $data->{'latest_reply'}) {
             $object->setLatestReply(null);
         }
-        if (property_exists($data, 'replies') && null !== $data->{'replies'}) {
-            $values = [];
-            foreach ($data->{'replies'} as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ChannelsRepliesGetResponse200MessagesItemItem0RepliesItem', 'json', $context);
-            }
-            $object->setReplies($values);
-        } elseif (property_exists($data, 'replies') && null === $data->{'replies'}) {
-            $object->setReplies(null);
-        }
         if (property_exists($data, 'reply_count') && null !== $data->{'reply_count'}) {
             $object->setReplyCount($data->{'reply_count'});
         } elseif (property_exists($data, 'reply_count') && null === $data->{'reply_count'}) {
             $object->setReplyCount(null);
         }
         if (property_exists($data, 'reply_users') && null !== $data->{'reply_users'}) {
-            $values_1 = [];
-            foreach ($data->{'reply_users'} as $value_1) {
-                $values_1[] = $value_1;
+            $values = [];
+            foreach ($data->{'reply_users'} as $value) {
+                $values[] = $value;
             }
-            $object->setReplyUsers($values_1);
+            $object->setReplyUsers($values);
         } elseif (property_exists($data, 'reply_users') && null === $data->{'reply_users'}) {
             $object->setReplyUsers(null);
         }
@@ -158,26 +149,17 @@ class ChannelsRepliesGetResponse200MessagesItemItem0Normalizer implements Denorm
         } else {
             $data->{'latest_reply'} = null;
         }
-        if (null !== $object->getReplies()) {
-            $values = [];
-            foreach ($object->getReplies() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data->{'replies'} = $values;
-        } else {
-            $data->{'replies'} = null;
-        }
         if (null !== $object->getReplyCount()) {
             $data->{'reply_count'} = $object->getReplyCount();
         } else {
             $data->{'reply_count'} = null;
         }
         if (null !== $object->getReplyUsers()) {
-            $values_1 = [];
-            foreach ($object->getReplyUsers() as $value_1) {
-                $values_1[] = $value_1;
+            $values = [];
+            foreach ($object->getReplyUsers() as $value) {
+                $values[] = $value;
             }
-            $data->{'reply_users'} = $values_1;
+            $data->{'reply_users'} = $values;
         } else {
             $data->{'reply_users'} = null;
         }

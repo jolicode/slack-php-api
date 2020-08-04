@@ -61,7 +61,7 @@ class GroupsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['user', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['user', 'channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('user', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
@@ -73,7 +73,7 @@ class GroupsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

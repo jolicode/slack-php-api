@@ -56,7 +56,7 @@ class RtmConnect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['presence_sub', 'token', 'batch_presence_aware']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('presence_sub', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);

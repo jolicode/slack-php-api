@@ -40,7 +40,7 @@ class ObjsComment
      */
     protected $numStars;
     /**
-     * @var DefsPinnedInfoItem[]|null
+     * @var mixed|null
      */
     protected $pinnedInfo;
     /**
@@ -133,17 +133,17 @@ class ObjsComment
     }
 
     /**
-     * @return DefsPinnedInfoItem[]|null
+     * @return mixed
      */
-    public function getPinnedInfo(): ?\ArrayObject
+    public function getPinnedInfo()
     {
         return $this->pinnedInfo;
     }
 
     /**
-     * @param DefsPinnedInfoItem[]|null $pinnedInfo
+     * @param mixed $pinnedInfo
      */
-    public function setPinnedInfo(?\ArrayObject $pinnedInfo): self
+    public function setPinnedInfo($pinnedInfo): self
     {
         $this->pinnedInfo = $pinnedInfo;
 

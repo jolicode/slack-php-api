@@ -78,6 +78,11 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         } elseif (property_exists($data, 'is_channel') && null === $data->{'is_channel'}) {
             $object->setIsChannel(null);
         }
+        if (property_exists($data, 'is_frozen') && null !== $data->{'is_frozen'}) {
+            $object->setIsFrozen($data->{'is_frozen'});
+        } elseif (property_exists($data, 'is_frozen') && null === $data->{'is_frozen'}) {
+            $object->setIsFrozen(null);
+        }
         if (property_exists($data, 'is_general') && null !== $data->{'is_general'}) {
             $object->setIsGeneral($data->{'is_general'});
         } elseif (property_exists($data, 'is_general') && null === $data->{'is_general'}) {
@@ -97,6 +102,11 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setIsMpim($data->{'is_mpim'});
         } elseif (property_exists($data, 'is_mpim') && null === $data->{'is_mpim'}) {
             $object->setIsMpim(null);
+        }
+        if (property_exists($data, 'is_non_threadable') && null !== $data->{'is_non_threadable'}) {
+            $object->setIsNonThreadable($data->{'is_non_threadable'});
+        } elseif (property_exists($data, 'is_non_threadable') && null === $data->{'is_non_threadable'}) {
+            $object->setIsNonThreadable(null);
         }
         if (property_exists($data, 'is_org_shared') && null !== $data->{'is_org_shared'}) {
             $object->setIsOrgShared($data->{'is_org_shared'});
@@ -122,6 +132,11 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setIsShared($data->{'is_shared'});
         } elseif (property_exists($data, 'is_shared') && null === $data->{'is_shared'}) {
             $object->setIsShared(null);
+        }
+        if (property_exists($data, 'is_thread_only') && null !== $data->{'is_thread_only'}) {
+            $object->setIsThreadOnly($data->{'is_thread_only'});
+        } elseif (property_exists($data, 'is_thread_only') && null === $data->{'is_thread_only'}) {
+            $object->setIsThreadOnly(null);
         }
         if (property_exists($data, 'last_read') && null !== $data->{'last_read'}) {
             $object->setLastRead($data->{'last_read'});
@@ -242,6 +257,11 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         } else {
             $data->{'is_channel'} = null;
         }
+        if (null !== $object->getIsFrozen()) {
+            $data->{'is_frozen'} = $object->getIsFrozen();
+        } else {
+            $data->{'is_frozen'} = null;
+        }
         if (null !== $object->getIsGeneral()) {
             $data->{'is_general'} = $object->getIsGeneral();
         } else {
@@ -261,6 +281,11 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data->{'is_mpim'} = $object->getIsMpim();
         } else {
             $data->{'is_mpim'} = null;
+        }
+        if (null !== $object->getIsNonThreadable()) {
+            $data->{'is_non_threadable'} = $object->getIsNonThreadable();
+        } else {
+            $data->{'is_non_threadable'} = null;
         }
         if (null !== $object->getIsOrgShared()) {
             $data->{'is_org_shared'} = $object->getIsOrgShared();
@@ -286,6 +311,11 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data->{'is_shared'} = $object->getIsShared();
         } else {
             $data->{'is_shared'} = null;
+        }
+        if (null !== $object->getIsThreadOnly()) {
+            $data->{'is_thread_only'} = $object->getIsThreadOnly();
+        } else {
+            $data->{'is_thread_only'} = null;
         }
         if (null !== $object->getLastRead()) {
             $data->{'last_read'} = $object->getLastRead();

@@ -22,9 +22,7 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      *
      * @param array $formParameters {
      *
-     *     @var string $file_comment file comment to pin
-     *     @var string $timestamp timestamp of the message to pin
-     *     @var string $file file to pin
+     *     @var float $timestamp timestamp of the message to pin
      *     @var string $channel Channel to pin the item in.
      * }
      *
@@ -62,12 +60,10 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['file_comment', 'timestamp', 'file', 'channel']);
+        $optionsResolver->setDefined(['timestamp', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['float']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

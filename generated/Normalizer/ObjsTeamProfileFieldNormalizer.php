@@ -74,9 +74,9 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $object->setLabel(null);
         }
         if (property_exists($data, 'options') && null !== $data->{'options'}) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'options'} as $key => $value) {
-                $values[$key] = $value;
+            $values = [];
+            foreach ($data->{'options'} as $value) {
+                $values[] = $value;
             }
             $object->setOptions($values);
         } elseif (property_exists($data, 'options') && null === $data->{'options'}) {
@@ -134,9 +134,9 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $data->{'label'} = null;
         }
         if (null !== $object->getOptions()) {
-            $values = new \stdClass();
-            foreach ($object->getOptions() as $key => $value) {
-                $values->{$key} = $value;
+            $values = [];
+            foreach ($object->getOptions() as $value) {
+                $values[] = $value;
             }
             $data->{'options'} = $values;
         } else {

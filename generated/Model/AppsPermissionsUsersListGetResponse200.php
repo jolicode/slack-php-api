@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AppsPermissionsUsersListGetResponse200
+class AppsPermissionsUsersListGetResponse200 extends \ArrayObject
 {
     /**
      * @var bool|null

@@ -61,7 +61,7 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['channel', 'ts']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['channel', 'ts']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('ts', ['string']);
@@ -73,7 +73,7 @@ class ImMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 

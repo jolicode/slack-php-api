@@ -24,7 +24,7 @@ class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      *     @var string $token Authentication token. Requires scope: `usergroups:read`
      *     @var bool $include_disabled allow results that involve disabled User Groups
-     *     @var string $usergroup The encoded ID of the User Group to read.
+     *     @var string $usergroup The encoded ID of the User Group to update.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -56,7 +56,7 @@ class UsergroupsUsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'include_disabled', 'usergroup']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token', 'usergroup']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('include_disabled', ['bool']);

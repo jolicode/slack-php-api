@@ -23,6 +23,10 @@ class GroupsListGetResponse200
      * @var bool|null
      */
     protected $ok;
+    /**
+     * @var ObjsResponseMetadata|null
+     */
+    protected $responseMetadata;
 
     /**
      * @return ObjsGroup[]|null
@@ -50,6 +54,18 @@ class GroupsListGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    public function getResponseMetadata(): ?ObjsResponseMetadata
+    {
+        return $this->responseMetadata;
+    }
+
+    public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
+    {
+        $this->responseMetadata = $responseMetadata;
 
         return $this;
     }

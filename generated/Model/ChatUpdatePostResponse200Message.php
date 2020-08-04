@@ -16,30 +16,56 @@ namespace JoliCode\Slack\Api\Model;
 class ChatUpdatePostResponse200Message
 {
     /**
-     * @var string|null
+     * @var mixed[]|null
      */
-    protected $team;
+    protected $attachments;
+    /**
+     * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
+     *
+     * @var BlocksItem[]|null
+     */
+    protected $blocks;
     /**
      * @var string|null
      */
     protected $text;
-    /**
-     * @var string|null
-     */
-    protected $type;
-    /**
-     * @var string|null
-     */
-    protected $user;
 
-    public function getTeam(): ?string
+    /**
+     * @return mixed[]|null
+     */
+    public function getAttachments(): ?array
     {
-        return $this->team;
+        return $this->attachments;
     }
 
-    public function setTeam(?string $team): self
+    /**
+     * @param mixed[]|null $attachments
+     */
+    public function setAttachments(?array $attachments): self
     {
-        $this->team = $team;
+        $this->attachments = $attachments;
+
+        return $this;
+    }
+
+    /**
+     * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
+     *
+     * @return BlocksItem[]|null
+     */
+    public function getBlocks(): ?array
+    {
+        return $this->blocks;
+    }
+
+    /**
+     * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
+     *
+     * @param BlocksItem[]|null $blocks
+     */
+    public function setBlocks(?array $blocks): self
+    {
+        $this->blocks = $blocks;
 
         return $this;
     }
@@ -52,30 +78,6 @@ class ChatUpdatePostResponse200Message
     public function setText(?string $text): self
     {
         $this->text = $text;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    public function getUser(): ?string
-    {
-        return $this->user;
-    }
-
-    public function setUser(?string $user): self
-    {
-        $this->user = $user;
 
         return $this;
     }
