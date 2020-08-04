@@ -22,7 +22,7 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel Channel to set reading cursor in.
      * }
      *
@@ -63,7 +63,7 @@ class ChannelsMark extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $optionsResolver->setDefined(['ts', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('ts', ['float']);
+        $optionsResolver->setAllowedTypes('ts', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

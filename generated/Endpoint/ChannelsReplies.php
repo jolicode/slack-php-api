@@ -22,7 +22,7 @@ class ChannelsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `channels:history`
      *     @var string $channel Channel to fetch thread from
      * }
@@ -58,7 +58,7 @@ class ChannelsReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(['thread_ts', 'token', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

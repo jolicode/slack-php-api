@@ -1204,7 +1204,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel Channel to set reading cursor in.
      * }
      *
@@ -1251,7 +1251,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `channels:history`
      *     @var string $channel Channel to fetch thread from
      * }
@@ -1340,7 +1340,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @param array $formParameters {
      *
      *     @var bool $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
-     *     @var float $ts timestamp of the message to be deleted
+     *     @var string $ts timestamp of the message to be deleted
      *     @var string $channel Channel containing the message to be deleted.
      * }
      *
@@ -1498,7 +1498,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var float $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
@@ -1903,7 +1903,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @param array $queryParameters {
      *
      *     @var bool $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
-     *     @var float $ts unique identifier of a thread's parent message
+     *     @var string $ts unique identifier of a thread's parent message
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var string $token Authentication token. Requires scope: `conversations:history`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
@@ -2393,7 +2393,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $content File contents via a POST variable. If omitting this parameter, you must provide a `file`.
      *     @var string $token Authentication token. Requires scope: `files:write:user`
      *     @var string $file File contents via `multipart/form-data`. If omitting this parameter, you must submit `content`.
-     *     @var float $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
+     *     @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2604,7 +2604,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel Private channel to set reading cursor in.
      * }
      *
@@ -2673,7 +2673,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `groups:history`
      *     @var string $channel Private channel to fetch thread from
      * }
@@ -2871,7 +2871,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `im:history`
      *     @var string $channel Direct message channel to fetch thread from
      * }
@@ -2973,7 +2973,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var float $ts timestamp of the most recently seen message
+     *     @var string $ts timestamp of the most recently seen message
      *     @var string $channel multiparty direct message channel to set reading cursor in.
      * }
      *
@@ -3018,7 +3018,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts unique identifier of a thread's parent message
+     *     @var string $thread_ts unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `mpim:history`
      *     @var string $channel Multiparty direct message channel to fetch thread from.
      * }

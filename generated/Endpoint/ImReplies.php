@@ -22,7 +22,7 @@ class ImReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *
      * @param array $queryParameters {
      *
-     *     @var float $thread_ts Unique identifier of a thread's parent message
+     *     @var string $thread_ts Unique identifier of a thread's parent message
      *     @var string $token Authentication token. Requires scope: `im:history`
      *     @var string $channel Direct message channel to fetch thread from
      * }
@@ -58,7 +58,7 @@ class ImReplies extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
         $optionsResolver->setDefined(['thread_ts', 'token', 'channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['float']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
