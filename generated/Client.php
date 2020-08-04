@@ -3695,7 +3695,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $token Authentication token. Requires scope: `usergroups:read`
      *     @var bool $include_disabled allow results that involve disabled User Groups
-     *     @var string $usergroup The encoded ID of the User Group to update.
+     *     @var string $usergroup The encoded ID of the User Group to read.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
