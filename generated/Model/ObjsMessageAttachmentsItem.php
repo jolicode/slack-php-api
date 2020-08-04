@@ -13,44 +13,80 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsMessageAttachmentsItem
+class ObjsMessageAttachmentsItem extends \ArrayObject
 {
-    /**
-     * @var string|null
-     */
-    protected $fallback;
     /**
      * @var int|null
      */
     protected $id;
     /**
-     * @var int|null
+     * @var string|null
      */
-    protected $imageBytes;
+    protected $callbackId;
     /**
-     * @var int|null
+     * @var string|null
      */
-    protected $imageHeight;
+    protected $fallback;
+    /**
+     * @var string|null
+     */
+    protected $color;
+    /**
+     * @var string|null
+     */
+    protected $pretext;
+    /**
+     * @var string|null
+     */
+    protected $authorName;
+    /**
+     * @var string|null
+     */
+    protected $authorLink;
+    /**
+     * @var string|null
+     */
+    protected $authorIcon;
+    /**
+     * @var string|null
+     */
+    protected $title;
+    /**
+     * @var string|null
+     */
+    protected $titleLink;
+    /**
+     * @var string|null
+     */
+    protected $text;
+    /**
+     * @var ObjsMessageAttachmentsItemFieldsItem[]|null
+     */
+    protected $fields;
+    /**
+     * @var ObjsMessageAttachmentsItemActionsItem[]|null
+     */
+    protected $actions;
     /**
      * @var string|null
      */
     protected $imageUrl;
     /**
-     * @var int|null
+     * @var string|null
      */
-    protected $imageWidth;
-
-    public function getFallback(): ?string
-    {
-        return $this->fallback;
-    }
-
-    public function setFallback(?string $fallback): self
-    {
-        $this->fallback = $fallback;
-
-        return $this;
-    }
+    protected $thumbUrl;
+    /**
+     * @var string|null
+     */
+    protected $footer;
+    /**
+     * @var string|null
+     */
+    protected $footerIcon;
+    /**
+     * @var float|string|null
+     */
+    protected $ts;
 
     public function getId(): ?int
     {
@@ -64,26 +100,158 @@ class ObjsMessageAttachmentsItem
         return $this;
     }
 
-    public function getImageBytes(): ?int
+    public function getCallbackId(): ?string
     {
-        return $this->imageBytes;
+        return $this->callbackId;
     }
 
-    public function setImageBytes(?int $imageBytes): self
+    public function setCallbackId(?string $callbackId): self
     {
-        $this->imageBytes = $imageBytes;
+        $this->callbackId = $callbackId;
 
         return $this;
     }
 
-    public function getImageHeight(): ?int
+    public function getFallback(): ?string
     {
-        return $this->imageHeight;
+        return $this->fallback;
     }
 
-    public function setImageHeight(?int $imageHeight): self
+    public function setFallback(?string $fallback): self
     {
-        $this->imageHeight = $imageHeight;
+        $this->fallback = $fallback;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getPretext(): ?string
+    {
+        return $this->pretext;
+    }
+
+    public function setPretext(?string $pretext): self
+    {
+        $this->pretext = $pretext;
+
+        return $this;
+    }
+
+    public function getAuthorName(): ?string
+    {
+        return $this->authorName;
+    }
+
+    public function setAuthorName(?string $authorName): self
+    {
+        $this->authorName = $authorName;
+
+        return $this;
+    }
+
+    public function getAuthorLink(): ?string
+    {
+        return $this->authorLink;
+    }
+
+    public function setAuthorLink(?string $authorLink): self
+    {
+        $this->authorLink = $authorLink;
+
+        return $this;
+    }
+
+    public function getAuthorIcon(): ?string
+    {
+        return $this->authorIcon;
+    }
+
+    public function setAuthorIcon(?string $authorIcon): self
+    {
+        $this->authorIcon = $authorIcon;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getTitleLink(): ?string
+    {
+        return $this->titleLink;
+    }
+
+    public function setTitleLink(?string $titleLink): self
+    {
+        $this->titleLink = $titleLink;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(?string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsMessageAttachmentsItemFieldsItem[]|null
+     */
+    public function getFields(): ?array
+    {
+        return $this->fields;
+    }
+
+    /**
+     * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
+     */
+    public function setFields(?array $fields): self
+    {
+        $this->fields = $fields;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsMessageAttachmentsItemActionsItem[]|null
+     */
+    public function getActions(): ?array
+    {
+        return $this->actions;
+    }
+
+    /**
+     * @param ObjsMessageAttachmentsItemActionsItem[]|null $actions
+     */
+    public function setActions(?array $actions): self
+    {
+        $this->actions = $actions;
 
         return $this;
     }
@@ -100,14 +268,56 @@ class ObjsMessageAttachmentsItem
         return $this;
     }
 
-    public function getImageWidth(): ?int
+    public function getThumbUrl(): ?string
     {
-        return $this->imageWidth;
+        return $this->thumbUrl;
     }
 
-    public function setImageWidth(?int $imageWidth): self
+    public function setThumbUrl(?string $thumbUrl): self
     {
-        $this->imageWidth = $imageWidth;
+        $this->thumbUrl = $thumbUrl;
+
+        return $this;
+    }
+
+    public function getFooter(): ?string
+    {
+        return $this->footer;
+    }
+
+    public function setFooter(?string $footer): self
+    {
+        $this->footer = $footer;
+
+        return $this;
+    }
+
+    public function getFooterIcon(): ?string
+    {
+        return $this->footerIcon;
+    }
+
+    public function setFooterIcon(?string $footerIcon): self
+    {
+        $this->footerIcon = $footerIcon;
+
+        return $this;
+    }
+
+    /**
+     * @return float|string|null
+     */
+    public function getTs()
+    {
+        return $this->ts;
+    }
+
+    /**
+     * @param float|string|null $ts
+     */
+    public function setTs($ts): self
+    {
+        $this->ts = $ts;
 
         return $this;
     }
