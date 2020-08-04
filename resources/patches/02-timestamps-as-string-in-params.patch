@@ -1,6 +1,6 @@
 --- resources/slack-openapi-patched.json
 +++ resources/slack-openapi-patched.json
-@@ -7923,7 +7923,7 @@
+@@ -11736,7 +11736,7 @@
                          "description": "A UNIX timestamp of the oldest value in the time range",
                          "in": "query",
                          "name": "oldest",
@@ -9,7 +9,7 @@
                      },
                      {
                          "description": "The channel of the scheduled messages",
-@@ -7935,7 +7935,7 @@
+@@ -11748,7 +11748,7 @@
                          "description": "A UNIX timestamp of the latest value in the time range",
                          "in": "query",
                          "name": "latest",
@@ -18,7 +18,7 @@
                      }
                  ],
                  "produces": [
-@@ -12635,13 +12635,13 @@
+@@ -16536,13 +16536,13 @@
                          "description": "Filter files created before this timestamp (inclusive).",
                          "in": "query",
                          "name": "ts_to",
@@ -34,7 +34,7 @@
                      },
                      {
                          "description": "Authentication token. Requires scope: `files:read`",
-@@ -17721,7 +17721,7 @@
+@@ -22457,7 +22457,7 @@
                          "description": "Timestamp of the message to pin.",
                          "in": "formData",
                          "name": "timestamp",
@@ -43,7 +43,7 @@
                      },
                      {
                          "description": "Authentication token. Requires scope: `pins:write`",
-@@ -18100,7 +18100,7 @@
+@@ -22803,7 +22803,7 @@
                          "description": "Timestamp of the message to un-pin.",
                          "in": "formData",
                          "name": "timestamp",
@@ -52,43 +52,7 @@
                      },
                      {
                          "description": "Authentication token. Requires scope: `pins:write`",
-@@ -18240,7 +18240,7 @@
-                         "description": "Timestamp of the message to add reaction to.",
-                         "in": "formData",
-                         "name": "timestamp",
--                        "type": "number"
-+                        "type": "string"
-                     },
-                     {
-                         "description": "Authentication token. Requires scope: `reactions:write`",
-@@ -18381,7 +18381,7 @@
-                         "description": "Timestamp of the message to get reactions for.",
-                         "in": "query",
-                         "name": "timestamp",
--                        "type": "number"
-+                        "type": "string"
-                     },
-                     {
-                         "description": "Authentication token. Requires scope: `reactions:read`",
-@@ -18914,7 +18914,7 @@
-                         "description": "Timestamp of the message to remove reaction from.",
-                         "in": "formData",
-                         "name": "timestamp",
--                        "type": "number"
-+                        "type": "string"
-                     },
-                     {
-                         "description": "Authentication token. Requires scope: `reactions:write`",
-@@ -19989,7 +19989,7 @@
-                         "description": "Timestamp of the message to add star to.",
-                         "in": "formData",
-                         "name": "timestamp",
--                        "type": "number"
-+                        "type": "string"
-                     },
-                     {
-                         "description": "Authentication token. Requires scope: `stars:write`",
-@@ -20411,7 +20411,7 @@
+@@ -25114,7 +25114,7 @@
                          "description": "Timestamp of the message to remove star from.",
                          "in": "formData",
                          "name": "timestamp",
