@@ -21,19 +21,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsConversationItem2SharesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem2SharesItem' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem2SharesItem' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -47,31 +47,26 @@ class ObjsConversationItem2SharesItemNormalizer implements DenormalizerInterface
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem2SharesItem();
-        if (property_exists($data, 'date_create') && null !== $data->{'date_create'}) {
-            $object->setDateCreate($data->{'date_create'});
-        } elseif (property_exists($data, 'date_create') && null === $data->{'date_create'}) {
-            $object->setDateCreate(null);
-        }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
-            $object->setId(null);
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversationSharesItem();
+        if (property_exists($data, 'accepted_user') && null !== $data->{'accepted_user'}) {
+            $object->setAcceptedUser($data->{'accepted_user'});
+        } elseif (property_exists($data, 'accepted_user') && null === $data->{'accepted_user'}) {
+            $object->setAcceptedUser(null);
         }
         if (property_exists($data, 'is_active') && null !== $data->{'is_active'}) {
             $object->setIsActive($data->{'is_active'});
         } elseif (property_exists($data, 'is_active') && null === $data->{'is_active'}) {
             $object->setIsActive(null);
         }
-        if (property_exists($data, 'name') && null !== $data->{'name'}) {
-            $object->setName($data->{'name'});
-        } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
-            $object->setName(null);
-        }
         if (property_exists($data, 'team') && null !== $data->{'team'}) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\ObjsTeam', 'json', $context));
         } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
             $object->setTeam(null);
+        }
+        if (property_exists($data, 'user') && null !== $data->{'user'}) {
+            $object->setUser($data->{'user'});
+        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+            $object->setUser(null);
         }
 
         return $object;
@@ -80,30 +75,25 @@ class ObjsConversationItem2SharesItemNormalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getDateCreate()) {
-            $data->{'date_create'} = $object->getDateCreate();
+        if (null !== $object->getAcceptedUser()) {
+            $data->{'accepted_user'} = $object->getAcceptedUser();
         } else {
-            $data->{'date_create'} = null;
-        }
-        if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        } else {
-            $data->{'id'} = null;
+            $data->{'accepted_user'} = null;
         }
         if (null !== $object->getIsActive()) {
             $data->{'is_active'} = $object->getIsActive();
         } else {
             $data->{'is_active'} = null;
         }
-        if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        } else {
-            $data->{'name'} = null;
-        }
         if (null !== $object->getTeam()) {
             $data->{'team'} = $this->normalizer->normalize($object->getTeam(), 'json', $context);
         } else {
             $data->{'team'} = null;
+        }
+        if (null !== $object->getUser()) {
+            $data->{'user'} = $object->getUser();
+        } else {
+            $data->{'user'} = null;
         }
 
         return $data;

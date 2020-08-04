@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsConversationItem1
+class ObjsConversation
 {
     /**
      * @var string|null
@@ -36,9 +36,21 @@ class ObjsConversationItem1
      */
     protected $creator;
     /**
-     * @var ObjsConversationItem1DisplayCounts|null
+     * @var ObjsConversationDisplayCounts|null
      */
     protected $displayCounts;
+    /**
+     * @var string|null
+     */
+    protected $enterpriseId;
+    /**
+     * @var mixed|null
+     */
+    protected $externalConnections;
+    /**
+     * @var bool|null
+     */
+    protected $hasPins;
     /**
      * @var string|null
      */
@@ -70,6 +82,10 @@ class ObjsConversationItem1
     /**
      * @var bool|null
      */
+    protected $isGlobalShared;
+    /**
+     * @var bool|null
+     */
     protected $isGroup;
     /**
      * @var bool|null
@@ -95,6 +111,14 @@ class ObjsConversationItem1
      * @var bool|null
      */
     protected $isOpen;
+    /**
+     * @var bool|null
+     */
+    protected $isOrgDefault;
+    /**
+     * @var bool|null
+     */
+    protected $isOrgMandatory;
     /**
      * @var bool|null
      */
@@ -172,7 +196,7 @@ class ObjsConversationItem1
      */
     protected $priority;
     /**
-     * @var ObjsConversationItem1Purpose|null
+     * @var ObjsConversationPurpose|null
      */
     protected $purpose;
     /**
@@ -180,7 +204,7 @@ class ObjsConversationItem1
      */
     protected $sharedTeamIds;
     /**
-     * @var ObjsConversationItem1SharesItem[]|null
+     * @var ObjsConversationSharesItem[]|null
      */
     protected $shares;
     /**
@@ -188,7 +212,7 @@ class ObjsConversationItem1
      */
     protected $timezoneCount;
     /**
-     * @var ObjsConversationItem1Topic|null
+     * @var ObjsConversationTopic|null
      */
     protected $topic;
     /**
@@ -206,11 +230,19 @@ class ObjsConversationItem1
     /**
      * @var string|null
      */
+    protected $useCase;
+    /**
+     * @var string|null
+     */
     protected $user;
     /**
      * @var int|null
      */
     protected $version;
+    /**
+     * @var bool|null
+     */
+    protected $isUserDeleted;
 
     public function getAcceptedUser(): ?string
     {
@@ -278,14 +310,56 @@ class ObjsConversationItem1
         return $this;
     }
 
-    public function getDisplayCounts(): ?ObjsConversationItem1DisplayCounts
+    public function getDisplayCounts(): ?ObjsConversationDisplayCounts
     {
         return $this->displayCounts;
     }
 
-    public function setDisplayCounts(?ObjsConversationItem1DisplayCounts $displayCounts): self
+    public function setDisplayCounts(?ObjsConversationDisplayCounts $displayCounts): self
     {
         $this->displayCounts = $displayCounts;
+
+        return $this;
+    }
+
+    public function getEnterpriseId(): ?string
+    {
+        return $this->enterpriseId;
+    }
+
+    public function setEnterpriseId(?string $enterpriseId): self
+    {
+        $this->enterpriseId = $enterpriseId;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExternalConnections()
+    {
+        return $this->externalConnections;
+    }
+
+    /**
+     * @param mixed $externalConnections
+     */
+    public function setExternalConnections($externalConnections): self
+    {
+        $this->externalConnections = $externalConnections;
+
+        return $this;
+    }
+
+    public function getHasPins(): ?bool
+    {
+        return $this->hasPins;
+    }
+
+    public function setHasPins(?bool $hasPins): self
+    {
+        $this->hasPins = $hasPins;
 
         return $this;
     }
@@ -380,6 +454,18 @@ class ObjsConversationItem1
         return $this;
     }
 
+    public function getIsGlobalShared(): ?bool
+    {
+        return $this->isGlobalShared;
+    }
+
+    public function setIsGlobalShared(?bool $isGlobalShared): self
+    {
+        $this->isGlobalShared = $isGlobalShared;
+
+        return $this;
+    }
+
     public function getIsGroup(): ?bool
     {
         return $this->isGroup;
@@ -460,6 +546,30 @@ class ObjsConversationItem1
     public function setIsOpen(?bool $isOpen): self
     {
         $this->isOpen = $isOpen;
+
+        return $this;
+    }
+
+    public function getIsOrgDefault(): ?bool
+    {
+        return $this->isOrgDefault;
+    }
+
+    public function setIsOrgDefault(?bool $isOrgDefault): self
+    {
+        $this->isOrgDefault = $isOrgDefault;
+
+        return $this;
+    }
+
+    public function getIsOrgMandatory(): ?bool
+    {
+        return $this->isOrgMandatory;
+    }
+
+    public function setIsOrgMandatory(?bool $isOrgMandatory): self
+    {
+        $this->isOrgMandatory = $isOrgMandatory;
 
         return $this;
     }
@@ -728,12 +838,12 @@ class ObjsConversationItem1
         return $this;
     }
 
-    public function getPurpose(): ?ObjsConversationItem1Purpose
+    public function getPurpose(): ?ObjsConversationPurpose
     {
         return $this->purpose;
     }
 
-    public function setPurpose(?ObjsConversationItem1Purpose $purpose): self
+    public function setPurpose(?ObjsConversationPurpose $purpose): self
     {
         $this->purpose = $purpose;
 
@@ -759,7 +869,7 @@ class ObjsConversationItem1
     }
 
     /**
-     * @return ObjsConversationItem1SharesItem[]|null
+     * @return ObjsConversationSharesItem[]|null
      */
     public function getShares(): ?array
     {
@@ -767,7 +877,7 @@ class ObjsConversationItem1
     }
 
     /**
-     * @param ObjsConversationItem1SharesItem[]|null $shares
+     * @param ObjsConversationSharesItem[]|null $shares
      */
     public function setShares(?array $shares): self
     {
@@ -788,12 +898,12 @@ class ObjsConversationItem1
         return $this;
     }
 
-    public function getTopic(): ?ObjsConversationItem1Topic
+    public function getTopic(): ?ObjsConversationTopic
     {
         return $this->topic;
     }
 
-    public function setTopic(?ObjsConversationItem1Topic $topic): self
+    public function setTopic(?ObjsConversationTopic $topic): self
     {
         $this->topic = $topic;
 
@@ -836,6 +946,18 @@ class ObjsConversationItem1
         return $this;
     }
 
+    public function getUseCase(): ?string
+    {
+        return $this->useCase;
+    }
+
+    public function setUseCase(?string $useCase): self
+    {
+        $this->useCase = $useCase;
+
+        return $this;
+    }
+
     public function getUser(): ?string
     {
         return $this->user;
@@ -856,6 +978,18 @@ class ObjsConversationItem1
     public function setVersion(?int $version): self
     {
         $this->version = $version;
+
+        return $this;
+    }
+
+    public function getIsUserDeleted(): ?bool
+    {
+        return $this->isUserDeleted;
+    }
+
+    public function setIsUserDeleted(?bool $isUserDeleted): self
+    {
+        $this->isUserDeleted = $isUserDeleted;
 
         return $this;
     }

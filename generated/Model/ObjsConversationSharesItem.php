@@ -13,49 +13,33 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsConversationItem2SharesItem
+class ObjsConversationSharesItem
 {
-    /**
-     * @var int|null
-     */
-    protected $dateCreate;
     /**
      * @var string|null
      */
-    protected $id;
+    protected $acceptedUser;
     /**
      * @var bool|null
      */
     protected $isActive;
     /**
-     * @var string|null
-     */
-    protected $name;
-    /**
      * @var ObjsTeam|null
      */
     protected $team;
+    /**
+     * @var string|null
+     */
+    protected $user;
 
-    public function getDateCreate(): ?int
+    public function getAcceptedUser(): ?string
     {
-        return $this->dateCreate;
+        return $this->acceptedUser;
     }
 
-    public function setDateCreate(?int $dateCreate): self
+    public function setAcceptedUser(?string $acceptedUser): self
     {
-        $this->dateCreate = $dateCreate;
-
-        return $this;
-    }
-
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
-
-    public function setId(?string $id): self
-    {
-        $this->id = $id;
+        $this->acceptedUser = $acceptedUser;
 
         return $this;
     }
@@ -72,18 +56,6 @@ class ObjsConversationItem2SharesItem
         return $this;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     public function getTeam(): ?ObjsTeam
     {
         return $this->team;
@@ -92,6 +64,18 @@ class ObjsConversationItem2SharesItem
     public function setTeam(?ObjsTeam $team): self
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getUser(): ?string
+    {
+        return $this->user;
+    }
+
+    public function setUser(?string $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

@@ -21,19 +21,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsConversationItem1TopicNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1Topic' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\ObjsConversationDisplayCounts' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversationItem1Topic' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversationDisplayCounts' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -47,21 +47,16 @@ class ObjsConversationItem1TopicNormalizer implements DenormalizerInterface, Nor
         if (isset($data->{'$recursiveRef'})) {
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversationItem1Topic();
-        if (property_exists($data, 'creator') && null !== $data->{'creator'}) {
-            $object->setCreator($data->{'creator'});
-        } elseif (property_exists($data, 'creator') && null === $data->{'creator'}) {
-            $object->setCreator(null);
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts();
+        if (property_exists($data, 'display_counts') && null !== $data->{'display_counts'}) {
+            $object->setDisplayCounts($data->{'display_counts'});
+        } elseif (property_exists($data, 'display_counts') && null === $data->{'display_counts'}) {
+            $object->setDisplayCounts(null);
         }
-        if (property_exists($data, 'last_set') && null !== $data->{'last_set'}) {
-            $object->setLastSet($data->{'last_set'});
-        } elseif (property_exists($data, 'last_set') && null === $data->{'last_set'}) {
-            $object->setLastSet(null);
-        }
-        if (property_exists($data, 'value') && null !== $data->{'value'}) {
-            $object->setValue($data->{'value'});
-        } elseif (property_exists($data, 'value') && null === $data->{'value'}) {
-            $object->setValue(null);
+        if (property_exists($data, 'guest_counts') && null !== $data->{'guest_counts'}) {
+            $object->setGuestCounts($data->{'guest_counts'});
+        } elseif (property_exists($data, 'guest_counts') && null === $data->{'guest_counts'}) {
+            $object->setGuestCounts(null);
         }
 
         return $object;
@@ -70,20 +65,15 @@ class ObjsConversationItem1TopicNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getCreator()) {
-            $data->{'creator'} = $object->getCreator();
+        if (null !== $object->getDisplayCounts()) {
+            $data->{'display_counts'} = $object->getDisplayCounts();
         } else {
-            $data->{'creator'} = null;
+            $data->{'display_counts'} = null;
         }
-        if (null !== $object->getLastSet()) {
-            $data->{'last_set'} = $object->getLastSet();
+        if (null !== $object->getGuestCounts()) {
+            $data->{'guest_counts'} = $object->getGuestCounts();
         } else {
-            $data->{'last_set'} = null;
-        }
-        if (null !== $object->getValue()) {
-            $data->{'value'} = $object->getValue();
-        } else {
-            $data->{'value'} = null;
+            $data->{'guest_counts'} = null;
         }
 
         return $data;
