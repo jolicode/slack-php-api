@@ -36,9 +36,8 @@ class GeneratePatchCommand extends Command
     {
         // ensure the patched specification is alphabetically sorted
         $content = file_get_contents(__DIR__.'/../../resources/slack-openapi-patched.json');
-        $specification = json_decode($content);
-        $specification = JsonSorter::recursiveAlphabeticalSort($specification);
-        file_put_contents(__DIR__.'/../../resources/slack-openapi-patched.json', json_encode($specification, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        $sorter = new JsonSorter();
+        file_put_contents(__DIR__.'/../../resources/slack-openapi-patched.json', $sorter->sort($content));
 
         // generate a patch using a diff between the sorted and the patched specifications
         $io = new SymfonyStyle($input, $output);

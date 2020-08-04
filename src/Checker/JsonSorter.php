@@ -15,40 +15,43 @@ namespace JoliCode\Slack\Checker;
 
 class JsonSorter
 {
-    public static function isCollection($value): bool
+    public function sort(string $content): string
     {
-        return \is_array($value) && array_keys($value) === range(0, \count($value) - 1);
+        $content = json_decode($content);
+        $content = $this->recursiveAlphabeticalSort($content);
+
+        return json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 
-    public static function recursiveAlphabeticalSort($item)
+    public function recursiveAlphabeticalSort($item)
     {
         if (\is_object($item)) {
             $asArray = (array) $item;
+
             if (0 === \count($asArray)) {
                 return $item;
             }
 
             foreach ($asArray as $key => $subItem) {
-                $asArray[$key] = self::recursiveAlphabeticalSort($item->$key);
+                $asArray[$key] = $this->recursiveAlphabeticalSort($item->$key);
             }
 
             $item = $asArray;
+            ksort($item, SORT_STRING);
+
+            return $item;
         } elseif (!\is_array($item)) {
             return $item;
-        } else {
-            foreach ($item as $key => $value) {
-                $item[$key] = self::recursiveAlphabeticalSort($value);
-            }
         }
 
-        if (self::isCollection($item)) {
-            $types = array_unique(array_map('getType', $item));
+        foreach ($item as $key => $value) {
+            $item[$key] = $this->recursiveAlphabeticalSort($value);
+        }
 
-            if (1 === \count($types) && \in_array($types[0], ['string', 'int'], true)) {
-                sort($item, SORT_STRING);
-            }
-        } else {
-            ksort($item, SORT_STRING);
+        $types = array_unique(array_map('getType', $item));
+
+        if (1 === \count($types) && \in_array($types[0], ['string', 'int'], true)) {
+            sort($item, SORT_STRING);
         }
 
         return $item;

@@ -47,9 +47,8 @@ class UpdateSpecificationCommand extends Command
         $output->writeln('<info>Downloaded and saved a new specification version</info>');
 
         // sort the spec file
-        $specification = json_decode($content);
-        $specification = JsonSorter::recursiveAlphabeticalSort($specification);
-        file_put_contents(__DIR__.'/../../resources/slack-openapi-sorted.json', json_encode($specification, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        $sorter = new JsonSorter();
+        file_put_contents(__DIR__.'/../../resources/slack-openapi-sorted.json', $sorter->sort($content));
         $output->writeln('<info>Sorted the official specification by keys</info>');
 
         // apply the patches to the sorted spec
