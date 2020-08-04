@@ -26403,7 +26403,7 @@
                         "type": "boolean"
                     },
                     {
-                        "description": "The encoded ID of the User Group to update.",
+                        "description": "The encoded ID of the User Group to read.",
                         "in": "query",
                         "name": "usergroup",
                         "required": true,
