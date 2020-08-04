@@ -1,6 +1,6 @@
 --- resources/slack-openapi-patched.json
 +++ resources/slack-openapi-patched.json
-@@ -371,9 +371,15 @@
+@@ -422,9 +422,15 @@
              "type": "array"
          },
          "objs_conversation": {
@@ -19,7 +19,7 @@
                      "properties": {
                          "accepted_user": {
                              "$ref": "#/definitions/defs_user_id"
-@@ -662,437 +668,11 @@
+@@ -719,452 +725,11 @@
                          },
                          "version": {
                              "type": "integer"
@@ -105,6 +105,9 @@
 -                        "is_ext_shared": {
 -                            "type": "boolean"
 -                        },
+-                        "is_frozen": {
+-                            "type": "boolean"
+-                        },
 -                        "is_general": {
 -                            "type": "boolean"
 -                        },
@@ -126,6 +129,9 @@
 -                            ],
 -                            "type": "boolean"
 -                        },
+-                        "is_non_threadable": {
+-                            "type": "boolean"
+-                        },
 -                        "is_open": {
 -                            "type": "boolean"
 -                        },
@@ -145,6 +151,9 @@
 -                            "type": "boolean"
 -                        },
 -                        "is_starred": {
+-                            "type": "boolean"
+-                        },
+-                        "is_thread_only": {
 -                            "type": "boolean"
 -                        },
 -                        "last_read": {
@@ -346,7 +355,13 @@
 -                        "id": {
 -                            "$ref": "#/definitions/defs_dm_id"
 -                        },
+-                        "is_archived": {
+-                            "type": "boolean"
+-                        },
 -                        "is_ext_shared": {
+-                            "type": "boolean"
+-                        },
+-                        "is_frozen": {
 -                            "type": "boolean"
 -                        },
 -                        "is_im": {
