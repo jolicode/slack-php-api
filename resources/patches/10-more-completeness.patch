@@ -1,6 +1,13 @@
 --- resources/slack-openapi-patched.json
 +++ resources/slack-openapi-patched.json
-@@ -517,6 +517,9 @@
+@@ -564,20 +564,23 @@
+                         "latest": {
+                             "items": [
+                                 {
+                                     "$ref": "#/definitions/objs_message"
+                                 },
+                                 {
+                                     "type": "null"
                                  }
                              ]
                          },
@@ -10,8 +17,22 @@
                          "members": {
                              "items": {
                                  "$ref": "#/definitions/defs_user_id"
-@@ -727,6 +730,10 @@
+                             },
+                             "minItems": 0,
+                             "type": "array",
+                             "uniqueItems": true
+                         },
+                         "name": {
+                             "type": "string"
+@@ -780,20 +783,24 @@
+                 },
+                 "comments_count": {
+                     "type": "integer"
+                 },
                  "created": {
+                     "type": "integer"
+                 },
+                 "date_delete": {
                      "type": "integer"
                  },
 +                "deanimate_gif": {
@@ -21,7 +42,21 @@
                  "display_as_bot": {
                      "type": "boolean"
                  },
-@@ -822,6 +829,10 @@
+                 "editable": {
+                     "type": "boolean"
+                 },
+                 "editor": {
+                     "$ref": "#/definitions/defs_user_id"
+                 },
+                 "external_id": {
+@@ -878,43 +885,67 @@
+                 },
+                 "pinned_info": {
+                     "$ref": "#/definitions/defs_pinned_info"
+                 },
+                 "pinned_to": {
+                     "items": {
+                         "$ref": "#/definitions/defs_channel"
                      },
                      "type": "array"
                  },
@@ -32,7 +67,19 @@
                  "pretty_type": {
                      "type": "string"
                  },
-@@ -841,10 +852,30 @@
+                 "preview": {
+                     "type": "string"
+                 },
+                 "public_url_shared": {
+                     "type": "boolean"
+                 },
+                 "reactions": {
+                     "items": {
+                         "$ref": "#/definitions/objs_reaction"
+                     },
+                     "type": "array"
+                 },
+                 "shares": {
                      "additionalProperties": false,
                      "properties": {
                          "private": {
@@ -65,7 +112,21 @@
                          }
                      },
                      "type": "object"
-@@ -876,6 +907,10 @@
+                 },
+                 "size": {
+                     "type": "integer"
+                 },
+                 "source_team": {
+                     "$ref": "#/definitions/defs_team"
+                 },
+@@ -932,20 +963,24 @@
+                     "type": "integer"
+                 },
+                 "thumb_160": {
+                     "format": "uri",
+                     "type": "string"
+                 },
+                 "thumb_360": {
                      "format": "uri",
                      "type": "string"
                  },
@@ -76,7 +137,21 @@
                  "thumb_360_h": {
                      "type": "integer"
                  },
-@@ -1831,10 +1866,8 @@
+                 "thumb_360_w": {
+                     "type": "integer"
+                 },
+                 "thumb_480": {
+                     "format": "uri",
+                     "type": "string"
+                 },
+@@ -1888,24 +1923,22 @@
+                     "pattern": "^X[a-zA-Z0-9]{9,}$",
+                     "type": "string"
+                 },
+                 "is_hidden": {
+                     "type": "boolean"
+                 },
+                 "label": {
                      "type": "string"
                  },
                  "options": {
@@ -89,8 +164,22 @@
                  },
                  "ordering": {
                      "type": "number"
-@@ -2227,7 +2260,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
+                 },
+                 "possible_values": {
+                     "items": {
+                         "type": "string"
+                     },
+                     "type": "array"
+                 },
+@@ -2295,21 +2328,21 @@
+                         "examples": {
+                             "application/json": {
+                                 "ok": true
+                             }
+                         },
+                         "schema": {
+                             "additionalProperties": true,
+                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                              "properties": {
                                  "ok": {
 -                                    "$ref": "#/definitions/defs_ok_true"
@@ -98,7 +187,21 @@
                                  }
                              },
                              "required": [
-@@ -2296,6 +2329,9 @@
+                                 "ok"
+                             ],
+                             "title": "Default success template",
+                             "type": "object"
+                         }
+                     },
+                     "default": {
+@@ -2446,20 +2479,23 @@
+                                     "next_cursor": ""
+                                 }
+                             }
+                         },
+                         "schema": {
+                             "additionalProperties": true,
+                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                              "properties": {
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
@@ -108,7 +211,45 @@
                                  }
                              },
                              "required": [
-@@ -2327,6 +2363,9 @@
+                                 "ok"
+                             ],
+                             "title": "Default success template",
+                             "type": "object"
+                         }
+                     },
+                     "default": {
+@@ -6046,20 +6082,23 @@
+                             }
+                         },
+                         "schema": {
+                             "additionalProperties": {
+                                 "type": "object"
+                             },
+                             "description": "Schema for successful response api.test method",
+                             "properties": {
+                                 "ok": {
+                                     "$ref": "#/definitions/defs_ok_true"
++                                },
++                                "args": {
++                                    "type": "object"
+                                 }
+                             },
+                             "required": [
+                                 "ok"
+                             ],
+                             "title": "api.test success schema",
+                             "type": "object"
+                         }
+                     },
+                     "default": {
+@@ -6077,20 +6116,23 @@
+                             "additionalProperties": {
+                                 "type": "object"
+                             },
+                             "description": "Schema for error response api.test method",
+                             "properties": {
+                                 "error": {
+                                     "type": "string"
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_false"
@@ -118,25 +259,21 @@
                                  }
                              },
                              "required": [
-@@ -3138,7 +3177,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
-                             "properties": {
-                                 "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
-                                 }
-                             },
-                             "required": [
-@@ -3236,7 +3275,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
-                             "properties": {
-                                 "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
-                                 }
-                             },
-                             "required": [
-@@ -4023,6 +4062,9 @@
+                                 "ok",
+                                 "error"
+                             ],
+                             "title": "api.test error schema",
+                             "type": "object"
+                         }
+                     }
+@@ -7800,20 +7842,23 @@
+                             "application/json": {
+                                 "detail": "Value passed for `name` contained unallowed special characters.",
+                                 "error": "invalid_name_specials",
+                                 "ok": false
+                             }
+                         },
+                         "schema": {
                              "additionalProperties": false,
                              "description": "Schema for error response channels.create method",
                              "properties": {
@@ -146,7 +283,21 @@
                                  "error": {
                                      "enum": [
                                          "name_taken",
-@@ -7244,9 +7286,29 @@
+                                         "restricted_action",
+                                         "no_channel",
+                                         "invalid_name_required",
+                                         "invalid_name_punctuation",
+                                         "invalid_name_maxlength",
+                                         "invalid_name_specials",
+                                         "invalid_name",
+@@ -11074,26 +11119,46 @@
+                         "schema": {
+                             "additionalProperties": false,
+                             "description": "Schema for successful response of chat.scheduleMessage method",
+                             "properties": {
+                                 "channel": {
+                                     "$ref": "#/definitions/defs_channel"
+                                 },
                                  "message": {
                                      "additionalProperties": false,
                                      "properties": {
@@ -157,10 +308,10 @@
 +                                                        "type": "string"
 +                                                    },
 +                                                    "id": {
-+                                                        "type":  "integer"
++                                                        "type": "integer"
 +                                                    },
-+                                                    "text":  {
-+                                                        "type":  "string"
++                                                    "text": {
++                                                        "type": "string"
 +                                                    }
 +                                                },
 +                                                "type": "object"
@@ -170,13 +321,30 @@
                                          "bot_id": {
                                              "$ref": "#/definitions/defs_bot_id"
                                          },
+                                         "bot_profile": {
+                                             "$ref": "#/definitions/objs_bot_profile"
+                                         },
 +                                        "subtype": {
 +                                            "type": "string"
 +                                        },
+                                         "team": {
+                                             "$ref": "#/definitions/defs_team"
+                                         },
                                          "text": {
                                              "type": "string"
                                          },
-@@ -7273,7 +7335,7 @@
+                                         "type": {
+                                             "type": "string"
+                                         },
+                                         "user": {
+@@ -11110,21 +11175,21 @@
+                                         "user",
+                                         "team"
+                                     ],
+                                     "type": "object"
+                                 },
+                                 "ok": {
+                                     "$ref": "#/definitions/defs_ok_true"
                                  },
                                  "post_at": {
                                      "pattern": "^\\d{10}$",
@@ -185,16 +353,21 @@
                                  },
                                  "scheduled_message_id": {
                                      "pattern": "^[Q][A-Z0-9]{8,}$",
-@@ -7435,7 +7497,7 @@
-                                     {
-                                         "channel_id": "C1H9RESGL",
-                                         "date_created": 1551891734,
--                                        "id": 1298393284,
-+                                        "id":   1298393284,
-                                         "post_at": 1551991428
-                                     }
-                                 ]
-@@ -7473,7 +7535,7 @@
+                                     "title": "Scheduled Message ID",
+                                     "type": "string"
+                                 }
+                             },
+                             "required": [
+                                 "ok",
+                                 "channel",
+@@ -11311,21 +11376,21 @@
+                                         "properties": {
+                                             "channel_id": {
+                                                 "$ref": "#/definitions/defs_channel_id"
+                                             },
+                                             "date_created": {
+                                                 "pattern": "^\\d{10}$",
+                                                 "type": "integer"
                                              },
                                              "id": {
                                                  "pattern": "^[Q][A-Z0-9]{8,}$",
@@ -203,7 +376,21 @@
                                              },
                                              "post_at": {
                                                  "pattern": "^\\d{10}$",
-@@ -8459,6 +8521,18 @@
+                                                 "type": "integer"
+                                             },
+                                             "text": {
+                                                 "type": "string"
+                                             }
+                                         },
+                                         "required": [
+@@ -12320,20 +12385,32 @@
+                                     },
+                                     "minItems": 1,
+                                     "type": "array",
+                                     "uniqueItems": true
+                                 },
+                                 "ok": {
+                                     "$ref": "#/definitions/defs_ok_true"
                                  },
                                  "pin_count": {
                                      "type": "integer"
@@ -222,7 +409,21 @@
                                  }
                              },
                              "required": [
-@@ -10382,6 +10456,18 @@
+                                 "ok",
+                                 "messages",
+                                 "has_more",
+                                 "pin_count",
+                                 "channel_actions_ts",
+                                 "channel_actions_count"
+                             ],
+@@ -14251,20 +14328,32 @@
+                                                     "ts"
+                                                 ],
+                                                 "type": "object"
+                                             }
+                                         ]
+                                     },
+                                     "type": "array"
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
@@ -241,7 +442,21 @@
                                  }
                              },
                              "required": [
-@@ -11491,6 +11577,22 @@
+                                 "ok",
+                                 "messages"
+                             ],
+                             "title": "conversations.replies success schema",
+                             "type": "object"
+                         }
+                     },
+@@ -15413,20 +15502,36 @@
+                             "description": "Schema for successful response from dnd.teamInfo method",
+                             "properties": {
+                                 "cached": {
+                                     "type": "boolean"
+                                 },
+                                 "ok": {
+                                     "$ref": "#/definitions/defs_ok_true"
                                  },
                                  "users": {
                                      "additionalProperties": false,
@@ -264,16 +479,21 @@
                                      "type": "object"
                                  }
                              },
-@@ -11618,7 +11720,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
-                             "properties": {
-                                 "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
-                                 }
-                             },
                              "required": [
-@@ -13253,6 +13355,9 @@
+                                 "ok",
+                                 "users"
+                             ],
+                             "title": "dnd.teamInfo success schema",
+                             "type": "object"
+                         }
+@@ -17839,20 +17944,23 @@
+                                             "type": "integer"
+                                         },
+                                         {
+                                             "type": "null"
+                                         }
+                                     ]
+                                 },
                                  "has_more": {
                                      "type": "boolean"
                                  },
@@ -283,7 +503,21 @@
                                  "messages": {
                                      "items": {
                                          "$ref": "#/definitions/objs_message"
-@@ -15048,6 +15153,9 @@
+                                     },
+                                     "minItems": 1,
+                                     "type": "array",
+                                     "uniqueItems": true
+                                 },
+                                 "ok": {
+                                     "$ref": "#/definitions/defs_ok_true"
+@@ -19674,20 +19782,23 @@
+                                 "messages": {
+                                     "items": {
+                                         "$ref": "#/definitions/objs_message"
+                                     },
+                                     "minItems": 1,
+                                     "type": "array",
+                                     "uniqueItems": true
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
@@ -293,7 +527,21 @@
                                  }
                              },
                              "required": [
-@@ -15239,6 +15347,18 @@
+                                 "ok",
+                                 "messages",
+                                 "has_more",
+                                 "channel_actions_ts",
+                                 "channel_actions_count"
+                             ],
+                             "title": "im.history success schema",
+@@ -20157,20 +20268,32 @@
+                                     "required": [
+                                         "id"
+                                     ],
+                                     "type": "object"
+                                 },
+                                 "no_op": {
+                                     "type": "boolean"
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
@@ -312,7 +560,21 @@
                                  }
                              },
                              "required": [
-@@ -16227,6 +16347,9 @@
+                                 "ok",
+                                 "channel"
+                             ],
+                             "title": "im.open success schema",
+                             "type": "object"
+                         }
+                     },
+@@ -20877,20 +21000,23 @@
+                                 "messages": {
+                                     "items": {
+                                         "$ref": "#/definitions/objs_message"
+                                     },
+                                     "minItems": 1,
+                                     "type": "array",
+                                     "uniqueItems": true
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
@@ -322,25 +584,45 @@
                                  }
                              },
                              "required": [
-@@ -17076,7 +17199,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
+                                 "ok",
+                                 "messages",
+                                 "has_more",
+                                 "channel_actions_ts",
+                                 "channel_actions_count"
+                             ],
+                             "title": "mpim.history schema",
+@@ -21251,20 +21377,23 @@
+                         },
+                         "schema": {
+                             "additionalProperties": false,
+                             "description": "Schema for successful response from mpim.open method",
                              "properties": {
+                                 "group": {
+                                     "$ref": "#/definitions/objs_group"
+                                 },
                                  "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
+                                     "$ref": "#/definitions/defs_ok_true"
++                                },
++                                "latest": {
++                                    "$ref": "#/definitions/defs_ts"
                                  }
                              },
                              "required": [
-@@ -17243,7 +17366,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
-                             "properties": {
-                                 "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
-                                 }
-                             },
-                             "required": [
-@@ -18007,7 +18130,7 @@
+                                 "ok",
+                                 "group"
+                             ],
+                             "title": "mpim.open success schema",
+                             "type": "object"
+                         }
+                     },
+@@ -22725,21 +22854,21 @@
+                                     "timestamp": 1507850315,
+                                     "title": "computer.gif",
+                                     "user": "U2U85N1RV"
+                                 },
+                                 "ok": true,
+                                 "type": "file"
+                             }
                          },
                          "schema": {
                              "description": "Schema for successful response from reactions.get method",
@@ -349,7 +631,21 @@
                                  {
                                      "additionalProperties": false,
                                      "properties": {
-@@ -18083,8 +18206,7 @@
+                                         "channel": {
+                                             "$ref": "#/definitions/defs_channel"
+                                         },
+                                         "message": {
+                                             "$ref": "#/definitions/objs_message"
+                                         },
+                                         "ok": {
+@@ -22801,22 +22930,21 @@
+                                         }
+                                     },
+                                     "required": [
+                                         "ok",
+                                         "type",
+                                         "file",
+                                         "comment"
                                      ]
                                  }
                              ],
@@ -359,21 +655,10 @@
                          }
                      },
                      "default": {
-@@ -19511,7 +19633,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
-                             "properties": {
-                                 "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
-                                 }
-                             },
-                             "required": [
-@@ -23697,7 +23819,7 @@
-                             "description": "Verbose schema not yet ready for this method.",
-                             "properties": {
-                                 "ok": {
--                                    "$ref": "#/definitions/defs_ok_true"
-+                                    "$ref": "#/definitions/defs_ok_false"
-                                 }
-                             },
-                             "required": [
+                         "description": "Typical error response",
+                         "examples": {
+                             "application/json": {
+                                 "error": "invalid_auth",
+                                 "ok": false
+                             }
+                         },
