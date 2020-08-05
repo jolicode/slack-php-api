@@ -6,8 +6,7 @@ Sometimes, the API specification is not complete or incorrect. Slack is aware of
 but we just can't wait months for an update. Most of the time, examples inside the spec are
 correct, and we just miss properties in the response's schema definition.
 
-This is the reason why we maintain a patch for the official schema, in order to reflect the
-contents of the official documentation.
+This is the reason why we maintain a patched version of the official schema, following both the documentation and PHP specific requirements.
 
 in order to download the latest API specification and apply the patches, you may run this command:
 
