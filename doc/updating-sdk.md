@@ -16,9 +16,9 @@ In order to download the latest API specification and apply the patches, you may
 
 This command sequentially runs the following operations:
 
-1. it downloads and saves the last [official Slack OpenAPI specification file](https://api.slack.com/specs/openapi/v2/slack_web.json) in [resources/slack-openapi.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi.json)
-2. it recursively sorts the json keys and saves this intermediate version in [resources/slack-openapi-sorted.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-sorted.json)
-3. it applies [our patches](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-sorted.patch) and stores the resulting specification file in [resources/slack-openapi-patched.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-patched.json)
+1. Downloads and saves the current [official Slack OpenAPI specification file](https://api.slack.com/specs/openapi/v2/slack_web.json) in [resources/slack-openapi.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi.json)
+2. Recursively sorts the JSON keys and saves this intermediate version in [resources/slack-openapi-sorted.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-sorted.json)
+3. Applies [our patches](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-sorted.patch) and stores the resulting specification file in [resources/slack-openapi-patched.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-patched.json)
 
 You can now build a new SDK using this patched specification.
 
