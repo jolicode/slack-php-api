@@ -8,7 +8,7 @@ correct, and we just miss properties in the response's schema definition.
 
 This is the reason why we maintain a patched version of the official schema, following both the documentation and PHP specific requirements.
 
-in order to download the latest API specification and apply the patches, you may run this command:
+In order to download the latest API specification and apply the patches, you may run this command:
 
 ```bash
 ./bin/slack-api-client-generator spec:update
