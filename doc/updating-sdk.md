@@ -36,9 +36,9 @@ vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
 The patches in this repository may not fix all the specification issues. Should you discover
 a new specification bug, here is the process to propose changes:
 
-1. edit the `resources/slack-openapi-patched.json` file as you wish
-2. test the updated SDK (see above)
-3. when satisfied with the result, run this command:
+1. Edit the `resources/slack-openapi-patched.json` file as you wish
+2. Update the SDK (see above) and test the resulting code
+3. When satisfied with the result, run this command:
 
 ```bash
 ./bin/slack-api-client-generator spec:generate-patch
