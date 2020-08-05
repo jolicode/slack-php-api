@@ -17,6 +17,26 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
 {
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
+    /**
+     * Open a dialog with a user.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $trigger_id exchange a trigger to post to the user
+     *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     */
+    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+        $this->headerParameters = $headerParameters;
+    }
+
     public function getMethod(): string
     {
         return 'GET';
@@ -35,6 +55,29 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['trigger_id', 'dialog']);
+        $optionsResolver->setRequired(['trigger_id', 'dialog']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
+        $optionsResolver->setAllowedTypes('dialog', ['string']);
+
+        return $optionsResolver;
+    }
+
+    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver->setDefined(['token']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+
+        return $optionsResolver;
     }
 
     /**

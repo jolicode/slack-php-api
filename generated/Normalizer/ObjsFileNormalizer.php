@@ -67,6 +67,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
             $object->setCreated(null);
         }
+        if (property_exists($data, 'date_delete') && null !== $data->{'date_delete'}) {
+            $object->setDateDelete($data->{'date_delete'});
+        } elseif (property_exists($data, 'date_delete') && null === $data->{'date_delete'}) {
+            $object->setDateDelete(null);
+        }
         if (property_exists($data, 'deanimate_gif') && null !== $data->{'deanimate_gif'}) {
             $object->setDeanimateGif($data->{'deanimate_gif'});
         } elseif (property_exists($data, 'deanimate_gif') && null === $data->{'deanimate_gif'}) {
@@ -180,6 +185,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
             $object->setName(null);
         }
+        if (property_exists($data, 'non_owner_editable') && null !== $data->{'non_owner_editable'}) {
+            $object->setNonOwnerEditable($data->{'non_owner_editable'});
+        } elseif (property_exists($data, 'non_owner_editable') && null === $data->{'non_owner_editable'}) {
+            $object->setNonOwnerEditable(null);
+        }
         if (property_exists($data, 'num_stars') && null !== $data->{'num_stars'}) {
             $object->setNumStars($data->{'num_stars'});
         } elseif (property_exists($data, 'num_stars') && null === $data->{'num_stars'}) {
@@ -206,20 +216,16 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setPermalinkPublic(null);
         }
         if (property_exists($data, 'pinned_info') && null !== $data->{'pinned_info'}) {
-            $values_3 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'pinned_info'} as $key => $value_3) {
-                $values_3[$key] = $this->denormalizer->denormalize($value_3, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
-            }
-            $object->setPinnedInfo($values_3);
+            $object->setPinnedInfo($data->{'pinned_info'});
         } elseif (property_exists($data, 'pinned_info') && null === $data->{'pinned_info'}) {
             $object->setPinnedInfo(null);
         }
         if (property_exists($data, 'pinned_to') && null !== $data->{'pinned_to'}) {
-            $values_4 = [];
-            foreach ($data->{'pinned_to'} as $value_4) {
-                $values_4[] = $value_4;
+            $values_3 = [];
+            foreach ($data->{'pinned_to'} as $value_3) {
+                $values_3[] = $value_3;
             }
-            $object->setPinnedTo($values_4);
+            $object->setPinnedTo($values_3);
         } elseif (property_exists($data, 'pinned_to') && null === $data->{'pinned_to'}) {
             $object->setPinnedTo(null);
         }
@@ -244,11 +250,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setPublicUrlShared(null);
         }
         if (property_exists($data, 'reactions') && null !== $data->{'reactions'}) {
-            $values_5 = [];
-            foreach ($data->{'reactions'} as $value_5) {
-                $values_5[] = $this->denormalizer->denormalize($value_5, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
+            $values_4 = [];
+            foreach ($data->{'reactions'} as $value_4) {
+                $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
-            $object->setReactions($values_5);
+            $object->setReactions($values_4);
         } elseif (property_exists($data, 'reactions') && null === $data->{'reactions'}) {
             $object->setReactions(null);
         }
@@ -382,6 +388,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (property_exists($data, 'thumb_960_w') && null === $data->{'thumb_960_w'}) {
             $object->setThumb960W(null);
         }
+        if (property_exists($data, 'thumb_tiny') && null !== $data->{'thumb_tiny'}) {
+            $object->setThumbTiny($data->{'thumb_tiny'});
+        } elseif (property_exists($data, 'thumb_tiny') && null === $data->{'thumb_tiny'}) {
+            $object->setThumbTiny(null);
+        }
         if (property_exists($data, 'timestamp') && null !== $data->{'timestamp'}) {
             $object->setTimestamp($data->{'timestamp'});
         } elseif (property_exists($data, 'timestamp') && null === $data->{'timestamp'}) {
@@ -447,6 +458,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data->{'created'} = $object->getCreated();
         } else {
             $data->{'created'} = null;
+        }
+        if (null !== $object->getDateDelete()) {
+            $data->{'date_delete'} = $object->getDateDelete();
+        } else {
+            $data->{'date_delete'} = null;
         }
         if (null !== $object->getDeanimateGif()) {
             $data->{'deanimate_gif'} = $object->getDeanimateGif();
@@ -561,6 +577,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } else {
             $data->{'name'} = null;
         }
+        if (null !== $object->getNonOwnerEditable()) {
+            $data->{'non_owner_editable'} = $object->getNonOwnerEditable();
+        } else {
+            $data->{'non_owner_editable'} = null;
+        }
         if (null !== $object->getNumStars()) {
             $data->{'num_stars'} = $object->getNumStars();
         } else {
@@ -587,20 +608,16 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data->{'permalink_public'} = null;
         }
         if (null !== $object->getPinnedInfo()) {
-            $values_3 = new \stdClass();
-            foreach ($object->getPinnedInfo() as $key => $value_3) {
-                $values_3->{$key} = $this->normalizer->normalize($value_3, 'json', $context);
-            }
-            $data->{'pinned_info'} = $values_3;
+            $data->{'pinned_info'} = $object->getPinnedInfo();
         } else {
             $data->{'pinned_info'} = null;
         }
         if (null !== $object->getPinnedTo()) {
-            $values_4 = [];
-            foreach ($object->getPinnedTo() as $value_4) {
-                $values_4[] = $value_4;
+            $values_3 = [];
+            foreach ($object->getPinnedTo() as $value_3) {
+                $values_3[] = $value_3;
             }
-            $data->{'pinned_to'} = $values_4;
+            $data->{'pinned_to'} = $values_3;
         } else {
             $data->{'pinned_to'} = null;
         }
@@ -625,11 +642,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data->{'public_url_shared'} = null;
         }
         if (null !== $object->getReactions()) {
-            $values_5 = [];
-            foreach ($object->getReactions() as $value_5) {
-                $values_5[] = $this->normalizer->normalize($value_5, 'json', $context);
+            $values_4 = [];
+            foreach ($object->getReactions() as $value_4) {
+                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $data->{'reactions'} = $values_5;
+            $data->{'reactions'} = $values_4;
         } else {
             $data->{'reactions'} = null;
         }
@@ -762,6 +779,11 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data->{'thumb_960_w'} = $object->getThumb960W();
         } else {
             $data->{'thumb_960_w'} = null;
+        }
+        if (null !== $object->getThumbTiny()) {
+            $data->{'thumb_tiny'} = $object->getThumbTiny();
+        } else {
+            $data->{'thumb_tiny'} = null;
         }
         if (null !== $object->getTimestamp()) {
             $data->{'timestamp'} = $object->getTimestamp();

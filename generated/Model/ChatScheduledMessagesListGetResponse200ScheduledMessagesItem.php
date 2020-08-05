@@ -31,6 +31,10 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
      * @var int|null
      */
     protected $postAt;
+    /**
+     * @var string|null
+     */
+    protected $text;
 
     public function getChannelId(): ?string
     {
@@ -76,6 +80,18 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
     public function setPostAt(?int $postAt): self
     {
         $this->postAt = $postAt;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(?string $text): self
+    {
+        $this->text = $text;
 
         return $this;
     }

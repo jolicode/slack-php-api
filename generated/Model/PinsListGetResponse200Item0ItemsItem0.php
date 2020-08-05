@@ -16,10 +16,6 @@ namespace JoliCode\Slack\Api\Model;
 class PinsListGetResponse200Item0ItemsItem0
 {
     /**
-     * @var ObjsComment|null
-     */
-    protected $comment;
-    /**
      * @var int|null
      */
     protected $created;
@@ -35,18 +31,6 @@ class PinsListGetResponse200Item0ItemsItem0
      * @var string|null
      */
     protected $type;
-
-    public function getComment(): ?ObjsComment
-    {
-        return $this->comment;
-    }
-
-    public function setComment(?ObjsComment $comment): self
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
 
     public function getCreated(): ?int
     {

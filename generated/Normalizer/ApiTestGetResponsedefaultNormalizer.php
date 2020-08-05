@@ -49,6 +49,12 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
         }
         $object = new \JoliCode\Slack\Api\Model\ApiTestGetResponsedefault();
         $data = clone $data;
+        if (property_exists($data, 'args') && null !== $data->{'args'}) {
+            $object->setArgs($data->{'args'});
+            unset($data->{'args'});
+        } elseif (property_exists($data, 'args') && null === $data->{'args'}) {
+            $object->setArgs(null);
+        }
         if (property_exists($data, 'error') && null !== $data->{'error'}) {
             $object->setError($data->{'error'});
             unset($data->{'error'});
@@ -60,12 +66,6 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
             unset($data->{'ok'});
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
             $object->setOk(null);
-        }
-        if (property_exists($data, 'args') && null !== $data->{'args'}) {
-            $object->setArgs($data->{'args'});
-            unset($data->{'args'});
-        } elseif (property_exists($data, 'args') && null === $data->{'args'}) {
-            $object->setArgs(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', $key)) {
@@ -79,6 +79,11 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getArgs()) {
+            $data->{'args'} = $object->getArgs();
+        } else {
+            $data->{'args'} = null;
+        }
         if (null !== $object->getError()) {
             $data->{'error'} = $object->getError();
         } else {
@@ -88,11 +93,6 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
             $data->{'ok'} = $object->getOk();
         } else {
             $data->{'ok'} = null;
-        }
-        if (null !== $object->getArgs()) {
-            $data->{'args'} = $object->getArgs();
-        } else {
-            $data->{'args'} = null;
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {

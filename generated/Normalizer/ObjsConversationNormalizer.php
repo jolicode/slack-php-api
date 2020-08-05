@@ -126,6 +126,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (property_exists($data, 'is_ext_shared') && null === $data->{'is_ext_shared'}) {
             $object->setIsExtShared(null);
         }
+        if (property_exists($data, 'is_frozen') && null !== $data->{'is_frozen'}) {
+            $object->setIsFrozen($data->{'is_frozen'});
+        } elseif (property_exists($data, 'is_frozen') && null === $data->{'is_frozen'}) {
+            $object->setIsFrozen(null);
+        }
         if (property_exists($data, 'is_general') && null !== $data->{'is_general'}) {
             $object->setIsGeneral($data->{'is_general'});
         } elseif (property_exists($data, 'is_general') && null === $data->{'is_general'}) {
@@ -215,6 +220,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setIsThreadOnly($data->{'is_thread_only'});
         } elseif (property_exists($data, 'is_thread_only') && null === $data->{'is_thread_only'}) {
             $object->setIsThreadOnly(null);
+        }
+        if (property_exists($data, 'is_user_deleted') && null !== $data->{'is_user_deleted'}) {
+            $object->setIsUserDeleted($data->{'is_user_deleted'});
+        } elseif (property_exists($data, 'is_user_deleted') && null === $data->{'is_user_deleted'}) {
+            $object->setIsUserDeleted(null);
         }
         if (property_exists($data, 'last_read') && null !== $data->{'last_read'}) {
             $object->setLastRead($data->{'last_read'});
@@ -345,6 +355,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (property_exists($data, 'unread_count_display') && null === $data->{'unread_count_display'}) {
             $object->setUnreadCountDisplay(null);
         }
+        if (property_exists($data, 'use_case') && null !== $data->{'use_case'}) {
+            $object->setUseCase($data->{'use_case'});
+        } elseif (property_exists($data, 'use_case') && null === $data->{'use_case'}) {
+            $object->setUseCase(null);
+        }
         if (property_exists($data, 'user') && null !== $data->{'user'}) {
             $object->setUser($data->{'user'});
         } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
@@ -354,11 +369,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setVersion($data->{'version'});
         } elseif (property_exists($data, 'version') && null === $data->{'version'}) {
             $object->setVersion(null);
-        }
-        if (property_exists($data, 'is_user_deleted') && null !== $data->{'is_user_deleted'}) {
-            $object->setIsUserDeleted($data->{'is_user_deleted'});
-        } elseif (property_exists($data, 'is_user_deleted') && null === $data->{'is_user_deleted'}) {
-            $object->setIsUserDeleted(null);
         }
 
         return $object;
@@ -444,6 +454,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $data->{'is_ext_shared'} = $object->getIsExtShared();
         } else {
             $data->{'is_ext_shared'} = null;
+        }
+        if (null !== $object->getIsFrozen()) {
+            $data->{'is_frozen'} = $object->getIsFrozen();
+        } else {
+            $data->{'is_frozen'} = null;
         }
         if (null !== $object->getIsGeneral()) {
             $data->{'is_general'} = $object->getIsGeneral();
@@ -534,6 +549,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $data->{'is_thread_only'} = $object->getIsThreadOnly();
         } else {
             $data->{'is_thread_only'} = null;
+        }
+        if (null !== $object->getIsUserDeleted()) {
+            $data->{'is_user_deleted'} = $object->getIsUserDeleted();
+        } else {
+            $data->{'is_user_deleted'} = null;
         }
         if (null !== $object->getLastRead()) {
             $data->{'last_read'} = $object->getLastRead();
@@ -664,6 +684,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } else {
             $data->{'unread_count_display'} = null;
         }
+        if (null !== $object->getUseCase()) {
+            $data->{'use_case'} = $object->getUseCase();
+        } else {
+            $data->{'use_case'} = null;
+        }
         if (null !== $object->getUser()) {
             $data->{'user'} = $object->getUser();
         } else {
@@ -673,11 +698,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $data->{'version'} = $object->getVersion();
         } else {
             $data->{'version'} = null;
-        }
-        if (null !== $object->getIsUserDeleted()) {
-            $data->{'is_user_deleted'} = $object->getIsUserDeleted();
-        } else {
-            $data->{'is_user_deleted'} = null;
         }
 
         return $data;

@@ -68,6 +68,11 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
         } elseif (property_exists($data, 'post_at') && null === $data->{'post_at'}) {
             $object->setPostAt(null);
         }
+        if (property_exists($data, 'text') && null !== $data->{'text'}) {
+            $object->setText($data->{'text'});
+        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+            $object->setText(null);
+        }
 
         return $object;
     }
@@ -94,6 +99,11 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
             $data->{'post_at'} = $object->getPostAt();
         } else {
             $data->{'post_at'} = null;
+        }
+        if (null !== $object->getText()) {
+            $data->{'text'} = $object->getText();
+        } else {
+            $data->{'text'} = null;
         }
 
         return $data;

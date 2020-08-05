@@ -20,6 +20,10 @@ class MpimOpenPostResponse200
      */
     protected $group;
     /**
+     * @var string|null
+     */
+    protected $latest;
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -32,6 +36,18 @@ class MpimOpenPostResponse200
     public function setGroup(?ObjsGroup $group): self
     {
         $this->group = $group;
+
+        return $this;
+    }
+
+    public function getLatest(): ?string
+    {
+        return $this->latest;
+    }
+
+    public function setLatest(?string $latest): self
+    {
+        $this->latest = $latest;
 
         return $this;
     }

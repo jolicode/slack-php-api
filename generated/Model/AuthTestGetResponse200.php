@@ -18,6 +18,10 @@ class AuthTestGetResponse200
     /**
      * @var bool|null
      */
+    protected $isEnterpriseInstall;
+    /**
+     * @var bool|null
+     */
     protected $ok;
     /**
      * @var string|null
@@ -39,6 +43,18 @@ class AuthTestGetResponse200
      * @var string|null
      */
     protected $userId;
+
+    public function getIsEnterpriseInstall(): ?bool
+    {
+        return $this->isEnterpriseInstall;
+    }
+
+    public function setIsEnterpriseInstall(?bool $isEnterpriseInstall): self
+    {
+        $this->isEnterpriseInstall = $isEnterpriseInstall;
+
+        return $this;
+    }
 
     public function getOk(): ?bool
     {

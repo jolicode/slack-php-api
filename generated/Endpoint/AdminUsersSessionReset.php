@@ -17,6 +17,27 @@ class AdminUsersSessionReset extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 {
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
+    /**
+     * Wipes all valid sessions on all devices for a given user.
+     *
+     * @param array $formParameters {
+     *
+     *     @var bool $mobile_only Only expire mobile sessions (default: false)
+     *     @var string $user_id The ID of the user to wipe sessions for
+     *     @var bool $web_only Only expire web sessions (default: false)
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     */
+    public function __construct(array $formParameters = [], array $headerParameters = [])
+    {
+        $this->formParameters = $formParameters;
+        $this->headerParameters = $headerParameters;
+    }
+
     public function getMethod(): string
     {
         return 'POST';
@@ -29,12 +50,36 @@ class AdminUsersSessionReset extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getFormOptionsResolver();
+        $optionsResolver->setDefined(['mobile_only', 'user_id', 'web_only']);
+        $optionsResolver->setRequired(['user_id']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('mobile_only', ['bool']);
+        $optionsResolver->setAllowedTypes('user_id', ['string']);
+        $optionsResolver->setAllowedTypes('web_only', ['bool']);
+
+        return $optionsResolver;
+    }
+
+    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver->setDefined(['token']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+
+        return $optionsResolver;
     }
 
     /**

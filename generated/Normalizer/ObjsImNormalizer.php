@@ -63,10 +63,20 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
         } elseif (property_exists($data, 'is_app_home') && null === $data->{'is_app_home'}) {
             $object->setIsAppHome(null);
         }
+        if (property_exists($data, 'is_archived') && null !== $data->{'is_archived'}) {
+            $object->setIsArchived($data->{'is_archived'});
+        } elseif (property_exists($data, 'is_archived') && null === $data->{'is_archived'}) {
+            $object->setIsArchived(null);
+        }
         if (property_exists($data, 'is_ext_shared') && null !== $data->{'is_ext_shared'}) {
             $object->setIsExtShared($data->{'is_ext_shared'});
         } elseif (property_exists($data, 'is_ext_shared') && null === $data->{'is_ext_shared'}) {
             $object->setIsExtShared(null);
+        }
+        if (property_exists($data, 'is_frozen') && null !== $data->{'is_frozen'}) {
+            $object->setIsFrozen($data->{'is_frozen'});
+        } elseif (property_exists($data, 'is_frozen') && null === $data->{'is_frozen'}) {
+            $object->setIsFrozen(null);
         }
         if (property_exists($data, 'is_im') && null !== $data->{'is_im'}) {
             $object->setIsIm($data->{'is_im'});
@@ -120,10 +130,20 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
         } else {
             $data->{'is_app_home'} = null;
         }
+        if (null !== $object->getIsArchived()) {
+            $data->{'is_archived'} = $object->getIsArchived();
+        } else {
+            $data->{'is_archived'} = null;
+        }
         if (null !== $object->getIsExtShared()) {
             $data->{'is_ext_shared'} = $object->getIsExtShared();
         } else {
             $data->{'is_ext_shared'} = null;
+        }
+        if (null !== $object->getIsFrozen()) {
+            $data->{'is_frozen'} = $object->getIsFrozen();
+        } else {
+            $data->{'is_frozen'} = null;
         }
         if (null !== $object->getIsIm()) {
             $data->{'is_im'} = $object->getIsIm();

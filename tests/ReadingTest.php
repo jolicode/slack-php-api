@@ -121,7 +121,7 @@ class ReadingTest extends TestCase
         /** @var SearchMessagesGetResponse200 $results */
         $results = $client->searchMessages([
             'query' => 'Message with attachment',
-            'count' => '1',
+            'count' => 1,
         ]);
 
         self::assertInstanceOf(SearchMessagesGetResponse200::class, $results);

@@ -60,7 +60,7 @@ class ChannelsUnarchive extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

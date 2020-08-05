@@ -1,53 +1,47 @@
 # Updating the SDK
 
-## Fetch the latest version
+## Fetch the latest version and build a patched version
 
-Run the following command to retrieve the latest API spec:
+Sometimes, the API specification is not complete or incorrect. Slack is aware of these problems,
+but we just can't wait months for an update. Most of the time, examples inside the spec are
+correct, and we just miss properties in the response's schema definition.
 
-```bash
-curl https://api.slack.com/specs/openapi/v2/slack_web.json -o resources/slack-openapi.json
-```
+This is the reason why we maintain a patched version of the official schema, following both the documentation and PHP specific requirements.
 
-:warning: This may invalidate our versioned patches!
-
-### Apply local modification
-
-Sometime, the API spec is not complete. Slack is aware of this problem but we
-just can't wait months for an update.
-
-Most of the times, examples inside the spec are correct and we just miss
-properties in the response's schema definition.
-
-So we patch the schema with what we can see in the official documentation via
-the patch command.
+In order to download the latest API specification and apply the patches, you may run this command:
 
 ```bash
-curl https://api.slack.com/specs/openapi/v2/slack_web.json -o resources/slack-openapi.json
-rm resources/slack-openapi-patched.json
-cp resources/slack-openapi.json resources/slack-openapi-patched.json
-patch --verbose -p0 < resources/patches/*.patch
+./bin/slack-api-client-generator spec:update
 ```
 
-### Generating a new patch
+This command sequentially runs the following operations:
 
-Edit the `slack-openapi-patched.json` file as you wish and run this:
+1. Downloads and saves the current [official Slack OpenAPI specification file](https://api.slack.com/specs/openapi/v2/slack_web.json) in [resources/slack-openapi.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi.json)
+2. Recursively sorts the JSON keys and saves this intermediate version in [resources/slack-openapi-sorted.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-sorted.json)
+3. Applies [our patches](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-sorted.patch) and stores the resulting specification file in [resources/slack-openapi-patched.json](https://github.com/jolicode/slack-php-api/blob/master/resources/slack-openapi-patched.json)
 
-```bash
-git diff resources/slack-openapi-patched.json > resources/patches/00-description.patch
-```
-
-Then make sure the patch headers are like this:
-
-```plain
---- resources/slack-openapi-patched.json 2019-02-21 14:14:33.020307516 +0100
-+++ resources/slack-openapi-patched.json 2019-02-21 14:14:56.296475732 +0100
-```
+You can now build a new SDK using this patched specification.
 
 ## Regenerate the SDk
 
-When the versioned spec has been updated, we need to run Jane to regenerate the
+When the versionned specification has been updated, you can run Jane to regenerate the
 SDK:
 
 ```bash
 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
 ```
+
+## Generating a new patch
+
+The patches in this repository may not fix all the specification issues. Should you discover
+a new specification bug, here is the process to propose changes:
+
+1. Edit the `resources/slack-openapi-patched.json` file as you wish
+2. Update the SDK (see above) and test the resulting code
+3. When satisfied with the result, run this command:
+
+```bash
+./bin/slack-api-client-generator spec:generate-patch
+```
+
+It will create a new version of the cumulative patch in `resources`.

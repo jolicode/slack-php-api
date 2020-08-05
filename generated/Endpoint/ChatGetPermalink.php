@@ -23,7 +23,7 @@ class ChatGetPermalink extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @param array $queryParameters {
      *
      *     @var string $token Authentication token. Requires scope: `none`
-     *     @var float $message_ts A message's `ts` value, uniquely identifying it within a channel
+     *     @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
      *     @var string $channel The ID of the conversation or channel containing the message
      * }
      */
@@ -56,10 +56,10 @@ class ChatGetPermalink extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['token', 'message_ts', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['message_ts', 'channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('message_ts', ['float']);
+        $optionsResolver->setAllowedTypes('message_ts', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

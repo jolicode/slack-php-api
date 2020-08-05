@@ -64,7 +64,7 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['name', 'file_comment', 'timestamp', 'file', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);

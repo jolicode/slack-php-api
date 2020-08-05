@@ -16,13 +16,787 @@ namespace JoliCode\Slack\Api;
 class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
 {
     /**
+     * Approve an app for installation on a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id
+     *     @var string $app_id the id of the app to approve
+     *     @var string $request_id The id of the request to approve.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.apps:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200|\JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminAppsApprove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsApprove($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List approved apps for an org or workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var string $token Authentication token. Requires scope: `admin.apps:read`
+     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *     @var string $team_id
+     *     @var string $enterprise_id
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200|\JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminAppsApprovedList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsApprovedList($queryParameters), $fetch);
+    }
+
+    /**
+     * List app requests for a team/workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var string $token Authentication token. Requires scope: `admin.apps:read`
+     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *     @var string $team_id
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200|\JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminAppsRequestsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsRequestsList($queryParameters), $fetch);
+    }
+
+    /**
+     * Restrict an app for installation on a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id
+     *     @var string $app_id the id of the app to restrict
+     *     @var string $request_id The id of the request to restrict.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.apps:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200|\JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminAppsRestrict(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsRestrict($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List restricted apps for an org or workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var string $token Authentication token. Requires scope: `admin.apps:read`
+     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *     @var string $team_id
+     *     @var string $enterprise_id
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200|\JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminAppsRestrictedList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsRestrictedList($queryParameters), $fetch);
+    }
+
+    /**
+     * Set the workspaces in an Enterprise grid org that connect to a channel.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $channel_id the encoded `channel_id` to add or remove to workspaces
+     *     @var bool $org_channel True if channel has to be converted to an org channel
+     *     @var string $team_id The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.
+     *     @var string $target_team_ids The list of workspaces to which the channel should be shared. Not required if the channel is being shared orgwide. Example: `['T1234', 'T5678']`
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.conversations:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminConversationsSetTeams(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsSetTeams($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Add an emoji.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $url The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best.
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *     @var string $name The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200|\JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminEmojiAdd(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiAdd($formParameters), $fetch);
+    }
+
+    /**
+     * Add an emoji alias.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *     @var string $name The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     *     @var string $alias_for The alias of the emoji.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200|\JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminEmojiAddAlias(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiAddAlias($formParameters), $fetch);
+    }
+
+    /**
+     * List emoji for an Enterprise Grid organization.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
+     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200|\JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminEmojiList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiList($queryParameters), $fetch);
+    }
+
+    /**
+     * Remove an emoji across an Enterprise Grid organization.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *     @var string $name The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200|\JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminEmojiRemove(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiRemove($formParameters), $fetch);
+    }
+
+    /**
+     * Rename an emoji.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $new_name the new name of the emoji
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *     @var string $name The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200|\JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminEmojiRename(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiRename($formParameters), $fetch);
+    }
+
+    /**
+     * Approve a workspace invite request.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id ID for the workspace where the invite request was made
+     *     @var string $invite_request_id ID of the request to invite.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.invites:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminInviteRequestsApprove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsApprove($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List all approved workspace invite requests.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Value of the `next_cursor` field sent as part of the previous API response
+     *     @var int $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive
+     *     @var string $team_id ID for the workspace where the invite requests were made.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.invites:read`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminInviteRequestsApprovedList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsApprovedList($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List all denied workspace invite requests.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Value of the `next_cursor` field sent as part of the previous api response
+     *     @var int $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive
+     *     @var string $team_id ID for the workspace where the invite requests were made.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.invites:read`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminInviteRequestsDeniedList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsDeniedList($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Deny a workspace invite request.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id ID for the workspace where the invite request was made
+     *     @var string $invite_request_id ID of the request to invite.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.invites:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminInviteRequestsDeny(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsDeny($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List all pending workspace invite requests.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor Value of the `next_cursor` field sent as part of the previous API response
+     *     @var int $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive
+     *     @var string $team_id ID for the workspace where the invite requests were made.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.invites:read`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminInviteRequestsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsList($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List all of the admins on a given workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
+     *     @var int $limit the maximum number of items to return
+     *     @var string $team_id
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200|\JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsAdminsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsAdminsList($queryParameters), $fetch);
+    }
+
+    /**
+     * Create an Enterprise team.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_domain team domain (for example, slacksoftballteam)
+     *     @var string $team_description description for the team
+     *     @var string $team_name team name (for example, Slack Softball Team)
+     *     @var string $team_discoverability Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsCreate($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List all teams on an Enterprise organization.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var int $limit The maximum number of items to return. Must be between 1 - 100 both inclusive.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200|\JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsList($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List all of the owners on a given workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
+     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *     @var string $team_id
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200|\JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsOwnersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsOwnersList($queryParameters), $fetch);
+    }
+
+    /**
+     * Fetch information about settings in a workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $team_id
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsSettingsInfo(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsInfo($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Set the default channels of a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $channel_ids an array of channel IDs
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *     @var string $team_id ID for the workspace to set the default channel for.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsSettingsSetDefaultChannels(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetDefaultChannels($formParameters), $fetch);
+    }
+
+    /**
+     * Set the description of a given workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id ID for the workspace to set the description for
+     *     @var string $description The new description for the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsSettingsSetDescription(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetDescription($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * An API method that allows admins to set the discoverability of a given workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id the ID of the workspace to set discoverability on
+     *     @var string $discoverability This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsSettingsSetDiscoverability(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetDiscoverability($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Sets the icon of a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *     @var string $image_url Image URL for the icon
+     *     @var string $team_id ID for the workspace to set the icon for.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsSettingsSetIcon(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetIcon($formParameters), $fetch);
+    }
+
+    /**
+     * Set the name of a given workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $team_id ID for the workspace to set the name for
+     *     @var string $name The new name of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminTeamsSettingsSetName(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetName($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Add an Enterprise user to a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $user_id the ID of the user to add to the workspace
+     *     @var string $channel_ids comma separated values of channel IDs to add user in the new workspace
+     *     @var string $team_id the ID (`T1234`) of the workspace
+     *     @var bool $is_ultra_restricted true if user should be added to the workspace as a single-channel guest
+     *     @var bool $is_restricted True if user should be added to the workspace as a guest.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersAssign(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersAssign($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Invite a user to a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $channel_ids A comma-separated list of `channel_id`s for this user to join. At least one channel is required.
+     *     @var string $team_id the ID (`T1234`) of the workspace
+     *     @var string $real_name full name of the user
+     *     @var bool $is_ultra_restricted Is this user a single channel guest user? (default: false)
+     *     @var string $custom_message an optional message to send to the user in the invite email
+     *     @var bool $is_restricted Is this user a multi-channel guest user? (default: false)
+     *     @var string $guest_expiration_ts Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
+     *     @var string $email the email address of the person to invite
+     *     @var bool $resend Allow this invite to be resent in the future if a user has not signed up yet. (default: false)
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200|\JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersInvite($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * List users on a workspace.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *     @var int $limit Limit for how many users to be retrieved per page
+     *     @var string $team_id The ID (`T1234`) of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:read`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersListGetResponse200|\JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersList($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Remove a user from a workspace.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $user_id the ID of the user to remove
+     *     @var string $team_id The ID (`T1234`) of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200|\JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersRemove($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Wipes all valid sessions on all devices for a given user.
+     *
+     * @param array $formParameters {
+     *
+     *     @var bool $mobile_only Only expire mobile sessions (default: false)
+     *     @var string $user_id The ID of the user to wipe sessions for
+     *     @var bool $web_only Only expire web sessions (default: false)
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function adminUsersSessionReset(string $fetch = self::FETCH_OBJECT)
+    public function adminUsersSessionReset(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSessionReset(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSessionReset($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Set an existing guest, regular user, or owner to be an admin user.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $user_id the ID of the user to designate as an admin
+     *     @var string $team_id The ID (`T1234`) of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersSetAdmin(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetAdmin($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Set an expiration for a guest user.
+     *
+     * @param array $formParameters {
+     *
+     *     @var int $expiration_ts timestamp when guest account should be disabled
+     *     @var string $user_id the ID of the user to set an expiration for
+     *     @var string $team_id The ID (`T1234`) of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersSetExpiration(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetExpiration($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Set an existing guest, regular user, or admin user to be a workspace owner.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $user_id id of the user to promote to owner
+     *     @var string $team_id The ID (`T1234`) of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersSetOwner(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetOwner($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Set an existing guest user, admin user, or owner to be a regular user.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $user_id the ID of the user to designate as a regular user
+     *     @var string $team_id The ID (`T1234`) of the workspace.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin.users:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function adminUsersSetRegular(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetRegular($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -192,13 +966,20 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Checks authentication & identity.
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\AuthTestGetResponse200|\JoliCode\Slack\Api\Model\AuthTestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function authTest(string $fetch = self::FETCH_OBJECT)
+    public function authTest(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AuthTest(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\AuthTest($headerParameters), $fetch);
     }
 
     /**
@@ -489,6 +1270,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
+     *     @var bool $name_tagging if it is true, treat this like a message and not an unescaped thing
      *     @var string $purpose The new purpose
      *     @var string $channel Channel to set the purpose of
      * }
@@ -577,13 +1359,27 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Deletes a pending scheduled message from the queue.
+     *
+     * @param array $formParameters {
+     *
+     *     @var bool $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
+     *     @var string $channel The channel the scheduled_message is posting to
+     *     @var string $scheduled_message_id `scheduled_message_id` returned from call to chat.scheduleMessage
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `chat:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function chatDeleteScheduledMessage(string $fetch = self::FETCH_OBJECT)
+    public function chatDeleteScheduledMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ChatDeleteScheduledMessage(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ChatDeleteScheduledMessage($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -592,7 +1388,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @param array $queryParameters {
      *
      *     @var string $token Authentication token. Requires scope: `none`
-     *     @var float $message_ts A message's `ts` value, uniquely identifying it within a channel
+     *     @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
      *     @var string $channel The ID of the conversation or channel containing the message
      * }
      *
@@ -633,14 +1429,17 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
+     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var string $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $as_user Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false.
-     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
-     *     @var string $user `id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.
      *     @var bool $link_names find and link channel names and usernames
+     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
+     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
+     *     @var string $user `id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.
+     *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
+     *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name.
      * }
      *
@@ -665,18 +1464,18 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
-     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead. Provide no more than 40,000 characters or [risk truncation](/changelog/2018-04-truncating-really-long-messages).
+     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
      *     @var bool $unfurl_media pass false to disable unfurling of media content
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
+     *     @var string $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
      *     @var bool $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
-     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
      *     @var bool $link_names find and link channel names and usernames
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
      *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      * }
      *
@@ -703,11 +1502,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
-     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead. Provide no more than 40,000 characters or [risk truncation](/changelog/2018-04-truncating-really-long-messages).
+     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
      *     @var bool $link_names find and link channel names and usernames
      *     @var bool $unfurl_media pass false to disable unfurling of media content
-     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
+     *     @var string $parse Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).
+     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [chat.postMessage](chat.postMessage#authorship).
      *     @var string $post_at unix EPOCH timestamp of time in future to send the message
      *     @var string $channel Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
@@ -787,11 +1586,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
-     *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
+     *     @var string $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var string $ts timestamp of the message to be updated
-     *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
-     *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
-     *     @var bool $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
+     *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. See [below](#formatting).
+     *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
+     *     @var string $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
      *     @var string $channel Channel containing the message to be updated.
      * }
      *
@@ -858,8 +1657,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var string $user_ids **Required** for workspace apps. A list of between 1 and 30 human users that will be added to the newly-created conversation. This argument has no effect when used by classic Slack apps.
      *     @var string $name Name of the public or private channel to create
+     *     @var string $user_ids **Required** for workspace apps. A list of between 1 and 30 human users that will be added to the newly-created conversation. This argument has no effect when used by classic Slack apps.
      *     @var bool $is_private Create a private channel instead of a public one
      * }
      *
@@ -925,7 +1724,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var string $users A comma separated list of user IDs. Up to 30 users may be listed.
+     *     @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
      *     @var string $channel The ID of the public or private channel to invite user(s) to.
      * }
      *
@@ -1191,33 +1990,60 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Open a dialog with a user.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $trigger_id exchange a trigger to post to the user
+     *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DialogOpenGetResponse200|\JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dialogOpen(string $fetch = self::FETCH_OBJECT)
+    public function dialogOpen(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DialogOpen(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DialogOpen($queryParameters, $headerParameters), $fetch);
     }
 
     /**
+     * Ends the current user's Do Not Disturb session immediately.
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `dnd:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndEndDndPostResponse200|\JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndEndDnd(string $fetch = self::FETCH_OBJECT)
+    public function dndEndDnd(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndDnd(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndDnd($headerParameters), $fetch);
     }
 
     /**
+     * Ends the current user's snooze mode immediately.
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `dnd:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndEndSnooze(string $fetch = self::FETCH_OBJECT)
+    public function dndEndSnooze(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndSnooze(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndEndSnooze($headerParameters), $fetch);
     }
 
     /**
@@ -1239,13 +2065,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Turns on Do Not Disturb mode for the current user, or changes its duration.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $num_minutes number of minutes, from now, to snooze until
+     *     @var string $token Authentication token. Requires scope: `dnd:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function dndSetSnooze(string $fetch = self::FETCH_OBJECT)
+    public function dndSetSnooze(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze($formParameters), $fetch);
     }
 
     /**
@@ -1361,6 +2195,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $ts_from filter files created after this timestamp (inclusive)
      *     @var string $token Authentication token. Requires scope: `files:read`
      *     @var string $user filter files created by a single user
+     *     @var bool $show_files_hidden_by_limit show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit
      *     @var string $page
      *     @var string $types Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
      * }
@@ -1372,6 +2207,133 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     public function filesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesList($queryParameters), $fetch);
+    }
+
+    /**
+     * Adds a file from a remote service.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $title title of the file being shared
+     *     @var string $filetype type of file
+     *     @var string $token Authentication token. Requires scope: `remote_files:write`
+     *     @var string $indexable_file_contents A text file (txt, pdf, doc, etc.) containing textual search terms that are used to improve discovery of the remote file.
+     *     @var string $preview_image preview of the document via `multipart/form-data`
+     *     @var string $external_id creator defined GUID for the file
+     *     @var string $external_url URL of the remote file.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200|\JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesRemoteAdd(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteAdd($formParameters), $fetch);
+    }
+
+    /**
+     * Retrieve information about a remote file added to Slack.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `remote_files:read`
+     *     @var string $external_id creator defined GUID for the file
+     *     @var string $file Specify a file by providing its ID.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200|\JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesRemoteInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteInfo($queryParameters), $fetch);
+    }
+
+    /**
+     * Retrieve information about a remote file added to Slack.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var float $ts_to filter files created before this timestamp (inclusive)
+     *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     *     @var float $ts_from filter files created after this timestamp (inclusive)
+     *     @var string $token Authentication token. Requires scope: `remote_files:read`
+     *     @var int $limit the maximum number of items to return
+     *     @var string $channel Filter files appearing in a specific channel, indicated by its ID.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200|\JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesRemoteList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteList($queryParameters), $fetch);
+    }
+
+    /**
+     * Remove a remote file.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `remote_files:write`
+     *     @var string $external_id creator defined GUID for the file
+     *     @var string $file Specify a file by providing its ID.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200|\JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesRemoteRemove(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteRemove($formParameters), $fetch);
+    }
+
+    /**
+     * Share a remote file into a channel.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $channels comma-separated list of channel IDs where the file will be shared
+     *     @var string $token Authentication token. Requires scope: `remote_files:share`
+     *     @var string $external_id creator defined GUID for the file
+     *     @var string $file Specify a file by providing its ID.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200|\JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesRemoteShare(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteShare($queryParameters), $fetch);
+    }
+
+    /**
+     * Updates an existing remote file.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $title title of the file being shared
+     *     @var string $filetype type of file
+     *     @var string $token Authentication token. Requires scope: `remote_files:write`
+     *     @var string $file specify a file by providing its ID
+     *     @var string $indexable_file_contents file containing contents that can be used to improve searchability for the remote file
+     *     @var string $preview_image preview of the document via `multipart/form-data`
+     *     @var string $external_id creator defined GUID for the file
+     *     @var string $external_url URL of the remote file.
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200|\JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesRemoteUpdate(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteUpdate($formParameters), $fetch);
     }
 
     /**
@@ -1621,11 +2583,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var bool $exclude_members Exclude the `members` from each `group`
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `groups:read`
-     *     @var bool $exclude_archived don't return archived private channels
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
+     *     @var bool $exclude_archived Don't return archived private channels.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -1794,13 +2756,25 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Close a direct message channel.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $channel Direct message channel to close.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `im:write`
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\ImClosePostResponse200|\JoliCode\Slack\Api\Model\ImClosePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function imClose(string $fetch = self::FETCH_OBJECT)
+    public function imClose(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ImClose(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ImClose($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1912,13 +2886,22 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * For Enterprise Grid workspaces, map local user IDs to global user IDs.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `tokens.basic`
+     *     @var bool $to_old Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
+     *     @var string $users A comma-separated list of user ids, up to 400 per request
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function migrationExchange(string $fetch = self::FETCH_OBJECT)
+    public function migrationExchange(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\MigrationExchange(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\MigrationExchange($queryParameters), $fetch);
     }
 
     /**
@@ -2055,10 +3038,11 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      * @param array $queryParameters {
      *
      *     @var string $code the `code` param returned via the OAuth callback
+     *     @var string $token Authentication token. Requires scope: `none`
      *     @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     *     @var bool $single_channel Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
      *     @var string $client_id issued when you created your application
-     *     @var string $client_secret issued when you created your application
-     *     @var bool $single_channel Request the user to add your app only to a single channel.
+     *     @var string $client_secret Issued when you created your application.
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2092,13 +3076,31 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Exchanges a temporary OAuth verifier code for an access token.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $client_secret issued when you created your application
+     *     @var string $code the `code` param returned via the OAuth callback
+     *     @var string $client_id issued when you created your application
+     *     @var string $redirect_uri This must match the originally submitted URI (if one was sent).
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200|\JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function oauthV2Access(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\OauthV2Access($queryParameters), $fetch);
+    }
+
+    /**
      * Pins an item to a channel.
      *
      * @param array $formParameters {
      *
-     *     @var string $file_comment file comment to pin
      *     @var string $timestamp timestamp of the message to pin
-     *     @var string $file file to pin
      *     @var string $channel Channel to pin the item in.
      * }
      *
@@ -2164,10 +3166,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $formParameters {
      *
-     *     @var string $name reaction (emoji) name
-     *     @var string $file_comment File comment to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
      *     @var string $timestamp timestamp of the message to add reaction to
-     *     @var string $file File to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
+     *     @var string $name reaction (emoji) name
      *     @var string $channel Channel where the message to add reaction to was posted.
      * }
      *
@@ -2212,13 +3212,13 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $count
+     *     @var int $count
      *     @var bool $full if true always return the complete reaction list
      *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `reactions:read`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $user Show reactions made by this user. Defaults to the authed user.
-     *     @var string $page
+     *     @var int $page
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2386,10 +3386,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
      *     @var string $query search query
      *     @var string $sort return matches sorted by either `score` or `timestamp`
-     *     @var string $count Pass the number of results you want per "page". Maximum of `100`.
+     *     @var int $count Pass the number of results you want per "page". Maximum of `100`.
      *     @var string $token Authentication token. Requires scope: `search:read`
      *     @var bool $highlight pass a value of `true` to enable query highlight markers (see below)
-     *     @var string $page
+     *     @var int $page
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2408,8 +3408,8 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      *     @var string $file_comment file comment to add star to
      *     @var string $timestamp timestamp of the message to add star to
-     *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
-     *     @var string $file File to add star to.
+     *     @var string $file file to add star to
+     *     @var string $channel Channel to add star to, or channel where the message to add star to was posted (used with `timestamp`).
      * }
      *
      * @param array $headerParameters {
@@ -2477,10 +3477,10 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $count
+     *     @var int $count
      *     @var string $token Authentication token. Requires scope: `admin`
-     *     @var string $page
-     *     @var int $before End of time range of logs to include in results (inclusive).
+     *     @var int $page
+     *     @var string $before End of time range of logs to include in results (inclusive).
      * }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -2493,13 +3493,21 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     }
 
     /**
+     * Gets billable users information for the current team.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin`
+     *     @var string $user A user to retrieve the billable information for. Defaults to all users.
+     * }
+     *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
      * @return \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function teamBillableInfo(string $fetch = self::FETCH_OBJECT)
+    public function teamBillableInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\TeamBillableInfo(), $fetch);
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\TeamBillableInfo($queryParameters), $fetch);
     }
 
     /**
@@ -2525,7 +3533,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $count
+     *     @var int $count
      *     @var string $change_type Filter logs with this change type. Defaults to all logs.
      *     @var int $app_id Filter logs to this Slack app. Defaults to all logs.
      *     @var string $token Authentication token. Requires scope: `admin`
@@ -2956,6 +3964,101 @@ class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
     public function usersSetPresence(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\UsersSetPresence($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Open a view for a user.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $trigger_id exchange a trigger to post to the user
+     *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ViewsOpenGetResponse200|\JoliCode\Slack\Api\Model\ViewsOpenGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function viewsOpen(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ViewsOpen($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Publish a static view for a User.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $hash a string that represents view state to protect against possible race conditions
+     *     @var string $user_id `id` of the user you want publish a view to
+     *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ViewsPublishGetResponse200|\JoliCode\Slack\Api\Model\ViewsPublishGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function viewsPublish(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPublish($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Push a view onto the stack of a root view.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $trigger_id exchange a trigger to post to the user
+     *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ViewsPushGetResponse200|\JoliCode\Slack\Api\Model\ViewsPushGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function viewsPush(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPush($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Update an existing view.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $hash a string that represents view state to protect against possible race conditions
+     *     @var string $view_id A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.
+     *     @var string $external_id A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.
+     *     @var string $view A [view payload](/reference/surfaces/views) This must be a JSON-encoded string.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ViewsUpdateGetResponse200|\JoliCode\Slack\Api\Model\ViewsUpdateGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function viewsUpdate(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executePsr7Endpoint(new \JoliCode\Slack\Api\Endpoint\ViewsUpdate($queryParameters, $headerParameters), $fetch);
     }
 
     public static function create($httpClient = null)

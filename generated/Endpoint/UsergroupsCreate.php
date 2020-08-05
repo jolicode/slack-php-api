@@ -64,7 +64,7 @@ class UsergroupsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['handle', 'description', 'channels', 'include_count', 'name']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('handle', ['string']);
         $optionsResolver->setAllowedTypes('description', ['string']);

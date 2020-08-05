@@ -18,27 +18,15 @@ class OauthAccessGetResponse200IncomingWebhook extends \ArrayObject
     /**
      * @var string|null
      */
-    protected $url;
-    /**
-     * @var string|null
-     */
     protected $channel;
     /**
      * @var string|null
      */
     protected $configurationUrl;
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
-
-    public function setUrl(?string $url): self
-    {
-        $this->url = $url;
-
-        return $this;
-    }
+    /**
+     * @var string|null
+     */
+    protected $url;
 
     public function getChannel(): ?string
     {
@@ -60,6 +48,18 @@ class OauthAccessGetResponse200IncomingWebhook extends \ArrayObject
     public function setConfigurationUrl(?string $configurationUrl): self
     {
         $this->configurationUrl = $configurationUrl;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): self
+    {
+        $this->url = $url;
 
         return $this;
     }

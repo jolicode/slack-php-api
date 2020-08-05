@@ -61,7 +61,7 @@ class ChannelsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['topic', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['topic', 'channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('topic', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);

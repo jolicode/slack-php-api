@@ -13,12 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class OauthTokenGetResponse200
+class OauthTokenGetResponse200 extends \ArrayObject
 {
-    /**
-     * @var bool|null
-     */
-    protected $ok;
     /**
      * @var string|null
      */
@@ -40,6 +36,10 @@ class OauthTokenGetResponse200
      */
     protected $installerUserId;
     /**
+     * @var bool|null
+     */
+    protected $ok;
+    /**
      * @var OauthTokenGetResponse200PermissionsItem[]|null
      */
     protected $permissions;
@@ -59,18 +59,6 @@ class OauthTokenGetResponse200
      * @var string|null
      */
     protected $tokenType;
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->ok = $ok;
-
-        return $this;
-    }
 
     public function getAccessToken(): ?string
     {
@@ -128,6 +116,18 @@ class OauthTokenGetResponse200
     public function setInstallerUserId(?string $installerUserId): self
     {
         $this->installerUserId = $installerUserId;
+
+        return $this;
+    }
+
+    public function getOk(): ?bool
+    {
+        return $this->ok;
+    }
+
+    public function setOk(?bool $ok): self
+    {
+        $this->ok = $ok;
 
         return $this;
     }

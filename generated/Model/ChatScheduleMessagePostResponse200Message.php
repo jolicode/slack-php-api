@@ -24,9 +24,17 @@ class ChatScheduleMessagePostResponse200Message
      */
     protected $botId;
     /**
+     * @var ObjsBotProfile|null
+     */
+    protected $botProfile;
+    /**
      * @var string|null
      */
     protected $subtype;
+    /**
+     * @var string|null
+     */
+    protected $team;
     /**
      * @var string|null
      */
@@ -74,6 +82,18 @@ class ChatScheduleMessagePostResponse200Message
         return $this;
     }
 
+    public function getBotProfile(): ?ObjsBotProfile
+    {
+        return $this->botProfile;
+    }
+
+    public function setBotProfile(?ObjsBotProfile $botProfile): self
+    {
+        $this->botProfile = $botProfile;
+
+        return $this;
+    }
+
     public function getSubtype(): ?string
     {
         return $this->subtype;
@@ -82,6 +102,18 @@ class ChatScheduleMessagePostResponse200Message
     public function setSubtype(?string $subtype): self
     {
         $this->subtype = $subtype;
+
+        return $this;
+    }
+
+    public function getTeam(): ?string
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?string $team): self
+    {
+        $this->team = $team;
 
         return $this;
     }

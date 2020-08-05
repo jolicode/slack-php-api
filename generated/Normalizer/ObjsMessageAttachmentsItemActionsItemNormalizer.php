@@ -58,6 +58,11 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
         } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
             $object->setName(null);
         }
+        if (property_exists($data, 'style') && null !== $data->{'style'}) {
+            $object->setStyle($data->{'style'});
+        } elseif (property_exists($data, 'style') && null === $data->{'style'}) {
+            $object->setStyle(null);
+        }
         if (property_exists($data, 'text') && null !== $data->{'text'}) {
             $object->setText($data->{'text'});
         } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
@@ -72,11 +77,6 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
             $object->setValue($data->{'value'});
         } elseif (property_exists($data, 'value') && null === $data->{'value'}) {
             $object->setValue(null);
-        }
-        if (property_exists($data, 'style') && null !== $data->{'style'}) {
-            $object->setStyle($data->{'style'});
-        } elseif (property_exists($data, 'style') && null === $data->{'style'}) {
-            $object->setStyle(null);
         }
 
         return $object;
@@ -95,6 +95,11 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
         } else {
             $data->{'name'} = null;
         }
+        if (null !== $object->getStyle()) {
+            $data->{'style'} = $object->getStyle();
+        } else {
+            $data->{'style'} = null;
+        }
         if (null !== $object->getText()) {
             $data->{'text'} = $object->getText();
         } else {
@@ -109,11 +114,6 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
             $data->{'value'} = $object->getValue();
         } else {
             $data->{'value'} = null;
-        }
-        if (null !== $object->getStyle()) {
-            $data->{'style'} = $object->getStyle();
-        } else {
-            $data->{'style'} = null;
         }
 
         return $data;

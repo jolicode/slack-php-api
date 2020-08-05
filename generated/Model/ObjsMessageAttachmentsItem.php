@@ -16,33 +16,9 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItem extends \ArrayObject
 {
     /**
-     * @var int|null
+     * @var ObjsMessageAttachmentsItemActionsItem[]|null
      */
-    protected $id;
-    /**
-     * @var string|null
-     */
-    protected $callbackId;
-    /**
-     * @var string|null
-     */
-    protected $fallback;
-    /**
-     * @var string|null
-     */
-    protected $color;
-    /**
-     * @var string|null
-     */
-    protected $pretext;
-    /**
-     * @var string|null
-     */
-    protected $authorName;
-    /**
-     * @var string|null
-     */
-    protected $authorLink;
+    protected $actions;
     /**
      * @var string|null
      */
@@ -50,31 +26,27 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     /**
      * @var string|null
      */
-    protected $title;
+    protected $authorLink;
     /**
      * @var string|null
      */
-    protected $titleLink;
+    protected $authorName;
     /**
      * @var string|null
      */
-    protected $text;
+    protected $callbackId;
+    /**
+     * @var string|null
+     */
+    protected $color;
+    /**
+     * @var string|null
+     */
+    protected $fallback;
     /**
      * @var ObjsMessageAttachmentsItemFieldsItem[]|null
      */
     protected $fields;
-    /**
-     * @var ObjsMessageAttachmentsItemActionsItem[]|null
-     */
-    protected $actions;
-    /**
-     * @var string|null
-     */
-    protected $imageUrl;
-    /**
-     * @var string|null
-     */
-    protected $thumbUrl;
     /**
      * @var string|null
      */
@@ -84,159 +56,37 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $footerIcon;
     /**
+     * @var int|null
+     */
+    protected $id;
+    /**
+     * @var string|null
+     */
+    protected $imageUrl;
+    /**
+     * @var string|null
+     */
+    protected $pretext;
+    /**
+     * @var string|null
+     */
+    protected $text;
+    /**
+     * @var string|null
+     */
+    protected $thumbUrl;
+    /**
+     * @var string|null
+     */
+    protected $title;
+    /**
+     * @var string|null
+     */
+    protected $titleLink;
+    /**
      * @var float|string|null
      */
     protected $ts;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function setId(?int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function getCallbackId(): ?string
-    {
-        return $this->callbackId;
-    }
-
-    public function setCallbackId(?string $callbackId): self
-    {
-        $this->callbackId = $callbackId;
-
-        return $this;
-    }
-
-    public function getFallback(): ?string
-    {
-        return $this->fallback;
-    }
-
-    public function setFallback(?string $fallback): self
-    {
-        $this->fallback = $fallback;
-
-        return $this;
-    }
-
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(?string $color): self
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    public function getPretext(): ?string
-    {
-        return $this->pretext;
-    }
-
-    public function setPretext(?string $pretext): self
-    {
-        $this->pretext = $pretext;
-
-        return $this;
-    }
-
-    public function getAuthorName(): ?string
-    {
-        return $this->authorName;
-    }
-
-    public function setAuthorName(?string $authorName): self
-    {
-        $this->authorName = $authorName;
-
-        return $this;
-    }
-
-    public function getAuthorLink(): ?string
-    {
-        return $this->authorLink;
-    }
-
-    public function setAuthorLink(?string $authorLink): self
-    {
-        $this->authorLink = $authorLink;
-
-        return $this;
-    }
-
-    public function getAuthorIcon(): ?string
-    {
-        return $this->authorIcon;
-    }
-
-    public function setAuthorIcon(?string $authorIcon): self
-    {
-        $this->authorIcon = $authorIcon;
-
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getTitleLink(): ?string
-    {
-        return $this->titleLink;
-    }
-
-    public function setTitleLink(?string $titleLink): self
-    {
-        $this->titleLink = $titleLink;
-
-        return $this;
-    }
-
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    public function setText(?string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    /**
-     * @return ObjsMessageAttachmentsItemFieldsItem[]|null
-     */
-    public function getFields(): ?array
-    {
-        return $this->fields;
-    }
-
-    /**
-     * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
-     */
-    public function setFields(?array $fields): self
-    {
-        $this->fields = $fields;
-
-        return $this;
-    }
 
     /**
      * @return ObjsMessageAttachmentsItemActionsItem[]|null
@@ -256,26 +106,92 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
-    public function getImageUrl(): ?string
+    public function getAuthorIcon(): ?string
     {
-        return $this->imageUrl;
+        return $this->authorIcon;
     }
 
-    public function setImageUrl(?string $imageUrl): self
+    public function setAuthorIcon(?string $authorIcon): self
     {
-        $this->imageUrl = $imageUrl;
+        $this->authorIcon = $authorIcon;
 
         return $this;
     }
 
-    public function getThumbUrl(): ?string
+    public function getAuthorLink(): ?string
     {
-        return $this->thumbUrl;
+        return $this->authorLink;
     }
 
-    public function setThumbUrl(?string $thumbUrl): self
+    public function setAuthorLink(?string $authorLink): self
     {
-        $this->thumbUrl = $thumbUrl;
+        $this->authorLink = $authorLink;
+
+        return $this;
+    }
+
+    public function getAuthorName(): ?string
+    {
+        return $this->authorName;
+    }
+
+    public function setAuthorName(?string $authorName): self
+    {
+        $this->authorName = $authorName;
+
+        return $this;
+    }
+
+    public function getCallbackId(): ?string
+    {
+        return $this->callbackId;
+    }
+
+    public function setCallbackId(?string $callbackId): self
+    {
+        $this->callbackId = $callbackId;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getFallback(): ?string
+    {
+        return $this->fallback;
+    }
+
+    public function setFallback(?string $fallback): self
+    {
+        $this->fallback = $fallback;
+
+        return $this;
+    }
+
+    /**
+     * @return ObjsMessageAttachmentsItemFieldsItem[]|null
+     */
+    public function getFields(): ?array
+    {
+        return $this->fields;
+    }
+
+    /**
+     * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
+     */
+    public function setFields(?array $fields): self
+    {
+        $this->fields = $fields;
 
         return $this;
     }
@@ -300,6 +216,90 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     public function setFooterIcon(?string $footerIcon): self
     {
         $this->footerIcon = $footerIcon;
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(?string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    public function getPretext(): ?string
+    {
+        return $this->pretext;
+    }
+
+    public function setPretext(?string $pretext): self
+    {
+        $this->pretext = $pretext;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(?string $text): self
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    public function getThumbUrl(): ?string
+    {
+        return $this->thumbUrl;
+    }
+
+    public function setThumbUrl(?string $thumbUrl): self
+    {
+        $this->thumbUrl = $thumbUrl;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getTitleLink(): ?string
+    {
+        return $this->titleLink;
+    }
+
+    public function setTitleLink(?string $titleLink): self
+    {
+        $this->titleLink = $titleLink;
 
         return $this;
     }

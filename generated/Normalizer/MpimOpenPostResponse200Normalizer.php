@@ -53,6 +53,11 @@ class MpimOpenPostResponse200Normalizer implements DenormalizerInterface, Normal
         } elseif (property_exists($data, 'group') && null === $data->{'group'}) {
             $object->setGroup(null);
         }
+        if (property_exists($data, 'latest') && null !== $data->{'latest'}) {
+            $object->setLatest($data->{'latest'});
+        } elseif (property_exists($data, 'latest') && null === $data->{'latest'}) {
+            $object->setLatest(null);
+        }
         if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
             $object->setOk($data->{'ok'});
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
@@ -69,6 +74,11 @@ class MpimOpenPostResponse200Normalizer implements DenormalizerInterface, Normal
             $data->{'group'} = $this->normalizer->normalize($object->getGroup(), 'json', $context);
         } else {
             $data->{'group'} = null;
+        }
+        if (null !== $object->getLatest()) {
+            $data->{'latest'} = $object->getLatest();
+        } else {
+            $data->{'latest'} = null;
         }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();

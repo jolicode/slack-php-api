@@ -60,7 +60,7 @@ class MpimClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

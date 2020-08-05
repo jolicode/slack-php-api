@@ -60,7 +60,7 @@ class GroupsLeave extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

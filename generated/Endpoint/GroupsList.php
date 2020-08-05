@@ -22,11 +22,11 @@ class GroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var bool $exclude_members Exclude the `members` from each `group`
+     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
      *     @var string $token Authentication token. Requires scope: `groups:read`
-     *     @var bool $exclude_archived don't return archived private channels
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
+     *     @var bool $exclude_archived Don't return archived private channels.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -57,14 +57,14 @@ class GroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'exclude_members', 'token', 'exclude_archived', 'limit']);
+        $optionsResolver->setDefined(['exclude_members', 'cursor', 'token', 'limit', 'exclude_archived']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('exclude_members', ['bool']);
+        $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('exclude_archived', ['bool']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
+        $optionsResolver->setAllowedTypes('exclude_archived', ['bool']);
 
         return $optionsResolver;
     }

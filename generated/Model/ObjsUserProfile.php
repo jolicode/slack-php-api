@@ -44,17 +44,13 @@ class ObjsUserProfile
      */
     protected $email;
     /**
-     * @var mixed|mixed[]|null
+     * @var mixed[]|mixed|null
      */
     protected $fields;
     /**
      * @var string|null
      */
     protected $firstName;
-    /**
-     * @var string|null
-     */
-    protected $guestChannels;
     /**
      * @var int|null
      */
@@ -233,7 +229,7 @@ class ObjsUserProfile
     }
 
     /**
-     * @return mixed|mixed[]|null
+     * @return mixed[]|mixed|null
      */
     public function getFields()
     {
@@ -241,7 +237,7 @@ class ObjsUserProfile
     }
 
     /**
-     * @param mixed|mixed[]|null $fields
+     * @param mixed[]|mixed|null $fields
      */
     public function setFields($fields): self
     {
@@ -258,18 +254,6 @@ class ObjsUserProfile
     public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    public function getGuestChannels(): ?string
-    {
-        return $this->guestChannels;
-    }
-
-    public function setGuestChannels(?string $guestChannels): self
-    {
-        $this->guestChannels = $guestChannels;
 
         return $this;
     }

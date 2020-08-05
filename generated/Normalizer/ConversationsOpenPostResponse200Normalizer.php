@@ -54,7 +54,7 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
             $object->setAlreadyOpen(null);
         }
         if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\ObjsConversation', 'json', $context));
+            $object->setChannel($data->{'channel'});
         } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
             $object->setChannel(null);
         }
@@ -81,7 +81,7 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
             $data->{'already_open'} = null;
         }
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
+            $data->{'channel'} = $object->getChannel();
         } else {
             $data->{'channel'} = null;
         }

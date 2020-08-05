@@ -42,6 +42,10 @@ class ObjsChannel
     /**
      * @var bool|null
      */
+    protected $isFrozen;
+    /**
+     * @var bool|null
+     */
     protected $isGeneral;
     /**
      * @var bool|null
@@ -55,6 +59,10 @@ class ObjsChannel
      * @var bool|null
      */
     protected $isMpim;
+    /**
+     * @var bool|null
+     */
+    protected $isNonThreadable;
     /**
      * @var bool|null
      */
@@ -75,6 +83,10 @@ class ObjsChannel
      * @var bool|null
      */
     protected $isShared;
+    /**
+     * @var bool|null
+     */
+    protected $isThreadOnly;
     /**
      * @var string|null
      */
@@ -204,6 +216,18 @@ class ObjsChannel
         return $this;
     }
 
+    public function getIsFrozen(): ?bool
+    {
+        return $this->isFrozen;
+    }
+
+    public function setIsFrozen(?bool $isFrozen): self
+    {
+        $this->isFrozen = $isFrozen;
+
+        return $this;
+    }
+
     public function getIsGeneral(): ?bool
     {
         return $this->isGeneral;
@@ -248,6 +272,18 @@ class ObjsChannel
     public function setIsMpim(?bool $isMpim): self
     {
         $this->isMpim = $isMpim;
+
+        return $this;
+    }
+
+    public function getIsNonThreadable(): ?bool
+    {
+        return $this->isNonThreadable;
+    }
+
+    public function setIsNonThreadable(?bool $isNonThreadable): self
+    {
+        $this->isNonThreadable = $isNonThreadable;
 
         return $this;
     }
@@ -308,6 +344,18 @@ class ObjsChannel
     public function setIsShared(?bool $isShared): self
     {
         $this->isShared = $isShared;
+
+        return $this;
+    }
+
+    public function getIsThreadOnly(): ?bool
+    {
+        return $this->isThreadOnly;
+    }
+
+    public function setIsThreadOnly(?bool $isThreadOnly): self
+    {
+        $this->isThreadOnly = $isThreadOnly;
 
         return $this;
     }

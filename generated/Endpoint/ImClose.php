@@ -17,6 +17,25 @@ class ImClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
 {
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
+    /**
+     * Close a direct message channel.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $channel Direct message channel to close.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `im:write`
+     * }
+     */
+    public function __construct(array $formParameters = [], array $headerParameters = [])
+    {
+        $this->formParameters = $formParameters;
+        $this->headerParameters = $headerParameters;
+    }
+
     public function getMethod(): string
     {
         return 'POST';
@@ -29,12 +48,34 @@ class ImClose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getFormOptionsResolver();
+        $optionsResolver->setDefined(['channel']);
+        $optionsResolver->setRequired(['channel']);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('channel', ['string']);
+
+        return $optionsResolver;
+    }
+
+    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver->setDefined(['token']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+
+        return $optionsResolver;
     }
 
     /**

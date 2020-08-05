@@ -22,10 +22,10 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *
      * @param array $queryParameters {
      *
-     *     @var string $count
+     *     @var int $count
      *     @var string $token Authentication token. Requires scope: `admin`
-     *     @var string $page
-     *     @var int $before End of time range of logs to include in results (inclusive).
+     *     @var int $page
+     *     @var string $before End of time range of logs to include in results (inclusive).
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -59,10 +59,10 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(['count', 'token', 'page', 'before']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('count', ['string']);
+        $optionsResolver->setAllowedTypes('count', ['int']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('page', ['string']);
-        $optionsResolver->setAllowedTypes('before', ['int']);
+        $optionsResolver->setAllowedTypes('page', ['int']);
+        $optionsResolver->setAllowedTypes('before', ['string']);
 
         return $optionsResolver;
     }

@@ -26,6 +26,10 @@ class ObjsUserProfileShort
     /**
      * @var string|null
      */
+    protected $displayNameNormalized;
+    /**
+     * @var string|null
+     */
     protected $firstName;
     /**
      * @var string|null
@@ -47,6 +51,10 @@ class ObjsUserProfileShort
      * @var string|null
      */
     protected $realName;
+    /**
+     * @var string|null
+     */
+    protected $realNameNormalized;
     /**
      * @var string|null
      */
@@ -72,6 +80,18 @@ class ObjsUserProfileShort
     public function setDisplayName(?string $displayName): self
     {
         $this->displayName = $displayName;
+
+        return $this;
+    }
+
+    public function getDisplayNameNormalized(): ?string
+    {
+        return $this->displayNameNormalized;
+    }
+
+    public function setDisplayNameNormalized(?string $displayNameNormalized): self
+    {
+        $this->displayNameNormalized = $displayNameNormalized;
 
         return $this;
     }
@@ -144,6 +164,18 @@ class ObjsUserProfileShort
     public function setRealName(?string $realName): self
     {
         $this->realName = $realName;
+
+        return $this;
+    }
+
+    public function getRealNameNormalized(): ?string
+    {
+        return $this->realNameNormalized;
+    }
+
+    public function setRealNameNormalized(?string $realNameNormalized): self
+    {
+        $this->realNameNormalized = $realNameNormalized;
 
         return $this;
     }

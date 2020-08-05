@@ -48,35 +48,42 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\OauthTokenGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
-            $object->setOk(null);
-        }
+        $data = clone $data;
         if (property_exists($data, 'access_token') && null !== $data->{'access_token'}) {
             $object->setAccessToken($data->{'access_token'});
+            unset($data->{'access_token'});
         } elseif (property_exists($data, 'access_token') && null === $data->{'access_token'}) {
             $object->setAccessToken(null);
         }
         if (property_exists($data, 'app_id') && null !== $data->{'app_id'}) {
             $object->setAppId($data->{'app_id'});
+            unset($data->{'app_id'});
         } elseif (property_exists($data, 'app_id') && null === $data->{'app_id'}) {
             $object->setAppId(null);
         }
         if (property_exists($data, 'app_user_id') && null !== $data->{'app_user_id'}) {
             $object->setAppUserId($data->{'app_user_id'});
+            unset($data->{'app_user_id'});
         } elseif (property_exists($data, 'app_user_id') && null === $data->{'app_user_id'}) {
             $object->setAppUserId(null);
         }
         if (property_exists($data, 'authorizing_user_id') && null !== $data->{'authorizing_user_id'}) {
             $object->setAuthorizingUserId($data->{'authorizing_user_id'});
+            unset($data->{'authorizing_user_id'});
         } elseif (property_exists($data, 'authorizing_user_id') && null === $data->{'authorizing_user_id'}) {
             $object->setAuthorizingUserId(null);
         }
         if (property_exists($data, 'installer_user_id') && null !== $data->{'installer_user_id'}) {
             $object->setInstallerUserId($data->{'installer_user_id'});
+            unset($data->{'installer_user_id'});
         } elseif (property_exists($data, 'installer_user_id') && null === $data->{'installer_user_id'}) {
             $object->setInstallerUserId(null);
+        }
+        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
+            $object->setOk($data->{'ok'});
+            unset($data->{'ok'});
+        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+            $object->setOk(null);
         }
         if (property_exists($data, 'permissions') && null !== $data->{'permissions'}) {
             $values = [];
@@ -84,28 +91,38 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\OauthTokenGetResponse200PermissionsItem', 'json', $context);
             }
             $object->setPermissions($values);
+            unset($data->{'permissions'});
         } elseif (property_exists($data, 'permissions') && null === $data->{'permissions'}) {
             $object->setPermissions(null);
         }
         if (property_exists($data, 'single_channel_id') && null !== $data->{'single_channel_id'}) {
             $object->setSingleChannelId($data->{'single_channel_id'});
+            unset($data->{'single_channel_id'});
         } elseif (property_exists($data, 'single_channel_id') && null === $data->{'single_channel_id'}) {
             $object->setSingleChannelId(null);
         }
         if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
             $object->setTeamId($data->{'team_id'});
+            unset($data->{'team_id'});
         } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
             $object->setTeamId(null);
         }
         if (property_exists($data, 'team_name') && null !== $data->{'team_name'}) {
             $object->setTeamName($data->{'team_name'});
+            unset($data->{'team_name'});
         } elseif (property_exists($data, 'team_name') && null === $data->{'team_name'}) {
             $object->setTeamName(null);
         }
         if (property_exists($data, 'token_type') && null !== $data->{'token_type'}) {
             $object->setTokenType($data->{'token_type'});
+            unset($data->{'token_type'});
         } elseif (property_exists($data, 'token_type') && null === $data->{'token_type'}) {
             $object->setTokenType(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', $key)) {
+                $object[$key] = $value_1;
+            }
         }
 
         return $object;
@@ -114,11 +131,6 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
-        }
         if (null !== $object->getAccessToken()) {
             $data->{'access_token'} = $object->getAccessToken();
         } else {
@@ -143,6 +155,11 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data->{'installer_user_id'} = $object->getInstallerUserId();
         } else {
             $data->{'installer_user_id'} = null;
+        }
+        if (null !== $object->getOk()) {
+            $data->{'ok'} = $object->getOk();
+        } else {
+            $data->{'ok'} = null;
         }
         if (null !== $object->getPermissions()) {
             $values = [];
@@ -172,6 +189,11 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data->{'token_type'} = $object->getTokenType();
         } else {
             $data->{'token_type'} = null;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', $key)) {
+                $data->{$key} = $value_1;
+            }
         }
 
         return $data;

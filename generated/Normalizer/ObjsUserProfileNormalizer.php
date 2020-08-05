@@ -105,11 +105,6 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
         } elseif (property_exists($data, 'first_name') && null === $data->{'first_name'}) {
             $object->setFirstName(null);
         }
-        if (property_exists($data, 'guest_channels') && null !== $data->{'guest_channels'}) {
-            $object->setGuestChannels($data->{'guest_channels'});
-        } elseif (property_exists($data, 'guest_channels') && null === $data->{'guest_channels'}) {
-            $object->setGuestChannels(null);
-        }
         if (property_exists($data, 'guest_expiration_ts') && null !== $data->{'guest_expiration_ts'}) {
             $object->setGuestExpirationTs($data->{'guest_expiration_ts'});
         } elseif (property_exists($data, 'guest_expiration_ts') && null === $data->{'guest_expiration_ts'}) {
@@ -288,11 +283,6 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $data->{'first_name'} = $object->getFirstName();
         } else {
             $data->{'first_name'} = null;
-        }
-        if (null !== $object->getGuestChannels()) {
-            $data->{'guest_channels'} = $object->getGuestChannels();
-        } else {
-            $data->{'guest_channels'} = null;
         }
         if (null !== $object->getGuestExpirationTs()) {
             $data->{'guest_expiration_ts'} = $object->getGuestExpirationTs();

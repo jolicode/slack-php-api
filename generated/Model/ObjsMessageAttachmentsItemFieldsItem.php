@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItemFieldsItem
 {
     /**
+     * @var bool|null
+     */
+    protected $short;
+    /**
      * @var string|null
      */
     protected $title;
@@ -23,10 +27,18 @@ class ObjsMessageAttachmentsItemFieldsItem
      * @var string|null
      */
     protected $value;
-    /**
-     * @var bool|null
-     */
-    protected $short;
+
+    public function getShort(): ?bool
+    {
+        return $this->short;
+    }
+
+    public function setShort(?bool $short): self
+    {
+        $this->short = $short;
+
+        return $this;
+    }
 
     public function getTitle(): ?string
     {
@@ -48,18 +60,6 @@ class ObjsMessageAttachmentsItemFieldsItem
     public function setValue(?string $value): self
     {
         $this->value = $value;
-
-        return $this;
-    }
-
-    public function getShort(): ?bool
-    {
-        return $this->short;
-    }
-
-    public function setShort(?bool $short): self
-    {
-        $this->short = $short;
 
         return $this;
     }

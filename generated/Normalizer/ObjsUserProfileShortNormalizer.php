@@ -58,6 +58,11 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         } elseif (property_exists($data, 'display_name') && null === $data->{'display_name'}) {
             $object->setDisplayName(null);
         }
+        if (property_exists($data, 'display_name_normalized') && null !== $data->{'display_name_normalized'}) {
+            $object->setDisplayNameNormalized($data->{'display_name_normalized'});
+        } elseif (property_exists($data, 'display_name_normalized') && null === $data->{'display_name_normalized'}) {
+            $object->setDisplayNameNormalized(null);
+        }
         if (property_exists($data, 'first_name') && null !== $data->{'first_name'}) {
             $object->setFirstName($data->{'first_name'});
         } elseif (property_exists($data, 'first_name') && null === $data->{'first_name'}) {
@@ -88,6 +93,11 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         } elseif (property_exists($data, 'real_name') && null === $data->{'real_name'}) {
             $object->setRealName(null);
         }
+        if (property_exists($data, 'real_name_normalized') && null !== $data->{'real_name_normalized'}) {
+            $object->setRealNameNormalized($data->{'real_name_normalized'});
+        } elseif (property_exists($data, 'real_name_normalized') && null === $data->{'real_name_normalized'}) {
+            $object->setRealNameNormalized(null);
+        }
         if (property_exists($data, 'team') && null !== $data->{'team'}) {
             $object->setTeam($data->{'team'});
         } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
@@ -109,6 +119,11 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
             $data->{'display_name'} = $object->getDisplayName();
         } else {
             $data->{'display_name'} = null;
+        }
+        if (null !== $object->getDisplayNameNormalized()) {
+            $data->{'display_name_normalized'} = $object->getDisplayNameNormalized();
+        } else {
+            $data->{'display_name_normalized'} = null;
         }
         if (null !== $object->getFirstName()) {
             $data->{'first_name'} = $object->getFirstName();
@@ -139,6 +154,11 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
             $data->{'real_name'} = $object->getRealName();
         } else {
             $data->{'real_name'} = null;
+        }
+        if (null !== $object->getRealNameNormalized()) {
+            $data->{'real_name_normalized'} = $object->getRealNameNormalized();
+        } else {
+            $data->{'real_name_normalized'} = null;
         }
         if (null !== $object->getTeam()) {
             $data->{'team'} = $object->getTeam();

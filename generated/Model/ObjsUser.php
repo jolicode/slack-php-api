@@ -100,6 +100,10 @@ class ObjsUser
      */
     protected $teamProfile;
     /**
+     * @var string[]|null
+     */
+    protected $teams;
+    /**
      * @var string|null
      */
     protected $twoFactorType;
@@ -119,10 +123,6 @@ class ObjsUser
      * @var float|null
      */
     protected $updated;
-    /**
-     * @var string[]|null
-     */
-    protected $teams;
 
     public function getColor(): ?string
     {
@@ -376,6 +376,24 @@ class ObjsUser
         return $this;
     }
 
+    /**
+     * @return string[]|null
+     */
+    public function getTeams(): ?array
+    {
+        return $this->teams;
+    }
+
+    /**
+     * @param string[]|null $teams
+     */
+    public function setTeams(?array $teams): self
+    {
+        $this->teams = $teams;
+
+        return $this;
+    }
+
     public function getTwoFactorType(): ?string
     {
         return $this->twoFactorType;
@@ -438,24 +456,6 @@ class ObjsUser
     public function setUpdated(?float $updated): self
     {
         $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * @return string[]|null
-     */
-    public function getTeams(): ?array
-    {
-        return $this->teams;
-    }
-
-    /**
-     * @param string[]|null $teams
-     */
-    public function setTeams(?array $teams): self
-    {
-        $this->teams = $teams;
 
         return $this;
     }

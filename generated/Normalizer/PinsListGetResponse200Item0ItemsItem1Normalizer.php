@@ -48,6 +48,11 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1();
+        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
+            $object->setChannel($data->{'channel'});
+        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+            $object->setChannel(null);
+        }
         if (property_exists($data, 'created') && null !== $data->{'created'}) {
             $object->setCreated($data->{'created'});
         } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
@@ -58,10 +63,10 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
         } elseif (property_exists($data, 'created_by') && null === $data->{'created_by'}) {
             $object->setCreatedBy(null);
         }
-        if (property_exists($data, 'file') && null !== $data->{'file'}) {
-            $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-        } elseif (property_exists($data, 'file') && null === $data->{'file'}) {
-            $object->setFile(null);
+        if (property_exists($data, 'message') && null !== $data->{'message'}) {
+            $object->setMessage($this->denormalizer->denormalize($data->{'message'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
+        } elseif (property_exists($data, 'message') && null === $data->{'message'}) {
+            $object->setMessage(null);
         }
         if (property_exists($data, 'type') && null !== $data->{'type'}) {
             $object->setType($data->{'type'});
@@ -75,6 +80,11 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getChannel()) {
+            $data->{'channel'} = $object->getChannel();
+        } else {
+            $data->{'channel'} = null;
+        }
         if (null !== $object->getCreated()) {
             $data->{'created'} = $object->getCreated();
         } else {
@@ -85,10 +95,10 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
         } else {
             $data->{'created_by'} = null;
         }
-        if (null !== $object->getFile()) {
-            $data->{'file'} = $this->normalizer->normalize($object->getFile(), 'json', $context);
+        if (null !== $object->getMessage()) {
+            $data->{'message'} = $this->normalizer->normalize($object->getMessage(), 'json', $context);
         } else {
-            $data->{'file'} = null;
+            $data->{'message'} = null;
         }
         if (null !== $object->getType()) {
             $data->{'type'} = $object->getType();

@@ -17,6 +17,19 @@ class AuthTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
 {
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
+    /**
+     * Checks authentication & identity.
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `none`
+     * }
+     */
+    public function __construct(array $headerParameters = [])
+    {
+        $this->headerParameters = $headerParameters;
+    }
+
     public function getMethod(): string
     {
         return 'GET';
@@ -35,6 +48,17 @@ class AuthTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver->setDefined(['token']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+
+        return $optionsResolver;
     }
 
     /**

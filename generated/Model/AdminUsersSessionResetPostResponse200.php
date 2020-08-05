@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AdminUsersSessionResetPostResponse200
+class AdminUsersSessionResetPostResponse200 extends \ArrayObject
 {
     /**
      * @var bool|null

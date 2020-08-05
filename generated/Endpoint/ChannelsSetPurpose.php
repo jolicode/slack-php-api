@@ -22,6 +22,7 @@ class ChannelsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @param array $formParameters {
      *
+     *     @var bool $name_tagging if it is true, treat this like a message and not an unescaped thing
      *     @var string $purpose The new purpose
      *     @var string $channel Channel to set the purpose of
      * }
@@ -60,9 +61,10 @@ class ChannelsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['purpose', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['name_tagging', 'purpose', 'channel']);
+        $optionsResolver->setRequired(['purpose', 'channel']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('name_tagging', ['bool']);
         $optionsResolver->setAllowedTypes('purpose', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 

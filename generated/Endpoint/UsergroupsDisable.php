@@ -61,7 +61,7 @@ class UsergroupsDisable extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['include_count', 'usergroup']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['usergroup']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('include_count', ['bool']);
         $optionsResolver->setAllowedTypes('usergroup', ['string']);

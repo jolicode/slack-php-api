@@ -49,17 +49,17 @@ class ApiTestGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         }
         $object = new \JoliCode\Slack\Api\Model\ApiTestGetResponse200();
         $data = clone $data;
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
-            $object->setOk(null);
-        }
         if (property_exists($data, 'args') && null !== $data->{'args'}) {
             $object->setArgs($data->{'args'});
             unset($data->{'args'});
         } elseif (property_exists($data, 'args') && null === $data->{'args'}) {
             $object->setArgs(null);
+        }
+        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
+            $object->setOk($data->{'ok'});
+            unset($data->{'ok'});
+        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+            $object->setOk(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', $key)) {
@@ -73,15 +73,15 @@ class ApiTestGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
-        if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
-        }
         if (null !== $object->getArgs()) {
             $data->{'args'} = $object->getArgs();
         } else {
             $data->{'args'} = null;
+        }
+        if (null !== $object->getOk()) {
+            $data->{'ok'} = $object->getOk();
+        } else {
+            $data->{'ok'} = null;
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', $key)) {

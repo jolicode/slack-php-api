@@ -16,9 +16,21 @@ namespace JoliCode\Slack\Api\Model;
 class ImHistoryGetResponse200
 {
     /**
+     * @var int|null
+     */
+    protected $channelActionsCount;
+    /**
+     * @var mixed|null
+     */
+    protected $channelActionsTs;
+    /**
      * @var bool|null
      */
     protected $hasMore;
+    /**
+     * @var string|null
+     */
+    protected $latest;
     /**
      * @var ObjsMessage[]|null
      */
@@ -27,10 +39,36 @@ class ImHistoryGetResponse200
      * @var bool|null
      */
     protected $ok;
+
+    public function getChannelActionsCount(): ?int
+    {
+        return $this->channelActionsCount;
+    }
+
+    public function setChannelActionsCount(?int $channelActionsCount): self
+    {
+        $this->channelActionsCount = $channelActionsCount;
+
+        return $this;
+    }
+
     /**
-     * @var string|null
+     * @return mixed
      */
-    protected $latest;
+    public function getChannelActionsTs()
+    {
+        return $this->channelActionsTs;
+    }
+
+    /**
+     * @param mixed $channelActionsTs
+     */
+    public function setChannelActionsTs($channelActionsTs): self
+    {
+        $this->channelActionsTs = $channelActionsTs;
+
+        return $this;
+    }
 
     public function getHasMore(): ?bool
     {
@@ -40,6 +78,18 @@ class ImHistoryGetResponse200
     public function setHasMore(?bool $hasMore): self
     {
         $this->hasMore = $hasMore;
+
+        return $this;
+    }
+
+    public function getLatest(): ?string
+    {
+        return $this->latest;
+    }
+
+    public function setLatest(?string $latest): self
+    {
+        $this->latest = $latest;
 
         return $this;
     }
@@ -70,18 +120,6 @@ class ImHistoryGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getLatest(): ?string
-    {
-        return $this->latest;
-    }
-
-    public function setLatest(?string $latest): self
-    {
-        $this->latest = $latest;
 
         return $this;
     }

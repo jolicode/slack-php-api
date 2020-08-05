@@ -18,23 +18,11 @@ class OauthAccessGetResponse200Bot extends \ArrayObject
     /**
      * @var string|null
      */
-    protected $botUserId;
+    protected $botAccessToken;
     /**
      * @var string|null
      */
-    protected $botAccessToken;
-
-    public function getBotUserId(): ?string
-    {
-        return $this->botUserId;
-    }
-
-    public function setBotUserId(?string $botUserId): self
-    {
-        $this->botUserId = $botUserId;
-
-        return $this;
-    }
+    protected $botUserId;
 
     public function getBotAccessToken(): ?string
     {
@@ -44,6 +32,18 @@ class OauthAccessGetResponse200Bot extends \ArrayObject
     public function setBotAccessToken(?string $botAccessToken): self
     {
         $this->botAccessToken = $botAccessToken;
+
+        return $this;
+    }
+
+    public function getBotUserId(): ?string
+    {
+        return $this->botUserId;
+    }
+
+    public function setBotUserId(?string $botUserId): self
+    {
+        $this->botUserId = $botUserId;
 
         return $this;
     }

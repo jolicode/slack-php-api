@@ -79,29 +79,25 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setNumStars(null);
         }
         if (property_exists($data, 'pinned_info') && null !== $data->{'pinned_info'}) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data->{'pinned_info'} as $key => $value) {
-                $values[$key] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\DefsPinnedInfoItem', 'json', $context);
-            }
-            $object->setPinnedInfo($values);
+            $object->setPinnedInfo($data->{'pinned_info'});
         } elseif (property_exists($data, 'pinned_info') && null === $data->{'pinned_info'}) {
             $object->setPinnedInfo(null);
         }
         if (property_exists($data, 'pinned_to') && null !== $data->{'pinned_to'}) {
-            $values_1 = [];
-            foreach ($data->{'pinned_to'} as $value_1) {
-                $values_1[] = $value_1;
+            $values = [];
+            foreach ($data->{'pinned_to'} as $value) {
+                $values[] = $value;
             }
-            $object->setPinnedTo($values_1);
+            $object->setPinnedTo($values);
         } elseif (property_exists($data, 'pinned_to') && null === $data->{'pinned_to'}) {
             $object->setPinnedTo(null);
         }
         if (property_exists($data, 'reactions') && null !== $data->{'reactions'}) {
-            $values_2 = [];
-            foreach ($data->{'reactions'} as $value_2) {
-                $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
+            $values_1 = [];
+            foreach ($data->{'reactions'} as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
-            $object->setReactions($values_2);
+            $object->setReactions($values_1);
         } elseif (property_exists($data, 'reactions') && null === $data->{'reactions'}) {
             $object->setReactions(null);
         }
@@ -153,29 +149,25 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data->{'num_stars'} = null;
         }
         if (null !== $object->getPinnedInfo()) {
-            $values = new \stdClass();
-            foreach ($object->getPinnedInfo() as $key => $value) {
-                $values->{$key} = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data->{'pinned_info'} = $values;
+            $data->{'pinned_info'} = $object->getPinnedInfo();
         } else {
             $data->{'pinned_info'} = null;
         }
         if (null !== $object->getPinnedTo()) {
-            $values_1 = [];
-            foreach ($object->getPinnedTo() as $value_1) {
-                $values_1[] = $value_1;
+            $values = [];
+            foreach ($object->getPinnedTo() as $value) {
+                $values[] = $value;
             }
-            $data->{'pinned_to'} = $values_1;
+            $data->{'pinned_to'} = $values;
         } else {
             $data->{'pinned_to'} = null;
         }
         if (null !== $object->getReactions()) {
-            $values_2 = [];
-            foreach ($object->getReactions() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            $values_1 = [];
+            foreach ($object->getReactions() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data->{'reactions'} = $values_2;
+            $data->{'reactions'} = $values_1;
         } else {
             $data->{'reactions'} = null;
         }

@@ -24,11 +24,11 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
-     *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
+     *     @var string $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var string $ts timestamp of the message to be updated
-     *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. See [below](#formatting).
-     *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
-     *     @var bool $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
+     *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. See [below](#formatting).
+     *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.
+     *     @var string $link_names Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).
      *     @var string $channel Channel containing the message to be updated.
      * }
      *
@@ -66,16 +66,16 @@ class ChatUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['blocks', 'attachments', 'text', 'ts', 'parse', 'as_user', 'link_names', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['blocks', 'attachments', 'as_user', 'ts', 'parse', 'text', 'link_names', 'channel']);
+        $optionsResolver->setRequired(['ts', 'channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
+        $optionsResolver->setAllowedTypes('as_user', ['string']);
         $optionsResolver->setAllowedTypes('ts', ['string']);
         $optionsResolver->setAllowedTypes('parse', ['string']);
-        $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('link_names', ['bool']);
+        $optionsResolver->setAllowedTypes('text', ['string']);
+        $optionsResolver->setAllowedTypes('link_names', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

@@ -22,14 +22,17 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
+     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var string $thread_ts Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
      *     @var bool $as_user Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false.
-     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var string $text Text of the message to send. See below for an explanation of [formatting](#formatting). This field is usually required, unless you're providing only `attachments` instead.
-     *     @var string $user `id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.
      *     @var bool $link_names find and link channel names and usernames
+     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
+     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
+     *     @var string $user `id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.
+     *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
+     *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name.
      * }
      *
@@ -67,17 +70,20 @@ class ChatPostEphemeral extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['thread_ts', 'blocks', 'attachments', 'as_user', 'parse', 'text', 'user', 'link_names', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['username', 'thread_ts', 'blocks', 'attachments', 'as_user', 'link_names', 'parse', 'text', 'user', 'icon_emoji', 'icon_url', 'channel']);
+        $optionsResolver->setRequired(['user', 'channel']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('username', ['string']);
         $optionsResolver->setAllowedTypes('thread_ts', ['string']);
         $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('attachments', ['string']);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
+        $optionsResolver->setAllowedTypes('link_names', ['bool']);
         $optionsResolver->setAllowedTypes('parse', ['string']);
         $optionsResolver->setAllowedTypes('text', ['string']);
         $optionsResolver->setAllowedTypes('user', ['string']);
-        $optionsResolver->setAllowedTypes('link_names', ['bool']);
+        $optionsResolver->setAllowedTypes('icon_emoji', ['string']);
+        $optionsResolver->setAllowedTypes('icon_url', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

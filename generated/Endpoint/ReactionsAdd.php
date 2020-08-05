@@ -22,10 +22,8 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @param array $formParameters {
      *
-     *     @var string $name reaction (emoji) name
-     *     @var string $file_comment File comment to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
      *     @var string $timestamp timestamp of the message to add reaction to
-     *     @var string $file File to add reaction to. Now that [file threads](/changelog/2018-05-file-threads-soon-tread#whats_changed) work the way you'd expect, this argument is deprecated. Specify the timestamp and channel of the message associated with a file instead.
+     *     @var string $name reaction (emoji) name
      *     @var string $channel Channel where the message to add reaction to was posted.
      * }
      *
@@ -63,13 +61,11 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'file_comment', 'timestamp', 'file', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['timestamp', 'name', 'channel']);
+        $optionsResolver->setRequired(['timestamp', 'name', 'channel']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
-        $optionsResolver->setAllowedTypes('file_comment', ['string']);
         $optionsResolver->setAllowedTypes('timestamp', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;

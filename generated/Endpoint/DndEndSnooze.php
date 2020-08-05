@@ -17,6 +17,19 @@ class DndEndSnooze extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
 {
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
+    /**
+     * Ends the current user's snooze mode immediately.
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `dnd:write`
+     * }
+     */
+    public function __construct(array $headerParameters = [])
+    {
+        $this->headerParameters = $headerParameters;
+    }
+
     public function getMethod(): string
     {
         return 'POST';
@@ -35,6 +48,17 @@ class DndEndSnooze extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver->setDefined(['token']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+
+        return $optionsResolver;
     }
 
     /**

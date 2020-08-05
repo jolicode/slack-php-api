@@ -74,6 +74,10 @@ class ObjsConversation
     /**
      * @var bool|null
      */
+    protected $isFrozen;
+    /**
+     * @var bool|null
+     */
     protected $isGeneral;
     /**
      * @var bool|null
@@ -143,6 +147,10 @@ class ObjsConversation
      * @var bool|null
      */
     protected $isThreadOnly;
+    /**
+     * @var bool|null
+     */
+    protected $isUserDeleted;
     /**
      * @var string|null
      */
@@ -230,15 +238,15 @@ class ObjsConversation
     /**
      * @var string|null
      */
+    protected $useCase;
+    /**
+     * @var string|null
+     */
     protected $user;
     /**
      * @var int|null
      */
     protected $version;
-    /**
-     * @var bool|null
-     */
-    protected $isUserDeleted;
 
     public function getAcceptedUser(): ?string
     {
@@ -422,6 +430,18 @@ class ObjsConversation
     public function setIsExtShared(?bool $isExtShared): self
     {
         $this->isExtShared = $isExtShared;
+
+        return $this;
+    }
+
+    public function getIsFrozen(): ?bool
+    {
+        return $this->isFrozen;
+    }
+
+    public function setIsFrozen(?bool $isFrozen): self
+    {
+        $this->isFrozen = $isFrozen;
 
         return $this;
     }
@@ -638,6 +658,18 @@ class ObjsConversation
     public function setIsThreadOnly(?bool $isThreadOnly): self
     {
         $this->isThreadOnly = $isThreadOnly;
+
+        return $this;
+    }
+
+    public function getIsUserDeleted(): ?bool
+    {
+        return $this->isUserDeleted;
+    }
+
+    public function setIsUserDeleted(?bool $isUserDeleted): self
+    {
+        $this->isUserDeleted = $isUserDeleted;
 
         return $this;
     }
@@ -942,6 +974,18 @@ class ObjsConversation
         return $this;
     }
 
+    public function getUseCase(): ?string
+    {
+        return $this->useCase;
+    }
+
+    public function setUseCase(?string $useCase): self
+    {
+        $this->useCase = $useCase;
+
+        return $this;
+    }
+
     public function getUser(): ?string
     {
         return $this->user;
@@ -962,18 +1006,6 @@ class ObjsConversation
     public function setVersion(?int $version): self
     {
         $this->version = $version;
-
-        return $this;
-    }
-
-    public function getIsUserDeleted(): ?bool
-    {
-        return $this->isUserDeleted;
-    }
-
-    public function setIsUserDeleted(?bool $isUserDeleted): self
-    {
-        $this->isUserDeleted = $isUserDeleted;
 
         return $this;
     }

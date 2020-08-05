@@ -48,6 +48,11 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem();
+        if (property_exists($data, 'short') && null !== $data->{'short'}) {
+            $object->setShort($data->{'short'});
+        } elseif (property_exists($data, 'short') && null === $data->{'short'}) {
+            $object->setShort(null);
+        }
         if (property_exists($data, 'title') && null !== $data->{'title'}) {
             $object->setTitle($data->{'title'});
         } elseif (property_exists($data, 'title') && null === $data->{'title'}) {
@@ -58,11 +63,6 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
         } elseif (property_exists($data, 'value') && null === $data->{'value'}) {
             $object->setValue(null);
         }
-        if (property_exists($data, 'short') && null !== $data->{'short'}) {
-            $object->setShort($data->{'short'});
-        } elseif (property_exists($data, 'short') && null === $data->{'short'}) {
-            $object->setShort(null);
-        }
 
         return $object;
     }
@@ -70,6 +70,11 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getShort()) {
+            $data->{'short'} = $object->getShort();
+        } else {
+            $data->{'short'} = null;
+        }
         if (null !== $object->getTitle()) {
             $data->{'title'} = $object->getTitle();
         } else {
@@ -79,11 +84,6 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
             $data->{'value'} = $object->getValue();
         } else {
             $data->{'value'} = null;
-        }
-        if (null !== $object->getShort()) {
-            $data->{'short'} = $object->getShort();
-        } else {
-            $data->{'short'} = null;
         }
 
         return $data;

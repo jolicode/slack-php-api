@@ -48,6 +48,11 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
             return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
+        if (property_exists($data, 'is_enterprise_install') && null !== $data->{'is_enterprise_install'}) {
+            $object->setIsEnterpriseInstall($data->{'is_enterprise_install'});
+        } elseif (property_exists($data, 'is_enterprise_install') && null === $data->{'is_enterprise_install'}) {
+            $object->setIsEnterpriseInstall(null);
+        }
         if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
             $object->setOk($data->{'ok'});
         } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
@@ -85,6 +90,11 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = [])
     {
         $data = new \stdClass();
+        if (null !== $object->getIsEnterpriseInstall()) {
+            $data->{'is_enterprise_install'} = $object->getIsEnterpriseInstall();
+        } else {
+            $data->{'is_enterprise_install'} = null;
+        }
         if (null !== $object->getOk()) {
             $data->{'ok'} = $object->getOk();
         } else {

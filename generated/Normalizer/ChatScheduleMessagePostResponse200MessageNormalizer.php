@@ -62,10 +62,20 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
         } elseif (property_exists($data, 'bot_id') && null === $data->{'bot_id'}) {
             $object->setBotId(null);
         }
+        if (property_exists($data, 'bot_profile') && null !== $data->{'bot_profile'}) {
+            $object->setBotProfile($this->denormalizer->denormalize($data->{'bot_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsBotProfile', 'json', $context));
+        } elseif (property_exists($data, 'bot_profile') && null === $data->{'bot_profile'}) {
+            $object->setBotProfile(null);
+        }
         if (property_exists($data, 'subtype') && null !== $data->{'subtype'}) {
             $object->setSubtype($data->{'subtype'});
         } elseif (property_exists($data, 'subtype') && null === $data->{'subtype'}) {
             $object->setSubtype(null);
+        }
+        if (property_exists($data, 'team') && null !== $data->{'team'}) {
+            $object->setTeam($data->{'team'});
+        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+            $object->setTeam(null);
         }
         if (property_exists($data, 'text') && null !== $data->{'text'}) {
             $object->setText($data->{'text'});
@@ -108,10 +118,20 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
         } else {
             $data->{'bot_id'} = null;
         }
+        if (null !== $object->getBotProfile()) {
+            $data->{'bot_profile'} = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
+        } else {
+            $data->{'bot_profile'} = null;
+        }
         if (null !== $object->getSubtype()) {
             $data->{'subtype'} = $object->getSubtype();
         } else {
             $data->{'subtype'} = null;
+        }
+        if (null !== $object->getTeam()) {
+            $data->{'team'} = $object->getTeam();
+        } else {
+            $data->{'team'} = null;
         }
         if (null !== $object->getText()) {
             $data->{'text'} = $object->getText();

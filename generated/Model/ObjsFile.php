@@ -28,6 +28,10 @@ class ObjsFile
      */
     protected $created;
     /**
+     * @var int|null
+     */
+    protected $dateDelete;
+    /**
      * @var string|null
      */
     protected $deanimateGif;
@@ -112,6 +116,10 @@ class ObjsFile
      */
     protected $name;
     /**
+     * @var bool|null
+     */
+    protected $nonOwnerEditable;
+    /**
      * @var int|null
      */
     protected $numStars;
@@ -132,7 +140,7 @@ class ObjsFile
      */
     protected $permalinkPublic;
     /**
-     * @var DefsPinnedInfoItem[]|null
+     * @var mixed|null
      */
     protected $pinnedInfo;
     /**
@@ -148,7 +156,7 @@ class ObjsFile
      */
     protected $prettyType;
     /**
-     * @var null
+     * @var string|null
      */
     protected $preview;
     /**
@@ -264,6 +272,10 @@ class ObjsFile
      */
     protected $thumb960W;
     /**
+     * @var string|null
+     */
+    protected $thumbTiny;
+    /**
      * @var int|null
      */
     protected $timestamp;
@@ -334,6 +346,18 @@ class ObjsFile
     public function setCreated(?int $created): self
     {
         $this->created = $created;
+
+        return $this;
+    }
+
+    public function getDateDelete(): ?int
+    {
+        return $this->dateDelete;
+    }
+
+    public function setDateDelete(?int $dateDelete): self
+    {
+        $this->dateDelete = $dateDelete;
 
         return $this;
     }
@@ -602,6 +626,18 @@ class ObjsFile
         return $this;
     }
 
+    public function getNonOwnerEditable(): ?bool
+    {
+        return $this->nonOwnerEditable;
+    }
+
+    public function setNonOwnerEditable(?bool $nonOwnerEditable): self
+    {
+        $this->nonOwnerEditable = $nonOwnerEditable;
+
+        return $this;
+    }
+
     public function getNumStars(): ?int
     {
         return $this->numStars;
@@ -663,17 +699,17 @@ class ObjsFile
     }
 
     /**
-     * @return DefsPinnedInfoItem[]|null
+     * @return mixed
      */
-    public function getPinnedInfo(): ?\ArrayObject
+    public function getPinnedInfo()
     {
         return $this->pinnedInfo;
     }
 
     /**
-     * @param DefsPinnedInfoItem[]|null $pinnedInfo
+     * @param mixed $pinnedInfo
      */
-    public function setPinnedInfo(?\ArrayObject $pinnedInfo): self
+    public function setPinnedInfo($pinnedInfo): self
     {
         $this->pinnedInfo = $pinnedInfo;
 
@@ -722,18 +758,12 @@ class ObjsFile
         return $this;
     }
 
-    /**
-     * @return null
-     */
-    public function getPreview()
+    public function getPreview(): ?string
     {
         return $this->preview;
     }
 
-    /**
-     * @param null $preview
-     */
-    public function setPreview($preview): self
+    public function setPreview(?string $preview): self
     {
         $this->preview = $preview;
 
@@ -1078,6 +1108,18 @@ class ObjsFile
     public function setThumb960W(?int $thumb960W): self
     {
         $this->thumb960W = $thumb960W;
+
+        return $this;
+    }
+
+    public function getThumbTiny(): ?string
+    {
+        return $this->thumbTiny;
+    }
+
+    public function setThumbTiny(?string $thumbTiny): self
+    {
+        $this->thumbTiny = $thumbTiny;
 
         return $this;
     }

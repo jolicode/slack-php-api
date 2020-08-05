@@ -17,6 +17,20 @@ class TeamBillableInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
 {
     use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
+    /**
+     * Gets billable users information for the current team.
+     *
+     * @param array $queryParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `admin`
+     *     @var string $user A user to retrieve the billable information for. Defaults to all users.
+     * }
+     */
+    public function __construct(array $queryParameters = [])
+    {
+        $this->queryParameters = $queryParameters;
+    }
+
     public function getMethod(): string
     {
         return 'GET';
@@ -35,6 +49,18 @@ class TeamBillableInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     public function getExtraHeaders(): array
     {
         return ['Accept' => ['application/json']];
+    }
+
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(['token', 'user']);
+        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->setAllowedTypes('user', ['string']);
+
+        return $optionsResolver;
     }
 
     /**
