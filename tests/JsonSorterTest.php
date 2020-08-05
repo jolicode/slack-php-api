@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 
 class JsonSorterTest extends TestCase
 {
-    private JsonSorter $sorter;
+    private $sorter;
 
     protected function setUp(): void
     {
