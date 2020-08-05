@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsGroupPurposeNormalizer implements DenormalizerInterface, NormalizerInt
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,29 +40,26 @@ class ObjsGroupPurposeNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsGroupPurpose();
-        if (property_exists($data, 'creator') && null !== $data->{'creator'}) {
-            $object->setCreator($data->{'creator'});
-        } elseif (property_exists($data, 'creator') && null === $data->{'creator'}) {
+        if (\array_key_exists('creator', $data) && null !== $data['creator']) {
+            $object->setCreator($data['creator']);
+        } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
             $object->setCreator(null);
         }
-        if (property_exists($data, 'last_set') && null !== $data->{'last_set'}) {
-            $object->setLastSet($data->{'last_set'});
-        } elseif (property_exists($data, 'last_set') && null === $data->{'last_set'}) {
+        if (\array_key_exists('last_set', $data) && null !== $data['last_set']) {
+            $object->setLastSet($data['last_set']);
+        } elseif (\array_key_exists('last_set', $data) && null === $data['last_set']) {
             $object->setLastSet(null);
         }
-        if (property_exists($data, 'value') && null !== $data->{'value'}) {
-            $object->setValue($data->{'value'});
-        } elseif (property_exists($data, 'value') && null === $data->{'value'}) {
+        if (\array_key_exists('value', $data) && null !== $data['value']) {
+            $object->setValue($data['value']);
+        } elseif (\array_key_exists('value', $data) && null === $data['value']) {
             $object->setValue(null);
         }
 
@@ -69,21 +68,15 @@ class ObjsGroupPurposeNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCreator()) {
-            $data->{'creator'} = $object->getCreator();
-        } else {
-            $data->{'creator'} = null;
+            $data['creator'] = $object->getCreator();
         }
         if (null !== $object->getLastSet()) {
-            $data->{'last_set'} = $object->getLastSet();
-        } else {
-            $data->{'last_set'} = null;
+            $data['last_set'] = $object->getLastSet();
         }
         if (null !== $object->getValue()) {
-            $data->{'value'} = $object->getValue();
-        } else {
-            $data->{'value'} = null;
+            $data['value'] = $object->getValue();
         }
 
         return $data;

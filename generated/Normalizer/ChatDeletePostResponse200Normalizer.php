@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ChatDeletePostResponse200Normalizer implements DenormalizerInterface, Norm
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,29 +40,26 @@ class ChatDeletePostResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatDeletePostResponse200();
-        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($data->{'channel'});
-        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($data['channel']);
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'ts') && null !== $data->{'ts'}) {
-            $object->setTs($data->{'ts'});
-        } elseif (property_exists($data, 'ts') && null === $data->{'ts'}) {
+        if (\array_key_exists('ts', $data) && null !== $data['ts']) {
+            $object->setTs($data['ts']);
+        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
             $object->setTs(null);
         }
 
@@ -69,21 +68,15 @@ class ChatDeletePostResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
-        } else {
-            $data->{'channel'} = null;
+            $data['channel'] = $object->getChannel();
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
-        } else {
-            $data->{'ts'} = null;
+            $data['ts'] = $object->getTs();
         }
 
         return $data;

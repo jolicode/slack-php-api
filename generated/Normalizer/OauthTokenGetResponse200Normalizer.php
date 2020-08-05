@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,89 +40,85 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\OauthTokenGetResponse200();
-        $data = clone $data;
-        if (property_exists($data, 'access_token') && null !== $data->{'access_token'}) {
-            $object->setAccessToken($data->{'access_token'});
-            unset($data->{'access_token'});
-        } elseif (property_exists($data, 'access_token') && null === $data->{'access_token'}) {
+        if (\array_key_exists('access_token', $data) && null !== $data['access_token']) {
+            $object->setAccessToken($data['access_token']);
+            unset($data['access_token']);
+        } elseif (\array_key_exists('access_token', $data) && null === $data['access_token']) {
             $object->setAccessToken(null);
         }
-        if (property_exists($data, 'app_id') && null !== $data->{'app_id'}) {
-            $object->setAppId($data->{'app_id'});
-            unset($data->{'app_id'});
-        } elseif (property_exists($data, 'app_id') && null === $data->{'app_id'}) {
+        if (\array_key_exists('app_id', $data) && null !== $data['app_id']) {
+            $object->setAppId($data['app_id']);
+            unset($data['app_id']);
+        } elseif (\array_key_exists('app_id', $data) && null === $data['app_id']) {
             $object->setAppId(null);
         }
-        if (property_exists($data, 'app_user_id') && null !== $data->{'app_user_id'}) {
-            $object->setAppUserId($data->{'app_user_id'});
-            unset($data->{'app_user_id'});
-        } elseif (property_exists($data, 'app_user_id') && null === $data->{'app_user_id'}) {
+        if (\array_key_exists('app_user_id', $data) && null !== $data['app_user_id']) {
+            $object->setAppUserId($data['app_user_id']);
+            unset($data['app_user_id']);
+        } elseif (\array_key_exists('app_user_id', $data) && null === $data['app_user_id']) {
             $object->setAppUserId(null);
         }
-        if (property_exists($data, 'authorizing_user_id') && null !== $data->{'authorizing_user_id'}) {
-            $object->setAuthorizingUserId($data->{'authorizing_user_id'});
-            unset($data->{'authorizing_user_id'});
-        } elseif (property_exists($data, 'authorizing_user_id') && null === $data->{'authorizing_user_id'}) {
+        if (\array_key_exists('authorizing_user_id', $data) && null !== $data['authorizing_user_id']) {
+            $object->setAuthorizingUserId($data['authorizing_user_id']);
+            unset($data['authorizing_user_id']);
+        } elseif (\array_key_exists('authorizing_user_id', $data) && null === $data['authorizing_user_id']) {
             $object->setAuthorizingUserId(null);
         }
-        if (property_exists($data, 'installer_user_id') && null !== $data->{'installer_user_id'}) {
-            $object->setInstallerUserId($data->{'installer_user_id'});
-            unset($data->{'installer_user_id'});
-        } elseif (property_exists($data, 'installer_user_id') && null === $data->{'installer_user_id'}) {
+        if (\array_key_exists('installer_user_id', $data) && null !== $data['installer_user_id']) {
+            $object->setInstallerUserId($data['installer_user_id']);
+            unset($data['installer_user_id']);
+        } elseif (\array_key_exists('installer_user_id', $data) && null === $data['installer_user_id']) {
             $object->setInstallerUserId(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+            unset($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'permissions') && null !== $data->{'permissions'}) {
+        if (\array_key_exists('permissions', $data) && null !== $data['permissions']) {
             $values = [];
-            foreach ($data->{'permissions'} as $value) {
+            foreach ($data['permissions'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\OauthTokenGetResponse200PermissionsItem', 'json', $context);
             }
             $object->setPermissions($values);
-            unset($data->{'permissions'});
-        } elseif (property_exists($data, 'permissions') && null === $data->{'permissions'}) {
+            unset($data['permissions']);
+        } elseif (\array_key_exists('permissions', $data) && null === $data['permissions']) {
             $object->setPermissions(null);
         }
-        if (property_exists($data, 'single_channel_id') && null !== $data->{'single_channel_id'}) {
-            $object->setSingleChannelId($data->{'single_channel_id'});
-            unset($data->{'single_channel_id'});
-        } elseif (property_exists($data, 'single_channel_id') && null === $data->{'single_channel_id'}) {
+        if (\array_key_exists('single_channel_id', $data) && null !== $data['single_channel_id']) {
+            $object->setSingleChannelId($data['single_channel_id']);
+            unset($data['single_channel_id']);
+        } elseif (\array_key_exists('single_channel_id', $data) && null === $data['single_channel_id']) {
             $object->setSingleChannelId(null);
         }
-        if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
-            $object->setTeamId($data->{'team_id'});
-            unset($data->{'team_id'});
-        } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
+        if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
+            $object->setTeamId($data['team_id']);
+            unset($data['team_id']);
+        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
             $object->setTeamId(null);
         }
-        if (property_exists($data, 'team_name') && null !== $data->{'team_name'}) {
-            $object->setTeamName($data->{'team_name'});
-            unset($data->{'team_name'});
-        } elseif (property_exists($data, 'team_name') && null === $data->{'team_name'}) {
+        if (\array_key_exists('team_name', $data) && null !== $data['team_name']) {
+            $object->setTeamName($data['team_name']);
+            unset($data['team_name']);
+        } elseif (\array_key_exists('team_name', $data) && null === $data['team_name']) {
             $object->setTeamName(null);
         }
-        if (property_exists($data, 'token_type') && null !== $data->{'token_type'}) {
-            $object->setTokenType($data->{'token_type'});
-            unset($data->{'token_type'});
-        } elseif (property_exists($data, 'token_type') && null === $data->{'token_type'}) {
+        if (\array_key_exists('token_type', $data) && null !== $data['token_type']) {
+            $object->setTokenType($data['token_type']);
+            unset($data['token_type']);
+        } elseif (\array_key_exists('token_type', $data) && null === $data['token_type']) {
             $object->setTokenType(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -130,69 +128,47 @@ class OauthTokenGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getAccessToken()) {
-            $data->{'access_token'} = $object->getAccessToken();
-        } else {
-            $data->{'access_token'} = null;
+            $data['access_token'] = $object->getAccessToken();
         }
         if (null !== $object->getAppId()) {
-            $data->{'app_id'} = $object->getAppId();
-        } else {
-            $data->{'app_id'} = null;
+            $data['app_id'] = $object->getAppId();
         }
         if (null !== $object->getAppUserId()) {
-            $data->{'app_user_id'} = $object->getAppUserId();
-        } else {
-            $data->{'app_user_id'} = null;
+            $data['app_user_id'] = $object->getAppUserId();
         }
         if (null !== $object->getAuthorizingUserId()) {
-            $data->{'authorizing_user_id'} = $object->getAuthorizingUserId();
-        } else {
-            $data->{'authorizing_user_id'} = null;
+            $data['authorizing_user_id'] = $object->getAuthorizingUserId();
         }
         if (null !== $object->getInstallerUserId()) {
-            $data->{'installer_user_id'} = $object->getInstallerUserId();
-        } else {
-            $data->{'installer_user_id'} = null;
+            $data['installer_user_id'] = $object->getInstallerUserId();
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getPermissions()) {
             $values = [];
             foreach ($object->getPermissions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'permissions'} = $values;
-        } else {
-            $data->{'permissions'} = null;
+            $data['permissions'] = $values;
         }
         if (null !== $object->getSingleChannelId()) {
-            $data->{'single_channel_id'} = $object->getSingleChannelId();
-        } else {
-            $data->{'single_channel_id'} = null;
+            $data['single_channel_id'] = $object->getSingleChannelId();
         }
         if (null !== $object->getTeamId()) {
-            $data->{'team_id'} = $object->getTeamId();
-        } else {
-            $data->{'team_id'} = null;
+            $data['team_id'] = $object->getTeamId();
         }
         if (null !== $object->getTeamName()) {
-            $data->{'team_name'} = $object->getTeamName();
-        } else {
-            $data->{'team_name'} = null;
+            $data['team_name'] = $object->getTeamName();
         }
         if (null !== $object->getTokenType()) {
-            $data->{'token_type'} = $object->getTokenType();
-        } else {
-            $data->{'token_type'} = null;
+            $data['token_type'] = $object->getTokenType();
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

@@ -16,11 +16,11 @@ namespace JoliCode\Slack\Api\Model;
 class FilesInfoGetResponse200
 {
     /**
-     * @var mixed[]|null
+     * @var |null
      */
     protected $comments;
     /**
-     * @var null
+     * @var mixed|null
      */
     protected $contentHtml;
     /**
@@ -45,17 +45,17 @@ class FilesInfoGetResponse200
     protected $responseMetadata;
 
     /**
-     * @return mixed[]|null
+     * @return |null
      */
-    public function getComments(): ?array
+    public function getComments()
     {
         return $this->comments;
     }
 
     /**
-     * @param mixed[]|null $comments
+     * @param |null $comments
      */
-    public function setComments(?array $comments): self
+    public function setComments($comments): self
     {
         $this->comments = $comments;
 
@@ -63,7 +63,7 @@ class FilesInfoGetResponse200
     }
 
     /**
-     * @return null
+     * @return mixed
      */
     public function getContentHtml()
     {
@@ -71,7 +71,7 @@ class FilesInfoGetResponse200
     }
 
     /**
-     * @param null $contentHtml
+     * @param mixed $contentHtml
      */
     public function setContentHtml($contentHtml): self
     {

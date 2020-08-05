@@ -58,6 +58,11 @@ class ImOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\O
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();

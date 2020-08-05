@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ImRepliesGetResponse200MessagesItemItem0Normalizer implements Denormalizer
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,98 +40,95 @@ class ImRepliesGetResponse200MessagesItemItem0Normalizer implements Denormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ImRepliesGetResponse200MessagesItemItem0();
-        if (property_exists($data, 'last_read') && null !== $data->{'last_read'}) {
-            $object->setLastRead($data->{'last_read'});
-        } elseif (property_exists($data, 'last_read') && null === $data->{'last_read'}) {
+        if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
+            $object->setLastRead($data['last_read']);
+        } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
             $object->setLastRead(null);
         }
-        if (property_exists($data, 'latest_reply') && null !== $data->{'latest_reply'}) {
-            $object->setLatestReply($data->{'latest_reply'});
-        } elseif (property_exists($data, 'latest_reply') && null === $data->{'latest_reply'}) {
+        if (\array_key_exists('latest_reply', $data) && null !== $data['latest_reply']) {
+            $object->setLatestReply($data['latest_reply']);
+        } elseif (\array_key_exists('latest_reply', $data) && null === $data['latest_reply']) {
             $object->setLatestReply(null);
         }
-        if (property_exists($data, 'reply_count') && null !== $data->{'reply_count'}) {
-            $object->setReplyCount($data->{'reply_count'});
-        } elseif (property_exists($data, 'reply_count') && null === $data->{'reply_count'}) {
+        if (\array_key_exists('reply_count', $data) && null !== $data['reply_count']) {
+            $object->setReplyCount($data['reply_count']);
+        } elseif (\array_key_exists('reply_count', $data) && null === $data['reply_count']) {
             $object->setReplyCount(null);
         }
-        if (property_exists($data, 'reply_users') && null !== $data->{'reply_users'}) {
+        if (\array_key_exists('reply_users', $data) && null !== $data['reply_users']) {
             $values = [];
-            foreach ($data->{'reply_users'} as $value) {
+            foreach ($data['reply_users'] as $value) {
                 $values[] = $value;
             }
             $object->setReplyUsers($values);
-        } elseif (property_exists($data, 'reply_users') && null === $data->{'reply_users'}) {
+        } elseif (\array_key_exists('reply_users', $data) && null === $data['reply_users']) {
             $object->setReplyUsers(null);
         }
-        if (property_exists($data, 'reply_users_count') && null !== $data->{'reply_users_count'}) {
-            $object->setReplyUsersCount($data->{'reply_users_count'});
-        } elseif (property_exists($data, 'reply_users_count') && null === $data->{'reply_users_count'}) {
+        if (\array_key_exists('reply_users_count', $data) && null !== $data['reply_users_count']) {
+            $object->setReplyUsersCount($data['reply_users_count']);
+        } elseif (\array_key_exists('reply_users_count', $data) && null === $data['reply_users_count']) {
             $object->setReplyUsersCount(null);
         }
-        if (property_exists($data, 'source_team') && null !== $data->{'source_team'}) {
-            $object->setSourceTeam($data->{'source_team'});
-        } elseif (property_exists($data, 'source_team') && null === $data->{'source_team'}) {
+        if (\array_key_exists('source_team', $data) && null !== $data['source_team']) {
+            $object->setSourceTeam($data['source_team']);
+        } elseif (\array_key_exists('source_team', $data) && null === $data['source_team']) {
             $object->setSourceTeam(null);
         }
-        if (property_exists($data, 'subscribed') && null !== $data->{'subscribed'}) {
-            $object->setSubscribed($data->{'subscribed'});
-        } elseif (property_exists($data, 'subscribed') && null === $data->{'subscribed'}) {
+        if (\array_key_exists('subscribed', $data) && null !== $data['subscribed']) {
+            $object->setSubscribed($data['subscribed']);
+        } elseif (\array_key_exists('subscribed', $data) && null === $data['subscribed']) {
             $object->setSubscribed(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($data->{'team'});
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($data['team']);
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'text') && null !== $data->{'text'}) {
-            $object->setText($data->{'text'});
-        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+        if (\array_key_exists('text', $data) && null !== $data['text']) {
+            $object->setText($data['text']);
+        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
             $object->setText(null);
         }
-        if (property_exists($data, 'thread_ts') && null !== $data->{'thread_ts'}) {
-            $object->setThreadTs($data->{'thread_ts'});
-        } elseif (property_exists($data, 'thread_ts') && null === $data->{'thread_ts'}) {
+        if (\array_key_exists('thread_ts', $data) && null !== $data['thread_ts']) {
+            $object->setThreadTs($data['thread_ts']);
+        } elseif (\array_key_exists('thread_ts', $data) && null === $data['thread_ts']) {
             $object->setThreadTs(null);
         }
-        if (property_exists($data, 'ts') && null !== $data->{'ts'}) {
-            $object->setTs($data->{'ts'});
-        } elseif (property_exists($data, 'ts') && null === $data->{'ts'}) {
+        if (\array_key_exists('ts', $data) && null !== $data['ts']) {
+            $object->setTs($data['ts']);
+        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
             $object->setTs(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
         }
-        if (property_exists($data, 'unread_count') && null !== $data->{'unread_count'}) {
-            $object->setUnreadCount($data->{'unread_count'});
-        } elseif (property_exists($data, 'unread_count') && null === $data->{'unread_count'}) {
+        if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
+            $object->setUnreadCount($data['unread_count']);
+        } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
             $object->setUnreadCount(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
-        if (property_exists($data, 'user_profile') && null !== $data->{'user_profile'}) {
-            $object->setUserProfile($this->denormalizer->denormalize($data->{'user_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort', 'json', $context));
-        } elseif (property_exists($data, 'user_profile') && null === $data->{'user_profile'}) {
+        if (\array_key_exists('user_profile', $data) && null !== $data['user_profile']) {
+            $object->setUserProfile($this->denormalizer->denormalize($data['user_profile'], 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort', 'json', $context));
+        } elseif (\array_key_exists('user_profile', $data) && null === $data['user_profile']) {
             $object->setUserProfile(null);
         }
-        if (property_exists($data, 'user_team') && null !== $data->{'user_team'}) {
-            $object->setUserTeam($data->{'user_team'});
-        } elseif (property_exists($data, 'user_team') && null === $data->{'user_team'}) {
+        if (\array_key_exists('user_team', $data) && null !== $data['user_team']) {
+            $object->setUserTeam($data['user_team']);
+        } elseif (\array_key_exists('user_team', $data) && null === $data['user_team']) {
             $object->setUserTeam(null);
         }
 
@@ -138,90 +137,58 @@ class ImRepliesGetResponse200MessagesItemItem0Normalizer implements Denormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getLastRead()) {
-            $data->{'last_read'} = $object->getLastRead();
-        } else {
-            $data->{'last_read'} = null;
+            $data['last_read'] = $object->getLastRead();
         }
         if (null !== $object->getLatestReply()) {
-            $data->{'latest_reply'} = $object->getLatestReply();
-        } else {
-            $data->{'latest_reply'} = null;
+            $data['latest_reply'] = $object->getLatestReply();
         }
         if (null !== $object->getReplyCount()) {
-            $data->{'reply_count'} = $object->getReplyCount();
-        } else {
-            $data->{'reply_count'} = null;
+            $data['reply_count'] = $object->getReplyCount();
         }
         if (null !== $object->getReplyUsers()) {
             $values = [];
             foreach ($object->getReplyUsers() as $value) {
                 $values[] = $value;
             }
-            $data->{'reply_users'} = $values;
-        } else {
-            $data->{'reply_users'} = null;
+            $data['reply_users'] = $values;
         }
         if (null !== $object->getReplyUsersCount()) {
-            $data->{'reply_users_count'} = $object->getReplyUsersCount();
-        } else {
-            $data->{'reply_users_count'} = null;
+            $data['reply_users_count'] = $object->getReplyUsersCount();
         }
         if (null !== $object->getSourceTeam()) {
-            $data->{'source_team'} = $object->getSourceTeam();
-        } else {
-            $data->{'source_team'} = null;
+            $data['source_team'] = $object->getSourceTeam();
         }
         if (null !== $object->getSubscribed()) {
-            $data->{'subscribed'} = $object->getSubscribed();
-        } else {
-            $data->{'subscribed'} = null;
+            $data['subscribed'] = $object->getSubscribed();
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $object->getTeam();
-        } else {
-            $data->{'team'} = null;
+            $data['team'] = $object->getTeam();
         }
         if (null !== $object->getText()) {
-            $data->{'text'} = $object->getText();
-        } else {
-            $data->{'text'} = null;
+            $data['text'] = $object->getText();
         }
         if (null !== $object->getThreadTs()) {
-            $data->{'thread_ts'} = $object->getThreadTs();
-        } else {
-            $data->{'thread_ts'} = null;
+            $data['thread_ts'] = $object->getThreadTs();
         }
         if (null !== $object->getTs()) {
-            $data->{'ts'} = $object->getTs();
-        } else {
-            $data->{'ts'} = null;
+            $data['ts'] = $object->getTs();
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        } else {
-            $data->{'type'} = null;
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getUnreadCount()) {
-            $data->{'unread_count'} = $object->getUnreadCount();
-        } else {
-            $data->{'unread_count'} = null;
+            $data['unread_count'] = $object->getUnreadCount();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
-        } else {
-            $data->{'user'} = null;
+            $data['user'] = $object->getUser();
         }
         if (null !== $object->getUserProfile()) {
-            $data->{'user_profile'} = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
-        } else {
-            $data->{'user_profile'} = null;
+            $data['user_profile'] = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
         }
         if (null !== $object->getUserTeam()) {
-            $data->{'user_team'} = $object->getUserTeam();
-        } else {
-            $data->{'user_team'} = null;
+            $data['user_team'] = $object->getUserTeam();
         }
 
         return $data;

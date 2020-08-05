@@ -54,6 +54,11 @@ class AdminAppsApprovedList extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

@@ -93,7 +93,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     /**
      * @return mixed[]|null
      */
-    public function getUserIdMap(): ?\ArrayObject
+    public function getUserIdMap(): ?iterable
     {
         return $this->userIdMap;
     }
@@ -101,7 +101,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     /**
      * @param mixed[]|null $userIdMap
      */
-    public function setUserIdMap(?\ArrayObject $userIdMap): self
+    public function setUserIdMap(?iterable $userIdMap): self
     {
         $this->userIdMap = $userIdMap;
 

@@ -52,6 +52,11 @@ class RtmConnect extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

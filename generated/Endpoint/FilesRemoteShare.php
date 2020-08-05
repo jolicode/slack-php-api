@@ -53,6 +53,11 @@ class FilesRemoteShare extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

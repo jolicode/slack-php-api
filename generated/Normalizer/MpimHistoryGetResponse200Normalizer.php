@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,48 +40,45 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\MpimHistoryGetResponse200();
-        if (property_exists($data, 'channel_actions_count') && null !== $data->{'channel_actions_count'}) {
-            $object->setChannelActionsCount($data->{'channel_actions_count'});
-        } elseif (property_exists($data, 'channel_actions_count') && null === $data->{'channel_actions_count'}) {
+        if (\array_key_exists('channel_actions_count', $data) && null !== $data['channel_actions_count']) {
+            $object->setChannelActionsCount($data['channel_actions_count']);
+        } elseif (\array_key_exists('channel_actions_count', $data) && null === $data['channel_actions_count']) {
             $object->setChannelActionsCount(null);
         }
-        if (property_exists($data, 'channel_actions_ts') && null !== $data->{'channel_actions_ts'}) {
-            $object->setChannelActionsTs($data->{'channel_actions_ts'});
-        } elseif (property_exists($data, 'channel_actions_ts') && null === $data->{'channel_actions_ts'}) {
+        if (\array_key_exists('channel_actions_ts', $data) && null !== $data['channel_actions_ts']) {
+            $object->setChannelActionsTs($data['channel_actions_ts']);
+        } elseif (\array_key_exists('channel_actions_ts', $data) && null === $data['channel_actions_ts']) {
             $object->setChannelActionsTs(null);
         }
-        if (property_exists($data, 'has_more') && null !== $data->{'has_more'}) {
-            $object->setHasMore($data->{'has_more'});
-        } elseif (property_exists($data, 'has_more') && null === $data->{'has_more'}) {
+        if (\array_key_exists('has_more', $data) && null !== $data['has_more']) {
+            $object->setHasMore($data['has_more']);
+        } elseif (\array_key_exists('has_more', $data) && null === $data['has_more']) {
             $object->setHasMore(null);
         }
-        if (property_exists($data, 'latest') && null !== $data->{'latest'}) {
-            $object->setLatest($data->{'latest'});
-        } elseif (property_exists($data, 'latest') && null === $data->{'latest'}) {
+        if (\array_key_exists('latest', $data) && null !== $data['latest']) {
+            $object->setLatest($data['latest']);
+        } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
             $object->setLatest(null);
         }
-        if (property_exists($data, 'messages') && null !== $data->{'messages'}) {
+        if (\array_key_exists('messages', $data) && null !== $data['messages']) {
             $values = [];
-            foreach ($data->{'messages'} as $value) {
+            foreach ($data['messages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context);
             }
             $object->setMessages($values);
-        } elseif (property_exists($data, 'messages') && null === $data->{'messages'}) {
+        } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
             $object->setMessages(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -88,40 +87,28 @@ class MpimHistoryGetResponse200Normalizer implements DenormalizerInterface, Norm
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannelActionsCount()) {
-            $data->{'channel_actions_count'} = $object->getChannelActionsCount();
-        } else {
-            $data->{'channel_actions_count'} = null;
+            $data['channel_actions_count'] = $object->getChannelActionsCount();
         }
         if (null !== $object->getChannelActionsTs()) {
-            $data->{'channel_actions_ts'} = $object->getChannelActionsTs();
-        } else {
-            $data->{'channel_actions_ts'} = null;
+            $data['channel_actions_ts'] = $object->getChannelActionsTs();
         }
         if (null !== $object->getHasMore()) {
-            $data->{'has_more'} = $object->getHasMore();
-        } else {
-            $data->{'has_more'} = null;
+            $data['has_more'] = $object->getHasMore();
         }
         if (null !== $object->getLatest()) {
-            $data->{'latest'} = $object->getLatest();
-        } else {
-            $data->{'latest'} = null;
+            $data['latest'] = $object->getLatest();
         }
         if (null !== $object->getMessages()) {
             $values = [];
             foreach ($object->getMessages() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'messages'} = $values;
-        } else {
-            $data->{'messages'} = null;
+            $data['messages'] = $values;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
 
         return $data;

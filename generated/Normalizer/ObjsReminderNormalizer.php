@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,49 +40,46 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsReminder();
-        if (property_exists($data, 'complete_ts') && null !== $data->{'complete_ts'}) {
-            $object->setCompleteTs($data->{'complete_ts'});
-        } elseif (property_exists($data, 'complete_ts') && null === $data->{'complete_ts'}) {
+        if (\array_key_exists('complete_ts', $data) && null !== $data['complete_ts']) {
+            $object->setCompleteTs($data['complete_ts']);
+        } elseif (\array_key_exists('complete_ts', $data) && null === $data['complete_ts']) {
             $object->setCompleteTs(null);
         }
-        if (property_exists($data, 'creator') && null !== $data->{'creator'}) {
-            $object->setCreator($data->{'creator'});
-        } elseif (property_exists($data, 'creator') && null === $data->{'creator'}) {
+        if (\array_key_exists('creator', $data) && null !== $data['creator']) {
+            $object->setCreator($data['creator']);
+        } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
             $object->setCreator(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'recurring') && null !== $data->{'recurring'}) {
-            $object->setRecurring($data->{'recurring'});
-        } elseif (property_exists($data, 'recurring') && null === $data->{'recurring'}) {
+        if (\array_key_exists('recurring', $data) && null !== $data['recurring']) {
+            $object->setRecurring($data['recurring']);
+        } elseif (\array_key_exists('recurring', $data) && null === $data['recurring']) {
             $object->setRecurring(null);
         }
-        if (property_exists($data, 'text') && null !== $data->{'text'}) {
-            $object->setText($data->{'text'});
-        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+        if (\array_key_exists('text', $data) && null !== $data['text']) {
+            $object->setText($data['text']);
+        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
             $object->setText(null);
         }
-        if (property_exists($data, 'time') && null !== $data->{'time'}) {
-            $object->setTime($data->{'time'});
-        } elseif (property_exists($data, 'time') && null === $data->{'time'}) {
+        if (\array_key_exists('time', $data) && null !== $data['time']) {
+            $object->setTime($data['time']);
+        } elseif (\array_key_exists('time', $data) && null === $data['time']) {
             $object->setTime(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
 
@@ -89,41 +88,27 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCompleteTs()) {
-            $data->{'complete_ts'} = $object->getCompleteTs();
-        } else {
-            $data->{'complete_ts'} = null;
+            $data['complete_ts'] = $object->getCompleteTs();
         }
         if (null !== $object->getCreator()) {
-            $data->{'creator'} = $object->getCreator();
-        } else {
-            $data->{'creator'} = null;
+            $data['creator'] = $object->getCreator();
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        } else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getRecurring()) {
-            $data->{'recurring'} = $object->getRecurring();
-        } else {
-            $data->{'recurring'} = null;
+            $data['recurring'] = $object->getRecurring();
         }
         if (null !== $object->getText()) {
-            $data->{'text'} = $object->getText();
-        } else {
-            $data->{'text'} = null;
+            $data['text'] = $object->getText();
         }
         if (null !== $object->getTime()) {
-            $data->{'time'} = $object->getTime();
-        } else {
-            $data->{'time'} = null;
+            $data['time'] = $object->getTime();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
-        } else {
-            $data->{'user'} = null;
+            $data['user'] = $object->getUser();
         }
 
         return $data;

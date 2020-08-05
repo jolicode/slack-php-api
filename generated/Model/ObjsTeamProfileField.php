@@ -115,7 +115,7 @@ class ObjsTeamProfileField
     /**
      * @return mixed[]|null
      */
-    public function getOptions(): ?\ArrayObject
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
@@ -123,7 +123,7 @@ class ObjsTeamProfileField
     /**
      * @param mixed[]|null $options
      */
-    public function setOptions(?\ArrayObject $options): self
+    public function setOptions(?iterable $options): self
     {
         $this->options = $options;
 

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer implemen
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,19 +40,16 @@ class ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer implemen
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata();
-        if (property_exists($data, 'next_cursor') && null !== $data->{'next_cursor'}) {
-            $object->setNextCursor($data->{'next_cursor'});
-        } elseif (property_exists($data, 'next_cursor') && null === $data->{'next_cursor'}) {
+        if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
+            $object->setNextCursor($data['next_cursor']);
+        } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
             $object->setNextCursor(null);
         }
 
@@ -59,11 +58,9 @@ class ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer implemen
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getNextCursor()) {
-            $data->{'next_cursor'} = $object->getNextCursor();
-        } else {
-            $data->{'next_cursor'} = null;
+            $data['next_cursor'] = $object->getNextCursor();
         }
 
         return $data;

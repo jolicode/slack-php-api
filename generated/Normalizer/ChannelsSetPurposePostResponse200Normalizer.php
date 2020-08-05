@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ChannelsSetPurposePostResponse200Normalizer implements DenormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,24 +40,21 @@ class ChannelsSetPurposePostResponse200Normalizer implements DenormalizerInterfa
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChannelsSetPurposePostResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'purpose') && null !== $data->{'purpose'}) {
-            $object->setPurpose($data->{'purpose'});
-        } elseif (property_exists($data, 'purpose') && null === $data->{'purpose'}) {
+        if (\array_key_exists('purpose', $data) && null !== $data['purpose']) {
+            $object->setPurpose($data['purpose']);
+        } elseif (\array_key_exists('purpose', $data) && null === $data['purpose']) {
             $object->setPurpose(null);
         }
 
@@ -64,16 +63,12 @@ class ChannelsSetPurposePostResponse200Normalizer implements DenormalizerInterfa
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getPurpose()) {
-            $data->{'purpose'} = $object->getPurpose();
-        } else {
-            $data->{'purpose'} = null;
+            $data['purpose'] = $object->getPurpose();
         }
 
         return $data;

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,48 +40,45 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsEnterpriseUser();
-        if (property_exists($data, 'enterprise_id') && null !== $data->{'enterprise_id'}) {
-            $object->setEnterpriseId($data->{'enterprise_id'});
-        } elseif (property_exists($data, 'enterprise_id') && null === $data->{'enterprise_id'}) {
+        if (\array_key_exists('enterprise_id', $data) && null !== $data['enterprise_id']) {
+            $object->setEnterpriseId($data['enterprise_id']);
+        } elseif (\array_key_exists('enterprise_id', $data) && null === $data['enterprise_id']) {
             $object->setEnterpriseId(null);
         }
-        if (property_exists($data, 'enterprise_name') && null !== $data->{'enterprise_name'}) {
-            $object->setEnterpriseName($data->{'enterprise_name'});
-        } elseif (property_exists($data, 'enterprise_name') && null === $data->{'enterprise_name'}) {
+        if (\array_key_exists('enterprise_name', $data) && null !== $data['enterprise_name']) {
+            $object->setEnterpriseName($data['enterprise_name']);
+        } elseif (\array_key_exists('enterprise_name', $data) && null === $data['enterprise_name']) {
             $object->setEnterpriseName(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'is_admin') && null !== $data->{'is_admin'}) {
-            $object->setIsAdmin($data->{'is_admin'});
-        } elseif (property_exists($data, 'is_admin') && null === $data->{'is_admin'}) {
+        if (\array_key_exists('is_admin', $data) && null !== $data['is_admin']) {
+            $object->setIsAdmin($data['is_admin']);
+        } elseif (\array_key_exists('is_admin', $data) && null === $data['is_admin']) {
             $object->setIsAdmin(null);
         }
-        if (property_exists($data, 'is_owner') && null !== $data->{'is_owner'}) {
-            $object->setIsOwner($data->{'is_owner'});
-        } elseif (property_exists($data, 'is_owner') && null === $data->{'is_owner'}) {
+        if (\array_key_exists('is_owner', $data) && null !== $data['is_owner']) {
+            $object->setIsOwner($data['is_owner']);
+        } elseif (\array_key_exists('is_owner', $data) && null === $data['is_owner']) {
             $object->setIsOwner(null);
         }
-        if (property_exists($data, 'teams') && null !== $data->{'teams'}) {
+        if (\array_key_exists('teams', $data) && null !== $data['teams']) {
             $values = [];
-            foreach ($data->{'teams'} as $value) {
+            foreach ($data['teams'] as $value) {
                 $values[] = $value;
             }
             $object->setTeams($values);
-        } elseif (property_exists($data, 'teams') && null === $data->{'teams'}) {
+        } elseif (\array_key_exists('teams', $data) && null === $data['teams']) {
             $object->setTeams(null);
         }
 
@@ -88,40 +87,28 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getEnterpriseId()) {
-            $data->{'enterprise_id'} = $object->getEnterpriseId();
-        } else {
-            $data->{'enterprise_id'} = null;
+            $data['enterprise_id'] = $object->getEnterpriseId();
         }
         if (null !== $object->getEnterpriseName()) {
-            $data->{'enterprise_name'} = $object->getEnterpriseName();
-        } else {
-            $data->{'enterprise_name'} = null;
+            $data['enterprise_name'] = $object->getEnterpriseName();
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        } else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getIsAdmin()) {
-            $data->{'is_admin'} = $object->getIsAdmin();
-        } else {
-            $data->{'is_admin'} = null;
+            $data['is_admin'] = $object->getIsAdmin();
         }
         if (null !== $object->getIsOwner()) {
-            $data->{'is_owner'} = $object->getIsOwner();
-        } else {
-            $data->{'is_owner'} = null;
+            $data['is_owner'] = $object->getIsOwner();
         }
         if (null !== $object->getTeams()) {
             $values = [];
             foreach ($object->getTeams() as $value) {
                 $values[] = $value;
             }
-            $data->{'teams'} = $values;
-        } else {
-            $data->{'teams'} = null;
+            $data['teams'] = $values;
         }
 
         return $data;

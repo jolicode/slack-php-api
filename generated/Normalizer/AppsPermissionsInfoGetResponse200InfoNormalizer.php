@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class AppsPermissionsInfoGetResponse200InfoNormalizer implements DenormalizerInt
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,44 +40,41 @@ class AppsPermissionsInfoGetResponse200InfoNormalizer implements DenormalizerInt
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info();
-        if (property_exists($data, 'app_home') && null !== $data->{'app_home'}) {
-            $object->setAppHome($this->denormalizer->denormalize($data->{'app_home'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoAppHome', 'json', $context));
-        } elseif (property_exists($data, 'app_home') && null === $data->{'app_home'}) {
+        if (\array_key_exists('app_home', $data) && null !== $data['app_home']) {
+            $object->setAppHome($this->denormalizer->denormalize($data['app_home'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoAppHome', 'json', $context));
+        } elseif (\array_key_exists('app_home', $data) && null === $data['app_home']) {
             $object->setAppHome(null);
         }
-        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($this->denormalizer->denormalize($data->{'channel'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoChannel', 'json', $context));
-        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($this->denormalizer->denormalize($data['channel'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoChannel', 'json', $context));
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
         }
-        if (property_exists($data, 'group') && null !== $data->{'group'}) {
-            $object->setGroup($this->denormalizer->denormalize($data->{'group'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoGroup', 'json', $context));
-        } elseif (property_exists($data, 'group') && null === $data->{'group'}) {
+        if (\array_key_exists('group', $data) && null !== $data['group']) {
+            $object->setGroup($this->denormalizer->denormalize($data['group'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoGroup', 'json', $context));
+        } elseif (\array_key_exists('group', $data) && null === $data['group']) {
             $object->setGroup(null);
         }
-        if (property_exists($data, 'im') && null !== $data->{'im'}) {
-            $object->setIm($this->denormalizer->denormalize($data->{'im'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoIm', 'json', $context));
-        } elseif (property_exists($data, 'im') && null === $data->{'im'}) {
+        if (\array_key_exists('im', $data) && null !== $data['im']) {
+            $object->setIm($this->denormalizer->denormalize($data['im'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoIm', 'json', $context));
+        } elseif (\array_key_exists('im', $data) && null === $data['im']) {
             $object->setIm(null);
         }
-        if (property_exists($data, 'mpim') && null !== $data->{'mpim'}) {
-            $object->setMpim($this->denormalizer->denormalize($data->{'mpim'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoMpim', 'json', $context));
-        } elseif (property_exists($data, 'mpim') && null === $data->{'mpim'}) {
+        if (\array_key_exists('mpim', $data) && null !== $data['mpim']) {
+            $object->setMpim($this->denormalizer->denormalize($data['mpim'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoMpim', 'json', $context));
+        } elseif (\array_key_exists('mpim', $data) && null === $data['mpim']) {
             $object->setMpim(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoTeam', 'json', $context));
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoTeam', 'json', $context));
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
 
@@ -84,36 +83,24 @@ class AppsPermissionsInfoGetResponse200InfoNormalizer implements DenormalizerInt
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getAppHome()) {
-            $data->{'app_home'} = $this->normalizer->normalize($object->getAppHome(), 'json', $context);
-        } else {
-            $data->{'app_home'} = null;
+            $data['app_home'] = $this->normalizer->normalize($object->getAppHome(), 'json', $context);
         }
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $this->normalizer->normalize($object->getChannel(), 'json', $context);
-        } else {
-            $data->{'channel'} = null;
+            $data['channel'] = $this->normalizer->normalize($object->getChannel(), 'json', $context);
         }
         if (null !== $object->getGroup()) {
-            $data->{'group'} = $this->normalizer->normalize($object->getGroup(), 'json', $context);
-        } else {
-            $data->{'group'} = null;
+            $data['group'] = $this->normalizer->normalize($object->getGroup(), 'json', $context);
         }
         if (null !== $object->getIm()) {
-            $data->{'im'} = $this->normalizer->normalize($object->getIm(), 'json', $context);
-        } else {
-            $data->{'im'} = null;
+            $data['im'] = $this->normalizer->normalize($object->getIm(), 'json', $context);
         }
         if (null !== $object->getMpim()) {
-            $data->{'mpim'} = $this->normalizer->normalize($object->getMpim(), 'json', $context);
-        } else {
-            $data->{'mpim'} = null;
+            $data['mpim'] = $this->normalizer->normalize($object->getMpim(), 'json', $context);
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $this->normalizer->normalize($object->getTeam(), 'json', $context);
-        } else {
-            $data->{'team'} = null;
+            $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
         }
 
         return $data;

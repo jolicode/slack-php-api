@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,34 +40,31 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0();
-        if (property_exists($data, 'created') && null !== $data->{'created'}) {
-            $object->setCreated($data->{'created'});
-        } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
+        if (\array_key_exists('created', $data) && null !== $data['created']) {
+            $object->setCreated($data['created']);
+        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
             $object->setCreated(null);
         }
-        if (property_exists($data, 'created_by') && null !== $data->{'created_by'}) {
-            $object->setCreatedBy($data->{'created_by'});
-        } elseif (property_exists($data, 'created_by') && null === $data->{'created_by'}) {
+        if (\array_key_exists('created_by', $data) && null !== $data['created_by']) {
+            $object->setCreatedBy($data['created_by']);
+        } elseif (\array_key_exists('created_by', $data) && null === $data['created_by']) {
             $object->setCreatedBy(null);
         }
-        if (property_exists($data, 'file') && null !== $data->{'file'}) {
-            $object->setFile($this->denormalizer->denormalize($data->{'file'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
-        } elseif (property_exists($data, 'file') && null === $data->{'file'}) {
+        if (\array_key_exists('file', $data) && null !== $data['file']) {
+            $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\\Slack\\Api\\Model\\ObjsFile', 'json', $context));
+        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
             $object->setFile(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
         }
 
@@ -74,26 +73,18 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCreated()) {
-            $data->{'created'} = $object->getCreated();
-        } else {
-            $data->{'created'} = null;
+            $data['created'] = $object->getCreated();
         }
         if (null !== $object->getCreatedBy()) {
-            $data->{'created_by'} = $object->getCreatedBy();
-        } else {
-            $data->{'created_by'} = null;
+            $data['created_by'] = $object->getCreatedBy();
         }
         if (null !== $object->getFile()) {
-            $data->{'file'} = $this->normalizer->normalize($object->getFile(), 'json', $context);
-        } else {
-            $data->{'file'} = null;
+            $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        } else {
-            $data->{'type'} = null;
+            $data['type'] = $object->getType();
         }
 
         return $data;

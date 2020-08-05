@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,399 +40,396 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsFile();
-        if (property_exists($data, 'channels') && null !== $data->{'channels'}) {
+        if (\array_key_exists('channels', $data) && null !== $data['channels']) {
             $values = [];
-            foreach ($data->{'channels'} as $value) {
+            foreach ($data['channels'] as $value) {
                 $values[] = $value;
             }
             $object->setChannels($values);
-        } elseif (property_exists($data, 'channels') && null === $data->{'channels'}) {
+        } elseif (\array_key_exists('channels', $data) && null === $data['channels']) {
             $object->setChannels(null);
         }
-        if (property_exists($data, 'comments_count') && null !== $data->{'comments_count'}) {
-            $object->setCommentsCount($data->{'comments_count'});
-        } elseif (property_exists($data, 'comments_count') && null === $data->{'comments_count'}) {
+        if (\array_key_exists('comments_count', $data) && null !== $data['comments_count']) {
+            $object->setCommentsCount($data['comments_count']);
+        } elseif (\array_key_exists('comments_count', $data) && null === $data['comments_count']) {
             $object->setCommentsCount(null);
         }
-        if (property_exists($data, 'created') && null !== $data->{'created'}) {
-            $object->setCreated($data->{'created'});
-        } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
+        if (\array_key_exists('created', $data) && null !== $data['created']) {
+            $object->setCreated($data['created']);
+        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
             $object->setCreated(null);
         }
-        if (property_exists($data, 'date_delete') && null !== $data->{'date_delete'}) {
-            $object->setDateDelete($data->{'date_delete'});
-        } elseif (property_exists($data, 'date_delete') && null === $data->{'date_delete'}) {
+        if (\array_key_exists('date_delete', $data) && null !== $data['date_delete']) {
+            $object->setDateDelete($data['date_delete']);
+        } elseif (\array_key_exists('date_delete', $data) && null === $data['date_delete']) {
             $object->setDateDelete(null);
         }
-        if (property_exists($data, 'deanimate_gif') && null !== $data->{'deanimate_gif'}) {
-            $object->setDeanimateGif($data->{'deanimate_gif'});
-        } elseif (property_exists($data, 'deanimate_gif') && null === $data->{'deanimate_gif'}) {
+        if (\array_key_exists('deanimate_gif', $data) && null !== $data['deanimate_gif']) {
+            $object->setDeanimateGif($data['deanimate_gif']);
+        } elseif (\array_key_exists('deanimate_gif', $data) && null === $data['deanimate_gif']) {
             $object->setDeanimateGif(null);
         }
-        if (property_exists($data, 'display_as_bot') && null !== $data->{'display_as_bot'}) {
-            $object->setDisplayAsBot($data->{'display_as_bot'});
-        } elseif (property_exists($data, 'display_as_bot') && null === $data->{'display_as_bot'}) {
+        if (\array_key_exists('display_as_bot', $data) && null !== $data['display_as_bot']) {
+            $object->setDisplayAsBot($data['display_as_bot']);
+        } elseif (\array_key_exists('display_as_bot', $data) && null === $data['display_as_bot']) {
             $object->setDisplayAsBot(null);
         }
-        if (property_exists($data, 'editable') && null !== $data->{'editable'}) {
-            $object->setEditable($data->{'editable'});
-        } elseif (property_exists($data, 'editable') && null === $data->{'editable'}) {
+        if (\array_key_exists('editable', $data) && null !== $data['editable']) {
+            $object->setEditable($data['editable']);
+        } elseif (\array_key_exists('editable', $data) && null === $data['editable']) {
             $object->setEditable(null);
         }
-        if (property_exists($data, 'editor') && null !== $data->{'editor'}) {
-            $object->setEditor($data->{'editor'});
-        } elseif (property_exists($data, 'editor') && null === $data->{'editor'}) {
+        if (\array_key_exists('editor', $data) && null !== $data['editor']) {
+            $object->setEditor($data['editor']);
+        } elseif (\array_key_exists('editor', $data) && null === $data['editor']) {
             $object->setEditor(null);
         }
-        if (property_exists($data, 'external_id') && null !== $data->{'external_id'}) {
-            $object->setExternalId($data->{'external_id'});
-        } elseif (property_exists($data, 'external_id') && null === $data->{'external_id'}) {
+        if (\array_key_exists('external_id', $data) && null !== $data['external_id']) {
+            $object->setExternalId($data['external_id']);
+        } elseif (\array_key_exists('external_id', $data) && null === $data['external_id']) {
             $object->setExternalId(null);
         }
-        if (property_exists($data, 'external_type') && null !== $data->{'external_type'}) {
-            $object->setExternalType($data->{'external_type'});
-        } elseif (property_exists($data, 'external_type') && null === $data->{'external_type'}) {
+        if (\array_key_exists('external_type', $data) && null !== $data['external_type']) {
+            $object->setExternalType($data['external_type']);
+        } elseif (\array_key_exists('external_type', $data) && null === $data['external_type']) {
             $object->setExternalType(null);
         }
-        if (property_exists($data, 'external_url') && null !== $data->{'external_url'}) {
-            $object->setExternalUrl($data->{'external_url'});
-        } elseif (property_exists($data, 'external_url') && null === $data->{'external_url'}) {
+        if (\array_key_exists('external_url', $data) && null !== $data['external_url']) {
+            $object->setExternalUrl($data['external_url']);
+        } elseif (\array_key_exists('external_url', $data) && null === $data['external_url']) {
             $object->setExternalUrl(null);
         }
-        if (property_exists($data, 'filetype') && null !== $data->{'filetype'}) {
-            $object->setFiletype($data->{'filetype'});
-        } elseif (property_exists($data, 'filetype') && null === $data->{'filetype'}) {
+        if (\array_key_exists('filetype', $data) && null !== $data['filetype']) {
+            $object->setFiletype($data['filetype']);
+        } elseif (\array_key_exists('filetype', $data) && null === $data['filetype']) {
             $object->setFiletype(null);
         }
-        if (property_exists($data, 'groups') && null !== $data->{'groups'}) {
+        if (\array_key_exists('groups', $data) && null !== $data['groups']) {
             $values_1 = [];
-            foreach ($data->{'groups'} as $value_1) {
+            foreach ($data['groups'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setGroups($values_1);
-        } elseif (property_exists($data, 'groups') && null === $data->{'groups'}) {
+        } elseif (\array_key_exists('groups', $data) && null === $data['groups']) {
             $object->setGroups(null);
         }
-        if (property_exists($data, 'has_rich_preview') && null !== $data->{'has_rich_preview'}) {
-            $object->setHasRichPreview($data->{'has_rich_preview'});
-        } elseif (property_exists($data, 'has_rich_preview') && null === $data->{'has_rich_preview'}) {
+        if (\array_key_exists('has_rich_preview', $data) && null !== $data['has_rich_preview']) {
+            $object->setHasRichPreview($data['has_rich_preview']);
+        } elseif (\array_key_exists('has_rich_preview', $data) && null === $data['has_rich_preview']) {
             $object->setHasRichPreview(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'image_exif_rotation') && null !== $data->{'image_exif_rotation'}) {
-            $object->setImageExifRotation($data->{'image_exif_rotation'});
-        } elseif (property_exists($data, 'image_exif_rotation') && null === $data->{'image_exif_rotation'}) {
+        if (\array_key_exists('image_exif_rotation', $data) && null !== $data['image_exif_rotation']) {
+            $object->setImageExifRotation($data['image_exif_rotation']);
+        } elseif (\array_key_exists('image_exif_rotation', $data) && null === $data['image_exif_rotation']) {
             $object->setImageExifRotation(null);
         }
-        if (property_exists($data, 'ims') && null !== $data->{'ims'}) {
+        if (\array_key_exists('ims', $data) && null !== $data['ims']) {
             $values_2 = [];
-            foreach ($data->{'ims'} as $value_2) {
+            foreach ($data['ims'] as $value_2) {
                 $values_2[] = $value_2;
             }
             $object->setIms($values_2);
-        } elseif (property_exists($data, 'ims') && null === $data->{'ims'}) {
+        } elseif (\array_key_exists('ims', $data) && null === $data['ims']) {
             $object->setIms(null);
         }
-        if (property_exists($data, 'is_external') && null !== $data->{'is_external'}) {
-            $object->setIsExternal($data->{'is_external'});
-        } elseif (property_exists($data, 'is_external') && null === $data->{'is_external'}) {
+        if (\array_key_exists('is_external', $data) && null !== $data['is_external']) {
+            $object->setIsExternal($data['is_external']);
+        } elseif (\array_key_exists('is_external', $data) && null === $data['is_external']) {
             $object->setIsExternal(null);
         }
-        if (property_exists($data, 'is_public') && null !== $data->{'is_public'}) {
-            $object->setIsPublic($data->{'is_public'});
-        } elseif (property_exists($data, 'is_public') && null === $data->{'is_public'}) {
+        if (\array_key_exists('is_public', $data) && null !== $data['is_public']) {
+            $object->setIsPublic($data['is_public']);
+        } elseif (\array_key_exists('is_public', $data) && null === $data['is_public']) {
             $object->setIsPublic(null);
         }
-        if (property_exists($data, 'is_starred') && null !== $data->{'is_starred'}) {
-            $object->setIsStarred($data->{'is_starred'});
-        } elseif (property_exists($data, 'is_starred') && null === $data->{'is_starred'}) {
+        if (\array_key_exists('is_starred', $data) && null !== $data['is_starred']) {
+            $object->setIsStarred($data['is_starred']);
+        } elseif (\array_key_exists('is_starred', $data) && null === $data['is_starred']) {
             $object->setIsStarred(null);
         }
-        if (property_exists($data, 'is_tombstoned') && null !== $data->{'is_tombstoned'}) {
-            $object->setIsTombstoned($data->{'is_tombstoned'});
-        } elseif (property_exists($data, 'is_tombstoned') && null === $data->{'is_tombstoned'}) {
+        if (\array_key_exists('is_tombstoned', $data) && null !== $data['is_tombstoned']) {
+            $object->setIsTombstoned($data['is_tombstoned']);
+        } elseif (\array_key_exists('is_tombstoned', $data) && null === $data['is_tombstoned']) {
             $object->setIsTombstoned(null);
         }
-        if (property_exists($data, 'last_editor') && null !== $data->{'last_editor'}) {
-            $object->setLastEditor($data->{'last_editor'});
-        } elseif (property_exists($data, 'last_editor') && null === $data->{'last_editor'}) {
+        if (\array_key_exists('last_editor', $data) && null !== $data['last_editor']) {
+            $object->setLastEditor($data['last_editor']);
+        } elseif (\array_key_exists('last_editor', $data) && null === $data['last_editor']) {
             $object->setLastEditor(null);
         }
-        if (property_exists($data, 'mimetype') && null !== $data->{'mimetype'}) {
-            $object->setMimetype($data->{'mimetype'});
-        } elseif (property_exists($data, 'mimetype') && null === $data->{'mimetype'}) {
+        if (\array_key_exists('mimetype', $data) && null !== $data['mimetype']) {
+            $object->setMimetype($data['mimetype']);
+        } elseif (\array_key_exists('mimetype', $data) && null === $data['mimetype']) {
             $object->setMimetype(null);
         }
-        if (property_exists($data, 'mode') && null !== $data->{'mode'}) {
-            $object->setMode($data->{'mode'});
-        } elseif (property_exists($data, 'mode') && null === $data->{'mode'}) {
+        if (\array_key_exists('mode', $data) && null !== $data['mode']) {
+            $object->setMode($data['mode']);
+        } elseif (\array_key_exists('mode', $data) && null === $data['mode']) {
             $object->setMode(null);
         }
-        if (property_exists($data, 'name') && null !== $data->{'name'}) {
-            $object->setName($data->{'name'});
-        } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
-        if (property_exists($data, 'non_owner_editable') && null !== $data->{'non_owner_editable'}) {
-            $object->setNonOwnerEditable($data->{'non_owner_editable'});
-        } elseif (property_exists($data, 'non_owner_editable') && null === $data->{'non_owner_editable'}) {
+        if (\array_key_exists('non_owner_editable', $data) && null !== $data['non_owner_editable']) {
+            $object->setNonOwnerEditable($data['non_owner_editable']);
+        } elseif (\array_key_exists('non_owner_editable', $data) && null === $data['non_owner_editable']) {
             $object->setNonOwnerEditable(null);
         }
-        if (property_exists($data, 'num_stars') && null !== $data->{'num_stars'}) {
-            $object->setNumStars($data->{'num_stars'});
-        } elseif (property_exists($data, 'num_stars') && null === $data->{'num_stars'}) {
+        if (\array_key_exists('num_stars', $data) && null !== $data['num_stars']) {
+            $object->setNumStars($data['num_stars']);
+        } elseif (\array_key_exists('num_stars', $data) && null === $data['num_stars']) {
             $object->setNumStars(null);
         }
-        if (property_exists($data, 'original_h') && null !== $data->{'original_h'}) {
-            $object->setOriginalH($data->{'original_h'});
-        } elseif (property_exists($data, 'original_h') && null === $data->{'original_h'}) {
+        if (\array_key_exists('original_h', $data) && null !== $data['original_h']) {
+            $object->setOriginalH($data['original_h']);
+        } elseif (\array_key_exists('original_h', $data) && null === $data['original_h']) {
             $object->setOriginalH(null);
         }
-        if (property_exists($data, 'original_w') && null !== $data->{'original_w'}) {
-            $object->setOriginalW($data->{'original_w'});
-        } elseif (property_exists($data, 'original_w') && null === $data->{'original_w'}) {
+        if (\array_key_exists('original_w', $data) && null !== $data['original_w']) {
+            $object->setOriginalW($data['original_w']);
+        } elseif (\array_key_exists('original_w', $data) && null === $data['original_w']) {
             $object->setOriginalW(null);
         }
-        if (property_exists($data, 'permalink') && null !== $data->{'permalink'}) {
-            $object->setPermalink($data->{'permalink'});
-        } elseif (property_exists($data, 'permalink') && null === $data->{'permalink'}) {
+        if (\array_key_exists('permalink', $data) && null !== $data['permalink']) {
+            $object->setPermalink($data['permalink']);
+        } elseif (\array_key_exists('permalink', $data) && null === $data['permalink']) {
             $object->setPermalink(null);
         }
-        if (property_exists($data, 'permalink_public') && null !== $data->{'permalink_public'}) {
-            $object->setPermalinkPublic($data->{'permalink_public'});
-        } elseif (property_exists($data, 'permalink_public') && null === $data->{'permalink_public'}) {
+        if (\array_key_exists('permalink_public', $data) && null !== $data['permalink_public']) {
+            $object->setPermalinkPublic($data['permalink_public']);
+        } elseif (\array_key_exists('permalink_public', $data) && null === $data['permalink_public']) {
             $object->setPermalinkPublic(null);
         }
-        if (property_exists($data, 'pinned_info') && null !== $data->{'pinned_info'}) {
-            $object->setPinnedInfo($data->{'pinned_info'});
-        } elseif (property_exists($data, 'pinned_info') && null === $data->{'pinned_info'}) {
+        if (\array_key_exists('pinned_info', $data) && null !== $data['pinned_info']) {
+            $object->setPinnedInfo($data['pinned_info']);
+        } elseif (\array_key_exists('pinned_info', $data) && null === $data['pinned_info']) {
             $object->setPinnedInfo(null);
         }
-        if (property_exists($data, 'pinned_to') && null !== $data->{'pinned_to'}) {
+        if (\array_key_exists('pinned_to', $data) && null !== $data['pinned_to']) {
             $values_3 = [];
-            foreach ($data->{'pinned_to'} as $value_3) {
+            foreach ($data['pinned_to'] as $value_3) {
                 $values_3[] = $value_3;
             }
             $object->setPinnedTo($values_3);
-        } elseif (property_exists($data, 'pinned_to') && null === $data->{'pinned_to'}) {
+        } elseif (\array_key_exists('pinned_to', $data) && null === $data['pinned_to']) {
             $object->setPinnedTo(null);
         }
-        if (property_exists($data, 'pjpeg') && null !== $data->{'pjpeg'}) {
-            $object->setPjpeg($data->{'pjpeg'});
-        } elseif (property_exists($data, 'pjpeg') && null === $data->{'pjpeg'}) {
+        if (\array_key_exists('pjpeg', $data) && null !== $data['pjpeg']) {
+            $object->setPjpeg($data['pjpeg']);
+        } elseif (\array_key_exists('pjpeg', $data) && null === $data['pjpeg']) {
             $object->setPjpeg(null);
         }
-        if (property_exists($data, 'pretty_type') && null !== $data->{'pretty_type'}) {
-            $object->setPrettyType($data->{'pretty_type'});
-        } elseif (property_exists($data, 'pretty_type') && null === $data->{'pretty_type'}) {
+        if (\array_key_exists('pretty_type', $data) && null !== $data['pretty_type']) {
+            $object->setPrettyType($data['pretty_type']);
+        } elseif (\array_key_exists('pretty_type', $data) && null === $data['pretty_type']) {
             $object->setPrettyType(null);
         }
-        if (property_exists($data, 'preview') && null !== $data->{'preview'}) {
-            $object->setPreview($data->{'preview'});
-        } elseif (property_exists($data, 'preview') && null === $data->{'preview'}) {
+        if (\array_key_exists('preview', $data) && null !== $data['preview']) {
+            $object->setPreview($data['preview']);
+        } elseif (\array_key_exists('preview', $data) && null === $data['preview']) {
             $object->setPreview(null);
         }
-        if (property_exists($data, 'public_url_shared') && null !== $data->{'public_url_shared'}) {
-            $object->setPublicUrlShared($data->{'public_url_shared'});
-        } elseif (property_exists($data, 'public_url_shared') && null === $data->{'public_url_shared'}) {
+        if (\array_key_exists('public_url_shared', $data) && null !== $data['public_url_shared']) {
+            $object->setPublicUrlShared($data['public_url_shared']);
+        } elseif (\array_key_exists('public_url_shared', $data) && null === $data['public_url_shared']) {
             $object->setPublicUrlShared(null);
         }
-        if (property_exists($data, 'reactions') && null !== $data->{'reactions'}) {
+        if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
             $values_4 = [];
-            foreach ($data->{'reactions'} as $value_4) {
+            foreach ($data['reactions'] as $value_4) {
                 $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\\Slack\\Api\\Model\\ObjsReaction', 'json', $context);
             }
             $object->setReactions($values_4);
-        } elseif (property_exists($data, 'reactions') && null === $data->{'reactions'}) {
+        } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
             $object->setReactions(null);
         }
-        if (property_exists($data, 'shares') && null !== $data->{'shares'}) {
-            $object->setShares($this->denormalizer->denormalize($data->{'shares'}, 'JoliCode\\Slack\\Api\\Model\\ObjsFileShares', 'json', $context));
-        } elseif (property_exists($data, 'shares') && null === $data->{'shares'}) {
+        if (\array_key_exists('shares', $data) && null !== $data['shares']) {
+            $object->setShares($this->denormalizer->denormalize($data['shares'], 'JoliCode\\Slack\\Api\\Model\\ObjsFileShares', 'json', $context));
+        } elseif (\array_key_exists('shares', $data) && null === $data['shares']) {
             $object->setShares(null);
         }
-        if (property_exists($data, 'size') && null !== $data->{'size'}) {
-            $object->setSize($data->{'size'});
-        } elseif (property_exists($data, 'size') && null === $data->{'size'}) {
+        if (\array_key_exists('size', $data) && null !== $data['size']) {
+            $object->setSize($data['size']);
+        } elseif (\array_key_exists('size', $data) && null === $data['size']) {
             $object->setSize(null);
         }
-        if (property_exists($data, 'source_team') && null !== $data->{'source_team'}) {
-            $object->setSourceTeam($data->{'source_team'});
-        } elseif (property_exists($data, 'source_team') && null === $data->{'source_team'}) {
+        if (\array_key_exists('source_team', $data) && null !== $data['source_team']) {
+            $object->setSourceTeam($data['source_team']);
+        } elseif (\array_key_exists('source_team', $data) && null === $data['source_team']) {
             $object->setSourceTeam(null);
         }
-        if (property_exists($data, 'state') && null !== $data->{'state'}) {
-            $object->setState($data->{'state'});
-        } elseif (property_exists($data, 'state') && null === $data->{'state'}) {
+        if (\array_key_exists('state', $data) && null !== $data['state']) {
+            $object->setState($data['state']);
+        } elseif (\array_key_exists('state', $data) && null === $data['state']) {
             $object->setState(null);
         }
-        if (property_exists($data, 'thumb_1024') && null !== $data->{'thumb_1024'}) {
-            $object->setThumb1024($data->{'thumb_1024'});
-        } elseif (property_exists($data, 'thumb_1024') && null === $data->{'thumb_1024'}) {
+        if (\array_key_exists('thumb_1024', $data) && null !== $data['thumb_1024']) {
+            $object->setThumb1024($data['thumb_1024']);
+        } elseif (\array_key_exists('thumb_1024', $data) && null === $data['thumb_1024']) {
             $object->setThumb1024(null);
         }
-        if (property_exists($data, 'thumb_1024_h') && null !== $data->{'thumb_1024_h'}) {
-            $object->setThumb1024H($data->{'thumb_1024_h'});
-        } elseif (property_exists($data, 'thumb_1024_h') && null === $data->{'thumb_1024_h'}) {
+        if (\array_key_exists('thumb_1024_h', $data) && null !== $data['thumb_1024_h']) {
+            $object->setThumb1024H($data['thumb_1024_h']);
+        } elseif (\array_key_exists('thumb_1024_h', $data) && null === $data['thumb_1024_h']) {
             $object->setThumb1024H(null);
         }
-        if (property_exists($data, 'thumb_1024_w') && null !== $data->{'thumb_1024_w'}) {
-            $object->setThumb1024W($data->{'thumb_1024_w'});
-        } elseif (property_exists($data, 'thumb_1024_w') && null === $data->{'thumb_1024_w'}) {
+        if (\array_key_exists('thumb_1024_w', $data) && null !== $data['thumb_1024_w']) {
+            $object->setThumb1024W($data['thumb_1024_w']);
+        } elseif (\array_key_exists('thumb_1024_w', $data) && null === $data['thumb_1024_w']) {
             $object->setThumb1024W(null);
         }
-        if (property_exists($data, 'thumb_160') && null !== $data->{'thumb_160'}) {
-            $object->setThumb160($data->{'thumb_160'});
-        } elseif (property_exists($data, 'thumb_160') && null === $data->{'thumb_160'}) {
+        if (\array_key_exists('thumb_160', $data) && null !== $data['thumb_160']) {
+            $object->setThumb160($data['thumb_160']);
+        } elseif (\array_key_exists('thumb_160', $data) && null === $data['thumb_160']) {
             $object->setThumb160(null);
         }
-        if (property_exists($data, 'thumb_360') && null !== $data->{'thumb_360'}) {
-            $object->setThumb360($data->{'thumb_360'});
-        } elseif (property_exists($data, 'thumb_360') && null === $data->{'thumb_360'}) {
+        if (\array_key_exists('thumb_360', $data) && null !== $data['thumb_360']) {
+            $object->setThumb360($data['thumb_360']);
+        } elseif (\array_key_exists('thumb_360', $data) && null === $data['thumb_360']) {
             $object->setThumb360(null);
         }
-        if (property_exists($data, 'thumb_360_gif') && null !== $data->{'thumb_360_gif'}) {
-            $object->setThumb360Gif($data->{'thumb_360_gif'});
-        } elseif (property_exists($data, 'thumb_360_gif') && null === $data->{'thumb_360_gif'}) {
+        if (\array_key_exists('thumb_360_gif', $data) && null !== $data['thumb_360_gif']) {
+            $object->setThumb360Gif($data['thumb_360_gif']);
+        } elseif (\array_key_exists('thumb_360_gif', $data) && null === $data['thumb_360_gif']) {
             $object->setThumb360Gif(null);
         }
-        if (property_exists($data, 'thumb_360_h') && null !== $data->{'thumb_360_h'}) {
-            $object->setThumb360H($data->{'thumb_360_h'});
-        } elseif (property_exists($data, 'thumb_360_h') && null === $data->{'thumb_360_h'}) {
+        if (\array_key_exists('thumb_360_h', $data) && null !== $data['thumb_360_h']) {
+            $object->setThumb360H($data['thumb_360_h']);
+        } elseif (\array_key_exists('thumb_360_h', $data) && null === $data['thumb_360_h']) {
             $object->setThumb360H(null);
         }
-        if (property_exists($data, 'thumb_360_w') && null !== $data->{'thumb_360_w'}) {
-            $object->setThumb360W($data->{'thumb_360_w'});
-        } elseif (property_exists($data, 'thumb_360_w') && null === $data->{'thumb_360_w'}) {
+        if (\array_key_exists('thumb_360_w', $data) && null !== $data['thumb_360_w']) {
+            $object->setThumb360W($data['thumb_360_w']);
+        } elseif (\array_key_exists('thumb_360_w', $data) && null === $data['thumb_360_w']) {
             $object->setThumb360W(null);
         }
-        if (property_exists($data, 'thumb_480') && null !== $data->{'thumb_480'}) {
-            $object->setThumb480($data->{'thumb_480'});
-        } elseif (property_exists($data, 'thumb_480') && null === $data->{'thumb_480'}) {
+        if (\array_key_exists('thumb_480', $data) && null !== $data['thumb_480']) {
+            $object->setThumb480($data['thumb_480']);
+        } elseif (\array_key_exists('thumb_480', $data) && null === $data['thumb_480']) {
             $object->setThumb480(null);
         }
-        if (property_exists($data, 'thumb_480_h') && null !== $data->{'thumb_480_h'}) {
-            $object->setThumb480H($data->{'thumb_480_h'});
-        } elseif (property_exists($data, 'thumb_480_h') && null === $data->{'thumb_480_h'}) {
+        if (\array_key_exists('thumb_480_h', $data) && null !== $data['thumb_480_h']) {
+            $object->setThumb480H($data['thumb_480_h']);
+        } elseif (\array_key_exists('thumb_480_h', $data) && null === $data['thumb_480_h']) {
             $object->setThumb480H(null);
         }
-        if (property_exists($data, 'thumb_480_w') && null !== $data->{'thumb_480_w'}) {
-            $object->setThumb480W($data->{'thumb_480_w'});
-        } elseif (property_exists($data, 'thumb_480_w') && null === $data->{'thumb_480_w'}) {
+        if (\array_key_exists('thumb_480_w', $data) && null !== $data['thumb_480_w']) {
+            $object->setThumb480W($data['thumb_480_w']);
+        } elseif (\array_key_exists('thumb_480_w', $data) && null === $data['thumb_480_w']) {
             $object->setThumb480W(null);
         }
-        if (property_exists($data, 'thumb_64') && null !== $data->{'thumb_64'}) {
-            $object->setThumb64($data->{'thumb_64'});
-        } elseif (property_exists($data, 'thumb_64') && null === $data->{'thumb_64'}) {
+        if (\array_key_exists('thumb_64', $data) && null !== $data['thumb_64']) {
+            $object->setThumb64($data['thumb_64']);
+        } elseif (\array_key_exists('thumb_64', $data) && null === $data['thumb_64']) {
             $object->setThumb64(null);
         }
-        if (property_exists($data, 'thumb_720') && null !== $data->{'thumb_720'}) {
-            $object->setThumb720($data->{'thumb_720'});
-        } elseif (property_exists($data, 'thumb_720') && null === $data->{'thumb_720'}) {
+        if (\array_key_exists('thumb_720', $data) && null !== $data['thumb_720']) {
+            $object->setThumb720($data['thumb_720']);
+        } elseif (\array_key_exists('thumb_720', $data) && null === $data['thumb_720']) {
             $object->setThumb720(null);
         }
-        if (property_exists($data, 'thumb_720_h') && null !== $data->{'thumb_720_h'}) {
-            $object->setThumb720H($data->{'thumb_720_h'});
-        } elseif (property_exists($data, 'thumb_720_h') && null === $data->{'thumb_720_h'}) {
+        if (\array_key_exists('thumb_720_h', $data) && null !== $data['thumb_720_h']) {
+            $object->setThumb720H($data['thumb_720_h']);
+        } elseif (\array_key_exists('thumb_720_h', $data) && null === $data['thumb_720_h']) {
             $object->setThumb720H(null);
         }
-        if (property_exists($data, 'thumb_720_w') && null !== $data->{'thumb_720_w'}) {
-            $object->setThumb720W($data->{'thumb_720_w'});
-        } elseif (property_exists($data, 'thumb_720_w') && null === $data->{'thumb_720_w'}) {
+        if (\array_key_exists('thumb_720_w', $data) && null !== $data['thumb_720_w']) {
+            $object->setThumb720W($data['thumb_720_w']);
+        } elseif (\array_key_exists('thumb_720_w', $data) && null === $data['thumb_720_w']) {
             $object->setThumb720W(null);
         }
-        if (property_exists($data, 'thumb_80') && null !== $data->{'thumb_80'}) {
-            $object->setThumb80($data->{'thumb_80'});
-        } elseif (property_exists($data, 'thumb_80') && null === $data->{'thumb_80'}) {
+        if (\array_key_exists('thumb_80', $data) && null !== $data['thumb_80']) {
+            $object->setThumb80($data['thumb_80']);
+        } elseif (\array_key_exists('thumb_80', $data) && null === $data['thumb_80']) {
             $object->setThumb80(null);
         }
-        if (property_exists($data, 'thumb_800') && null !== $data->{'thumb_800'}) {
-            $object->setThumb800($data->{'thumb_800'});
-        } elseif (property_exists($data, 'thumb_800') && null === $data->{'thumb_800'}) {
+        if (\array_key_exists('thumb_800', $data) && null !== $data['thumb_800']) {
+            $object->setThumb800($data['thumb_800']);
+        } elseif (\array_key_exists('thumb_800', $data) && null === $data['thumb_800']) {
             $object->setThumb800(null);
         }
-        if (property_exists($data, 'thumb_800_h') && null !== $data->{'thumb_800_h'}) {
-            $object->setThumb800H($data->{'thumb_800_h'});
-        } elseif (property_exists($data, 'thumb_800_h') && null === $data->{'thumb_800_h'}) {
+        if (\array_key_exists('thumb_800_h', $data) && null !== $data['thumb_800_h']) {
+            $object->setThumb800H($data['thumb_800_h']);
+        } elseif (\array_key_exists('thumb_800_h', $data) && null === $data['thumb_800_h']) {
             $object->setThumb800H(null);
         }
-        if (property_exists($data, 'thumb_800_w') && null !== $data->{'thumb_800_w'}) {
-            $object->setThumb800W($data->{'thumb_800_w'});
-        } elseif (property_exists($data, 'thumb_800_w') && null === $data->{'thumb_800_w'}) {
+        if (\array_key_exists('thumb_800_w', $data) && null !== $data['thumb_800_w']) {
+            $object->setThumb800W($data['thumb_800_w']);
+        } elseif (\array_key_exists('thumb_800_w', $data) && null === $data['thumb_800_w']) {
             $object->setThumb800W(null);
         }
-        if (property_exists($data, 'thumb_960') && null !== $data->{'thumb_960'}) {
-            $object->setThumb960($data->{'thumb_960'});
-        } elseif (property_exists($data, 'thumb_960') && null === $data->{'thumb_960'}) {
+        if (\array_key_exists('thumb_960', $data) && null !== $data['thumb_960']) {
+            $object->setThumb960($data['thumb_960']);
+        } elseif (\array_key_exists('thumb_960', $data) && null === $data['thumb_960']) {
             $object->setThumb960(null);
         }
-        if (property_exists($data, 'thumb_960_h') && null !== $data->{'thumb_960_h'}) {
-            $object->setThumb960H($data->{'thumb_960_h'});
-        } elseif (property_exists($data, 'thumb_960_h') && null === $data->{'thumb_960_h'}) {
+        if (\array_key_exists('thumb_960_h', $data) && null !== $data['thumb_960_h']) {
+            $object->setThumb960H($data['thumb_960_h']);
+        } elseif (\array_key_exists('thumb_960_h', $data) && null === $data['thumb_960_h']) {
             $object->setThumb960H(null);
         }
-        if (property_exists($data, 'thumb_960_w') && null !== $data->{'thumb_960_w'}) {
-            $object->setThumb960W($data->{'thumb_960_w'});
-        } elseif (property_exists($data, 'thumb_960_w') && null === $data->{'thumb_960_w'}) {
+        if (\array_key_exists('thumb_960_w', $data) && null !== $data['thumb_960_w']) {
+            $object->setThumb960W($data['thumb_960_w']);
+        } elseif (\array_key_exists('thumb_960_w', $data) && null === $data['thumb_960_w']) {
             $object->setThumb960W(null);
         }
-        if (property_exists($data, 'thumb_tiny') && null !== $data->{'thumb_tiny'}) {
-            $object->setThumbTiny($data->{'thumb_tiny'});
-        } elseif (property_exists($data, 'thumb_tiny') && null === $data->{'thumb_tiny'}) {
+        if (\array_key_exists('thumb_tiny', $data) && null !== $data['thumb_tiny']) {
+            $object->setThumbTiny($data['thumb_tiny']);
+        } elseif (\array_key_exists('thumb_tiny', $data) && null === $data['thumb_tiny']) {
             $object->setThumbTiny(null);
         }
-        if (property_exists($data, 'timestamp') && null !== $data->{'timestamp'}) {
-            $object->setTimestamp($data->{'timestamp'});
-        } elseif (property_exists($data, 'timestamp') && null === $data->{'timestamp'}) {
+        if (\array_key_exists('timestamp', $data) && null !== $data['timestamp']) {
+            $object->setTimestamp($data['timestamp']);
+        } elseif (\array_key_exists('timestamp', $data) && null === $data['timestamp']) {
             $object->setTimestamp(null);
         }
-        if (property_exists($data, 'title') && null !== $data->{'title'}) {
-            $object->setTitle($data->{'title'});
-        } elseif (property_exists($data, 'title') && null === $data->{'title'}) {
+        if (\array_key_exists('title', $data) && null !== $data['title']) {
+            $object->setTitle($data['title']);
+        } elseif (\array_key_exists('title', $data) && null === $data['title']) {
             $object->setTitle(null);
         }
-        if (property_exists($data, 'updated') && null !== $data->{'updated'}) {
-            $object->setUpdated($data->{'updated'});
-        } elseif (property_exists($data, 'updated') && null === $data->{'updated'}) {
+        if (\array_key_exists('updated', $data) && null !== $data['updated']) {
+            $object->setUpdated($data['updated']);
+        } elseif (\array_key_exists('updated', $data) && null === $data['updated']) {
             $object->setUpdated(null);
         }
-        if (property_exists($data, 'url_private') && null !== $data->{'url_private'}) {
-            $object->setUrlPrivate($data->{'url_private'});
-        } elseif (property_exists($data, 'url_private') && null === $data->{'url_private'}) {
+        if (\array_key_exists('url_private', $data) && null !== $data['url_private']) {
+            $object->setUrlPrivate($data['url_private']);
+        } elseif (\array_key_exists('url_private', $data) && null === $data['url_private']) {
             $object->setUrlPrivate(null);
         }
-        if (property_exists($data, 'url_private_download') && null !== $data->{'url_private_download'}) {
-            $object->setUrlPrivateDownload($data->{'url_private_download'});
-        } elseif (property_exists($data, 'url_private_download') && null === $data->{'url_private_download'}) {
+        if (\array_key_exists('url_private_download', $data) && null !== $data['url_private_download']) {
+            $object->setUrlPrivateDownload($data['url_private_download']);
+        } elseif (\array_key_exists('url_private_download', $data) && null === $data['url_private_download']) {
             $object->setUrlPrivateDownload(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
-        if (property_exists($data, 'user_team') && null !== $data->{'user_team'}) {
-            $object->setUserTeam($data->{'user_team'});
-        } elseif (property_exists($data, 'user_team') && null === $data->{'user_team'}) {
+        if (\array_key_exists('user_team', $data) && null !== $data['user_team']) {
+            $object->setUserTeam($data['user_team']);
+        } elseif (\array_key_exists('user_team', $data) && null === $data['user_team']) {
             $object->setUserTeam(null);
         }
-        if (property_exists($data, 'username') && null !== $data->{'username'}) {
-            $object->setUsername($data->{'username'});
-        } elseif (property_exists($data, 'username') && null === $data->{'username'}) {
+        if (\array_key_exists('username', $data) && null !== $data['username']) {
+            $object->setUsername($data['username']);
+        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
             $object->setUsername(null);
         }
 
@@ -439,391 +438,245 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannels()) {
             $values = [];
             foreach ($object->getChannels() as $value) {
                 $values[] = $value;
             }
-            $data->{'channels'} = $values;
-        } else {
-            $data->{'channels'} = null;
+            $data['channels'] = $values;
         }
         if (null !== $object->getCommentsCount()) {
-            $data->{'comments_count'} = $object->getCommentsCount();
-        } else {
-            $data->{'comments_count'} = null;
+            $data['comments_count'] = $object->getCommentsCount();
         }
         if (null !== $object->getCreated()) {
-            $data->{'created'} = $object->getCreated();
-        } else {
-            $data->{'created'} = null;
+            $data['created'] = $object->getCreated();
         }
         if (null !== $object->getDateDelete()) {
-            $data->{'date_delete'} = $object->getDateDelete();
-        } else {
-            $data->{'date_delete'} = null;
+            $data['date_delete'] = $object->getDateDelete();
         }
         if (null !== $object->getDeanimateGif()) {
-            $data->{'deanimate_gif'} = $object->getDeanimateGif();
-        } else {
-            $data->{'deanimate_gif'} = null;
+            $data['deanimate_gif'] = $object->getDeanimateGif();
         }
         if (null !== $object->getDisplayAsBot()) {
-            $data->{'display_as_bot'} = $object->getDisplayAsBot();
-        } else {
-            $data->{'display_as_bot'} = null;
+            $data['display_as_bot'] = $object->getDisplayAsBot();
         }
         if (null !== $object->getEditable()) {
-            $data->{'editable'} = $object->getEditable();
-        } else {
-            $data->{'editable'} = null;
+            $data['editable'] = $object->getEditable();
         }
         if (null !== $object->getEditor()) {
-            $data->{'editor'} = $object->getEditor();
-        } else {
-            $data->{'editor'} = null;
+            $data['editor'] = $object->getEditor();
         }
         if (null !== $object->getExternalId()) {
-            $data->{'external_id'} = $object->getExternalId();
-        } else {
-            $data->{'external_id'} = null;
+            $data['external_id'] = $object->getExternalId();
         }
         if (null !== $object->getExternalType()) {
-            $data->{'external_type'} = $object->getExternalType();
-        } else {
-            $data->{'external_type'} = null;
+            $data['external_type'] = $object->getExternalType();
         }
         if (null !== $object->getExternalUrl()) {
-            $data->{'external_url'} = $object->getExternalUrl();
-        } else {
-            $data->{'external_url'} = null;
+            $data['external_url'] = $object->getExternalUrl();
         }
         if (null !== $object->getFiletype()) {
-            $data->{'filetype'} = $object->getFiletype();
-        } else {
-            $data->{'filetype'} = null;
+            $data['filetype'] = $object->getFiletype();
         }
         if (null !== $object->getGroups()) {
             $values_1 = [];
             foreach ($object->getGroups() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'groups'} = $values_1;
-        } else {
-            $data->{'groups'} = null;
+            $data['groups'] = $values_1;
         }
         if (null !== $object->getHasRichPreview()) {
-            $data->{'has_rich_preview'} = $object->getHasRichPreview();
-        } else {
-            $data->{'has_rich_preview'} = null;
+            $data['has_rich_preview'] = $object->getHasRichPreview();
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        } else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getImageExifRotation()) {
-            $data->{'image_exif_rotation'} = $object->getImageExifRotation();
-        } else {
-            $data->{'image_exif_rotation'} = null;
+            $data['image_exif_rotation'] = $object->getImageExifRotation();
         }
         if (null !== $object->getIms()) {
             $values_2 = [];
             foreach ($object->getIms() as $value_2) {
                 $values_2[] = $value_2;
             }
-            $data->{'ims'} = $values_2;
-        } else {
-            $data->{'ims'} = null;
+            $data['ims'] = $values_2;
         }
         if (null !== $object->getIsExternal()) {
-            $data->{'is_external'} = $object->getIsExternal();
-        } else {
-            $data->{'is_external'} = null;
+            $data['is_external'] = $object->getIsExternal();
         }
         if (null !== $object->getIsPublic()) {
-            $data->{'is_public'} = $object->getIsPublic();
-        } else {
-            $data->{'is_public'} = null;
+            $data['is_public'] = $object->getIsPublic();
         }
         if (null !== $object->getIsStarred()) {
-            $data->{'is_starred'} = $object->getIsStarred();
-        } else {
-            $data->{'is_starred'} = null;
+            $data['is_starred'] = $object->getIsStarred();
         }
         if (null !== $object->getIsTombstoned()) {
-            $data->{'is_tombstoned'} = $object->getIsTombstoned();
-        } else {
-            $data->{'is_tombstoned'} = null;
+            $data['is_tombstoned'] = $object->getIsTombstoned();
         }
         if (null !== $object->getLastEditor()) {
-            $data->{'last_editor'} = $object->getLastEditor();
-        } else {
-            $data->{'last_editor'} = null;
+            $data['last_editor'] = $object->getLastEditor();
         }
         if (null !== $object->getMimetype()) {
-            $data->{'mimetype'} = $object->getMimetype();
-        } else {
-            $data->{'mimetype'} = null;
+            $data['mimetype'] = $object->getMimetype();
         }
         if (null !== $object->getMode()) {
-            $data->{'mode'} = $object->getMode();
-        } else {
-            $data->{'mode'} = null;
+            $data['mode'] = $object->getMode();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        } else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getNonOwnerEditable()) {
-            $data->{'non_owner_editable'} = $object->getNonOwnerEditable();
-        } else {
-            $data->{'non_owner_editable'} = null;
+            $data['non_owner_editable'] = $object->getNonOwnerEditable();
         }
         if (null !== $object->getNumStars()) {
-            $data->{'num_stars'} = $object->getNumStars();
-        } else {
-            $data->{'num_stars'} = null;
+            $data['num_stars'] = $object->getNumStars();
         }
         if (null !== $object->getOriginalH()) {
-            $data->{'original_h'} = $object->getOriginalH();
-        } else {
-            $data->{'original_h'} = null;
+            $data['original_h'] = $object->getOriginalH();
         }
         if (null !== $object->getOriginalW()) {
-            $data->{'original_w'} = $object->getOriginalW();
-        } else {
-            $data->{'original_w'} = null;
+            $data['original_w'] = $object->getOriginalW();
         }
         if (null !== $object->getPermalink()) {
-            $data->{'permalink'} = $object->getPermalink();
-        } else {
-            $data->{'permalink'} = null;
+            $data['permalink'] = $object->getPermalink();
         }
         if (null !== $object->getPermalinkPublic()) {
-            $data->{'permalink_public'} = $object->getPermalinkPublic();
-        } else {
-            $data->{'permalink_public'} = null;
+            $data['permalink_public'] = $object->getPermalinkPublic();
         }
         if (null !== $object->getPinnedInfo()) {
-            $data->{'pinned_info'} = $object->getPinnedInfo();
-        } else {
-            $data->{'pinned_info'} = null;
+            $data['pinned_info'] = $object->getPinnedInfo();
         }
         if (null !== $object->getPinnedTo()) {
             $values_3 = [];
             foreach ($object->getPinnedTo() as $value_3) {
                 $values_3[] = $value_3;
             }
-            $data->{'pinned_to'} = $values_3;
-        } else {
-            $data->{'pinned_to'} = null;
+            $data['pinned_to'] = $values_3;
         }
         if (null !== $object->getPjpeg()) {
-            $data->{'pjpeg'} = $object->getPjpeg();
-        } else {
-            $data->{'pjpeg'} = null;
+            $data['pjpeg'] = $object->getPjpeg();
         }
         if (null !== $object->getPrettyType()) {
-            $data->{'pretty_type'} = $object->getPrettyType();
-        } else {
-            $data->{'pretty_type'} = null;
+            $data['pretty_type'] = $object->getPrettyType();
         }
         if (null !== $object->getPreview()) {
-            $data->{'preview'} = $object->getPreview();
-        } else {
-            $data->{'preview'} = null;
+            $data['preview'] = $object->getPreview();
         }
         if (null !== $object->getPublicUrlShared()) {
-            $data->{'public_url_shared'} = $object->getPublicUrlShared();
-        } else {
-            $data->{'public_url_shared'} = null;
+            $data['public_url_shared'] = $object->getPublicUrlShared();
         }
         if (null !== $object->getReactions()) {
             $values_4 = [];
             foreach ($object->getReactions() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
-            $data->{'reactions'} = $values_4;
-        } else {
-            $data->{'reactions'} = null;
+            $data['reactions'] = $values_4;
         }
         if (null !== $object->getShares()) {
-            $data->{'shares'} = $this->normalizer->normalize($object->getShares(), 'json', $context);
-        } else {
-            $data->{'shares'} = null;
+            $data['shares'] = $this->normalizer->normalize($object->getShares(), 'json', $context);
         }
         if (null !== $object->getSize()) {
-            $data->{'size'} = $object->getSize();
-        } else {
-            $data->{'size'} = null;
+            $data['size'] = $object->getSize();
         }
         if (null !== $object->getSourceTeam()) {
-            $data->{'source_team'} = $object->getSourceTeam();
-        } else {
-            $data->{'source_team'} = null;
+            $data['source_team'] = $object->getSourceTeam();
         }
         if (null !== $object->getState()) {
-            $data->{'state'} = $object->getState();
-        } else {
-            $data->{'state'} = null;
+            $data['state'] = $object->getState();
         }
         if (null !== $object->getThumb1024()) {
-            $data->{'thumb_1024'} = $object->getThumb1024();
-        } else {
-            $data->{'thumb_1024'} = null;
+            $data['thumb_1024'] = $object->getThumb1024();
         }
         if (null !== $object->getThumb1024H()) {
-            $data->{'thumb_1024_h'} = $object->getThumb1024H();
-        } else {
-            $data->{'thumb_1024_h'} = null;
+            $data['thumb_1024_h'] = $object->getThumb1024H();
         }
         if (null !== $object->getThumb1024W()) {
-            $data->{'thumb_1024_w'} = $object->getThumb1024W();
-        } else {
-            $data->{'thumb_1024_w'} = null;
+            $data['thumb_1024_w'] = $object->getThumb1024W();
         }
         if (null !== $object->getThumb160()) {
-            $data->{'thumb_160'} = $object->getThumb160();
-        } else {
-            $data->{'thumb_160'} = null;
+            $data['thumb_160'] = $object->getThumb160();
         }
         if (null !== $object->getThumb360()) {
-            $data->{'thumb_360'} = $object->getThumb360();
-        } else {
-            $data->{'thumb_360'} = null;
+            $data['thumb_360'] = $object->getThumb360();
         }
         if (null !== $object->getThumb360Gif()) {
-            $data->{'thumb_360_gif'} = $object->getThumb360Gif();
-        } else {
-            $data->{'thumb_360_gif'} = null;
+            $data['thumb_360_gif'] = $object->getThumb360Gif();
         }
         if (null !== $object->getThumb360H()) {
-            $data->{'thumb_360_h'} = $object->getThumb360H();
-        } else {
-            $data->{'thumb_360_h'} = null;
+            $data['thumb_360_h'] = $object->getThumb360H();
         }
         if (null !== $object->getThumb360W()) {
-            $data->{'thumb_360_w'} = $object->getThumb360W();
-        } else {
-            $data->{'thumb_360_w'} = null;
+            $data['thumb_360_w'] = $object->getThumb360W();
         }
         if (null !== $object->getThumb480()) {
-            $data->{'thumb_480'} = $object->getThumb480();
-        } else {
-            $data->{'thumb_480'} = null;
+            $data['thumb_480'] = $object->getThumb480();
         }
         if (null !== $object->getThumb480H()) {
-            $data->{'thumb_480_h'} = $object->getThumb480H();
-        } else {
-            $data->{'thumb_480_h'} = null;
+            $data['thumb_480_h'] = $object->getThumb480H();
         }
         if (null !== $object->getThumb480W()) {
-            $data->{'thumb_480_w'} = $object->getThumb480W();
-        } else {
-            $data->{'thumb_480_w'} = null;
+            $data['thumb_480_w'] = $object->getThumb480W();
         }
         if (null !== $object->getThumb64()) {
-            $data->{'thumb_64'} = $object->getThumb64();
-        } else {
-            $data->{'thumb_64'} = null;
+            $data['thumb_64'] = $object->getThumb64();
         }
         if (null !== $object->getThumb720()) {
-            $data->{'thumb_720'} = $object->getThumb720();
-        } else {
-            $data->{'thumb_720'} = null;
+            $data['thumb_720'] = $object->getThumb720();
         }
         if (null !== $object->getThumb720H()) {
-            $data->{'thumb_720_h'} = $object->getThumb720H();
-        } else {
-            $data->{'thumb_720_h'} = null;
+            $data['thumb_720_h'] = $object->getThumb720H();
         }
         if (null !== $object->getThumb720W()) {
-            $data->{'thumb_720_w'} = $object->getThumb720W();
-        } else {
-            $data->{'thumb_720_w'} = null;
+            $data['thumb_720_w'] = $object->getThumb720W();
         }
         if (null !== $object->getThumb80()) {
-            $data->{'thumb_80'} = $object->getThumb80();
-        } else {
-            $data->{'thumb_80'} = null;
+            $data['thumb_80'] = $object->getThumb80();
         }
         if (null !== $object->getThumb800()) {
-            $data->{'thumb_800'} = $object->getThumb800();
-        } else {
-            $data->{'thumb_800'} = null;
+            $data['thumb_800'] = $object->getThumb800();
         }
         if (null !== $object->getThumb800H()) {
-            $data->{'thumb_800_h'} = $object->getThumb800H();
-        } else {
-            $data->{'thumb_800_h'} = null;
+            $data['thumb_800_h'] = $object->getThumb800H();
         }
         if (null !== $object->getThumb800W()) {
-            $data->{'thumb_800_w'} = $object->getThumb800W();
-        } else {
-            $data->{'thumb_800_w'} = null;
+            $data['thumb_800_w'] = $object->getThumb800W();
         }
         if (null !== $object->getThumb960()) {
-            $data->{'thumb_960'} = $object->getThumb960();
-        } else {
-            $data->{'thumb_960'} = null;
+            $data['thumb_960'] = $object->getThumb960();
         }
         if (null !== $object->getThumb960H()) {
-            $data->{'thumb_960_h'} = $object->getThumb960H();
-        } else {
-            $data->{'thumb_960_h'} = null;
+            $data['thumb_960_h'] = $object->getThumb960H();
         }
         if (null !== $object->getThumb960W()) {
-            $data->{'thumb_960_w'} = $object->getThumb960W();
-        } else {
-            $data->{'thumb_960_w'} = null;
+            $data['thumb_960_w'] = $object->getThumb960W();
         }
         if (null !== $object->getThumbTiny()) {
-            $data->{'thumb_tiny'} = $object->getThumbTiny();
-        } else {
-            $data->{'thumb_tiny'} = null;
+            $data['thumb_tiny'] = $object->getThumbTiny();
         }
         if (null !== $object->getTimestamp()) {
-            $data->{'timestamp'} = $object->getTimestamp();
-        } else {
-            $data->{'timestamp'} = null;
+            $data['timestamp'] = $object->getTimestamp();
         }
         if (null !== $object->getTitle()) {
-            $data->{'title'} = $object->getTitle();
-        } else {
-            $data->{'title'} = null;
+            $data['title'] = $object->getTitle();
         }
         if (null !== $object->getUpdated()) {
-            $data->{'updated'} = $object->getUpdated();
-        } else {
-            $data->{'updated'} = null;
+            $data['updated'] = $object->getUpdated();
         }
         if (null !== $object->getUrlPrivate()) {
-            $data->{'url_private'} = $object->getUrlPrivate();
-        } else {
-            $data->{'url_private'} = null;
+            $data['url_private'] = $object->getUrlPrivate();
         }
         if (null !== $object->getUrlPrivateDownload()) {
-            $data->{'url_private_download'} = $object->getUrlPrivateDownload();
-        } else {
-            $data->{'url_private_download'} = null;
+            $data['url_private_download'] = $object->getUrlPrivateDownload();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
-        } else {
-            $data->{'user'} = null;
+            $data['user'] = $object->getUser();
         }
         if (null !== $object->getUserTeam()) {
-            $data->{'user_team'} = $object->getUserTeam();
-        } else {
-            $data->{'user_team'} = null;
+            $data['user_team'] = $object->getUserTeam();
         }
         if (null !== $object->getUsername()) {
-            $data->{'username'} = $object->getUsername();
-        } else {
-            $data->{'username'} = null;
+            $data['username'] = $object->getUsername();
         }
 
         return $data;

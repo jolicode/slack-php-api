@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,41 +40,37 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsReaction();
-        $data = clone $data;
-        if (property_exists($data, 'count') && null !== $data->{'count'}) {
-            $object->setCount($data->{'count'});
-            unset($data->{'count'});
-        } elseif (property_exists($data, 'count') && null === $data->{'count'}) {
+        if (\array_key_exists('count', $data) && null !== $data['count']) {
+            $object->setCount($data['count']);
+            unset($data['count']);
+        } elseif (\array_key_exists('count', $data) && null === $data['count']) {
             $object->setCount(null);
         }
-        if (property_exists($data, 'name') && null !== $data->{'name'}) {
-            $object->setName($data->{'name'});
-            unset($data->{'name'});
-        } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+            unset($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
-        if (property_exists($data, 'users') && null !== $data->{'users'}) {
+        if (\array_key_exists('users', $data) && null !== $data['users']) {
             $values = [];
-            foreach ($data->{'users'} as $value) {
+            foreach ($data['users'] as $value) {
                 $values[] = $value;
             }
             $object->setUsers($values);
-            unset($data->{'users'});
-        } elseif (property_exists($data, 'users') && null === $data->{'users'}) {
+            unset($data['users']);
+        } elseif (\array_key_exists('users', $data) && null === $data['users']) {
             $object->setUsers(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -82,29 +80,23 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCount()) {
-            $data->{'count'} = $object->getCount();
-        } else {
-            $data->{'count'} = null;
+            $data['count'] = $object->getCount();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        } else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getUsers()) {
             $values = [];
             foreach ($object->getUsers() as $value) {
                 $values[] = $value;
             }
-            $data->{'users'} = $values;
-        } else {
-            $data->{'users'} = null;
+            $data['users'] = $values;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

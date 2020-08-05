@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,24 +40,21 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts();
-        if (property_exists($data, 'display_counts') && null !== $data->{'display_counts'}) {
-            $object->setDisplayCounts($data->{'display_counts'});
-        } elseif (property_exists($data, 'display_counts') && null === $data->{'display_counts'}) {
+        if (\array_key_exists('display_counts', $data) && null !== $data['display_counts']) {
+            $object->setDisplayCounts($data['display_counts']);
+        } elseif (\array_key_exists('display_counts', $data) && null === $data['display_counts']) {
             $object->setDisplayCounts(null);
         }
-        if (property_exists($data, 'guest_counts') && null !== $data->{'guest_counts'}) {
-            $object->setGuestCounts($data->{'guest_counts'});
-        } elseif (property_exists($data, 'guest_counts') && null === $data->{'guest_counts'}) {
+        if (\array_key_exists('guest_counts', $data) && null !== $data['guest_counts']) {
+            $object->setGuestCounts($data['guest_counts']);
+        } elseif (\array_key_exists('guest_counts', $data) && null === $data['guest_counts']) {
             $object->setGuestCounts(null);
         }
 
@@ -64,16 +63,12 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getDisplayCounts()) {
-            $data->{'display_counts'} = $object->getDisplayCounts();
-        } else {
-            $data->{'display_counts'} = null;
+            $data['display_counts'] = $object->getDisplayCounts();
         }
         if (null !== $object->getGuestCounts()) {
-            $data->{'guest_counts'} = $object->getGuestCounts();
-        } else {
-            $data->{'guest_counts'} = null;
+            $data['guest_counts'] = $object->getGuestCounts();
         }
 
         return $data;

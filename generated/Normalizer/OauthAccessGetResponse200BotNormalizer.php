@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class OauthAccessGetResponse200BotNormalizer implements DenormalizerInterface, N
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,31 +40,27 @@ class OauthAccessGetResponse200BotNormalizer implements DenormalizerInterface, N
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\OauthAccessGetResponse200Bot();
-        $data = clone $data;
-        if (property_exists($data, 'bot_access_token') && null !== $data->{'bot_access_token'}) {
-            $object->setBotAccessToken($data->{'bot_access_token'});
-            unset($data->{'bot_access_token'});
-        } elseif (property_exists($data, 'bot_access_token') && null === $data->{'bot_access_token'}) {
+        if (\array_key_exists('bot_access_token', $data) && null !== $data['bot_access_token']) {
+            $object->setBotAccessToken($data['bot_access_token']);
+            unset($data['bot_access_token']);
+        } elseif (\array_key_exists('bot_access_token', $data) && null === $data['bot_access_token']) {
             $object->setBotAccessToken(null);
         }
-        if (property_exists($data, 'bot_user_id') && null !== $data->{'bot_user_id'}) {
-            $object->setBotUserId($data->{'bot_user_id'});
-            unset($data->{'bot_user_id'});
-        } elseif (property_exists($data, 'bot_user_id') && null === $data->{'bot_user_id'}) {
+        if (\array_key_exists('bot_user_id', $data) && null !== $data['bot_user_id']) {
+            $object->setBotUserId($data['bot_user_id']);
+            unset($data['bot_user_id']);
+        } elseif (\array_key_exists('bot_user_id', $data) && null === $data['bot_user_id']) {
             $object->setBotUserId(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -72,20 +70,16 @@ class OauthAccessGetResponse200BotNormalizer implements DenormalizerInterface, N
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getBotAccessToken()) {
-            $data->{'bot_access_token'} = $object->getBotAccessToken();
-        } else {
-            $data->{'bot_access_token'} = null;
+            $data['bot_access_token'] = $object->getBotAccessToken();
         }
         if (null !== $object->getBotUserId()) {
-            $data->{'bot_user_id'} = $object->getBotUserId();
-        } else {
-            $data->{'bot_user_id'} = null;
+            $data['bot_user_id'] = $object->getBotUserId();
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 
