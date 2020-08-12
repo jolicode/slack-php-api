@@ -14,6 +14,35 @@ If you use the provided [Client](../generated/Client.php), you don't have to
 understand how the library works internally. Calling one of its method will
 make the HTTP request to the API and return the corresponding PHP object.
 
+## Setting up your Slack Application
+
+You need to create an app and get the token for that app to communicate with slack.
+
+ - goto https://api.slack.com/apps
+ - create an app. Set a name and choose your Dev Slack Workspace
+   - Click "Incoming Webhooks" and turn one the feature : that enable your application (via slack-php-api) to call Slack API (webhooks).
+   - You need to authorize the bot to do stuff. It's done by adding scopes to your bot. Otherwise you'll get `missing_scope` error. 
+   
+     On the left menu, click "OAuth & Permissions", scroll down to "scopes/Bot Token Scopes". 
+
+     For instance, if you want to post on a channel, you'll need the "chat:write" scope
+
+     In the text field, type "chat:write" and click "Add an Auth Scope". 
+   
+   - Notice that the "chat:write" has "Send messages as @yourAppNameNormalized". Copy your normalized App Name.
+   - Go to the top of the page and click the "Install App to workspace"
+   - on the next screen, choose a channel where the bot can post, and click Allow
+   - On the next screen, copy your Slack Token that you can pass to the `ClientFactory::create($yourToken);`
+   - The last thing to do is to add you bot/slack application to the channel where you want to write. 
+   
+     Otherwise, you'll get `channel_not_found` error from Slack API.
+     
+     To do so, go to the channel with the slack application, and then type `/invite @yourAppNameNormalized`. 
+
+With this setup, you can make "Posting a message in a Slack channel" from the "concrete example" work.
+
+If you do other stuff, you're likely to need to add more scopes to your bot. (add scopes, reinstall the apps)  
+
 ## Using the client
 
 Use the `ClientFactory` to generate a `Client` configured with your token:
