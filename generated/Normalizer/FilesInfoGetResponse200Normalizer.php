@@ -48,8 +48,11 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
         }
         $object = new \JoliCode\Slack\Api\Model\FilesInfoGetResponse200();
         if (\array_key_exists('comments', $data) && null !== $data['comments']) {
-            $value = $data['comments'];
-            $object->setComments($value);
+            $values = [];
+            foreach ($data['comments'] as $value) {
+                $values[] = $value;
+            }
+            $object->setComments($values);
         } elseif (\array_key_exists('comments', $data) && null === $data['comments']) {
             $object->setComments(null);
         }
@@ -91,8 +94,11 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $data = [];
         if (null !== $object->getComments()) {
-            $value = $object->getComments();
-            $data['comments'] = $value;
+            $values = [];
+            foreach ($object->getComments() as $value) {
+                $values[] = $value;
+            }
+            $data['comments'] = $values;
         }
         if (null !== $object->getContentHtml()) {
             $data['content_html'] = $object->getContentHtml();

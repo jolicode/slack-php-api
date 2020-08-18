@@ -16,7 +16,7 @@ namespace JoliCode\Slack\Api\Model;
 class FilesInfoGetResponse200
 {
     /**
-     * @var |null
+     * @var mixed[]|null
      */
     protected $comments;
     /**
@@ -45,17 +45,17 @@ class FilesInfoGetResponse200
     protected $responseMetadata;
 
     /**
-     * @return |null
+     * @return mixed[]|null
      */
-    public function getComments()
+    public function getComments(): ?array
     {
         return $this->comments;
     }
 
     /**
-     * @param |null $comments
+     * @param mixed[]|null $comments
      */
-    public function setComments($comments): self
+    public function setComments(?array $comments): self
     {
         $this->comments = $comments;
 
