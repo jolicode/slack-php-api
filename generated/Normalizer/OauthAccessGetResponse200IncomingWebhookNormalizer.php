@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,37 +40,33 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\OauthAccessGetResponse200IncomingWebhook();
-        $data = clone $data;
-        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($data->{'channel'});
-            unset($data->{'channel'});
-        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($data['channel']);
+            unset($data['channel']);
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
         }
-        if (property_exists($data, 'configuration_url') && null !== $data->{'configuration_url'}) {
-            $object->setConfigurationUrl($data->{'configuration_url'});
-            unset($data->{'configuration_url'});
-        } elseif (property_exists($data, 'configuration_url') && null === $data->{'configuration_url'}) {
+        if (\array_key_exists('configuration_url', $data) && null !== $data['configuration_url']) {
+            $object->setConfigurationUrl($data['configuration_url']);
+            unset($data['configuration_url']);
+        } elseif (\array_key_exists('configuration_url', $data) && null === $data['configuration_url']) {
             $object->setConfigurationUrl(null);
         }
-        if (property_exists($data, 'url') && null !== $data->{'url'}) {
-            $object->setUrl($data->{'url'});
-            unset($data->{'url'});
-        } elseif (property_exists($data, 'url') && null === $data->{'url'}) {
+        if (\array_key_exists('url', $data) && null !== $data['url']) {
+            $object->setUrl($data['url']);
+            unset($data['url']);
+        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
             $object->setUrl(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -78,25 +76,19 @@ class OauthAccessGetResponse200IncomingWebhookNormalizer implements Denormalizer
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
-        } else {
-            $data->{'channel'} = null;
+            $data['channel'] = $object->getChannel();
         }
         if (null !== $object->getConfigurationUrl()) {
-            $data->{'configuration_url'} = $object->getConfigurationUrl();
-        } else {
-            $data->{'configuration_url'} = null;
+            $data['configuration_url'] = $object->getConfigurationUrl();
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        } else {
-            $data->{'url'} = null;
+            $data['url'] = $object->getUrl();
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

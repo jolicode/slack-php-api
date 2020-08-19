@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,38 +40,35 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0();
-        if (property_exists($data, 'items') && null !== $data->{'items'}) {
-            $value = $data->{'items'};
-            if (\is_array($data->{'items'})) {
+        if (\array_key_exists('items', $data) && null !== $data['items']) {
+            $value = $data['items'];
+            if (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                 $values = [];
-                foreach ($data->{'items'} as $value_1) {
+                foreach ($data['items'] as $value_1) {
                     $values[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem0', 'json', $context);
                 }
                 $value = $values;
-            } elseif (\is_array($data->{'items'})) {
+            } elseif (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                 $values_1 = [];
-                foreach ($data->{'items'} as $value_2) {
+                foreach ($data['items'] as $value_2) {
                     $values_1[] = $this->denormalizer->denormalize($value_2, 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem1', 'json', $context);
                 }
                 $value = $values_1;
             }
             $object->setItems($value);
-        } elseif (property_exists($data, 'items') && null === $data->{'items'}) {
+        } elseif (\array_key_exists('items', $data) && null === $data['items']) {
             $object->setItems(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
 
@@ -78,7 +77,7 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getItems()) {
             $value = $object->getItems();
             if (\is_array($object->getItems())) {
@@ -94,14 +93,10 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
                 }
                 $value = $values_1;
             }
-            $data->{'items'} = $value;
-        } else {
-            $data->{'items'} = null;
+            $data['items'] = $value;
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
 
         return $data;

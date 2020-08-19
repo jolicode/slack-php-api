@@ -15,12 +15,12 @@ namespace JoliCode\Slack\Checker;
 
 class JsonSorter
 {
-    public function sort(string $content): string
+    public function sort(string $content, bool $prettyPrint = true): string
     {
         $content = json_decode($content);
         $content = $this->recursiveAlphabeticalSort($content);
 
-        return json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        return json_encode($content, $prettyPrint ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : JSON_UNESCAPED_SLASHES);
     }
 
     public function recursiveAlphabeticalSort($item)

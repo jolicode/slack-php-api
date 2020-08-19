@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsFileSharesNormalizer implements DenormalizerInterface, NormalizerInter
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,24 +40,21 @@ class ObjsFileSharesNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsFileShares();
-        if (property_exists($data, 'private') && null !== $data->{'private'}) {
-            $object->setPrivate($data->{'private'});
-        } elseif (property_exists($data, 'private') && null === $data->{'private'}) {
+        if (\array_key_exists('private', $data) && null !== $data['private']) {
+            $object->setPrivate($data['private']);
+        } elseif (\array_key_exists('private', $data) && null === $data['private']) {
             $object->setPrivate(null);
         }
-        if (property_exists($data, 'public') && null !== $data->{'public'}) {
-            $object->setPublic($data->{'public'});
-        } elseif (property_exists($data, 'public') && null === $data->{'public'}) {
+        if (\array_key_exists('public', $data) && null !== $data['public']) {
+            $object->setPublic($data['public']);
+        } elseif (\array_key_exists('public', $data) && null === $data['public']) {
             $object->setPublic(null);
         }
 
@@ -64,16 +63,12 @@ class ObjsFileSharesNormalizer implements DenormalizerInterface, NormalizerInter
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getPrivate()) {
-            $data->{'private'} = $object->getPrivate();
-        } else {
-            $data->{'private'} = null;
+            $data['private'] = $object->getPrivate();
         }
         if (null !== $object->getPublic()) {
-            $data->{'public'} = $object->getPublic();
-        } else {
-            $data->{'public'} = null;
+            $data['public'] = $object->getPublic();
         }
 
         return $data;

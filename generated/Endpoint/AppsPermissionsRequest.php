@@ -52,6 +52,11 @@ class AppsPermissionsRequest extends \Jane\OpenApiRuntime\Client\BaseEndpoint im
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();

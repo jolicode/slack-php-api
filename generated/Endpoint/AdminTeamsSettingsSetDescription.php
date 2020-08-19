@@ -57,6 +57,11 @@ class AdminTeamsSettingsSetDescription extends \Jane\OpenApiRuntime\Client\BaseE
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();

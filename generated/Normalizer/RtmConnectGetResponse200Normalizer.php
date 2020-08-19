@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,34 +40,31 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmConnectGetResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'self') && null !== $data->{'self'}) {
-            $object->setSelf($this->denormalizer->denormalize($data->{'self'}, 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Self', 'json', $context));
-        } elseif (property_exists($data, 'self') && null === $data->{'self'}) {
+        if (\array_key_exists('self', $data) && null !== $data['self']) {
+            $object->setSelf($this->denormalizer->denormalize($data['self'], 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Self', 'json', $context));
+        } elseif (\array_key_exists('self', $data) && null === $data['self']) {
             $object->setSelf(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Team', 'json', $context));
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\\Slack\\Api\\Model\\RtmConnectGetResponse200Team', 'json', $context));
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'url') && null !== $data->{'url'}) {
-            $object->setUrl($data->{'url'});
-        } elseif (property_exists($data, 'url') && null === $data->{'url'}) {
+        if (\array_key_exists('url', $data) && null !== $data['url']) {
+            $object->setUrl($data['url']);
+        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
             $object->setUrl(null);
         }
 
@@ -74,26 +73,18 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getSelf()) {
-            $data->{'self'} = $this->normalizer->normalize($object->getSelf(), 'json', $context);
-        } else {
-            $data->{'self'} = null;
+            $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $this->normalizer->normalize($object->getTeam(), 'json', $context);
-        } else {
-            $data->{'team'} = null;
+            $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        } else {
-            $data->{'url'} = null;
+            $data['url'] = $object->getUrl();
         }
 
         return $data;

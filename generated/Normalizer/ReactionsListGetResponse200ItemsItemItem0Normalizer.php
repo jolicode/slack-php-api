@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ReactionsListGetResponse200ItemsItemItem0Normalizer implements Denormalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,29 +40,26 @@ class ReactionsListGetResponse200ItemsItemItem0Normalizer implements Denormalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0();
-        if (property_exists($data, 'channel') && null !== $data->{'channel'}) {
-            $object->setChannel($data->{'channel'});
-        } elseif (property_exists($data, 'channel') && null === $data->{'channel'}) {
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($data['channel']);
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
         }
-        if (property_exists($data, 'message') && null !== $data->{'message'}) {
-            $object->setMessage($this->denormalizer->denormalize($data->{'message'}, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
-        } elseif (property_exists($data, 'message') && null === $data->{'message'}) {
+        if (\array_key_exists('message', $data) && null !== $data['message']) {
+            $object->setMessage($this->denormalizer->denormalize($data['message'], 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context));
+        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
             $object->setMessage(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
         }
 
@@ -69,21 +68,15 @@ class ReactionsListGetResponse200ItemsItemItem0Normalizer implements Denormalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getChannel()) {
-            $data->{'channel'} = $object->getChannel();
-        } else {
-            $data->{'channel'} = null;
+            $data['channel'] = $object->getChannel();
         }
         if (null !== $object->getMessage()) {
-            $data->{'message'} = $this->normalizer->normalize($object->getMessage(), 'json', $context);
-        } else {
-            $data->{'message'} = null;
+            $data['message'] = $this->normalizer->normalize($object->getMessage(), 'json', $context);
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        } else {
-            $data->{'type'} = null;
+            $data['type'] = $object->getType();
         }
 
         return $data;

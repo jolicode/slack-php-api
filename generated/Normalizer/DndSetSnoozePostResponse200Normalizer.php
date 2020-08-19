@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,34 +40,31 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'snooze_enabled') && null !== $data->{'snooze_enabled'}) {
-            $object->setSnoozeEnabled($data->{'snooze_enabled'});
-        } elseif (property_exists($data, 'snooze_enabled') && null === $data->{'snooze_enabled'}) {
+        if (\array_key_exists('snooze_enabled', $data) && null !== $data['snooze_enabled']) {
+            $object->setSnoozeEnabled($data['snooze_enabled']);
+        } elseif (\array_key_exists('snooze_enabled', $data) && null === $data['snooze_enabled']) {
             $object->setSnoozeEnabled(null);
         }
-        if (property_exists($data, 'snooze_endtime') && null !== $data->{'snooze_endtime'}) {
-            $object->setSnoozeEndtime($data->{'snooze_endtime'});
-        } elseif (property_exists($data, 'snooze_endtime') && null === $data->{'snooze_endtime'}) {
+        if (\array_key_exists('snooze_endtime', $data) && null !== $data['snooze_endtime']) {
+            $object->setSnoozeEndtime($data['snooze_endtime']);
+        } elseif (\array_key_exists('snooze_endtime', $data) && null === $data['snooze_endtime']) {
             $object->setSnoozeEndtime(null);
         }
-        if (property_exists($data, 'snooze_remaining') && null !== $data->{'snooze_remaining'}) {
-            $object->setSnoozeRemaining($data->{'snooze_remaining'});
-        } elseif (property_exists($data, 'snooze_remaining') && null === $data->{'snooze_remaining'}) {
+        if (\array_key_exists('snooze_remaining', $data) && null !== $data['snooze_remaining']) {
+            $object->setSnoozeRemaining($data['snooze_remaining']);
+        } elseif (\array_key_exists('snooze_remaining', $data) && null === $data['snooze_remaining']) {
             $object->setSnoozeRemaining(null);
         }
 
@@ -74,26 +73,18 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getSnoozeEnabled()) {
-            $data->{'snooze_enabled'} = $object->getSnoozeEnabled();
-        } else {
-            $data->{'snooze_enabled'} = null;
+            $data['snooze_enabled'] = $object->getSnoozeEnabled();
         }
         if (null !== $object->getSnoozeEndtime()) {
-            $data->{'snooze_endtime'} = $object->getSnoozeEndtime();
-        } else {
-            $data->{'snooze_endtime'} = null;
+            $data['snooze_endtime'] = $object->getSnoozeEndtime();
         }
         if (null !== $object->getSnoozeRemaining()) {
-            $data->{'snooze_remaining'} = $object->getSnoozeRemaining();
-        } else {
-            $data->{'snooze_remaining'} = null;
+            $data['snooze_remaining'] = $object->getSnoozeRemaining();
         }
 
         return $data;

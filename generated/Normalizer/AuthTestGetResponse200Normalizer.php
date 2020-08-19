@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,49 +40,46 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
-        if (property_exists($data, 'is_enterprise_install') && null !== $data->{'is_enterprise_install'}) {
-            $object->setIsEnterpriseInstall($data->{'is_enterprise_install'});
-        } elseif (property_exists($data, 'is_enterprise_install') && null === $data->{'is_enterprise_install'}) {
+        if (\array_key_exists('is_enterprise_install', $data) && null !== $data['is_enterprise_install']) {
+            $object->setIsEnterpriseInstall($data['is_enterprise_install']);
+        } elseif (\array_key_exists('is_enterprise_install', $data) && null === $data['is_enterprise_install']) {
             $object->setIsEnterpriseInstall(null);
         }
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($data->{'team'});
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($data['team']);
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
-            $object->setTeamId($data->{'team_id'});
-        } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
+        if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
+            $object->setTeamId($data['team_id']);
+        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
             $object->setTeamId(null);
         }
-        if (property_exists($data, 'url') && null !== $data->{'url'}) {
-            $object->setUrl($data->{'url'});
-        } elseif (property_exists($data, 'url') && null === $data->{'url'}) {
+        if (\array_key_exists('url', $data) && null !== $data['url']) {
+            $object->setUrl($data['url']);
+        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
             $object->setUrl(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
-        if (property_exists($data, 'user_id') && null !== $data->{'user_id'}) {
-            $object->setUserId($data->{'user_id'});
-        } elseif (property_exists($data, 'user_id') && null === $data->{'user_id'}) {
+        if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
+            $object->setUserId($data['user_id']);
+        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
             $object->setUserId(null);
         }
 
@@ -89,41 +88,27 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getIsEnterpriseInstall()) {
-            $data->{'is_enterprise_install'} = $object->getIsEnterpriseInstall();
-        } else {
-            $data->{'is_enterprise_install'} = null;
+            $data['is_enterprise_install'] = $object->getIsEnterpriseInstall();
         }
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $object->getTeam();
-        } else {
-            $data->{'team'} = null;
+            $data['team'] = $object->getTeam();
         }
         if (null !== $object->getTeamId()) {
-            $data->{'team_id'} = $object->getTeamId();
-        } else {
-            $data->{'team_id'} = null;
+            $data['team_id'] = $object->getTeamId();
         }
         if (null !== $object->getUrl()) {
-            $data->{'url'} = $object->getUrl();
-        } else {
-            $data->{'url'} = null;
+            $data['url'] = $object->getUrl();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
-        } else {
-            $data->{'user'} = null;
+            $data['user'] = $object->getUser();
         }
         if (null !== $object->getUserId()) {
-            $data->{'user_id'} = $object->getUserId();
-        } else {
-            $data->{'user_id'} = null;
+            $data['user_id'] = $object->getUserId();
         }
 
         return $data;

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class UsergroupsDisablePostResponse200Normalizer implements DenormalizerInterfac
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,24 +40,21 @@ class UsergroupsDisablePostResponse200Normalizer implements DenormalizerInterfac
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200();
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'usergroup') && null !== $data->{'usergroup'}) {
-            $object->setUsergroup($this->denormalizer->denormalize($data->{'usergroup'}, 'JoliCode\\Slack\\Api\\Model\\ObjsSubteam', 'json', $context));
-        } elseif (property_exists($data, 'usergroup') && null === $data->{'usergroup'}) {
+        if (\array_key_exists('usergroup', $data) && null !== $data['usergroup']) {
+            $object->setUsergroup($this->denormalizer->denormalize($data['usergroup'], 'JoliCode\\Slack\\Api\\Model\\ObjsSubteam', 'json', $context));
+        } elseif (\array_key_exists('usergroup', $data) && null === $data['usergroup']) {
             $object->setUsergroup(null);
         }
 
@@ -64,16 +63,12 @@ class UsergroupsDisablePostResponse200Normalizer implements DenormalizerInterfac
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getUsergroup()) {
-            $data->{'usergroup'} = $this->normalizer->normalize($object->getUsergroup(), 'json', $context);
-        } else {
-            $data->{'usergroup'} = null;
+            $data['usergroup'] = $this->normalizer->normalize($object->getUsergroup(), 'json', $context);
         }
 
         return $data;

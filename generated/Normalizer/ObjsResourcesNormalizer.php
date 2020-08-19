@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,37 +40,34 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsResources();
-        if (property_exists($data, 'excluded_ids') && null !== $data->{'excluded_ids'}) {
+        if (\array_key_exists('excluded_ids', $data) && null !== $data['excluded_ids']) {
             $values = [];
-            foreach ($data->{'excluded_ids'} as $value) {
+            foreach ($data['excluded_ids'] as $value) {
                 $values[] = $value;
             }
             $object->setExcludedIds($values);
-        } elseif (property_exists($data, 'excluded_ids') && null === $data->{'excluded_ids'}) {
+        } elseif (\array_key_exists('excluded_ids', $data) && null === $data['excluded_ids']) {
             $object->setExcludedIds(null);
         }
-        if (property_exists($data, 'ids') && null !== $data->{'ids'}) {
+        if (\array_key_exists('ids', $data) && null !== $data['ids']) {
             $values_1 = [];
-            foreach ($data->{'ids'} as $value_1) {
+            foreach ($data['ids'] as $value_1) {
                 $values_1[] = $value_1;
             }
             $object->setIds($values_1);
-        } elseif (property_exists($data, 'ids') && null === $data->{'ids'}) {
+        } elseif (\array_key_exists('ids', $data) && null === $data['ids']) {
             $object->setIds(null);
         }
-        if (property_exists($data, 'wildcard') && null !== $data->{'wildcard'}) {
-            $object->setWildcard($data->{'wildcard'});
-        } elseif (property_exists($data, 'wildcard') && null === $data->{'wildcard'}) {
+        if (\array_key_exists('wildcard', $data) && null !== $data['wildcard']) {
+            $object->setWildcard($data['wildcard']);
+        } elseif (\array_key_exists('wildcard', $data) && null === $data['wildcard']) {
             $object->setWildcard(null);
         }
 
@@ -77,29 +76,23 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getExcludedIds()) {
             $values = [];
             foreach ($object->getExcludedIds() as $value) {
                 $values[] = $value;
             }
-            $data->{'excluded_ids'} = $values;
-        } else {
-            $data->{'excluded_ids'} = null;
+            $data['excluded_ids'] = $values;
         }
         if (null !== $object->getIds()) {
             $values_1 = [];
             foreach ($object->getIds() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $data->{'ids'} = $values_1;
-        } else {
-            $data->{'ids'} = null;
+            $data['ids'] = $values_1;
         }
         if (null !== $object->getWildcard()) {
-            $data->{'wildcard'} = $object->getWildcard();
-        } else {
-            $data->{'wildcard'} = null;
+            $data['wildcard'] = $object->getWildcard();
         }
 
         return $data;

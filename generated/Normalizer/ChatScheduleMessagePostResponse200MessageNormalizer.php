@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,63 +40,60 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message();
-        if (property_exists($data, 'attachments') && null !== $data->{'attachments'}) {
+        if (\array_key_exists('attachments', $data) && null !== $data['attachments']) {
             $values = [];
-            foreach ($data->{'attachments'} as $value) {
+            foreach ($data['attachments'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200MessageAttachmentsItem', 'json', $context);
             }
             $object->setAttachments($values);
-        } elseif (property_exists($data, 'attachments') && null === $data->{'attachments'}) {
+        } elseif (\array_key_exists('attachments', $data) && null === $data['attachments']) {
             $object->setAttachments(null);
         }
-        if (property_exists($data, 'bot_id') && null !== $data->{'bot_id'}) {
-            $object->setBotId($data->{'bot_id'});
-        } elseif (property_exists($data, 'bot_id') && null === $data->{'bot_id'}) {
+        if (\array_key_exists('bot_id', $data) && null !== $data['bot_id']) {
+            $object->setBotId($data['bot_id']);
+        } elseif (\array_key_exists('bot_id', $data) && null === $data['bot_id']) {
             $object->setBotId(null);
         }
-        if (property_exists($data, 'bot_profile') && null !== $data->{'bot_profile'}) {
-            $object->setBotProfile($this->denormalizer->denormalize($data->{'bot_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsBotProfile', 'json', $context));
-        } elseif (property_exists($data, 'bot_profile') && null === $data->{'bot_profile'}) {
+        if (\array_key_exists('bot_profile', $data) && null !== $data['bot_profile']) {
+            $object->setBotProfile($this->denormalizer->denormalize($data['bot_profile'], 'JoliCode\\Slack\\Api\\Model\\ObjsBotProfile', 'json', $context));
+        } elseif (\array_key_exists('bot_profile', $data) && null === $data['bot_profile']) {
             $object->setBotProfile(null);
         }
-        if (property_exists($data, 'subtype') && null !== $data->{'subtype'}) {
-            $object->setSubtype($data->{'subtype'});
-        } elseif (property_exists($data, 'subtype') && null === $data->{'subtype'}) {
+        if (\array_key_exists('subtype', $data) && null !== $data['subtype']) {
+            $object->setSubtype($data['subtype']);
+        } elseif (\array_key_exists('subtype', $data) && null === $data['subtype']) {
             $object->setSubtype(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($data->{'team'});
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($data['team']);
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'text') && null !== $data->{'text'}) {
-            $object->setText($data->{'text'});
-        } elseif (property_exists($data, 'text') && null === $data->{'text'}) {
+        if (\array_key_exists('text', $data) && null !== $data['text']) {
+            $object->setText($data['text']);
+        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
             $object->setText(null);
         }
-        if (property_exists($data, 'type') && null !== $data->{'type'}) {
-            $object->setType($data->{'type'});
-        } elseif (property_exists($data, 'type') && null === $data->{'type'}) {
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
-        if (property_exists($data, 'username') && null !== $data->{'username'}) {
-            $object->setUsername($data->{'username'});
-        } elseif (property_exists($data, 'username') && null === $data->{'username'}) {
+        if (\array_key_exists('username', $data) && null !== $data['username']) {
+            $object->setUsername($data['username']);
+        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
             $object->setUsername(null);
         }
 
@@ -103,55 +102,37 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getAttachments()) {
             $values = [];
             foreach ($object->getAttachments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data->{'attachments'} = $values;
-        } else {
-            $data->{'attachments'} = null;
+            $data['attachments'] = $values;
         }
         if (null !== $object->getBotId()) {
-            $data->{'bot_id'} = $object->getBotId();
-        } else {
-            $data->{'bot_id'} = null;
+            $data['bot_id'] = $object->getBotId();
         }
         if (null !== $object->getBotProfile()) {
-            $data->{'bot_profile'} = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
-        } else {
-            $data->{'bot_profile'} = null;
+            $data['bot_profile'] = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
         }
         if (null !== $object->getSubtype()) {
-            $data->{'subtype'} = $object->getSubtype();
-        } else {
-            $data->{'subtype'} = null;
+            $data['subtype'] = $object->getSubtype();
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $object->getTeam();
-        } else {
-            $data->{'team'} = null;
+            $data['team'] = $object->getTeam();
         }
         if (null !== $object->getText()) {
-            $data->{'text'} = $object->getText();
-        } else {
-            $data->{'text'} = null;
+            $data['text'] = $object->getText();
         }
         if (null !== $object->getType()) {
-            $data->{'type'} = $object->getType();
-        } else {
-            $data->{'type'} = null;
+            $data['type'] = $object->getType();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
-        } else {
-            $data->{'user'} = null;
+            $data['user'] = $object->getUser();
         }
         if (null !== $object->getUsername()) {
-            $data->{'username'} = $object->getUsername();
-        } else {
-            $data->{'username'} = null;
+            $data['username'] = $object->getUsername();
         }
 
         return $data;

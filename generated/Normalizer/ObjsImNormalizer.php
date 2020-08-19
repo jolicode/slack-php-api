@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,74 +40,71 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsIm();
-        if (property_exists($data, 'created') && null !== $data->{'created'}) {
-            $object->setCreated($data->{'created'});
-        } elseif (property_exists($data, 'created') && null === $data->{'created'}) {
+        if (\array_key_exists('created', $data) && null !== $data['created']) {
+            $object->setCreated($data['created']);
+        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
             $object->setCreated(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'is_app_home') && null !== $data->{'is_app_home'}) {
-            $object->setIsAppHome($data->{'is_app_home'});
-        } elseif (property_exists($data, 'is_app_home') && null === $data->{'is_app_home'}) {
+        if (\array_key_exists('is_app_home', $data) && null !== $data['is_app_home']) {
+            $object->setIsAppHome($data['is_app_home']);
+        } elseif (\array_key_exists('is_app_home', $data) && null === $data['is_app_home']) {
             $object->setIsAppHome(null);
         }
-        if (property_exists($data, 'is_archived') && null !== $data->{'is_archived'}) {
-            $object->setIsArchived($data->{'is_archived'});
-        } elseif (property_exists($data, 'is_archived') && null === $data->{'is_archived'}) {
+        if (\array_key_exists('is_archived', $data) && null !== $data['is_archived']) {
+            $object->setIsArchived($data['is_archived']);
+        } elseif (\array_key_exists('is_archived', $data) && null === $data['is_archived']) {
             $object->setIsArchived(null);
         }
-        if (property_exists($data, 'is_ext_shared') && null !== $data->{'is_ext_shared'}) {
-            $object->setIsExtShared($data->{'is_ext_shared'});
-        } elseif (property_exists($data, 'is_ext_shared') && null === $data->{'is_ext_shared'}) {
+        if (\array_key_exists('is_ext_shared', $data) && null !== $data['is_ext_shared']) {
+            $object->setIsExtShared($data['is_ext_shared']);
+        } elseif (\array_key_exists('is_ext_shared', $data) && null === $data['is_ext_shared']) {
             $object->setIsExtShared(null);
         }
-        if (property_exists($data, 'is_frozen') && null !== $data->{'is_frozen'}) {
-            $object->setIsFrozen($data->{'is_frozen'});
-        } elseif (property_exists($data, 'is_frozen') && null === $data->{'is_frozen'}) {
+        if (\array_key_exists('is_frozen', $data) && null !== $data['is_frozen']) {
+            $object->setIsFrozen($data['is_frozen']);
+        } elseif (\array_key_exists('is_frozen', $data) && null === $data['is_frozen']) {
             $object->setIsFrozen(null);
         }
-        if (property_exists($data, 'is_im') && null !== $data->{'is_im'}) {
-            $object->setIsIm($data->{'is_im'});
-        } elseif (property_exists($data, 'is_im') && null === $data->{'is_im'}) {
+        if (\array_key_exists('is_im', $data) && null !== $data['is_im']) {
+            $object->setIsIm($data['is_im']);
+        } elseif (\array_key_exists('is_im', $data) && null === $data['is_im']) {
             $object->setIsIm(null);
         }
-        if (property_exists($data, 'is_org_shared') && null !== $data->{'is_org_shared'}) {
-            $object->setIsOrgShared($data->{'is_org_shared'});
-        } elseif (property_exists($data, 'is_org_shared') && null === $data->{'is_org_shared'}) {
+        if (\array_key_exists('is_org_shared', $data) && null !== $data['is_org_shared']) {
+            $object->setIsOrgShared($data['is_org_shared']);
+        } elseif (\array_key_exists('is_org_shared', $data) && null === $data['is_org_shared']) {
             $object->setIsOrgShared(null);
         }
-        if (property_exists($data, 'is_shared') && null !== $data->{'is_shared'}) {
-            $object->setIsShared($data->{'is_shared'});
-        } elseif (property_exists($data, 'is_shared') && null === $data->{'is_shared'}) {
+        if (\array_key_exists('is_shared', $data) && null !== $data['is_shared']) {
+            $object->setIsShared($data['is_shared']);
+        } elseif (\array_key_exists('is_shared', $data) && null === $data['is_shared']) {
             $object->setIsShared(null);
         }
-        if (property_exists($data, 'is_user_deleted') && null !== $data->{'is_user_deleted'}) {
-            $object->setIsUserDeleted($data->{'is_user_deleted'});
-        } elseif (property_exists($data, 'is_user_deleted') && null === $data->{'is_user_deleted'}) {
+        if (\array_key_exists('is_user_deleted', $data) && null !== $data['is_user_deleted']) {
+            $object->setIsUserDeleted($data['is_user_deleted']);
+        } elseif (\array_key_exists('is_user_deleted', $data) && null === $data['is_user_deleted']) {
             $object->setIsUserDeleted(null);
         }
-        if (property_exists($data, 'priority') && null !== $data->{'priority'}) {
-            $object->setPriority($data->{'priority'});
-        } elseif (property_exists($data, 'priority') && null === $data->{'priority'}) {
+        if (\array_key_exists('priority', $data) && null !== $data['priority']) {
+            $object->setPriority($data['priority']);
+        } elseif (\array_key_exists('priority', $data) && null === $data['priority']) {
             $object->setPriority(null);
         }
-        if (property_exists($data, 'user') && null !== $data->{'user'}) {
-            $object->setUser($data->{'user'});
-        } elseif (property_exists($data, 'user') && null === $data->{'user'}) {
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
         }
 
@@ -114,66 +113,42 @@ class ObjsImNormalizer implements DenormalizerInterface, NormalizerInterface, De
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getCreated()) {
-            $data->{'created'} = $object->getCreated();
-        } else {
-            $data->{'created'} = null;
+            $data['created'] = $object->getCreated();
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        } else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getIsAppHome()) {
-            $data->{'is_app_home'} = $object->getIsAppHome();
-        } else {
-            $data->{'is_app_home'} = null;
+            $data['is_app_home'] = $object->getIsAppHome();
         }
         if (null !== $object->getIsArchived()) {
-            $data->{'is_archived'} = $object->getIsArchived();
-        } else {
-            $data->{'is_archived'} = null;
+            $data['is_archived'] = $object->getIsArchived();
         }
         if (null !== $object->getIsExtShared()) {
-            $data->{'is_ext_shared'} = $object->getIsExtShared();
-        } else {
-            $data->{'is_ext_shared'} = null;
+            $data['is_ext_shared'] = $object->getIsExtShared();
         }
         if (null !== $object->getIsFrozen()) {
-            $data->{'is_frozen'} = $object->getIsFrozen();
-        } else {
-            $data->{'is_frozen'} = null;
+            $data['is_frozen'] = $object->getIsFrozen();
         }
         if (null !== $object->getIsIm()) {
-            $data->{'is_im'} = $object->getIsIm();
-        } else {
-            $data->{'is_im'} = null;
+            $data['is_im'] = $object->getIsIm();
         }
         if (null !== $object->getIsOrgShared()) {
-            $data->{'is_org_shared'} = $object->getIsOrgShared();
-        } else {
-            $data->{'is_org_shared'} = null;
+            $data['is_org_shared'] = $object->getIsOrgShared();
         }
         if (null !== $object->getIsShared()) {
-            $data->{'is_shared'} = $object->getIsShared();
-        } else {
-            $data->{'is_shared'} = null;
+            $data['is_shared'] = $object->getIsShared();
         }
         if (null !== $object->getIsUserDeleted()) {
-            $data->{'is_user_deleted'} = $object->getIsUserDeleted();
-        } else {
-            $data->{'is_user_deleted'} = null;
+            $data['is_user_deleted'] = $object->getIsUserDeleted();
         }
         if (null !== $object->getPriority()) {
-            $data->{'priority'} = $object->getPriority();
-        } else {
-            $data->{'priority'} = null;
+            $data['priority'] = $object->getPriority();
         }
         if (null !== $object->getUser()) {
-            $data->{'user'} = $object->getUser();
-        } else {
-            $data->{'user'} = null;
+            $data['user'] = $object->getUser();
         }
 
         return $data;

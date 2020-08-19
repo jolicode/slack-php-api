@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,153 +40,150 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUser();
-        if (property_exists($data, 'color') && null !== $data->{'color'}) {
-            $object->setColor($data->{'color'});
-        } elseif (property_exists($data, 'color') && null === $data->{'color'}) {
+        if (\array_key_exists('color', $data) && null !== $data['color']) {
+            $object->setColor($data['color']);
+        } elseif (\array_key_exists('color', $data) && null === $data['color']) {
             $object->setColor(null);
         }
-        if (property_exists($data, 'deleted') && null !== $data->{'deleted'}) {
-            $object->setDeleted($data->{'deleted'});
-        } elseif (property_exists($data, 'deleted') && null === $data->{'deleted'}) {
+        if (\array_key_exists('deleted', $data) && null !== $data['deleted']) {
+            $object->setDeleted($data['deleted']);
+        } elseif (\array_key_exists('deleted', $data) && null === $data['deleted']) {
             $object->setDeleted(null);
         }
-        if (property_exists($data, 'enterprise_user') && null !== $data->{'enterprise_user'}) {
-            $object->setEnterpriseUser($this->denormalizer->denormalize($data->{'enterprise_user'}, 'JoliCode\\Slack\\Api\\Model\\ObjsEnterpriseUser', 'json', $context));
-        } elseif (property_exists($data, 'enterprise_user') && null === $data->{'enterprise_user'}) {
+        if (\array_key_exists('enterprise_user', $data) && null !== $data['enterprise_user']) {
+            $object->setEnterpriseUser($this->denormalizer->denormalize($data['enterprise_user'], 'JoliCode\\Slack\\Api\\Model\\ObjsEnterpriseUser', 'json', $context));
+        } elseif (\array_key_exists('enterprise_user', $data) && null === $data['enterprise_user']) {
             $object->setEnterpriseUser(null);
         }
-        if (property_exists($data, 'has_2fa') && null !== $data->{'has_2fa'}) {
-            $object->setHas2fa($data->{'has_2fa'});
-        } elseif (property_exists($data, 'has_2fa') && null === $data->{'has_2fa'}) {
+        if (\array_key_exists('has_2fa', $data) && null !== $data['has_2fa']) {
+            $object->setHas2fa($data['has_2fa']);
+        } elseif (\array_key_exists('has_2fa', $data) && null === $data['has_2fa']) {
             $object->setHas2fa(null);
         }
-        if (property_exists($data, 'id') && null !== $data->{'id'}) {
-            $object->setId($data->{'id'});
-        } elseif (property_exists($data, 'id') && null === $data->{'id'}) {
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
-        if (property_exists($data, 'is_admin') && null !== $data->{'is_admin'}) {
-            $object->setIsAdmin($data->{'is_admin'});
-        } elseif (property_exists($data, 'is_admin') && null === $data->{'is_admin'}) {
+        if (\array_key_exists('is_admin', $data) && null !== $data['is_admin']) {
+            $object->setIsAdmin($data['is_admin']);
+        } elseif (\array_key_exists('is_admin', $data) && null === $data['is_admin']) {
             $object->setIsAdmin(null);
         }
-        if (property_exists($data, 'is_app_user') && null !== $data->{'is_app_user'}) {
-            $object->setIsAppUser($data->{'is_app_user'});
-        } elseif (property_exists($data, 'is_app_user') && null === $data->{'is_app_user'}) {
+        if (\array_key_exists('is_app_user', $data) && null !== $data['is_app_user']) {
+            $object->setIsAppUser($data['is_app_user']);
+        } elseif (\array_key_exists('is_app_user', $data) && null === $data['is_app_user']) {
             $object->setIsAppUser(null);
         }
-        if (property_exists($data, 'is_bot') && null !== $data->{'is_bot'}) {
-            $object->setIsBot($data->{'is_bot'});
-        } elseif (property_exists($data, 'is_bot') && null === $data->{'is_bot'}) {
+        if (\array_key_exists('is_bot', $data) && null !== $data['is_bot']) {
+            $object->setIsBot($data['is_bot']);
+        } elseif (\array_key_exists('is_bot', $data) && null === $data['is_bot']) {
             $object->setIsBot(null);
         }
-        if (property_exists($data, 'is_invited_user') && null !== $data->{'is_invited_user'}) {
-            $object->setIsInvitedUser($data->{'is_invited_user'});
-        } elseif (property_exists($data, 'is_invited_user') && null === $data->{'is_invited_user'}) {
+        if (\array_key_exists('is_invited_user', $data) && null !== $data['is_invited_user']) {
+            $object->setIsInvitedUser($data['is_invited_user']);
+        } elseif (\array_key_exists('is_invited_user', $data) && null === $data['is_invited_user']) {
             $object->setIsInvitedUser(null);
         }
-        if (property_exists($data, 'is_owner') && null !== $data->{'is_owner'}) {
-            $object->setIsOwner($data->{'is_owner'});
-        } elseif (property_exists($data, 'is_owner') && null === $data->{'is_owner'}) {
+        if (\array_key_exists('is_owner', $data) && null !== $data['is_owner']) {
+            $object->setIsOwner($data['is_owner']);
+        } elseif (\array_key_exists('is_owner', $data) && null === $data['is_owner']) {
             $object->setIsOwner(null);
         }
-        if (property_exists($data, 'is_primary_owner') && null !== $data->{'is_primary_owner'}) {
-            $object->setIsPrimaryOwner($data->{'is_primary_owner'});
-        } elseif (property_exists($data, 'is_primary_owner') && null === $data->{'is_primary_owner'}) {
+        if (\array_key_exists('is_primary_owner', $data) && null !== $data['is_primary_owner']) {
+            $object->setIsPrimaryOwner($data['is_primary_owner']);
+        } elseif (\array_key_exists('is_primary_owner', $data) && null === $data['is_primary_owner']) {
             $object->setIsPrimaryOwner(null);
         }
-        if (property_exists($data, 'is_restricted') && null !== $data->{'is_restricted'}) {
-            $object->setIsRestricted($data->{'is_restricted'});
-        } elseif (property_exists($data, 'is_restricted') && null === $data->{'is_restricted'}) {
+        if (\array_key_exists('is_restricted', $data) && null !== $data['is_restricted']) {
+            $object->setIsRestricted($data['is_restricted']);
+        } elseif (\array_key_exists('is_restricted', $data) && null === $data['is_restricted']) {
             $object->setIsRestricted(null);
         }
-        if (property_exists($data, 'is_ultra_restricted') && null !== $data->{'is_ultra_restricted'}) {
-            $object->setIsUltraRestricted($data->{'is_ultra_restricted'});
-        } elseif (property_exists($data, 'is_ultra_restricted') && null === $data->{'is_ultra_restricted'}) {
+        if (\array_key_exists('is_ultra_restricted', $data) && null !== $data['is_ultra_restricted']) {
+            $object->setIsUltraRestricted($data['is_ultra_restricted']);
+        } elseif (\array_key_exists('is_ultra_restricted', $data) && null === $data['is_ultra_restricted']) {
             $object->setIsUltraRestricted(null);
         }
-        if (property_exists($data, 'locale') && null !== $data->{'locale'}) {
-            $object->setLocale($data->{'locale'});
-        } elseif (property_exists($data, 'locale') && null === $data->{'locale'}) {
+        if (\array_key_exists('locale', $data) && null !== $data['locale']) {
+            $object->setLocale($data['locale']);
+        } elseif (\array_key_exists('locale', $data) && null === $data['locale']) {
             $object->setLocale(null);
         }
-        if (property_exists($data, 'name') && null !== $data->{'name'}) {
-            $object->setName($data->{'name'});
-        } elseif (property_exists($data, 'name') && null === $data->{'name'}) {
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
-        if (property_exists($data, 'presence') && null !== $data->{'presence'}) {
-            $object->setPresence($data->{'presence'});
-        } elseif (property_exists($data, 'presence') && null === $data->{'presence'}) {
+        if (\array_key_exists('presence', $data) && null !== $data['presence']) {
+            $object->setPresence($data['presence']);
+        } elseif (\array_key_exists('presence', $data) && null === $data['presence']) {
             $object->setPresence(null);
         }
-        if (property_exists($data, 'profile') && null !== $data->{'profile'}) {
-            $object->setProfile($this->denormalizer->denormalize($data->{'profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
-        } elseif (property_exists($data, 'profile') && null === $data->{'profile'}) {
+        if (\array_key_exists('profile', $data) && null !== $data['profile']) {
+            $object->setProfile($this->denormalizer->denormalize($data['profile'], 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile', 'json', $context));
+        } elseif (\array_key_exists('profile', $data) && null === $data['profile']) {
             $object->setProfile(null);
         }
-        if (property_exists($data, 'real_name') && null !== $data->{'real_name'}) {
-            $object->setRealName($data->{'real_name'});
-        } elseif (property_exists($data, 'real_name') && null === $data->{'real_name'}) {
+        if (\array_key_exists('real_name', $data) && null !== $data['real_name']) {
+            $object->setRealName($data['real_name']);
+        } elseif (\array_key_exists('real_name', $data) && null === $data['real_name']) {
             $object->setRealName(null);
         }
-        if (property_exists($data, 'team') && null !== $data->{'team'}) {
-            $object->setTeam($data->{'team'});
-        } elseif (property_exists($data, 'team') && null === $data->{'team'}) {
+        if (\array_key_exists('team', $data) && null !== $data['team']) {
+            $object->setTeam($data['team']);
+        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
         }
-        if (property_exists($data, 'team_id') && null !== $data->{'team_id'}) {
-            $object->setTeamId($data->{'team_id'});
-        } elseif (property_exists($data, 'team_id') && null === $data->{'team_id'}) {
+        if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
+            $object->setTeamId($data['team_id']);
+        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
             $object->setTeamId(null);
         }
-        if (property_exists($data, 'team_profile') && null !== $data->{'team_profile'}) {
-            $object->setTeamProfile($this->denormalizer->denormalize($data->{'team_profile'}, 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile', 'json', $context));
-        } elseif (property_exists($data, 'team_profile') && null === $data->{'team_profile'}) {
+        if (\array_key_exists('team_profile', $data) && null !== $data['team_profile']) {
+            $object->setTeamProfile($this->denormalizer->denormalize($data['team_profile'], 'JoliCode\\Slack\\Api\\Model\\ObjsUserTeamProfile', 'json', $context));
+        } elseif (\array_key_exists('team_profile', $data) && null === $data['team_profile']) {
             $object->setTeamProfile(null);
         }
-        if (property_exists($data, 'teams') && null !== $data->{'teams'}) {
+        if (\array_key_exists('teams', $data) && null !== $data['teams']) {
             $values = [];
-            foreach ($data->{'teams'} as $value) {
+            foreach ($data['teams'] as $value) {
                 $values[] = $value;
             }
             $object->setTeams($values);
-        } elseif (property_exists($data, 'teams') && null === $data->{'teams'}) {
+        } elseif (\array_key_exists('teams', $data) && null === $data['teams']) {
             $object->setTeams(null);
         }
-        if (property_exists($data, 'two_factor_type') && null !== $data->{'two_factor_type'}) {
-            $object->setTwoFactorType($data->{'two_factor_type'});
-        } elseif (property_exists($data, 'two_factor_type') && null === $data->{'two_factor_type'}) {
+        if (\array_key_exists('two_factor_type', $data) && null !== $data['two_factor_type']) {
+            $object->setTwoFactorType($data['two_factor_type']);
+        } elseif (\array_key_exists('two_factor_type', $data) && null === $data['two_factor_type']) {
             $object->setTwoFactorType(null);
         }
-        if (property_exists($data, 'tz') && null !== $data->{'tz'}) {
-            $object->setTz($data->{'tz'});
-        } elseif (property_exists($data, 'tz') && null === $data->{'tz'}) {
+        if (\array_key_exists('tz', $data) && null !== $data['tz']) {
+            $object->setTz($data['tz']);
+        } elseif (\array_key_exists('tz', $data) && null === $data['tz']) {
             $object->setTz(null);
         }
-        if (property_exists($data, 'tz_label') && null !== $data->{'tz_label'}) {
-            $object->setTzLabel($data->{'tz_label'});
-        } elseif (property_exists($data, 'tz_label') && null === $data->{'tz_label'}) {
+        if (\array_key_exists('tz_label', $data) && null !== $data['tz_label']) {
+            $object->setTzLabel($data['tz_label']);
+        } elseif (\array_key_exists('tz_label', $data) && null === $data['tz_label']) {
             $object->setTzLabel(null);
         }
-        if (property_exists($data, 'tz_offset') && null !== $data->{'tz_offset'}) {
-            $object->setTzOffset($data->{'tz_offset'});
-        } elseif (property_exists($data, 'tz_offset') && null === $data->{'tz_offset'}) {
+        if (\array_key_exists('tz_offset', $data) && null !== $data['tz_offset']) {
+            $object->setTzOffset($data['tz_offset']);
+        } elseif (\array_key_exists('tz_offset', $data) && null === $data['tz_offset']) {
             $object->setTzOffset(null);
         }
-        if (property_exists($data, 'updated') && null !== $data->{'updated'}) {
-            $object->setUpdated($data->{'updated'});
-        } elseif (property_exists($data, 'updated') && null === $data->{'updated'}) {
+        if (\array_key_exists('updated', $data) && null !== $data['updated']) {
+            $object->setUpdated($data['updated']);
+        } elseif (\array_key_exists('updated', $data) && null === $data['updated']) {
             $object->setUpdated(null);
         }
 
@@ -193,145 +192,91 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getColor()) {
-            $data->{'color'} = $object->getColor();
-        } else {
-            $data->{'color'} = null;
+            $data['color'] = $object->getColor();
         }
         if (null !== $object->getDeleted()) {
-            $data->{'deleted'} = $object->getDeleted();
-        } else {
-            $data->{'deleted'} = null;
+            $data['deleted'] = $object->getDeleted();
         }
         if (null !== $object->getEnterpriseUser()) {
-            $data->{'enterprise_user'} = $this->normalizer->normalize($object->getEnterpriseUser(), 'json', $context);
-        } else {
-            $data->{'enterprise_user'} = null;
+            $data['enterprise_user'] = $this->normalizer->normalize($object->getEnterpriseUser(), 'json', $context);
         }
         if (null !== $object->getHas2fa()) {
-            $data->{'has_2fa'} = $object->getHas2fa();
-        } else {
-            $data->{'has_2fa'} = null;
+            $data['has_2fa'] = $object->getHas2fa();
         }
         if (null !== $object->getId()) {
-            $data->{'id'} = $object->getId();
-        } else {
-            $data->{'id'} = null;
+            $data['id'] = $object->getId();
         }
         if (null !== $object->getIsAdmin()) {
-            $data->{'is_admin'} = $object->getIsAdmin();
-        } else {
-            $data->{'is_admin'} = null;
+            $data['is_admin'] = $object->getIsAdmin();
         }
         if (null !== $object->getIsAppUser()) {
-            $data->{'is_app_user'} = $object->getIsAppUser();
-        } else {
-            $data->{'is_app_user'} = null;
+            $data['is_app_user'] = $object->getIsAppUser();
         }
         if (null !== $object->getIsBot()) {
-            $data->{'is_bot'} = $object->getIsBot();
-        } else {
-            $data->{'is_bot'} = null;
+            $data['is_bot'] = $object->getIsBot();
         }
         if (null !== $object->getIsInvitedUser()) {
-            $data->{'is_invited_user'} = $object->getIsInvitedUser();
-        } else {
-            $data->{'is_invited_user'} = null;
+            $data['is_invited_user'] = $object->getIsInvitedUser();
         }
         if (null !== $object->getIsOwner()) {
-            $data->{'is_owner'} = $object->getIsOwner();
-        } else {
-            $data->{'is_owner'} = null;
+            $data['is_owner'] = $object->getIsOwner();
         }
         if (null !== $object->getIsPrimaryOwner()) {
-            $data->{'is_primary_owner'} = $object->getIsPrimaryOwner();
-        } else {
-            $data->{'is_primary_owner'} = null;
+            $data['is_primary_owner'] = $object->getIsPrimaryOwner();
         }
         if (null !== $object->getIsRestricted()) {
-            $data->{'is_restricted'} = $object->getIsRestricted();
-        } else {
-            $data->{'is_restricted'} = null;
+            $data['is_restricted'] = $object->getIsRestricted();
         }
         if (null !== $object->getIsUltraRestricted()) {
-            $data->{'is_ultra_restricted'} = $object->getIsUltraRestricted();
-        } else {
-            $data->{'is_ultra_restricted'} = null;
+            $data['is_ultra_restricted'] = $object->getIsUltraRestricted();
         }
         if (null !== $object->getLocale()) {
-            $data->{'locale'} = $object->getLocale();
-        } else {
-            $data->{'locale'} = null;
+            $data['locale'] = $object->getLocale();
         }
         if (null !== $object->getName()) {
-            $data->{'name'} = $object->getName();
-        } else {
-            $data->{'name'} = null;
+            $data['name'] = $object->getName();
         }
         if (null !== $object->getPresence()) {
-            $data->{'presence'} = $object->getPresence();
-        } else {
-            $data->{'presence'} = null;
+            $data['presence'] = $object->getPresence();
         }
         if (null !== $object->getProfile()) {
-            $data->{'profile'} = $this->normalizer->normalize($object->getProfile(), 'json', $context);
-        } else {
-            $data->{'profile'} = null;
+            $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
         }
         if (null !== $object->getRealName()) {
-            $data->{'real_name'} = $object->getRealName();
-        } else {
-            $data->{'real_name'} = null;
+            $data['real_name'] = $object->getRealName();
         }
         if (null !== $object->getTeam()) {
-            $data->{'team'} = $object->getTeam();
-        } else {
-            $data->{'team'} = null;
+            $data['team'] = $object->getTeam();
         }
         if (null !== $object->getTeamId()) {
-            $data->{'team_id'} = $object->getTeamId();
-        } else {
-            $data->{'team_id'} = null;
+            $data['team_id'] = $object->getTeamId();
         }
         if (null !== $object->getTeamProfile()) {
-            $data->{'team_profile'} = $this->normalizer->normalize($object->getTeamProfile(), 'json', $context);
-        } else {
-            $data->{'team_profile'} = null;
+            $data['team_profile'] = $this->normalizer->normalize($object->getTeamProfile(), 'json', $context);
         }
         if (null !== $object->getTeams()) {
             $values = [];
             foreach ($object->getTeams() as $value) {
                 $values[] = $value;
             }
-            $data->{'teams'} = $values;
-        } else {
-            $data->{'teams'} = null;
+            $data['teams'] = $values;
         }
         if (null !== $object->getTwoFactorType()) {
-            $data->{'two_factor_type'} = $object->getTwoFactorType();
-        } else {
-            $data->{'two_factor_type'} = null;
+            $data['two_factor_type'] = $object->getTwoFactorType();
         }
         if (null !== $object->getTz()) {
-            $data->{'tz'} = $object->getTz();
-        } else {
-            $data->{'tz'} = null;
+            $data['tz'] = $object->getTz();
         }
         if (null !== $object->getTzLabel()) {
-            $data->{'tz_label'} = $object->getTzLabel();
-        } else {
-            $data->{'tz_label'} = null;
+            $data['tz_label'] = $object->getTzLabel();
         }
         if (null !== $object->getTzOffset()) {
-            $data->{'tz_offset'} = $object->getTzOffset();
-        } else {
-            $data->{'tz_offset'} = null;
+            $data['tz_offset'] = $object->getTzOffset();
         }
         if (null !== $object->getUpdated()) {
-            $data->{'updated'} = $object->getUpdated();
-        } else {
-            $data->{'updated'} = null;
+            $data['updated'] = $object->getUpdated();
         }
 
         return $data;

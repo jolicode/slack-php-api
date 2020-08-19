@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,29 +40,26 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons();
-        if (property_exists($data, 'image_36') && null !== $data->{'image_36'}) {
-            $object->setImage36($data->{'image_36'});
-        } elseif (property_exists($data, 'image_36') && null === $data->{'image_36'}) {
+        if (\array_key_exists('image_36', $data) && null !== $data['image_36']) {
+            $object->setImage36($data['image_36']);
+        } elseif (\array_key_exists('image_36', $data) && null === $data['image_36']) {
             $object->setImage36(null);
         }
-        if (property_exists($data, 'image_48') && null !== $data->{'image_48'}) {
-            $object->setImage48($data->{'image_48'});
-        } elseif (property_exists($data, 'image_48') && null === $data->{'image_48'}) {
+        if (\array_key_exists('image_48', $data) && null !== $data['image_48']) {
+            $object->setImage48($data['image_48']);
+        } elseif (\array_key_exists('image_48', $data) && null === $data['image_48']) {
             $object->setImage48(null);
         }
-        if (property_exists($data, 'image_72') && null !== $data->{'image_72'}) {
-            $object->setImage72($data->{'image_72'});
-        } elseif (property_exists($data, 'image_72') && null === $data->{'image_72'}) {
+        if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
+            $object->setImage72($data['image_72']);
+        } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
             $object->setImage72(null);
         }
 
@@ -69,21 +68,15 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getImage36()) {
-            $data->{'image_36'} = $object->getImage36();
-        } else {
-            $data->{'image_36'} = null;
+            $data['image_36'] = $object->getImage36();
         }
         if (null !== $object->getImage48()) {
-            $data->{'image_48'} = $object->getImage48();
-        } else {
-            $data->{'image_48'} = null;
+            $data['image_48'] = $object->getImage48();
         }
         if (null !== $object->getImage72()) {
-            $data->{'image_72'} = $object->getImage72();
-        } else {
-            $data->{'image_72'} = null;
+            $data['image_72'] = $object->getImage72();
         }
 
         return $data;

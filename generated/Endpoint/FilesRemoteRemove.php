@@ -52,6 +52,11 @@ class FilesRemoteRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
         return ['Accept' => ['application/json']];
     }
 
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
+    }
+
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();

@@ -229,7 +229,7 @@ class ObjsUserProfile
     }
 
     /**
-     * @return mixed[]|mixed|null
+     * @return mixed[]|mixed
      */
     public function getFields()
     {
@@ -237,7 +237,7 @@ class ObjsUserProfile
     }
 
     /**
-     * @param mixed[]|mixed|null $fields
+     * @param mixed[]|mixed $fields
      */
     public function setFields($fields): self
     {

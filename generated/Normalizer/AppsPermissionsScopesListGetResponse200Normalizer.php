@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class AppsPermissionsScopesListGetResponse200Normalizer implements DenormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,31 +40,27 @@ class AppsPermissionsScopesListGetResponse200Normalizer implements DenormalizerI
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200();
-        $data = clone $data;
-        if (property_exists($data, 'ok') && null !== $data->{'ok'}) {
-            $object->setOk($data->{'ok'});
-            unset($data->{'ok'});
-        } elseif (property_exists($data, 'ok') && null === $data->{'ok'}) {
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+            unset($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (property_exists($data, 'scopes') && null !== $data->{'scopes'}) {
-            $object->setScopes($this->denormalizer->denormalize($data->{'scopes'}, 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsScopesListGetResponse200Scopes', 'json', $context));
-            unset($data->{'scopes'});
-        } elseif (property_exists($data, 'scopes') && null === $data->{'scopes'}) {
+        if (\array_key_exists('scopes', $data) && null !== $data['scopes']) {
+            $object->setScopes($this->denormalizer->denormalize($data['scopes'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsScopesListGetResponse200Scopes', 'json', $context));
+            unset($data['scopes']);
+        } elseif (\array_key_exists('scopes', $data) && null === $data['scopes']) {
             $object->setScopes(null);
         }
         foreach ($data as $key => $value) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
             }
         }
@@ -72,20 +70,16 @@ class AppsPermissionsScopesListGetResponse200Normalizer implements DenormalizerI
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getOk()) {
-            $data->{'ok'} = $object->getOk();
-        } else {
-            $data->{'ok'} = null;
+            $data['ok'] = $object->getOk();
         }
         if (null !== $object->getScopes()) {
-            $data->{'scopes'} = $this->normalizer->normalize($object->getScopes(), 'json', $context);
-        } else {
-            $data->{'scopes'} = null;
+            $data['scopes'] = $this->normalizer->normalize($object->getScopes(), 'json', $context);
         }
         foreach ($object as $key => $value) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
 

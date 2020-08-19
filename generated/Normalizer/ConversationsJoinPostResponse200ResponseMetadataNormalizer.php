@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class ConversationsJoinPostResponse200ResponseMetadataNormalizer implements Deno
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,23 +40,20 @@ class ConversationsJoinPostResponse200ResponseMetadataNormalizer implements Deno
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata();
-        if (property_exists($data, 'warnings') && null !== $data->{'warnings'}) {
+        if (\array_key_exists('warnings', $data) && null !== $data['warnings']) {
             $values = [];
-            foreach ($data->{'warnings'} as $value) {
+            foreach ($data['warnings'] as $value) {
                 $values[] = $value;
             }
             $object->setWarnings($values);
-        } elseif (property_exists($data, 'warnings') && null === $data->{'warnings'}) {
+        } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
             $object->setWarnings(null);
         }
 
@@ -63,15 +62,13 @@ class ConversationsJoinPostResponse200ResponseMetadataNormalizer implements Deno
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getWarnings()) {
             $values = [];
             foreach ($object->getWarnings() as $value) {
                 $values[] = $value;
             }
-            $data->{'warnings'} = $values;
-        } else {
-            $data->{'warnings'} = null;
+            $data['warnings'] = $values;
         }
 
         return $data;

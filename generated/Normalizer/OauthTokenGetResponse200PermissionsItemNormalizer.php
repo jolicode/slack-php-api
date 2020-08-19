@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
+use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -25,6 +26,7 @@ class OauthTokenGetResponse200PermissionsItemNormalizer implements DenormalizerI
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {
@@ -38,41 +40,37 @@ class OauthTokenGetResponse200PermissionsItemNormalizer implements DenormalizerI
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        if (!\is_object($data)) {
-            return null;
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-        if (isset($data->{'$ref'})) {
-            return new Reference($data->{'$ref'}, $context['document-origin']);
-        }
-        if (isset($data->{'$recursiveRef'})) {
-            return new Reference($data->{'$recursiveRef'}, $context['document-origin']);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\OauthTokenGetResponse200PermissionsItem();
-        $data = clone $data;
-        if (property_exists($data, 'resource_id') && null !== $data->{'resource_id'}) {
-            $object->setResourceId($data->{'resource_id'});
-            unset($data->{'resource_id'});
-        } elseif (property_exists($data, 'resource_id') && null === $data->{'resource_id'}) {
+        if (\array_key_exists('resource_id', $data) && null !== $data['resource_id']) {
+            $object->setResourceId($data['resource_id']);
+            unset($data['resource_id']);
+        } elseif (\array_key_exists('resource_id', $data) && null === $data['resource_id']) {
             $object->setResourceId(null);
         }
-        if (property_exists($data, 'resource_type') && null !== $data->{'resource_type'}) {
-            $object->setResourceType($data->{'resource_type'});
-            unset($data->{'resource_type'});
-        } elseif (property_exists($data, 'resource_type') && null === $data->{'resource_type'}) {
+        if (\array_key_exists('resource_type', $data) && null !== $data['resource_type']) {
+            $object->setResourceType($data['resource_type']);
+            unset($data['resource_type']);
+        } elseif (\array_key_exists('resource_type', $data) && null === $data['resource_type']) {
             $object->setResourceType(null);
         }
-        if (property_exists($data, 'scopes') && null !== $data->{'scopes'}) {
+        if (\array_key_exists('scopes', $data) && null !== $data['scopes']) {
             $values = [];
-            foreach ($data->{'scopes'} as $value) {
+            foreach ($data['scopes'] as $value) {
                 $values[] = $value;
             }
             $object->setScopes($values);
-            unset($data->{'scopes'});
-        } elseif (property_exists($data, 'scopes') && null === $data->{'scopes'}) {
+            unset($data['scopes']);
+        } elseif (\array_key_exists('scopes', $data) && null === $data['scopes']) {
             $object->setScopes(null);
         }
         foreach ($data as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
+            if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
             }
         }
@@ -82,29 +80,23 @@ class OauthTokenGetResponse200PermissionsItemNormalizer implements DenormalizerI
 
     public function normalize($object, $format = null, array $context = [])
     {
-        $data = new \stdClass();
+        $data = [];
         if (null !== $object->getResourceId()) {
-            $data->{'resource_id'} = $object->getResourceId();
-        } else {
-            $data->{'resource_id'} = null;
+            $data['resource_id'] = $object->getResourceId();
         }
         if (null !== $object->getResourceType()) {
-            $data->{'resource_type'} = $object->getResourceType();
-        } else {
-            $data->{'resource_type'} = null;
+            $data['resource_type'] = $object->getResourceType();
         }
         if (null !== $object->getScopes()) {
             $values = [];
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;
             }
-            $data->{'scopes'} = $values;
-        } else {
-            $data->{'scopes'} = null;
+            $data['scopes'] = $values;
         }
         foreach ($object as $key => $value_1) {
-            if (preg_match('/.*/', $key)) {
-                $data->{$key} = $value_1;
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
             }
         }
 

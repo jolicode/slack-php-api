@@ -20,7 +20,7 @@ class FilesInfoGetResponse200
      */
     protected $comments;
     /**
-     * @var null
+     * @var mixed|null
      */
     protected $contentHtml;
     /**
@@ -63,7 +63,7 @@ class FilesInfoGetResponse200
     }
 
     /**
-     * @return null
+     * @return mixed
      */
     public function getContentHtml()
     {
@@ -71,7 +71,7 @@ class FilesInfoGetResponse200
     }
 
     /**
-     * @param null $contentHtml
+     * @param mixed $contentHtml
      */
     public function setContentHtml($contentHtml): self
     {
