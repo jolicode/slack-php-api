@@ -10,7 +10,7 @@
 * Upgrade to JanePHP version 6
 * **Breaking** Some options have new types, for example ChatUpdate `as_user` option was a boolean and is now a string
 
-Thanks @xavierlacot for the huge work on those features.
+Thanks [@xavierlacot](https://github.com/xavierlacot) for the huge work on those features.
 
 ## 2.5.0 (2020-04-29)
 
