@@ -1,5 +1,17 @@
 # Changes between versions
 
+## 3.0.0 (2020-08-19)
+
+* **Massive specification update** to latest Slack official version:
+  * adds all the admin* endpoints
+  * adds the fileRemote* endpoints
+  * adds the views* endpoints
+* Add a `bin/slack-api-client-generator` command to help further updates
+* Upgrade to JanePHP version 6
+* **Breaking** Some options have new types, for example ChatUpdate `as_user` option was a boolean and is now a string
+
+Thanks [@xavierlacot](https://github.com/xavierlacot) for the huge work on those features.
+
 ## 2.5.0 (2020-04-29)
 
 * Update specification to latest version (ids are now longer than 8 chars)
