@@ -5,7 +5,7 @@ features, some only cover a small part of the API and most are simply no longer
 maintained.
 
 This SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp)
-from the [official Slack API specs](https://github.com/slackapi/slack-api-specs).
+from the [official Slack API specs](https://github.com/slackapi/slack-api-specs). It provide a fully object oriented interface for all the endpoints, requests and responses of the Slack Web API.
 
 ## Installation
 
