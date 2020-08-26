@@ -1,5 +1,9 @@
 # Changes between versions
 
+## 3.0.1 (2020-08-26)
+
+* Use a fixed version of Jane to avoid BC Break
+
 ## 3.0.0 (2020-08-19)
 
 * **Massive specification update** to latest Slack official version:
