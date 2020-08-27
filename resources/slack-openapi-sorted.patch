@@ -1,5 +1,28 @@
---- resources/slack-openapi-sorted.json	2020-08-04 19:14:54.912874701 +0200
-+++ resources/slack-openapi-patched.json	2020-08-04 20:58:05.960245376 +0200
+--- resources/slack-openapi-sorted.json	2020-08-26 15:03:53.000000000 -0400
++++ resources/slack-openapi-patched.json	2020-08-27 13:41:34.000000000 -0400
+@@ -392,21 +392,21 @@
+                     },
+                     "type": "array"
+                 },
+                 "reactions": {
+                     "items": {
+                         "$ref": "#/definitions/objs_reaction"
+                     },
+                     "type": "array"
+                 },
+                 "timestamp": {
+-                    "type": "integer"
++                    "type": "{}"
+                 },
+                 "user": {
+                     "$ref": "#/definitions/defs_user_id"
+                 }
+             },
+             "required": [
+                 "comment",
+                 "created",
+                 "id",
+                 "is_intro",
 @@ -415,763 +415,331 @@
              ],
              "title": "File Comment Object",
@@ -221,8 +244,8 @@
 -                            "uniqueItems": true
 -                        },
 -                        "pin_count": {
--                            "type": "integer"
--                        },
+                             "type": "integer"
+                         },
 -                        "previous_names": {
 -                            "items": {
 -                                "$ref": "#/definitions/defs_channel_name"
@@ -291,8 +314,8 @@
 -                            "uniqueItems": true
 -                        },
 -                        "timezone_count": {
-                             "type": "integer"
-                         },
+-                            "type": "integer"
+-                        },
 -                        "topic": {
 -                            "additionalProperties": false,
 -                            "properties": {
@@ -399,133 +422,10 @@
 -                                "guest_counts"
 -                            ],
 -                            "type": "object"
-+                    "type": "object"
-+                },
-+                "has_pins": {
-+                    "type": "boolean"
-+                },
-+                "id": {
-+                    "$ref": "#/definitions/defs_channel"
-+                },
-+                "internal_team_ids": {
-+                    "items": {
-+                        "$ref": "#/definitions/defs_team"
-+                    },
-+                    "minItems": 0,
-+                    "type": "array",
-+                    "uniqueItems": true
-+                },
-+                "is_archived": {
-+                    "type": "boolean"
-+                },
-+                "is_channel": {
-+                    "type": "boolean"
-+                },
-+                "is_ext_shared": {
-+                    "type": "boolean"
-+                },
-+                "is_frozen": {
-+                    "type": "boolean"
-+                },
-+                "is_general": {
-+                    "type": "boolean"
-+                },
-+                "is_global_shared": {
-+                    "type": "boolean"
-+                },
-+                "is_group": {
-+                    "type": "boolean"
-+                },
-+                "is_im": {
-+                    "type": "boolean"
-+                },
-+                "is_member": {
-+                    "type": "boolean"
-+                },
-+                "is_moved": {
-+                    "type": "integer"
-+                },
-+                "is_mpim": {
-+                    "enum": [
-+                        false
-+                    ],
-+                    "type": "boolean"
-+                },
-+                "is_non_threadable": {
-+                    "type": "boolean"
-+                },
-+                "is_open": {
-+                    "type": "boolean"
-+                },
-+                "is_org_default": {
-+                    "type": "boolean"
-+                },
-+                "is_org_mandatory": {
-+                    "type": "boolean"
-+                },
-+                "is_org_shared": {
-+                    "type": "boolean"
-+                },
-+                "is_pending_ext_shared": {
-+                    "type": "boolean"
-+                },
-+                "is_private": {
-+                    "type": "boolean"
-+                },
-+                "is_read_only": {
-+                    "type": "boolean"
-+                },
-+                "is_shared": {
-+                    "type": "boolean"
-+                },
-+                "is_starred": {
-+                    "type": "boolean"
-+                },
-+                "is_thread_only": {
-+                    "type": "boolean"
-+                },
-+                "is_user_deleted": {
-+                    "type": "boolean"
-+                },
-+                "last_read": {
-+                    "$ref": "#/definitions/defs_ts"
-+                },
-+                "latest": {
-+                    "items": [
-+                        {
-+                            "$ref": "#/definitions/objs_message"
-                         },
+-                        },
 -                        "id": {
-+                        {
-+                            "type": "null"
-+                        }
-+                    ]
-+                },
-+                "locale": {
-+                    "type": "string"
-+                },
-+                "members": {
-+                    "items": {
-+                        "$ref": "#/definitions/defs_user_id"
-+                    },
-+                    "minItems": 0,
-+                    "type": "array",
-+                    "uniqueItems": true
-+                },
-+                "name": {
-+                    "type": "string"
-+                },
-+                "name_normalized": {
-+                    "type": "string"
-+                },
-+                "num_members": {
-+                    "type": "integer"
-+                },
-+                "parent_conversation": {
-+                    "items": [
-+                        {
-                             "$ref": "#/definitions/defs_channel"
-                         },
+-                            "$ref": "#/definitions/defs_channel"
+-                        },
 -                        "internal_team_ids": {
 -                            "items": {
 -                                "$ref": "#/definitions/defs_team"
@@ -557,51 +457,10 @@
 -                        },
 -                        "is_member": {
 -                            "type": "boolean"
-+                        {
-+                            "type": "null"
-+                        }
-+                    ]
-+                },
-+                "pending_connected_team_ids": {
-+                    "items": {
-+                        "$ref": "#/definitions/defs_team"
-+                    },
-+                    "minItems": 0,
-+                    "type": "array",
-+                    "uniqueItems": true
-+                },
-+                "pending_shared": {
-+                    "items": {
-+                        "$ref": "#/definitions/defs_team"
-+                    },
-+                    "minItems": 0,
-+                    "type": "array",
-+                    "uniqueItems": true
-+                },
-+                "pin_count": {
-+                    "type": "integer"
-+                },
-+                "previous_names": {
-+                    "items": {
-+                        "$ref": "#/definitions/defs_channel_name"
-+                    },
-+                    "minItems": 0,
-+                    "type": "array",
-+                    "uniqueItems": true
-+                },
-+                "priority": {
-+                    "type": "number"
-+                },
-+                "purpose": {
-+                    "additionalProperties": false,
-+                    "properties": {
-+                        "creator": {
-+                            "$ref": "#/definitions/defs_topic_purpose_creator"
-                         },
+-                        },
 -                        "is_moved": {
-+                        "last_set": {
-                             "type": "integer"
-                         },
+-                            "type": "integer"
+-                        },
 -                        "is_mpim": {
 -                            "enum": [
 -                                true
@@ -660,8 +519,7 @@
 -                            "type": "string"
 -                        },
 -                        "name_normalized": {
-+                        "value": {
-                             "type": "string"
+-                            "type": "string"
 -                        },
 -                        "num_members": {
 -                            "type": "integer"
@@ -784,22 +642,189 @@
 -                                "value"
 -                            ],
 -                            "type": "object"
--                        },
++                    "type": "object"
++                },
++                "has_pins": {
++                    "type": "boolean"
++                },
++                "id": {
++                    "$ref": "#/definitions/defs_channel"
++                },
++                "internal_team_ids": {
++                    "items": {
++                        "$ref": "#/definitions/defs_team"
++                    },
++                    "minItems": 0,
++                    "type": "array",
++                    "uniqueItems": true
++                },
++                "is_archived": {
++                    "type": "boolean"
++                },
++                "is_channel": {
++                    "type": "boolean"
++                },
++                "is_ext_shared": {
++                    "type": "boolean"
++                },
++                "is_frozen": {
++                    "type": "boolean"
++                },
++                "is_general": {
++                    "type": "boolean"
++                },
++                "is_global_shared": {
++                    "type": "boolean"
++                },
++                "is_group": {
++                    "type": "boolean"
++                },
++                "is_im": {
++                    "type": "boolean"
++                },
++                "is_member": {
++                    "type": "boolean"
++                },
++                "is_moved": {
++                    "type": "integer"
++                },
++                "is_mpim": {
++                    "enum": [
++                        false
++                    ],
++                    "type": "boolean"
++                },
++                "is_non_threadable": {
++                    "type": "boolean"
++                },
++                "is_open": {
++                    "type": "boolean"
++                },
++                "is_org_default": {
++                    "type": "boolean"
++                },
++                "is_org_mandatory": {
++                    "type": "boolean"
++                },
++                "is_org_shared": {
++                    "type": "boolean"
++                },
++                "is_pending_ext_shared": {
++                    "type": "boolean"
++                },
++                "is_private": {
++                    "type": "boolean"
++                },
++                "is_read_only": {
++                    "type": "boolean"
++                },
++                "is_shared": {
++                    "type": "boolean"
++                },
++                "is_starred": {
++                    "type": "boolean"
++                },
++                "is_thread_only": {
++                    "type": "boolean"
++                },
++                "is_user_deleted": {
++                    "type": "boolean"
++                },
++                "last_read": {
++                    "$ref": "#/definitions/defs_ts"
++                },
++                "latest": {
++                    "items": [
++                        {
++                            "$ref": "#/definitions/objs_message"
+                         },
 -                        "unlinked": {
 -                            "title": "Field to determine whether a channel has ever been shared/disconnected in the past",
 -                            "type": "integer"
--                        },
++                        {
++                            "type": "null"
++                        }
++                    ]
++                },
++                "locale": {
++                    "type": "string"
++                },
++                "members": {
++                    "items": {
++                        "$ref": "#/definitions/defs_user_id"
++                    },
++                    "minItems": 0,
++                    "type": "array",
++                    "uniqueItems": true
++                },
++                "name": {
++                    "type": "string"
++                },
++                "name_normalized": {
++                    "type": "string"
++                },
++                "num_members": {
++                    "type": "integer"
++                },
++                "parent_conversation": {
++                    "items": [
++                        {
++                            "$ref": "#/definitions/defs_channel"
+                         },
 -                        "unread_count": {
 -                            "type": "integer"
--                        },
++                        {
++                            "type": "null"
++                        }
++                    ]
++                },
++                "pending_connected_team_ids": {
++                    "items": {
++                        "$ref": "#/definitions/defs_team"
++                    },
++                    "minItems": 0,
++                    "type": "array",
++                    "uniqueItems": true
++                },
++                "pending_shared": {
++                    "items": {
++                        "$ref": "#/definitions/defs_team"
++                    },
++                    "minItems": 0,
++                    "type": "array",
++                    "uniqueItems": true
++                },
++                "pin_count": {
++                    "type": "integer"
++                },
++                "previous_names": {
++                    "items": {
++                        "$ref": "#/definitions/defs_channel_name"
++                    },
++                    "minItems": 0,
++                    "type": "array",
++                    "uniqueItems": true
++                },
++                "priority": {
++                    "type": "number"
++                },
++                "purpose": {
++                    "additionalProperties": false,
++                    "properties": {
++                        "creator": {
++                            "$ref": "#/definitions/defs_topic_purpose_creator"
+                         },
 -                        "unread_count_display": {
--                            "type": "integer"
--                        },
++                        "last_set": {
+                             "type": "integer"
+                         },
 -                        "user": {
 -                            "$ref": "#/definitions/defs_user_id"
 -                        },
 -                        "version": {
 -                            "type": "integer"
++                        "value": {
++                            "type": "string"
                          }
                      },
                      "required": [
@@ -1157,6 +1182,36 @@
                      "format": "uri",
                      "type": "string"
                  },
+@@ -1425,27 +1025,27 @@
+                 "thumb_960_h": {
+                     "type": "integer"
+                 },
+                 "thumb_960_w": {
+                     "type": "integer"
+                 },
+                 "thumb_tiny": {
+                     "type": "string"
+                 },
+                 "timestamp": {
+-                    "type": "integer"
++                    "type": "{}"
+                 },
+                 "title": {
+                     "type": "string"
+                 },
+                 "updated": {
+-                    "type": "integer"
++                    "type": "{}"
+                 },
+                 "url_private": {
+                     "format": "uri",
+                     "type": "string"
+                 },
+                 "url_private_download": {
+                     "format": "uri",
+                     "type": "string"
+                 },
+                 "user": {
 @@ -1674,44 +1274,117 @@
                  "user"
              ],
@@ -1238,11 +1293,11 @@
 -                                "type": "integer"
 +                            "footer": {
 +                                "type": "string"
-                             },
--                            "image_height": {
++                            },
 +                            "footer_icon": {
 +                                "type": "string"
-+                            },
+                             },
+-                            "image_height": {
 +                            "id": {
                                  "type": "integer"
                              },
@@ -1455,8 +1510,7 @@
 +                },
 +                "enterprise_user": {
 +                    "$ref": "#/definitions/objs_enterprise_user"
-                 },
--                {
++                },
 +                "has_2fa": {
 +                    "type": "boolean"
 +                },
@@ -1507,7 +1561,8 @@
 +                },
 +                "team_id": {
 +                    "$ref": "#/definitions/defs_team"
-+                },
+                 },
+-                {
 +                "team_profile": {
                      "additionalProperties": false,
 -                    "description": "enterprise user",
