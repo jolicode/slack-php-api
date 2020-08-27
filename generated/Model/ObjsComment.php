@@ -52,7 +52,7 @@ class ObjsComment
      */
     protected $reactions;
     /**
-     * @var int|null
+     * @var mixed|null
      */
     protected $timestamp;
     /**
@@ -186,12 +186,18 @@ class ObjsComment
         return $this;
     }
 
-    public function getTimestamp(): ?int
+    /**
+     * @return mixed
+     */
+    public function getTimestamp()
     {
         return $this->timestamp;
     }
 
-    public function setTimestamp(?int $timestamp): self
+    /**
+     * @param mixed $timestamp
+     */
+    public function setTimestamp($timestamp): self
     {
         $this->timestamp = $timestamp;
 

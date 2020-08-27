@@ -276,7 +276,7 @@ class ObjsFile
      */
     protected $thumbTiny;
     /**
-     * @var int|null
+     * @var mixed|null
      */
     protected $timestamp;
     /**
@@ -284,7 +284,7 @@ class ObjsFile
      */
     protected $title;
     /**
-     * @var int|null
+     * @var mixed|null
      */
     protected $updated;
     /**
@@ -1124,12 +1124,18 @@ class ObjsFile
         return $this;
     }
 
-    public function getTimestamp(): ?int
+    /**
+     * @return mixed
+     */
+    public function getTimestamp()
     {
         return $this->timestamp;
     }
 
-    public function setTimestamp(?int $timestamp): self
+    /**
+     * @param mixed $timestamp
+     */
+    public function setTimestamp($timestamp): self
     {
         $this->timestamp = $timestamp;
 
@@ -1148,12 +1154,18 @@ class ObjsFile
         return $this;
     }
 
-    public function getUpdated(): ?int
+    /**
+     * @return mixed
+     */
+    public function getUpdated()
     {
         return $this->updated;
     }
 
-    public function setUpdated(?int $updated): self
+    /**
+     * @param mixed $updated
+     */
+    public function setUpdated($updated): self
     {
         $this->updated = $updated;
 
