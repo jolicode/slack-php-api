@@ -399,7 +399,7 @@
                     "type": "array"
                 },
                 "timestamp": {
-                    "type": "integer"
+                    "type": "{}"
                 },
                 "user": {
                     "$ref": "#/definitions/defs_user_id"
@@ -1032,13 +1032,13 @@
                     "type": "string"
                 },
                 "timestamp": {
-                    "type": "integer"
+                    "type": "{}"
                 },
                 "title": {
                     "type": "string"
                 },
                 "updated": {
-                    "type": "integer"
+                    "type": "{}"
                 },
                 "url_private": {
                     "format": "uri",
