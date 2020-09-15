@@ -63,7 +63,13 @@ class ChatScheduleMessagePostResponse200Normalizer implements DenormalizerInterf
             $object->setOk(null);
         }
         if (\array_key_exists('post_at', $data) && null !== $data['post_at']) {
-            $object->setPostAt($data['post_at']);
+            $value = $data['post_at'];
+            if (\is_string($data['post_at'])) {
+                $value = $data['post_at'];
+            } elseif (\is_int($data['post_at'])) {
+                $value = $data['post_at'];
+            }
+            $object->setPostAt($value);
         } elseif (\array_key_exists('post_at', $data) && null === $data['post_at']) {
             $object->setPostAt(null);
         }
@@ -89,7 +95,13 @@ class ChatScheduleMessagePostResponse200Normalizer implements DenormalizerInterf
             $data['ok'] = $object->getOk();
         }
         if (null !== $object->getPostAt()) {
-            $data['post_at'] = $object->getPostAt();
+            $value = $object->getPostAt();
+            if (\is_string($object->getPostAt())) {
+                $value = $object->getPostAt();
+            } elseif (\is_int($object->getPostAt())) {
+                $value = $object->getPostAt();
+            }
+            $data['post_at'] = $value;
         }
         if (null !== $object->getScheduledMessageId()) {
             $data['scheduled_message_id'] = $object->getScheduledMessageId();

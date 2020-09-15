@@ -110,4 +110,18 @@ class WritingTest extends TestCase
 
         $this->assertTrue($response->getOk());
     }
+
+    public function testScheduleMessage()
+    {
+        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $futureTs = (new \DateTime('+1 hour'))->getTimestamp();
+
+        $response = $client->chatScheduleMessage([
+            'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'text' => 'Hey, This is a scheduled message :tada:',
+            'post_at' => $futureTs,
+        ]);
+
+        $this->assertTrue($response->getOk());
+    }
 }

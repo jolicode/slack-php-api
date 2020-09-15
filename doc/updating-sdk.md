@@ -24,8 +24,7 @@ You can now build a new SDK using this patched specification.
 
 ## Regenerate the SDk
 
-When the versionned specification has been updated, you can run Jane to regenerate the
-SDK:
+When the versioned specification has been updated, you can run Jane to regenerate the SDK:
 
 ```bash
 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php

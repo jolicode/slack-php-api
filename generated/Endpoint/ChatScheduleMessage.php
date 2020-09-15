@@ -31,7 +31,7 @@ class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *     @var bool $unfurl_media pass false to disable unfurling of media content
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).
      *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [chat.postMessage](chat.postMessage#authorship).
-     *     @var string $post_at unix EPOCH timestamp of time in future to send the message
+     *     @var int $post_at unix EPOCH timestamp of time in future to send the message
      *     @var string $channel Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
      * }
@@ -87,7 +87,7 @@ class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
         $optionsResolver->setAllowedTypes('unfurl_media', ['bool']);
         $optionsResolver->setAllowedTypes('parse', ['string']);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('post_at', ['string']);
+        $optionsResolver->setAllowedTypes('post_at', ['int']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('reply_broadcast', ['bool']);
 

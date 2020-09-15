@@ -11026,7 +11026,7 @@
                         "description": "Unix EPOCH timestamp of time in future to send the message.",
                         "in": "formData",
                         "name": "post_at",
-                        "type": "string"
+                        "type": "integer"
                     },
                     {
                         "description": "Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.",
@@ -11134,8 +11134,10 @@
                                     "$ref": "#/definitions/defs_ok_true"
                                 },
                                 "post_at": {
-                                    "pattern": "^\\d{10}$",
-                                    "type": "string"
+                                    "type": [
+                                        "integer",
+                                        "string"
+                                    ]
                                 },
                                 "scheduled_message_id": {
                                     "pattern": "^[Q][A-Z0-9]{8,}$",
@@ -11339,8 +11341,10 @@
                                                 "type": "integer"
                                             },
                                             "post_at": {
-                                                "pattern": "^\\d{10}$",
-                                                "type": "integer"
+                                                "type": [
+                                                    "integer",
+                                                    "string"
+                                                ]
                                             },
                                             "text": {
                                                 "type": "string"
