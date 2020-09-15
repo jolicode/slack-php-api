@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2020-08-04 19:14:54.912874701 +0200
-+++ resources/slack-openapi-patched.json	2020-08-04 20:58:05.960245376 +0200
+--- resources/slack-openapi-sorted.json	2020-09-15 10:28:28.690603357 +0200
++++ resources/slack-openapi-patched.json	2020-09-15 12:24:17.242057098 +0200
 @@ -415,763 +415,331 @@
              ],
              "title": "File Comment Object",
@@ -123,8 +123,8 @@
 -                            "type": "boolean"
 -                        },
 -                        "is_moved": {
--                            "type": "integer"
--                        },
+                             "type": "integer"
+                         },
 -                        "is_mpim": {
 -                            "enum": [
 -                                false
@@ -291,8 +291,8 @@
 -                            "uniqueItems": true
 -                        },
 -                        "timezone_count": {
-                             "type": "integer"
-                         },
+-                            "type": "integer"
+-                        },
 -                        "topic": {
 -                            "additionalProperties": false,
 -                            "properties": {
@@ -1455,8 +1455,7 @@
 +                },
 +                "enterprise_user": {
 +                    "$ref": "#/definitions/objs_enterprise_user"
-                 },
--                {
++                },
 +                "has_2fa": {
 +                    "type": "boolean"
 +                },
@@ -1471,7 +1470,8 @@
 +                },
 +                "is_bot": {
 +                    "type": "boolean"
-+                },
+                 },
+-                {
 +                "is_invited_user": {
 +                    "type": "boolean"
 +                },
@@ -2998,6 +2998,29 @@
                      {
                          "description": "A JSON-based array of structured attachments, presented as a URL-encoded string.",
                          "in": "formData",
+@@ -11509,21 +11019,21 @@
+                     {
+                         "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [chat.postMessage](chat.postMessage#authorship).",
+                         "in": "formData",
+                         "name": "as_user",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Unix EPOCH timestamp of time in future to send the message.",
+                         "in": "formData",
+                         "name": "post_at",
+-                        "type": "string"
++                        "type": "integer"
+                     },
+                     {
+                         "description": "Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.",
+                         "in": "formData",
+                         "name": "channel",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.",
+                         "in": "formData",
 @@ -11562,26 +11072,46 @@
                          "schema": {
                              "additionalProperties": false,
@@ -3045,7 +3068,8 @@
                                              "type": "string"
                                          },
                                          "user": {
-@@ -11598,21 +11128,21 @@
+@@ -11597,22 +11127,24 @@
+                                         "text",
                                          "type",
                                          "user"
                                      ],
@@ -3055,9 +3079,12 @@
                                      "$ref": "#/definitions/defs_ok_true"
                                  },
                                  "post_at": {
-                                     "pattern": "^\\d{10}$",
+-                                    "pattern": "^\\d{10}$",
 -                                    "type": "integer"
-+                                    "type": "string"
++                                    "type": [
++                                        "integer",
++                                        "string"
++                                    ]
                                  },
                                  "scheduled_message_id": {
                                      "pattern": "^[Q][A-Z0-9]{8,}$",
@@ -3068,7 +3095,7 @@
                              "required": [
                                  "channel",
                                  "message",
-@@ -11729,33 +11259,33 @@
+@@ -11729,33 +11261,33 @@
                      {
                          "description": "Maximum number of original entries to return.",
                          "in": "query",
@@ -3104,7 +3131,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-@@ -11799,21 +11329,21 @@
+@@ -11799,25 +11331,27 @@
                                          "properties": {
                                              "channel_id": {
                                                  "$ref": "#/definitions/defs_channel_id"
@@ -3119,15 +3146,23 @@
 +                                                "type": "integer"
                                              },
                                              "post_at": {
-                                                 "pattern": "^\\d{10}$",
-                                                 "type": "integer"
+-                                                "pattern": "^\\d{10}$",
+-                                                "type": "integer"
++                                                "type": [
++                                                    "integer",
++                                                    "string"
++                                                ]
                                              },
                                              "text": {
                                                  "type": "string"
                                              }
                                          },
                                          "required": [
-@@ -11941,21 +11471,20 @@
+                                             "channel_id",
+                                             "date_created",
+                                             "id",
+                                             "post_at"
+@@ -11941,21 +11475,20 @@
                      {
                          "description": "Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded.",
                          "in": "formData",
@@ -3149,7 +3184,7 @@
                          "type": "string"
                      }
                  ],
-@@ -12091,21 +11620,20 @@
+@@ -12091,21 +11624,20 @@
                      {
                          "description": "Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. See [below](#formatting).",
                          "in": "formData",
@@ -3171,7 +3206,7 @@
                      },
                      {
                          "description": "Find and link channel names and usernames. Defaults to `none`. See [below](#formatting).",
-@@ -12808,20 +12336,32 @@
+@@ -12808,20 +12340,32 @@
                                      },
                                      "minItems": 1,
                                      "type": "array",
@@ -3204,7 +3239,7 @@
                                  "ok",
                                  "pin_count"
                              ],
-@@ -14518,21 +14058,21 @@
+@@ -14518,21 +14062,21 @@
                      {
                          "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
                          "in": "query",
@@ -3227,7 +3262,7 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:history`",
                          "in": "query",
-@@ -14739,20 +14279,32 @@
+@@ -14739,20 +14283,32 @@
                                                      "user"
                                                  ],
                                                  "type": "object"
@@ -3260,7 +3295,7 @@
                              "type": "object"
                          }
                      },
-@@ -15228,21 +14780,20 @@
+@@ -15228,21 +14784,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dialog.open"
@@ -3282,7 +3317,7 @@
                          "type": "string"
                      },
                      {
-@@ -15358,21 +14909,20 @@
+@@ -15358,21 +14913,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endDnd"
@@ -3304,7 +3339,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -15467,21 +15017,20 @@
+@@ -15467,21 +15021,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endSnooze"
@@ -3326,7 +3361,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -15735,21 +15284,20 @@
+@@ -15735,21 +15288,20 @@
                          "description": "Number of minutes, from now, to snooze until.",
                          "in": "formData",
                          "name": "num_minutes",
@@ -3348,7 +3383,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -15901,20 +15449,36 @@
+@@ -15901,20 +15453,36 @@
                              "description": "Schema for successful response from dnd.teamInfo method",
                              "properties": {
                                  "cached": {
@@ -3385,7 +3420,7 @@
                              "title": "dnd.teamInfo success schema",
                              "type": "object"
                          }
-@@ -15988,21 +15552,20 @@
+@@ -15988,21 +15556,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/emoji.list"
@@ -3407,7 +3442,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -16529,27 +16092,27 @@
+@@ -16529,27 +16096,27 @@
                      {
                          "description": "Filter files appearing in a specific channel, indicated by its ID.",
                          "in": "query",
@@ -3437,7 +3472,7 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
-@@ -17642,21 +17205,21 @@
+@@ -17642,21 +17209,21 @@
                      }
                  ],
                  "tags": [
@@ -3460,7 +3495,7 @@
                  "parameters": [
                      {
                          "description": "Comma-separated list of channel names or IDs where the file will be shared.",
-@@ -17697,27 +17260,27 @@
+@@ -17697,27 +17264,27 @@
                      {
                          "description": "Authentication token. Requires scope: `files:write:user`",
                          "in": "formData",
@@ -3490,7 +3525,7 @@
                          "description": "Success response after uploading a file to a channel with an initial message",
                          "examples": {
                              "application/json": {
-@@ -18327,20 +17890,23 @@
+@@ -18327,20 +17894,23 @@
                                              "type": "integer"
                                          },
                                          {
@@ -3514,7 +3549,7 @@
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
-@@ -18674,21 +18240,20 @@
+@@ -18674,21 +18244,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/groups.kick"
@@ -3536,7 +3571,7 @@
                          "type": "string"
                      },
                      {
-@@ -18802,21 +18367,20 @@
+@@ -18802,21 +18371,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/groups.leave"
@@ -3558,7 +3593,7 @@
                          "type": "string"
                      }
                  ],
-@@ -19062,21 +18626,21 @@
+@@ -19062,21 +18630,21 @@
                      {
                          "description": "Authentication token. Requires scope: `groups:write`",
                          "in": "header",
@@ -3581,7 +3616,7 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -19420,21 +18984,21 @@
+@@ -19420,21 +18988,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/groups.replies"
@@ -3604,7 +3639,7 @@
                      {
                          "description": "Private channel to fetch thread from",
                          "in": "query",
-@@ -19940,21 +19504,20 @@
+@@ -19940,21 +19508,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/im.close"
@@ -3626,7 +3661,7 @@
                          "type": "string"
                      }
                  ],
-@@ -20152,20 +19715,23 @@
+@@ -20152,20 +19719,23 @@
                                              "type": "integer"
                                          },
                                          {
@@ -3650,7 +3685,7 @@
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
-@@ -20443,21 +20009,20 @@
+@@ -20443,21 +20013,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/im.mark"
@@ -3672,7 +3707,7 @@
                          "type": "string"
                      },
                      {
-@@ -20645,20 +20210,32 @@
+@@ -20645,20 +20214,32 @@
                                      "required": [
                                          "id"
                                      ],
@@ -3705,7 +3740,7 @@
                              "type": "object"
                          }
                      },
-@@ -20731,21 +20308,21 @@
+@@ -20731,21 +20312,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/im.replies"
@@ -3728,7 +3763,7 @@
                      {
                          "description": "Direct message channel to fetch thread from",
                          "in": "query",
-@@ -20995,21 +20572,20 @@
+@@ -20995,21 +20576,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/migration.exchange"
@@ -3750,7 +3785,7 @@
                      },
                      {
                          "description": "A comma-separated list of user ids, up to 400 per request",
-@@ -21150,21 +20726,20 @@
+@@ -21150,21 +20730,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/mpim.close"
@@ -3772,7 +3807,7 @@
                          "type": "string"
                      }
                  ],
-@@ -21355,20 +20930,23 @@
+@@ -21355,20 +20934,23 @@
                                              "type": "integer"
                                          },
                                          {
@@ -3796,7 +3831,7 @@
                                  },
                                  "ok": {
                                      "$ref": "#/definitions/defs_ok_true"
-@@ -21593,21 +21171,21 @@
+@@ -21593,21 +21175,21 @@
                      {
                          "description": "Authentication token. Requires scope: `mpim:write`",
                          "in": "header",
@@ -3819,7 +3854,7 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -21737,20 +21315,23 @@
+@@ -21737,20 +21319,23 @@
                                  "ok": true
                              }
                          },
@@ -3843,7 +3878,7 @@
                              ],
                              "title": "mpim.open success schema",
                              "type": "object"
-@@ -21825,21 +21406,21 @@
+@@ -21825,21 +21410,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/mpim.replies"
@@ -3866,7 +3901,7 @@
                      {
                          "description": "Multiparty direct message channel to fetch thread from.",
                          "in": "query",
-@@ -22142,22 +21723,64 @@
+@@ -22142,22 +21727,64 @@
                                  "enterprise_id": null,
                                  "scope": "groups:write",
                                  "team_id": "TXXXXXXXXX",
@@ -3931,7 +3966,7 @@
                          }
                      },
                      "default": {
-@@ -22266,22 +21889,67 @@
+@@ -22266,22 +21893,67 @@
                                  "single_channel_id": "C061EG9T2",
                                  "team_id": "T061EG9Z9",
                                  "team_name": "Subarachnoid Workspace",
@@ -3999,7 +4034,7 @@
                          }
                      },
                      "default": {
-@@ -22450,21 +22118,21 @@
+@@ -22450,21 +22122,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.add"
@@ -4022,7 +4057,7 @@
                      {
                          "description": "Channel to pin the item in.",
                          "in": "formData",
-@@ -22796,21 +22464,21 @@
+@@ -22796,21 +22468,21 @@
                      {
                          "description": "File comment to un-pin.",
                          "in": "formData",
@@ -4045,7 +4080,7 @@
                      {
                          "description": "File to un-pin.",
                          "in": "formData",
-@@ -22931,21 +22599,20 @@
+@@ -22931,21 +22603,20 @@
                          "description": "Timestamp of the message to add reaction to.",
                          "in": "formData",
                          "name": "timestamp",
@@ -4067,7 +4102,7 @@
                          "type": "string"
                      },
                      {
-@@ -23073,21 +22740,20 @@
+@@ -23073,21 +22744,20 @@
                      {
                          "description": "Timestamp of the message to get reactions for.",
                          "in": "query",
@@ -4089,7 +4124,7 @@
                      },
                      {
                          "description": "Channel where the message to get reactions for was posted.",
-@@ -23126,21 +22792,21 @@
+@@ -23126,21 +22796,21 @@
                                      "timestamp": 1507850315,
                                      "title": "computer.gif",
                                      "user": "U2U85N1RV"
@@ -4112,7 +4147,7 @@
                                              "$ref": "#/definitions/objs_message"
                                          },
                                          "ok": {
-@@ -23202,22 +22868,21 @@
+@@ -23202,22 +22872,21 @@
                                          }
                                      },
                                      "required": [
@@ -4136,7 +4171,7 @@
                                  "ok": false
                              }
                          },
-@@ -23300,21 +22965,20 @@
+@@ -23300,21 +22969,20 @@
                      {
                          "description": "Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more details.",
                          "in": "query",
@@ -4158,7 +4193,7 @@
                      },
                      {
                          "description": "Show reactions made by this user. Defaults to the authed user.",
-@@ -23609,21 +23273,20 @@
+@@ -23609,21 +23277,20 @@
                      {
                          "description": "Timestamp of the message to remove reaction from.",
                          "in": "formData",
@@ -4180,7 +4215,7 @@
                      },
                      {
                          "description": "Channel where the message to remove reaction from was posted.",
-@@ -24333,21 +23996,20 @@
+@@ -24333,21 +24000,20 @@
                      {
                          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).",
                          "in": "query",
@@ -4202,7 +4237,7 @@
                      }
                  ],
                  "produces": [
-@@ -24522,21 +24184,20 @@
+@@ -24522,21 +24188,20 @@
                      {
                          "description": "Pass the number of results you want per \"page\". Maximum of `100`.",
                          "in": "query",
@@ -4224,7 +4259,7 @@
                      },
                      {
                          "in": "query",
-@@ -24690,21 +24351,20 @@
+@@ -24690,21 +24355,20 @@
                      {
                          "description": "Timestamp of the message to add star to.",
                          "in": "formData",
@@ -4246,7 +4281,7 @@
                      },
                      {
                          "description": "Channel to add star to, or channel where the message to add star to was posted (used with `timestamp`).",
-@@ -25107,21 +24767,21 @@
+@@ -25107,21 +24771,21 @@
                      {
                          "description": "File comment to remove star from.",
                          "in": "formData",
@@ -4269,7 +4304,7 @@
                      {
                          "description": "Channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`).",
                          "in": "formData",
-@@ -25242,21 +24902,20 @@
+@@ -25242,21 +24906,20 @@
                  "parameters": [
                      {
                          "in": "query",
@@ -4291,7 +4326,7 @@
                      {
                          "description": "End of time range of logs to include in results (inclusive).",
                          "in": "query",
-@@ -25452,21 +25111,20 @@
+@@ -25452,21 +25115,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.billableInfo"
@@ -4313,7 +4348,7 @@
                      }
                  ],
                  "produces": [
-@@ -25571,21 +25229,20 @@
+@@ -25571,21 +25233,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.info"
@@ -4335,7 +4370,7 @@
                      }
                  ],
                  "produces": [
-@@ -25720,21 +25377,20 @@
+@@ -25720,21 +25381,20 @@
                      {
                          "description": "Filter logs to this Slack app. Defaults to all logs.",
                          "in": "query",
@@ -4357,7 +4392,7 @@
                      },
                      {
                          "description": "Filter logs to this service. Defaults to all logs.",
-@@ -25902,21 +25558,20 @@
+@@ -25902,21 +25562,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.profile.get"
@@ -4379,7 +4414,7 @@
                      }
                  ],
                  "produces": [
-@@ -26115,21 +25770,20 @@
+@@ -26115,21 +25774,20 @@
                      {
                          "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.",
                          "in": "formData",
@@ -4401,7 +4436,7 @@
                      },
                      {
                          "description": "A name for the User Group. Must be unique among User Groups.",
-@@ -26242,21 +25896,20 @@
+@@ -26242,21 +25900,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/usergroups.disable"
@@ -4423,7 +4458,7 @@
                      },
                      {
                          "description": "The encoded ID of the User Group to disable.",
-@@ -26369,21 +26022,20 @@
+@@ -26369,21 +26026,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/usergroups.enable"
@@ -4445,7 +4480,7 @@
                      },
                      {
                          "description": "The encoded ID of the User Group to enable.",
-@@ -26502,21 +26154,20 @@
+@@ -26502,21 +26158,20 @@
                      {
                          "description": "Include the list of users for each User Group.",
                          "in": "query",
@@ -4467,7 +4502,7 @@
                      },
                      {
                          "description": "Include disabled User Groups.",
-@@ -26715,21 +26366,20 @@
+@@ -26715,21 +26370,20 @@
                      {
                          "description": "A comma separated string of encoded channel IDs for which the User Group uses as a default.",
                          "in": "formData",
@@ -4489,7 +4524,7 @@
                      },
                      {
                          "description": "The encoded ID of the User Group to update.",
-@@ -26874,31 +26524,30 @@
+@@ -26874,31 +26528,30 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/usergroups.users.list"
@@ -4522,7 +4557,7 @@
                      "application/json"
                  ],
                  "responses": {
-@@ -27017,21 +26666,20 @@
+@@ -27017,21 +26670,20 @@
                          "description": "A comma separated string of encoded user IDs that represent the entire list of users for the User Group.",
                          "in": "formData",
                          "name": "users",
@@ -4544,7 +4579,7 @@
                      },
                      {
                          "description": "The encoded ID of the User Group to update.",
-@@ -27400,21 +27048,20 @@
+@@ -27400,21 +27052,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.deletePhoto"
@@ -4566,7 +4601,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -27507,21 +27154,20 @@
+@@ -27507,21 +27158,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.getPresence"
@@ -4588,7 +4623,7 @@
                      }
                  ],
                  "produces": [
-@@ -27980,21 +27626,20 @@
+@@ -27980,21 +27630,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.info"
@@ -4610,7 +4645,7 @@
                      },
                      {
                          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
-@@ -28820,21 +28465,20 @@
+@@ -28820,21 +28469,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.setActive"
@@ -4632,7 +4667,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -29103,21 +28747,20 @@
+@@ -29103,21 +28751,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.setPresence"
@@ -4654,7 +4689,7 @@
                          "type": "string"
                      }
                  ],
-@@ -29218,21 +28861,20 @@
+@@ -29218,21 +28865,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.open"
@@ -4676,7 +4711,7 @@
                          "type": "string"
                      },
                      {
-@@ -29367,21 +29009,20 @@
+@@ -29367,21 +29013,20 @@
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
                          "in": "query",
@@ -4698,7 +4733,7 @@
                          "type": "string"
                      },
                      {
-@@ -29500,21 +29141,20 @@
+@@ -29500,21 +29145,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.push"
@@ -4720,7 +4755,7 @@
                          "type": "string"
                      },
                      {
-@@ -29661,21 +29301,20 @@
+@@ -29661,21 +29305,20 @@
                      {
                          "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
                          "in": "query",
