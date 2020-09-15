@@ -1,5 +1,9 @@
 # Changes between versions
 
+## 3.0.2 (TBR)
+
+* **Specification override** Allow string and integer for the "post_at" field in chatScheduleMessage
+
 ## 3.0.1 (2020-08-26)
 
 * Use a fixed version of Jane to avoid BC Break
