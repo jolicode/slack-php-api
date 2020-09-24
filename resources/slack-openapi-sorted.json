@@ -106,7 +106,7 @@
             "type": "string"
         },
         "defs_team": {
-            "pattern": "^[T][A-Z0-9]{2,}$",
+            "pattern": "^[TE][A-Z0-9]{2,}$",
             "title": "Team ID",
             "type": "string"
         },

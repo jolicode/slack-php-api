@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2020-09-15 10:28:28.690603357 +0200
-+++ resources/slack-openapi-patched.json	2020-09-15 12:24:17.242057098 +0200
+--- resources/slack-openapi-sorted.json	2020-09-24 14:28:16.317703122 +0200
++++ resources/slack-openapi-patched.json	2020-09-24 14:28:45.805940716 +0200
 @@ -415,763 +415,331 @@
              ],
              "title": "File Comment Object",

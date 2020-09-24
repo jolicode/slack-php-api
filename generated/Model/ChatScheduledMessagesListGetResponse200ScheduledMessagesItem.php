@@ -28,7 +28,7 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
      */
     protected $id;
     /**
-     * @var string|int|null
+     * @var int|string|null
      */
     protected $postAt;
     /**
@@ -73,7 +73,7 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
     }
 
     /**
-     * @return string|int|null
+     * @return int|string|null
      */
     public function getPostAt()
     {
@@ -81,7 +81,7 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItem
     }
 
     /**
-     * @param string|int|null $postAt
+     * @param int|string|null $postAt
      */
     public function setPostAt($postAt): self
     {
