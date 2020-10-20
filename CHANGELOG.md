@@ -1,6 +1,6 @@
 # Changes between versions
 
-## 3.0.2 (TBR)
+## 3.0.2 (2020-10-20)
 
 * **Specification override** Allow string and integer for the "post_at" field in chatScheduleMessage
 * Upstream specification update (minor)
