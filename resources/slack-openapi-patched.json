@@ -10771,7 +10771,7 @@
                         "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.",
                         "in": "formData",
                         "name": "as_user",
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
                         "description": "Disable Slack markup parsing by setting to `false`. Enabled by default.",
@@ -11612,7 +11612,7 @@
                         "description": "Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.",
                         "in": "formData",
                         "name": "as_user",
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
                         "description": "Timestamp of the message to be updated.",

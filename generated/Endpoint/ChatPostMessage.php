@@ -27,7 +27,7 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
      *     @var bool $unfurl_media pass false to disable unfurling of media content
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var string $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
+     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
      *     @var bool $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
@@ -86,7 +86,7 @@ class ChatPostMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         $optionsResolver->setAllowedTypes('text', ['string']);
         $optionsResolver->setAllowedTypes('unfurl_media', ['bool']);
         $optionsResolver->setAllowedTypes('parse', ['string']);
-        $optionsResolver->setAllowedTypes('as_user', ['string']);
+        $optionsResolver->setAllowedTypes('as_user', ['bool']);
         $optionsResolver->setAllowedTypes('mrkdwn', ['bool']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('blocks', ['string']);
