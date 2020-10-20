@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2020-09-24 14:28:16.317703122 +0200
-+++ resources/slack-openapi-patched.json	2020-09-24 14:28:45.805940716 +0200
+--- resources/slack-openapi-sorted.json	2020-10-20 19:05:20.339337957 +0200
++++ resources/slack-openapi-patched.json	2020-10-20 19:21:37.101137417 +0200
 @@ -415,763 +415,331 @@
              ],
              "title": "File Comment Object",
@@ -123,8 +123,8 @@
 -                            "type": "boolean"
 -                        },
 -                        "is_moved": {
-                             "type": "integer"
-                         },
+-                            "type": "integer"
+-                        },
 -                        "is_mpim": {
 -                            "enum": [
 -                                false
@@ -291,8 +291,8 @@
 -                            "uniqueItems": true
 -                        },
 -                        "timezone_count": {
--                            "type": "integer"
--                        },
+                             "type": "integer"
+                         },
 -                        "topic": {
 -                            "additionalProperties": false,
 -                            "properties": {
@@ -1470,11 +1470,11 @@
 +                },
 +                "is_bot": {
 +                    "type": "boolean"
-                 },
--                {
++                },
 +                "is_invited_user": {
 +                    "type": "boolean"
-+                },
+                 },
+-                {
 +                "is_owner": {
 +                    "type": "boolean"
 +                },
@@ -2953,6 +2953,29 @@
                      },
                      {
                          "description": "`id` of the user who will receive the ephemeral message. The user should be in the channel specified by the `channel` argument.",
+@@ -11253,21 +10764,21 @@
+                     {
+                         "description": "Change how messages are treated. Defaults to `none`. See [below](#formatting).",
+                         "in": "formData",
+                         "name": "parse",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.",
+                         "in": "formData",
+                         "name": "as_user",
+-                        "type": "string"
++                        "type": "boolean"
+                     },
+                     {
+                         "description": "Disable Slack markup parsing by setting to `false`. Enabled by default.",
+                         "in": "formData",
+                         "name": "mrkdwn",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.",
+                         "in": "formData",
 @@ -11308,21 +10819,20 @@
                      {
                          "description": "Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.",
@@ -3184,7 +3207,27 @@
                          "type": "string"
                      }
                  ],
-@@ -12091,21 +11624,20 @@
+@@ -12072,40 +11605,39 @@
+                     {
+                         "description": "A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.",
+                         "in": "formData",
+                         "name": "attachments",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.",
+                         "in": "formData",
+                         "name": "as_user",
+-                        "type": "string"
++                        "type": "boolean"
+                     },
+                     {
+                         "description": "Timestamp of the message to be updated.",
+                         "in": "formData",
+                         "name": "ts",
+                         "required": true,
+                         "type": "string"
+                     },
                      {
                          "description": "Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. See [below](#formatting).",
                          "in": "formData",

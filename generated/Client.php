@@ -1467,7 +1467,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
      *     @var bool $unfurl_media pass false to disable unfurling of media content
      *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var string $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
+     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
      *     @var bool $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
      *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
@@ -1586,7 +1586,7 @@ class Client extends \Jane\OpenApiRuntime\Client\Client
      *
      *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $attachments A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting `text`.
-     *     @var string $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
+     *     @var bool $as_user Pass true to update the message as the authed user. [Bot users](/bot-users) in this context are considered authed users.
      *     @var string $ts timestamp of the message to be updated
      *     @var string $parse Change how messages are treated. Defaults to `client`, unlike `chat.postMessage`. Accepts either `none` or `full`. See [below](#formatting).
      *     @var string $text New text for the message, using the [default formatting rules](/docs/formatting). It's not required when presenting `attachments`.

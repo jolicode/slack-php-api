@@ -4,6 +4,7 @@
 
 * **Specification override** Allow string and integer for the "post_at" field in chatScheduleMessage
 * Upstream specification update (minor)
+* **Specification override** Switch all `as_user` parameters as boolean to fix a breaking change introduced in 3.0.0
 
 ## 3.0.1 (2020-08-26)
 
