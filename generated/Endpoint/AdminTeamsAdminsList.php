@@ -23,9 +23,9 @@ class AdminTeamsAdminsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
      * @param array $queryParameters {
      *
      *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
      *     @var int $limit the maximum number of items to return
      *     @var string $team_id
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +61,13 @@ class AdminTeamsAdminsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'token', 'limit', 'team_id']);
+        $optionsResolver->setDefined(['cursor', 'limit', 'team_id', 'token']);
         $optionsResolver->setRequired(['team_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -22,10 +22,10 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @param array $formParameters {
      *
-     *     @var string $file_comment file comment to remove star from
-     *     @var string $timestamp timestamp of the message to remove star from
      *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
-     *     @var string $file File to remove star from.
+     *     @var string $file file to remove star from
+     *     @var string $file_comment file comment to remove star from
+     *     @var string $timestamp Timestamp of the message to remove star from.
      * }
      *
      * @param array $headerParameters {
@@ -67,13 +67,13 @@ class StarsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['file_comment', 'timestamp', 'channel', 'file']);
+        $optionsResolver->setDefined(['channel', 'file', 'file_comment', 'timestamp']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('file_comment', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }

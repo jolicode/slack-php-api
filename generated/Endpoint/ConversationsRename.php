@@ -22,8 +22,8 @@ class ConversationsRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $name new name for conversation
      *     @var string $channel ID of conversation to rename
+     *     @var string $name New name for conversation.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'channel']);
+        $optionsResolver->setDefined(['channel', 'name']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }

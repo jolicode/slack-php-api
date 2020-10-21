@@ -22,13 +22,13 @@ class ChatMeMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @param array $formParameters {
      *
-     *     @var string $text text of the message to send
      *     @var string $channel Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.
+     *     @var string $text Text of the message to send.
      * }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `chat:write:user`
+     *     @var string $token Authentication token. Requires scope: `chat:write`
      * }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
@@ -65,11 +65,11 @@ class ChatMeMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['text', 'channel']);
+        $optionsResolver->setDefined(['channel', 'text']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('text', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('text', ['string']);
 
         return $optionsResolver;
     }

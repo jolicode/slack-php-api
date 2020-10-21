@@ -16,85 +16,9 @@ namespace JoliCode\Slack\Api\Model;
 class OauthAccessGetResponse200 extends \ArrayObject
 {
     /**
-     * @var string|null
-     */
-    protected $accessToken;
-    /**
-     * @var OauthAccessGetResponse200Bot|null
-     */
-    protected $bot;
-    /**
-     * @var string|null
-     */
-    protected $enterpriseId;
-    /**
-     * @var OauthAccessGetResponse200IncomingWebhook|null
-     */
-    protected $incomingWebhook;
-    /**
      * @var bool|null
      */
     protected $ok;
-    /**
-     * @var string|null
-     */
-    protected $scope;
-    /**
-     * @var string|null
-     */
-    protected $teamId;
-    /**
-     * @var string|null
-     */
-    protected $teamName;
-
-    public function getAccessToken(): ?string
-    {
-        return $this->accessToken;
-    }
-
-    public function setAccessToken(?string $accessToken): self
-    {
-        $this->accessToken = $accessToken;
-
-        return $this;
-    }
-
-    public function getBot(): ?OauthAccessGetResponse200Bot
-    {
-        return $this->bot;
-    }
-
-    public function setBot(?OauthAccessGetResponse200Bot $bot): self
-    {
-        $this->bot = $bot;
-
-        return $this;
-    }
-
-    public function getEnterpriseId(): ?string
-    {
-        return $this->enterpriseId;
-    }
-
-    public function setEnterpriseId(?string $enterpriseId): self
-    {
-        $this->enterpriseId = $enterpriseId;
-
-        return $this;
-    }
-
-    public function getIncomingWebhook(): ?OauthAccessGetResponse200IncomingWebhook
-    {
-        return $this->incomingWebhook;
-    }
-
-    public function setIncomingWebhook(?OauthAccessGetResponse200IncomingWebhook $incomingWebhook): self
-    {
-        $this->incomingWebhook = $incomingWebhook;
-
-        return $this;
-    }
 
     public function getOk(): ?bool
     {
@@ -104,42 +28,6 @@ class OauthAccessGetResponse200 extends \ArrayObject
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getScope(): ?string
-    {
-        return $this->scope;
-    }
-
-    public function setScope(?string $scope): self
-    {
-        $this->scope = $scope;
-
-        return $this;
-    }
-
-    public function getTeamId(): ?string
-    {
-        return $this->teamId;
-    }
-
-    public function setTeamId(?string $teamId): self
-    {
-        $this->teamId = $teamId;
-
-        return $this;
-    }
-
-    public function getTeamName(): ?string
-    {
-        return $this->teamName;
-    }
-
-    public function setTeamName(?string $teamName): self
-    {
-        $this->teamName = $teamName;
 
         return $this;
     }

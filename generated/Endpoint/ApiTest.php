@@ -22,8 +22,8 @@ class ApiTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      *
      * @param array $queryParameters {
      *
-     *     @var string $foo example property to return
      *     @var string $error Error response to return
+     *     @var string $foo example property to return
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -59,11 +59,11 @@ class ApiTest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['foo', 'error']);
+        $optionsResolver->setDefined(['error', 'foo']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('foo', ['string']);
         $optionsResolver->setAllowedTypes('error', ['string']);
+        $optionsResolver->setAllowedTypes('foo', ['string']);
 
         return $optionsResolver;
     }

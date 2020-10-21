@@ -16,6 +16,12 @@ namespace JoliCode\Slack\Api\Model;
 class UsersSetPhotoPostResponsedefault
 {
     /**
+     * Note: PHP callstack is only visible in dev/qa.
+     *
+     * @var string|null
+     */
+    protected $callstack;
+    /**
      * possibly DEV/QA only.
      *
      * @var string|null
@@ -41,6 +47,24 @@ class UsersSetPhotoPostResponsedefault
      * @var int|null
      */
     protected $timeIdent;
+
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     */
+    public function getCallstack(): ?string
+    {
+        return $this->callstack;
+    }
+
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     */
+    public function setCallstack(?string $callstack): self
+    {
+        $this->callstack = $callstack;
+
+        return $this;
+    }
 
     /**
      * possibly DEV/QA only.

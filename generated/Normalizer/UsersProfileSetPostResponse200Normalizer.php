@@ -47,6 +47,11 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200();
+        if (\array_key_exists('email_pending', $data) && null !== $data['email_pending']) {
+            $object->setEmailPending($data['email_pending']);
+        } elseif (\array_key_exists('email_pending', $data) && null === $data['email_pending']) {
+            $object->setEmailPending(null);
+        }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
@@ -69,6 +74,9 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getEmailPending()) {
+            $data['email_pending'] = $object->getEmailPending();
+        }
         if (null !== $object->getOk()) {
             $data['ok'] = $object->getOk();
         }

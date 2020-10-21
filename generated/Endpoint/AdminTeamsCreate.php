@@ -22,10 +22,10 @@ class AdminTeamsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      *
      * @param array $formParameters {
      *
-     *     @var string $team_domain team domain (for example, slacksoftballteam)
      *     @var string $team_description description for the team
-     *     @var string $team_name team name (for example, Slack Softball Team)
      *     @var string $team_discoverability Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`.
+     *     @var string $team_domain team domain (for example, slacksoftballteam)
+     *     @var string $team_name Team name (for example, Slack Softball Team).
      * }
      *
      * @param array $headerParameters {
@@ -67,13 +67,13 @@ class AdminTeamsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_domain', 'team_description', 'team_name', 'team_discoverability']);
+        $optionsResolver->setDefined(['team_description', 'team_discoverability', 'team_domain', 'team_name']);
         $optionsResolver->setRequired(['team_domain', 'team_name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_domain', ['string']);
         $optionsResolver->setAllowedTypes('team_description', ['string']);
-        $optionsResolver->setAllowedTypes('team_name', ['string']);
         $optionsResolver->setAllowedTypes('team_discoverability', ['string']);
+        $optionsResolver->setAllowedTypes('team_domain', ['string']);
+        $optionsResolver->setAllowedTypes('team_name', ['string']);
 
         return $optionsResolver;
     }

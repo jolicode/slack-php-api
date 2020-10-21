@@ -47,12 +47,6 @@ class AdminAppsApprovedListGetResponse200Normalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200();
-        if (\array_key_exists('args', $data) && null !== $data['args']) {
-            $object->setArgs($data['args']);
-            unset($data['args']);
-        } elseif (\array_key_exists('args', $data) && null === $data['args']) {
-            $object->setArgs(null);
-        }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
             unset($data['ok']);
@@ -71,9 +65,6 @@ class AdminAppsApprovedListGetResponse200Normalizer implements DenormalizerInter
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getArgs()) {
-            $data['args'] = $object->getArgs();
-        }
         if (null !== $object->getOk()) {
             $data['ok'] = $object->getOk();
         }

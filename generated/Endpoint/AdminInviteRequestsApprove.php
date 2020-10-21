@@ -22,8 +22,8 @@ class AdminInviteRequestsApprove extends \Jane\OpenApiRuntime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id ID for the workspace where the invite request was made
-     *     @var string $invite_request_id ID of the request to invite.
+     *     @var string $invite_request_id ID of the request to invite
+     *     @var string $team_id ID for the workspace where the invite request was made.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminInviteRequestsApprove extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_id', 'invite_request_id']);
+        $optionsResolver->setDefined(['invite_request_id', 'team_id']);
         $optionsResolver->setRequired(['invite_request_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('invite_request_id', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

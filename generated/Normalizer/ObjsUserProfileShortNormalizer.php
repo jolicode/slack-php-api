@@ -63,7 +63,11 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
             $object->setDisplayNameNormalized(null);
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
-            $object->setFirstName($data['first_name']);
+            $value = $data['first_name'];
+            if (\is_string($data['first_name'])) {
+                $value = $data['first_name'];
+            }
+            $object->setFirstName($value);
         } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
             $object->setFirstName(null);
         }
@@ -119,7 +123,11 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
             $data['display_name_normalized'] = $object->getDisplayNameNormalized();
         }
         if (null !== $object->getFirstName()) {
-            $data['first_name'] = $object->getFirstName();
+            $value = $object->getFirstName();
+            if (\is_string($object->getFirstName())) {
+                $value = $object->getFirstName();
+            }
+            $data['first_name'] = $value;
         }
         if (null !== $object->getImage72()) {
             $data['image_72'] = $object->getImage72();

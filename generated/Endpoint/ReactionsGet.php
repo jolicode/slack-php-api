@@ -22,12 +22,12 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      *
      * @param array $queryParameters {
      *
-     *     @var bool $full if true always return the complete reaction list
+     *     @var string $channel channel where the message to get reactions for was posted
+     *     @var string $file file to get reactions for
      *     @var string $file_comment file comment to get reactions for
+     *     @var bool $full if true always return the complete reaction list
      *     @var string $timestamp timestamp of the message to get reactions for
      *     @var string $token Authentication token. Requires scope: `reactions:read`
-     *     @var string $file file to get reactions for
-     *     @var string $channel Channel where the message to get reactions for was posted.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -63,15 +63,15 @@ class ReactionsGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['full', 'file_comment', 'timestamp', 'token', 'file', 'channel']);
+        $optionsResolver->setDefined(['channel', 'file', 'file_comment', 'full', 'timestamp', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('full', ['bool']);
+        $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
+        $optionsResolver->setAllowedTypes('full', ['bool']);
         $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;
     }

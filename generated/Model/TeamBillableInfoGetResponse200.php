@@ -13,34 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class TeamBillableInfoGetResponse200
+class TeamBillableInfoGetResponse200 extends \ArrayObject
 {
-    /**
-     * @var mixed|null
-     */
-    protected $billableInfo;
     /**
      * @var bool|null
      */
     protected $ok;
-
-    /**
-     * @return mixed
-     */
-    public function getBillableInfo()
-    {
-        return $this->billableInfo;
-    }
-
-    /**
-     * @param mixed $billableInfo
-     */
-    public function setBillableInfo($billableInfo): self
-    {
-        $this->billableInfo = $billableInfo;
-
-        return $this;
-    }
 
     public function getOk(): ?bool
     {

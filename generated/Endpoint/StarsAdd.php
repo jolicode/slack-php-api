@@ -22,10 +22,10 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @param array $formParameters {
      *
-     *     @var string $file_comment file comment to add star to
-     *     @var string $timestamp timestamp of the message to add star to
+     *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
      *     @var string $file file to add star to
-     *     @var string $channel Channel to add star to, or channel where the message to add star to was posted (used with `timestamp`).
+     *     @var string $file_comment file comment to add star to
+     *     @var string $timestamp Timestamp of the message to add star to.
      * }
      *
      * @param array $headerParameters {
@@ -67,13 +67,13 @@ class StarsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['file_comment', 'timestamp', 'file', 'channel']);
+        $optionsResolver->setDefined(['channel', 'file', 'file_comment', 'timestamp']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('file_comment', ['string']);
         $optionsResolver->setAllowedTypes('timestamp', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;
     }

@@ -22,8 +22,8 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
      *
      * @param array $formParameters {
      *
-     *     @var string $timestamp timestamp of the message to pin
-     *     @var string $channel Channel to pin the item in.
+     *     @var string $channel channel to pin the item in
+     *     @var string $timestamp Timestamp of the message to pin.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class PinsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['timestamp', 'channel']);
+        $optionsResolver->setDefined(['channel', 'timestamp']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }

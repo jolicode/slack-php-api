@@ -22,9 +22,9 @@ class OauthV2Access extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @param array $queryParameters {
      *
+     *     @var string $client_id issued when you created your application
      *     @var string $client_secret issued when you created your application
      *     @var string $code the `code` param returned via the OAuth callback
-     *     @var string $client_id issued when you created your application
      *     @var string $redirect_uri This must match the originally submitted URI (if one was sent).
      * }
      */
@@ -61,12 +61,12 @@ class OauthV2Access extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['client_secret', 'code', 'client_id', 'redirect_uri']);
+        $optionsResolver->setDefined(['client_id', 'client_secret', 'code', 'redirect_uri']);
         $optionsResolver->setRequired(['code']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('client_secret', ['string']);
         $optionsResolver->setAllowedTypes('code', ['string']);
-        $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('redirect_uri', ['string']);
 
         return $optionsResolver;

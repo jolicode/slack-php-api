@@ -57,6 +57,11 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
         } elseif (\array_key_exists('auto_type', $data) && null === $data['auto_type']) {
             $object->setAutoType(null);
         }
+        if (\array_key_exists('channel_count', $data) && null !== $data['channel_count']) {
+            $object->setChannelCount($data['channel_count']);
+        } elseif (\array_key_exists('channel_count', $data) && null === $data['channel_count']) {
+            $object->setChannelCount(null);
+        }
         if (\array_key_exists('created_by', $data) && null !== $data['created_by']) {
             $object->setCreatedBy($data['created_by']);
         } elseif (\array_key_exists('created_by', $data) && null === $data['created_by']) {
@@ -163,6 +168,9 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getAutoType()) {
             $data['auto_type'] = $object->getAutoType();
+        }
+        if (null !== $object->getChannelCount()) {
+            $data['channel_count'] = $object->getChannelCount();
         }
         if (null !== $object->getCreatedBy()) {
             $data['created_by'] = $object->getCreatedBy();

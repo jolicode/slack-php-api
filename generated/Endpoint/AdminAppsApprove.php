@@ -22,9 +22,9 @@ class AdminAppsApprove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id
      *     @var string $app_id the id of the app to approve
-     *     @var string $request_id The id of the request to approve.
+     *     @var string $request_id the id of the request to approve
+     *     @var string $team_id
      * }
      *
      * @param array $headerParameters {
@@ -66,12 +66,12 @@ class AdminAppsApprove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_id', 'app_id', 'request_id']);
+        $optionsResolver->setDefined(['app_id', 'request_id', 'team_id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('app_id', ['string']);
         $optionsResolver->setAllowedTypes('request_id', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

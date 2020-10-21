@@ -22,9 +22,9 @@ class ConversationsOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
+     *     @var string $channel Resume a conversation by supplying an `im` or `mpim`'s ID. Or provide the `users` field instead.
      *     @var bool $return_im boolean, indicates you want the full IM channel definition in the response
      *     @var string $users Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a `channel` when not supplying `users`.
-     *     @var string $channel Resume a conversation by supplying an `im` or `mpim`'s ID. Or provide the `users` field instead.
      * }
      *
      * @param array $headerParameters {
@@ -66,12 +66,12 @@ class ConversationsOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['return_im', 'users', 'channel']);
+        $optionsResolver->setDefined(['channel', 'return_im', 'users']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('return_im', ['bool']);
         $optionsResolver->setAllowedTypes('users', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
 
         return $optionsResolver;
     }

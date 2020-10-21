@@ -94,15 +94,43 @@ class ObjsUserProfile
     /**
      * @var bool|null
      */
+    protected $isAppUser;
+    /**
+     * @var bool|null
+     */
     protected $isCustomImage;
+    /**
+     * @var bool|null
+     */
+    protected $isRestricted;
+    /**
+     * @var bool|null
+     */
+    protected $isUltraRestricted;
+    /**
+     * @var string|null
+     */
+    protected $lastAvatarImageHash;
     /**
      * @var string|null
      */
     protected $lastName;
     /**
+     * @var int|null
+     */
+    protected $membershipsCount;
+    /**
+     * @var string|null
+     */
+    protected $name;
+    /**
      * @var string|null
      */
     protected $phone;
+    /**
+     * @var string|null
+     */
+    protected $pronouns;
     /**
      * @var string|null
      */
@@ -115,6 +143,18 @@ class ObjsUserProfile
      * @var string|null
      */
     protected $skype;
+    /**
+     * @var string|null
+     */
+    protected $statusDefaultEmoji;
+    /**
+     * @var string|null
+     */
+    protected $statusDefaultText;
+    /**
+     * @var string|null
+     */
+    protected $statusDefaultTextCanonical;
     /**
      * @var string|null
      */
@@ -138,11 +178,19 @@ class ObjsUserProfile
     /**
      * @var string|null
      */
-    protected $teams;
+    protected $title;
+    /**
+     * @var int|null
+     */
+    protected $updated;
     /**
      * @var string|null
      */
-    protected $title;
+    protected $userId;
+    /**
+     * @var string|null
+     */
+    protected $username;
 
     public function getAlwaysActive(): ?bool
     {
@@ -378,6 +426,18 @@ class ObjsUserProfile
         return $this;
     }
 
+    public function getIsAppUser(): ?bool
+    {
+        return $this->isAppUser;
+    }
+
+    public function setIsAppUser(?bool $isAppUser): self
+    {
+        $this->isAppUser = $isAppUser;
+
+        return $this;
+    }
+
     public function getIsCustomImage(): ?bool
     {
         return $this->isCustomImage;
@@ -386,6 +446,42 @@ class ObjsUserProfile
     public function setIsCustomImage(?bool $isCustomImage): self
     {
         $this->isCustomImage = $isCustomImage;
+
+        return $this;
+    }
+
+    public function getIsRestricted(): ?bool
+    {
+        return $this->isRestricted;
+    }
+
+    public function setIsRestricted(?bool $isRestricted): self
+    {
+        $this->isRestricted = $isRestricted;
+
+        return $this;
+    }
+
+    public function getIsUltraRestricted(): ?bool
+    {
+        return $this->isUltraRestricted;
+    }
+
+    public function setIsUltraRestricted(?bool $isUltraRestricted): self
+    {
+        $this->isUltraRestricted = $isUltraRestricted;
+
+        return $this;
+    }
+
+    public function getLastAvatarImageHash(): ?string
+    {
+        return $this->lastAvatarImageHash;
+    }
+
+    public function setLastAvatarImageHash(?string $lastAvatarImageHash): self
+    {
+        $this->lastAvatarImageHash = $lastAvatarImageHash;
 
         return $this;
     }
@@ -402,6 +498,30 @@ class ObjsUserProfile
         return $this;
     }
 
+    public function getMembershipsCount(): ?int
+    {
+        return $this->membershipsCount;
+    }
+
+    public function setMembershipsCount(?int $membershipsCount): self
+    {
+        $this->membershipsCount = $membershipsCount;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     public function getPhone(): ?string
     {
         return $this->phone;
@@ -410,6 +530,18 @@ class ObjsUserProfile
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getPronouns(): ?string
+    {
+        return $this->pronouns;
+    }
+
+    public function setPronouns(?string $pronouns): self
+    {
+        $this->pronouns = $pronouns;
 
         return $this;
     }
@@ -446,6 +578,42 @@ class ObjsUserProfile
     public function setSkype(?string $skype): self
     {
         $this->skype = $skype;
+
+        return $this;
+    }
+
+    public function getStatusDefaultEmoji(): ?string
+    {
+        return $this->statusDefaultEmoji;
+    }
+
+    public function setStatusDefaultEmoji(?string $statusDefaultEmoji): self
+    {
+        $this->statusDefaultEmoji = $statusDefaultEmoji;
+
+        return $this;
+    }
+
+    public function getStatusDefaultText(): ?string
+    {
+        return $this->statusDefaultText;
+    }
+
+    public function setStatusDefaultText(?string $statusDefaultText): self
+    {
+        $this->statusDefaultText = $statusDefaultText;
+
+        return $this;
+    }
+
+    public function getStatusDefaultTextCanonical(): ?string
+    {
+        return $this->statusDefaultTextCanonical;
+    }
+
+    public function setStatusDefaultTextCanonical(?string $statusDefaultTextCanonical): self
+    {
+        $this->statusDefaultTextCanonical = $statusDefaultTextCanonical;
 
         return $this;
     }
@@ -510,18 +678,6 @@ class ObjsUserProfile
         return $this;
     }
 
-    public function getTeams(): ?string
-    {
-        return $this->teams;
-    }
-
-    public function setTeams(?string $teams): self
-    {
-        $this->teams = $teams;
-
-        return $this;
-    }
-
     public function getTitle(): ?string
     {
         return $this->title;
@@ -530,6 +686,42 @@ class ObjsUserProfile
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?int
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(?int $updated): self
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    public function getUserId(): ?string
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?string $userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(?string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }

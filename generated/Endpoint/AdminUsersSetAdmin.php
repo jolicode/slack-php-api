@@ -22,8 +22,8 @@ class AdminUsersSetAdmin extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
      *
      * @param array $formParameters {
      *
-     *     @var string $user_id the ID of the user to designate as an admin
-     *     @var string $team_id The ID (`T1234`) of the workspace.
+     *     @var string $team_id the ID (`T1234`) of the workspace
+     *     @var string $user_id The ID of the user to designate as an admin.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminUsersSetAdmin extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['user_id', 'team_id']);
-        $optionsResolver->setRequired(['user_id', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'user_id']);
+        $optionsResolver->setRequired(['team_id', 'user_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('user_id', ['string']);
         $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->setAllowedTypes('user_id', ['string']);
 
         return $optionsResolver;
     }

@@ -22,8 +22,8 @@ class BotsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users:read`
      *     @var string $bot Bot user to get info on
+     *     @var string $token Authentication token. Requires scope: `users:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -59,11 +59,11 @@ class BotsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'bot']);
+        $optionsResolver->setDefined(['bot', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('bot', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -22,8 +22,8 @@ class AdminTeamsSettingsSetName extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id ID for the workspace to set the name for
-     *     @var string $name The new name of the workspace.
+     *     @var string $name the new name of the workspace
+     *     @var string $team_id ID for the workspace to set the name for.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsSettingsSetName extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_id', 'name']);
-        $optionsResolver->setRequired(['team_id', 'name']);
+        $optionsResolver->setDefined(['name', 'team_id']);
+        $optionsResolver->setRequired(['name', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

@@ -22,8 +22,8 @@ class ConversationsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $purpose A new, specialer purpose
      *     @var string $channel Conversation to set the purpose of
+     *     @var string $purpose A new, specialer purpose
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['purpose', 'channel']);
+        $optionsResolver->setDefined(['channel', 'purpose']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('purpose', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('purpose', ['string']);
 
         return $optionsResolver;
     }

@@ -16,9 +16,35 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsResponseMetadata
 {
     /**
+     * @var string[]|null
+     */
+    protected $messages;
+    /**
      * @var string|null
      */
     protected $nextCursor;
+    /**
+     * @var string[]|null
+     */
+    protected $warnings;
+
+    /**
+     * @return string[]|null
+     */
+    public function getMessages(): ?array
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param string[]|null $messages
+     */
+    public function setMessages(?array $messages): self
+    {
+        $this->messages = $messages;
+
+        return $this;
+    }
 
     public function getNextCursor(): ?string
     {
@@ -28,6 +54,24 @@ class ObjsResponseMetadata
     public function setNextCursor(?string $nextCursor): self
     {
         $this->nextCursor = $nextCursor;
+
+        return $this;
+    }
+
+    /**
+     * @return string[]|null
+     */
+    public function getWarnings(): ?array
+    {
+        return $this->warnings;
+    }
+
+    /**
+     * @param string[]|null $warnings
+     */
+    public function setWarnings(?array $warnings): self
+    {
+        $this->warnings = $warnings;
 
         return $this;
     }

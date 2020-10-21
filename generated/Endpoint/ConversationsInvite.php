@@ -22,8 +22,8 @@ class ConversationsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
+     *     @var string $channel the ID of the public or private channel to invite user(s) to
      *     @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
-     *     @var string $channel The ID of the public or private channel to invite user(s) to.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['users', 'channel']);
+        $optionsResolver->setDefined(['channel', 'users']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('users', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('users', ['string']);
 
         return $optionsResolver;
     }

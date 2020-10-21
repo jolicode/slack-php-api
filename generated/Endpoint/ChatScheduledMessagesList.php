@@ -22,11 +22,11 @@ class ChatScheduledMessagesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint
      *
      * @param array $queryParameters {
      *
+     *     @var string $channel The channel of the scheduled messages
      *     @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
+     *     @var string $latest A UNIX timestamp of the latest value in the time range
      *     @var int $limit maximum number of original entries to return
      *     @var string $oldest A UNIX timestamp of the oldest value in the time range
-     *     @var string $channel The channel of the scheduled messages
-     *     @var string $latest A UNIX timestamp of the latest value in the time range
      * }
      *
      * @param array $headerParameters {
@@ -68,14 +68,14 @@ class ChatScheduledMessagesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'limit', 'oldest', 'channel', 'latest']);
+        $optionsResolver->setDefined(['channel', 'cursor', 'latest', 'limit', 'oldest']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
+        $optionsResolver->setAllowedTypes('latest', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('oldest', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('latest', ['string']);
 
         return $optionsResolver;
     }

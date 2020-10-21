@@ -22,9 +22,9 @@ class AppsUninstall extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      *
      * @param array $queryParameters {
      *
+     *     @var string $client_id issued when you created your application
      *     @var string $client_secret issued when you created your application
      *     @var string $token Authentication token. Requires scope: `none`
-     *     @var string $client_id Issued when you created your application.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class AppsUninstall extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['client_secret', 'token', 'client_id']);
+        $optionsResolver->setDefined(['client_id', 'client_secret', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('client_secret', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('client_id', ['string']);
 
         return $optionsResolver;
     }

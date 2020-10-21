@@ -60,9 +60,21 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $id;
     /**
+     * @var int|null
+     */
+    protected $imageBytes;
+    /**
+     * @var int|null
+     */
+    protected $imageHeight;
+    /**
      * @var string|null
      */
     protected $imageUrl;
+    /**
+     * @var int|null
+     */
+    protected $imageWidth;
     /**
      * @var string|null
      */
@@ -232,6 +244,30 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         return $this;
     }
 
+    public function getImageBytes(): ?int
+    {
+        return $this->imageBytes;
+    }
+
+    public function setImageBytes(?int $imageBytes): self
+    {
+        $this->imageBytes = $imageBytes;
+
+        return $this;
+    }
+
+    public function getImageHeight(): ?int
+    {
+        return $this->imageHeight;
+    }
+
+    public function setImageHeight(?int $imageHeight): self
+    {
+        $this->imageHeight = $imageHeight;
+
+        return $this;
+    }
+
     public function getImageUrl(): ?string
     {
         return $this->imageUrl;
@@ -240,6 +276,18 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     public function setImageUrl(?string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    public function getImageWidth(): ?int
+    {
+        return $this->imageWidth;
+    }
+
+    public function setImageWidth(?int $imageWidth): self
+    {
+        $this->imageWidth = $imageWidth;
 
         return $this;
     }

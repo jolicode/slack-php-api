@@ -22,8 +22,8 @@ class AdminTeamsSettingsSetDescription extends \Jane\OpenApiRuntime\Client\BaseE
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id ID for the workspace to set the description for
-     *     @var string $description The new description for the workspace.
+     *     @var string $description the new description for the workspace
+     *     @var string $team_id ID for the workspace to set the description for.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsSettingsSetDescription extends \Jane\OpenApiRuntime\Client\BaseE
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_id', 'description']);
-        $optionsResolver->setRequired(['team_id', 'description']);
+        $optionsResolver->setDefined(['description', 'team_id']);
+        $optionsResolver->setRequired(['description', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('description', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

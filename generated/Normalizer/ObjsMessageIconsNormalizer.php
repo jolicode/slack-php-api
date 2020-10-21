@@ -52,6 +52,11 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (\array_key_exists('emoji', $data) && null === $data['emoji']) {
             $object->setEmoji(null);
         }
+        if (\array_key_exists('image_64', $data) && null !== $data['image_64']) {
+            $object->setImage64($data['image_64']);
+        } elseif (\array_key_exists('image_64', $data) && null === $data['image_64']) {
+            $object->setImage64(null);
+        }
 
         return $object;
     }
@@ -61,6 +66,9 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
         $data = [];
         if (null !== $object->getEmoji()) {
             $data['emoji'] = $object->getEmoji();
+        }
+        if (null !== $object->getImage64()) {
+            $data['image_64'] = $object->getImage64();
         }
 
         return $data;

@@ -24,6 +24,10 @@ class ObjsSubteam
      */
     protected $autoType;
     /**
+     * @var int|null
+     */
+    protected $channelCount;
+    /**
      * @var string|null
      */
     protected $createdBy;
@@ -122,6 +126,18 @@ class ObjsSubteam
     public function setAutoType($autoType): self
     {
         $this->autoType = $autoType;
+
+        return $this;
+    }
+
+    public function getChannelCount(): ?int
+    {
+        return $this->channelCount;
+    }
+
+    public function setChannelCount(?int $channelCount): self
+    {
+        $this->channelCount = $channelCount;
 
         return $this;
     }

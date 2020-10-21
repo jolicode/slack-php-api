@@ -86,11 +86,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (\array_key_exists('enterprise_id', $data) && null === $data['enterprise_id']) {
             $object->setEnterpriseId(null);
         }
-        if (\array_key_exists('external_connections', $data) && null !== $data['external_connections']) {
-            $object->setExternalConnections($data['external_connections']);
-        } elseif (\array_key_exists('external_connections', $data) && null === $data['external_connections']) {
-            $object->setExternalConnections(null);
-        }
         if (\array_key_exists('has_pins', $data) && null !== $data['has_pins']) {
             $object->setHasPins($data['has_pins']);
         } elseif (\array_key_exists('has_pins', $data) && null === $data['has_pins']) {
@@ -234,11 +229,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setLatest($data['latest']);
         } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
             $object->setLatest(null);
-        }
-        if (\array_key_exists('locale', $data) && null !== $data['locale']) {
-            $object->setLocale($data['locale']);
-        } elseif (\array_key_exists('locale', $data) && null === $data['locale']) {
-            $object->setLocale(null);
         }
         if (\array_key_exists('members', $data) && null !== $data['members']) {
             $values_2 = [];
@@ -401,9 +391,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getEnterpriseId()) {
             $data['enterprise_id'] = $object->getEnterpriseId();
         }
-        if (null !== $object->getExternalConnections()) {
-            $data['external_connections'] = $object->getExternalConnections();
-        }
         if (null !== $object->getHasPins()) {
             $data['has_pins'] = $object->getHasPins();
         }
@@ -491,9 +478,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getLatest()) {
             $data['latest'] = $object->getLatest();
-        }
-        if (null !== $object->getLocale()) {
-            $data['locale'] = $object->getLocale();
         }
         if (null !== $object->getMembers()) {
             $values_2 = [];

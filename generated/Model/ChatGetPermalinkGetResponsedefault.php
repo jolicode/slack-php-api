@@ -16,6 +16,12 @@ namespace JoliCode\Slack\Api\Model;
 class ChatGetPermalinkGetResponsedefault
 {
     /**
+     * Note: PHP callstack is only visible in dev/qa.
+     *
+     * @var string|null
+     */
+    protected $callstack;
+    /**
      * @var string|null
      */
     protected $error;
@@ -23,6 +29,24 @@ class ChatGetPermalinkGetResponsedefault
      * @var bool|null
      */
     protected $ok;
+
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     */
+    public function getCallstack(): ?string
+    {
+        return $this->callstack;
+    }
+
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     */
+    public function setCallstack(?string $callstack): self
+    {
+        $this->callstack = $callstack;
+
+        return $this;
+    }
 
     public function getError(): ?string
     {

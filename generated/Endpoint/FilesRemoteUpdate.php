@@ -22,14 +22,14 @@ class FilesRemoteUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
-     *     @var string $title title of the file being shared
-     *     @var string $filetype type of file
-     *     @var string $token Authentication token. Requires scope: `remote_files:write`
+     *     @var string $external_id creator defined GUID for the file
+     *     @var string $external_url URL of the remote file
      *     @var string $file specify a file by providing its ID
+     *     @var string $filetype type of file
      *     @var string $indexable_file_contents file containing contents that can be used to improve searchability for the remote file
      *     @var string $preview_image preview of the document via `multipart/form-data`
-     *     @var string $external_id creator defined GUID for the file
-     *     @var string $external_url URL of the remote file.
+     *     @var string $title title of the file being shared
+     *     @var string $token Authentication token. Requires scope: `remote_files:write`
      * }
      */
     public function __construct(array $formParameters = [])
@@ -65,17 +65,17 @@ class FilesRemoteUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['title', 'filetype', 'token', 'file', 'indexable_file_contents', 'preview_image', 'external_id', 'external_url']);
+        $optionsResolver->setDefined(['external_id', 'external_url', 'file', 'filetype', 'indexable_file_contents', 'preview_image', 'title', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('title', ['string']);
-        $optionsResolver->setAllowedTypes('filetype', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
-        $optionsResolver->setAllowedTypes('indexable_file_contents', ['string']);
-        $optionsResolver->setAllowedTypes('preview_image', ['string']);
         $optionsResolver->setAllowedTypes('external_id', ['string']);
         $optionsResolver->setAllowedTypes('external_url', ['string']);
+        $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('filetype', ['string']);
+        $optionsResolver->setAllowedTypes('indexable_file_contents', ['string']);
+        $optionsResolver->setAllowedTypes('preview_image', ['string']);
+        $optionsResolver->setAllowedTypes('title', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -22,11 +22,11 @@ class AdminUsersAssign extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      *
      * @param array $formParameters {
      *
-     *     @var string $user_id the ID of the user to add to the workspace
      *     @var string $channel_ids comma separated values of channel IDs to add user in the new workspace
-     *     @var string $team_id the ID (`T1234`) of the workspace
+     *     @var bool $is_restricted true if user should be added to the workspace as a guest
      *     @var bool $is_ultra_restricted true if user should be added to the workspace as a single-channel guest
-     *     @var bool $is_restricted True if user should be added to the workspace as a guest.
+     *     @var string $team_id the ID (`T1234`) of the workspace
+     *     @var string $user_id The ID of the user to add to the workspace.
      * }
      *
      * @param array $headerParameters {
@@ -68,14 +68,14 @@ class AdminUsersAssign extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['user_id', 'channel_ids', 'team_id', 'is_ultra_restricted', 'is_restricted']);
-        $optionsResolver->setRequired(['user_id', 'team_id']);
+        $optionsResolver->setDefined(['channel_ids', 'is_restricted', 'is_ultra_restricted', 'team_id', 'user_id']);
+        $optionsResolver->setRequired(['team_id', 'user_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('user_id', ['string']);
         $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('is_ultra_restricted', ['bool']);
         $optionsResolver->setAllowedTypes('is_restricted', ['bool']);
+        $optionsResolver->setAllowedTypes('is_ultra_restricted', ['bool']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->setAllowedTypes('user_id', ['string']);
 
         return $optionsResolver;
     }

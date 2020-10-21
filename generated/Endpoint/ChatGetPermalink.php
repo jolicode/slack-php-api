@@ -22,9 +22,9 @@ class ChatGetPermalink extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     *     @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
      *     @var string $channel The ID of the conversation or channel containing the message
+     *     @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
+     *     @var string $token Authentication token. Requires scope: `none`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class ChatGetPermalink extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'message_ts', 'channel']);
-        $optionsResolver->setRequired(['message_ts', 'channel']);
+        $optionsResolver->setDefined(['channel', 'message_ts', 'token']);
+        $optionsResolver->setRequired(['channel', 'message_ts']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('message_ts', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('message_ts', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

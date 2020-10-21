@@ -22,8 +22,8 @@ class AdminTeamsSettingsSetDiscoverability extends \Jane\OpenApiRuntime\Client\B
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id the ID of the workspace to set discoverability on
      *     @var string $discoverability This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.
+     *     @var string $team_id The ID of the workspace to set discoverability on.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsSettingsSetDiscoverability extends \Jane\OpenApiRuntime\Client\B
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_id', 'discoverability']);
-        $optionsResolver->setRequired(['team_id', 'discoverability']);
+        $optionsResolver->setDefined(['discoverability', 'team_id']);
+        $optionsResolver->setRequired(['discoverability', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('discoverability', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

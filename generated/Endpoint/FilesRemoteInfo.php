@@ -22,9 +22,9 @@ class FilesRemoteInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `remote_files:read`
      *     @var string $external_id creator defined GUID for the file
-     *     @var string $file Specify a file by providing its ID.
+     *     @var string $file specify a file by providing its ID
+     *     @var string $token Authentication token. Requires scope: `remote_files:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class FilesRemoteInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'external_id', 'file']);
+        $optionsResolver->setDefined(['external_id', 'file', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('external_id', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

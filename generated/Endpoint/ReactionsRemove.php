@@ -22,11 +22,11 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @param array $formParameters {
      *
-     *     @var string $name reaction (emoji) name
-     *     @var string $file_comment file comment to remove reaction from
-     *     @var string $timestamp timestamp of the message to remove reaction from
+     *     @var string $channel channel where the message to remove reaction from was posted
      *     @var string $file file to remove reaction from
-     *     @var string $channel Channel where the message to remove reaction from was posted.
+     *     @var string $file_comment file comment to remove reaction from
+     *     @var string $name reaction (emoji) name
+     *     @var string $timestamp Timestamp of the message to remove reaction from.
      * }
      *
      * @param array $headerParameters {
@@ -68,14 +68,14 @@ class ReactionsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'file_comment', 'timestamp', 'file', 'channel']);
+        $optionsResolver->setDefined(['channel', 'file', 'file_comment', 'name', 'timestamp']);
         $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
-        $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('file_comment', ['string']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }

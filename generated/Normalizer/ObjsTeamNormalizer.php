@@ -73,7 +73,11 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setDeleted(null);
         }
         if (\array_key_exists('description', $data) && null !== $data['description']) {
-            $object->setDescription($data['description']);
+            $value = $data['description'];
+            if (\is_string($data['description'])) {
+                $value = $data['description'];
+            }
+            $object->setDescription($value);
         } elseif (\array_key_exists('description', $data) && null === $data['description']) {
             $object->setDescription(null);
         }
@@ -102,6 +106,11 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (\array_key_exists('enterprise_name', $data) && null === $data['enterprise_name']) {
             $object->setEnterpriseName(null);
         }
+        if (\array_key_exists('external_org_migrations', $data) && null !== $data['external_org_migrations']) {
+            $object->setExternalOrgMigrations($this->denormalizer->denormalize($data['external_org_migrations'], 'JoliCode\\Slack\\Api\\Model\\ObjsExternalOrgMigrations', 'json', $context));
+        } elseif (\array_key_exists('external_org_migrations', $data) && null === $data['external_org_migrations']) {
+            $object->setExternalOrgMigrations(null);
+        }
         if (\array_key_exists('has_compliance_export', $data) && null !== $data['has_compliance_export']) {
             $object->setHasComplianceExport($data['has_compliance_export']);
         } elseif (\array_key_exists('has_compliance_export', $data) && null === $data['has_compliance_export']) {
@@ -127,10 +136,20 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (\array_key_exists('is_enterprise', $data) && null === $data['is_enterprise']) {
             $object->setIsEnterprise(null);
         }
+        if (\array_key_exists('is_over_storage_limit', $data) && null !== $data['is_over_storage_limit']) {
+            $object->setIsOverStorageLimit($data['is_over_storage_limit']);
+        } elseif (\array_key_exists('is_over_storage_limit', $data) && null === $data['is_over_storage_limit']) {
+            $object->setIsOverStorageLimit(null);
+        }
         if (\array_key_exists('limit_ts', $data) && null !== $data['limit_ts']) {
             $object->setLimitTs($data['limit_ts']);
         } elseif (\array_key_exists('limit_ts', $data) && null === $data['limit_ts']) {
             $object->setLimitTs(null);
+        }
+        if (\array_key_exists('locale', $data) && null !== $data['locale']) {
+            $object->setLocale($data['locale']);
+        } elseif (\array_key_exists('locale', $data) && null === $data['locale']) {
+            $object->setLocale(null);
         }
         if (\array_key_exists('messages_count', $data) && null !== $data['messages_count']) {
             $object->setMessagesCount($data['messages_count']);
@@ -157,10 +176,25 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (\array_key_exists('over_storage_limit', $data) && null === $data['over_storage_limit']) {
             $object->setOverStorageLimit(null);
         }
+        if (\array_key_exists('pay_prod_cur', $data) && null !== $data['pay_prod_cur']) {
+            $object->setPayProdCur($data['pay_prod_cur']);
+        } elseif (\array_key_exists('pay_prod_cur', $data) && null === $data['pay_prod_cur']) {
+            $object->setPayProdCur(null);
+        }
         if (\array_key_exists('plan', $data) && null !== $data['plan']) {
             $object->setPlan($data['plan']);
         } elseif (\array_key_exists('plan', $data) && null === $data['plan']) {
             $object->setPlan(null);
+        }
+        if (\array_key_exists('primary_owner', $data) && null !== $data['primary_owner']) {
+            $object->setPrimaryOwner($this->denormalizer->denormalize($data['primary_owner'], 'JoliCode\\Slack\\Api\\Model\\ObjsPrimaryOwner', 'json', $context));
+        } elseif (\array_key_exists('primary_owner', $data) && null === $data['primary_owner']) {
+            $object->setPrimaryOwner(null);
+        }
+        if (\array_key_exists('sso_provider', $data) && null !== $data['sso_provider']) {
+            $object->setSsoProvider($this->denormalizer->denormalize($data['sso_provider'], 'JoliCode\\Slack\\Api\\Model\\ObjsTeamSsoProvider', 'json', $context));
+        } elseif (\array_key_exists('sso_provider', $data) && null === $data['sso_provider']) {
+            $object->setSsoProvider(null);
         }
 
         return $object;
@@ -185,7 +219,11 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['deleted'] = $object->getDeleted();
         }
         if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
+            $value = $object->getDescription();
+            if (\is_string($object->getDescription())) {
+                $value = $object->getDescription();
+            }
+            $data['description'] = $value;
         }
         if (null !== $object->getDiscoverable()) {
             $data['discoverable'] = $object->getDiscoverable();
@@ -202,6 +240,9 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getEnterpriseName()) {
             $data['enterprise_name'] = $object->getEnterpriseName();
         }
+        if (null !== $object->getExternalOrgMigrations()) {
+            $data['external_org_migrations'] = $this->normalizer->normalize($object->getExternalOrgMigrations(), 'json', $context);
+        }
         if (null !== $object->getHasComplianceExport()) {
             $data['has_compliance_export'] = $object->getHasComplianceExport();
         }
@@ -217,8 +258,14 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getIsEnterprise()) {
             $data['is_enterprise'] = $object->getIsEnterprise();
         }
+        if (null !== $object->getIsOverStorageLimit()) {
+            $data['is_over_storage_limit'] = $object->getIsOverStorageLimit();
+        }
         if (null !== $object->getLimitTs()) {
             $data['limit_ts'] = $object->getLimitTs();
+        }
+        if (null !== $object->getLocale()) {
+            $data['locale'] = $object->getLocale();
         }
         if (null !== $object->getMessagesCount()) {
             $data['messages_count'] = $object->getMessagesCount();
@@ -235,8 +282,17 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getOverStorageLimit()) {
             $data['over_storage_limit'] = $object->getOverStorageLimit();
         }
+        if (null !== $object->getPayProdCur()) {
+            $data['pay_prod_cur'] = $object->getPayProdCur();
+        }
         if (null !== $object->getPlan()) {
             $data['plan'] = $object->getPlan();
+        }
+        if (null !== $object->getPrimaryOwner()) {
+            $data['primary_owner'] = $this->normalizer->normalize($object->getPrimaryOwner(), 'json', $context);
+        }
+        if (null !== $object->getSsoProvider()) {
+            $data['sso_provider'] = $this->normalizer->normalize($object->getSsoProvider(), 'json', $context);
         }
 
         return $data;

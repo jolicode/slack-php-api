@@ -47,6 +47,11 @@ class UsersLookupByEmailGetResponsedefaultNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault();
+        if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
+            $object->setCallstack($data['callstack']);
+        } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
+            $object->setCallstack(null);
+        }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
             $object->setError($data['error']);
         } elseif (\array_key_exists('error', $data) && null === $data['error']) {
@@ -64,6 +69,9 @@ class UsersLookupByEmailGetResponsedefaultNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getCallstack()) {
+            $data['callstack'] = $object->getCallstack();
+        }
         if (null !== $object->getError()) {
             $data['error'] = $object->getError();
         }

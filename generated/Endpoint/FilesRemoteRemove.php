@@ -22,9 +22,9 @@ class FilesRemoteRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `remote_files:write`
      *     @var string $external_id creator defined GUID for the file
-     *     @var string $file Specify a file by providing its ID.
+     *     @var string $file specify a file by providing its ID
+     *     @var string $token Authentication token. Requires scope: `remote_files:write`
      * }
      */
     public function __construct(array $formParameters = [])
@@ -60,12 +60,12 @@ class FilesRemoteRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['token', 'external_id', 'file']);
+        $optionsResolver->setDefined(['external_id', 'file', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('external_id', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

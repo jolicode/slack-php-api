@@ -18,11 +18,27 @@ class UsersInfoGetResponsedefault
     /**
      * @var string|null
      */
+    protected $callstack;
+    /**
+     * @var string|null
+     */
     protected $error;
     /**
      * @var bool|null
      */
     protected $ok;
+
+    public function getCallstack(): ?string
+    {
+        return $this->callstack;
+    }
+
+    public function setCallstack(?string $callstack): self
+    {
+        $this->callstack = $callstack;
+
+        return $this;
+    }
 
     public function getError(): ?string
     {

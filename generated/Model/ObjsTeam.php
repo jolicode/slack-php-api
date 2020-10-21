@@ -60,6 +60,10 @@ class ObjsTeam
      */
     protected $enterpriseName;
     /**
+     * @var ObjsExternalOrgMigrations|null
+     */
+    protected $externalOrgMigrations;
+    /**
      * @var bool|null
      */
     protected $hasComplianceExport;
@@ -80,9 +84,17 @@ class ObjsTeam
      */
     protected $isEnterprise;
     /**
+     * @var bool|null
+     */
+    protected $isOverStorageLimit;
+    /**
      * @var int|null
      */
     protected $limitTs;
+    /**
+     * @var string|null
+     */
+    protected $locale;
     /**
      * @var int|null
      */
@@ -106,7 +118,19 @@ class ObjsTeam
     /**
      * @var string|null
      */
+    protected $payProdCur;
+    /**
+     * @var string|null
+     */
     protected $plan;
+    /**
+     * @var ObjsPrimaryOwner|null
+     */
+    protected $primaryOwner;
+    /**
+     * @var ObjsTeamSsoProvider|null
+     */
+    protected $ssoProvider;
 
     public function getArchived(): ?bool
     {
@@ -240,6 +264,18 @@ class ObjsTeam
         return $this;
     }
 
+    public function getExternalOrgMigrations(): ?ObjsExternalOrgMigrations
+    {
+        return $this->externalOrgMigrations;
+    }
+
+    public function setExternalOrgMigrations(?ObjsExternalOrgMigrations $externalOrgMigrations): self
+    {
+        $this->externalOrgMigrations = $externalOrgMigrations;
+
+        return $this;
+    }
+
     public function getHasComplianceExport(): ?bool
     {
         return $this->hasComplianceExport;
@@ -300,6 +336,18 @@ class ObjsTeam
         return $this;
     }
 
+    public function getIsOverStorageLimit(): ?bool
+    {
+        return $this->isOverStorageLimit;
+    }
+
+    public function setIsOverStorageLimit(?bool $isOverStorageLimit): self
+    {
+        $this->isOverStorageLimit = $isOverStorageLimit;
+
+        return $this;
+    }
+
     public function getLimitTs(): ?int
     {
         return $this->limitTs;
@@ -308,6 +356,18 @@ class ObjsTeam
     public function setLimitTs(?int $limitTs): self
     {
         $this->limitTs = $limitTs;
+
+        return $this;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(?string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }
@@ -372,6 +432,18 @@ class ObjsTeam
         return $this;
     }
 
+    public function getPayProdCur(): ?string
+    {
+        return $this->payProdCur;
+    }
+
+    public function setPayProdCur(?string $payProdCur): self
+    {
+        $this->payProdCur = $payProdCur;
+
+        return $this;
+    }
+
     public function getPlan(): ?string
     {
         return $this->plan;
@@ -380,6 +452,30 @@ class ObjsTeam
     public function setPlan(?string $plan): self
     {
         $this->plan = $plan;
+
+        return $this;
+    }
+
+    public function getPrimaryOwner(): ?ObjsPrimaryOwner
+    {
+        return $this->primaryOwner;
+    }
+
+    public function setPrimaryOwner(?ObjsPrimaryOwner $primaryOwner): self
+    {
+        $this->primaryOwner = $primaryOwner;
+
+        return $this;
+    }
+
+    public function getSsoProvider(): ?ObjsTeamSsoProvider
+    {
+        return $this->ssoProvider;
+    }
+
+    public function setSsoProvider(?ObjsTeamSsoProvider $ssoProvider): self
+    {
+        $this->ssoProvider = $ssoProvider;
 
         return $this;
     }

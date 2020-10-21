@@ -13,28 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class TeamBillableInfoGetResponsedefault
+class TeamBillableInfoGetResponsedefault extends \ArrayObject
 {
-    /**
-     * @var string|null
-     */
-    protected $error;
     /**
      * @var bool|null
      */
     protected $ok;
-
-    public function getError(): ?string
-    {
-        return $this->error;
-    }
-
-    public function setError(?string $error): self
-    {
-        $this->error = $error;
-
-        return $this;
-    }
 
     public function getOk(): ?bool
     {

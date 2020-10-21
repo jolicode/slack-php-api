@@ -16,6 +16,8 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsUser
 {
     /**
+     * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
+     *
      * @var string|null
      */
     protected $color;
@@ -50,6 +52,14 @@ class ObjsUser
     /**
      * @var bool|null
      */
+    protected $isExternal;
+    /**
+     * @var bool|null
+     */
+    protected $isForgotten;
+    /**
+     * @var bool|null
+     */
     protected $isInvitedUser;
     /**
      * @var bool|null
@@ -63,6 +73,10 @@ class ObjsUser
      * @var bool|null
      */
     protected $isRestricted;
+    /**
+     * @var bool|null
+     */
+    protected $isStranger;
     /**
      * @var bool|null
      */
@@ -124,11 +138,17 @@ class ObjsUser
      */
     protected $updated;
 
+    /**
+     * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
+     */
     public function getColor(): ?string
     {
         return $this->color;
     }
 
+    /**
+     * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
+     */
     public function setColor(?string $color): self
     {
         $this->color = $color;
@@ -220,6 +240,30 @@ class ObjsUser
         return $this;
     }
 
+    public function getIsExternal(): ?bool
+    {
+        return $this->isExternal;
+    }
+
+    public function setIsExternal(?bool $isExternal): self
+    {
+        $this->isExternal = $isExternal;
+
+        return $this;
+    }
+
+    public function getIsForgotten(): ?bool
+    {
+        return $this->isForgotten;
+    }
+
+    public function setIsForgotten(?bool $isForgotten): self
+    {
+        $this->isForgotten = $isForgotten;
+
+        return $this;
+    }
+
     public function getIsInvitedUser(): ?bool
     {
         return $this->isInvitedUser;
@@ -264,6 +308,18 @@ class ObjsUser
     public function setIsRestricted(?bool $isRestricted): self
     {
         $this->isRestricted = $isRestricted;
+
+        return $this;
+    }
+
+    public function getIsStranger(): ?bool
+    {
+        return $this->isStranger;
+    }
+
+    public function setIsStranger(?bool $isStranger): self
+    {
+        $this->isStranger = $isStranger;
 
         return $this;
     }

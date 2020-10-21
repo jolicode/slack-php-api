@@ -22,10 +22,8 @@ class PinsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param array $formParameters {
      *
-     *     @var string $file_comment file comment to un-pin
-     *     @var string $timestamp timestamp of the message to un-pin
-     *     @var string $file file to un-pin
-     *     @var string $channel Channel where the item is pinned to.
+     *     @var string $channel channel where the item is pinned to
+     *     @var string $timestamp Timestamp of the message to un-pin.
      * }
      *
      * @param array $headerParameters {
@@ -67,13 +65,11 @@ class PinsRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['file_comment', 'timestamp', 'file', 'channel']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['channel', 'timestamp']);
+        $optionsResolver->setRequired(['channel']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('file_comment', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }

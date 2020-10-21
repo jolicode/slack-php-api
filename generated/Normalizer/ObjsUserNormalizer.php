@@ -87,6 +87,16 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         } elseif (\array_key_exists('is_bot', $data) && null === $data['is_bot']) {
             $object->setIsBot(null);
         }
+        if (\array_key_exists('is_external', $data) && null !== $data['is_external']) {
+            $object->setIsExternal($data['is_external']);
+        } elseif (\array_key_exists('is_external', $data) && null === $data['is_external']) {
+            $object->setIsExternal(null);
+        }
+        if (\array_key_exists('is_forgotten', $data) && null !== $data['is_forgotten']) {
+            $object->setIsForgotten($data['is_forgotten']);
+        } elseif (\array_key_exists('is_forgotten', $data) && null === $data['is_forgotten']) {
+            $object->setIsForgotten(null);
+        }
         if (\array_key_exists('is_invited_user', $data) && null !== $data['is_invited_user']) {
             $object->setIsInvitedUser($data['is_invited_user']);
         } elseif (\array_key_exists('is_invited_user', $data) && null === $data['is_invited_user']) {
@@ -106,6 +116,11 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setIsRestricted($data['is_restricted']);
         } elseif (\array_key_exists('is_restricted', $data) && null === $data['is_restricted']) {
             $object->setIsRestricted(null);
+        }
+        if (\array_key_exists('is_stranger', $data) && null !== $data['is_stranger']) {
+            $object->setIsStranger($data['is_stranger']);
+        } elseif (\array_key_exists('is_stranger', $data) && null === $data['is_stranger']) {
+            $object->setIsStranger(null);
         }
         if (\array_key_exists('is_ultra_restricted', $data) && null !== $data['is_ultra_restricted']) {
             $object->setIsUltraRestricted($data['is_ultra_restricted']);
@@ -217,6 +232,12 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getIsBot()) {
             $data['is_bot'] = $object->getIsBot();
         }
+        if (null !== $object->getIsExternal()) {
+            $data['is_external'] = $object->getIsExternal();
+        }
+        if (null !== $object->getIsForgotten()) {
+            $data['is_forgotten'] = $object->getIsForgotten();
+        }
         if (null !== $object->getIsInvitedUser()) {
             $data['is_invited_user'] = $object->getIsInvitedUser();
         }
@@ -228,6 +249,9 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getIsRestricted()) {
             $data['is_restricted'] = $object->getIsRestricted();
+        }
+        if (null !== $object->getIsStranger()) {
+            $data['is_stranger'] = $object->getIsStranger();
         }
         if (null !== $object->getIsUltraRestricted()) {
             $data['is_ultra_restricted'] = $object->getIsUltraRestricted();

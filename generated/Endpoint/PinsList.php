@@ -22,8 +22,8 @@ class PinsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      *
      * @param array $queryParameters {
      *
+     *     @var string $channel channel to get pinned items for
      *     @var string $token Authentication token. Requires scope: `pins:read`
-     *     @var string $channel Channel to get pinned items for.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -59,11 +59,11 @@ class PinsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'channel']);
+        $optionsResolver->setDefined(['channel', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -22,8 +22,8 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
      *
      * @param array $queryParameters {
      *
-     *     @var string $trigger_id exchange a trigger to post to the user
      *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
+     *     @var string $trigger_id Exchange a trigger to post to the user.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['trigger_id', 'dialog']);
-        $optionsResolver->setRequired(['trigger_id', 'dialog']);
+        $optionsResolver->setDefined(['dialog', 'trigger_id']);
+        $optionsResolver->setRequired(['dialog', 'trigger_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
         $optionsResolver->setAllowedTypes('dialog', ['string']);
+        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
 
         return $optionsResolver;
     }

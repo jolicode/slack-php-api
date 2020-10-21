@@ -53,7 +53,11 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
             $object->setCount(null);
         }
         if (\array_key_exists('country', $data) && null !== $data['country']) {
-            $object->setCountry($data['country']);
+            $value = $data['country'];
+            if (\is_string($data['country'])) {
+                $value = $data['country'];
+            }
+            $object->setCountry($value);
         } elseif (\array_key_exists('country', $data) && null === $data['country']) {
             $object->setCountry(null);
         }
@@ -68,17 +72,29 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
             $object->setDateLast(null);
         }
         if (\array_key_exists('ip', $data) && null !== $data['ip']) {
-            $object->setIp($data['ip']);
+            $value_1 = $data['ip'];
+            if (\is_string($data['ip'])) {
+                $value_1 = $data['ip'];
+            }
+            $object->setIp($value_1);
         } elseif (\array_key_exists('ip', $data) && null === $data['ip']) {
             $object->setIp(null);
         }
         if (\array_key_exists('isp', $data) && null !== $data['isp']) {
-            $object->setIsp($data['isp']);
+            $value_2 = $data['isp'];
+            if (\is_string($data['isp'])) {
+                $value_2 = $data['isp'];
+            }
+            $object->setIsp($value_2);
         } elseif (\array_key_exists('isp', $data) && null === $data['isp']) {
             $object->setIsp(null);
         }
         if (\array_key_exists('region', $data) && null !== $data['region']) {
-            $object->setRegion($data['region']);
+            $value_3 = $data['region'];
+            if (\is_string($data['region'])) {
+                $value_3 = $data['region'];
+            }
+            $object->setRegion($value_3);
         } elseif (\array_key_exists('region', $data) && null === $data['region']) {
             $object->setRegion(null);
         }
@@ -108,7 +124,11 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
             $data['count'] = $object->getCount();
         }
         if (null !== $object->getCountry()) {
-            $data['country'] = $object->getCountry();
+            $value = $object->getCountry();
+            if (\is_string($object->getCountry())) {
+                $value = $object->getCountry();
+            }
+            $data['country'] = $value;
         }
         if (null !== $object->getDateFirst()) {
             $data['date_first'] = $object->getDateFirst();
@@ -117,13 +137,25 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
             $data['date_last'] = $object->getDateLast();
         }
         if (null !== $object->getIp()) {
-            $data['ip'] = $object->getIp();
+            $value_1 = $object->getIp();
+            if (\is_string($object->getIp())) {
+                $value_1 = $object->getIp();
+            }
+            $data['ip'] = $value_1;
         }
         if (null !== $object->getIsp()) {
-            $data['isp'] = $object->getIsp();
+            $value_2 = $object->getIsp();
+            if (\is_string($object->getIsp())) {
+                $value_2 = $object->getIsp();
+            }
+            $data['isp'] = $value_2;
         }
         if (null !== $object->getRegion()) {
-            $data['region'] = $object->getRegion();
+            $value_3 = $object->getRegion();
+            if (\is_string($object->getRegion())) {
+                $value_3 = $object->getRegion();
+            }
+            $data['region'] = $value_3;
         }
         if (null !== $object->getUserAgent()) {
             $data['user_agent'] = $object->getUserAgent();

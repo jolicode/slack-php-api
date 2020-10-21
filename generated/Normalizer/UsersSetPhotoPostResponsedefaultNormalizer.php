@@ -47,6 +47,11 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault();
+        if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
+            $object->setCallstack($data['callstack']);
+        } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
+            $object->setCallstack(null);
+        }
         if (\array_key_exists('debug_step', $data) && null !== $data['debug_step']) {
             $object->setDebugStep($data['debug_step']);
         } elseif (\array_key_exists('debug_step', $data) && null === $data['debug_step']) {
@@ -79,6 +84,9 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getCallstack()) {
+            $data['callstack'] = $object->getCallstack();
+        }
         if (null !== $object->getDebugStep()) {
             $data['debug_step'] = $object->getDebugStep();
         }

@@ -22,9 +22,9 @@ class UsersInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *
      * @param array $queryParameters {
      *
+     *     @var bool $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
      *     @var string $token Authentication token. Requires scope: `users:read`
      *     @var string $user User to get info on
-     *     @var bool $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class UsersInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'user', 'include_locale']);
+        $optionsResolver->setDefined(['include_locale', 'token', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('include_locale', ['bool']);
         $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('user', ['string']);
-        $optionsResolver->setAllowedTypes('include_locale', ['bool']);
 
         return $optionsResolver;
     }

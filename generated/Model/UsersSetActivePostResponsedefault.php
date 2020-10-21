@@ -13,12 +13,52 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsersSetActivePostResponsedefault extends \ArrayObject
+class UsersSetActivePostResponsedefault
 {
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     *
+     * @var string|null
+     */
+    protected $callstack;
+    /**
+     * @var string|null
+     */
+    protected $error;
     /**
      * @var bool|null
      */
     protected $ok;
+
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     */
+    public function getCallstack(): ?string
+    {
+        return $this->callstack;
+    }
+
+    /**
+     * Note: PHP callstack is only visible in dev/qa.
+     */
+    public function setCallstack(?string $callstack): self
+    {
+        $this->callstack = $callstack;
+
+        return $this;
+    }
+
+    public function getError(): ?string
+    {
+        return $this->error;
+    }
+
+    public function setError(?string $error): self
+    {
+        $this->error = $error;
+
+        return $this;
+    }
 
     public function getOk(): ?bool
     {

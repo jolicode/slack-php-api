@@ -22,13 +22,13 @@ class SearchMessages extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *
      * @param array $queryParameters {
      *
-     *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
-     *     @var string $query search query
-     *     @var string $sort return matches sorted by either `score` or `timestamp`
      *     @var int $count Pass the number of results you want per "page". Maximum of `100`.
-     *     @var string $token Authentication token. Requires scope: `search:read`
      *     @var bool $highlight pass a value of `true` to enable query highlight markers (see below)
      *     @var int $page
+     *     @var string $query search query
+     *     @var string $sort return matches sorted by either `score` or `timestamp`
+     *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
+     *     @var string $token Authentication token. Requires scope: `search:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -64,16 +64,16 @@ class SearchMessages extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['sort_dir', 'query', 'sort', 'count', 'token', 'highlight', 'page']);
+        $optionsResolver->setDefined(['count', 'highlight', 'page', 'query', 'sort', 'sort_dir', 'token']);
         $optionsResolver->setRequired(['query']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('sort_dir', ['string']);
-        $optionsResolver->setAllowedTypes('query', ['string']);
-        $optionsResolver->setAllowedTypes('sort', ['string']);
         $optionsResolver->setAllowedTypes('count', ['int']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('highlight', ['bool']);
         $optionsResolver->setAllowedTypes('page', ['int']);
+        $optionsResolver->setAllowedTypes('query', ['string']);
+        $optionsResolver->setAllowedTypes('sort', ['string']);
+        $optionsResolver->setAllowedTypes('sort_dir', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

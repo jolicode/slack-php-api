@@ -22,8 +22,8 @@ class FilesCommentsDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $id the comment to delete
-     *     @var string $file File to delete a comment from.
+     *     @var string $file file to delete a comment from
+     *     @var string $id The comment to delete.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class FilesCommentsDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['id', 'file']);
+        $optionsResolver->setDefined(['file', 'id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('id', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('id', ['string']);
 
         return $optionsResolver;
     }

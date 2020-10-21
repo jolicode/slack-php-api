@@ -47,6 +47,11 @@ class ConversationsCreatePostResponsedefaultNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault();
+        if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
+            $object->setCallstack($data['callstack']);
+        } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
+            $object->setCallstack(null);
+        }
         if (\array_key_exists('detail', $data) && null !== $data['detail']) {
             $object->setDetail($data['detail']);
         } elseif (\array_key_exists('detail', $data) && null === $data['detail']) {
@@ -79,6 +84,9 @@ class ConversationsCreatePostResponsedefaultNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
+        if (null !== $object->getCallstack()) {
+            $data['callstack'] = $object->getCallstack();
+        }
         if (null !== $object->getDetail()) {
             $data['detail'] = $object->getDetail();
         }

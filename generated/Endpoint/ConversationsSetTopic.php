@@ -22,8 +22,8 @@ class ConversationsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
      *
      * @param array $formParameters {
      *
-     *     @var string $topic The new topic string. Does not support formatting or linkification.
      *     @var string $channel Conversation to set the topic of
+     *     @var string $topic The new topic string. Does not support formatting or linkification.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['topic', 'channel']);
+        $optionsResolver->setDefined(['channel', 'topic']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('topic', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('topic', ['string']);
 
         return $optionsResolver;
     }

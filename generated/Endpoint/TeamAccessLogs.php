@@ -22,10 +22,10 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *
      * @param array $queryParameters {
      *
-     *     @var int $count
+     *     @var string $before end of time range of logs to include in results (inclusive)
+     *     @var string $count
+     *     @var string $page
      *     @var string $token Authentication token. Requires scope: `admin`
-     *     @var int $page
-     *     @var string $before End of time range of logs to include in results (inclusive).
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +61,13 @@ class TeamAccessLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['count', 'token', 'page', 'before']);
+        $optionsResolver->setDefined(['before', 'count', 'page', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('count', ['int']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('page', ['int']);
         $optionsResolver->setAllowedTypes('before', ['string']);
+        $optionsResolver->setAllowedTypes('count', ['string']);
+        $optionsResolver->setAllowedTypes('page', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

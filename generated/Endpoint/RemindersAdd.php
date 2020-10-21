@@ -23,8 +23,8 @@ class RemindersAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
      * @param array $formParameters {
      *
      *     @var string $text The content of the reminder
-     *     @var string $user The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.
      *     @var string $time When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday")
+     *     @var string $user The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.
      * }
      *
      * @param array $headerParameters {
@@ -66,12 +66,12 @@ class RemindersAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['text', 'user', 'time']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setDefined(['text', 'time', 'user']);
+        $optionsResolver->setRequired(['text', 'time']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
         $optionsResolver->setAllowedTypes('time', ['string']);
+        $optionsResolver->setAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

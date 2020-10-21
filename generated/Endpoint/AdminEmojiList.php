@@ -23,8 +23,8 @@ class AdminEmojiList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      * @param array $queryParameters {
      *
      *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
      *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class AdminEmojiList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'token', 'limit']);
+        $optionsResolver->setDefined(['cursor', 'limit', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -24,9 +24,9 @@ class StarsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      *
      *     @var string $count
      *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
-     *     @var string $token Authentication token. Requires scope: `stars:read`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $page
+     *     @var string $token Authentication token. Requires scope: `stars:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -62,14 +62,14 @@ class StarsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['count', 'cursor', 'token', 'limit', 'page']);
+        $optionsResolver->setDefined(['count', 'cursor', 'limit', 'page', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('count', ['string']);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('page', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -22,8 +22,8 @@ class ConversationsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
-     *     @var string $user user ID to be removed
-     *     @var string $channel ID of conversation to remove user from.
+     *     @var string $channel ID of conversation to remove user from
+     *     @var string $user User ID to be removed.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['user', 'channel']);
+        $optionsResolver->setDefined(['channel', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('user', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

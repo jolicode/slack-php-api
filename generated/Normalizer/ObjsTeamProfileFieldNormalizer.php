@@ -48,7 +48,11 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
         if (\array_key_exists('field_name', $data) && null !== $data['field_name']) {
-            $object->setFieldName($data['field_name']);
+            $value = $data['field_name'];
+            if (\is_string($data['field_name'])) {
+                $value = $data['field_name'];
+            }
+            $object->setFieldName($value);
         } elseif (\array_key_exists('field_name', $data) && null === $data['field_name']) {
             $object->setFieldName(null);
         }
@@ -73,11 +77,7 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $object->setLabel(null);
         }
         if (\array_key_exists('options', $data) && null !== $data['options']) {
-            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['options'] as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setOptions($values);
+            $object->setOptions($this->denormalizer->denormalize($data['options'], 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileFieldOption', 'json', $context));
         } elseif (\array_key_exists('options', $data) && null === $data['options']) {
             $object->setOptions(null);
         }
@@ -87,11 +87,15 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $object->setOrdering(null);
         }
         if (\array_key_exists('possible_values', $data) && null !== $data['possible_values']) {
-            $values_1 = [];
-            foreach ($data['possible_values'] as $value_1) {
-                $values_1[] = $value_1;
+            $value_1 = $data['possible_values'];
+            if (\is_array($data['possible_values']) && $this->isOnlyNumericKeys($data['possible_values'])) {
+                $values = [];
+                foreach ($data['possible_values'] as $value_2) {
+                    $values[] = $value_2;
+                }
+                $value_1 = $values;
             }
-            $object->setPossibleValues($values_1);
+            $object->setPossibleValues($value_1);
         } elseif (\array_key_exists('possible_values', $data) && null === $data['possible_values']) {
             $object->setPossibleValues(null);
         }
@@ -108,7 +112,11 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
     {
         $data = [];
         if (null !== $object->getFieldName()) {
-            $data['field_name'] = $object->getFieldName();
+            $value = $object->getFieldName();
+            if (\is_string($object->getFieldName())) {
+                $value = $object->getFieldName();
+            }
+            $data['field_name'] = $value;
         }
         if (null !== $object->getHint()) {
             $data['hint'] = $object->getHint();
@@ -123,21 +131,21 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $data['label'] = $object->getLabel();
         }
         if (null !== $object->getOptions()) {
-            $values = [];
-            foreach ($object->getOptions() as $key => $value) {
-                $values[$key] = $value;
-            }
-            $data['options'] = $values;
+            $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
         if (null !== $object->getOrdering()) {
             $data['ordering'] = $object->getOrdering();
         }
         if (null !== $object->getPossibleValues()) {
-            $values_1 = [];
-            foreach ($object->getPossibleValues() as $value_1) {
-                $values_1[] = $value_1;
+            $value_1 = $object->getPossibleValues();
+            if (\is_array($object->getPossibleValues())) {
+                $values = [];
+                foreach ($object->getPossibleValues() as $value_2) {
+                    $values[] = $value_2;
+                }
+                $value_1 = $values;
             }
-            $data['possible_values'] = $values_1;
+            $data['possible_values'] = $value_1;
         }
         if (null !== $object->getType()) {
             $data['type'] = $object->getType();

@@ -57,11 +57,7 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
             $object->setAttachments(null);
         }
         if (\array_key_exists('blocks', $data) && null !== $data['blocks']) {
-            $values_1 = [];
-            foreach ($data['blocks'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\BlocksItem', 'json', $context);
-            }
-            $object->setBlocks($values_1);
+            $object->setBlocks($data['blocks']);
         } elseif (\array_key_exists('blocks', $data) && null === $data['blocks']) {
             $object->setBlocks(null);
         }
@@ -85,11 +81,7 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
             $data['attachments'] = $values;
         }
         if (null !== $object->getBlocks()) {
-            $values_1 = [];
-            foreach ($object->getBlocks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['blocks'] = $values_1;
+            $data['blocks'] = $object->getBlocks();
         }
         if (null !== $object->getText()) {
             $data['text'] = $object->getText();
