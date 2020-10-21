@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
             $object->setCallstack($data['callstack']);
         } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
@@ -104,9 +107,7 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
         if (null !== $object->getNeeded()) {
             $data['needed'] = $object->getNeeded();
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['ok'] = $object->getOk();
         if (null !== $object->getProvided()) {
             $data['provided'] = $object->getProvided();
         }

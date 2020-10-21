@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('current', $data) && null !== $data['current']) {
             $values = [];
             foreach ($data['current'] as $value) {
@@ -68,16 +71,12 @@ class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCurrent()) {
-            $values = [];
-            foreach ($object->getCurrent() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['current'] = $values;
+        $values = [];
+        foreach ($object->getCurrent() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getDateUpdated()) {
-            $data['date_updated'] = $object->getDateUpdated();
-        }
+        $data['current'] = $values;
+        $data['date_updated'] = $object->getDateUpdated();
 
         return $data;
     }

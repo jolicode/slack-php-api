@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('field_name', $data) && null !== $data['field_name']) {
             $value = $data['field_name'];
             if (\is_string($data['field_name'])) {
@@ -118,24 +121,16 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             }
             $data['field_name'] = $value;
         }
-        if (null !== $object->getHint()) {
-            $data['hint'] = $object->getHint();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['hint'] = $object->getHint();
+        $data['id'] = $object->getId();
         if (null !== $object->getIsHidden()) {
             $data['is_hidden'] = $object->getIsHidden();
         }
-        if (null !== $object->getLabel()) {
-            $data['label'] = $object->getLabel();
-        }
+        $data['label'] = $object->getLabel();
         if (null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
-        if (null !== $object->getOrdering()) {
-            $data['ordering'] = $object->getOrdering();
-        }
+        $data['ordering'] = $object->getOrdering();
         if (null !== $object->getPossibleValues()) {
             $value_1 = $object->getPossibleValues();
             if (\is_array($object->getPossibleValues())) {
@@ -147,9 +142,7 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             }
             $data['possible_values'] = $value_1;
         }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['type'] = $object->getType();
 
         return $data;
     }

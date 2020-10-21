@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class StarsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
             $object->setChannel($data['channel']);
         } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
@@ -74,18 +77,10 @@ class StarsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannel()) {
-            $data['channel'] = $object->getChannel();
-        }
-        if (null !== $object->getDateCreate()) {
-            $data['date_create'] = $object->getDateCreate();
-        }
-        if (null !== $object->getMessage()) {
-            $data['message'] = $this->normalizer->normalize($object->getMessage(), 'json', $context);
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['channel'] = $object->getChannel();
+        $data['date_create'] = $object->getDateCreate();
+        $data['message'] = $this->normalizer->normalize($object->getMessage(), 'json', $context);
+        $data['type'] = $object->getType();
 
         return $data;
     }

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('enterprise_id', $data) && null !== $data['enterprise_id']) {
             $object->setEnterpriseId($data['enterprise_id']);
             unset($data['enterprise_id']);
@@ -97,9 +100,7 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getEnterpriseId()) {
-            $data['enterprise_id'] = $object->getEnterpriseId();
-        }
+        $data['enterprise_id'] = $object->getEnterpriseId();
         if (null !== $object->getInvalidUserIds()) {
             $values = [];
             foreach ($object->getInvalidUserIds() as $value) {
@@ -107,12 +108,8 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             }
             $data['invalid_user_ids'] = $values;
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getTeamId()) {
-            $data['team_id'] = $object->getTeamId();
-        }
+        $data['ok'] = $object->getOk();
+        $data['team_id'] = $object->getTeamId();
         if (null !== $object->getUserIdMap()) {
             $values_1 = [];
             foreach ($object->getUserIdMap() as $key => $value_1) {

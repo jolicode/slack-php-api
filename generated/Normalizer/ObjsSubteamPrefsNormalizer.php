@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsSubteamPrefs();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channels', $data) && null !== $data['channels']) {
             $values = [];
             foreach ($data['channels'] as $value) {
@@ -72,20 +75,16 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannels()) {
-            $values = [];
-            foreach ($object->getChannels() as $value) {
-                $values[] = $value;
-            }
-            $data['channels'] = $values;
+        $values = [];
+        foreach ($object->getChannels() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getGroups()) {
-            $values_1 = [];
-            foreach ($object->getGroups() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['groups'] = $values_1;
+        $data['channels'] = $values;
+        $values_1 = [];
+        foreach ($object->getGroups() as $value_1) {
+            $values_1[] = $value_1;
         }
+        $data['groups'] = $values_1;
 
         return $data;
     }

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsSubteam();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('auto_provision', $data) && null !== $data['auto_provision']) {
             $object->setAutoProvision($data['auto_provision']);
         } elseif (\array_key_exists('auto_provision', $data) && null === $data['auto_provision']) {
@@ -163,63 +166,27 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAutoProvision()) {
-            $data['auto_provision'] = $object->getAutoProvision();
-        }
-        if (null !== $object->getAutoType()) {
-            $data['auto_type'] = $object->getAutoType();
-        }
+        $data['auto_provision'] = $object->getAutoProvision();
+        $data['auto_type'] = $object->getAutoType();
         if (null !== $object->getChannelCount()) {
             $data['channel_count'] = $object->getChannelCount();
         }
-        if (null !== $object->getCreatedBy()) {
-            $data['created_by'] = $object->getCreatedBy();
-        }
-        if (null !== $object->getDateCreate()) {
-            $data['date_create'] = $object->getDateCreate();
-        }
-        if (null !== $object->getDateDelete()) {
-            $data['date_delete'] = $object->getDateDelete();
-        }
-        if (null !== $object->getDateUpdate()) {
-            $data['date_update'] = $object->getDateUpdate();
-        }
-        if (null !== $object->getDeletedBy()) {
-            $data['deleted_by'] = $object->getDeletedBy();
-        }
-        if (null !== $object->getDescription()) {
-            $data['description'] = $object->getDescription();
-        }
-        if (null !== $object->getEnterpriseSubteamId()) {
-            $data['enterprise_subteam_id'] = $object->getEnterpriseSubteamId();
-        }
-        if (null !== $object->getHandle()) {
-            $data['handle'] = $object->getHandle();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getIsExternal()) {
-            $data['is_external'] = $object->getIsExternal();
-        }
-        if (null !== $object->getIsSubteam()) {
-            $data['is_subteam'] = $object->getIsSubteam();
-        }
-        if (null !== $object->getIsUsergroup()) {
-            $data['is_usergroup'] = $object->getIsUsergroup();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getPrefs()) {
-            $data['prefs'] = $this->normalizer->normalize($object->getPrefs(), 'json', $context);
-        }
-        if (null !== $object->getTeamId()) {
-            $data['team_id'] = $object->getTeamId();
-        }
-        if (null !== $object->getUpdatedBy()) {
-            $data['updated_by'] = $object->getUpdatedBy();
-        }
+        $data['created_by'] = $object->getCreatedBy();
+        $data['date_create'] = $object->getDateCreate();
+        $data['date_delete'] = $object->getDateDelete();
+        $data['date_update'] = $object->getDateUpdate();
+        $data['deleted_by'] = $object->getDeletedBy();
+        $data['description'] = $object->getDescription();
+        $data['enterprise_subteam_id'] = $object->getEnterpriseSubteamId();
+        $data['handle'] = $object->getHandle();
+        $data['id'] = $object->getId();
+        $data['is_external'] = $object->getIsExternal();
+        $data['is_subteam'] = $object->getIsSubteam();
+        $data['is_usergroup'] = $object->getIsUsergroup();
+        $data['name'] = $object->getName();
+        $data['prefs'] = $this->normalizer->normalize($object->getPrefs(), 'json', $context);
+        $data['team_id'] = $object->getTeamId();
+        $data['updated_by'] = $object->getUpdatedBy();
         if (null !== $object->getUserCount()) {
             $data['user_count'] = $object->getUserCount();
         }

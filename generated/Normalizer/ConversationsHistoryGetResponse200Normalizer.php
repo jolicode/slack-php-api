@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channel_actions_count', $data) && null !== $data['channel_actions_count']) {
             $object->setChannelActionsCount($data['channel_actions_count']);
         } elseif (\array_key_exists('channel_actions_count', $data) && null === $data['channel_actions_count']) {
@@ -93,28 +96,16 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannelActionsCount()) {
-            $data['channel_actions_count'] = $object->getChannelActionsCount();
+        $data['channel_actions_count'] = $object->getChannelActionsCount();
+        $data['channel_actions_ts'] = $object->getChannelActionsTs();
+        $data['has_more'] = $object->getHasMore();
+        $values = [];
+        foreach ($object->getMessages() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getChannelActionsTs()) {
-            $data['channel_actions_ts'] = $object->getChannelActionsTs();
-        }
-        if (null !== $object->getHasMore()) {
-            $data['has_more'] = $object->getHasMore();
-        }
-        if (null !== $object->getMessages()) {
-            $values = [];
-            foreach ($object->getMessages() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['messages'] = $values;
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getPinCount()) {
-            $data['pin_count'] = $object->getPinCount();
-        }
+        $data['messages'] = $values;
+        $data['ok'] = $object->getOk();
+        $data['pin_count'] = $object->getPinCount();
         if (null !== $object->getResponseMetadata()) {
             $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         }

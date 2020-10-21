@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class StarsListGetResponse200ItemsItemItem2Normalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('comment', $data) && null !== $data['comment']) {
             $object->setComment($this->denormalizer->denormalize($data['comment'], 'JoliCode\\Slack\\Api\\Model\\ObjsComment', 'json', $context));
         } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
@@ -74,18 +77,10 @@ class StarsListGetResponse200ItemsItemItem2Normalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getComment()) {
-            $data['comment'] = $this->normalizer->normalize($object->getComment(), 'json', $context);
-        }
-        if (null !== $object->getDateCreate()) {
-            $data['date_create'] = $object->getDateCreate();
-        }
-        if (null !== $object->getFile()) {
-            $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['comment'] = $this->normalizer->normalize($object->getComment(), 'json', $context);
+        $data['date_create'] = $object->getDateCreate();
+        $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
+        $data['type'] = $object->getType();
 
         return $data;
     }

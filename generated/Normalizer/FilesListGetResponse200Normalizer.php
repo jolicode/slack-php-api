@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class FilesListGetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesListGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('files', $data) && null !== $data['files']) {
             $values = [];
             foreach ($data['files'] as $value) {
@@ -73,19 +76,13 @@ class FilesListGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getFiles()) {
-            $values = [];
-            foreach ($object->getFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['files'] = $values;
+        $values = [];
+        foreach ($object->getFiles() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getPaging()) {
-            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
-        }
+        $data['files'] = $values;
+        $data['ok'] = $object->getOk();
+        $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
 
         return $data;
     }

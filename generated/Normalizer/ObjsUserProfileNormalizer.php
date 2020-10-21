@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUserProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('always_active', $data) && null !== $data['always_active']) {
             $object->setAlwaysActive($data['always_active']);
         } elseif (\array_key_exists('always_active', $data) && null === $data['always_active']) {
@@ -366,18 +369,12 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getApiAppId()) {
             $data['api_app_id'] = $object->getApiAppId();
         }
-        if (null !== $object->getAvatarHash()) {
-            $data['avatar_hash'] = $object->getAvatarHash();
-        }
+        $data['avatar_hash'] = $object->getAvatarHash();
         if (null !== $object->getBotId()) {
             $data['bot_id'] = $object->getBotId();
         }
-        if (null !== $object->getDisplayName()) {
-            $data['display_name'] = $object->getDisplayName();
-        }
-        if (null !== $object->getDisplayNameNormalized()) {
-            $data['display_name_normalized'] = $object->getDisplayNameNormalized();
-        }
+        $data['display_name'] = $object->getDisplayName();
+        $data['display_name_normalized'] = $object->getDisplayNameNormalized();
         if (null !== $object->getEmail()) {
             $value = $object->getEmail();
             if (\is_string($object->getEmail())) {
@@ -385,19 +382,17 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $data['email'] = $value;
         }
-        if (null !== $object->getFields()) {
-            $value_1 = $object->getFields();
-            if (\is_array($object->getFields())) {
-                $values = [];
-                foreach ($object->getFields() as $value_2) {
-                    $values[] = $value_2;
-                }
-                $value_1 = $values;
-            } elseif (null !== $object->getFields()) {
-                $value_1 = $object->getFields();
+        $value_1 = $object->getFields();
+        if (\is_array($object->getFields())) {
+            $values = [];
+            foreach ($object->getFields() as $value_2) {
+                $values[] = $value_2;
             }
-            $data['fields'] = $value_1;
+            $value_1 = $values;
+        } elseif (null !== $object->getFields()) {
+            $value_1 = $object->getFields();
         }
+        $data['fields'] = $value_1;
         if (null !== $object->getFirstName()) {
             $value_3 = $object->getFirstName();
             if (\is_string($object->getFirstName())) {
@@ -515,21 +510,13 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $data['name'] = $value_17;
         }
-        if (null !== $object->getPhone()) {
-            $data['phone'] = $object->getPhone();
-        }
+        $data['phone'] = $object->getPhone();
         if (null !== $object->getPronouns()) {
             $data['pronouns'] = $object->getPronouns();
         }
-        if (null !== $object->getRealName()) {
-            $data['real_name'] = $object->getRealName();
-        }
-        if (null !== $object->getRealNameNormalized()) {
-            $data['real_name_normalized'] = $object->getRealNameNormalized();
-        }
-        if (null !== $object->getSkype()) {
-            $data['skype'] = $object->getSkype();
-        }
+        $data['real_name'] = $object->getRealName();
+        $data['real_name_normalized'] = $object->getRealNameNormalized();
+        $data['skype'] = $object->getSkype();
         if (null !== $object->getStatusDefaultEmoji()) {
             $data['status_default_emoji'] = $object->getStatusDefaultEmoji();
         }
@@ -543,15 +530,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $data['status_default_text_canonical'] = $value_18;
         }
-        if (null !== $object->getStatusEmoji()) {
-            $data['status_emoji'] = $object->getStatusEmoji();
-        }
+        $data['status_emoji'] = $object->getStatusEmoji();
         if (null !== $object->getStatusExpiration()) {
             $data['status_expiration'] = $object->getStatusExpiration();
         }
-        if (null !== $object->getStatusText()) {
-            $data['status_text'] = $object->getStatusText();
-        }
+        $data['status_text'] = $object->getStatusText();
         if (null !== $object->getStatusTextCanonical()) {
             $value_19 = $object->getStatusTextCanonical();
             if (\is_string($object->getStatusTextCanonical())) {
@@ -562,9 +545,7 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
         if (null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
-        if (null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
-        }
+        $data['title'] = $object->getTitle();
         if (null !== $object->getUpdated()) {
             $data['updated'] = $object->getUpdated();
         }

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsReminder();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('complete_ts', $data) && null !== $data['complete_ts']) {
             $object->setCompleteTs($data['complete_ts']);
         } elseif (\array_key_exists('complete_ts', $data) && null === $data['complete_ts']) {
@@ -92,24 +95,14 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getCompleteTs()) {
             $data['complete_ts'] = $object->getCompleteTs();
         }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $object->getCreator();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getRecurring()) {
-            $data['recurring'] = $object->getRecurring();
-        }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
+        $data['creator'] = $object->getCreator();
+        $data['id'] = $object->getId();
+        $data['recurring'] = $object->getRecurring();
+        $data['text'] = $object->getText();
         if (null !== $object->getTime()) {
             $data['time'] = $object->getTime();
         }
-        if (null !== $object->getUser()) {
-            $data['user'] = $object->getUser();
-        }
+        $data['user'] = $object->getUser();
 
         return $data;
     }

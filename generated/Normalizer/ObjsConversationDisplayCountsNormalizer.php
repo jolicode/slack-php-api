@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('display_counts', $data) && null !== $data['display_counts']) {
             $object->setDisplayCounts($data['display_counts']);
         } elseif (\array_key_exists('display_counts', $data) && null === $data['display_counts']) {
@@ -64,12 +67,8 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getDisplayCounts()) {
-            $data['display_counts'] = $object->getDisplayCounts();
-        }
-        if (null !== $object->getGuestCounts()) {
-            $data['guest_counts'] = $object->getGuestCounts();
-        }
+        $data['display_counts'] = $object->getDisplayCounts();
+        $data['guest_counts'] = $object->getGuestCounts();
 
         return $data;
     }

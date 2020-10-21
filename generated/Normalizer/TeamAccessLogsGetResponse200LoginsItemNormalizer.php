@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('count', $data) && null !== $data['count']) {
             $object->setCount($data['count']);
         } elseif (\array_key_exists('count', $data) && null === $data['count']) {
@@ -120,52 +123,32 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCount()) {
-            $data['count'] = $object->getCount();
-        }
-        if (null !== $object->getCountry()) {
+        $data['count'] = $object->getCount();
+        $value = $object->getCountry();
+        if (\is_string($object->getCountry())) {
             $value = $object->getCountry();
-            if (\is_string($object->getCountry())) {
-                $value = $object->getCountry();
-            }
-            $data['country'] = $value;
         }
-        if (null !== $object->getDateFirst()) {
-            $data['date_first'] = $object->getDateFirst();
-        }
-        if (null !== $object->getDateLast()) {
-            $data['date_last'] = $object->getDateLast();
-        }
-        if (null !== $object->getIp()) {
+        $data['country'] = $value;
+        $data['date_first'] = $object->getDateFirst();
+        $data['date_last'] = $object->getDateLast();
+        $value_1 = $object->getIp();
+        if (\is_string($object->getIp())) {
             $value_1 = $object->getIp();
-            if (\is_string($object->getIp())) {
-                $value_1 = $object->getIp();
-            }
-            $data['ip'] = $value_1;
         }
-        if (null !== $object->getIsp()) {
+        $data['ip'] = $value_1;
+        $value_2 = $object->getIsp();
+        if (\is_string($object->getIsp())) {
             $value_2 = $object->getIsp();
-            if (\is_string($object->getIsp())) {
-                $value_2 = $object->getIsp();
-            }
-            $data['isp'] = $value_2;
         }
-        if (null !== $object->getRegion()) {
+        $data['isp'] = $value_2;
+        $value_3 = $object->getRegion();
+        if (\is_string($object->getRegion())) {
             $value_3 = $object->getRegion();
-            if (\is_string($object->getRegion())) {
-                $value_3 = $object->getRegion();
-            }
-            $data['region'] = $value_3;
         }
-        if (null !== $object->getUserAgent()) {
-            $data['user_agent'] = $object->getUserAgent();
-        }
-        if (null !== $object->getUserId()) {
-            $data['user_id'] = $object->getUserId();
-        }
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
+        $data['region'] = $value_3;
+        $data['user_agent'] = $object->getUserAgent();
+        $data['user_id'] = $object->getUserId();
+        $data['username'] = $object->getUsername();
 
         return $data;
     }

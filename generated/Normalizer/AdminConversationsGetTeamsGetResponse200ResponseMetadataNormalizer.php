@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class AdminConversationsGetTeamsGetResponse200ResponseMetadataNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
             $object->setNextCursor($data['next_cursor']);
         } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
@@ -59,9 +62,7 @@ class AdminConversationsGetTeamsGetResponse200ResponseMetadataNormalizer impleme
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getNextCursor()) {
-            $data['next_cursor'] = $object->getNextCursor();
-        }
+        $data['next_cursor'] = $object->getNextCursor();
 
         return $data;
     }

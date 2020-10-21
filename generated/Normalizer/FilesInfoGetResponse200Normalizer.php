@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\FilesInfoGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('comments', $data) && null !== $data['comments']) {
             $values = [];
             foreach ($data['comments'] as $value) {
@@ -93,25 +96,19 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getComments()) {
-            $values = [];
-            foreach ($object->getComments() as $value) {
-                $values[] = $value;
-            }
-            $data['comments'] = $values;
+        $values = [];
+        foreach ($object->getComments() as $value) {
+            $values[] = $value;
         }
+        $data['comments'] = $values;
         if (null !== $object->getContentHtml()) {
             $data['content_html'] = $object->getContentHtml();
         }
         if (null !== $object->getEditor()) {
             $data['editor'] = $object->getEditor();
         }
-        if (null !== $object->getFile()) {
-            $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
+        $data['ok'] = $object->getOk();
         if (null !== $object->getPaging()) {
             $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }

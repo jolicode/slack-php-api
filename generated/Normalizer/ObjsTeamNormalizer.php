@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsTeam();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('archived', $data) && null !== $data['archived']) {
             $object->setArchived($data['archived']);
         } elseif (\array_key_exists('archived', $data) && null === $data['archived']) {
@@ -228,12 +231,8 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getDiscoverable()) {
             $data['discoverable'] = $object->getDiscoverable();
         }
-        if (null !== $object->getDomain()) {
-            $data['domain'] = $object->getDomain();
-        }
-        if (null !== $object->getEmailDomain()) {
-            $data['email_domain'] = $object->getEmailDomain();
-        }
+        $data['domain'] = $object->getDomain();
+        $data['email_domain'] = $object->getEmailDomain();
         if (null !== $object->getEnterpriseId()) {
             $data['enterprise_id'] = $object->getEnterpriseId();
         }
@@ -246,12 +245,8 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getHasComplianceExport()) {
             $data['has_compliance_export'] = $object->getHasComplianceExport();
         }
-        if (null !== $object->getIcon()) {
-            $data['icon'] = $this->normalizer->normalize($object->getIcon(), 'json', $context);
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['icon'] = $this->normalizer->normalize($object->getIcon(), 'json', $context);
+        $data['id'] = $object->getId();
         if (null !== $object->getIsAssigned()) {
             $data['is_assigned'] = $object->getIsAssigned();
         }
@@ -273,9 +268,7 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getMsgEditWindowMins()) {
             $data['msg_edit_window_mins'] = $object->getMsgEditWindowMins();
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['name'] = $object->getName();
         if (null !== $object->getOverIntegrationsLimit()) {
             $data['over_integrations_limit'] = $object->getOverIntegrationsLimit();
         }

@@ -8,6 +8,7 @@
 * ease up the patching process:
   * in the patched json file, sort endpoint query parameters by their `name` attributes, to keep a consistent order
   * auto-merge `objs_user` and `objs_conversation` polymorphic properties in order to keep the patch hunks as small as possible
+* Upgrade to JanePHP version 6.2
 
 ## 3.0.2 (2020-10-20)
 

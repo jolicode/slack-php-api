@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class AdminConversationsCreatePostResponse200Normalizer implements DenormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channel_id', $data) && null !== $data['channel_id']) {
             $object->setChannelId($data['channel_id']);
         } elseif (\array_key_exists('channel_id', $data) && null === $data['channel_id']) {
@@ -67,9 +70,7 @@ class AdminConversationsCreatePostResponse200Normalizer implements DenormalizerI
         if (null !== $object->getChannelId()) {
             $data['channel_id'] = $object->getChannelId();
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['ok'] = $object->getOk();
 
         return $data;
     }

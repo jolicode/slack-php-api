@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUser();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('color', $data) && null !== $data['color']) {
             $object->setColor($data['color']);
         } elseif (\array_key_exists('color', $data) && null === $data['color']) {
@@ -220,18 +223,12 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getHas2fa()) {
             $data['has_2fa'] = $object->getHas2fa();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['id'] = $object->getId();
         if (null !== $object->getIsAdmin()) {
             $data['is_admin'] = $object->getIsAdmin();
         }
-        if (null !== $object->getIsAppUser()) {
-            $data['is_app_user'] = $object->getIsAppUser();
-        }
-        if (null !== $object->getIsBot()) {
-            $data['is_bot'] = $object->getIsBot();
-        }
+        $data['is_app_user'] = $object->getIsAppUser();
+        $data['is_bot'] = $object->getIsBot();
         if (null !== $object->getIsExternal()) {
             $data['is_external'] = $object->getIsExternal();
         }
@@ -259,15 +256,11 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getLocale()) {
             $data['locale'] = $object->getLocale();
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
+        $data['name'] = $object->getName();
         if (null !== $object->getPresence()) {
             $data['presence'] = $object->getPresence();
         }
-        if (null !== $object->getProfile()) {
-            $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
-        }
+        $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
         if (null !== $object->getRealName()) {
             $data['real_name'] = $object->getRealName();
         }
@@ -299,9 +292,7 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getTzOffset()) {
             $data['tz_offset'] = $object->getTzOffset();
         }
-        if (null !== $object->getUpdated()) {
-            $data['updated'] = $object->getUpdated();
-        }
+        $data['updated'] = $object->getUpdated();
 
         return $data;
     }

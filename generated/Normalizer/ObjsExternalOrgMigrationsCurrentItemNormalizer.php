@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsExternalOrgMigrationsCurrentItemNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('date_started', $data) && null !== $data['date_started']) {
             $object->setDateStarted($data['date_started']);
         } elseif (\array_key_exists('date_started', $data) && null === $data['date_started']) {
@@ -64,12 +67,8 @@ class ObjsExternalOrgMigrationsCurrentItemNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getDateStarted()) {
-            $data['date_started'] = $object->getDateStarted();
-        }
-        if (null !== $object->getTeamId()) {
-            $data['team_id'] = $object->getTeamId();
-        }
+        $data['date_started'] = $object->getDateStarted();
+        $data['team_id'] = $object->getTeamId();
 
         return $data;
     }

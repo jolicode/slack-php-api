@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channel_id', $data) && null !== $data['channel_id']) {
             $object->setChannelId($data['channel_id']);
         } elseif (\array_key_exists('channel_id', $data) && null === $data['channel_id']) {
@@ -85,24 +88,16 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannelId()) {
-            $data['channel_id'] = $object->getChannelId();
-        }
-        if (null !== $object->getDateCreated()) {
-            $data['date_created'] = $object->getDateCreated();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getPostAt()) {
+        $data['channel_id'] = $object->getChannelId();
+        $data['date_created'] = $object->getDateCreated();
+        $data['id'] = $object->getId();
+        $value = $object->getPostAt();
+        if (\is_int($object->getPostAt())) {
             $value = $object->getPostAt();
-            if (\is_int($object->getPostAt())) {
-                $value = $object->getPostAt();
-            } elseif (\is_string($object->getPostAt())) {
-                $value = $object->getPostAt();
-            }
-            $data['post_at'] = $value;
+        } elseif (\is_string($object->getPostAt())) {
+            $value = $object->getPostAt();
         }
+        $data['post_at'] = $value;
         if (null !== $object->getText()) {
             $data['text'] = $object->getText();
         }

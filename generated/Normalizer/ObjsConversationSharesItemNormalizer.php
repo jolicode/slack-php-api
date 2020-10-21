@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversationSharesItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
             $object->setAcceptedUser($data['accepted_user']);
         } elseif (\array_key_exists('accepted_user', $data) && null === $data['accepted_user']) {
@@ -92,21 +95,11 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getAcceptedUser()) {
             $data['accepted_user'] = $object->getAcceptedUser();
         }
-        if (null !== $object->getDateCreate()) {
-            $data['date_create'] = $object->getDateCreate();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getIsActive()) {
-            $data['is_active'] = $object->getIsActive();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getTeam()) {
-            $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
-        }
+        $data['date_create'] = $object->getDateCreate();
+        $data['id'] = $object->getId();
+        $data['is_active'] = $object->getIsActive();
+        $data['name'] = $object->getName();
+        $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
         if (null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }

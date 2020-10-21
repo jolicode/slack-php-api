@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('bot_id', $data) && null !== $data['bot_id']) {
             $object->setBotId($data['bot_id']);
         } elseif (\array_key_exists('bot_id', $data) && null === $data['bot_id']) {
@@ -100,24 +103,12 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
         if (null !== $object->getIsEnterpriseInstall()) {
             $data['is_enterprise_install'] = $object->getIsEnterpriseInstall();
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getTeam()) {
-            $data['team'] = $object->getTeam();
-        }
-        if (null !== $object->getTeamId()) {
-            $data['team_id'] = $object->getTeamId();
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $object->getUser();
-        }
-        if (null !== $object->getUserId()) {
-            $data['user_id'] = $object->getUserId();
-        }
+        $data['ok'] = $object->getOk();
+        $data['team'] = $object->getTeam();
+        $data['team_id'] = $object->getTeamId();
+        $data['url'] = $object->getUrl();
+        $data['user'] = $object->getUser();
+        $data['user_id'] = $object->getUserId();
 
         return $data;
     }

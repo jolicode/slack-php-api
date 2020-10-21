@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('attachments', $data) && null !== $data['attachments']) {
             $values = [];
             foreach ($data['attachments'] as $value) {
@@ -110,27 +113,17 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
             }
             $data['attachments'] = $values;
         }
-        if (null !== $object->getBotId()) {
-            $data['bot_id'] = $object->getBotId();
-        }
+        $data['bot_id'] = $object->getBotId();
         if (null !== $object->getBotProfile()) {
             $data['bot_profile'] = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
         }
         if (null !== $object->getSubtype()) {
             $data['subtype'] = $object->getSubtype();
         }
-        if (null !== $object->getTeam()) {
-            $data['team'] = $object->getTeam();
-        }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $object->getUser();
-        }
+        $data['team'] = $object->getTeam();
+        $data['text'] = $object->getText();
+        $data['type'] = $object->getType();
+        $data['user'] = $object->getUser();
         if (null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }

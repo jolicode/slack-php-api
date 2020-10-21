@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api;
 
-class Client extends \Jane\OpenApiRuntime\Client\Client
+class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
 {
     /**
      * Approve an app for installation on a workspace.

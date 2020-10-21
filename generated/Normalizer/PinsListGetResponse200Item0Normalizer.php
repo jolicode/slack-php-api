@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('items', $data) && null !== $data['items']) {
             $value = $data['items'];
             if (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
@@ -78,26 +81,22 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getItems()) {
-            $value = $object->getItems();
-            if (\is_array($object->getItems())) {
-                $values = [];
-                foreach ($object->getItems() as $value_1) {
-                    $values[] = $this->normalizer->normalize($value_1, 'json', $context);
-                }
-                $value = $values;
-            } elseif (\is_array($object->getItems())) {
-                $values_1 = [];
-                foreach ($object->getItems() as $value_2) {
-                    $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
-                }
-                $value = $values_1;
+        $value = $object->getItems();
+        if (\is_array($object->getItems())) {
+            $values = [];
+            foreach ($object->getItems() as $value_1) {
+                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['items'] = $value;
+            $value = $values;
+        } elseif (\is_array($object->getItems())) {
+            $values_1 = [];
+            foreach ($object->getItems() as $value_2) {
+                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $value = $values_1;
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['items'] = $value;
+        $data['ok'] = $object->getOk();
 
         return $data;
     }
