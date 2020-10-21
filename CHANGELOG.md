@@ -7,7 +7,7 @@
   * remove all `im*`, `mpim*`, `channels*` and `groups*` channels
 * ease up the patching process:
   * in the patched json file, sort endpoint query parameters by their `name` attributes, to keep a consistent order
-  * auto-merge `objs_user` and `objs_conversation` plymorphic properties in order to keep the patch chunks as small as possible
+  * auto-merge `objs_user` and `objs_conversation` polymorphic properties in order to keep the patch hunks as small as possible
 
 ## 3.0.2 (2020-10-20)
 
