@@ -49,7 +49,7 @@ class UpdateSpecificationCommand extends Command
         // sort the spec file
         $sorter = new JsonSorter();
         file_put_contents(__DIR__.'/../../resources/slack-openapi-sorted.json', $sorter->sort($content));
-        $output->writeln('<info>Sorted the official specification by keys</info>');
+        $output->writeln('<info>Sorted the official specification by keys and merged User and Conversation objects</info>');
 
         // apply the patches to the sorted spec
         $patchCommand = 'patch --verbose -p0 < resources/slack-openapi-sorted.patch -o resources/slack-openapi-patched.json';
