@@ -37,7 +37,7 @@ class JsonSorter
                 $asArray[$key] = $this->recursiveAlphabeticalSort($item->$key);
 
                 if ('parameters' === $key) {
-                    usort($asArray['parameters'], function($a, $b) {
+                    usort($asArray['parameters'], function ($a, $b) {
                         return isset($a['name']) && isset($b['name']) && $a['name'] > $b['name'];
                     });
                 }
@@ -73,7 +73,7 @@ class JsonSorter
         }
 
         if (isset($item->definitions->objs_conversation->items)) {
-            $objsConversation =$this->mergeNodeItems($item->definitions->objs_conversation->items);
+            $objsConversation = $this->mergeNodeItems($item->definitions->objs_conversation->items);
             $objsConversation->properties->id->{'$ref'} = '#/definitions/defs_channel';
             $objsConversation->title = 'Merged: Conversation MPIM Object, Conversation IM Channel Object from conversations.* methods, or Conversation object';
             $item->definitions->objs_conversation = $objsConversation;
