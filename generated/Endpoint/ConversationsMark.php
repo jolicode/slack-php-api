@@ -23,7 +23,7 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      * @param array $formParameters {
      *
      *     @var string $channel channel or conversation to set the read cursor for
-     *     @var float $ts Unique identifier of message you want marked as most recently seen in this conversation.
+     *     @var string $ts Unique identifier of message you want marked as most recently seen in this conversation.
      * }
      *
      * @param array $headerParameters {
@@ -69,7 +69,7 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('ts', ['float']);
+        $optionsResolver->setAllowedTypes('ts', ['string']);
 
         return $optionsResolver;
     }

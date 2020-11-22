@@ -124,4 +124,26 @@ class WritingTest extends TestCase
 
         $this->assertTrue($response->getOk());
     }
+
+    public function testItCanMarkConversation()
+    {
+        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+
+        $response = $client->chatPostMessage([
+            'username' => 'User A',
+            'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'text' => 'Message to be mark as read',
+        ]);
+
+        self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
+
+        $ts = $response->getTs();
+
+        $markResponse = $client->conversationsMark([
+            'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'ts' => $ts,
+        ]);
+
+        self::assertTrue($markResponse->getOk());
+    }
 }

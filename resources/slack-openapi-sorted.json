@@ -16010,6 +16010,7 @@
                                 "error": {
                                     "enum": [
                                         "account_inactive",
+                                        "file_upload_size_restricted",
                                         "file_uploads_disabled",
                                         "file_uploads_except_images_disabled",
                                         "invalid_arg_name",

@@ -16558,6 +16558,7 @@
                                         "posting_to_general_channel_denied",
                                         "invalid_channel",
                                         "file_uploads_disabled",
+                                        "file_upload_size_restricted",
                                         "file_uploads_except_images_disabled",
                                         "storage_limit_reached",
                                         "not_authed",

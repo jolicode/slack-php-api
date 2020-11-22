@@ -2148,7 +2148,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      * @param array $formParameters {
      *
      *     @var string $channel channel or conversation to set the read cursor for
-     *     @var float $ts Unique identifier of message you want marked as most recently seen in this conversation.
+     *     @var string $ts Unique identifier of message you want marked as most recently seen in this conversation.
      * }
      *
      * @param array $headerParameters {

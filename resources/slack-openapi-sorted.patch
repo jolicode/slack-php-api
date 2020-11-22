@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2020-10-21 09:45:29.539363011 +0200
-+++ resources/slack-openapi-patched.json	2020-10-21 10:14:27.338439082 +0200
+--- resources/slack-openapi-sorted.json	2020-11-22 19:07:43.855900105 +0100
++++ resources/slack-openapi-patched.json	2020-11-22 19:20:36.996043162 +0100
 @@ -507,20 +507,21 @@
                      "type": "boolean"
                  },
@@ -2482,6 +2482,29 @@
                                  "ok",
                                  "pin_count"
                              ],
+@@ -12655,21 +12679,21 @@
+                     {
+                         "description": "Authentication token. Requires scope: `conversations:write`",
+                         "in": "header",
+                         "name": "token",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Unique identifier of message you want marked as most recently seen in this conversation.",
+                         "in": "formData",
+                         "name": "ts",
+-                        "type": "number"
++                        "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "schema": {
+                             "additionalProperties": false,
 @@ -13252,21 +13276,21 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:history`",
