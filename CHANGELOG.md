@@ -3,8 +3,19 @@
 ## Unreleased
 
 * **Breaking** Specification update to latest Slack official version - see slackapi/slack-api-specs#44
-  * add some new methods
-  * remove all `im*`, `mpim*`, `channels*` and `groups*` channels
+  * added methods:
+    * `/admin.conversations.*`
+    * `/admin.usergroups.*`
+    * `/admin.users.session.invalidate`
+    * `/apps.event.authorizations.list`
+    * `/calls.*`
+    * `/conversations.mark`
+    * `/workflows.*`
+  * removed methods:
+    * `/im*`
+    * `/mpim*`
+    * `/channels*`
+    * `/groups*`
 * ease up the patching process:
   * in the patched json file, sort endpoint query parameters by their `name` attributes, to keep a consistent order
   * auto-merge `objs_user` and `objs_conversation` polymorphic properties in order to keep the patch hunks as small as possible
