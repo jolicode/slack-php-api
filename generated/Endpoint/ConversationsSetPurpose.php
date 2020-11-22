@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ConversationsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ConversationsSetPurpose extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Sets the purpose for a conversation.
      *
      * @param array $formParameters {
      *
-     *     @var string $purpose A new, specialer purpose
      *     @var string $channel Conversation to set the purpose of
+     *     @var string $purpose A new, specialer purpose
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsSetPurpose extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['purpose', 'channel']);
+        $optionsResolver->setDefined(['channel', 'purpose']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('purpose', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('purpose', ['string']);
 
         return $optionsResolver;
     }

@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Lists all users in a Slack team.
@@ -23,9 +23,9 @@ class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
      * @param array $queryParameters {
      *
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     *     @var string $token Authentication token. Requires scope: `users:read`
-     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
      *     @var bool $include_locale Set this to `true` to receive the locale for users. Defaults to `false`
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.
+     *     @var string $token Authentication token. Requires scope: `users:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +61,13 @@ class UsersList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'token', 'limit', 'include_locale']);
+        $optionsResolver->setDefined(['cursor', 'include_locale', 'limit', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('include_locale', ['bool']);
+        $optionsResolver->setAllowedTypes('limit', ['int']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

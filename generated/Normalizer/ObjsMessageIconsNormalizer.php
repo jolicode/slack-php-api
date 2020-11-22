@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,10 +47,18 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageIcons();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('emoji', $data) && null !== $data['emoji']) {
             $object->setEmoji($data['emoji']);
         } elseif (\array_key_exists('emoji', $data) && null === $data['emoji']) {
             $object->setEmoji(null);
+        }
+        if (\array_key_exists('image_64', $data) && null !== $data['image_64']) {
+            $object->setImage64($data['image_64']);
+        } elseif (\array_key_exists('image_64', $data) && null === $data['image_64']) {
+            $object->setImage64(null);
         }
 
         return $object;
@@ -61,6 +69,9 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
         $data = [];
         if (null !== $object->getEmoji()) {
             $data['emoji'] = $object->getEmoji();
+        }
+        if (null !== $object->getImage64()) {
+            $data['image_64'] = $object->getImage64();
         }
 
         return $data;

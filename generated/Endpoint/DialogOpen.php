@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class DialogOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Open a dialog with a user.
      *
      * @param array $queryParameters {
      *
-     *     @var string $trigger_id exchange a trigger to post to the user
      *     @var string $dialog The dialog definition. This must be a JSON-encoded string.
+     *     @var string $trigger_id Exchange a trigger to post to the user.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class DialogOpen extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['trigger_id', 'dialog']);
-        $optionsResolver->setRequired(['trigger_id', 'dialog']);
+        $optionsResolver->setDefined(['dialog', 'trigger_id']);
+        $optionsResolver->setRequired(['dialog', 'trigger_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
         $optionsResolver->setAllowedTypes('dialog', ['string']);
+        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
 
         return $optionsResolver;
     }

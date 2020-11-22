@@ -24,6 +24,14 @@ You can now build a new SDK using this patched specification.
 
 ## Regenerate the SDk
 
+If you suspect that some endpoints or models have been removed, first remove all the content
+of the `generated` directory:
+
+```bash
+rm -Rf generated/*
+```
+
+
 When the versioned specification has been updated, you can run Jane to regenerate the SDK:
 
 ```bash
@@ -43,4 +51,9 @@ a new specification bug, here is the process to propose changes:
 ./bin/slack-api-client-generator spec:generate-patch
 ```
 
-It will create a new version of the cumulative patch in `resources`.
+It will create a new version of the cumulative patch in the `resources` directory. Before pushing
+changes, you can check that the patch is correctly re-applied:
+
+```bash
+./bin/slack-api-client-generator spec:update
+```

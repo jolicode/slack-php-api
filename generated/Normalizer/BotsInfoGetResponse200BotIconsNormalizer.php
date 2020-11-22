@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('image_36', $data) && null !== $data['image_36']) {
             $object->setImage36($data['image_36']);
         } elseif (\array_key_exists('image_36', $data) && null === $data['image_36']) {
@@ -69,15 +72,9 @@ class BotsInfoGetResponse200BotIconsNormalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getImage36()) {
-            $data['image_36'] = $object->getImage36();
-        }
-        if (null !== $object->getImage48()) {
-            $data['image_48'] = $object->getImage48();
-        }
-        if (null !== $object->getImage72()) {
-            $data['image_72'] = $object->getImage72();
-        }
+        $data['image_36'] = $object->getImage36();
+        $data['image_48'] = $object->getImage48();
+        $data['image_72'] = $object->getImage72();
 
         return $data;
     }

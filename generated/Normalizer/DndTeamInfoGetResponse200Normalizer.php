@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,20 +47,19 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200();
-        if (\array_key_exists('cached', $data) && null !== $data['cached']) {
-            $object->setCached($data['cached']);
-        } elseif (\array_key_exists('cached', $data) && null === $data['cached']) {
-            $object->setCached(null);
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
+            unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
         }
-        if (\array_key_exists('users', $data) && null !== $data['users']) {
-            $object->setUsers($data['users']);
-        } elseif (\array_key_exists('users', $data) && null === $data['users']) {
-            $object->setUsers(null);
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -69,14 +68,11 @@ class DndTeamInfoGetResponse200Normalizer implements DenormalizerInterface, Norm
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCached()) {
-            $data['cached'] = $object->getCached();
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getUsers()) {
-            $data['users'] = $object->getUsers();
+        $data['ok'] = $object->getOk();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
 
         return $data;

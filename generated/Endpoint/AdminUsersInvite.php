@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminUsersInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Invite a user to a workspace.
@@ -23,14 +23,14 @@ class AdminUsersInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @param array $formParameters {
      *
      *     @var string $channel_ids A comma-separated list of `channel_id`s for this user to join. At least one channel is required.
-     *     @var string $team_id the ID (`T1234`) of the workspace
-     *     @var string $real_name full name of the user
-     *     @var bool $is_ultra_restricted Is this user a single channel guest user? (default: false)
      *     @var string $custom_message an optional message to send to the user in the invite email
-     *     @var bool $is_restricted Is this user a multi-channel guest user? (default: false)
-     *     @var string $guest_expiration_ts Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
      *     @var string $email the email address of the person to invite
+     *     @var string $guest_expiration_ts Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
+     *     @var bool $is_restricted Is this user a multi-channel guest user? (default: false)
+     *     @var bool $is_ultra_restricted Is this user a single channel guest user? (default: false)
+     *     @var string $real_name full name of the user
      *     @var bool $resend Allow this invite to be resent in the future if a user has not signed up yet. (default: false)
+     *     @var string $team_id The ID (`T1234`) of the workspace.
      * }
      *
      * @param array $headerParameters {
@@ -72,18 +72,18 @@ class AdminUsersInvite extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['channel_ids', 'team_id', 'real_name', 'is_ultra_restricted', 'custom_message', 'is_restricted', 'guest_expiration_ts', 'email', 'resend']);
-        $optionsResolver->setRequired(['channel_ids', 'team_id', 'email']);
+        $optionsResolver->setDefined(['channel_ids', 'custom_message', 'email', 'guest_expiration_ts', 'is_restricted', 'is_ultra_restricted', 'real_name', 'resend', 'team_id']);
+        $optionsResolver->setRequired(['channel_ids', 'email', 'team_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('real_name', ['string']);
-        $optionsResolver->setAllowedTypes('is_ultra_restricted', ['bool']);
         $optionsResolver->setAllowedTypes('custom_message', ['string']);
-        $optionsResolver->setAllowedTypes('is_restricted', ['bool']);
-        $optionsResolver->setAllowedTypes('guest_expiration_ts', ['string']);
         $optionsResolver->setAllowedTypes('email', ['string']);
+        $optionsResolver->setAllowedTypes('guest_expiration_ts', ['string']);
+        $optionsResolver->setAllowedTypes('is_restricted', ['bool']);
+        $optionsResolver->setAllowedTypes('is_ultra_restricted', ['bool']);
+        $optionsResolver->setAllowedTypes('real_name', ['string']);
         $optionsResolver->setAllowedTypes('resend', ['bool']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class BotsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class BotsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Gets information about a bot user.
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users:read`
      *     @var string $bot Bot user to get info on
+     *     @var string $token Authentication token. Requires scope: `users:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -59,11 +59,11 @@ class BotsInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'bot']);
+        $optionsResolver->setDefined(['bot', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('bot', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

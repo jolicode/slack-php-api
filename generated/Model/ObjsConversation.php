@@ -44,10 +44,6 @@ class ObjsConversation
      */
     protected $enterpriseId;
     /**
-     * @var mixed|null
-     */
-    protected $externalConnections;
-    /**
      * @var bool|null
      */
     protected $hasPins;
@@ -159,10 +155,6 @@ class ObjsConversation
      * @var mixed|null
      */
     protected $latest;
-    /**
-     * @var string|null
-     */
-    protected $locale;
     /**
      * @var string[]|null
      */
@@ -334,24 +326,6 @@ class ObjsConversation
     public function setEnterpriseId(?string $enterpriseId): self
     {
         $this->enterpriseId = $enterpriseId;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getExternalConnections()
-    {
-        return $this->externalConnections;
-    }
-
-    /**
-     * @param mixed $externalConnections
-     */
-    public function setExternalConnections($externalConnections): self
-    {
-        $this->externalConnections = $externalConnections;
 
         return $this;
     }
@@ -700,18 +674,6 @@ class ObjsConversation
     public function setLatest($latest): self
     {
         $this->latest = $latest;
-
-        return $this;
-    }
-
-    public function getLocale(): ?string
-    {
-        return $this->locale;
-    }
-
-    public function setLocale(?string $locale): self
-    {
-        $this->locale = $locale;
 
         return $this;
     }

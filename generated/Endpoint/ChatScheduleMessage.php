@@ -13,27 +13,27 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ChatScheduleMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Schedules a message to be sent to a channel.
      *
      * @param array $formParameters {
      *
-     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
-     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
-     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
-     *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
-     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
-     *     @var bool $link_names find and link channel names and usernames
-     *     @var bool $unfurl_media pass false to disable unfurling of media content
-     *     @var string $parse Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).
      *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [chat.postMessage](chat.postMessage#authorship).
-     *     @var int $post_at unix EPOCH timestamp of time in future to send the message
+     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
      *     @var string $channel Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
+     *     @var bool $link_names find and link channel names and usernames
+     *     @var string $parse Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).
+     *     @var int $post_at unix EPOCH timestamp of time in future to send the message
      *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
+     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
+     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
+     *     @var bool $unfurl_media Pass false to disable unfurling of media content.
      * }
      *
      * @param array $headerParameters {
@@ -75,21 +75,21 @@ class ChatScheduleMessage extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['thread_ts', 'blocks', 'attachments', 'unfurl_links', 'text', 'link_names', 'unfurl_media', 'parse', 'as_user', 'post_at', 'channel', 'reply_broadcast']);
+        $optionsResolver->setDefined(['as_user', 'attachments', 'blocks', 'channel', 'link_names', 'parse', 'post_at', 'reply_broadcast', 'text', 'thread_ts', 'unfurl_links', 'unfurl_media']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
-        $optionsResolver->setAllowedTypes('blocks', ['string']);
-        $optionsResolver->setAllowedTypes('attachments', ['string']);
-        $optionsResolver->setAllowedTypes('unfurl_links', ['bool']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('link_names', ['bool']);
-        $optionsResolver->setAllowedTypes('unfurl_media', ['bool']);
-        $optionsResolver->setAllowedTypes('parse', ['string']);
         $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('post_at', ['int']);
+        $optionsResolver->setAllowedTypes('attachments', ['string']);
+        $optionsResolver->setAllowedTypes('blocks', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('link_names', ['bool']);
+        $optionsResolver->setAllowedTypes('parse', ['string']);
+        $optionsResolver->setAllowedTypes('post_at', ['int']);
         $optionsResolver->setAllowedTypes('reply_broadcast', ['bool']);
+        $optionsResolver->setAllowedTypes('text', ['string']);
+        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->setAllowedTypes('unfurl_links', ['bool']);
+        $optionsResolver->setAllowedTypes('unfurl_media', ['bool']);
 
         return $optionsResolver;
     }

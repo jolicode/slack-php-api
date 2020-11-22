@@ -14,9 +14,8 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ApiTestGetResponse200;
-use JoliCode\Slack\Api\Model\ChannelsHistoryGetResponse200;
+use JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200;
 use JoliCode\Slack\Api\Model\ConversationsListGetResponse200;
-use JoliCode\Slack\Api\Model\ImListGetResponse200;
 use JoliCode\Slack\Api\Model\ObjsFile;
 use JoliCode\Slack\Api\Model\SearchMessagesGetResponse200;
 use JoliCode\Slack\Api\Model\UsersListGetResponse200;
@@ -69,15 +68,15 @@ class ReadingTest extends TestCase
         $client->usersList();
     }
 
-    public function testItCanReadAChannelHistory()
+    public function testItCanReadAConversationHistory()
     {
         $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
 
-        $results = $client->channelsHistory([
+        $results = $client->conversationsHistory([
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
         ]);
 
-        self::assertInstanceOf(ChannelsHistoryGetResponse200::class, $results);
+        self::assertInstanceOf(ConversationsHistoryGetResponse200::class, $results);
 
         foreach ($results->getMessages() as $message) {
             if ($message->getFiles()) {
@@ -90,10 +89,10 @@ class ReadingTest extends TestCase
     {
         $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
 
-        $results = $client->imList();
+        $results = $client->conversationsList(['types' => 'im']);
 
-        self::assertInstanceOf(ImListGetResponse200::class, $results);
-        self::assertNotEmpty($results->getIms());
+        self::assertInstanceOf(ConversationsListGetResponse200::class, $results);
+        self::assertNotEmpty($results->getChannels());
     }
 
     public function testItCanReadConversationsAndHydrateThem()

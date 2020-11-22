@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\RtmConnectGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
@@ -74,18 +77,10 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getSelf()) {
-            $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
-        }
-        if (null !== $object->getTeam()) {
-            $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
-        }
-        if (null !== $object->getUrl()) {
-            $data['url'] = $object->getUrl();
-        }
+        $data['ok'] = $object->getOk();
+        $data['self'] = $this->normalizer->normalize($object->getSelf(), 'json', $context);
+        $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
+        $data['url'] = $object->getUrl();
 
         return $data;
     }

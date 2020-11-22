@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminInviteRequestsDeny extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminInviteRequestsDeny extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Deny a workspace invite request.
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id ID for the workspace where the invite request was made
-     *     @var string $invite_request_id ID of the request to invite.
+     *     @var string $invite_request_id ID of the request to invite
+     *     @var string $team_id ID for the workspace where the invite request was made.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminInviteRequestsDeny extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['team_id', 'invite_request_id']);
+        $optionsResolver->setDefined(['invite_request_id', 'team_id']);
         $optionsResolver->setRequired(['invite_request_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('invite_request_id', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

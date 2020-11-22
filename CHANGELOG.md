@@ -1,5 +1,26 @@
 # Changes between versions
 
+## Unreleased
+
+* **Breaking** Specification update to latest Slack official version - see slackapi/slack-api-specs#44
+  * added methods:
+    * `/admin.conversations.*`
+    * `/admin.usergroups.*`
+    * `/admin.users.session.invalidate`
+    * `/apps.event.authorizations.list`
+    * `/calls.*`
+    * `/conversations.mark`
+    * `/workflows.*`
+  * removed methods:
+    * `/im*`
+    * `/mpim*`
+    * `/channels*`
+    * `/groups*`
+* ease up the patching process:
+  * in the patched json file, sort endpoint query parameters by their `name` attributes, to keep a consistent order
+  * auto-merge `objs_user` and `objs_conversation` polymorphic properties in order to keep the patch hunks as small as possible
+* Upgrade to JanePHP version 6.2
+
 ## 3.0.2 (2020-10-20)
 
 * **Specification override** Allow string and integer for the "post_at" field in chatScheduleMessage

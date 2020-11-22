@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,10 +47,31 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsResponseMetadata();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('messages', $data) && null !== $data['messages']) {
+            $values = [];
+            foreach ($data['messages'] as $value) {
+                $values[] = $value;
+            }
+            $object->setMessages($values);
+        } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
+            $object->setMessages(null);
+        }
         if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
             $object->setNextCursor($data['next_cursor']);
         } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
             $object->setNextCursor(null);
+        }
+        if (\array_key_exists('warnings', $data) && null !== $data['warnings']) {
+            $values_1 = [];
+            foreach ($data['warnings'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setWarnings($values_1);
+        } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
+            $object->setWarnings(null);
         }
 
         return $object;
@@ -59,8 +80,20 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getNextCursor()) {
-            $data['next_cursor'] = $object->getNextCursor();
+        if (null !== $object->getMessages()) {
+            $values = [];
+            foreach ($object->getMessages() as $value) {
+                $values[] = $value;
+            }
+            $data['messages'] = $values;
+        }
+        $data['next_cursor'] = $object->getNextCursor();
+        if (null !== $object->getWarnings()) {
+            $values_1 = [];
+            foreach ($object->getWarnings() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['warnings'] = $values_1;
         }
 
         return $data;

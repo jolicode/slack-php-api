@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AuthTestGetResponse200
 {
     /**
+     * @var string|null
+     */
+    protected $botId;
+    /**
      * @var bool|null
      */
     protected $isEnterpriseInstall;
@@ -43,6 +47,18 @@ class AuthTestGetResponse200
      * @var string|null
      */
     protected $userId;
+
+    public function getBotId(): ?string
+    {
+        return $this->botId;
+    }
+
+    public function setBotId(?string $botId): self
+    {
+        $this->botId = $botId;
+
+        return $this;
+    }
 
     public function getIsEnterpriseInstall(): ?bool
     {

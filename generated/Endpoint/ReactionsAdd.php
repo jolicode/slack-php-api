@@ -13,18 +13,18 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ReactionsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Adds a reaction to an item.
      *
      * @param array $formParameters {
      *
-     *     @var string $timestamp timestamp of the message to add reaction to
+     *     @var string $channel channel where the message to add reaction to was posted
      *     @var string $name reaction (emoji) name
-     *     @var string $channel Channel where the message to add reaction to was posted.
+     *     @var string $timestamp Timestamp of the message to add reaction to.
      * }
      *
      * @param array $headerParameters {
@@ -66,12 +66,12 @@ class ReactionsAdd extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['timestamp', 'name', 'channel']);
-        $optionsResolver->setRequired(['timestamp', 'name', 'channel']);
+        $optionsResolver->setDefined(['channel', 'name', 'timestamp']);
+        $optionsResolver->setRequired(['channel', 'name', 'timestamp']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
-        $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->setAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }

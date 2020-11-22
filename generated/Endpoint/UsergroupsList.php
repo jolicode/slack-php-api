@@ -13,19 +13,19 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class UsergroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsergroupsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * List all User Groups for a team.
      *
      * @param array $queryParameters {
      *
+     *     @var bool $include_count include the number of users in each User Group
+     *     @var bool $include_disabled include disabled User Groups
      *     @var bool $include_users include the list of users for each User Group
      *     @var string $token Authentication token. Requires scope: `usergroups:read`
-     *     @var bool $include_count include the number of users in each User Group
-     *     @var bool $include_disabled Include disabled User Groups.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +61,13 @@ class UsergroupsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['include_users', 'token', 'include_count', 'include_disabled']);
+        $optionsResolver->setDefined(['include_count', 'include_disabled', 'include_users', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_users', ['bool']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('include_count', ['bool']);
         $optionsResolver->setAllowedTypes('include_disabled', ['bool']);
+        $optionsResolver->setAllowedTypes('include_users', ['bool']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -13,18 +13,18 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminTeamsSettingsSetIcon extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Sets the icon of a workspace.
      *
      * @param array $formParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
      *     @var string $image_url Image URL for the icon
-     *     @var string $team_id ID for the workspace to set the icon for.
+     *     @var string $team_id ID for the workspace to set the icon for
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
      * }
      */
     public function __construct(array $formParameters = [])
@@ -60,12 +60,12 @@ class AdminTeamsSettingsSetIcon extends \Jane\OpenApiRuntime\Client\BaseEndpoint
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['token', 'image_url', 'team_id']);
+        $optionsResolver->setDefined(['image_url', 'team_id', 'token']);
         $optionsResolver->setRequired(['image_url', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('image_url', ['string']);
         $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

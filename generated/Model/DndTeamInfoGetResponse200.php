@@ -13,32 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class DndTeamInfoGetResponse200
+class DndTeamInfoGetResponse200 extends \ArrayObject
 {
     /**
      * @var bool|null
      */
-    protected $cached;
-    /**
-     * @var bool|null
-     */
     protected $ok;
-    /**
-     * @var mixed|null
-     */
-    protected $users;
-
-    public function getCached(): ?bool
-    {
-        return $this->cached;
-    }
-
-    public function setCached(?bool $cached): self
-    {
-        $this->cached = $cached;
-
-        return $this;
-    }
 
     public function getOk(): ?bool
     {
@@ -48,24 +28,6 @@ class DndTeamInfoGetResponse200
     public function setOk(?bool $ok): self
     {
         $this->ok = $ok;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
-    /**
-     * @param mixed $users
-     */
-    public function setUsers($users): self
-    {
-        $this->users = $users;
 
         return $this;
     }

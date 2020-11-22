@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('dnd_enabled', $data) && null !== $data['dnd_enabled']) {
             $object->setDndEnabled($data['dnd_enabled']);
         } elseif (\array_key_exists('dnd_enabled', $data) && null === $data['dnd_enabled']) {
@@ -79,21 +82,11 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getDndEnabled()) {
-            $data['dnd_enabled'] = $object->getDndEnabled();
-        }
-        if (null !== $object->getNextDndEndTs()) {
-            $data['next_dnd_end_ts'] = $object->getNextDndEndTs();
-        }
-        if (null !== $object->getNextDndStartTs()) {
-            $data['next_dnd_start_ts'] = $object->getNextDndStartTs();
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getSnoozeEnabled()) {
-            $data['snooze_enabled'] = $object->getSnoozeEnabled();
-        }
+        $data['dnd_enabled'] = $object->getDndEnabled();
+        $data['next_dnd_end_ts'] = $object->getNextDndEndTs();
+        $data['next_dnd_start_ts'] = $object->getNextDndStartTs();
+        $data['ok'] = $object->getOk();
+        $data['snooze_enabled'] = $object->getSnoozeEnabled();
 
         return $data;
     }

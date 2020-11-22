@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ConversationsRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Renames a conversation.
      *
      * @param array $formParameters {
      *
-     *     @var string $name new name for conversation
      *     @var string $channel ID of conversation to rename
+     *     @var string $name New name for conversation.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'channel']);
+        $optionsResolver->setDefined(['channel', 'name']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }

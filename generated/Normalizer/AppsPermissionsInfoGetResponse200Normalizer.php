@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class AppsPermissionsInfoGetResponse200Normalizer implements DenormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('info', $data) && null !== $data['info']) {
             $object->setInfo($this->denormalizer->denormalize($data['info'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info', 'json', $context));
         } elseif (\array_key_exists('info', $data) && null === $data['info']) {
@@ -64,12 +67,8 @@ class AppsPermissionsInfoGetResponse200Normalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getInfo()) {
-            $data['info'] = $this->normalizer->normalize($object->getInfo(), 'json', $context);
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['info'] = $this->normalizer->normalize($object->getInfo(), 'json', $context);
+        $data['ok'] = $object->getOk();
 
         return $data;
     }

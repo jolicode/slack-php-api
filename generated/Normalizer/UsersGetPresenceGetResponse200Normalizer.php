@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('auto_away', $data) && null !== $data['auto_away']) {
             $object->setAutoAway($data['auto_away']);
             unset($data['auto_away']);
@@ -113,15 +116,11 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
         if (null !== $object->getManualAway()) {
             $data['manual_away'] = $object->getManualAway();
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['ok'] = $object->getOk();
         if (null !== $object->getOnline()) {
             $data['online'] = $object->getOnline();
         }
-        if (null !== $object->getPresence()) {
-            $data['presence'] = $object->getPresence();
-        }
+        $data['presence'] = $object->getPresence();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

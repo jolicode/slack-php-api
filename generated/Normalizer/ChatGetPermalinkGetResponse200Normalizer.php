@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ChatGetPermalinkGetResponse200Normalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
             $object->setChannel($data['channel']);
         } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
@@ -69,15 +72,9 @@ class ChatGetPermalinkGetResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannel()) {
-            $data['channel'] = $object->getChannel();
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getPermalink()) {
-            $data['permalink'] = $object->getPermalink();
-        }
+        $data['channel'] = $object->getChannel();
+        $data['ok'] = $object->getOk();
+        $data['permalink'] = $object->getPermalink();
 
         return $data;
     }

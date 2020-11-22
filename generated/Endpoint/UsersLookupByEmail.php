@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class UsersLookupByEmail extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Find a user with an email address.
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users:read.email`
      *     @var string $email An email address belonging to a user in the workspace
+     *     @var string $token Authentication token. Requires scope: `users:read.email`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -59,11 +59,11 @@ class UsersLookupByEmail extends \Jane\OpenApiRuntime\Client\BaseEndpoint implem
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'email']);
+        $optionsResolver->setDefined(['email', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('email', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

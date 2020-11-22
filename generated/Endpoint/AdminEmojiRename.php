@@ -13,18 +13,18 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminEmojiRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminEmojiRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Rename an emoji.
      *
      * @param array $formParameters {
      *
+     *     @var string $name The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included.
      *     @var string $new_name the new name of the emoji
      *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *     @var string $name The name of the emoji to be renamed. Colons (`:myemoji:`) around the value are not required, although they may be included.
      * }
      */
     public function __construct(array $formParameters = [])
@@ -60,12 +60,12 @@ class AdminEmojiRename extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['new_name', 'token', 'name']);
-        $optionsResolver->setRequired(['new_name', 'name']);
+        $optionsResolver->setDefined(['name', 'new_name', 'token']);
+        $optionsResolver->setRequired(['name', 'new_name']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('name', ['string']);
         $optionsResolver->setAllowedTypes('new_name', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }

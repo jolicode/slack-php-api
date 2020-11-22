@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AppsPermissionsUsersRequest extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsPermissionsUsersRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Enables an app to trigger a permissions modal to grant an app access to a user access scope.
@@ -24,8 +24,8 @@ class AppsPermissionsUsersRequest extends \Jane\OpenApiRuntime\Client\BaseEndpoi
      *
      *     @var string $scopes A comma separated list of user scopes to request for
      *     @var string $token Authentication token. Requires scope: `none`
-     *     @var string $user The user this scope is being requested for
      *     @var string $trigger_id Token used to trigger the request
+     *     @var string $user The user this scope is being requested for
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +61,13 @@ class AppsPermissionsUsersRequest extends \Jane\OpenApiRuntime\Client\BaseEndpoi
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['scopes', 'token', 'user', 'trigger_id']);
-        $optionsResolver->setRequired(['scopes', 'user', 'trigger_id']);
+        $optionsResolver->setDefined(['scopes', 'token', 'trigger_id', 'user']);
+        $optionsResolver->setRequired(['scopes', 'trigger_id', 'user']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('scopes', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
         $optionsResolver->setAllowedTypes('trigger_id', ['string']);
+        $optionsResolver->setAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

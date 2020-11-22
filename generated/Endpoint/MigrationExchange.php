@@ -13,17 +13,18 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class MigrationExchange extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * For Enterprise Grid workspaces, map local user IDs to global user IDs.
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `tokens.basic`
+     *     @var string $team_id Specify team_id starts with `T` in case of Org Token
      *     @var bool $to_old Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
+     *     @var string $token Authentication token. Requires scope: `tokens.basic`
      *     @var string $users A comma-separated list of user ids, up to 400 per request
      * }
      */
@@ -60,11 +61,12 @@ class MigrationExchange extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'to_old', 'users']);
+        $optionsResolver->setDefined(['team_id', 'to_old', 'token', 'users']);
         $optionsResolver->setRequired(['users']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('to_old', ['bool']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('users', ['string']);
 
         return $optionsResolver;

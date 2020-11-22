@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminUsersSetExpiration extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminUsersSetExpiration extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Set an expiration for a guest user.
@@ -23,8 +23,8 @@ class AdminUsersSetExpiration extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
      * @param array $formParameters {
      *
      *     @var int $expiration_ts timestamp when guest account should be disabled
-     *     @var string $user_id the ID of the user to set an expiration for
-     *     @var string $team_id The ID (`T1234`) of the workspace.
+     *     @var string $team_id the ID (`T1234`) of the workspace
+     *     @var string $user_id The ID of the user to set an expiration for.
      * }
      *
      * @param array $headerParameters {
@@ -66,12 +66,12 @@ class AdminUsersSetExpiration extends \Jane\OpenApiRuntime\Client\BaseEndpoint i
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['expiration_ts', 'user_id', 'team_id']);
-        $optionsResolver->setRequired(['expiration_ts', 'user_id', 'team_id']);
+        $optionsResolver->setDefined(['expiration_ts', 'team_id', 'user_id']);
+        $optionsResolver->setRequired(['expiration_ts', 'team_id', 'user_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('expiration_ts', ['int']);
-        $optionsResolver->setAllowedTypes('user_id', ['string']);
         $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->setAllowedTypes('user_id', ['string']);
 
         return $optionsResolver;
     }

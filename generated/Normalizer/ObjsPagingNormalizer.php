@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsPaging();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('count', $data) && null !== $data['count']) {
             $object->setCount($data['count']);
         } elseif (\array_key_exists('count', $data) && null === $data['count']) {
@@ -87,9 +90,7 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getCount()) {
             $data['count'] = $object->getCount();
         }
-        if (null !== $object->getPage()) {
-            $data['page'] = $object->getPage();
-        }
+        $data['page'] = $object->getPage();
         if (null !== $object->getPages()) {
             $data['pages'] = $object->getPages();
         }
@@ -99,9 +100,7 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getSpill()) {
             $data['spill'] = $object->getSpill();
         }
-        if (null !== $object->getTotal()) {
-            $data['total'] = $object->getTotal();
-        }
+        $data['total'] = $object->getTotal();
 
         return $data;
     }

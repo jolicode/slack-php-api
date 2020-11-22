@@ -13,19 +13,19 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ViewsUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Update an existing view.
      *
      * @param array $queryParameters {
      *
-     *     @var string $hash a string that represents view state to protect against possible race conditions
-     *     @var string $view_id A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.
      *     @var string $external_id A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.
-     *     @var string $view A [view payload](/reference/surfaces/views) This must be a JSON-encoded string.
+     *     @var string $hash a string that represents view state to protect against possible race conditions
+     *     @var string $view A [view object](/reference/surfaces/views). This must be a JSON-encoded string.
+     *     @var string $view_id A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.
      * }
      *
      * @param array $headerParameters {
@@ -67,13 +67,13 @@ class ViewsUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['hash', 'view_id', 'external_id', 'view']);
+        $optionsResolver->setDefined(['external_id', 'hash', 'view', 'view_id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('hash', ['string']);
-        $optionsResolver->setAllowedTypes('view_id', ['string']);
         $optionsResolver->setAllowedTypes('external_id', ['string']);
+        $optionsResolver->setAllowedTypes('hash', ['string']);
         $optionsResolver->setAllowedTypes('view', ['string']);
+        $optionsResolver->setAllowedTypes('view_id', ['string']);
 
         return $optionsResolver;
     }

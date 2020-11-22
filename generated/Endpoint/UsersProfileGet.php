@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class UsersProfileGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Retrieves a user's profile information.
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users.profile:read`
      *     @var bool $include_labels Include labels for each ID in custom profile fields
+     *     @var string $token Authentication token. Requires scope: `users.profile:read`
      *     @var string $user User to retrieve profile info for
      * }
      */
@@ -60,11 +60,11 @@ class UsersProfileGet extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'include_labels', 'user']);
+        $optionsResolver->setDefined(['include_labels', 'token', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('include_labels', ['bool']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('user', ['string']);
 
         return $optionsResolver;

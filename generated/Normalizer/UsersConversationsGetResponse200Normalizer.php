@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class UsersConversationsGetResponse200Normalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('channels', $data) && null !== $data['channels']) {
             $values = [];
             foreach ($data['channels'] as $value) {
@@ -81,16 +84,12 @@ class UsersConversationsGetResponse200Normalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannels()) {
-            $values = [];
-            foreach ($object->getChannels() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['channels'] = $values;
+        $values = [];
+        foreach ($object->getChannels() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['channels'] = $values;
+        $data['ok'] = $object->getOk();
         if (null !== $object->getResponseMetadata()) {
             $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         }

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,14 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (\array_key_exists('email_pending', $data) && null !== $data['email_pending']) {
+            $object->setEmailPending($data['email_pending']);
+        } elseif (\array_key_exists('email_pending', $data) && null === $data['email_pending']) {
+            $object->setEmailPending(null);
+        }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
@@ -69,15 +77,12 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
+        if (null !== $object->getEmailPending()) {
+            $data['email_pending'] = $object->getEmailPending();
         }
-        if (null !== $object->getProfile()) {
-            $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
-        }
-        if (null !== $object->getUsername()) {
-            $data['username'] = $object->getUsername();
-        }
+        $data['ok'] = $object->getOk();
+        $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
+        $data['username'] = $object->getUsername();
 
         return $data;
     }

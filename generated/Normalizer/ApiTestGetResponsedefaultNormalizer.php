@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ApiTestGetResponsedefault();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('args', $data) && null !== $data['args']) {
             $object->setArgs($data['args']);
             unset($data['args']);
@@ -80,12 +83,8 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
         if (null !== $object->getArgs()) {
             $data['args'] = $object->getArgs();
         }
-        if (null !== $object->getError()) {
-            $data['error'] = $object->getError();
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['error'] = $object->getError();
+        $data['ok'] = $object->getOk();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

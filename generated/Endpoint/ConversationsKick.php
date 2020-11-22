@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ConversationsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ConversationsKick extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Removes a user from a conversation.
      *
      * @param array $formParameters {
      *
-     *     @var string $user user ID to be removed
-     *     @var string $channel ID of conversation to remove user from.
+     *     @var string $channel ID of conversation to remove user from
+     *     @var string $user User ID to be removed.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsKick extends \Jane\OpenApiRuntime\Client\BaseEndpoint impleme
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['user', 'channel']);
+        $optionsResolver->setDefined(['channel', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('user', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

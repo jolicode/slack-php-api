@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
             $object->setLastRead($data['last_read']);
         } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
@@ -144,9 +147,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
         if (null !== $object->getLatestReply()) {
             $data['latest_reply'] = $object->getLatestReply();
         }
-        if (null !== $object->getReplyCount()) {
-            $data['reply_count'] = $object->getReplyCount();
-        }
+        $data['reply_count'] = $object->getReplyCount();
         if (null !== $object->getReplyUsers()) {
             $values = [];
             foreach ($object->getReplyUsers() as $value) {
@@ -160,30 +161,18 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
         if (null !== $object->getSourceTeam()) {
             $data['source_team'] = $object->getSourceTeam();
         }
-        if (null !== $object->getSubscribed()) {
-            $data['subscribed'] = $object->getSubscribed();
-        }
+        $data['subscribed'] = $object->getSubscribed();
         if (null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
-        if (null !== $object->getThreadTs()) {
-            $data['thread_ts'] = $object->getThreadTs();
-        }
-        if (null !== $object->getTs()) {
-            $data['ts'] = $object->getTs();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['text'] = $object->getText();
+        $data['thread_ts'] = $object->getThreadTs();
+        $data['ts'] = $object->getTs();
+        $data['type'] = $object->getType();
         if (null !== $object->getUnreadCount()) {
             $data['unread_count'] = $object->getUnreadCount();
         }
-        if (null !== $object->getUser()) {
-            $data['user'] = $object->getUser();
-        }
+        $data['user'] = $object->getUser();
         if (null !== $object->getUserProfile()) {
             $data['user_profile'] = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
         }

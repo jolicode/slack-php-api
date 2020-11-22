@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ConversationsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ConversationsSetTopic extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Sets the topic for a conversation.
      *
      * @param array $formParameters {
      *
-     *     @var string $topic The new topic string. Does not support formatting or linkification.
      *     @var string $channel Conversation to set the topic of
+     *     @var string $topic The new topic string. Does not support formatting or linkification.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsSetTopic extends \Jane\OpenApiRuntime\Client\BaseEndpoint imp
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['topic', 'channel']);
+        $optionsResolver->setDefined(['channel', 'topic']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('topic', ['string']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('topic', ['string']);
 
         return $optionsResolver;
     }

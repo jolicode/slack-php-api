@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminTeamsSettingsSetDefaultChannels extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Set the default channels of a workspace.
@@ -23,8 +23,8 @@ class AdminTeamsSettingsSetDefaultChannels extends \Jane\OpenApiRuntime\Client\B
      * @param array $formParameters {
      *
      *     @var string $channel_ids an array of channel IDs
+     *     @var string $team_id ID for the workspace to set the default channel for
      *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *     @var string $team_id ID for the workspace to set the default channel for.
      * }
      */
     public function __construct(array $formParameters = [])
@@ -60,12 +60,12 @@ class AdminTeamsSettingsSetDefaultChannels extends \Jane\OpenApiRuntime\Client\B
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['channel_ids', 'token', 'team_id']);
+        $optionsResolver->setDefined(['channel_ids', 'team_id', 'token']);
         $optionsResolver->setRequired(['channel_ids', 'team_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

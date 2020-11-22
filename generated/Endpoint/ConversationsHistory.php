@@ -13,22 +13,22 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ConversationsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ConversationsHistory extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Fetches a conversation's history of messages and events.
      *
      * @param array $queryParameters {
      *
-     *     @var bool $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
+     *     @var string $channel conversation ID to fetch history for
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     *     @var string $token Authentication token. Requires scope: `conversations:history`
+     *     @var bool $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
+     *     @var float $latest end of time range of messages to include in results
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
      *     @var float $oldest start of time range of messages to include in results
-     *     @var string $channel conversation ID to fetch history for
-     *     @var float $latest End of time range of messages to include in results.
+     *     @var string $token Authentication token. Requires scope: `conversations:history`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -64,16 +64,16 @@ class ConversationsHistory extends \Jane\OpenApiRuntime\Client\BaseEndpoint impl
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['inclusive', 'cursor', 'token', 'limit', 'oldest', 'channel', 'latest']);
+        $optionsResolver->setDefined(['channel', 'cursor', 'inclusive', 'latest', 'limit', 'oldest', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('inclusive', ['bool']);
+        $optionsResolver->setAllowedTypes('channel', ['string']);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->setAllowedTypes('inclusive', ['bool']);
+        $optionsResolver->setAllowedTypes('latest', ['float']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('oldest', ['float']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('latest', ['float']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

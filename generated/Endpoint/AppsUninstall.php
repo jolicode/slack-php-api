@@ -13,18 +13,18 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AppsUninstall extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Uninstalls your app from a workspace.
      *
      * @param array $queryParameters {
      *
+     *     @var string $client_id issued when you created your application
      *     @var string $client_secret issued when you created your application
      *     @var string $token Authentication token. Requires scope: `none`
-     *     @var string $client_id Issued when you created your application.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class AppsUninstall extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['client_secret', 'token', 'client_id']);
+        $optionsResolver->setDefined(['client_id', 'client_secret', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('client_secret', ['string']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('client_id', ['string']);
 
         return $optionsResolver;
     }

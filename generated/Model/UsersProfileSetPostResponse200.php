@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersProfileSetPostResponse200
 {
     /**
+     * @var string|null
+     */
+    protected $emailPending;
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -27,6 +31,18 @@ class UsersProfileSetPostResponse200
      * @var string|null
      */
     protected $username;
+
+    public function getEmailPending(): ?string
+    {
+        return $this->emailPending;
+    }
+
+    public function setEmailPending(?string $emailPending): self
+    {
+        $this->emailPending = $emailPending;
+
+        return $this;
+    }
 
     public function getOk(): ?bool
     {

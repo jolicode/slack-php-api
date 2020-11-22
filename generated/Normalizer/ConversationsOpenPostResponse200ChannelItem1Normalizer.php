@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
             $object->setCreated($data['created']);
         } elseif (\array_key_exists('created', $data) && null === $data['created']) {
@@ -102,9 +105,7 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
         if (null !== $object->getCreated()) {
             $data['created'] = $object->getCreated();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['id'] = $object->getId();
         if (null !== $object->getIsIm()) {
             $data['is_im'] = $object->getIsIm();
         }

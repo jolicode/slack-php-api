@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class FilesRemoteShare extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class FilesRemoteShare extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Share a remote file into a channel.
@@ -23,9 +23,9 @@ class FilesRemoteShare extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
      * @param array $queryParameters {
      *
      *     @var string $channels comma-separated list of channel IDs where the file will be shared
+     *     @var string $external_id The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.
+     *     @var string $file Specify a file registered with Slack by providing its ID. Either this field or `external_id` or both are required.
      *     @var string $token Authentication token. Requires scope: `remote_files:share`
-     *     @var string $external_id creator defined GUID for the file
-     *     @var string $file Specify a file by providing its ID.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +61,13 @@ class FilesRemoteShare extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['channels', 'token', 'external_id', 'file']);
+        $optionsResolver->setDefined(['channels', 'external_id', 'file', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channels', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('external_id', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

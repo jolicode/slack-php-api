@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,25 +47,13 @@ class DndTeamInfoGetResponsedefaultNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault();
-        if (\array_key_exists('error', $data) && null !== $data['error']) {
-            $object->setError($data['error']);
-        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
-            $object->setError(null);
-        }
-        if (\array_key_exists('needed', $data) && null !== $data['needed']) {
-            $object->setNeeded($data['needed']);
-        } elseif (\array_key_exists('needed', $data) && null === $data['needed']) {
-            $object->setNeeded(null);
+        if (null === $data || false === \is_array($data)) {
+            return $object;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
-        }
-        if (\array_key_exists('provided', $data) && null !== $data['provided']) {
-            $object->setProvided($data['provided']);
-        } elseif (\array_key_exists('provided', $data) && null === $data['provided']) {
-            $object->setProvided(null);
         }
 
         return $object;
@@ -74,18 +62,7 @@ class DndTeamInfoGetResponsedefaultNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getError()) {
-            $data['error'] = $object->getError();
-        }
-        if (null !== $object->getNeeded()) {
-            $data['needed'] = $object->getNeeded();
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getProvided()) {
-            $data['provided'] = $object->getProvided();
-        }
+        $data['ok'] = $object->getOk();
 
         return $data;
     }

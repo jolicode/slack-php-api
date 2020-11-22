@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ConversationsInvitePostResponsedefaultErrorsItemNormalizer implements Deno
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
             $object->setError($data['error']);
         } elseif (\array_key_exists('error', $data) && null === $data['error']) {
@@ -69,12 +72,8 @@ class ConversationsInvitePostResponsedefaultErrorsItemNormalizer implements Deno
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getError()) {
-            $data['error'] = $object->getError();
-        }
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
+        $data['error'] = $object->getError();
+        $data['ok'] = $object->getOk();
         if (null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }

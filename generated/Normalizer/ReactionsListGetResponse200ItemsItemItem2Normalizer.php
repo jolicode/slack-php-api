@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ReactionsListGetResponse200ItemsItemItem2Normalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('comment', $data) && null !== $data['comment']) {
             $object->setComment($this->denormalizer->denormalize($data['comment'], 'JoliCode\\Slack\\Api\\Model\\ObjsComment', 'json', $context));
         } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
@@ -69,15 +72,9 @@ class ReactionsListGetResponse200ItemsItemItem2Normalizer implements Denormalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getComment()) {
-            $data['comment'] = $this->normalizer->normalize($object->getComment(), 'json', $context);
-        }
-        if (null !== $object->getFile()) {
-            $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
+        $data['comment'] = $this->normalizer->normalize($object->getComment(), 'json', $context);
+        $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
+        $data['type'] = $object->getType();
 
         return $data;
     }

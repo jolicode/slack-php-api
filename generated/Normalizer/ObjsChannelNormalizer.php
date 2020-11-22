@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsChannel();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
             $object->setAcceptedUser($data['accepted_user']);
         } elseif (\array_key_exists('accepted_user', $data) && null === $data['accepted_user']) {
@@ -229,21 +232,13 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getAcceptedUser()) {
             $data['accepted_user'] = $object->getAcceptedUser();
         }
-        if (null !== $object->getCreated()) {
-            $data['created'] = $object->getCreated();
-        }
-        if (null !== $object->getCreator()) {
-            $data['creator'] = $object->getCreator();
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['created'] = $object->getCreated();
+        $data['creator'] = $object->getCreator();
+        $data['id'] = $object->getId();
         if (null !== $object->getIsArchived()) {
             $data['is_archived'] = $object->getIsArchived();
         }
-        if (null !== $object->getIsChannel()) {
-            $data['is_channel'] = $object->getIsChannel();
-        }
+        $data['is_channel'] = $object->getIsChannel();
         if (null !== $object->getIsFrozen()) {
             $data['is_frozen'] = $object->getIsFrozen();
         }
@@ -256,27 +251,19 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getIsMoved()) {
             $data['is_moved'] = $object->getIsMoved();
         }
-        if (null !== $object->getIsMpim()) {
-            $data['is_mpim'] = $object->getIsMpim();
-        }
+        $data['is_mpim'] = $object->getIsMpim();
         if (null !== $object->getIsNonThreadable()) {
             $data['is_non_threadable'] = $object->getIsNonThreadable();
         }
-        if (null !== $object->getIsOrgShared()) {
-            $data['is_org_shared'] = $object->getIsOrgShared();
-        }
+        $data['is_org_shared'] = $object->getIsOrgShared();
         if (null !== $object->getIsPendingExtShared()) {
             $data['is_pending_ext_shared'] = $object->getIsPendingExtShared();
         }
-        if (null !== $object->getIsPrivate()) {
-            $data['is_private'] = $object->getIsPrivate();
-        }
+        $data['is_private'] = $object->getIsPrivate();
         if (null !== $object->getIsReadOnly()) {
             $data['is_read_only'] = $object->getIsReadOnly();
         }
-        if (null !== $object->getIsShared()) {
-            $data['is_shared'] = $object->getIsShared();
-        }
+        $data['is_shared'] = $object->getIsShared();
         if (null !== $object->getIsThreadOnly()) {
             $data['is_thread_only'] = $object->getIsThreadOnly();
         }
@@ -286,19 +273,13 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getLatest()) {
             $data['latest'] = $object->getLatest();
         }
-        if (null !== $object->getMembers()) {
-            $values = [];
-            foreach ($object->getMembers() as $value) {
-                $values[] = $value;
-            }
-            $data['members'] = $values;
+        $values = [];
+        foreach ($object->getMembers() as $value) {
+            $values[] = $value;
         }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getNameNormalized()) {
-            $data['name_normalized'] = $object->getNameNormalized();
-        }
+        $data['members'] = $values;
+        $data['name'] = $object->getName();
+        $data['name_normalized'] = $object->getNameNormalized();
         if (null !== $object->getNumMembers()) {
             $data['num_members'] = $object->getNumMembers();
         }
@@ -319,12 +300,8 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (null !== $object->getPriority()) {
             $data['priority'] = $object->getPriority();
         }
-        if (null !== $object->getPurpose()) {
-            $data['purpose'] = $this->normalizer->normalize($object->getPurpose(), 'json', $context);
-        }
-        if (null !== $object->getTopic()) {
-            $data['topic'] = $this->normalizer->normalize($object->getTopic(), 'json', $context);
-        }
+        $data['purpose'] = $this->normalizer->normalize($object->getPurpose(), 'json', $context);
+        $data['topic'] = $this->normalizer->normalize($object->getTopic(), 'json', $context);
         if (null !== $object->getUnlinked()) {
             $data['unlinked'] = $object->getUnlinked();
         }

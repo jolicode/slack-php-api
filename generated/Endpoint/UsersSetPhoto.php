@@ -13,20 +13,20 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class UsersSetPhoto extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Set the user profile photo.
      *
      * @param array $formParameters {
      *
+     *     @var string $crop_w Width/height of crop box (always square)
+     *     @var string $crop_x X coordinate of top-left corner of crop box
+     *     @var string $crop_y Y coordinate of top-left corner of crop box
      *     @var string $image file contents via `multipart/form-data`
-     *     @var int $crop_w Width/height of crop box (always square)
      *     @var string $token Authentication token. Requires scope: `users.profile:write`
-     *     @var int $crop_y Y coordinate of top-left corner of crop box
-     *     @var int $crop_x X coordinate of top-left corner of crop box
      * }
      */
     public function __construct(array $formParameters = [])
@@ -62,14 +62,14 @@ class UsersSetPhoto extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['image', 'crop_w', 'token', 'crop_y', 'crop_x']);
+        $optionsResolver->setDefined(['crop_w', 'crop_x', 'crop_y', 'image', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('crop_w', ['string']);
+        $optionsResolver->setAllowedTypes('crop_x', ['string']);
+        $optionsResolver->setAllowedTypes('crop_y', ['string']);
         $optionsResolver->setAllowedTypes('image', ['string']);
-        $optionsResolver->setAllowedTypes('crop_w', ['int']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('crop_y', ['int']);
-        $optionsResolver->setAllowedTypes('crop_x', ['int']);
 
         return $optionsResolver;
     }

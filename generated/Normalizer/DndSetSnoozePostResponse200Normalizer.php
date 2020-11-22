@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
@@ -74,18 +77,10 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getOk()) {
-            $data['ok'] = $object->getOk();
-        }
-        if (null !== $object->getSnoozeEnabled()) {
-            $data['snooze_enabled'] = $object->getSnoozeEnabled();
-        }
-        if (null !== $object->getSnoozeEndtime()) {
-            $data['snooze_endtime'] = $object->getSnoozeEndtime();
-        }
-        if (null !== $object->getSnoozeRemaining()) {
-            $data['snooze_remaining'] = $object->getSnoozeRemaining();
-        }
+        $data['ok'] = $object->getOk();
+        $data['snooze_enabled'] = $object->getSnoozeEnabled();
+        $data['snooze_endtime'] = $object->getSnoozeEndtime();
+        $data['snooze_remaining'] = $object->getSnoozeRemaining();
 
         return $data;
     }

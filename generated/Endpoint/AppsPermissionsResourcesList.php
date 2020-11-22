@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AppsPermissionsResourcesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Returns list of resource grants this app has on a team.
@@ -23,8 +23,8 @@ class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpo
      * @param array $queryParameters {
      *
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     *     @var int $limit the maximum number of items to return
      *     @var string $token Authentication token. Requires scope: `none`
-     *     @var int $limit The maximum number of items to return.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class AppsPermissionsResourcesList extends \Jane\OpenApiRuntime\Client\BaseEndpo
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'token', 'limit']);
+        $optionsResolver->setDefined(['cursor', 'limit', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

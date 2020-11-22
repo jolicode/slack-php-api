@@ -13,21 +13,21 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class FilesRemoteList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Retrieve information about a remote file added to Slack.
      *
      * @param array $queryParameters {
      *
-     *     @var float $ts_to filter files created before this timestamp (inclusive)
+     *     @var string $channel filter files appearing in a specific channel, indicated by its ID
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     *     @var float $ts_from filter files created after this timestamp (inclusive)
-     *     @var string $token Authentication token. Requires scope: `remote_files:read`
      *     @var int $limit the maximum number of items to return
-     *     @var string $channel Filter files appearing in a specific channel, indicated by its ID.
+     *     @var string $token Authentication token. Requires scope: `remote_files:read`
+     *     @var float $ts_from filter files created after this timestamp (inclusive)
+     *     @var float $ts_to Filter files created before this timestamp (inclusive).
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -63,15 +63,15 @@ class FilesRemoteList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['ts_to', 'cursor', 'ts_from', 'token', 'limit', 'channel']);
+        $optionsResolver->setDefined(['channel', 'cursor', 'limit', 'token', 'ts_from', 'ts_to']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('ts_to', ['float']);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('ts_from', ['float']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('channel', ['string']);
+        $optionsResolver->setAllowedTypes('cursor', ['string']);
+        $optionsResolver->setAllowedTypes('limit', ['int']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->setAllowedTypes('ts_from', ['float']);
+        $optionsResolver->setAllowedTypes('ts_to', ['float']);
 
         return $optionsResolver;
     }

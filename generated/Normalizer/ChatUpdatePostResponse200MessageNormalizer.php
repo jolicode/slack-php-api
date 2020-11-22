@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('attachments', $data) && null !== $data['attachments']) {
             $values = [];
             foreach ($data['attachments'] as $value) {
@@ -57,11 +60,7 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
             $object->setAttachments(null);
         }
         if (\array_key_exists('blocks', $data) && null !== $data['blocks']) {
-            $values_1 = [];
-            foreach ($data['blocks'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\BlocksItem', 'json', $context);
-            }
-            $object->setBlocks($values_1);
+            $object->setBlocks($data['blocks']);
         } elseif (\array_key_exists('blocks', $data) && null === $data['blocks']) {
             $object->setBlocks(null);
         }
@@ -85,15 +84,9 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
             $data['attachments'] = $values;
         }
         if (null !== $object->getBlocks()) {
-            $values_1 = [];
-            foreach ($object->getBlocks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['blocks'] = $values_1;
+            $data['blocks'] = $object->getBlocks();
         }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
+        $data['text'] = $object->getText();
 
         return $data;
     }

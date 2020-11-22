@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsBotProfileNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsBotProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('app_id', $data) && null !== $data['app_id']) {
             $object->setAppId($data['app_id']);
         } elseif (\array_key_exists('app_id', $data) && null === $data['app_id']) {
@@ -89,27 +92,13 @@ class ObjsBotProfileNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAppId()) {
-            $data['app_id'] = $object->getAppId();
-        }
-        if (null !== $object->getDeleted()) {
-            $data['deleted'] = $object->getDeleted();
-        }
-        if (null !== $object->getIcons()) {
-            $data['icons'] = $this->normalizer->normalize($object->getIcons(), 'json', $context);
-        }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if (null !== $object->getName()) {
-            $data['name'] = $object->getName();
-        }
-        if (null !== $object->getTeamId()) {
-            $data['team_id'] = $object->getTeamId();
-        }
-        if (null !== $object->getUpdated()) {
-            $data['updated'] = $object->getUpdated();
-        }
+        $data['app_id'] = $object->getAppId();
+        $data['deleted'] = $object->getDeleted();
+        $data['icons'] = $this->normalizer->normalize($object->getIcons(), 'json', $context);
+        $data['id'] = $object->getId();
+        $data['name'] = $object->getName();
+        $data['team_id'] = $object->getTeamId();
+        $data['updated'] = $object->getUpdated();
 
         return $data;
     }

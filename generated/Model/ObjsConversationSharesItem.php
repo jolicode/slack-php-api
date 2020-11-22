@@ -20,9 +20,21 @@ class ObjsConversationSharesItem
      */
     protected $acceptedUser;
     /**
+     * @var int|null
+     */
+    protected $dateCreate;
+    /**
+     * @var string|null
+     */
+    protected $id;
+    /**
      * @var bool|null
      */
     protected $isActive;
+    /**
+     * @var string|null
+     */
+    protected $name;
     /**
      * @var ObjsTeam|null
      */
@@ -44,6 +56,30 @@ class ObjsConversationSharesItem
         return $this;
     }
 
+    public function getDateCreate(): ?int
+    {
+        return $this->dateCreate;
+    }
+
+    public function setDateCreate(?int $dateCreate): self
+    {
+        $this->dateCreate = $dateCreate;
+
+        return $this;
+    }
+
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    public function setId(?string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getIsActive(): ?bool
     {
         return $this->isActive;
@@ -52,6 +88,18 @@ class ObjsConversationSharesItem
     public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

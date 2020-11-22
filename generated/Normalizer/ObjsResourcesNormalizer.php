@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsResources();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('excluded_ids', $data) && null !== $data['excluded_ids']) {
             $values = [];
             foreach ($data['excluded_ids'] as $value) {
@@ -84,13 +87,11 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $data['excluded_ids'] = $values;
         }
-        if (null !== $object->getIds()) {
-            $values_1 = [];
-            foreach ($object->getIds() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['ids'] = $values_1;
+        $values_1 = [];
+        foreach ($object->getIds() as $value_1) {
+            $values_1[] = $value_1;
         }
+        $data['ids'] = $values_1;
         if (null !== $object->getWildcard()) {
             $data['wildcard'] = $object->getWildcard();
         }

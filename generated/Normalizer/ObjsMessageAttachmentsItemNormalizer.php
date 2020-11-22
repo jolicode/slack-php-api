@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('actions', $data) && null !== $data['actions']) {
             $values = [];
             foreach ($data['actions'] as $value) {
@@ -121,11 +124,29 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
         }
+        if (\array_key_exists('image_bytes', $data) && null !== $data['image_bytes']) {
+            $object->setImageBytes($data['image_bytes']);
+            unset($data['image_bytes']);
+        } elseif (\array_key_exists('image_bytes', $data) && null === $data['image_bytes']) {
+            $object->setImageBytes(null);
+        }
+        if (\array_key_exists('image_height', $data) && null !== $data['image_height']) {
+            $object->setImageHeight($data['image_height']);
+            unset($data['image_height']);
+        } elseif (\array_key_exists('image_height', $data) && null === $data['image_height']) {
+            $object->setImageHeight(null);
+        }
         if (\array_key_exists('image_url', $data) && null !== $data['image_url']) {
             $object->setImageUrl($data['image_url']);
             unset($data['image_url']);
         } elseif (\array_key_exists('image_url', $data) && null === $data['image_url']) {
             $object->setImageUrl(null);
+        }
+        if (\array_key_exists('image_width', $data) && null !== $data['image_width']) {
+            $object->setImageWidth($data['image_width']);
+            unset($data['image_width']);
+        } elseif (\array_key_exists('image_width', $data) && null === $data['image_width']) {
+            $object->setImageWidth(null);
         }
         if (\array_key_exists('pretext', $data) && null !== $data['pretext']) {
             $object->setPretext($data['pretext']);
@@ -219,11 +240,18 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         if (null !== $object->getFooterIcon()) {
             $data['footer_icon'] = $object->getFooterIcon();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
+        $data['id'] = $object->getId();
+        if (null !== $object->getImageBytes()) {
+            $data['image_bytes'] = $object->getImageBytes();
+        }
+        if (null !== $object->getImageHeight()) {
+            $data['image_height'] = $object->getImageHeight();
         }
         if (null !== $object->getImageUrl()) {
             $data['image_url'] = $object->getImageUrl();
+        }
+        if (null !== $object->getImageWidth()) {
+            $data['image_width'] = $object->getImageWidth();
         }
         if (null !== $object->getPretext()) {
             $data['pretext'] = $object->getPretext();

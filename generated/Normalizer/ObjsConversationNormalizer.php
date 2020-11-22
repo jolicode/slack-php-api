@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversation();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
             $object->setAcceptedUser($data['accepted_user']);
         } elseif (\array_key_exists('accepted_user', $data) && null === $data['accepted_user']) {
@@ -85,11 +88,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setEnterpriseId($data['enterprise_id']);
         } elseif (\array_key_exists('enterprise_id', $data) && null === $data['enterprise_id']) {
             $object->setEnterpriseId(null);
-        }
-        if (\array_key_exists('external_connections', $data) && null !== $data['external_connections']) {
-            $object->setExternalConnections($data['external_connections']);
-        } elseif (\array_key_exists('external_connections', $data) && null === $data['external_connections']) {
-            $object->setExternalConnections(null);
         }
         if (\array_key_exists('has_pins', $data) && null !== $data['has_pins']) {
             $object->setHasPins($data['has_pins']);
@@ -234,11 +232,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setLatest($data['latest']);
         } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
             $object->setLatest(null);
-        }
-        if (\array_key_exists('locale', $data) && null !== $data['locale']) {
-            $object->setLocale($data['locale']);
-        } elseif (\array_key_exists('locale', $data) && null === $data['locale']) {
-            $object->setLocale(null);
         }
         if (\array_key_exists('members', $data) && null !== $data['members']) {
             $values_2 = [];
@@ -389,9 +382,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getConversationHostId()) {
             $data['conversation_host_id'] = $object->getConversationHostId();
         }
-        if (null !== $object->getCreated()) {
-            $data['created'] = $object->getCreated();
-        }
+        $data['created'] = $object->getCreated();
         if (null !== $object->getCreator()) {
             $data['creator'] = $object->getCreator();
         }
@@ -401,15 +392,10 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getEnterpriseId()) {
             $data['enterprise_id'] = $object->getEnterpriseId();
         }
-        if (null !== $object->getExternalConnections()) {
-            $data['external_connections'] = $object->getExternalConnections();
-        }
         if (null !== $object->getHasPins()) {
             $data['has_pins'] = $object->getHasPins();
         }
-        if (null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
+        $data['id'] = $object->getId();
         if (null !== $object->getInternalTeamIds()) {
             $values_1 = [];
             foreach ($object->getInternalTeamIds() as $value_1) {
@@ -438,9 +424,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getIsGroup()) {
             $data['is_group'] = $object->getIsGroup();
         }
-        if (null !== $object->getIsIm()) {
-            $data['is_im'] = $object->getIsIm();
-        }
+        $data['is_im'] = $object->getIsIm();
         if (null !== $object->getIsMember()) {
             $data['is_member'] = $object->getIsMember();
         }
@@ -462,9 +446,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         if (null !== $object->getIsOrgMandatory()) {
             $data['is_org_mandatory'] = $object->getIsOrgMandatory();
         }
-        if (null !== $object->getIsOrgShared()) {
-            $data['is_org_shared'] = $object->getIsOrgShared();
-        }
+        $data['is_org_shared'] = $object->getIsOrgShared();
         if (null !== $object->getIsPendingExtShared()) {
             $data['is_pending_ext_shared'] = $object->getIsPendingExtShared();
         }
@@ -491,9 +473,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getLatest()) {
             $data['latest'] = $object->getLatest();
-        }
-        if (null !== $object->getLocale()) {
-            $data['locale'] = $object->getLocale();
         }
         if (null !== $object->getMembers()) {
             $values_2 = [];

@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUserTeamProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('fields', $data) && null !== $data['fields']) {
             $values = [];
             foreach ($data['fields'] as $value) {
@@ -63,13 +66,11 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getFields()) {
-            $values = [];
-            foreach ($object->getFields() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['fields'] = $values;
+        $values = [];
+        foreach ($object->getFields() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $data['fields'] = $values;
 
         return $data;
     }

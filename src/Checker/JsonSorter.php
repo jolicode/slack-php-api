@@ -18,6 +18,7 @@ class JsonSorter
     public function sort(string $content, bool $prettyPrint = true): string
     {
         $content = json_decode($content);
+        $content = $this->mergeNodes($content);
         $content = $this->recursiveAlphabeticalSort($content);
 
         return json_encode($content, $prettyPrint ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : JSON_UNESCAPED_SLASHES);
@@ -34,6 +35,12 @@ class JsonSorter
 
             foreach ($asArray as $key => $subItem) {
                 $asArray[$key] = $this->recursiveAlphabeticalSort($item->$key);
+
+                if ('parameters' === $key) {
+                    usort($asArray['parameters'], function ($a, $b) {
+                        return isset($a['name']) && isset($b['name']) && $a['name'] > $b['name'];
+                    });
+                }
             }
 
             $item = $asArray;
@@ -55,5 +62,48 @@ class JsonSorter
         }
 
         return $item;
+    }
+
+    private function mergeNodes($item)
+    {
+        if (isset($item->definitions->objs_user->items)) {
+            $objsUser = $this->mergeNodeItems($item->definitions->objs_user->items);
+            $objsUser->description = 'Merged user object for non enterprise type and enterprise user';
+            $item->definitions->objs_user = $objsUser;
+        }
+
+        if (isset($item->definitions->objs_conversation->items)) {
+            $objsConversation = $this->mergeNodeItems($item->definitions->objs_conversation->items);
+            $objsConversation->properties->id->{'$ref'} = '#/definitions/defs_channel';
+            $objsConversation->title = 'Merged: Conversation MPIM Object, Conversation IM Channel Object from conversations.* methods, or Conversation object';
+            $item->definitions->objs_conversation = $objsConversation;
+        }
+
+        return $item;
+    }
+
+    private function mergeNodeItems($items)
+    {
+        $result = $items[0];
+
+        foreach ($items as $item) {
+            $result->properties = $this->union($result->properties, $item->properties);
+            $result->required = array_intersect($result->required, $item->required);
+        }
+
+        return $result;
+    }
+
+    private function union($cargo, $addition)
+    {
+        foreach ($addition as $key => $value) {
+            if (isset($cargo->$key) && \is_object($cargo->$key)) {
+                $cargo->$key = $this->union($cargo->$key, $value);
+            } else {
+                $cargo->$key = $value;
+            }
+        }
+
+        return $cargo;
     }
 }

@@ -13,19 +13,19 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminConversationsSetTeams extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
-     * Set the workspaces in an Enterprise grid org that connect to a channel.
+     * Set the workspaces in an Enterprise grid org that connect to a public or private channel.
      *
      * @param array $formParameters {
      *
      *     @var string $channel_id the encoded `channel_id` to add or remove to workspaces
      *     @var bool $org_channel True if channel has to be converted to an org channel
+     *     @var string $target_team_ids A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide.
      *     @var string $team_id The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.
-     *     @var string $target_team_ids The list of workspaces to which the channel should be shared. Not required if the channel is being shared orgwide. Example: `['T1234', 'T5678']`
      * }
      *
      * @param array $headerParameters {
@@ -67,13 +67,13 @@ class AdminConversationsSetTeams extends \Jane\OpenApiRuntime\Client\BaseEndpoin
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['channel_id', 'org_channel', 'team_id', 'target_team_ids']);
+        $optionsResolver->setDefined(['channel_id', 'org_channel', 'target_team_ids', 'team_id']);
         $optionsResolver->setRequired(['channel_id']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('channel_id', ['string']);
         $optionsResolver->setAllowedTypes('org_channel', ['bool']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
         $optionsResolver->setAllowedTypes('target_team_ids', ['string']);
+        $optionsResolver->setAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }

@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AdminEmojiRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class AdminEmojiRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Remove an emoji across an Enterprise Grid organization.
      *
      * @param array $formParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
      *     @var string $name The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
      * }
      */
     public function __construct(array $formParameters = [])
@@ -59,11 +59,11 @@ class AdminEmojiRemove extends \Jane\OpenApiRuntime\Client\BaseEndpoint implemen
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['token', 'name']);
+        $optionsResolver->setDefined(['name', 'token']);
         $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
         $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

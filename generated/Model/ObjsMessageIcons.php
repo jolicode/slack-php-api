@@ -19,6 +19,10 @@ class ObjsMessageIcons
      * @var string|null
      */
     protected $emoji;
+    /**
+     * @var string|null
+     */
+    protected $image64;
 
     public function getEmoji(): ?string
     {
@@ -28,6 +32,18 @@ class ObjsMessageIcons
     public function setEmoji(?string $emoji): self
     {
         $this->emoji = $emoji;
+
+        return $this;
+    }
+
+    public function getImage64(): ?string
+    {
+        return $this->image64;
+    }
+
+    public function setImage64(?string $image64): self
+    {
+        $this->image64 = $image64;
 
         return $this;
     }

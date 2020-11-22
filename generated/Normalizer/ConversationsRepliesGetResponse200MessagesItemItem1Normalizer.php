@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Normalizer\CheckArray;
 use Jane\JsonSchemaRuntime\Reference;
+use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -47,6 +47,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
         if (\array_key_exists('is_starred', $data) && null !== $data['is_starred']) {
             $object->setIsStarred($data['is_starred']);
         } elseif (\array_key_exists('is_starred', $data) && null === $data['is_starred']) {
@@ -112,30 +115,18 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         if (null !== $object->getIsStarred()) {
             $data['is_starred'] = $object->getIsStarred();
         }
-        if (null !== $object->getParentUserId()) {
-            $data['parent_user_id'] = $object->getParentUserId();
-        }
+        $data['parent_user_id'] = $object->getParentUserId();
         if (null !== $object->getSourceTeam()) {
             $data['source_team'] = $object->getSourceTeam();
         }
         if (null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
-        if (null !== $object->getText()) {
-            $data['text'] = $object->getText();
-        }
-        if (null !== $object->getThreadTs()) {
-            $data['thread_ts'] = $object->getThreadTs();
-        }
-        if (null !== $object->getTs()) {
-            $data['ts'] = $object->getTs();
-        }
-        if (null !== $object->getType()) {
-            $data['type'] = $object->getType();
-        }
-        if (null !== $object->getUser()) {
-            $data['user'] = $object->getUser();
-        }
+        $data['text'] = $object->getText();
+        $data['thread_ts'] = $object->getThreadTs();
+        $data['ts'] = $object->getTs();
+        $data['type'] = $object->getType();
+        $data['user'] = $object->getUser();
         if (null !== $object->getUserProfile()) {
             $data['user_profile'] = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
         }

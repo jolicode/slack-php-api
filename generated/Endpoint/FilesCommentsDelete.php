@@ -13,17 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class FilesCommentsDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class FilesCommentsDelete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Deletes an existing comment on a file.
      *
      * @param array $formParameters {
      *
-     *     @var string $id the comment to delete
-     *     @var string $file File to delete a comment from.
+     *     @var string $file file to delete a comment from
+     *     @var string $id The comment to delete.
      * }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class FilesCommentsDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['id', 'file']);
+        $optionsResolver->setDefined(['file', 'id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('id', ['string']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('id', ['string']);
 
         return $optionsResolver;
     }

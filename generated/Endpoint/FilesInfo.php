@@ -13,21 +13,21 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class FilesInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class FilesInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
-     * Gets information about a team file.
+     * Gets information about a file.
      *
      * @param array $queryParameters {
      *
      *     @var string $count
      *     @var string $cursor Parameter for pagination. File comments are paginated for a single file. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection of comments. See [pagination](/docs/pagination) for more details.
-     *     @var string $token Authentication token. Requires scope: `files:read`
-     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $file specify a file by providing its ID
+     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
      *     @var string $page
+     *     @var string $token Authentication token. Requires scope: `files:read`
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -63,15 +63,15 @@ class FilesInfo extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jan
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['count', 'cursor', 'token', 'limit', 'file', 'page']);
+        $optionsResolver->setDefined(['count', 'cursor', 'file', 'limit', 'page', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('count', ['string']);
         $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('page', ['string']);
+        $optionsResolver->setAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

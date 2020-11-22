@@ -13,18 +13,17 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class ConversationsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Initiates a public or private channel-based conversation.
      *
      * @param array $formParameters {
      *
-     *     @var string $name Name of the public or private channel to create
-     *     @var string $user_ids **Required** for workspace apps. A list of between 1 and 30 human users that will be added to the newly-created conversation. This argument has no effect when used by classic Slack apps.
      *     @var bool $is_private Create a private channel instead of a public one
+     *     @var string $name Name of the public or private channel to create
      * }
      *
      * @param array $headerParameters {
@@ -66,12 +65,11 @@ class ConversationsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint imple
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'user_ids', 'is_private']);
+        $optionsResolver->setDefined(['is_private', 'name']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
-        $optionsResolver->setAllowedTypes('user_ids', ['string']);
         $optionsResolver->setAllowedTypes('is_private', ['bool']);
+        $optionsResolver->setAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }

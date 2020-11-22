@@ -13,20 +13,20 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class OauthToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Endpoint
+class OauthToken extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
-    use \Jane\OpenApiRuntime\Client\EndpointTrait;
+    use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
      * Exchanges a temporary OAuth verifier code for a workspace token.
      *
      * @param array $queryParameters {
      *
+     *     @var string $client_id issued when you created your application
      *     @var string $client_secret issued when you created your application
      *     @var string $code the `code` param returned via the OAuth callback
-     *     @var bool $single_channel request the user to add your app only to a single channel
-     *     @var string $client_id issued when you created your application
-     *     @var string $redirect_uri This must match the originally submitted URI (if one was sent).
+     *     @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     *     @var bool $single_channel Request the user to add your app only to a single channel.
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -62,14 +62,14 @@ class OauthToken extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Ja
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['client_secret', 'code', 'single_channel', 'client_id', 'redirect_uri']);
+        $optionsResolver->setDefined(['client_id', 'client_secret', 'code', 'redirect_uri', 'single_channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('client_secret', ['string']);
         $optionsResolver->setAllowedTypes('code', ['string']);
-        $optionsResolver->setAllowedTypes('single_channel', ['bool']);
-        $optionsResolver->setAllowedTypes('client_id', ['string']);
         $optionsResolver->setAllowedTypes('redirect_uri', ['string']);
+        $optionsResolver->setAllowedTypes('single_channel', ['bool']);
 
         return $optionsResolver;
     }

@@ -36,7 +36,7 @@ class ObjsTeamProfileField
      */
     protected $label;
     /**
-     * @var mixed[]|null
+     * @var ObjsTeamProfileFieldOption|null
      */
     protected $options;
     /**
@@ -112,18 +112,12 @@ class ObjsTeamProfileField
         return $this;
     }
 
-    /**
-     * @return mixed[]|null
-     */
-    public function getOptions(): ?iterable
+    public function getOptions(): ?ObjsTeamProfileFieldOption
     {
         return $this->options;
     }
 
-    /**
-     * @param mixed[]|null $options
-     */
-    public function setOptions(?iterable $options): self
+    public function setOptions(?ObjsTeamProfileFieldOption $options): self
     {
         $this->options = $options;
 
