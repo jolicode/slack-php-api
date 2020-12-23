@@ -22,6 +22,7 @@ matrix:
         - php: 7.2
         - php: 7.3
         - php: 7.4
+        - php: 8.0
 
 install:
     - travis_retry composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
