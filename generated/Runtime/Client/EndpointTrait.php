@@ -32,5 +32,5 @@ trait EndpointTrait
         throw new InvalidFetchModeException(sprintf('Fetch mode %s is not supported', $fetchMode));
     }
 
-    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, string $contentType = null);
+    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
 }

@@ -25,7 +25,7 @@ class SlackErrorPlugin implements Plugin
     {
         $promise = $next($request);
 
-        return $promise->then(function (ResponseInterface $response) use ($request) {
+        return $promise->then(function (ResponseInterface $response) {
             $body = $response->getBody()->getContents();
             $data = json_decode($body, true);
 
