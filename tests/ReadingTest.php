@@ -124,7 +124,6 @@ class ReadingTest extends TestCase
         ]);
 
         self::assertInstanceOf(SearchMessagesGetResponse200::class, $results);
-
-        self::markTestIncomplete('The response is not tested as it is not specified!');
+        self::assertTrue($results->getOk());
     }
 }

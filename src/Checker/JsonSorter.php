@@ -38,7 +38,7 @@ class JsonSorter
 
                 if ('parameters' === $key) {
                     usort($asArray['parameters'], function ($a, $b) {
-                        return isset($a['name']) && isset($b['name']) && $a['name'] > $b['name'];
+                        return (isset($a['name']) && isset($b['name']) && $a['name'] > $b['name']) ? 1 : 0;
                     });
                 }
             }

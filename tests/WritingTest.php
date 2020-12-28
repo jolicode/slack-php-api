@@ -36,7 +36,12 @@ class WritingTest extends TestCase
         ]);
 
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
-        self::assertStringContainsString($response->getMessage()->getAttachments()[0]->getImageUrl(), 'https://jolicode.com/images/valeurs_huma.png');
+
+        if (method_exists($this, 'assertStringContainsString')) {
+            self::assertStringContainsString($response->getMessage()->getAttachments()[0]->getImageUrl(), 'https://jolicode.com/images/valeurs_huma.png');
+        } else {
+            self::assertContains($response->getMessage()->getAttachments()[0]->getImageUrl(), 'https://jolicode.com/images/valeurs_huma.png');
+        }
     }
 
     public function testItCanPostMessageWithBlock()
