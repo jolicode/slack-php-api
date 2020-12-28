@@ -6,7 +6,7 @@ This library mostly contains automatically generated code from the official
 [Slack OpenAPI spec](https://github.com/slackapi/slack-api-specs).
 
 The library provides three kinds of PHP classes:
-- [endpoints](../generated/Endpoint/) represent requests to API methods
+- [endpoints](../generated/Endpoint) represent requests to API methods
 - [models](../generated/Model) represent data from the API
 - [normalizers](../generated/Normalizer) transform JSON from the API to PHP models
 
@@ -28,7 +28,7 @@ use JoliCode\Slack\ClientFactory;
 $client = ClientFactory::create($yourToken);
 ```
 
-The client contains all the methods to communicate with Slack'API. Checkout its
+The client contains all the methods to communicate with Slack API. Checkout its
 PHP doc to know which option you can provide to each method:
 
 ```php
@@ -38,16 +38,18 @@ PHP doc to know which option you can provide to each method:
 $members = $client->usersList(['limit' => 100])->getMembers();
 ```
 
+> 💡 If you need a Slack Token, please follow the instructions at https://api.slack.com/authentication/basics
+
 ## Concrete examples
 
-Here is some examples of library's usages:
+Here are some examples of library's usages:
 
 - [Posting a message in a Slack channel](examples/posting-message.php);
 - [Retrieving the users in a Slack workspace](examples/retrieve-users.php);
 
 ## Bypassing the incomplete API specification
 
-Slack's OpenAPI spec is not 100% complete yet hence our generated client may
+Slack's OpenAPI spec is not 100% complete yet, hence our generated client may
 miss some features.
 
 If you miss an option in a method, until Slack add it to their spec, we can
@@ -57,7 +59,7 @@ manually add it to our [versioned spec](../resources/slack-openapi.json) then
 If you miss a property in a model, you may still access it by yourself. Some
 models extend the `ArrayObject` so you can access all its properties with the
 array notation. For example - until mid-2019 - the `usergroupsList` response
-did not contain the `usergroups` property but we could access it this way:
+did not contain the `usergroups` property, but we could access it this way:
 
 ```php
 $userGroupsResponse = $client->usergroupsList();
