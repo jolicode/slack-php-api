@@ -24,7 +24,7 @@ You can now build a new SDK using this patched specification.
 
 ## Regenerate the SDk
 
-If you suspect that some endpoints or models have been removed, first remove all the content
+If you suspect some endpoints or models have been removed, first remove all the content
 of the `generated` directory:
 
 ```bash

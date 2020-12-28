@@ -56,14 +56,23 @@ If you miss an option in a method, until Slack add it to their spec, we can
 manually add it to our [versioned spec](../resources/slack-openapi.json) then
 [regenerate](updating-sdk.md) and release a new version of the library.
 
-If you miss a property in a model, you may still access it by yourself. Some
-models extend the `ArrayObject` so you can access all its properties with the
-array notation. For example - until mid-2019 - the `usergroupsList` response
-did not contain the `usergroups` property, but we could access it this way:
+### Missing data in the DTO?
+
+The Slack specification is not up to date and miss some critical parts. We do
+build a [better one on top of the official](doc/updating-sdk.md) but it can't
+be perfect.
+
+What's good is that some models use `\ArrayObject` as base classes so if the
+API returns data we don't have in the mapping, you can still access it via
+Array like syntax:
 
 ```php
-$userGroupsResponse = $client->usergroupsList();
+$results = $client->searchMessages([
+    'query' => 'test'
+]);
 
-$groups = $userGroupsResponse['usergroups'];
+var_dump($results->getOk()); // Mapped
+var_dump($results['messages']); // Not mapped but still readable
 ```
 
+Feel free to open issues for those missing fields.

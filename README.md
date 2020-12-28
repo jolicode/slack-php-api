@@ -5,7 +5,9 @@ features, some only cover a small part of the API and most are simply no longer
 maintained.
 
 This SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp)
-from the [official Slack API specs](https://github.com/slackapi/slack-api-specs). It provide a fully object oriented interface for all the endpoints, requests and responses of the Slack Web API.
+from the [official Slack API specs](https://github.com/slackapi/slack-api-specs). 
+
+It provides a **full object oriented interface** for all the endpoints, requests and responses of the Slack Web API.
 
 ## Installation
 
@@ -28,8 +30,10 @@ composer require jolicode/slack-php-api
 
 ## Usage
 
-First, you need to retrieve a token - like an OAuth AccessToken or a legacy
-token. Checkout Slack's documentation about [all differents kind of tokens](https://api.slack.com/docs/token-types).
+First, you need to retrieve a token from Slack. 
+
+Checkout Slack's documentation about [all different kind of tokens](https://api.slack.com/authentication/token-types).
+A good starting point is the [Authentication Basics documentation](https://api.slack.com/authentication/basics).
 
 Then, use the factory that is provided to create the client:
 
@@ -46,34 +50,13 @@ dump($user);
   <img src="doc/images/model-sample.png" alt="Sample user object" />
 <p>
 
-Want more example or documentation? See the [documentation](doc/index.md).
+Want more example or documentation? See the [full documentation here](doc/index.md).
 
 ## Troubleshoots
 
 Got some problems using this library? Need a missing feature?
 Do not hesitate to [open an issue](https://github.com/jolicode/slack-php-api/issues)
 and share it with us.
-
-### Missing data in the DTO?
-
-The Slack specification is not up to date and miss some critical parts. We do
-build a [better one on top of the official](doc/updating-sdk.md) but it can't
-be perfect.
-
-What's good is that some models use `\ArrayObject` as base classes so if the
-API returns data we don't have in the mapping, you can still access it via
-Array like syntax:
-
-```php
-$results = $client->searchMessages([
-    'query' => 'test'
-]);
-
-var_dump($results->getOk()); // Mapped
-var_dump($results['messages']); // Not mapped but still readable
-```
-
-Feel free to open issues for those missing fields.
 
 ## Further documentation
 
@@ -83,7 +66,7 @@ You can see the current and past versions using one of the following:
 * the [releases page on Github](https://github.com/jolicode/slack-php-api/releases)
 * the file listing the [changes between versions](CHANGELOG.md)
 
-And finally some meta documentation:
+Finally, some meta documentation:
 
 * [versioning and branching models](VERSIONING.md)
 * [contribution instructions](CONTRIBUTING.md)
