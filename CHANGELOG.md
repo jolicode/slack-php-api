@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* **Specification override** Fix some `timestamp` from integer to mixed string and integer to support old messages
+
 ## 4.0.0 (2020-12-28)
 
 * **Breaking** Specification update to latest Slack official version - see slackapi/slack-api-specs#44

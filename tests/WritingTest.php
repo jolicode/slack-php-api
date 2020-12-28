@@ -109,11 +109,15 @@ class WritingTest extends TestCase
             'channels' => $_SERVER['SLACK_TEST_CHANNEL'],
             'title' => 'Uploaded image',
             'filename' => 'test-image.png',
+            'initial_comment' => 'This is a initial_comment in a filesUpload',
             'filetype' => 'png',
             'file' => Stream::create(fopen(__DIR__.'/resources/test-image.png', 'r')),
         ]);
 
         $this->assertTrue($response->getOk());
+
+        // On new messages it's an integer
+        $this->assertIsInt($response->getFile()->getTimestamp());
     }
 
     public function testScheduleMessage()

@@ -104,7 +104,13 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $object->setReactions(null);
         }
         if (\array_key_exists('timestamp', $data) && null !== $data['timestamp']) {
-            $object->setTimestamp($data['timestamp']);
+            $value_2 = $data['timestamp'];
+            if (\is_string($data['timestamp'])) {
+                $value_2 = $data['timestamp'];
+            } elseif (\is_int($data['timestamp'])) {
+                $value_2 = $data['timestamp'];
+            }
+            $object->setTimestamp($value_2);
         } elseif (\array_key_exists('timestamp', $data) && null === $data['timestamp']) {
             $object->setTimestamp(null);
         }
@@ -147,7 +153,13 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $data['reactions'] = $values_1;
         }
-        $data['timestamp'] = $object->getTimestamp();
+        $value_2 = $object->getTimestamp();
+        if (\is_string($object->getTimestamp())) {
+            $value_2 = $object->getTimestamp();
+        } elseif (\is_int($object->getTimestamp())) {
+            $value_2 = $object->getTimestamp();
+        }
+        $data['timestamp'] = $value_2;
         $data['user'] = $object->getUser();
 
         return $data;
