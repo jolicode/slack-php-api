@@ -8,6 +8,10 @@
         {
             "name": "Loïck Piera",
             "email": "pyrech@gmail.com"
+        },
+        {
+            "name": "JoliCode",
+            "email": "coucou@jolicode.com"
         }
     ],
     "autoload": {
