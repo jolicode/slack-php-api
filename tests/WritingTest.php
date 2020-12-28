@@ -117,7 +117,11 @@ class WritingTest extends TestCase
         $this->assertTrue($response->getOk());
 
         // On new messages it's an integer
-        $this->assertIsInt($response->getFile()->getTimestamp());
+        if (method_exists($this, 'assertIsInt')) {
+            $this->assertIsInt($response->getFile()->getTimestamp());
+        } else {
+            $this->assertInternalType('int', $response->getFile()->getTimestamp());
+        }
     }
 
     public function testScheduleMessage()
