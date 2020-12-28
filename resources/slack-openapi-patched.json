@@ -12686,7 +12686,7 @@
                         "description": "Unique identifier of message you want marked as most recently seen in this conversation.",
                         "in": "formData",
                         "name": "ts",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [
@@ -16041,6 +16041,7 @@
                                 "error": {
                                     "enum": [
                                         "account_inactive",
+                                        "file_upload_size_restricted",
                                         "file_uploads_disabled",
                                         "file_uploads_except_images_disabled",
                                         "invalid_arg_name",
