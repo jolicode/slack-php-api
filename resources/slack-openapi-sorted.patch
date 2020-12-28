@@ -1,6 +1,32 @@
---- resources/slack-openapi-sorted.json	2020-11-22 19:07:43.855900105 +0100
-+++ resources/slack-openapi-patched.json	2020-11-22 19:20:36.996043162 +0100
-@@ -507,20 +507,21 @@
+--- resources/slack-openapi-sorted.json	2020-12-28 10:01:25.748286602 +0100
++++ resources/slack-openapi-patched.json	2020-12-28 11:16:51.785253670 +0100
+@@ -397,21 +397,24 @@
+                     },
+                     "type": "array"
+                 },
+                 "reactions": {
+                     "items": {
+                         "$ref": "#/definitions/objs_reaction"
+                     },
+                     "type": "array"
+                 },
+                 "timestamp": {
+-                    "type": "integer"
++                    "type": [
++                        "integer",
++                        "string"
++                    ]
+                 },
+                 "user": {
+                     "$ref": "#/definitions/defs_user_id"
+                 }
+             },
+             "required": [
+                 "comment",
+                 "created",
+                 "id",
+                 "is_intro",
+@@ -507,20 +510,21 @@
                      "type": "boolean"
                  },
                  "is_member": {
@@ -22,7 +48,7 @@
                  "is_open": {
                      "type": "boolean"
                  },
-@@ -822,20 +823,24 @@
+@@ -822,20 +826,24 @@
                  },
                  "comments_count": {
                      "type": "integer"
@@ -47,7 +73,7 @@
                      "$ref": "#/definitions/defs_user_id"
                  },
                  "external_id": {
-@@ -920,43 +925,67 @@
+@@ -920,43 +928,67 @@
                  },
                  "pinned_info": {
                      "$ref": "#/definitions/defs_pinned_info"
@@ -117,7 +143,7 @@
                  "source_team": {
                      "$ref": "#/definitions/defs_team"
                  },
-@@ -974,20 +1003,24 @@
+@@ -974,20 +1006,24 @@
                      "type": "integer"
                  },
                  "thumb_160": {
@@ -142,7 +168,33 @@
                      "format": "uri",
                      "type": "string"
                  },
-@@ -1095,39 +1128,124 @@
+@@ -1032,21 +1068,24 @@
+                 "thumb_960_h": {
+                     "type": "integer"
+                 },
+                 "thumb_960_w": {
+                     "type": "integer"
+                 },
+                 "thumb_tiny": {
+                     "type": "string"
+                 },
+                 "timestamp": {
+-                    "type": "integer"
++                    "type": [
++                        "integer",
++                        "string"
++                    ]
+                 },
+                 "title": {
+                     "type": "string"
+                 },
+                 "updated": {
+                     "type": "integer"
+                 },
+                 "url_private": {
+                     "format": "uri",
+                     "type": "string"
+@@ -1095,39 +1134,124 @@
                      "type": "boolean"
                  }
              },
@@ -268,7 +320,7 @@
                      "minItems": 1,
                      "type": "array",
                      "uniqueItems": true
-@@ -1431,91 +1549,46 @@
+@@ -1431,91 +1555,46 @@
                      "type": "boolean"
                  }
              },
@@ -381,7 +433,7 @@
                      "im:history",
                      "im:read"
                  ]
-@@ -1671,28 +1744,21 @@
+@@ -1671,28 +1750,21 @@
                  "deleted": {
                      "type": "boolean"
                  },
@@ -411,7 +463,7 @@
                  "enterprise_id": {
                      "$ref": "#/definitions/defs_enterprise_id"
                  },
-@@ -1798,28 +1864,21 @@
+@@ -1798,28 +1870,21 @@
                      "pattern": "^X[a-zA-Z0-9]{9,}$",
                      "type": "string"
                  },
@@ -441,7 +493,7 @@
                      },
                      "type": [
                          "array",
-@@ -2332,36 +2391,35 @@
+@@ -2332,36 +2397,35 @@
                      },
                      {
                          "in": "formData",
@@ -479,7 +531,7 @@
                          }
                      },
                      "default": {
-@@ -2426,21 +2484,20 @@
+@@ -2426,21 +2490,20 @@
                      },
                      {
                          "in": "query",
@@ -501,7 +553,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -2515,21 +2572,20 @@
+@@ -2515,21 +2578,20 @@
                      },
                      {
                          "in": "query",
@@ -523,7 +575,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -2605,21 +2661,20 @@
+@@ -2605,21 +2667,20 @@
                      },
                      {
                          "in": "formData",
@@ -545,7 +597,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -2699,21 +2754,20 @@
+@@ -2699,21 +2760,20 @@
                      },
                      {
                          "in": "query",
@@ -567,7 +619,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -2779,21 +2833,20 @@
+@@ -2779,21 +2839,20 @@
                          "description": "The channel to archive.",
                          "in": "formData",
                          "name": "channel_id",
@@ -589,7 +641,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -2873,21 +2926,20 @@
+@@ -2873,21 +2932,20 @@
                          "description": "The channel to convert to private.",
                          "in": "formData",
                          "name": "channel_id",
@@ -611,7 +663,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -2993,21 +3045,20 @@
+@@ -2993,21 +3051,20 @@
                      {
                          "description": "The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.",
                          "in": "formData",
@@ -633,7 +685,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3090,21 +3141,20 @@
+@@ -3090,21 +3147,20 @@
                          "description": "The channel to delete.",
                          "in": "formData",
                          "name": "channel_id",
@@ -655,7 +707,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3190,21 +3240,20 @@
+@@ -3190,21 +3246,20 @@
                      {
                          "description": "The team to be removed from the channel. Currently only a single team id can be specified.",
                          "in": "formData",
@@ -677,7 +729,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3305,21 +3354,20 @@
+@@ -3305,21 +3360,20 @@
                      {
                          "description": "A comma-separated list of the workspaces to which the channels you would like returned belong.",
                          "in": "query",
@@ -699,7 +751,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3385,21 +3433,20 @@
+@@ -3385,21 +3439,20 @@
                          "description": "The channel to get preferences for.",
                          "in": "query",
                          "name": "channel_id",
@@ -721,7 +773,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3530,21 +3577,20 @@
+@@ -3530,21 +3583,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
                          "in": "query",
@@ -743,7 +795,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3643,21 +3689,20 @@
+@@ -3643,21 +3695,20 @@
                          "description": "The channel that the users will be invited to.",
                          "in": "formData",
                          "name": "channel_id",
@@ -765,7 +817,7 @@
                          "type": "string"
                      }
                  ],
-@@ -3749,21 +3794,20 @@
+@@ -3749,21 +3800,20 @@
                      {
                          "in": "formData",
                          "name": "name",
@@ -787,7 +839,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3854,21 +3898,20 @@
+@@ -3854,21 +3904,20 @@
                      {
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
                          "in": "formData",
@@ -809,7 +861,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -3938,21 +3981,20 @@
+@@ -3938,21 +3987,20 @@
                      {
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
                          "in": "query",
@@ -831,7 +883,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4031,21 +4073,20 @@
+@@ -4031,21 +4079,20 @@
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
                          "in": "formData",
                          "name": "team_id",
@@ -853,7 +905,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4146,21 +4187,20 @@
+@@ -4146,21 +4193,20 @@
                      {
                          "description": "Comma separated string of team IDs, signifying the workspaces to search through.",
                          "in": "query",
@@ -875,7 +927,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4256,21 +4296,20 @@
+@@ -4256,21 +4302,20 @@
                          "description": "The prefs for this channel in a stringified JSON format.",
                          "in": "formData",
                          "name": "prefs",
@@ -897,7 +949,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4368,21 +4407,20 @@
+@@ -4368,21 +4413,20 @@
                      {
                          "description": "The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.",
                          "in": "formData",
@@ -919,7 +971,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4448,21 +4486,20 @@
+@@ -4448,21 +4492,20 @@
                          "description": "The channel to unarchive.",
                          "in": "formData",
                          "name": "channel_id",
@@ -941,7 +993,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4541,21 +4578,20 @@
+@@ -4541,21 +4584,20 @@
                          "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
                          "name": "name",
@@ -963,7 +1015,7 @@
                          "type": "string"
                      }
                  ],
-@@ -4634,21 +4670,20 @@
+@@ -4634,21 +4676,20 @@
                          "description": "The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
                          "name": "name",
@@ -985,7 +1037,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4718,21 +4753,20 @@
+@@ -4718,21 +4759,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
                          "in": "query",
@@ -1007,7 +1059,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4797,21 +4831,20 @@
+@@ -4797,21 +4837,20 @@
                          "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
                          "name": "name",
@@ -1029,7 +1081,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4883,21 +4916,20 @@
+@@ -4883,21 +4922,20 @@
                          "description": "The new name of the emoji.",
                          "in": "formData",
                          "name": "new_name",
@@ -1051,7 +1103,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -4969,21 +5001,20 @@
+@@ -4969,21 +5007,20 @@
                      {
                          "description": "ID for the workspace where the invite request was made.",
                          "in": "formData",
@@ -1073,7 +1125,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5060,21 +5091,20 @@
+@@ -5060,21 +5097,20 @@
                      {
                          "description": "ID for the workspace where the invite requests were made.",
                          "in": "query",
@@ -1095,7 +1147,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5151,21 +5181,20 @@
+@@ -5151,21 +5187,20 @@
                      {
                          "description": "ID for the workspace where the invite requests were made.",
                          "in": "query",
@@ -1117,7 +1169,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5237,21 +5266,20 @@
+@@ -5237,21 +5272,20 @@
                      {
                          "description": "ID for the workspace where the invite request was made.",
                          "in": "formData",
@@ -1139,7 +1191,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5328,21 +5356,20 @@
+@@ -5328,21 +5362,20 @@
                      {
                          "description": "ID for the workspace where the invite requests were made.",
                          "in": "query",
@@ -1161,7 +1213,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5418,21 +5445,20 @@
+@@ -5418,21 +5451,20 @@
                      {
                          "in": "query",
                          "name": "team_id",
@@ -1183,7 +1235,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5517,21 +5543,20 @@
+@@ -5517,21 +5549,20 @@
                          "description": "Team name (for example, Slack Softball Team).",
                          "in": "formData",
                          "name": "team_name",
@@ -1205,7 +1257,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5602,21 +5627,20 @@
+@@ -5602,21 +5633,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 100 both inclusive.",
                          "in": "query",
@@ -1227,7 +1279,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5692,21 +5716,20 @@
+@@ -5692,21 +5722,20 @@
                      {
                          "in": "query",
                          "name": "team_id",
@@ -1249,7 +1301,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5771,21 +5794,20 @@
+@@ -5771,21 +5800,20 @@
                      {
                          "in": "query",
                          "name": "team_id",
@@ -1271,7 +1323,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5857,21 +5879,20 @@
+@@ -5857,21 +5885,20 @@
                          "description": "ID for the workspace to set the default channel for.",
                          "in": "formData",
                          "name": "team_id",
@@ -1293,7 +1345,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -5944,21 +5965,20 @@
+@@ -5944,21 +5971,20 @@
                          "description": "ID for the workspace to set the description for.",
                          "in": "formData",
                          "name": "team_id",
@@ -1315,7 +1367,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -6031,21 +6051,20 @@
+@@ -6031,21 +6057,20 @@
                          "description": "The ID of the workspace to set discoverability on.",
                          "in": "formData",
                          "name": "team_id",
@@ -1337,7 +1389,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -6117,21 +6136,20 @@
+@@ -6117,21 +6142,20 @@
                          "description": "ID for the workspace to set the icon for.",
                          "in": "formData",
                          "name": "team_id",
@@ -1359,7 +1411,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -6204,21 +6222,20 @@
+@@ -6204,21 +6228,20 @@
                          "description": "ID for the workspace to set the name for.",
                          "in": "formData",
                          "name": "team_id",
@@ -1381,7 +1433,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -6290,21 +6307,20 @@
+@@ -6290,21 +6313,20 @@
                      {
                          "description": "The workspace to add default channels in.",
                          "in": "formData",
@@ -1403,7 +1455,7 @@
                          "type": "string"
                      }
                  ],
-@@ -6383,21 +6399,20 @@
+@@ -6383,21 +6405,20 @@
                          "description": "A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token.",
                          "in": "formData",
                          "name": "team_ids",
@@ -1425,7 +1477,7 @@
                          "type": "string"
                      }
                  ],
-@@ -6475,21 +6490,20 @@
+@@ -6475,21 +6496,20 @@
                      {
                          "description": "ID of the the workspace.",
                          "in": "query",
@@ -1447,7 +1499,7 @@
                          "type": "string"
                      }
                  ],
-@@ -6562,21 +6576,20 @@
+@@ -6562,21 +6582,20 @@
                          "description": "Comma-separated string of channel IDs",
                          "in": "formData",
                          "name": "channel_ids",
@@ -1469,7 +1521,7 @@
                          "type": "string"
                      }
                  ],
-@@ -6667,21 +6680,20 @@
+@@ -6667,21 +6686,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1491,7 +1543,7 @@
                          "type": "string"
                      }
                  ],
-@@ -6804,21 +6816,20 @@
+@@ -6804,21 +6822,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1513,7 +1565,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -6896,21 +6907,20 @@
+@@ -6896,21 +6913,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "query",
                          "name": "team_id",
@@ -1535,7 +1587,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -6976,21 +6986,20 @@
+@@ -6976,21 +6992,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1557,7 +1609,7 @@
                          "type": "string"
                      }
                  ],
-@@ -7069,21 +7078,20 @@
+@@ -7069,21 +7084,20 @@
                          "description": "ID of the team that the session belongs to",
                          "in": "formData",
                          "name": "team_id",
@@ -1579,7 +1631,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -7148,21 +7156,20 @@
+@@ -7148,21 +7162,20 @@
                      {
                          "description": "Only expire mobile sessions (default: false)",
                          "in": "formData",
@@ -1601,7 +1653,7 @@
                          "type": "string"
                      },
                      {
-@@ -7241,21 +7248,20 @@
+@@ -7241,21 +7254,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1623,7 +1675,7 @@
                          "type": "string"
                      }
                  ],
-@@ -7335,21 +7341,20 @@
+@@ -7335,21 +7347,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1645,7 +1697,7 @@
                          "type": "string"
                      }
                  ],
-@@ -7422,21 +7427,20 @@
+@@ -7422,21 +7433,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1667,7 +1719,7 @@
                          "type": "string"
                      }
                  ],
-@@ -7509,21 +7513,20 @@
+@@ -7509,21 +7519,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1689,7 +1741,7 @@
                          "type": "string"
                      }
                  ],
-@@ -7610,39 +7613,45 @@
+@@ -7610,39 +7619,45 @@
                  ],
                  "responses": {
                      "200": {
@@ -1735,7 +1787,7 @@
                              "required": [
                                  "error",
                                  "ok"
-@@ -7690,21 +7699,20 @@
+@@ -7690,21 +7705,20 @@
                      },
                      {
                          "in": "query",
@@ -1757,7 +1809,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -7953,21 +7961,20 @@
+@@ -7953,21 +7967,20 @@
                          "description": "A comma separated list of scopes to request for",
                          "in": "query",
                          "name": "scopes",
@@ -1779,7 +1831,7 @@
                          "type": "string"
                      }
                  ],
-@@ -8077,21 +8084,20 @@
+@@ -8077,21 +8090,20 @@
                      {
                          "description": "The maximum number of items to return.",
                          "in": "query",
@@ -1801,7 +1853,7 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "schema": {
-@@ -8220,21 +8226,20 @@
+@@ -8220,21 +8232,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/apps.permissions.scopes.list"
@@ -1823,7 +1875,7 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "schema": {
-@@ -8361,21 +8366,20 @@
+@@ -8361,21 +8372,20 @@
                      {
                          "description": "The maximum number of items to return.",
                          "in": "query",
@@ -1845,7 +1897,7 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "schema": {
-@@ -8440,21 +8444,20 @@
+@@ -8440,21 +8450,20 @@
                          "description": "A comma separated list of user scopes to request for",
                          "in": "query",
                          "name": "scopes",
@@ -1867,7 +1919,7 @@
                          "type": "string"
                      },
                      {
-@@ -8646,21 +8649,20 @@
+@@ -8646,21 +8655,20 @@
                      {
                          "description": "Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.",
                          "in": "query",
@@ -1889,7 +1941,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -8750,21 +8752,20 @@
+@@ -8750,21 +8758,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/auth.test"
@@ -1911,7 +1963,7 @@
                      "200": {
                          "description": "Standard success response when used with a user token",
                          "schema": {
-@@ -8877,21 +8878,20 @@
+@@ -8877,21 +8884,20 @@
                      {
                          "description": "Bot user to get info on",
                          "in": "query",
@@ -1933,7 +1985,7 @@
                      "200": {
                          "description": "When successful, returns bot info by bot ID.",
                          "schema": {
-@@ -9078,21 +9078,20 @@
+@@ -9078,21 +9084,20 @@
                      {
                          "description": "The name of the Call.",
                          "in": "formData",
@@ -1955,7 +2007,7 @@
                      }
                  ],
                  "produces": [
-@@ -9169,21 +9168,20 @@
+@@ -9169,21 +9174,20 @@
                          "description": "`id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
                          "name": "id",
@@ -1977,7 +2029,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -9248,21 +9246,20 @@
+@@ -9248,21 +9252,20 @@
                          "description": "`id` of the Call returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "query",
                          "name": "id",
@@ -1999,7 +2051,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -9327,21 +9324,20 @@
+@@ -9327,21 +9330,20 @@
                          "description": "`id` returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
                          "name": "id",
@@ -2021,7 +2073,7 @@
                          "type": "string"
                      }
                  ],
-@@ -9414,21 +9410,20 @@
+@@ -9414,21 +9416,20 @@
                          "description": "`id` returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
                          "name": "id",
@@ -2043,7 +2095,7 @@
                          "type": "string"
                      }
                  ],
-@@ -9519,21 +9514,20 @@
+@@ -9519,21 +9520,20 @@
                      {
                          "description": "The name of the Call.",
                          "in": "formData",
@@ -2065,7 +2117,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -9609,21 +9603,21 @@
+@@ -9609,21 +9609,21 @@
                      {
                          "description": "Authentication token. Requires scope: `chat:write`",
                          "in": "header",
@@ -2088,7 +2140,7 @@
                          "description": "Typical success response",
                          "schema": {
                              "additionalProperties": false,
-@@ -9740,21 +9734,20 @@
+@@ -9740,21 +9740,20 @@
                          "description": "`scheduled_message_id` returned from call to chat.scheduleMessage",
                          "in": "formData",
                          "name": "scheduled_message_id",
@@ -2110,7 +2162,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -9859,21 +9852,20 @@
+@@ -9859,21 +9858,20 @@
                          "description": "A message's `ts` value, uniquely identifying it within a channel",
                          "in": "query",
                          "name": "message_ts",
@@ -2132,7 +2184,7 @@
                      "200": {
                          "description": "Standard success response",
                          "schema": {
-@@ -10155,21 +10147,20 @@
+@@ -10155,21 +10153,20 @@
                      {
                          "description": "Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.",
                          "in": "formData",
@@ -2154,7 +2206,7 @@
                          "type": "string"
                      },
                      {
-@@ -10280,21 +10271,21 @@
+@@ -10280,21 +10277,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/chat.postMessage"
@@ -2177,7 +2229,7 @@
                      {
                          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
                          "in": "formData",
-@@ -10353,21 +10344,20 @@
+@@ -10353,21 +10350,20 @@
                      {
                          "description": "Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.",
                          "in": "formData",
@@ -2199,7 +2251,7 @@
                      },
                      {
                          "description": "Pass false to disable unfurling of media content.",
-@@ -10518,39 +10508,39 @@
+@@ -10518,39 +10514,39 @@
                      {
                          "description": "Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).",
                          "in": "formData",
@@ -2241,7 +2293,7 @@
                      {
                          "description": "Pass true to enable unfurling of primarily text-based content.",
                          "in": "formData",
-@@ -10573,26 +10563,46 @@
+@@ -10573,26 +10569,46 @@
                          "schema": {
                              "additionalProperties": false,
                              "description": "Schema for successful response of chat.scheduleMessage method",
@@ -2288,7 +2340,7 @@
                                              "type": "string"
                                          },
                                          "user": {
-@@ -10608,22 +10618,24 @@
+@@ -10608,22 +10624,24 @@
                                          "text",
                                          "type",
                                          "user"
@@ -2315,7 +2367,7 @@
                              "required": [
                                  "channel",
                                  "message",
-@@ -10732,33 +10744,33 @@
+@@ -10732,33 +10750,33 @@
                      {
                          "description": "For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.",
                          "in": "query",
@@ -2351,7 +2403,7 @@
                  ],
                  "produces": [
                      "application/json"
-@@ -10791,25 +10803,27 @@
+@@ -10791,25 +10809,27 @@
                                          "properties": {
                                              "channel_id": {
                                                  "$ref": "#/definitions/defs_channel_id"
@@ -2382,7 +2434,7 @@
                                              "date_created",
                                              "id",
                                              "post_at"
-@@ -10907,21 +10921,20 @@
+@@ -10907,21 +10927,20 @@
                          "description": "Channel ID of the message",
                          "in": "formData",
                          "name": "channel",
@@ -2404,7 +2456,7 @@
                          "type": "string"
                      },
                      {
-@@ -11043,21 +11056,21 @@
+@@ -11043,21 +11062,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/chat.update"
@@ -2427,7 +2479,7 @@
                      {
                          "description": "A JSON-based array of [structured blocks](/block-kit/building), presented as a URL-encoded string. If you don't include this field, the message's previous `blocks` will be retained. To remove previous `blocks`, include an empty array for this field.",
                          "in": "formData",
-@@ -11086,21 +11099,20 @@
+@@ -11086,21 +11105,20 @@
                      {
                          "description": "New text for the message, using the [default formatting rules](/reference/surfaces/formatting). It's not required when presenting `blocks` or `attachments`.",
                          "in": "formData",
@@ -2449,7 +2501,7 @@
                          "type": "string"
                      }
                  ],
-@@ -11689,20 +11701,32 @@
+@@ -11689,20 +11707,32 @@
                                      },
                                      "minItems": 1,
                                      "type": "array",
@@ -2482,7 +2534,7 @@
                                  "ok",
                                  "pin_count"
                              ],
-@@ -12655,21 +12679,21 @@
+@@ -12655,21 +12685,21 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:write`",
                          "in": "header",
@@ -2505,7 +2557,7 @@
                          "description": "Typical success response",
                          "schema": {
                              "additionalProperties": false,
-@@ -13252,21 +13276,21 @@
+@@ -13252,21 +13282,21 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:history`",
                          "in": "query",
@@ -2528,7 +2580,7 @@
                          "description": "Typical success response",
                          "schema": {
                              "additionalProperties": false,
-@@ -13391,20 +13415,32 @@
+@@ -13391,20 +13421,32 @@
                                                      "user"
                                                  ],
                                                  "type": "object"
@@ -2561,7 +2613,7 @@
                              "type": "object"
                          }
                      },
-@@ -13864,21 +13900,20 @@
+@@ -13864,21 +13906,20 @@
                          "description": "The dialog definition. This must be a JSON-encoded string.",
                          "in": "query",
                          "name": "dialog",
@@ -2583,7 +2635,7 @@
                          "type": "string"
                      }
                  ],
-@@ -13980,21 +14015,20 @@
+@@ -13980,21 +14021,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endDnd"
@@ -2605,7 +2657,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -14082,21 +14116,20 @@
+@@ -14082,21 +14122,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endSnooze"
@@ -2627,7 +2679,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -14333,21 +14366,20 @@
+@@ -14333,21 +14372,20 @@
                          "description": "Number of minutes, from now, to snooze until.",
                          "in": "formData",
                          "name": "num_minutes",
@@ -2649,7 +2701,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -14481,21 +14513,21 @@
+@@ -14481,21 +14519,21 @@
                              "required": [
                                  "ok"
                              ],
@@ -2672,7 +2724,7 @@
                                  "ok"
                              ],
                              "title": "Default error template",
-@@ -14524,21 +14556,20 @@
+@@ -14524,21 +14562,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/emoji.list"
@@ -2694,7 +2746,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -14984,27 +15015,27 @@
+@@ -14984,27 +15021,27 @@
                      {
                          "description": "Authentication token. Requires scope: `files:read`",
                          "in": "query",
@@ -2724,7 +2776,7 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
-@@ -15901,21 +15932,21 @@
+@@ -15901,21 +15938,21 @@
                      }
                  ],
                  "tags": [
@@ -2747,7 +2799,7 @@
                  "parameters": [
                      {
                          "description": "Comma-separated list of channel names or IDs where the file will be shared.",
-@@ -15926,21 +15957,21 @@
+@@ -15926,21 +15963,21 @@
                      {
                          "description": "File contents via a POST variable. If omitting this parameter, you must provide a `file`.",
                          "in": "formData",
@@ -2770,7 +2822,7 @@
                      {
                          "description": "A [file type](/types/file#file_types) identifier.",
                          "in": "formData",
-@@ -15950,21 +15981,21 @@
+@@ -15950,21 +15987,21 @@
                      {
                          "description": "The message text introducing the file in specified `channels`.",
                          "in": "formData",
@@ -2793,7 +2845,7 @@
                      {
                          "description": "Authentication token. Requires scope: `files:write:user`",
                          "in": "formData",
-@@ -16078,21 +16109,20 @@
+@@ -16079,21 +16116,20 @@
                      {
                          "description": "Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.",
                          "in": "query",
@@ -2815,7 +2867,7 @@
                          "type": "string"
                      }
                  ],
-@@ -16486,34 +16516,32 @@
+@@ -16487,34 +16523,32 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.add"
@@ -2850,7 +2902,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -16603,28 +16631,26 @@
+@@ -16604,28 +16638,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.list"
@@ -2879,7 +2931,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -16795,21 +16821,20 @@
+@@ -16796,21 +16828,20 @@
                      {
                          "description": "Timestamp of the message to un-pin.",
                          "in": "formData",
@@ -2901,7 +2953,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -16920,21 +16945,20 @@
+@@ -16921,21 +16952,20 @@
                          "description": "Timestamp of the message to add reaction to.",
                          "in": "formData",
                          "name": "timestamp",
@@ -2923,7 +2975,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -17053,33 +17077,32 @@
+@@ -17054,33 +17084,32 @@
                      {
                          "description": "Timestamp of the message to get reactions for.",
                          "in": "query",
@@ -2958,7 +3010,7 @@
                                              "$ref": "#/definitions/objs_message"
                                          },
                                          "ok": {
-@@ -17141,22 +17164,21 @@
+@@ -17142,22 +17171,21 @@
                                          }
                                      },
                                      "required": [
@@ -2982,7 +3034,7 @@
                              "properties": {
                                  "callstack": {
                                      "description": "Note: PHP callstack is only visible in dev/qa",
-@@ -17248,21 +17270,20 @@
+@@ -17249,21 +17277,20 @@
                      },
                      {
                          "in": "query",
@@ -3004,7 +3056,7 @@
                      }
                  ],
                  "produces": [
-@@ -17463,21 +17484,20 @@
+@@ -17464,21 +17491,20 @@
                      {
                          "description": "Timestamp of the message to remove reaction from.",
                          "in": "formData",
@@ -3026,7 +3078,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -17582,21 +17602,20 @@
+@@ -17583,21 +17609,20 @@
                          "description": "When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. \"in 15 minutes,\" or \"every Thursday\")",
                          "in": "formData",
                          "name": "time",
@@ -3048,7 +3100,7 @@
                      }
                  ],
                  "produces": [
-@@ -18142,21 +18161,20 @@
+@@ -18143,21 +18168,20 @@
                      {
                          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).",
                          "in": "query",
@@ -3070,7 +3122,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -18319,21 +18337,20 @@
+@@ -18320,21 +18344,20 @@
                      {
                          "description": "Change sort direction to ascending (`asc`) or descending (`desc`).",
                          "in": "query",
@@ -3092,7 +3144,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -18415,21 +18432,20 @@
+@@ -18416,21 +18439,20 @@
                      {
                          "description": "Timestamp of the message to add star to.",
                          "in": "formData",
@@ -3114,7 +3166,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -18824,21 +18840,20 @@
+@@ -18825,21 +18847,20 @@
                      {
                          "description": "Timestamp of the message to remove star from.",
                          "in": "formData",
@@ -3136,7 +3188,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -18946,21 +18961,20 @@
+@@ -18947,21 +18968,20 @@
                      },
                      {
                          "in": "query",
@@ -3158,7 +3210,7 @@
                      "200": {
                          "description": "This response demonstrates pagination and two access log entries.",
                          "schema": {
-@@ -19118,21 +19132,20 @@
+@@ -19119,21 +19139,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.billableInfo"
@@ -3180,7 +3232,7 @@
                      }
                  ],
                  "produces": [
-@@ -19201,21 +19214,20 @@
+@@ -19202,21 +19221,20 @@
                      {
                          "description": "Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels",
                          "in": "query",
@@ -3202,7 +3254,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -19331,21 +19343,20 @@
+@@ -19332,21 +19350,20 @@
                      {
                          "description": "Filter logs to this service. Defaults to all logs.",
                          "in": "query",
@@ -3224,7 +3276,7 @@
                      }
                  ],
                  "produces": [
-@@ -19495,21 +19506,20 @@
+@@ -19496,21 +19513,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.profile.get"
@@ -3246,7 +3298,7 @@
                      }
                  ],
                  "produces": [
-@@ -19648,21 +19658,20 @@
+@@ -19649,21 +19665,20 @@
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
                          "name": "name",
@@ -3268,7 +3320,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -19761,21 +19770,20 @@
+@@ -19762,21 +19777,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -3290,7 +3342,7 @@
                          "type": "string"
                      }
                  ],
-@@ -19881,21 +19889,20 @@
+@@ -19882,21 +19896,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -3312,7 +3364,7 @@
                          "type": "string"
                      }
                  ],
-@@ -20013,21 +20020,20 @@
+@@ -20014,21 +20027,20 @@
                      {
                          "description": "Include the list of users for each User Group.",
                          "in": "query",
@@ -3334,7 +3386,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -20154,21 +20160,20 @@
+@@ -20155,21 +20167,20 @@
                      {
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
@@ -3356,7 +3408,7 @@
                          "type": "string"
                      }
                  ],
-@@ -20275,25 +20280,24 @@
+@@ -20276,25 +20287,24 @@
                      {
                          "description": "Allow results that involve disabled User Groups.",
                          "in": "query",
@@ -3383,7 +3435,7 @@
                      "application/json"
                  ],
                  "responses": {
-@@ -20400,21 +20404,20 @@
+@@ -20401,21 +20411,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -3405,7 +3457,7 @@
                          "type": "string"
                      },
                      {
-@@ -20678,21 +20681,20 @@
+@@ -20679,21 +20688,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.deletePhoto"
@@ -3427,7 +3479,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -20778,21 +20780,20 @@
+@@ -20779,21 +20787,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.getPresence"
@@ -3449,7 +3501,7 @@
                      }
                  ],
                  "produces": [
-@@ -21231,21 +21232,20 @@
+@@ -21232,21 +21239,20 @@
                      {
                          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
                          "in": "query",
@@ -3471,7 +3523,7 @@
                      }
                  ],
                  "produces": [
-@@ -21469,28 +21469,26 @@
+@@ -21470,28 +21476,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.lookupByEmail"
@@ -3500,7 +3552,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -21585,21 +21583,20 @@
+@@ -21586,21 +21590,20 @@
                      {
                          "description": "Include labels for each ID in custom profile fields",
                          "in": "query",
@@ -3522,7 +3574,7 @@
                      }
                  ],
                  "produces": [
-@@ -21710,21 +21707,20 @@
+@@ -21711,21 +21714,20 @@
                      {
                          "description": "Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.",
                          "in": "formData",
@@ -3544,7 +3596,7 @@
                      },
                      {
                          "description": "Value to set a single key to. Usable only if `profile` is not passed.",
-@@ -21842,21 +21838,20 @@
+@@ -21843,21 +21845,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.setActive"
@@ -3566,7 +3618,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -21965,21 +21960,20 @@
+@@ -21966,21 +21967,20 @@
                      {
                          "description": "File contents via `multipart/form-data`.",
                          "in": "formData",
@@ -3588,7 +3640,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -22143,21 +22137,20 @@
+@@ -22144,21 +22144,20 @@
                          "description": "Either `auto` or `away`",
                          "in": "formData",
                          "name": "presence",
@@ -3610,7 +3662,7 @@
                      "200": {
                          "description": "Typical success response",
                          "schema": {
-@@ -22244,21 +22237,20 @@
+@@ -22245,21 +22244,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.open"
@@ -3632,7 +3684,7 @@
                          "type": "string"
                      },
                      {
-@@ -22336,21 +22328,20 @@
+@@ -22337,21 +22335,20 @@
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
                          "in": "query",
@@ -3654,7 +3706,7 @@
                          "type": "string"
                      },
                      {
-@@ -22422,21 +22413,20 @@
+@@ -22423,21 +22420,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.push"
@@ -3676,7 +3728,7 @@
                          "type": "string"
                      },
                      {
-@@ -22520,21 +22510,20 @@
+@@ -22521,21 +22517,20 @@
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
                          "in": "query",
@@ -3698,7 +3750,7 @@
                      },
                      {
                          "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
-@@ -22610,21 +22599,20 @@
+@@ -22611,21 +22606,20 @@
                      {
                          "description": "Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your [`outputs`](/reference/workflows/workflow_step#output) array from your `workflow_step` object.",
                          "in": "query",
@@ -3720,7 +3772,7 @@
                          "type": "string"
                      }
                  ],
-@@ -22696,21 +22684,20 @@
+@@ -22697,21 +22691,20 @@
                          "description": "A JSON-based object with a `message` property that should contain a human readable error message.",
                          "in": "query",
                          "name": "error",
@@ -3742,7 +3794,7 @@
                          "type": "string"
                      }
                  ],
-@@ -22799,21 +22786,20 @@
+@@ -22800,21 +22793,20 @@
                      {
                          "description": "An optional field that can be used to override the step name that is shown in the Workflow Builder.",
                          "in": "query",

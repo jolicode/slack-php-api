@@ -276,7 +276,7 @@ class ObjsFile
      */
     protected $thumbTiny;
     /**
-     * @var int|null
+     * @var string|int|null
      */
     protected $timestamp;
     /**
@@ -1124,12 +1124,18 @@ class ObjsFile
         return $this;
     }
 
-    public function getTimestamp(): ?int
+    /**
+     * @return string|int|null
+     */
+    public function getTimestamp()
     {
         return $this->timestamp;
     }
 
-    public function setTimestamp(?int $timestamp): self
+    /**
+     * @param string|int|null $timestamp
+     */
+    public function setTimestamp($timestamp): self
     {
         $this->timestamp = $timestamp;
 

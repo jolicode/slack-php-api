@@ -404,7 +404,10 @@
                     "type": "array"
                 },
                 "timestamp": {
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
                 },
                 "user": {
                     "$ref": "#/definitions/defs_user_id"
@@ -1072,7 +1075,10 @@
                     "type": "string"
                 },
                 "timestamp": {
-                    "type": "integer"
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
                 },
                 "title": {
                     "type": "string"

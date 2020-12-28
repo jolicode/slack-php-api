@@ -396,7 +396,13 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $object->setThumbTiny(null);
         }
         if (\array_key_exists('timestamp', $data) && null !== $data['timestamp']) {
-            $object->setTimestamp($data['timestamp']);
+            $value_5 = $data['timestamp'];
+            if (\is_string($data['timestamp'])) {
+                $value_5 = $data['timestamp'];
+            } elseif (\is_int($data['timestamp'])) {
+                $value_5 = $data['timestamp'];
+            }
+            $object->setTimestamp($value_5);
         } elseif (\array_key_exists('timestamp', $data) && null === $data['timestamp']) {
             $object->setTimestamp(null);
         }
@@ -658,7 +664,13 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['thumb_tiny'] = $object->getThumbTiny();
         }
         if (null !== $object->getTimestamp()) {
-            $data['timestamp'] = $object->getTimestamp();
+            $value_5 = $object->getTimestamp();
+            if (\is_string($object->getTimestamp())) {
+                $value_5 = $object->getTimestamp();
+            } elseif (\is_int($object->getTimestamp())) {
+                $value_5 = $object->getTimestamp();
+            }
+            $data['timestamp'] = $value_5;
         }
         if (null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
