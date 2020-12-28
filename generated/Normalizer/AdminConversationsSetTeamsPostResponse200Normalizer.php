@@ -24,9 +24,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class AdminConversationsSetTeamsPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
+    use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
-    use CheckArray;
 
     public function supportsDenormalization($data, $type, $format = null)
     {

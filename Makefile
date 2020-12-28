@@ -2,7 +2,7 @@ cs: ## Fix CS violations
 	./vendor/bin/php-cs-fixer fix --verbose
 
 cs_dry_run: ## Display CS violations without fixing it
-	./vendor/bin/php-cs-fixer fix --verbose --dry-run
+	PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --verbose --dry-run
 
 spec_diff: ## detect diff between spec and SDK
 	CI_TEST=1 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php && diff generated_ci generated
