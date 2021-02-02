@@ -1,0 +1,14 @@
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/.jane-openapi.php export-ignore
+/.php_cs export-ignore
+/.travis.yml export-ignore
+/CHANGELOG.md export-ignore
+/CONTRIBUTING.md export-ignore
+/doc export-ignore
+/Makefile export-ignore
+/phpunit.xml.dist export-ignore
+/resources export-ignore
+/tests export-ignore
+/VERSIONING.md export-ignore
