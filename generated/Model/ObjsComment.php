@@ -52,7 +52,7 @@ class ObjsComment
      */
     protected $reactions;
     /**
-     * @var string|int|null
+     * @var int|string|null
      */
     protected $timestamp;
     /**
@@ -187,7 +187,7 @@ class ObjsComment
     }
 
     /**
-     * @return string|int|null
+     * @return int|string|null
      */
     public function getTimestamp()
     {
@@ -195,7 +195,7 @@ class ObjsComment
     }
 
     /**
-     * @param string|int|null $timestamp
+     * @param int|string|null $timestamp
      */
     public function setTimestamp($timestamp): self
     {

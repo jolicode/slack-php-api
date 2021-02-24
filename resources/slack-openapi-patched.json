@@ -11654,7 +11654,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.",
@@ -11666,7 +11666,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `conversations:history`",
@@ -13265,7 +13265,7 @@
                         "description": "End of time range of messages to include in results.",
                         "in": "query",
                         "name": "latest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.",
@@ -13277,7 +13277,7 @@
                         "description": "Start of time range of messages to include in results.",
                         "in": "query",
                         "name": "oldest",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `conversations:history`",
@@ -15371,13 +15371,13 @@
                         "description": "Filter files created after this timestamp (inclusive).",
                         "in": "query",
                         "name": "ts_from",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "description": "Filter files created before this timestamp (inclusive).",
                         "in": "query",
                         "name": "ts_to",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "produces": [

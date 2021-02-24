@@ -26,8 +26,8 @@ class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var int $limit the maximum number of items to return
      *     @var string $token Authentication token. Requires scope: `remote_files:read`
-     *     @var float $ts_from filter files created after this timestamp (inclusive)
-     *     @var float $ts_to Filter files created before this timestamp (inclusive).
+     *     @var string $ts_from filter files created after this timestamp (inclusive)
+     *     @var string $ts_to Filter files created before this timestamp (inclusive).
      * }
      */
     public function __construct(array $queryParameters = [])
@@ -70,8 +70,8 @@ class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         $optionsResolver->setAllowedTypes('cursor', ['string']);
         $optionsResolver->setAllowedTypes('limit', ['int']);
         $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('ts_from', ['float']);
-        $optionsResolver->setAllowedTypes('ts_to', ['float']);
+        $optionsResolver->setAllowedTypes('ts_from', ['string']);
+        $optionsResolver->setAllowedTypes('ts_to', ['string']);
 
         return $optionsResolver;
     }

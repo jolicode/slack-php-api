@@ -276,7 +276,7 @@ class ObjsFile
      */
     protected $thumbTiny;
     /**
-     * @var string|int|null
+     * @var int|string|null
      */
     protected $timestamp;
     /**
@@ -1125,7 +1125,7 @@ class ObjsFile
     }
 
     /**
-     * @return string|int|null
+     * @return int|string|null
      */
     public function getTimestamp()
     {
@@ -1133,7 +1133,7 @@ class ObjsFile
     }
 
     /**
-     * @param string|int|null $timestamp
+     * @param int|string|null $timestamp
      */
     public function setTimestamp($timestamp): self
     {
