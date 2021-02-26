@@ -91,7 +91,12 @@ class ReadingTest extends TestCase
             if ($message->getFiles()) {
                 $hadAFileMessage = true;
                 self::assertInstanceOf(ObjsFile::class, $message->getFiles()[0]);
-                self::assertIsString($message->getTs());
+
+                if (method_exists($this, 'assertIsString')) {
+                    self::assertIsString($message->getTs());
+                } else {
+                    self::assertInternalType('string', $message->getTs());
+                }
             }
         }
 
