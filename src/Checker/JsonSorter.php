@@ -21,7 +21,7 @@ class JsonSorter
         $content = $this->mergeNodes($content);
         $content = $this->recursiveAlphabeticalSort($content);
 
-        return json_encode($content, $prettyPrint ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : JSON_UNESCAPED_SLASHES);
+        return json_encode($content, $prettyPrint ? \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES : \JSON_UNESCAPED_SLASHES);
     }
 
     public function recursiveAlphabeticalSort($item)
@@ -44,7 +44,7 @@ class JsonSorter
             }
 
             $item = $asArray;
-            ksort($item, SORT_STRING);
+            ksort($item, \SORT_STRING);
 
             return $item;
         } elseif (!\is_array($item)) {
@@ -58,7 +58,7 @@ class JsonSorter
         $types = array_unique(array_map('getType', $item));
 
         if (1 === \count($types) && \in_array($types[0], ['string', 'int'], true)) {
-            sort($item, SORT_STRING);
+            sort($item, \SORT_STRING);
         }
 
         return $item;
