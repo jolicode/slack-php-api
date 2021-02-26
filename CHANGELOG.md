@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+## 4.1.0 (2021-02-26)
+
 * **Specification override** Fix some `timestamp` from integer to mixed string and integer to support old messages
+* **Specification override** Change some `latest` / `oldest` / `ts_from` / `ts_to` query parameters from integer to string
+* Improve carbon footprint by removing unnecessary files from git export 
 
 ## 4.0.0 (2020-12-28)
 
