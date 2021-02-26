@@ -25,6 +25,13 @@ use PHPUnit\Framework\TestCase;
 
 class ReadingTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        if (!\array_key_exists('SLACK_TOKEN', $_SERVER)) {
+            $this->markTestSkipped('SLACK_TOKEN env var not present, skip the test.');
+        }
+    }
+
     public function testItWorksOnTestSuccess()
     {
         $client = ClientFactory::create('');
@@ -74,15 +81,26 @@ class ReadingTest extends TestCase
 
         $results = $client->conversationsHistory([
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'oldest' => (string) strtotime('10 September 2000'), // test #105
         ]);
 
         self::assertInstanceOf(ConversationsHistoryGetResponse200::class, $results);
 
+        $hadAFileMessage = false;
         foreach ($results->getMessages() as $message) {
             if ($message->getFiles()) {
+                $hadAFileMessage = true;
                 self::assertInstanceOf(ObjsFile::class, $message->getFiles()[0]);
+
+                if (method_exists($this, 'assertIsString')) {
+                    self::assertIsString($message->getTs());
+                } else {
+                    self::assertInternalType('string', $message->getTs());
+                }
             }
         }
+
+        $this->assertTrue($hadAFileMessage, 'We expect a message in File in the history, cf \JoliCode\Slack\Tests\WritingTest::testItCanUploadFile');
     }
 
     public function testItCanGetTheImList()

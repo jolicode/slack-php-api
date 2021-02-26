@@ -19,6 +19,13 @@ use PHPUnit\Framework\TestCase;
 
 class UserInfoTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        if (!\array_key_exists('SLACK_TOKEN', $_SERVER)) {
+            $this->markTestSkipped('SLACK_TOKEN env var not present, skip the test.');
+        }
+    }
+
     public function testItCanFetchUserInfo()
     {
         $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
