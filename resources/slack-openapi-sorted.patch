@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2020-12-28 10:01:25.748286602 +0100
-+++ resources/slack-openapi-patched.json	2020-12-28 11:16:51.785253670 +0100
+--- resources/slack-openapi-sorted.json	2021-02-24 15:12:58.000000000 -0700
++++ resources/slack-openapi-patched.json	2021-02-24 15:16:56.000000000 -0700
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
@@ -2501,6 +2501,42 @@
                          "type": "string"
                      }
                  ],
+@@ -11629,33 +11647,33 @@
+                     {
+                         "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
+                         "in": "query",
+                         "name": "inclusive",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "End of time range of messages to include in results.",
+                         "in": "query",
+                         "name": "latest",
+-                        "type": "number"
++                        "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Start of time range of messages to include in results.",
+                         "in": "query",
+                         "name": "oldest",
+-                        "type": "number"
++                        "type": "string"
+                     },
+                     {
+                         "description": "Authentication token. Requires scope: `conversations:history`",
+                         "in": "query",
+                         "name": "token",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
 @@ -11689,20 +11707,32 @@
                                      },
                                      "minItems": 1,
@@ -2557,7 +2593,33 @@
                          "description": "Typical success response",
                          "schema": {
                              "additionalProperties": false,
-@@ -13252,21 +13282,21 @@
+@@ -13228,45 +13258,45 @@
+                     {
+                         "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
+                         "in": "query",
+                         "name": "inclusive",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "End of time range of messages to include in results.",
+                         "in": "query",
+                         "name": "latest",
+-                        "type": "number"
++                        "type": "string"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
+                         "description": "Start of time range of messages to include in results.",
+                         "in": "query",
+                         "name": "oldest",
+-                        "type": "number"
++                        "type": "string"
+                     },
                      {
                          "description": "Authentication token. Requires scope: `conversations:history`",
                          "in": "query",
@@ -2776,6 +2838,36 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
+@@ -15327,27 +15364,27 @@
+                     {
+                         "description": "Authentication token. Requires scope: `remote_files:read`",
+                         "in": "query",
+                         "name": "token",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Filter files created after this timestamp (inclusive).",
+                         "in": "query",
+                         "name": "ts_from",
+-                        "type": "number"
++                        "type": "string"
+                     },
+                     {
+                         "description": "Filter files created before this timestamp (inclusive).",
+                         "in": "query",
+                         "name": "ts_to",
+-                        "type": "number"
++                        "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response",
+                         "schema": {
+                             "additionalProperties": true,
 @@ -15901,21 +15938,21 @@
                      }
                  ],

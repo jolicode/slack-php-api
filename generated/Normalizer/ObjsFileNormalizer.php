@@ -397,9 +397,9 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('timestamp', $data) && null !== $data['timestamp']) {
             $value_5 = $data['timestamp'];
-            if (\is_string($data['timestamp'])) {
+            if (\is_int($data['timestamp'])) {
                 $value_5 = $data['timestamp'];
-            } elseif (\is_int($data['timestamp'])) {
+            } elseif (\is_string($data['timestamp'])) {
                 $value_5 = $data['timestamp'];
             }
             $object->setTimestamp($value_5);
@@ -665,9 +665,9 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getTimestamp()) {
             $value_5 = $object->getTimestamp();
-            if (\is_string($object->getTimestamp())) {
+            if (\is_int($object->getTimestamp())) {
                 $value_5 = $object->getTimestamp();
-            } elseif (\is_int($object->getTimestamp())) {
+            } elseif (\is_string($object->getTimestamp())) {
                 $value_5 = $object->getTimestamp();
             }
             $data['timestamp'] = $value_5;
