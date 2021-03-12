@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Upgrade Jane to from 6.3.3 to v6.3.5, fix an error with very long string / payload
+
 ## 4.1.0 (2021-02-26)
 
 * **Specification override** Fix some `timestamp` from integer to mixed string and integer to support old messages
