@@ -2,7 +2,6 @@
 
 use JoliCode\Slack\Api\Model\ObjsUser;
 use JoliCode\Slack\ClientFactory;
-use JoliCode\Slack\CollectionClientDecorator;
 use JoliCode\Slack\Exception\SlackErrorResponse;
 
 require_once __DIR__.'/../../vendor/autoload.php';
