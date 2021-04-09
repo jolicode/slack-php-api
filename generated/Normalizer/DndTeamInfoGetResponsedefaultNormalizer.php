@@ -52,8 +52,14 @@ class DndTeamInfoGetResponsedefaultNormalizer implements DenormalizerInterface, 
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
+            unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
 
         return $object;
@@ -63,6 +69,11 @@ class DndTeamInfoGetResponsedefaultNormalizer implements DenormalizerInterface, 
     {
         $data = [];
         $data['ok'] = $object->getOk();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
 
         return $data;
     }

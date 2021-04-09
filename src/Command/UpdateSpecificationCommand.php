@@ -37,8 +37,8 @@ class UpdateSpecificationCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        // download official Slack OpenAPI spec and save it
-        $content = HttpClient::create()->request('GET', 'https://api.slack.com/specs/openapi/v2/slack_web.json', [
+        // download official Slack OpenAPI spec and save it (use github version to have response specs with examples)
+        $content = HttpClient::create()->request('GET', 'https://raw.githubusercontent.com/slackapi/slack-api-specs/master/web-api/slack_web_openapi_v2.json', [
             'headers' => [
                 'Accept' => 'application/json',
             ],
