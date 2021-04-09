@@ -45,8 +45,10 @@ class SchemaChecker
                     if (empty($responseConfig->examples) || empty($responseConfig->examples->{'application/json'})) {
                         $summary[$path][$method][$response] = [
                             'errors' => [
-                                'path' => '',
-                                'error' => 'No example given',
+                                [
+                                    'property' => '',
+                                    'error' => 'No example given',
+                                ],
                             ],
                         ];
 

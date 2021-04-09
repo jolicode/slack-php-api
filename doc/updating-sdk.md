@@ -31,7 +31,6 @@ of the `generated` directory:
 rm -Rf generated/*
 ```
 
-
 When the versioned specification has been updated, you can run Jane to regenerate the SDK:
 
 ```bash
