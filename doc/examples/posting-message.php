@@ -14,8 +14,23 @@ try {
         'channel' => 'general',
         'text' => 'Hello world',
     ]);
+    
+    $response = $client->chatPostMessage([ 
+        'username' => 'example bot', 
+        'channel' => 'general',
+        'text' => 'Message with blocks', 
+        'blocks' => json_encode([ 
+            [ 
+                'type' => 'section', 
+                'text' => [ 
+                    'type' => 'mrkdwn', 
+                    'text' => ':tada: Blocks are working!', 
+                ],
+            ],
+         ]),
+     ]); 
 
-    echo 'Message sent.';
+    echo 'Messages sent.';
 } catch (SlackErrorResponse $e) {
     echo 'Fail to send the message.', PHP_EOL, $e->getMessage();
 }
