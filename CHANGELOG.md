@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Add a new Client to ease iteration over Slack paginated endpoints thanks to `iterateXxxx` methods (where `xxxx` is the endpoint name to iterate over)
+
 ## 4.1.1 (2021-03-16)
 
 * Upgrade Jane to from 6.3.3 to v6.3.5, fix an error with very long string / payload
