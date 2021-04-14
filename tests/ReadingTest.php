@@ -13,49 +13,18 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Tests;
 
-use JoliCode\Slack\Api\Model\ApiTestGetResponse200;
 use JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200;
 use JoliCode\Slack\Api\Model\ConversationsListGetResponse200;
 use JoliCode\Slack\Api\Model\ObjsFile;
 use JoliCode\Slack\Api\Model\SearchMessagesGetResponse200;
 use JoliCode\Slack\Api\Model\UsersListGetResponse200;
-use JoliCode\Slack\ClientFactory;
 use JoliCode\Slack\Exception\SlackErrorResponse;
-use PHPUnit\Framework\TestCase;
 
-class ReadingTest extends TestCase
+class ReadingTest extends SlackTokenDependentTest
 {
-    protected function setUp(): void
-    {
-        if (!\array_key_exists('SLACK_TOKEN', $_SERVER)) {
-            $this->markTestSkipped('SLACK_TOKEN env var not present, skip the test.');
-        }
-    }
-
-    public function testItWorksOnTestSuccess()
-    {
-        $client = ClientFactory::create('');
-        $response = $client->apiTest();
-
-        self::assertInstanceOf(ApiTestGetResponse200::class, $response);
-        self::assertTrue($response->getOk());
-    }
-
-    public function testItThrowsExceptionOnTestError()
-    {
-        $client = ClientFactory::create('');
-
-        self::expectException(SlackErrorResponse::class);
-        self::expectExceptionMessage('Slack returned error code "yolo"');
-
-        $client->apiTest([
-            'error' => 'yolo',
-        ]);
-    }
-
     public function testItWorksOnUserListWithCorrectToken()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $response = $client->usersList();
 
@@ -67,7 +36,7 @@ class ReadingTest extends TestCase
 
     public function testItThrowsExceptionOnUserListWithoutToken()
     {
-        $client = ClientFactory::create('');
+        $client = $this->createClient('');
 
         self::expectException(SlackErrorResponse::class);
         self::expectExceptionMessage('Slack returned error code "not_authed"');
@@ -77,7 +46,7 @@ class ReadingTest extends TestCase
 
     public function testItCanReadAConversationHistory()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $results = $client->conversationsHistory([
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
@@ -105,7 +74,7 @@ class ReadingTest extends TestCase
 
     public function testItCanGetTheImList()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $results = $client->conversationsList(['types' => 'im']);
 
@@ -115,7 +84,7 @@ class ReadingTest extends TestCase
 
     public function testItCanReadConversationsAndHydrateThem()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         /** @var ConversationsListGetResponse200 $response */
         $response = $client->conversationsList([
@@ -133,7 +102,7 @@ class ReadingTest extends TestCase
 
     public function testItCanSearchMessages()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         /** @var SearchMessagesGetResponse200 $results */
         $results = $client->searchMessages([

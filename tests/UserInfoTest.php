@@ -14,21 +14,12 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\UsersListGetResponse200;
-use JoliCode\Slack\ClientFactory;
-use PHPUnit\Framework\TestCase;
 
-class UserInfoTest extends TestCase
+class UserInfoTest extends SlackTokenDependentTest
 {
-    protected function setUp(): void
-    {
-        if (!\array_key_exists('SLACK_TOKEN', $_SERVER)) {
-            $this->markTestSkipped('SLACK_TOKEN env var not present, skip the test.');
-        }
-    }
-
     public function testItCanFetchUserInfo()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $response = $client->usersList(['limit' => 2]);
 

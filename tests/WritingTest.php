@@ -15,22 +15,13 @@ namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200;
 use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
-use JoliCode\Slack\ClientFactory;
 use Nyholm\Psr7\Stream;
-use PHPUnit\Framework\TestCase;
 
-class WritingTest extends TestCase
+class WritingTest extends SlackTokenDependentTest
 {
-    protected function setUp(): void
-    {
-        if (!\array_key_exists('SLACK_TOKEN', $_SERVER)) {
-            $this->markTestSkipped('SLACK_TOKEN env var not present, skip the test.');
-        }
-    }
-
     public function testItCanPostAttachment()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $response = $client->chatPostMessage([
             'username' => 'User A',
@@ -53,7 +44,7 @@ class WritingTest extends TestCase
 
     public function testItCanPostMessageWithBlock()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $response = $client->chatPostMessage([
             'username' => 'User C',
@@ -88,7 +79,7 @@ class WritingTest extends TestCase
 
     public function testItCanPostAMessageAndThenAThreadResponse()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         /** @var ChatPostMessagePostResponse200 $response */
         $response = $client->chatPostMessage([
@@ -109,7 +100,7 @@ class WritingTest extends TestCase
 
     public function testItCanUploadFile()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         /** @var FilesUploadPostResponse200 $response */
         $response = $client->filesUpload([
@@ -133,7 +124,7 @@ class WritingTest extends TestCase
 
     public function testScheduleMessage()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
         $futureTs = (new \DateTime('+1 hour'))->getTimestamp();
 
         $response = $client->chatScheduleMessage([
@@ -147,7 +138,7 @@ class WritingTest extends TestCase
 
     public function testItCanMarkConversation()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $response = $client->chatPostMessage([
             'username' => 'User A',

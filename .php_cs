@@ -34,9 +34,9 @@ return PhpCsFixer\Config::create()
         'semicolon_after_instruction' => true,
         'combine_consecutive_unsets' => true,
     ))
-    ->setFinder(
-        PhpCsFixer\Finder::create()
-            ->in(__DIR__)
-            ->exclude('doc')
+    ->setFinder(PhpCsFixer\Finder::create()
+        ->in(__DIR__)
+        ->exclude('doc')
+        ->exclude('ci_generated')
     )
 ;

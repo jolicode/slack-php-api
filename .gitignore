@@ -10,5 +10,5 @@ composer.phar
 phpunit.xml
 
 # tests
-generated_ci
+ci_generated
 .phpunit.result.cache

@@ -14,21 +14,12 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ObjsUser;
-use JoliCode\Slack\ClientFactory;
-use PHPUnit\Framework\TestCase;
 
-class ClientTest extends TestCase
+class ClientTest extends SlackTokenDependentTest
 {
-    protected function setUp(): void
-    {
-        if (!\array_key_exists('SLACK_TOKEN', $_SERVER)) {
-            $this->markTestSkipped('SLACK_TOKEN env var not present, skip the test.');
-        }
-    }
-
     public function testItCanIterate()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         $users = $client->iterateUsersList([
             'limit' => 1000,
@@ -44,7 +35,7 @@ class ClientTest extends TestCase
 
     public function testItThrowsExceptionOnUnknownIterate()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         self::expectException(\BadMethodCallException::class);
         self::expectExceptionMessage('Unknown method JoliCode\Slack\Client::iterateFooBar()');
@@ -54,7 +45,7 @@ class ClientTest extends TestCase
 
     public function testItThrowsExceptionOnUnknownMethod()
     {
-        $client = ClientFactory::create($_SERVER['SLACK_TOKEN']);
+        $client = $this->createClient();
 
         self::expectException(\BadMethodCallException::class);
         self::expectExceptionMessage('Unknown method JoliCode\Slack\Client::foobar()');
