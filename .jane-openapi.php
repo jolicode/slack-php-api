@@ -3,7 +3,7 @@
 $directory = __DIR__ . '/generated/';
 
 if (!empty($_SERVER['CI_TEST'])) {
-    $directory = __DIR__ . '/generated_ci/';
+    $directory = __DIR__ . '/ci_generated/';
 }
 
 return [

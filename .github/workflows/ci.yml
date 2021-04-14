@@ -20,6 +20,25 @@ jobs:
               with:
                   args: --config=.php_cs --diff --dry-run
 
+    check-spec:
+        name: Check SDK is in sync with spec
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Install dependencies
+              run: composer update --prefer-dist --no-interaction
+
+            - name: Generate SDK in ci_generated directory
+              run: CI_TEST=1 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
+
+            - name: Fix CS on ci_generated directory
+              run: vendor/bin/php-cs-fixer fix --diff --dry-run ci_generated
+
+            - name: Check ci_generated and generated directories are equal
+              run: diff ci_generated generated
+
     tests:
         name: Test PHP ${{ matrix.php-version }} ${{ matrix.name }}
         runs-on: ubuntu-latest
@@ -43,19 +62,8 @@ jobs:
                   php-version: ${{ matrix.php-version }}
                   extensions: mbstring, xml
 
-            - name: Get composer cache directory
-              id: composer-cache
-              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-            - name: Cache composer dependencies
-              uses: actions/cache@v2
-              with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: ${{ runner.os }}-composer-${{ github.sha }}
-                  restore-keys: ${{ runner.os }}-composer-
-
             - name: Install dependencies
-              run: composer update --prefer-dist --no-interaction ${{ matrix.composer-flags }}
+              run: "composer update --prefer-dist --no-interaction ${{ matrix.composer-flags }}"
 
             - name: Run tests
               run: php vendor/bin/simple-phpunit
