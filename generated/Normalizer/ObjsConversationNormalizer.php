@@ -233,6 +233,11 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
             $object->setLatest(null);
         }
+        if (\array_key_exists('locale', $data) && null !== $data['locale']) {
+            $object->setLocale($data['locale']);
+        } elseif (\array_key_exists('locale', $data) && null === $data['locale']) {
+            $object->setLocale(null);
+        }
         if (\array_key_exists('members', $data) && null !== $data['members']) {
             $values_2 = [];
             foreach ($data['members'] as $value_2) {
@@ -473,6 +478,9 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getLatest()) {
             $data['latest'] = $object->getLatest();
+        }
+        if (null !== $object->getLocale()) {
+            $data['locale'] = $object->getLocale();
         }
         if (null !== $object->getMembers()) {
             $values_2 = [];

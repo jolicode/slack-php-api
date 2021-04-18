@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add a new Client to ease iteration over Slack paginated endpoints thanks to `iterateXxxx` methods (where `xxxx` is the endpoint name to iterate over)
+* **Specification override** Add missing `locale` for `objs_conversation` model
 
 ## 4.1.1 (2021-03-16)
 
