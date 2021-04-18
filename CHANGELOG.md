@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add a new Client to ease iteration over Slack paginated endpoints thanks to `iterateXxxx` methods (where `xxxx` is the endpoint name to iterate over)
+* Improve the documentation
 
 ## 4.1.1 (2021-03-16)
 
