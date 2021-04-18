@@ -40,34 +40,34 @@ to ease the iteration over those endpoints. Those methods can be called by
 prefixing the classic method by `iterate`. Here is an example with `usersList()`:
 
 ```php
-    $userNames = [];
-    
-    /** @var JoliCode\Slack\Api\Model\ObjsUser $user */
-    for ($client->iterateUsersList() as $user) {
-        $userNames[] = $user->getName();
-    }
+$userNames = [];
+
+/** @var JoliCode\Slack\Api\Model\ObjsUser $user */
+for ($client->iterateUsersList() as $user) {
+    $userNames[] = $user->getName();
+}
 ```
 
 The previous code hide the complexity of working with pagination's cursor. Here
 is the equivalent of the previous code:
 
 ```php
-    $userNames = [];
-    $cursor = '';
+$userNames = [];
+$cursor = '';
 
-    do {
-        $response = $client->usersList([
-            'limit' => 200,
-            'cursor' => $cursor,
-        ]);
+do {
+    $response = $client->usersList([
+        'limit' => 200,
+        'cursor' => $cursor,
+    ]);
 
-        /** @var JoliCode\Slack\Api\Model\ObjsUser $user */
-        foreach ($response->getUsers() as $user) {
-            $userNames[] = $user->getName();
-        }
-        
-        $cursor = $response->getResponseMetadata() ? $response->getResponseMetadata()->getNextCursor() : '';
-    } while (!empty($cursor));
+    /** @var JoliCode\Slack\Api\Model\ObjsUser $user */
+    foreach ($response->getUsers() as $user) {
+        $userNames[] = $user->getName();
+    }
+
+    $cursor = $response->getResponseMetadata() ? $response->getResponseMetadata()->getNextCursor() : '';
+} while (!empty($cursor));
 ```
 
 >Note: the virtual methods are not yet documented with PHPDoc so your IDE will
