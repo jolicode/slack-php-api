@@ -40,7 +40,7 @@ $client = JoliCode\Slack\ClientFactory::create($yourSlackToken);
 $user = $client->usersInfo(['user' => 'U123AZER'])->getUser();
 ```
 
-Want more documentation or examples? See the [full documentation here](https://jolicode.github.io/slack-php-api/#/docs/usage).
+Want more documentation or examples? See the [full documentation here](https://jolicode.github.io/slack-php-api/).
 
 ## Further documentation
 

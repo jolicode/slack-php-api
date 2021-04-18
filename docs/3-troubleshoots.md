@@ -1,5 +1,8 @@
 # Troubleshoots
 
+Got some problems using this library? Need a missing feature?
+Here is some common troubleshoots.
+
 ## Bypassing the incomplete API specification
 
 Slack's OpenAPI spec is not 100% complete yet, hence our generated client may
@@ -34,3 +37,9 @@ Feel free to open issues if you think a model miss some fields.
 
 The above documentation did not answer your question? Do not hesitate to open
 an issue and share your issue with us.
+
+***
+
+Read more:
+- Next page: [Updating the SDK](4-updating-sdk.md)
+- Previous page: [Usage](2-usage.md)

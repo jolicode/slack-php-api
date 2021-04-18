@@ -1,4 +1,4 @@
-# Usage documentation
+# Usage
 
 ## Slack token
 
@@ -82,18 +82,22 @@ Here are some real-life examples of interacting with the SDK:
 
 ## Under the hood
 
-This library mostly contains automatically generated code from the official
+This library mainly contains automatically generated code from the official
 [Slack OpenAPI spec](https://github.com/slackapi/slack-api-specs).
 
-The library provides three kinds of PHP classes:
-- [endpoints](https://github.com/jolicode/slack-php-api/tree/main/generated/Endpoint) represent requests to API methods
-- [models](https://github.com/jolicode/slack-php-api/tree/main/generated/Model) represent data from the API
-- [normalizers](https://github.com/jolicode/slack-php-api/tree/main/generated/Normalizer) transform JSON from the API to PHP models
+Four kinds of PHP classes are included:
+- [endpoints](https://github.com/jolicode/slack-php-api/tree/main/generated/Endpoint) represent the requests made to API methods;
+- [models](https://github.com/jolicode/slack-php-api/tree/main/generated/Model) represent data exchanged with the API;
+- [normalizers](https://github.com/jolicode/slack-php-api/tree/main/generated/Normalizer) transform JSON from the API to PHP models;
+- [runtime](https://github.com/jolicode/slack-php-api/tree/main/generated/Runtime) are classes needed to make Jane work.
 
-If you use the `JoliCode\Slack\ClientFactory` to create the Client, you don't
-have to understand how the library works internally. Calling one of its method
-will make the HTTP request to the API and return the corresponding PHP object.
+If you use the `JoliCode\Slack\ClientFactory` to create the Client (which you
+should), you don't have to understand how the library works internally.
+Calling one of its method will make the HTTP request to the API and return the
+corresponding PHP object.
 
-## Troubleshoots
+***
 
-Got some problems using this library? Need a missing feature? See the dedicated guide [about common troubleshoots](troubleshoots.md).
+Read more:
+- Next page: [Troubleshoots](3-troubleshoots.md)
+- Previous page: [Get started](1-get-started.md)
