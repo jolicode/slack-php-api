@@ -15,6 +15,7 @@ namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200;
 use JoliCode\Slack\Api\Model\ConversationsListGetResponse200;
+use JoliCode\Slack\Api\Model\ObjsConversation;
 use JoliCode\Slack\Api\Model\ObjsFile;
 use JoliCode\Slack\Api\Model\SearchMessagesGetResponse200;
 use JoliCode\Slack\Api\Model\UsersListGetResponse200;
@@ -96,8 +97,25 @@ class ReadingTest extends SlackTokenDependentTest
         $this->assertNotEmpty($response->getChannels());
 
         foreach ($response->getChannels() as $channel) {
-            $this->assertNotInstanceOf(\stdClass::class, $channel);
+            $this->assertInstanceOf(ObjsConversation::class, $channel);
         }
+    }
+
+    public function testItCanGetConversationLocale()
+    {
+        $client = $this->createClient();
+
+        $response = $client->conversationsInfo([
+            'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'include_locale' => true,
+        ]);
+
+        $this->assertTrue($response->getOk());
+
+        $channel = $response->getChannel();
+
+        $this->assertInstanceOf(ObjsConversation::class, $channel);
+        $this->assertNotNull($channel->getLocale());
     }
 
     public function testItCanSearchMessages()

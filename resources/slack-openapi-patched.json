@@ -571,6 +571,9 @@
                         }
                     ]
                 },
+                "locale": {
+                    "type": "string"
+                },
                 "members": {
                     "items": {
                         "$ref": "#/definitions/defs_user_id"
