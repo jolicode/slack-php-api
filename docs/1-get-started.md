@@ -19,6 +19,13 @@ You can now install the Slack client:
 composer require jolicode/slack-php-api
 ```
 
+## Slack token
+
+Before you can use this client, you need to retrieve a token from Slack.
+
+Checkout Slack's documentation about [all different kind of tokens](https://api.slack.com/authentication/token-types).
+A good starting point is the [Authentication Basics documentation](https://api.slack.com/authentication/basics).
+
 ## Quick start
 
 ```php

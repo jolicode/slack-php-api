@@ -1,6 +1,4 @@
-# Introduction
-
-This library is a **PHP client** for **Slack's Web API**.
+# A PHP client for Slack's API
 
 There is a bunch of existing PHP clients for Slack. But some are not up to date
 or miss features, some only cover a small part of the API and most are simply
@@ -39,6 +37,8 @@ $client = JoliCode\Slack\ClientFactory::create($yourSlackToken);
 
 $user = $client->usersInfo(['user' => 'U123AZER'])->getUser();
 ```
+
+## Documentation
 
 Want more documentation or examples? See the [full documentation here](https://jolicode.github.io/slack-php-api/).
 

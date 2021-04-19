@@ -1,12 +1,5 @@
 # Usage
 
-## Slack token
-
-Before you can use this client, you need to retrieve a token from Slack.
-
-Checkout Slack's documentation about [all different kind of tokens](https://api.slack.com/authentication/token-types).
-A good starting point is the [Authentication Basics documentation](https://api.slack.com/authentication/basics).
-
 ## Basic usage of the client
 
 Use the `ClientFactory` to generate a `Client` configured with your token:
@@ -28,8 +21,22 @@ PHPdoc to know which option you can provide to each method:
 <?php
 //...
 
-$members = $client->usersList(['limit' => 100])->getMembers();
+$user = $client->usersInfo(['user' => 'U123AZER'])->getUser();
+
+dump($user);
 ```
+
+Here is what a User object looks like:
+
+<p align="center">
+  <img src="images/model-sample.png" alt="Sample user object" />
+<p>
+
+To summarize - the whole SDK is built with objects. Each endpoints, responses
+and models have their own PHP classes with correct typehinting and PHPDoc.
+
+Along with [official Slack documentation](https://api.slack.com/methods), your
+favorite PHP editor should be a good ally to explore the whole API.
 
 ## Iterating over pagination
 
