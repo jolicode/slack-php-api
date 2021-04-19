@@ -36,7 +36,7 @@ return PhpCsFixer\Config::create()
     ))
     ->setFinder(PhpCsFixer\Finder::create()
         ->in(__DIR__)
-        ->exclude('doc')
+        ->exclude('docs')
         ->exclude('ci_generated')
     )
 ;

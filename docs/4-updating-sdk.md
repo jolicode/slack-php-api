@@ -56,3 +56,9 @@ changes, you can check that the patch is correctly re-applied:
 ```bash
 ./bin/slack-api-client-generator spec:update
 ```
+
+***
+
+Read more:
+- Next page: [Changelog](/changelog)
+- Previous page: [Troubleshoots](3-troubleshoots.md)
