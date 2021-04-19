@@ -33,7 +33,7 @@ $members = $client->usersList(['limit' => 100])->getMembers();
 
 ## Iterating over pagination
 
-Some Slack API endpoints use a token based pagination.
+Some Slack API endpoints use a cursor based pagination.
 
 In addition to classical methods, our client provides additional virtual methods
 to ease the iteration over those endpoints. Those methods can be called by

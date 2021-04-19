@@ -15,7 +15,7 @@ manually add it to our [versioned spec](https://github.com/jolicode/slack-php-ap
 ## Missing data in the DTO?
 
 The Slack specification is not up to date and miss some critical parts. We do
-build a [better one on top of the official](doc/updating-sdk.md) but it can't
+build a [better one on top of the official](4-updating-sdk.md) but it can't
 be perfect.
 
 What's good is that some models use `\ArrayObject` as base classes so if the
