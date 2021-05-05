@@ -10,7 +10,7 @@ miss some features.
 
 If you miss an option in a method, until Slack add it to their spec, we can
 manually add it to our [versioned spec](https://github.com/jolicode/slack-php-api/tree/main/resources/slack-openapi-patched.json) then
-[regenerate](updating-sdk.md) and release a new version of the library.
+[regenerate](4-updating-sdk.md) and release a new version of the library.
 
 ## Missing data in the DTO?
 
