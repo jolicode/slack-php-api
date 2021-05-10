@@ -7,8 +7,9 @@ composer.phar
 
 # CS
 .php_cs.cache
-phpunit.xml
+.php-cs-fixer.cache
 
 # tests
+phpunit.xml
 ci_generated
 .phpunit.result.cache

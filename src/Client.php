@@ -17,7 +17,7 @@ use JoliCode\Slack\Api\Client as ApiClient;
 
 class Client extends ApiClient
 {
-    const CURSOR_PAGINATION = [
+    public const CURSOR_PAGINATION = [
         'channelsList' => 'channels',
         'conversationsHistory' => 'messages',
         'conversationsList' => 'channels',
