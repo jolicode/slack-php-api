@@ -17,7 +17,7 @@ use JoliCode\Slack\Api\Model\UsersListGetResponse200;
 
 class UserInfoTest extends SlackTokenDependentTest
 {
-    public function testItCanFetchUserInfo()
+    public function testItCanFetchUserInfo(): void
     {
         $client = $this->createClient();
 

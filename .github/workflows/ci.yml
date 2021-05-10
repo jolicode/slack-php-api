@@ -18,7 +18,7 @@ jobs:
             - name: PHP-CS-Fixer
               uses: docker://oskarstark/php-cs-fixer-ga
               with:
-                  args: --config=.php_cs --diff --dry-run
+                  args: --config=.php-cs-fixer.php --diff --dry-run
 
     check-spec:
         name: Check SDK is in sync with spec
@@ -34,7 +34,7 @@ jobs:
               run: CI_TEST=1 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
 
             - name: Fix CS on ci_generated directory
-              run: vendor/bin/php-cs-fixer fix --diff --dry-run ci_generated
+              run: vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff --dry-run ci_generated
 
             - name: Check ci_generated and generated directories are equal
               run: diff ci_generated generated

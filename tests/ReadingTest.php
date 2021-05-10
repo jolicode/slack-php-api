@@ -23,7 +23,7 @@ use JoliCode\Slack\Exception\SlackErrorResponse;
 
 class ReadingTest extends SlackTokenDependentTest
 {
-    public function testItWorksOnUserListWithCorrectToken()
+    public function testItWorksOnUserListWithCorrectToken(): void
     {
         $client = $this->createClient();
 
@@ -35,7 +35,7 @@ class ReadingTest extends SlackTokenDependentTest
         self::assertGreaterThan(2, \count($response->getMembers()));
     }
 
-    public function testItThrowsExceptionOnUserListWithoutToken()
+    public function testItThrowsExceptionOnUserListWithoutToken(): void
     {
         $client = $this->createClient('');
 
@@ -45,7 +45,7 @@ class ReadingTest extends SlackTokenDependentTest
         $client->usersList();
     }
 
-    public function testItCanReadAConversationHistory()
+    public function testItCanReadAConversationHistory(): void
     {
         $client = $this->createClient();
 
@@ -73,7 +73,7 @@ class ReadingTest extends SlackTokenDependentTest
         $this->assertTrue($hadAFileMessage, 'We expect a message in File in the history, cf \JoliCode\Slack\Tests\WritingTest::testItCanUploadFile');
     }
 
-    public function testItCanGetTheImList()
+    public function testItCanGetTheImList(): void
     {
         $client = $this->createClient();
 
@@ -83,7 +83,7 @@ class ReadingTest extends SlackTokenDependentTest
         self::assertNotEmpty($results->getChannels());
     }
 
-    public function testItCanReadConversationsAndHydrateThem()
+    public function testItCanReadConversationsAndHydrateThem(): void
     {
         $client = $this->createClient();
 
@@ -101,7 +101,7 @@ class ReadingTest extends SlackTokenDependentTest
         }
     }
 
-    public function testItCanGetConversationLocale()
+    public function testItCanGetConversationLocale(): void
     {
         $client = $this->createClient();
 
@@ -118,7 +118,7 @@ class ReadingTest extends SlackTokenDependentTest
         $this->assertNotNull($channel->getLocale());
     }
 
-    public function testItCanSearchMessages()
+    public function testItCanSearchMessages(): void
     {
         $client = $this->createClient();
 

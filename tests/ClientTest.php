@@ -17,7 +17,7 @@ use JoliCode\Slack\Api\Model\ObjsUser;
 
 class ClientTest extends SlackTokenDependentTest
 {
-    public function testItCanIterate()
+    public function testItCanIterate(): void
     {
         $client = $this->createClient();
 
@@ -33,7 +33,7 @@ class ClientTest extends SlackTokenDependentTest
         self::assertInstanceOf(ObjsUser::class, $users[0]);
     }
 
-    public function testItThrowsExceptionOnUnknownIterate()
+    public function testItThrowsExceptionOnUnknownIterate(): void
     {
         $client = $this->createClient();
 
@@ -43,7 +43,7 @@ class ClientTest extends SlackTokenDependentTest
         $client->iterateFooBar();
     }
 
-    public function testItThrowsExceptionOnUnknownMethod()
+    public function testItThrowsExceptionOnUnknownMethod(): void
     {
         $client = $this->createClient();
 

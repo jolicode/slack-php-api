@@ -23,7 +23,7 @@ class CheckerCommand extends Command
 {
     protected static $defaultName = 'checker';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Checks the patched file and displays a summary table.')
