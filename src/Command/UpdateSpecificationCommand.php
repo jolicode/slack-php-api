@@ -26,7 +26,7 @@ class UpdateSpecificationCommand extends Command
 {
     protected static $defaultName = 'spec:update';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Downloads a new version of the official Slack OpenAPI file, and applies our patches to it.')

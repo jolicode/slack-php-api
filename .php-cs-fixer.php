@@ -20,6 +20,7 @@ return $config->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
         '@PHP71Migration' => true,
+        '@PHP71Migration:risky' => true,
         'header_comment' => array('header' => $header),
         'strict_param' => true,
         'array_syntax' => ['syntax' => 'short'],

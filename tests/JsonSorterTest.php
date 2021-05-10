@@ -28,7 +28,7 @@ class JsonSorterTest extends TestCase
     /**
      * @dataProvider provideJsonStrings
      */
-    public function testItCanSortJsonString(string $source, string $expectedResult)
+    public function testItCanSortJsonString(string $source, string $expectedResult): void
     {
         $this->sorter->sort($source);
         $this->assertSame(

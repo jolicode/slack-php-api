@@ -19,7 +19,7 @@ use Nyholm\Psr7\Stream;
 
 class WritingTest extends SlackTokenDependentTest
 {
-    public function testItCanPostAttachment()
+    public function testItCanPostAttachment(): void
     {
         $client = $this->createClient();
 
@@ -42,7 +42,7 @@ class WritingTest extends SlackTokenDependentTest
         }
     }
 
-    public function testItCanPostMessageWithBlock()
+    public function testItCanPostMessageWithBlock(): void
     {
         $client = $this->createClient();
 
@@ -77,7 +77,7 @@ class WritingTest extends SlackTokenDependentTest
         self::assertNotEmpty($response->getMessage()->getBlocks());
     }
 
-    public function testItCanPostAMessageAndThenAThreadResponse()
+    public function testItCanPostAMessageAndThenAThreadResponse(): void
     {
         $client = $this->createClient();
 
@@ -98,7 +98,7 @@ class WritingTest extends SlackTokenDependentTest
         $this->assertTrue($response2->getOk());
     }
 
-    public function testItCanUploadFile()
+    public function testItCanUploadFile(): void
     {
         $client = $this->createClient();
 
@@ -122,7 +122,7 @@ class WritingTest extends SlackTokenDependentTest
         }
     }
 
-    public function testScheduleMessage()
+    public function testScheduleMessage(): void
     {
         $client = $this->createClient();
         $futureTs = (new \DateTime('+1 hour'))->getTimestamp();
@@ -136,7 +136,7 @@ class WritingTest extends SlackTokenDependentTest
         $this->assertTrue($response->getOk());
     }
 
-    public function testItCanMarkConversation()
+    public function testItCanMarkConversation(): void
     {
         $client = $this->createClient();
 

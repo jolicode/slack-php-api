@@ -25,7 +25,7 @@ class GeneratePatchCommand extends Command
 {
     protected static $defaultName = 'spec:generate-patch';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Generates the patch by comparing Slack\'s official sorted spec to the currently patched one.')

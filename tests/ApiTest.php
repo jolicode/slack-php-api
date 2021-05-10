@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
 {
-    public function testItWorksOnTestSuccess()
+    public function testItWorksOnTestSuccess(): void
     {
         $client = ClientFactory::create('');
         $response = $client->apiTest();
@@ -29,7 +29,7 @@ class ApiTest extends TestCase
         self::assertTrue($response->getOk());
     }
 
-    public function testItThrowsExceptionOnTestError()
+    public function testItThrowsExceptionOnTestError(): void
     {
         $client = ClientFactory::create('');
 
