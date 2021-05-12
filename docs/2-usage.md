@@ -50,7 +50,7 @@ prefixing the classic method by `iterate`. Here is an example with `usersList()`
 $userNames = [];
 
 /** @var JoliCode\Slack\Api\Model\ObjsUser $user */
-for ($client->iterateUsersList() as $user) {
+foreach ($client->iterateUsersList() as $user) {
     $userNames[] = $user->getName();
 }
 ```
