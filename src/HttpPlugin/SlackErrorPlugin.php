@@ -33,7 +33,12 @@ class SlackErrorPlugin implements Plugin
                 return $response;
             }
 
-            throw new SlackErrorResponse($data['error']);
+            $responseMetadata = null;
+            if (isset($data['response_metadata'])) {
+                $responseMetadata = $data['response_metadata'];
+            }
+
+            throw new SlackErrorResponse($data['error'], $responseMetadata);
         });
     }
 }

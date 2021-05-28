@@ -15,11 +15,15 @@ namespace JoliCode\Slack\Exception;
 
 class SlackErrorResponse extends \Exception
 {
-    private $errorCode;
+    private string $errorCode;
 
-    public function __construct(string $errorCode, \Throwable $previous = null)
+    private ?array $responseMetadata;
+
+    public function __construct(string $errorCode, ?array $responseMetadata, \Throwable $previous = null)
     {
         $this->errorCode = $errorCode;
+
+        $this->responseMetadata = $responseMetadata;
 
         parent::__construct(sprintf('Slack returned error code "%s"', $errorCode), 0, $previous);
     }
@@ -27,5 +31,10 @@ class SlackErrorResponse extends \Exception
     public function getErrorCode()
     {
         return $this->errorCode;
+    }
+
+    public function getResponseMetadata()
+    {
+        return $this->responseMetadata;
     }
 }
