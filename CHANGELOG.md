@@ -1,5 +1,9 @@
 # Changes between versions
 
+## Not yet released
+
+* Add responseMetadata on `SlackErrorResponse` to ease debug
+
 ## 4.2.0 (2021-04-19)
 
 * Add a new Client to ease iteration over Slack paginated endpoints thanks to `iterateXxxx` methods (where `xxxx` is the endpoint name to iterate over)
