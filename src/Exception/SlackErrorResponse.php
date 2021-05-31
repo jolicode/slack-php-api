@@ -15,9 +15,9 @@ namespace JoliCode\Slack\Exception;
 
 class SlackErrorResponse extends \Exception
 {
-    private string $errorCode;
+    private $errorCode;
 
-    private ?array $responseMetadata;
+    private $responseMetadata;
 
     public function __construct(string $errorCode, ?array $responseMetadata, \Throwable $previous = null)
     {
