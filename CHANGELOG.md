@@ -1,8 +1,8 @@
 # Changes between versions
 
-## Not yet released
+## 4.3.0 (2021-05-31)
 
-* Add responseMetadata on `SlackErrorResponse` to ease debug
+* Add responseMetadata to `SlackErrorResponse` exception to ease debug
 
 ## 4.2.0 (2021-04-19)
 
