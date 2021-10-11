@@ -20,7 +20,7 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * Publish a static view for a User.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $hash a string that represents view state to protect against possible race conditions
      *     @var string $user_id `id` of the user you want publish a view to
@@ -32,15 +32,15 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *     @var string $token Authentication token. Requires scope: `none`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -50,7 +50,7 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -63,15 +63,15 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         return ['slackAuth'];
     }
 
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['hash', 'user_id', 'view']);
+        $optionsResolver = parent::getFormOptionsResolver();
+        $optionsResolver->setDefined(['user_id', 'view', 'hash']);
         $optionsResolver->setRequired(['user_id', 'view']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('hash', ['string']);
         $optionsResolver->setAllowedTypes('user_id', ['string']);
         $optionsResolver->setAllowedTypes('view', ['string']);
+        $optionsResolver->setAllowedTypes('hash', ['string']);
 
         return $optionsResolver;
     }
