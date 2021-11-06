@@ -3694,7 +3694,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
     /**
      * Open a view for a user.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $trigger_id exchange a trigger to post to the user
      *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
@@ -3707,17 +3707,17 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsOpenGetResponse200|\JoliCode\Slack\Api\Model\ViewsOpenGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200|\JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function viewsOpen(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function viewsOpen(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsOpen($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsOpen($formParameters, $headerParameters), $fetch);
     }
 
     /**
      * Publish a static view for a User.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $hash a string that represents view state to protect against possible race conditions
      *     @var string $user_id `id` of the user you want publish a view to
@@ -3731,17 +3731,17 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsPublishGetResponse200|\JoliCode\Slack\Api\Model\ViewsPublishGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\ViewsPublishPostResponse200|\JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function viewsPublish(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function viewsPublish(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPublish($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPublish($formParameters, $headerParameters), $fetch);
     }
 
     /**
      * Push a view onto the stack of a root view.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $trigger_id exchange a trigger to post to the user
      *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
@@ -3754,17 +3754,17 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsPushGetResponse200|\JoliCode\Slack\Api\Model\ViewsPushGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\ViewsPushPostResponse200|\JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function viewsPush(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function viewsPush(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPush($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPush($formParameters, $headerParameters), $fetch);
     }
 
     /**
      * Update an existing view.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $external_id A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.
      *     @var string $hash a string that represents view state to protect against possible race conditions
@@ -3779,11 +3779,11 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsUpdateGetResponse200|\JoliCode\Slack\Api\Model\ViewsUpdateGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200|\JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function viewsUpdate(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function viewsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsUpdate($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsUpdate($formParameters, $headerParameters), $fetch);
     }
 
     /**

@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ViewsPushGetResponsedefaultNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ViewsOpenPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -30,12 +30,12 @@ class ViewsPushGetResponsedefaultNormalizer implements DenormalizerInterface, No
 
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ViewsPushGetResponsedefault' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\ViewsOpenPostResponse200' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ViewsPushGetResponsedefault' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ViewsOpenPostResponse200' === \get_class($data);
     }
 
     public function denormalize($data, $class, $format = null, array $context = [])
@@ -46,7 +46,7 @@ class ViewsPushGetResponsedefaultNormalizer implements DenormalizerInterface, No
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ViewsPushGetResponsedefault();
+        $object = new \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

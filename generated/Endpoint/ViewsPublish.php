@@ -20,7 +20,7 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * Publish a static view for a User.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $hash a string that represents view state to protect against possible race conditions
      *     @var string $user_id `id` of the user you want publish a view to
@@ -32,15 +32,15 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *     @var string $token Authentication token. Requires scope: `none`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -50,7 +50,7 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -58,14 +58,9 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         return ['Accept' => ['application/json']];
     }
 
-    public function getAuthenticationScopes(): array
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        return ['slackAuth'];
-    }
-
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['hash', 'user_id', 'view']);
         $optionsResolver->setRequired(['user_id', 'view']);
         $optionsResolver->setDefaults([]);
@@ -90,14 +85,19 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsPublishGetResponse200|\JoliCode\Slack\Api\Model\ViewsPublishGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ViewsPublishPostResponse200|\JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPublishGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPublishPostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPublishGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPublishPostResponsedefault', 'json');
+    }
+
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
     }
 }

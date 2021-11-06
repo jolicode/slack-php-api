@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ViewsOpenGetResponsedefault extends \ArrayObject
+class ViewsUpdatePostResponsedefault extends \ArrayObject
 {
     /**
      * @var bool|null

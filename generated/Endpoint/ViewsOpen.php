@@ -20,7 +20,7 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * Open a view for a user.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $trigger_id exchange a trigger to post to the user
      *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
@@ -31,15 +31,15 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *     @var string $token Authentication token. Requires scope: `none`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -49,7 +49,7 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -57,14 +57,9 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         return ['Accept' => ['application/json']];
     }
 
-    public function getAuthenticationScopes(): array
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        return ['slackAuth'];
-    }
-
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
-    {
-        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['trigger_id', 'view']);
         $optionsResolver->setRequired(['trigger_id', 'view']);
         $optionsResolver->setDefaults([]);
@@ -78,7 +73,7 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->setAllowedTypes('token', ['string']);
 
@@ -88,14 +83,19 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsOpenGetResponse200|\JoliCode\Slack\Api\Model\ViewsOpenGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200|\JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsOpenGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsOpenPostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsOpenGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsOpenPostResponsedefault', 'json');
+    }
+
+    public function getAuthenticationScopes(): array
+    {
+        return ['slackAuth'];
     }
 }
