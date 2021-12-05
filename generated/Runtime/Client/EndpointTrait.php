@@ -29,6 +29,7 @@ trait EndpointTrait
         if (Client::FETCH_RESPONSE === $fetchMode) {
             return $response;
         }
+
         throw new InvalidFetchModeException(sprintf('Fetch mode %s is not supported', $fetchMode));
     }
 

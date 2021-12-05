@@ -6,7 +6,6 @@ composer.lock
 composer.phar
 
 # CS
-.php_cs.cache
 .php-cs-fixer.cache
 
 # tests

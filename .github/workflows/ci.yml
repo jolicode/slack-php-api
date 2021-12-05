@@ -28,16 +28,15 @@ jobs:
               uses: actions/checkout@v2
 
             - name: Install dependencies
-              run: composer update --prefer-dist --no-interaction
+              run: composer update --no-interaction
 
-            - name: Generate SDK in ci_generated directory
-              run: CI_TEST=1 vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
+            - name: Regenerate SDK library
+              run: rm -rf generated && vendor/bin/jane-openapi generate --config-file=.jane-openapi.php
 
-            - name: Fix CS on ci_generated directory
-              run: vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --diff --dry-run ci_generated
-
-            - name: Check ci_generated and generated directories are equal
-              run: diff ci_generated generated
+            - name: Check is something changed
+              run: |
+                  set -e
+                  git diff --exit-code
 
     tests:
         name: Test PHP ${{ matrix.php-version }} ${{ matrix.name }}
@@ -63,7 +62,7 @@ jobs:
                   extensions: mbstring, xml
 
             - name: Install dependencies
-              run: "composer update --prefer-dist --no-interaction ${{ matrix.composer-flags }}"
+              run: "composer update --no-interaction ${{ matrix.composer-flags }}"
 
             - name: Run tests
               run: php vendor/bin/simple-phpunit

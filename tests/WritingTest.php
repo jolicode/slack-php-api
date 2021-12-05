@@ -109,7 +109,7 @@ class WritingTest extends SlackTokenDependentTest
             'filename' => 'test-image.png',
             'initial_comment' => 'This is a initial_comment in a filesUpload',
             'filetype' => 'png',
-            'file' => Stream::create(fopen(__DIR__.'/resources/test-image.png', 'r')),
+            'file' => Stream::create(fopen(__DIR__ . '/resources/test-image.png', 'r')),
         ]);
 
         $this->assertTrue($response->getOk());

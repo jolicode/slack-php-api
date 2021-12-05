@@ -54,14 +54,14 @@ abstract class Client
         [$bodyHeaders, $body] = $endpoint->getBody($this->serializer, $this->streamFactory);
         $queryString = $endpoint->getQueryString();
         $uriGlue = false === strpos($endpoint->getUri(), '?') ? '?' : '&';
-        $uri = '' !== $queryString ? $endpoint->getUri().$uriGlue.$queryString : $endpoint->getUri();
+        $uri = '' !== $queryString ? $endpoint->getUri() . $uriGlue . $queryString : $endpoint->getUri();
         $request = $this->requestFactory->createRequest($endpoint->getMethod(), $uri);
         if ($body) {
             if ($body instanceof StreamInterface) {
                 $request = $request->withBody($body);
             } elseif (\is_resource($body)) {
                 $request = $request->withBody($this->streamFactory->createStreamFromResource($body));
-            } elseif (\strlen($body) <= 4000 && is_file($body)) {
+            } elseif (\strlen($body) <= 4000 && @file_exists($body)) {
                 // more than 4096 chars will trigger an error
                 $request = $request->withBody($this->streamFactory->createStreamFromFile($body));
             } else {

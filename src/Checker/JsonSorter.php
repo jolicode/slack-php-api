@@ -34,11 +34,11 @@ class JsonSorter
             }
 
             foreach ($asArray as $key => $subItem) {
-                $asArray[$key] = $this->recursiveAlphabeticalSort($item->$key);
+                $asArray[$key] = $this->recursiveAlphabeticalSort($item->{$key});
 
                 if ('parameters' === $key) {
                     usort($asArray['parameters'], function ($a, $b) {
-                        return (isset($a['name']) && isset($b['name']) && $a['name'] > $b['name']) ? 1 : 0;
+                        return (isset($a['name'], $b['name']) && $a['name'] > $b['name']) ? 1 : 0;
                     });
                 }
             }
@@ -47,7 +47,8 @@ class JsonSorter
             ksort($item, \SORT_STRING);
 
             return $item;
-        } elseif (!\is_array($item)) {
+        }
+        if (!\is_array($item)) {
             return $item;
         }
 
@@ -97,10 +98,10 @@ class JsonSorter
     private function union($cargo, $addition)
     {
         foreach ($addition as $key => $value) {
-            if (isset($cargo->$key) && \is_object($cargo->$key)) {
-                $cargo->$key = $this->union($cargo->$key, $value);
+            if (isset($cargo->{$key}) && \is_object($cargo->{$key})) {
+                $cargo->{$key} = $this->union($cargo->{$key}, $value);
             } else {
-                $cargo->$key = $value;
+                $cargo->{$key} = $value;
             }
         }
 
