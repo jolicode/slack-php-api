@@ -12,13 +12,13 @@ declare(strict_types=1);
  */
 
 $fileHeaderComment = <<<'EOF'
-This file is part of JoliCode's Slack PHP API project.
+    This file is part of JoliCode's Slack PHP API project.
 
-(c) JoliCode <coucou@jolicode.com>
+    (c) JoliCode <coucou@jolicode.com>
 
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.
-EOF;
+    For the full copyright and license information, please view the LICENSE
+    file that was distributed with this source code.
+    EOF;
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
@@ -32,7 +32,7 @@ $finder = PhpCsFixer\Finder::create()
 return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PHP71Migration' => true,
+        '@PHP74Migration' => true,
         '@PhpCsFixer' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
