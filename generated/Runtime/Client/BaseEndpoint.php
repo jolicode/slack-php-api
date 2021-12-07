@@ -78,7 +78,7 @@ abstract class BaseEndpoint implements Endpoint
             $bodyBuilder->addResource($key, $value);
         }
 
-        return [['Content-Type' => ['multipart/form-data; boundary="'.($bodyBuilder->getBoundary().'"')]], $bodyBuilder->build()];
+        return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]], $bodyBuilder->build()];
     }
 
     protected function getFormOptionsResolver(): OptionsResolver

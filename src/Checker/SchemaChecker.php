@@ -28,13 +28,13 @@ class SchemaChecker
         $schemaJson = file_get_contents($schemaPath);
 
         if (!$schemaJson) {
-            throw new \Exception("Could not load the schema at \"$schemaPath\"");
+            throw new \Exception("Could not load the schema at \"{$schemaPath}\"");
         }
 
         $schema = json_decode($schemaJson, false);
 
         if (!$schema) {
-            throw new \Exception("Could not decode JSON in schema at \"$schemaPath\"");
+            throw new \Exception("Could not decode JSON in schema at \"{$schemaPath}\"");
         }
 
         $validator = new Validator(null);
@@ -112,12 +112,12 @@ class SchemaChecker
 
                             $precision = implode(', ', $fields);
                         } elseif ($error->keywordArgs()) {
-                            $precision = 'constraints: '.json_encode($error->keywordArgs());
+                            $precision = 'constraints: ' . json_encode($error->keywordArgs());
                         }
 
                         $errors[] = [
                             'property' => $property,
-                            'error' => $error->keyword().($precision ? ' ('.$precision.')' : ''),
+                            'error' => $error->keyword() . ($precision ? ' (' . $precision . ')' : ''),
                         ];
                     }
 

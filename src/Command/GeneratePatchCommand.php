@@ -35,9 +35,9 @@ class GeneratePatchCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // ensure the patched specification is alphabetically sorted
-        $content = file_get_contents(__DIR__.'/../../resources/slack-openapi-patched.json');
+        $content = file_get_contents(__DIR__ . '/../../resources/slack-openapi-patched.json');
         $sorter = new JsonSorter();
-        file_put_contents(__DIR__.'/../../resources/slack-openapi-patched.json', $sorter->sort($content));
+        file_put_contents(__DIR__ . '/../../resources/slack-openapi-patched.json', $sorter->sort($content));
 
         // generate a patch using a diff between the sorted and the patched specifications
         $io = new SymfonyStyle($input, $output);
@@ -51,6 +51,7 @@ class GeneratePatchCommand extends Command
             $io->success('Generated a patch');
         } else {
             $io->error('Could not generate the patch');
+
             throw new ProcessFailedException($process);
         }
 
