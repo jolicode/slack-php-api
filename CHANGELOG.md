@@ -1,5 +1,9 @@
 # Changes between versions
 
+## 4.4.0 (not released yet)
+
+* Drop support for PHP <7.4
+
 ## 4.3.0 (2021-05-31)
 
 * Add responseMetadata to `SlackErrorResponse` exception to ease debug
@@ -18,7 +22,7 @@
 
 * **Specification override** Fix some `timestamp` from integer to mixed string and integer to support old messages
 * **Specification override** Change some `latest` / `oldest` / `ts_from` / `ts_to` query parameters from integer to string
-* Improve carbon footprint by removing unnecessary files from git export 
+* Improve carbon footprint by removing unnecessary files from git export
 
 ## 4.0.0 (2020-12-28)
 
