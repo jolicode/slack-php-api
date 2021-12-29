@@ -4,6 +4,7 @@
 
 * Drop support for PHP <7.4
 * Add support for PHP 8.1
+* Upgrade Jane from 6.3 to v7.1, add compatibility with Symfony v6
 
 ## 4.3.0 (2021-05-31)
 
@@ -17,7 +18,7 @@
 
 ## 4.1.1 (2021-03-16)
 
-* Upgrade Jane to from 6.3.3 to v6.3.5, fix an error with very long string / payload
+* Upgrade Jane from 6.3.3 to v6.3.5, fix an error with very long string / payload
 
 ## 4.1.0 (2021-02-26)
 
