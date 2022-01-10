@@ -43,12 +43,12 @@ class UpdateSpecificationCommand extends Command
                 'Accept' => 'application/json',
             ],
         ])->getContent();
-        file_put_contents(__DIR__.'/../../resources/slack-openapi.json', $content);
+        file_put_contents(__DIR__ . '/../../resources/slack-openapi.json', $content);
         $output->writeln('<info>Downloaded and saved a new specification version</info>');
 
         // sort the spec file
         $sorter = new JsonSorter();
-        file_put_contents(__DIR__.'/../../resources/slack-openapi-sorted.json', $sorter->sort($content));
+        file_put_contents(__DIR__ . '/../../resources/slack-openapi-sorted.json', $sorter->sort($content));
         $output->writeln('<info>Sorted the official specification by keys and merged User and Conversation objects</info>');
 
         // apply the patches to the sorted spec
@@ -58,6 +58,7 @@ class UpdateSpecificationCommand extends Command
 
         if (!$process->isSuccessful()) {
             $io->error('Could not apply the patch');
+
             throw new ProcessFailedException($process);
         }
 

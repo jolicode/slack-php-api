@@ -49,7 +49,7 @@ class AddSlackPathAndHostPlugin implements Plugin
                 ->withHost($this->uri->getHost())
                 ->withScheme($this->uri->getScheme())
                 ->withPort($this->uri->getPort())
-                ->withPath($this->uri->getPath().$request->getUri()->getPath())
+                ->withPath($this->uri->getPath() . $request->getUri()->getPath())
             ;
 
             $request = $request->withUri($uri);

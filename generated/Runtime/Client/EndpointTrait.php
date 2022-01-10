@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Runtime\Client;
 
-use Jane\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
+use Jane\Component\OpenApiRuntime\Client\Exception\InvalidFetchModeException;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -29,6 +29,7 @@ trait EndpointTrait
         if (Client::FETCH_RESPONSE === $fetchMode) {
             return $response;
         }
+
         throw new InvalidFetchModeException(sprintf('Fetch mode %s is not supported', $fetchMode));
     }
 

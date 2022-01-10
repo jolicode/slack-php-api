@@ -32,7 +32,7 @@ class CheckerCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $result = (new SchemaChecker())->check(__DIR__.'/../../resources/slack-openapi-patched.json');
+        $result = (new SchemaChecker())->check(__DIR__ . '/../../resources/slack-openapi-patched.json');
         $rows = [];
 
         foreach ($result as $path => $methods) {
@@ -52,7 +52,8 @@ class CheckerCommand extends Command
         $table = new Table($output);
         $table
             ->setHeaders(['Path', 'Method', 'Response', 'Property', 'Errors'])
-            ->setRows($rows);
+            ->setRows($rows)
+        ;
         $table->render();
 
         return Command::SUCCESS;

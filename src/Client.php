@@ -45,10 +45,10 @@ class Client extends ApiClient
 
     public function iterate(string $method, array $arguments): iterable
     {
-        $getter = 'get'.self::CURSOR_PAGINATION[$method];
+        $getter = 'get' . self::CURSOR_PAGINATION[$method];
 
-        $arguments[0] = $arguments[0] ?? [];
-        $arguments[0]['limit'] = $arguments[0]['limit'] ?? 1000;
+        $arguments[0] ??= [];
+        $arguments[0]['limit'] ??= 1000;
 
         $cursor = '';
 

@@ -38,7 +38,7 @@ class ClientFactory
             new SlackErrorPlugin(),
             new AddSlackPathAndHostPlugin($uri),
             new HeaderAppendPlugin([
-                'Authorization' => 'Bearer '.$token,
+                'Authorization' => 'Bearer ' . $token,
             ]),
         ]);
 

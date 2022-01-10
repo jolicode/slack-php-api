@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Normalizer;
 
-use Jane\JsonSchemaRuntime\Reference;
+use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -28,6 +28,9 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
 
+    /**
+     * @return bool
+     */
     public function supportsDenormalization($data, $type, $format = null)
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort' === $type;
@@ -38,6 +41,9 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort' === \get_class($data);
     }
 
+    /**
+     * @return mixed
+     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -113,6 +119,9 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         return $object;
     }
 
+    /**
+     * @return array|string|int|float|bool|\ArrayObject|null
+     */
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
