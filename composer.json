@@ -30,7 +30,7 @@
         "jane-php/open-api-runtime": "~7.1",
         "psr/http-client-implementation": "*",
         "php-http/client-common": "^1.9 || ^2.0",
-        "php-http/discovery": "^1.7",
+        "php-http/discovery": "^1.11",
         "php-http/multipart-stream-builder": "^1.1"
     },
     "require-dev": {

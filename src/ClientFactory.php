@@ -32,7 +32,7 @@ class ClientFactory
         }
 
         // Decorates the HTTP client with some plugins
-        $uri = Psr17FactoryDiscovery::findUrlFactory()->createUri('https://slack.com/api');
+        $uri = Psr17FactoryDiscovery::findUriFactory()->createUri('https://slack.com/api');
         $pluginClient = new PluginClient($httpClient, [
             new ErrorPlugin(),
             new SlackErrorPlugin(),
