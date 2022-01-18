@@ -14242,6 +14242,12 @@
                         "type": "integer"
                     },
                     {
+                        "description": "Encoded team id to list channels in, required if token belongs to org-wide app",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `conversations:read`",
                         "in": "query",
                         "name": "token",
@@ -23151,6 +23157,12 @@
                         "type": "boolean"
                     },
                     {
+                        "description": "Encoded team id to list user groups in, required if org token is used",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `usergroups:read`",
                         "in": "query",
                         "name": "token",
@@ -24815,6 +24827,12 @@
                         "in": "query",
                         "name": "limit",
                         "type": "integer"
+                    },
+                    {
+                        "description": "Encoded team id to list users in, required if org token is used",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `users:read`",
