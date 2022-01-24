@@ -1,5 +1,11 @@
 # Changes between versions
 
+
+## 4.4.1 (2022-01-24)
+
+* **Specification override** Add missing `team_id` for multiplme endpoints
+* Fix deprecated usage of `php-http/discovery`
+
 ## 4.4.0 (2021-12-29)
 
 * Drop support for PHP <7.4
