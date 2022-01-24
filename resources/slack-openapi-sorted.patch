@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2021-04-18 20:37:11.443190560 +0200
-+++ resources/slack-openapi-patched.json	2021-04-18 22:05:15.850547243 +0200
+--- resources/slack-openapi-sorted.json	2022-01-24 11:16:32.000000000 +0900
++++ resources/slack-openapi-patched.json	2022-01-24 11:19:48.000000000 +0900
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
@@ -2580,7 +2580,34 @@
                                  "ok",
                                  "pin_count"
                              ],
-@@ -14429,21 +14462,21 @@
+@@ -14202,20 +14235,26 @@
+                         "name": "exclude_archived",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached. Must be an integer no larger than 1000.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
++                        "description": "Encoded team id to list channels in, required if token belongs to org-wide app",
++                        "in": "query",
++                        "name": "team_id",
++                        "type": "string"
++                    },
++                    {
+                         "description": "Authentication token. Requires scope: `conversations:read`",
+                         "in": "query",
+                         "name": "token",
+                         "type": "string"
+                     },
+                     {
+                         "description": "Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im`",
+                         "in": "query",
+                         "name": "types",
+                         "type": "string"
+@@ -14429,21 +14468,21 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:write`",
                          "in": "header",
@@ -2603,7 +2630,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-@@ -15097,45 +15130,45 @@
+@@ -15097,45 +15136,45 @@
                      {
                          "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
                          "in": "query",
@@ -2652,7 +2679,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-@@ -15306,20 +15339,32 @@
+@@ -15306,20 +15345,32 @@
                                                      "user"
                                                  ],
                                                  "type": "object"
@@ -2685,7 +2712,7 @@
                              "type": "object"
                          }
                      },
-@@ -15818,21 +15863,20 @@
+@@ -15818,21 +15869,20 @@
                          "description": "The dialog definition. This must be a JSON-encoded string.",
                          "in": "query",
                          "name": "dialog",
@@ -2707,7 +2734,7 @@
                          "type": "string"
                      }
                  ],
-@@ -15945,21 +15989,20 @@
+@@ -15945,21 +15995,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endDnd"
@@ -2729,7 +2756,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -16058,21 +16101,20 @@
+@@ -16058,21 +16107,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endSnooze"
@@ -2751,7 +2778,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -16331,21 +16373,20 @@
+@@ -16331,21 +16379,20 @@
                          "description": "Number of minutes, from now, to snooze until.",
                          "in": "formData",
                          "name": "num_minutes",
@@ -2773,7 +2800,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -16556,21 +16597,20 @@
+@@ -16556,21 +16603,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/emoji.list"
@@ -2795,7 +2822,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -17126,27 +17166,27 @@
+@@ -17126,27 +17172,27 @@
                      {
                          "description": "Authentication token. Requires scope: `files:read`",
                          "in": "query",
@@ -2825,7 +2852,7 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
-@@ -17594,27 +17634,27 @@
+@@ -17594,27 +17640,27 @@
                      {
                          "description": "Authentication token. Requires scope: `remote_files:read`",
                          "in": "query",
@@ -2855,7 +2882,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-@@ -18234,21 +18274,21 @@
+@@ -18234,21 +18280,21 @@
                      }
                  ],
                  "tags": [
@@ -2878,7 +2905,7 @@
                  "parameters": [
                      {
                          "description": "Comma-separated list of channel names or IDs where the file will be shared.",
-@@ -18259,21 +18299,21 @@
+@@ -18259,21 +18305,21 @@
                      {
                          "description": "File contents via a POST variable. If omitting this parameter, you must provide a `file`.",
                          "in": "formData",
@@ -2901,7 +2928,7 @@
                      {
                          "description": "A [file type](/types/file#file_types) identifier.",
                          "in": "formData",
-@@ -18283,21 +18323,21 @@
+@@ -18283,21 +18329,21 @@
                      {
                          "description": "The message text introducing the file in specified `channels`.",
                          "in": "formData",
@@ -2924,7 +2951,7 @@
                      {
                          "description": "Authentication token. Requires scope: `files:write:user`",
                          "in": "formData",
-@@ -18478,21 +18518,20 @@
+@@ -18478,21 +18524,20 @@
                      {
                          "description": "Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.",
                          "in": "query",
@@ -2946,7 +2973,7 @@
                          "type": "string"
                      }
                  ],
-@@ -18984,34 +19023,32 @@
+@@ -18984,34 +19029,32 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.add"
@@ -2981,7 +3008,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -19112,28 +19149,26 @@
+@@ -19112,28 +19155,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.list"
@@ -3010,7 +3037,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -19349,21 +19384,20 @@
+@@ -19349,21 +19390,20 @@
                      {
                          "description": "Timestamp of the message to un-pin.",
                          "in": "formData",
@@ -3032,7 +3059,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -19485,21 +19519,20 @@
+@@ -19485,21 +19525,20 @@
                          "description": "Timestamp of the message to add reaction to.",
                          "in": "formData",
                          "name": "timestamp",
@@ -3054,7 +3081,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -19629,21 +19662,20 @@
+@@ -19629,21 +19668,20 @@
                      {
                          "description": "Timestamp of the message to get reactions for.",
                          "in": "query",
@@ -3076,7 +3103,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -19670,21 +19702,21 @@
+@@ -19670,21 +19708,21 @@
                                      "timestamp": 1507850315,
                                      "title": "computer.gif",
                                      "user": "U2U85N1RV"
@@ -3099,7 +3126,7 @@
                                              "$ref": "#/definitions/objs_message"
                                          },
                                          "ok": {
-@@ -19859,21 +19891,20 @@
+@@ -19859,21 +19897,20 @@
                      },
                      {
                          "in": "query",
@@ -3121,7 +3148,7 @@
                      }
                  ],
                  "produces": [
-@@ -20173,21 +20204,20 @@
+@@ -20173,21 +20210,20 @@
                      {
                          "description": "Timestamp of the message to remove reaction from.",
                          "in": "formData",
@@ -3143,7 +3170,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -20303,21 +20333,20 @@
+@@ -20303,21 +20339,20 @@
                          "description": "When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. \"in 15 minutes,\" or \"every Thursday\")",
                          "in": "formData",
                          "name": "time",
@@ -3165,7 +3192,7 @@
                      }
                  ],
                  "produces": [
-@@ -20918,21 +20947,20 @@
+@@ -20918,21 +20953,20 @@
                      {
                          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).",
                          "in": "query",
@@ -3187,7 +3214,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -21116,21 +21144,20 @@
+@@ -21116,21 +21150,20 @@
                      {
                          "description": "Change sort direction to ascending (`asc`) or descending (`desc`).",
                          "in": "query",
@@ -3209,7 +3236,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -21285,21 +21312,20 @@
+@@ -21285,21 +21318,20 @@
                      {
                          "description": "Timestamp of the message to add star to.",
                          "in": "formData",
@@ -3231,7 +3258,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -21716,21 +21742,20 @@
+@@ -21716,21 +21748,20 @@
                      {
                          "description": "Timestamp of the message to remove star from.",
                          "in": "formData",
@@ -3253,7 +3280,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -21849,21 +21874,20 @@
+@@ -21849,21 +21880,20 @@
                      },
                      {
                          "in": "query",
@@ -3275,7 +3302,7 @@
                      "200": {
                          "description": "This response demonstrates pagination and two access log entries.",
                          "examples": {
-@@ -22064,21 +22088,20 @@
+@@ -22064,21 +22094,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.billableInfo"
@@ -3297,7 +3324,7 @@
                      }
                  ],
                  "produces": [
-@@ -22169,21 +22192,20 @@
+@@ -22169,21 +22198,20 @@
                      {
                          "description": "Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels",
                          "in": "query",
@@ -3319,7 +3346,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -22327,21 +22349,20 @@
+@@ -22327,21 +22355,20 @@
                      {
                          "description": "Filter logs to this service. Defaults to all logs.",
                          "in": "query",
@@ -3341,7 +3368,7 @@
                      }
                  ],
                  "produces": [
-@@ -22502,21 +22523,20 @@
+@@ -22502,21 +22529,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.profile.get"
@@ -3363,7 +3390,7 @@
                      }
                  ],
                  "produces": [
-@@ -22732,21 +22752,20 @@
+@@ -22732,21 +22758,20 @@
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
                          "name": "name",
@@ -3385,7 +3412,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -22856,21 +22875,20 @@
+@@ -22856,21 +22881,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -3407,7 +3434,7 @@
                          "type": "string"
                      }
                  ],
-@@ -22987,21 +23005,20 @@
+@@ -22987,21 +23011,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -3429,7 +3456,10 @@
                          "type": "string"
                      }
                  ],
-@@ -23130,21 +23147,20 @@
+@@ -23127,24 +23150,29 @@
+                         "name": "include_disabled",
+                         "type": "boolean"
+                     },
                      {
                          "description": "Include the list of users for each User Group.",
                          "in": "query",
@@ -3437,6 +3467,12 @@
                          "type": "boolean"
                      },
                      {
++                        "description": "Encoded team id to list user groups in, required if org token is used",
++                        "in": "query",
++                        "name": "team_id",
++                        "type": "string"
++                    },
++                    {
                          "description": "Authentication token. Requires scope: `usergroups:read`",
                          "in": "query",
                          "name": "token",
@@ -3451,7 +3487,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -23347,21 +23363,20 @@
+@@ -23347,21 +23375,20 @@
                      {
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
@@ -3473,7 +3509,7 @@
                          "type": "string"
                      }
                  ],
-@@ -23504,25 +23519,24 @@
+@@ -23504,25 +23531,24 @@
                      {
                          "description": "Allow results that involve disabled User Groups.",
                          "in": "query",
@@ -3500,7 +3536,7 @@
                      "application/json"
                  ],
                  "responses": {
-@@ -23644,21 +23658,20 @@
+@@ -23644,21 +23670,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -3522,7 +3558,7 @@
                          "type": "string"
                      },
                      {
-@@ -24036,21 +24049,20 @@
+@@ -24036,21 +24061,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.deletePhoto"
@@ -3544,7 +3580,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -24147,21 +24159,20 @@
+@@ -24147,21 +24171,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.getPresence"
@@ -3566,7 +3602,7 @@
                      }
                  ],
                  "produces": [
-@@ -24630,21 +24641,20 @@
+@@ -24630,21 +24653,20 @@
                      {
                          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
                          "in": "query",
@@ -3588,7 +3624,34 @@
                      }
                  ],
                  "produces": [
-@@ -25011,28 +25021,26 @@
+@@ -24800,20 +24822,26 @@
+                         "name": "include_locale",
+                         "type": "boolean"
+                     },
+                     {
+                         "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.",
+                         "in": "query",
+                         "name": "limit",
+                         "type": "integer"
+                     },
+                     {
++                        "description": "Encoded team id to list users in, required if org token is used",
++                        "in": "query",
++                        "name": "team_id",
++                        "type": "string"
++                    },
++                    {
+                         "description": "Authentication token. Requires scope: `users:read`",
+                         "in": "query",
+                         "name": "token",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+@@ -25011,28 +25039,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.lookupByEmail"
@@ -3617,7 +3680,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25175,21 +25183,20 @@
+@@ -25175,21 +25201,20 @@
                      {
                          "description": "Include labels for each ID in custom profile fields",
                          "in": "query",
@@ -3639,7 +3702,7 @@
                      }
                  ],
                  "produces": [
-@@ -25330,21 +25337,20 @@
+@@ -25330,21 +25355,20 @@
                      {
                          "description": "Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.",
                          "in": "formData",
@@ -3661,7 +3724,7 @@
                      },
                      {
                          "description": "Value to set a single key to. Usable only if `profile` is not passed.",
-@@ -25491,21 +25497,20 @@
+@@ -25491,21 +25515,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.setActive"
@@ -3683,7 +3746,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25625,21 +25630,20 @@
+@@ -25625,21 +25648,20 @@
                      {
                          "description": "File contents via `multipart/form-data`.",
                          "in": "formData",
@@ -3705,7 +3768,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25814,21 +25818,20 @@
+@@ -25814,21 +25836,20 @@
                          "description": "Either `auto` or `away`",
                          "in": "formData",
                          "name": "presence",
@@ -3727,7 +3790,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25926,21 +25929,20 @@
+@@ -25926,21 +25947,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.open"
@@ -3749,7 +3812,7 @@
                          "type": "string"
                      },
                      {
-@@ -26075,21 +26077,20 @@
+@@ -26075,21 +26095,20 @@
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
                          "in": "query",
@@ -3771,7 +3834,7 @@
                          "type": "string"
                      },
                      {
-@@ -26208,21 +26209,20 @@
+@@ -26208,21 +26227,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.push"
@@ -3793,7 +3856,7 @@
                          "type": "string"
                      },
                      {
-@@ -26369,21 +26369,20 @@
+@@ -26369,21 +26387,20 @@
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
                          "in": "query",
@@ -3815,7 +3878,7 @@
                      },
                      {
                          "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
-@@ -26518,21 +26517,20 @@
+@@ -26518,21 +26535,20 @@
                      {
                          "description": "Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your [`outputs`](/reference/workflows/workflow_step#output) array from your `workflow_step` object.",
                          "in": "query",
@@ -3837,7 +3900,7 @@
                          "type": "string"
                      }
                  ],
-@@ -26615,21 +26613,20 @@
+@@ -26615,21 +26631,20 @@
                          "description": "A JSON-based object with a `message` property that should contain a human readable error message.",
                          "in": "query",
                          "name": "error",
@@ -3859,7 +3922,7 @@
                          "type": "string"
                      }
                  ],
-@@ -26729,21 +26726,20 @@
+@@ -26729,21 +26744,20 @@
                      {
                          "description": "An optional field that can be used to override the step name that is shown in the Workflow Builder.",
                          "in": "query",
