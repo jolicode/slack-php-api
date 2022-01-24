@@ -2129,6 +2129,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var bool $exclude_archived Set to `true` to exclude archived channels from the list
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached. Must be an integer no larger than 1000.
+     *     @var string $team_id Encoded team id to list channels in, required if token belongs to org-wide app
      *     @var string $token Authentication token. Requires scope: `conversations:read`
      *     @var string $types Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im`
      * }
@@ -3374,6 +3375,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *     @var bool $include_count include the number of users in each User Group
      *     @var bool $include_disabled include disabled User Groups
      *     @var bool $include_users include the list of users for each User Group
+     *     @var string $team_id Encoded team id to list user groups in, required if org token is used
      *     @var string $token Authentication token. Requires scope: `usergroups:read`
      * }
      *
@@ -3557,6 +3559,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      *     @var bool $include_locale Set this to `true` to receive the locale for users. Defaults to `false`
      *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.
+     *     @var string $team_id Encoded team id to list users in, required if org token is used
      *     @var string $token Authentication token. Requires scope: `users:read`
      * }
      *
