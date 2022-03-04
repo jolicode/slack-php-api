@@ -7234,7 +7234,7 @@
                 "operationId": "openid_connect_userInfo",
                 "parameters": [
                     {
-                        "description": "Authentication token. Requires scopes: `openind`,`email`,`profile` ",
+                        "description": "Authentication token. Requires scopes: `openid`,`email`,`profile` ",
                         "in": "query",
                         "name": "token",
                         "type": "string"
