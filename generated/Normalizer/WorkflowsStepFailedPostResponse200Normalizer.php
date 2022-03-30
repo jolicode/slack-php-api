@@ -22,7 +22,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class WorkflowsStepCompletedGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class WorkflowsStepFailedPostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use CheckArray;
     use DenormalizerAwareTrait;
@@ -33,12 +33,12 @@ class WorkflowsStepCompletedGetResponse200Normalizer implements DenormalizerInte
      */
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepCompletedGetResponse200' === $type;
+        return 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepFailedPostResponse200' === $type;
     }
 
     public function supportsNormalization($data, $format = null)
     {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepCompletedGetResponse200' === \get_class($data);
+        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepFailedPostResponse200' === \get_class($data);
     }
 
     /**
@@ -52,7 +52,7 @@ class WorkflowsStepCompletedGetResponse200Normalizer implements DenormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\WorkflowsStepCompletedGetResponse200();
+        $object = new \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

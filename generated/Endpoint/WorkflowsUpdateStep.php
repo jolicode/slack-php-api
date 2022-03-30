@@ -20,7 +20,7 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     /**
      * Update the configuration for a workflow extension step.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $inputs A JSON key-value map of inputs required from a user during configuration. This is the data your app expects to receive when the workflow step starts. **Please note**: the embedded variable format is set and replaced by the workflow system. You cannot create custom variables that will be replaced at runtime. [Read more about variables in workflow steps here](/workflows/steps#variables).
      *     @var string $outputs An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed.
@@ -34,15 +34,15 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *     @var string $token Authentication token. Requires scope: `workflow.steps:execute`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -52,7 +52,7 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -65,9 +65,9 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         return ['slackAuth'];
     }
 
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['inputs', 'outputs', 'step_image_url', 'step_name', 'workflow_step_edit_id']);
         $optionsResolver->setRequired(['workflow_step_edit_id']);
         $optionsResolver->setDefaults([]);
@@ -94,14 +94,14 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Slack\Api\Model\WorkflowsUpdateStepGetResponse200|\JoliCode\Slack\Api\Model\WorkflowsUpdateStepGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200|\JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsUpdateStepGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsUpdateStepPostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsUpdateStepGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsUpdateStepPostResponsedefault', 'json');
     }
 }

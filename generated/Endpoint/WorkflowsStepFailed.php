@@ -20,7 +20,7 @@ class WorkflowsStepFailed extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     /**
      * Indicate that an app's step in a workflow failed to execute.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $error a JSON-based object with a `message` property that should contain a human readable error message
      *     @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
@@ -31,15 +31,15 @@ class WorkflowsStepFailed extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *     @var string $token Authentication token. Requires scope: `workflow.steps:execute`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -49,7 +49,7 @@ class WorkflowsStepFailed extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -62,9 +62,9 @@ class WorkflowsStepFailed extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         return ['slackAuth'];
     }
 
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['error', 'workflow_step_execute_id']);
         $optionsResolver->setRequired(['error', 'workflow_step_execute_id']);
         $optionsResolver->setDefaults([]);
@@ -88,14 +88,14 @@ class WorkflowsStepFailed extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Slack\Api\Model\WorkflowsStepFailedGetResponse200|\JoliCode\Slack\Api\Model\WorkflowsStepFailedGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200|\JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepFailedGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepFailedPostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepFailedGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\WorkflowsStepFailedPostResponsedefault', 'json');
     }
 }

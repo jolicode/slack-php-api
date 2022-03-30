@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class WorkflowsStepFailedGetResponse200 extends \ArrayObject
+class WorkflowsUpdateStepPostResponsedefault extends \ArrayObject
 {
     /**
      * @var bool|null

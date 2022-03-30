@@ -3792,7 +3792,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
     /**
      * Indicate that an app's step in a workflow completed execution.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $outputs Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your [`outputs`](/reference/workflows/workflow_step#output) array from your `workflow_step` object.
      *     @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
@@ -3805,17 +3805,17 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\WorkflowsStepCompletedGetResponse200|\JoliCode\Slack\Api\Model\WorkflowsStepCompletedGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200|\JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function workflowsStepCompleted(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function workflowsStepCompleted(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsStepCompleted($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsStepCompleted($formParameters, $headerParameters), $fetch);
     }
 
     /**
      * Indicate that an app's step in a workflow failed to execute.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $error a JSON-based object with a `message` property that should contain a human readable error message
      *     @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
@@ -3828,17 +3828,17 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\WorkflowsStepFailedGetResponse200|\JoliCode\Slack\Api\Model\WorkflowsStepFailedGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200|\JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function workflowsStepFailed(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function workflowsStepFailed(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsStepFailed($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsStepFailed($formParameters, $headerParameters), $fetch);
     }
 
     /**
      * Update the configuration for a workflow extension step.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $inputs A JSON key-value map of inputs required from a user during configuration. This is the data your app expects to receive when the workflow step starts. **Please note**: the embedded variable format is set and replaced by the workflow system. You cannot create custom variables that will be replaced at runtime. [Read more about variables in workflow steps here](/workflows/steps#variables).
      *     @var string $outputs An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed.
@@ -3854,11 +3854,11 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return \JoliCode\Slack\Api\Model\WorkflowsUpdateStepGetResponse200|\JoliCode\Slack\Api\Model\WorkflowsUpdateStepGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200|\JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
      */
-    public function workflowsUpdateStep(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    public function workflowsUpdateStep(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsUpdateStep($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsUpdateStep($formParameters, $headerParameters), $fetch);
     }
 
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
