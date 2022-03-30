@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2022-01-24 11:16:32.000000000 +0900
-+++ resources/slack-openapi-patched.json	2022-01-24 11:19:48.000000000 +0900
+--- resources/slack-openapi-sorted.json	2022-03-30 14:59:41.000000000 +0200
++++ resources/slack-openapi-patched.json	2022-03-30 14:59:52.000000000 +0200
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
@@ -3878,10 +3878,34 @@
                      },
                      {
                          "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
-@@ -26518,21 +26535,20 @@
+@@ -26496,48 +26513,47 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/workflows.stepCompleted": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Indicate that an app's step in a workflow completed execution.",
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/workflows.stepCompleted"
+                 },
+                 "operationId": "workflows_stepCompleted",
+                 "parameters": [
                      {
                          "description": "Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your [`outputs`](/reference/workflows/workflow_step#output) array from your `workflow_step` object.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "outputs",
                          "type": "string"
                      },
@@ -3894,15 +3918,46 @@
                      },
                      {
                          "description": "Context identifier that maps to the correct workflow step execution.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "workflow_step_execute_id",
                          "required": true,
                          "type": "string"
                      }
                  ],
-@@ -26615,21 +26631,20 @@
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+@@ -26592,49 +26608,48 @@
+                             "workflow.steps:execute"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "workflows"
+                 ]
+             }
+         },
+         "/workflows.stepFailed": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Indicate that an app's step in a workflow failed to execute.",
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/workflows.stepFailed"
+                 },
+                 "operationId": "workflows_stepFailed",
+                 "parameters": [
+                     {
                          "description": "A JSON-based object with a `message` property that should contain a human readable error message.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "error",
                          "required": true,
                          "type": "string"
@@ -3916,16 +3971,67 @@
                      },
                      {
                          "description": "Context identifier that maps to the correct workflow step execution.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "workflow_step_execute_id",
                          "required": true,
                          "type": "string"
                      }
                  ],
-@@ -26729,21 +26744,20 @@
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+@@ -26689,66 +26704,65 @@
+                             "workflow.steps:execute"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "workflows"
+                 ]
+             }
+         },
+         "/workflows.updateStep": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Update the configuration for a workflow extension step.",
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/workflows.updateStep"
+                 },
+                 "operationId": "workflows_updateStep",
+                 "parameters": [
+                     {
+                         "description": "A JSON key-value map of inputs required from a user during configuration. This is the data your app expects to receive when the workflow step starts. **Please note**: the embedded variable format is set and replaced by the workflow system. You cannot create custom variables that will be replaced at runtime. [Read more about variables in workflow steps here](/workflows/steps#variables).",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "inputs",
+                         "type": "string"
+                     },
+                     {
+                         "description": "An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "outputs",
+                         "type": "string"
+                     },
+                     {
+                         "description": "An optional field that can be used to override app image that is shown in the Workflow Builder.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "step_image_url",
+                         "type": "string"
+                     },
                      {
                          "description": "An optional field that can be used to override the step name that is shown in the Workflow Builder.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "step_name",
                          "type": "string"
                      },
@@ -3938,9 +4044,15 @@
                      },
                      {
                          "description": "A context identifier provided with `view_submission` payloads used to call back to `workflows.updateStep`.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "workflow_step_edit_id",
                          "required": true,
                          "type": "string"
                      }
                  ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
