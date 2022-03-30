@@ -1,5 +1,8 @@
 # Changes between versions
 
+## Unreleased
+
+* Fix `jane-php/open-api-2` version mismatch breaking the SDK generation
 
 ## 4.4.1 (2022-01-24)
 
