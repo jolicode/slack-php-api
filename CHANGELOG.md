@@ -3,6 +3,8 @@
 ## Unreleased
 
 * Fix `jane-php/open-api-2` version mismatch breaking the SDK generation
+* **Specification override** `workflows.*` endpoints to use POST method instead of GET
+* **Specification override** `views.*` endpoints to use POST method instead of GET
 
 ## 4.4.1 (2022-01-24)
 
