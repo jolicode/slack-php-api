@@ -26080,7 +26080,7 @@
             }
         },
         "/views.publish": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -26218,7 +26218,7 @@
             }
         },
         "/views.push": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -26366,7 +26366,7 @@
             }
         },
         "/views.update": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"

@@ -1,5 +1,5 @@
 --- resources/slack-openapi-sorted.json	2022-03-30 15:12:55.000000000 +0200
-+++ resources/slack-openapi-patched.json	2022-03-30 16:02:54.000000000 +0200
++++ resources/slack-openapi-patched.json	2022-03-30 16:10:23.000000000 +0200
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
@@ -3843,7 +3843,22 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26067,41 +26087,40 @@
+@@ -26053,55 +26073,54 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/views.publish": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
                  ],
                  "description": "Publish a static view for a User.",
                  "externalDocs": {
@@ -3888,7 +3903,24 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26208,33 +26227,32 @@
+@@ -26192,49 +26211,48 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/views.push": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Push a view onto the stack of a root view.",
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.push"
@@ -3924,7 +3956,22 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26355,46 +26373,45 @@
+@@ -26341,60 +26359,59 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/views.update": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
                  ],
                  "description": "Update an existing view.",
                  "externalDocs": {
