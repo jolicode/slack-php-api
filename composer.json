@@ -34,7 +34,7 @@
         "php-http/multipart-stream-builder": "^1.1"
     },
     "require-dev": {
-        "jane-php/open-api-2": "~7.1.5",
+        "jane-php/open-api-2": "~7.1",
         "symfony/http-client": "^5.4 || ^6.0",
         "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^3.2.2",
