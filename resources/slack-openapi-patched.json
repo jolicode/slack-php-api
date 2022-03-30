@@ -25938,7 +25938,7 @@
             }
         },
         "/views.open": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -25958,14 +25958,14 @@
                     },
                     {
                         "description": "Exchange a trigger to post to the user.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "trigger_id",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "view",
                         "required": true,
                         "type": "string"
@@ -26080,7 +26080,7 @@
             }
         },
         "/views.publish": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -26094,7 +26094,7 @@
                 "parameters": [
                     {
                         "description": "A string that represents view state to protect against possible race conditions.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "hash",
                         "type": "string"
                     },
@@ -26106,14 +26106,14 @@
                     },
                     {
                         "description": "`id` of the user you want publish a view to.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "user_id",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "view",
                         "required": true,
                         "type": "string"
@@ -26218,7 +26218,7 @@
             }
         },
         "/views.push": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -26238,14 +26238,14 @@
                     },
                     {
                         "description": "Exchange a trigger to post to the user.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "trigger_id",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "view",
                         "required": true,
                         "type": "string"
@@ -26366,7 +26366,7 @@
             }
         },
         "/views.update": {
-            "get": {
+            "post": {
                 "consumes": [
                     "application/json",
                     "application/x-www-form-urlencoded"
@@ -26380,13 +26380,13 @@
                 "parameters": [
                     {
                         "description": "A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "external_id",
                         "type": "string"
                     },
                     {
                         "description": "A string that represents view state to protect against possible race conditions.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "hash",
                         "type": "string"
                     },
@@ -26398,13 +26398,13 @@
                     },
                     {
                         "description": "A [view object](/reference/surfaces/views). This must be a JSON-encoded string.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "view",
                         "type": "string"
                     },
                     {
                         "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
-                        "in": "query",
+                        "in": "formData",
                         "name": "view_id",
                         "type": "string"
                     }

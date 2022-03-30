@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2022-03-30 14:59:41.000000000 +0200
-+++ resources/slack-openapi-patched.json	2022-03-30 14:59:52.000000000 +0200
+--- resources/slack-openapi-sorted.json	2022-03-30 15:12:55.000000000 +0200
++++ resources/slack-openapi-patched.json	2022-03-30 16:10:23.000000000 +0200
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
@@ -3790,7 +3790,24 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25926,21 +25947,20 @@
+@@ -25910,49 +25931,48 @@
+                             "users:write"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "users"
+                 ]
+             }
+         },
+         "/views.open": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Open a view for a user.",
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.open"
@@ -3806,16 +3823,54 @@
                      },
                      {
                          "description": "Exchange a trigger to post to the user.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "trigger_id",
                          "required": true,
                          "type": "string"
                      },
                      {
-@@ -26075,21 +26095,20 @@
+                         "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "view",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+@@ -26053,55 +26073,54 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/views.publish": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Publish a static view for a User.",
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/views.publish"
+                 },
+                 "operationId": "views_publish",
+                 "parameters": [
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "hash",
                          "type": "string"
                      },
@@ -3828,13 +3883,44 @@
                      },
                      {
                          "description": "`id` of the user you want publish a view to.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "user_id",
                          "required": true,
                          "type": "string"
                      },
                      {
-@@ -26208,21 +26227,20 @@
+                         "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "view",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+@@ -26192,49 +26211,48 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/views.push": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Push a view onto the stack of a root view.",
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/views.push"
@@ -3850,16 +3936,61 @@
                      },
                      {
                          "description": "Exchange a trigger to post to the user.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "trigger_id",
                          "required": true,
                          "type": "string"
                      },
                      {
-@@ -26369,21 +26387,20 @@
+                         "description": "A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "view",
+                         "required": true,
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+@@ -26341,60 +26359,59 @@
+                             "none"
+                         ]
+                     }
+                 ],
+                 "tags": [
+                     "views"
+                 ]
+             }
+         },
+         "/views.update": {
+-            "get": {
++            "post": {
+                 "consumes": [
+                     "application/json",
+                     "application/x-www-form-urlencoded"
+                 ],
+                 "description": "Update an existing view.",
+                 "externalDocs": {
+                     "description": "API method documentation",
+                     "url": "https://api.slack.com/methods/views.update"
+                 },
+                 "operationId": "views_update",
+                 "parameters": [
+                     {
+                         "description": "A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "external_id",
+                         "type": "string"
+                     },
                      {
                          "description": "A string that represents view state to protect against possible race conditions.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "hash",
                          "type": "string"
                      },
@@ -3872,12 +4003,25 @@
                      },
                      {
                          "description": "A [view object](/reference/surfaces/views). This must be a JSON-encoded string.",
-                         "in": "query",
+-                        "in": "query",
++                        "in": "formData",
                          "name": "view",
                          "type": "string"
                      },
                      {
                          "description": "A unique identifier of the view to be updated. Either `view_id` or `external_id` is required.",
+-                        "in": "query",
++                        "in": "formData",
+                         "name": "view_id",
+                         "type": "string"
+                     }
+                 ],
+                 "produces": [
+                     "application/json"
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Typical success response includes the updated view payload.",
 @@ -26496,48 +26513,47 @@
                              "none"
                          ]

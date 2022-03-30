@@ -20,7 +20,7 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * Push a view onto the stack of a root view.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $trigger_id exchange a trigger to post to the user
      *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
@@ -31,15 +31,15 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *     @var string $token Authentication token. Requires scope: `none`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -49,7 +49,7 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -62,9 +62,9 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         return ['slackAuth'];
     }
 
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['trigger_id', 'view']);
         $optionsResolver->setRequired(['trigger_id', 'view']);
         $optionsResolver->setDefaults([]);
@@ -88,14 +88,14 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsPushGetResponse200|\JoliCode\Slack\Api\Model\ViewsPushGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ViewsPushPostResponse200|\JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPushGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPushPostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPushGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsPushPostResponsedefault', 'json');
     }
 }

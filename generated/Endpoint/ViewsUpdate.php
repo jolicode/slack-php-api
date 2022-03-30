@@ -20,7 +20,7 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     /**
      * Update an existing view.
      *
-     * @param array $queryParameters {
+     * @param array $formParameters {
      *
      *     @var string $external_id A unique identifier of the view set by the developer. Must be unique for all views on a team. Max length of 255 characters. Either `view_id` or `external_id` is required.
      *     @var string $hash a string that represents view state to protect against possible race conditions
@@ -33,15 +33,15 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
      *     @var string $token Authentication token. Requires scope: `none`
      * }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters = [], array $headerParameters = [])
     {
-        $this->queryParameters = $queryParameters;
+        $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
@@ -51,7 +51,7 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -64,9 +64,9 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         return ['slackAuth'];
     }
 
-    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['external_id', 'hash', 'view', 'view_id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
@@ -92,14 +92,14 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     /**
      * {@inheritdoc}
      *
-     * @return \JoliCode\Slack\Api\Model\ViewsUpdateGetResponse200|\JoliCode\Slack\Api\Model\ViewsUpdateGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200|\JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault|null
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsUpdateGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsUpdatePostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsUpdateGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ViewsUpdatePostResponsedefault', 'json');
     }
 }
