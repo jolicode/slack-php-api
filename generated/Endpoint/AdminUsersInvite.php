@@ -75,15 +75,15 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['channel_ids', 'custom_message', 'email', 'guest_expiration_ts', 'is_restricted', 'is_ultra_restricted', 'real_name', 'resend', 'team_id']);
         $optionsResolver->setRequired(['channel_ids', 'email', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('custom_message', ['string']);
-        $optionsResolver->setAllowedTypes('email', ['string']);
-        $optionsResolver->setAllowedTypes('guest_expiration_ts', ['string']);
-        $optionsResolver->setAllowedTypes('is_restricted', ['bool']);
-        $optionsResolver->setAllowedTypes('is_ultra_restricted', ['bool']);
-        $optionsResolver->setAllowedTypes('real_name', ['string']);
-        $optionsResolver->setAllowedTypes('resend', ['bool']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('channel_ids', ['string']);
+        $optionsResolver->addAllowedTypes('custom_message', ['string']);
+        $optionsResolver->addAllowedTypes('email', ['string']);
+        $optionsResolver->addAllowedTypes('guest_expiration_ts', ['string']);
+        $optionsResolver->addAllowedTypes('is_restricted', ['bool']);
+        $optionsResolver->addAllowedTypes('is_ultra_restricted', ['bool']);
+        $optionsResolver->addAllowedTypes('real_name', ['string']);
+        $optionsResolver->addAllowedTypes('resend', ['bool']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -94,7 +94,7 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

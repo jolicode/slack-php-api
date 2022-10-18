@@ -69,15 +69,15 @@ class FilesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(['channel', 'count', 'page', 'show_files_hidden_by_limit', 'token', 'ts_from', 'ts_to', 'types', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('count', ['string']);
-        $optionsResolver->setAllowedTypes('page', ['string']);
-        $optionsResolver->setAllowedTypes('show_files_hidden_by_limit', ['bool']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('ts_from', ['string']);
-        $optionsResolver->setAllowedTypes('ts_to', ['string']);
-        $optionsResolver->setAllowedTypes('types', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('count', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['string']);
+        $optionsResolver->addAllowedTypes('show_files_hidden_by_limit', ['bool']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('ts_from', ['string']);
+        $optionsResolver->addAllowedTypes('ts_to', ['string']);
+        $optionsResolver->addAllowedTypes('types', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

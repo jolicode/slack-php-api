@@ -67,13 +67,13 @@ class SearchMessages extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(['count', 'highlight', 'page', 'query', 'sort', 'sort_dir', 'token']);
         $optionsResolver->setRequired(['query']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('count', ['int']);
-        $optionsResolver->setAllowedTypes('highlight', ['bool']);
-        $optionsResolver->setAllowedTypes('page', ['int']);
-        $optionsResolver->setAllowedTypes('query', ['string']);
-        $optionsResolver->setAllowedTypes('sort', ['string']);
-        $optionsResolver->setAllowedTypes('sort_dir', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('count', ['int']);
+        $optionsResolver->addAllowedTypes('highlight', ['bool']);
+        $optionsResolver->addAllowedTypes('page', ['int']);
+        $optionsResolver->addAllowedTypes('query', ['string']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('sort_dir', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

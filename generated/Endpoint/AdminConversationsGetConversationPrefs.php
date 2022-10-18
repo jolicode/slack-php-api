@@ -67,7 +67,7 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
         $optionsResolver->setDefined(['channel_id']);
         $optionsResolver->setRequired(['channel_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_id', ['string']);
+        $optionsResolver->addAllowedTypes('channel_id', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

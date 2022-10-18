@@ -68,8 +68,8 @@ class WorkflowsStepCompleted extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         $optionsResolver->setDefined(['outputs', 'workflow_step_execute_id']);
         $optionsResolver->setRequired(['workflow_step_execute_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('outputs', ['string']);
-        $optionsResolver->setAllowedTypes('workflow_step_execute_id', ['string']);
+        $optionsResolver->addAllowedTypes('outputs', ['string']);
+        $optionsResolver->addAllowedTypes('workflow_step_execute_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class WorkflowsStepCompleted extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -69,9 +69,9 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(['hash', 'user_id', 'view']);
         $optionsResolver->setRequired(['user_id', 'view']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('hash', ['string']);
-        $optionsResolver->setAllowedTypes('user_id', ['string']);
-        $optionsResolver->setAllowedTypes('view', ['string']);
+        $optionsResolver->addAllowedTypes('hash', ['string']);
+        $optionsResolver->addAllowedTypes('user_id', ['string']);
+        $optionsResolver->addAllowedTypes('view', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

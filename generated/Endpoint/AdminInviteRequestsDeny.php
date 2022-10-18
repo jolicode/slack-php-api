@@ -68,8 +68,8 @@ class AdminInviteRequestsDeny extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
         $optionsResolver->setDefined(['invite_request_id', 'team_id']);
         $optionsResolver->setRequired(['invite_request_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('invite_request_id', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('invite_request_id', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class AdminInviteRequestsDeny extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

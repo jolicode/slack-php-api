@@ -70,10 +70,10 @@ class AdminTeamsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['team_description', 'team_discoverability', 'team_domain', 'team_name']);
         $optionsResolver->setRequired(['team_domain', 'team_name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_description', ['string']);
-        $optionsResolver->setAllowedTypes('team_discoverability', ['string']);
-        $optionsResolver->setAllowedTypes('team_domain', ['string']);
-        $optionsResolver->setAllowedTypes('team_name', ['string']);
+        $optionsResolver->addAllowedTypes('team_description', ['string']);
+        $optionsResolver->addAllowedTypes('team_discoverability', ['string']);
+        $optionsResolver->addAllowedTypes('team_domain', ['string']);
+        $optionsResolver->addAllowedTypes('team_name', ['string']);
 
         return $optionsResolver;
     }
@@ -84,7 +84,7 @@ class AdminTeamsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

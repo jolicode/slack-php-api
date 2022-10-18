@@ -68,8 +68,8 @@ class ConversationsSetTopic extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(['channel', 'topic']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('topic', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('topic', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class ConversationsSetTopic extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

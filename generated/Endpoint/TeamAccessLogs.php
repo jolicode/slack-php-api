@@ -64,10 +64,10 @@ class TeamAccessLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(['before', 'count', 'page', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('before', ['string']);
-        $optionsResolver->setAllowedTypes('count', ['string']);
-        $optionsResolver->setAllowedTypes('page', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('before', ['string']);
+        $optionsResolver->addAllowedTypes('count', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

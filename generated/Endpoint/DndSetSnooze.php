@@ -62,8 +62,8 @@ class DndSetSnooze extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(['num_minutes', 'token']);
         $optionsResolver->setRequired(['num_minutes']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('num_minutes', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('num_minutes', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

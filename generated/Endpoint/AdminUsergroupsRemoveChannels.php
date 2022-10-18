@@ -68,8 +68,8 @@ class AdminUsergroupsRemoveChannels extends \JoliCode\Slack\Api\Runtime\Client\B
         $optionsResolver->setDefined(['channel_ids', 'usergroup_id']);
         $optionsResolver->setRequired(['channel_ids', 'usergroup_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('usergroup_id', ['string']);
+        $optionsResolver->addAllowedTypes('channel_ids', ['string']);
+        $optionsResolver->addAllowedTypes('usergroup_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class AdminUsergroupsRemoveChannels extends \JoliCode\Slack\Api\Runtime\Client\B
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

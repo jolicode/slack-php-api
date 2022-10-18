@@ -78,18 +78,18 @@ class ChatScheduleMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['as_user', 'attachments', 'blocks', 'channel', 'link_names', 'parse', 'post_at', 'reply_broadcast', 'text', 'thread_ts', 'unfurl_links', 'unfurl_media']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('attachments', ['string']);
-        $optionsResolver->setAllowedTypes('blocks', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('link_names', ['bool']);
-        $optionsResolver->setAllowedTypes('parse', ['string']);
-        $optionsResolver->setAllowedTypes('post_at', ['int']);
-        $optionsResolver->setAllowedTypes('reply_broadcast', ['bool']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
-        $optionsResolver->setAllowedTypes('unfurl_links', ['bool']);
-        $optionsResolver->setAllowedTypes('unfurl_media', ['bool']);
+        $optionsResolver->addAllowedTypes('as_user', ['bool']);
+        $optionsResolver->addAllowedTypes('attachments', ['string']);
+        $optionsResolver->addAllowedTypes('blocks', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('link_names', ['bool']);
+        $optionsResolver->addAllowedTypes('parse', ['string']);
+        $optionsResolver->addAllowedTypes('post_at', ['int']);
+        $optionsResolver->addAllowedTypes('reply_broadcast', ['bool']);
+        $optionsResolver->addAllowedTypes('text', ['string']);
+        $optionsResolver->addAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->addAllowedTypes('unfurl_links', ['bool']);
+        $optionsResolver->addAllowedTypes('unfurl_media', ['bool']);
 
         return $optionsResolver;
     }
@@ -100,7 +100,7 @@ class ChatScheduleMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

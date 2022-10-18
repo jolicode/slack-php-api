@@ -71,11 +71,11 @@ class UsergroupsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['channels', 'description', 'handle', 'include_count', 'name']);
         $optionsResolver->setRequired(['name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channels', ['string']);
-        $optionsResolver->setAllowedTypes('description', ['string']);
-        $optionsResolver->setAllowedTypes('handle', ['string']);
-        $optionsResolver->setAllowedTypes('include_count', ['bool']);
-        $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('channels', ['string']);
+        $optionsResolver->addAllowedTypes('description', ['string']);
+        $optionsResolver->addAllowedTypes('handle', ['string']);
+        $optionsResolver->addAllowedTypes('include_count', ['bool']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }
@@ -86,7 +86,7 @@ class UsergroupsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

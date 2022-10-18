@@ -69,9 +69,9 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['cursor', 'event_context', 'limit']);
         $optionsResolver->setRequired(['event_context']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('event_context', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('event_context', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

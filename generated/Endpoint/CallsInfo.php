@@ -67,7 +67,7 @@ class CallsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(['id']);
         $optionsResolver->setRequired(['id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('id', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class CallsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

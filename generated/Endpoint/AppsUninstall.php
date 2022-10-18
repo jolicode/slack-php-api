@@ -63,9 +63,9 @@ class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(['client_id', 'client_secret', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('client_id', ['string']);
-        $optionsResolver->setAllowedTypes('client_secret', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('client_id', ['string']);
+        $optionsResolver->addAllowedTypes('client_secret', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

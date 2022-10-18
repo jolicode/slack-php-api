@@ -15,6 +15,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -27,16 +28,14 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsOpenPostResponse200ChannelItem1' === $type;
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsOpenPostResponse200ChannelItem1' === \get_class($data);
     }
@@ -53,6 +52,12 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
+        if (\array_key_exists('unread_count', $data) && \is_int($data['unread_count'])) {
+            $data['unread_count'] = (float) $data['unread_count'];
+        }
+        if (\array_key_exists('unread_count_display', $data) && \is_int($data['unread_count_display'])) {
+            $data['unread_count_display'] = (float) $data['unread_count_display'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

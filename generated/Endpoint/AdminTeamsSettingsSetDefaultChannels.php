@@ -63,9 +63,9 @@ class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\C
         $optionsResolver->setDefined(['channel_ids', 'team_id', 'token']);
         $optionsResolver->setRequired(['channel_ids', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channel_ids', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

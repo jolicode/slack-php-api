@@ -67,13 +67,13 @@ class FilesRemoteAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(['external_id', 'external_url', 'filetype', 'indexable_file_contents', 'preview_image', 'title', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('external_id', ['string']);
-        $optionsResolver->setAllowedTypes('external_url', ['string']);
-        $optionsResolver->setAllowedTypes('filetype', ['string']);
-        $optionsResolver->setAllowedTypes('indexable_file_contents', ['string']);
-        $optionsResolver->setAllowedTypes('preview_image', ['string']);
-        $optionsResolver->setAllowedTypes('title', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('external_id', ['string']);
+        $optionsResolver->addAllowedTypes('external_url', ['string']);
+        $optionsResolver->addAllowedTypes('filetype', ['string']);
+        $optionsResolver->addAllowedTypes('indexable_file_contents', ['string']);
+        $optionsResolver->addAllowedTypes('preview_image', ['string']);
+        $optionsResolver->addAllowedTypes('title', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

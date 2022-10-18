@@ -69,9 +69,9 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['include_num_members', 'team_id', 'usergroup_id']);
         $optionsResolver->setRequired(['usergroup_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_num_members', ['bool']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('usergroup_id', ['string']);
+        $optionsResolver->addAllowedTypes('include_num_members', ['bool']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('usergroup_id', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

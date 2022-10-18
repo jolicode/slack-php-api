@@ -78,18 +78,18 @@ class ChatPostEphemeral extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['as_user', 'attachments', 'blocks', 'channel', 'icon_emoji', 'icon_url', 'link_names', 'parse', 'text', 'thread_ts', 'user', 'username']);
         $optionsResolver->setRequired(['channel', 'user']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('attachments', ['string']);
-        $optionsResolver->setAllowedTypes('blocks', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('icon_emoji', ['string']);
-        $optionsResolver->setAllowedTypes('icon_url', ['string']);
-        $optionsResolver->setAllowedTypes('link_names', ['bool']);
-        $optionsResolver->setAllowedTypes('parse', ['string']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
-        $optionsResolver->setAllowedTypes('username', ['string']);
+        $optionsResolver->addAllowedTypes('as_user', ['bool']);
+        $optionsResolver->addAllowedTypes('attachments', ['string']);
+        $optionsResolver->addAllowedTypes('blocks', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('icon_emoji', ['string']);
+        $optionsResolver->addAllowedTypes('icon_url', ['string']);
+        $optionsResolver->addAllowedTypes('link_names', ['bool']);
+        $optionsResolver->addAllowedTypes('parse', ['string']);
+        $optionsResolver->addAllowedTypes('text', ['string']);
+        $optionsResolver->addAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('username', ['string']);
 
         return $optionsResolver;
     }
@@ -100,7 +100,7 @@ class ChatPostEphemeral extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

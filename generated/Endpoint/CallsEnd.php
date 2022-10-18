@@ -68,8 +68,8 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(['duration', 'id']);
         $optionsResolver->setRequired(['id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('duration', ['int']);
-        $optionsResolver->setAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('duration', ['int']);
+        $optionsResolver->addAllowedTypes('id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

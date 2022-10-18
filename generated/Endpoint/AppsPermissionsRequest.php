@@ -63,9 +63,9 @@ class AppsPermissionsRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         $optionsResolver->setDefined(['scopes', 'token', 'trigger_id']);
         $optionsResolver->setRequired(['scopes', 'trigger_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('scopes', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
+        $optionsResolver->addAllowedTypes('scopes', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('trigger_id', ['string']);
 
         return $optionsResolver;
     }

@@ -65,11 +65,11 @@ class OauthAccess extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['client_id', 'client_secret', 'code', 'redirect_uri', 'single_channel']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('client_id', ['string']);
-        $optionsResolver->setAllowedTypes('client_secret', ['string']);
-        $optionsResolver->setAllowedTypes('code', ['string']);
-        $optionsResolver->setAllowedTypes('redirect_uri', ['string']);
-        $optionsResolver->setAllowedTypes('single_channel', ['bool']);
+        $optionsResolver->addAllowedTypes('client_id', ['string']);
+        $optionsResolver->addAllowedTypes('client_secret', ['string']);
+        $optionsResolver->addAllowedTypes('code', ['string']);
+        $optionsResolver->addAllowedTypes('redirect_uri', ['string']);
+        $optionsResolver->addAllowedTypes('single_channel', ['bool']);
 
         return $optionsResolver;
     }

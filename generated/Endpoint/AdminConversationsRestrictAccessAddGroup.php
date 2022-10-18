@@ -64,10 +64,10 @@ class AdminConversationsRestrictAccessAddGroup extends \JoliCode\Slack\Api\Runti
         $optionsResolver->setDefined(['channel_id', 'group_id', 'team_id', 'token']);
         $optionsResolver->setRequired(['channel_id', 'group_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_id', ['string']);
-        $optionsResolver->setAllowedTypes('group_id', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channel_id', ['string']);
+        $optionsResolver->addAllowedTypes('group_id', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

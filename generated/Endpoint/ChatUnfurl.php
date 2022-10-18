@@ -72,12 +72,12 @@ class ChatUnfurl extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['channel', 'ts', 'unfurls', 'user_auth_message', 'user_auth_required', 'user_auth_url']);
         $optionsResolver->setRequired(['channel', 'ts']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
-        $optionsResolver->setAllowedTypes('unfurls', ['string']);
-        $optionsResolver->setAllowedTypes('user_auth_message', ['string']);
-        $optionsResolver->setAllowedTypes('user_auth_required', ['bool']);
-        $optionsResolver->setAllowedTypes('user_auth_url', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('ts', ['string']);
+        $optionsResolver->addAllowedTypes('unfurls', ['string']);
+        $optionsResolver->addAllowedTypes('user_auth_message', ['string']);
+        $optionsResolver->addAllowedTypes('user_auth_required', ['bool']);
+        $optionsResolver->addAllowedTypes('user_auth_url', ['string']);
 
         return $optionsResolver;
     }
@@ -88,7 +88,7 @@ class ChatUnfurl extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

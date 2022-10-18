@@ -15,6 +15,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -27,16 +28,14 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsUser' === $type;
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUser' === \get_class($data);
     }
@@ -53,6 +52,12 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsUser();
+        if (\array_key_exists('tz_offset', $data) && \is_int($data['tz_offset'])) {
+            $data['tz_offset'] = (float) $data['tz_offset'];
+        }
+        if (\array_key_exists('updated', $data) && \is_int($data['updated'])) {
+            $data['updated'] = (float) $data['updated'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

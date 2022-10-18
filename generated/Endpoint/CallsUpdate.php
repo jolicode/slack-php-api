@@ -70,10 +70,10 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['desktop_app_join_url', 'id', 'join_url', 'title']);
         $optionsResolver->setRequired(['id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('desktop_app_join_url', ['string']);
-        $optionsResolver->setAllowedTypes('id', ['string']);
-        $optionsResolver->setAllowedTypes('join_url', ['string']);
-        $optionsResolver->setAllowedTypes('title', ['string']);
+        $optionsResolver->addAllowedTypes('desktop_app_join_url', ['string']);
+        $optionsResolver->addAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('join_url', ['string']);
+        $optionsResolver->addAllowedTypes('title', ['string']);
 
         return $optionsResolver;
     }
@@ -84,7 +84,7 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

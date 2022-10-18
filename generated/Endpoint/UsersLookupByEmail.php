@@ -62,8 +62,8 @@ class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
         $optionsResolver->setDefined(['email', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('email', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('email', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }
