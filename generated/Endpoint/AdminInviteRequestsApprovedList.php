@@ -69,9 +69,9 @@ class AdminInviteRequestsApprovedList extends \JoliCode\Slack\Api\Runtime\Client
         $optionsResolver->setDefined(['cursor', 'limit', 'team_id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class AdminInviteRequestsApprovedList extends \JoliCode\Slack\Api\Runtime\Client
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

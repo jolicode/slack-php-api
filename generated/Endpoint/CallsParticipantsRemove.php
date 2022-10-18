@@ -68,8 +68,8 @@ class CallsParticipantsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
         $optionsResolver->setDefined(['id', 'users']);
         $optionsResolver->setRequired(['id', 'users']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('id', ['string']);
-        $optionsResolver->setAllowedTypes('users', ['string']);
+        $optionsResolver->addAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('users', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class CallsParticipantsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

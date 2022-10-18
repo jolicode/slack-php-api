@@ -67,7 +67,7 @@ class FilesDelete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['file']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('file', ['string']);
+        $optionsResolver->addAllowedTypes('file', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class FilesDelete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

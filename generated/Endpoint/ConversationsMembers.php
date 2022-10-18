@@ -64,10 +64,10 @@ class ConversationsMembers extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
         $optionsResolver->setDefined(['channel', 'cursor', 'limit', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

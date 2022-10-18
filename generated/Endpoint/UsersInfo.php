@@ -63,9 +63,9 @@ class UsersInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(['include_locale', 'token', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_locale', ['bool']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('include_locale', ['bool']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

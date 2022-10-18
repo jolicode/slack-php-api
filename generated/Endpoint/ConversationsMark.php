@@ -68,8 +68,8 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['channel', 'ts']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('ts', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

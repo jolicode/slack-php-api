@@ -74,14 +74,14 @@ class ChatUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['as_user', 'attachments', 'blocks', 'channel', 'link_names', 'parse', 'text', 'ts']);
         $optionsResolver->setRequired(['channel', 'ts']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('attachments', ['string']);
-        $optionsResolver->setAllowedTypes('blocks', ['string']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('link_names', ['string']);
-        $optionsResolver->setAllowedTypes('parse', ['string']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('ts', ['string']);
+        $optionsResolver->addAllowedTypes('as_user', ['bool']);
+        $optionsResolver->addAllowedTypes('attachments', ['string']);
+        $optionsResolver->addAllowedTypes('blocks', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('link_names', ['string']);
+        $optionsResolver->addAllowedTypes('parse', ['string']);
+        $optionsResolver->addAllowedTypes('text', ['string']);
+        $optionsResolver->addAllowedTypes('ts', ['string']);
 
         return $optionsResolver;
     }
@@ -92,7 +92,7 @@ class ChatUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

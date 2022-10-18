@@ -61,7 +61,7 @@ class AppsPermissionsScopesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

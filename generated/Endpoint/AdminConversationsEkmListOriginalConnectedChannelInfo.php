@@ -65,11 +65,11 @@ class AdminConversationsEkmListOriginalConnectedChannelInfo extends \JoliCode\Sl
         $optionsResolver->setDefined(['channel_ids', 'cursor', 'limit', 'team_ids', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
-        $optionsResolver->setAllowedTypes('team_ids', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channel_ids', ['string']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('team_ids', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -68,8 +68,8 @@ class DialogOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['dialog', 'trigger_id']);
         $optionsResolver->setRequired(['dialog', 'trigger_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('dialog', ['string']);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
+        $optionsResolver->addAllowedTypes('dialog', ['string']);
+        $optionsResolver->addAllowedTypes('trigger_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class DialogOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

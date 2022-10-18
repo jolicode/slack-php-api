@@ -69,15 +69,15 @@ class FilesUpload extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['channels', 'content', 'file', 'filename', 'filetype', 'initial_comment', 'thread_ts', 'title', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channels', ['string']);
-        $optionsResolver->setAllowedTypes('content', ['string']);
-        $optionsResolver->setAllowedTypes('file', ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
-        $optionsResolver->setAllowedTypes('filename', ['string']);
-        $optionsResolver->setAllowedTypes('filetype', ['string']);
-        $optionsResolver->setAllowedTypes('initial_comment', ['string']);
-        $optionsResolver->setAllowedTypes('thread_ts', ['string']);
-        $optionsResolver->setAllowedTypes('title', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channels', ['string']);
+        $optionsResolver->addAllowedTypes('content', ['string']);
+        $optionsResolver->addAllowedTypes('file', ['string', 'resource', '\\Psr\\Http\\Message\\StreamInterface']);
+        $optionsResolver->addAllowedTypes('filename', ['string']);
+        $optionsResolver->addAllowedTypes('filetype', ['string']);
+        $optionsResolver->addAllowedTypes('initial_comment', ['string']);
+        $optionsResolver->addAllowedTypes('thread_ts', ['string']);
+        $optionsResolver->addAllowedTypes('title', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

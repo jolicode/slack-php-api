@@ -68,8 +68,8 @@ class ConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['channel', 'name']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class ConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

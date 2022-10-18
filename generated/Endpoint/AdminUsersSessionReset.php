@@ -69,9 +69,9 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         $optionsResolver->setDefined(['mobile_only', 'user_id', 'web_only']);
         $optionsResolver->setRequired(['user_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('mobile_only', ['bool']);
-        $optionsResolver->setAllowedTypes('user_id', ['string']);
-        $optionsResolver->setAllowedTypes('web_only', ['bool']);
+        $optionsResolver->addAllowedTypes('mobile_only', ['bool']);
+        $optionsResolver->addAllowedTypes('user_id', ['string']);
+        $optionsResolver->addAllowedTypes('web_only', ['bool']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -15,6 +15,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -27,16 +28,14 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsConversation' === $type;
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversation' === \get_class($data);
     }
@@ -53,6 +52,9 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \JoliCode\Slack\Api\Model\ObjsConversation();
+        if (\array_key_exists('priority', $data) && \is_int($data['priority'])) {
+            $data['priority'] = (float) $data['priority'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

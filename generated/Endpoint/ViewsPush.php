@@ -68,8 +68,8 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(['trigger_id', 'view']);
         $optionsResolver->setRequired(['trigger_id', 'view']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
-        $optionsResolver->setAllowedTypes('view', ['string']);
+        $optionsResolver->addAllowedTypes('trigger_id', ['string']);
+        $optionsResolver->addAllowedTypes('view', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class ViewsPush extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

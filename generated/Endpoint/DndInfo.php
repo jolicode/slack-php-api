@@ -62,8 +62,8 @@ class DndInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(['token', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

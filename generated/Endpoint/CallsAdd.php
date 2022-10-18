@@ -74,14 +74,14 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(['created_by', 'date_start', 'desktop_app_join_url', 'external_display_id', 'external_unique_id', 'join_url', 'title', 'users']);
         $optionsResolver->setRequired(['external_unique_id', 'join_url']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('created_by', ['string']);
-        $optionsResolver->setAllowedTypes('date_start', ['int']);
-        $optionsResolver->setAllowedTypes('desktop_app_join_url', ['string']);
-        $optionsResolver->setAllowedTypes('external_display_id', ['string']);
-        $optionsResolver->setAllowedTypes('external_unique_id', ['string']);
-        $optionsResolver->setAllowedTypes('join_url', ['string']);
-        $optionsResolver->setAllowedTypes('title', ['string']);
-        $optionsResolver->setAllowedTypes('users', ['string']);
+        $optionsResolver->addAllowedTypes('created_by', ['string']);
+        $optionsResolver->addAllowedTypes('date_start', ['int']);
+        $optionsResolver->addAllowedTypes('desktop_app_join_url', ['string']);
+        $optionsResolver->addAllowedTypes('external_display_id', ['string']);
+        $optionsResolver->addAllowedTypes('external_unique_id', ['string']);
+        $optionsResolver->addAllowedTypes('join_url', ['string']);
+        $optionsResolver->addAllowedTypes('title', ['string']);
+        $optionsResolver->addAllowedTypes('users', ['string']);
 
         return $optionsResolver;
     }
@@ -92,7 +92,7 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

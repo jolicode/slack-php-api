@@ -64,10 +64,10 @@ class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['team_id', 'to_old', 'token', 'users']);
         $optionsResolver->setRequired(['users']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('to_old', ['bool']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('users', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('to_old', ['bool']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('users', ['string']);
 
         return $optionsResolver;
     }

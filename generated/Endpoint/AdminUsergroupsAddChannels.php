@@ -69,9 +69,9 @@ class AdminUsergroupsAddChannels extends \JoliCode\Slack\Api\Runtime\Client\Base
         $optionsResolver->setDefined(['channel_ids', 'team_id', 'usergroup_id']);
         $optionsResolver->setRequired(['channel_ids', 'usergroup_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('usergroup_id', ['string']);
+        $optionsResolver->addAllowedTypes('channel_ids', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('usergroup_id', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class AdminUsergroupsAddChannels extends \JoliCode\Slack\Api\Runtime\Client\Base
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

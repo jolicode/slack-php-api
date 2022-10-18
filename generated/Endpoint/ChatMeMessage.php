@@ -68,8 +68,8 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(['channel', 'text']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('text', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('text', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

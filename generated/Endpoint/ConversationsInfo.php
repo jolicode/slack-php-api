@@ -64,10 +64,10 @@ class ConversationsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['channel', 'include_locale', 'include_num_members', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('include_locale', ['bool']);
-        $optionsResolver->setAllowedTypes('include_num_members', ['bool']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('include_locale', ['bool']);
+        $optionsResolver->addAllowedTypes('include_num_members', ['bool']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

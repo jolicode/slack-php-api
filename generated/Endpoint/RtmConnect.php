@@ -63,9 +63,9 @@ class RtmConnect extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['batch_presence_aware', 'presence_sub', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('batch_presence_aware', ['bool']);
-        $optionsResolver->setAllowedTypes('presence_sub', ['bool']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('batch_presence_aware', ['bool']);
+        $optionsResolver->addAllowedTypes('presence_sub', ['bool']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -68,8 +68,8 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['include_count', 'usergroup']);
         $optionsResolver->setRequired(['usergroup']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_count', ['bool']);
-        $optionsResolver->setAllowedTypes('usergroup', ['string']);
+        $optionsResolver->addAllowedTypes('include_count', ['bool']);
+        $optionsResolver->addAllowedTypes('usergroup', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

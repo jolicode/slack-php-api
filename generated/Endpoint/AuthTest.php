@@ -61,7 +61,7 @@ class AuthTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

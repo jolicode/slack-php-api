@@ -69,9 +69,9 @@ class UsergroupsUsersUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(['include_count', 'usergroup', 'users']);
         $optionsResolver->setRequired(['usergroup', 'users']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_count', ['bool']);
-        $optionsResolver->setAllowedTypes('usergroup', ['string']);
-        $optionsResolver->setAllowedTypes('users', ['string']);
+        $optionsResolver->addAllowedTypes('include_count', ['bool']);
+        $optionsResolver->addAllowedTypes('usergroup', ['string']);
+        $optionsResolver->addAllowedTypes('users', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class UsergroupsUsersUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

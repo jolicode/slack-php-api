@@ -70,10 +70,10 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(['name', 'profile', 'user', 'value']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
-        $optionsResolver->setAllowedTypes('profile', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
-        $optionsResolver->setAllowedTypes('value', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('profile', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('value', ['string']);
 
         return $optionsResolver;
     }
@@ -84,7 +84,7 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

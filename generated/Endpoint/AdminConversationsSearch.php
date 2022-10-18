@@ -73,13 +73,13 @@ class AdminConversationsSearch extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
         $optionsResolver->setDefined(['cursor', 'limit', 'query', 'search_channel_types', 'sort', 'sort_dir', 'team_ids']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
-        $optionsResolver->setAllowedTypes('query', ['string']);
-        $optionsResolver->setAllowedTypes('search_channel_types', ['string']);
-        $optionsResolver->setAllowedTypes('sort', ['string']);
-        $optionsResolver->setAllowedTypes('sort_dir', ['string']);
-        $optionsResolver->setAllowedTypes('team_ids', ['string']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('query', ['string']);
+        $optionsResolver->addAllowedTypes('search_channel_types', ['string']);
+        $optionsResolver->addAllowedTypes('sort', ['string']);
+        $optionsResolver->addAllowedTypes('sort_dir', ['string']);
+        $optionsResolver->addAllowedTypes('team_ids', ['string']);
 
         return $optionsResolver;
     }
@@ -90,7 +90,7 @@ class AdminConversationsSearch extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

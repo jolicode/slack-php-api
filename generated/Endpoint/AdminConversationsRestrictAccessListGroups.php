@@ -63,9 +63,9 @@ class AdminConversationsRestrictAccessListGroups extends \JoliCode\Slack\Api\Run
         $optionsResolver->setDefined(['channel_id', 'team_id', 'token']);
         $optionsResolver->setRequired(['channel_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_id', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('channel_id', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

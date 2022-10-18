@@ -63,9 +63,9 @@ class AdminEmojiAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(['name', 'token', 'url']);
         $optionsResolver->setRequired(['name', 'url']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('name', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('url', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('url', ['string']);
 
         return $optionsResolver;
     }

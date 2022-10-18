@@ -65,11 +65,11 @@ class UsergroupsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         $optionsResolver->setDefined(['include_count', 'include_disabled', 'include_users', 'team_id', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('include_count', ['bool']);
-        $optionsResolver->setAllowedTypes('include_disabled', ['bool']);
-        $optionsResolver->setAllowedTypes('include_users', ['bool']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('include_count', ['bool']);
+        $optionsResolver->addAllowedTypes('include_disabled', ['bool']);
+        $optionsResolver->addAllowedTypes('include_users', ['bool']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

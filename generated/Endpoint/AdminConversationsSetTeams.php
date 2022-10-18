@@ -70,10 +70,10 @@ class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
         $optionsResolver->setDefined(['channel_id', 'org_channel', 'target_team_ids', 'team_id']);
         $optionsResolver->setRequired(['channel_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_id', ['string']);
-        $optionsResolver->setAllowedTypes('org_channel', ['bool']);
-        $optionsResolver->setAllowedTypes('target_team_ids', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('channel_id', ['string']);
+        $optionsResolver->addAllowedTypes('org_channel', ['bool']);
+        $optionsResolver->addAllowedTypes('target_team_ids', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -84,7 +84,7 @@ class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

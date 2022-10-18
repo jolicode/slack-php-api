@@ -71,11 +71,11 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['inputs', 'outputs', 'step_image_url', 'step_name', 'workflow_step_edit_id']);
         $optionsResolver->setRequired(['workflow_step_edit_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('inputs', ['string']);
-        $optionsResolver->setAllowedTypes('outputs', ['string']);
-        $optionsResolver->setAllowedTypes('step_image_url', ['string']);
-        $optionsResolver->setAllowedTypes('step_name', ['string']);
-        $optionsResolver->setAllowedTypes('workflow_step_edit_id', ['string']);
+        $optionsResolver->addAllowedTypes('inputs', ['string']);
+        $optionsResolver->addAllowedTypes('outputs', ['string']);
+        $optionsResolver->addAllowedTypes('step_image_url', ['string']);
+        $optionsResolver->addAllowedTypes('step_name', ['string']);
+        $optionsResolver->addAllowedTypes('workflow_step_edit_id', ['string']);
 
         return $optionsResolver;
     }
@@ -86,7 +86,7 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -68,8 +68,8 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
         $optionsResolver->setDefined(['channel_id', 'leaving_team_ids']);
         $optionsResolver->setRequired(['channel_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_id', ['string']);
-        $optionsResolver->setAllowedTypes('leaving_team_ids', ['string']);
+        $optionsResolver->addAllowedTypes('channel_id', ['string']);
+        $optionsResolver->addAllowedTypes('leaving_team_ids', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

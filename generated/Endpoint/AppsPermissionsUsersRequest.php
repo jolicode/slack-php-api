@@ -64,10 +64,10 @@ class AppsPermissionsUsersRequest extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['scopes', 'token', 'trigger_id', 'user']);
         $optionsResolver->setRequired(['scopes', 'trigger_id', 'user']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('scopes', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('trigger_id', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('scopes', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('trigger_id', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

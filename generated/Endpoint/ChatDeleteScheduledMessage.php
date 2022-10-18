@@ -69,9 +69,9 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
         $optionsResolver->setDefined(['as_user', 'channel', 'scheduled_message_id']);
         $optionsResolver->setRequired(['channel', 'scheduled_message_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('as_user', ['bool']);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('scheduled_message_id', ['string']);
+        $optionsResolver->addAllowedTypes('as_user', ['bool']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('scheduled_message_id', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

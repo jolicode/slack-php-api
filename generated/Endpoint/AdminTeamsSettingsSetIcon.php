@@ -63,9 +63,9 @@ class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseE
         $optionsResolver->setDefined(['image_url', 'team_id', 'token']);
         $optionsResolver->setRequired(['image_url', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('image_url', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('image_url', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

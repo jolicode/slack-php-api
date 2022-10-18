@@ -15,6 +15,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
+use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -27,16 +28,14 @@ class UsersIdentityGetResponse200Item3Normalizer implements DenormalizerInterfac
     use CheckArray;
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
+    use ValidatorTrait;
 
-    /**
-     * @return bool
-     */
-    public function supportsDenormalization($data, $type, $format = null)
+    public function supportsDenormalization($data, $type, $format = null): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item3' === $type;
     }
 
-    public function supportsNormalization($data, $format = null)
+    public function supportsNormalization($data, $format = null): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item3' === \get_class($data);
     }

@@ -68,8 +68,8 @@ class AdminTeamsSettingsSetDescription extends \JoliCode\Slack\Api\Runtime\Clien
         $optionsResolver->setDefined(['description', 'team_id']);
         $optionsResolver->setRequired(['description', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('description', ['string']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('description', ['string']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class AdminTeamsSettingsSetDescription extends \JoliCode\Slack\Api\Runtime\Clien
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

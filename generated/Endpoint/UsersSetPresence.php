@@ -67,7 +67,7 @@ class UsersSetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['presence']);
         $optionsResolver->setRequired(['presence']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('presence', ['string']);
+        $optionsResolver->addAllowedTypes('presence', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class UsersSetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

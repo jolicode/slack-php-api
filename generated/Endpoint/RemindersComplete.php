@@ -67,7 +67,7 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['reminder']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('reminder', ['string']);
+        $optionsResolver->addAllowedTypes('reminder', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -62,8 +62,8 @@ class DndTeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['token', 'users']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('users', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('users', ['string']);
 
         return $optionsResolver;
     }

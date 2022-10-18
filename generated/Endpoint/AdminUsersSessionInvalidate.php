@@ -68,8 +68,8 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['session_id', 'team_id']);
         $optionsResolver->setRequired(['session_id', 'team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('session_id', ['int']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('session_id', ['int']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

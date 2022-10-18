@@ -71,11 +71,11 @@ class AdminConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
         $optionsResolver->setDefined(['description', 'is_private', 'name', 'org_wide', 'team_id']);
         $optionsResolver->setRequired(['is_private', 'name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('description', ['string']);
-        $optionsResolver->setAllowedTypes('is_private', ['bool']);
-        $optionsResolver->setAllowedTypes('name', ['string']);
-        $optionsResolver->setAllowedTypes('org_wide', ['bool']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('description', ['string']);
+        $optionsResolver->addAllowedTypes('is_private', ['bool']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('org_wide', ['bool']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -86,7 +86,7 @@ class AdminConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -68,8 +68,8 @@ class PinsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['channel', 'timestamp']);
         $optionsResolver->setRequired(['channel']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel', ['string']);
-        $optionsResolver->setAllowedTypes('timestamp', ['string']);
+        $optionsResolver->addAllowedTypes('channel', ['string']);
+        $optionsResolver->addAllowedTypes('timestamp', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class PinsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

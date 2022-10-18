@@ -70,10 +70,10 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['external_id', 'hash', 'view', 'view_id']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('external_id', ['string']);
-        $optionsResolver->setAllowedTypes('hash', ['string']);
-        $optionsResolver->setAllowedTypes('view', ['string']);
-        $optionsResolver->setAllowedTypes('view_id', ['string']);
+        $optionsResolver->addAllowedTypes('external_id', ['string']);
+        $optionsResolver->addAllowedTypes('hash', ['string']);
+        $optionsResolver->addAllowedTypes('view', ['string']);
+        $optionsResolver->addAllowedTypes('view_id', ['string']);
 
         return $optionsResolver;
     }
@@ -84,7 +84,7 @@ class ViewsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

@@ -71,11 +71,11 @@ class AdminUsersAssign extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['channel_ids', 'is_restricted', 'is_ultra_restricted', 'team_id', 'user_id']);
         $optionsResolver->setRequired(['team_id', 'user_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('channel_ids', ['string']);
-        $optionsResolver->setAllowedTypes('is_restricted', ['bool']);
-        $optionsResolver->setAllowedTypes('is_ultra_restricted', ['bool']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('user_id', ['string']);
+        $optionsResolver->addAllowedTypes('channel_ids', ['string']);
+        $optionsResolver->addAllowedTypes('is_restricted', ['bool']);
+        $optionsResolver->addAllowedTypes('is_ultra_restricted', ['bool']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('user_id', ['string']);
 
         return $optionsResolver;
     }
@@ -86,7 +86,7 @@ class AdminUsersAssign extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

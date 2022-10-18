@@ -65,11 +65,11 @@ class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         $optionsResolver->setDefined(['crop_w', 'crop_x', 'crop_y', 'image', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('crop_w', ['string']);
-        $optionsResolver->setAllowedTypes('crop_x', ['string']);
-        $optionsResolver->setAllowedTypes('crop_y', ['string']);
-        $optionsResolver->setAllowedTypes('image', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('crop_w', ['string']);
+        $optionsResolver->addAllowedTypes('crop_x', ['string']);
+        $optionsResolver->addAllowedTypes('crop_y', ['string']);
+        $optionsResolver->addAllowedTypes('image', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

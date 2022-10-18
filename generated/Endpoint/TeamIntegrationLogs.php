@@ -67,13 +67,13 @@ class TeamIntegrationLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         $optionsResolver->setDefined(['app_id', 'change_type', 'count', 'page', 'service_id', 'token', 'user']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('app_id', ['string']);
-        $optionsResolver->setAllowedTypes('change_type', ['string']);
-        $optionsResolver->setAllowedTypes('count', ['string']);
-        $optionsResolver->setAllowedTypes('page', ['string']);
-        $optionsResolver->setAllowedTypes('service_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('app_id', ['string']);
+        $optionsResolver->addAllowedTypes('change_type', ['string']);
+        $optionsResolver->addAllowedTypes('count', ['string']);
+        $optionsResolver->addAllowedTypes('page', ['string']);
+        $optionsResolver->addAllowedTypes('service_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }

@@ -65,11 +65,11 @@ class AdminAppsApprovedList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
         $optionsResolver->setDefined(['cursor', 'enterprise_id', 'limit', 'team_id', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('cursor', ['string']);
-        $optionsResolver->setAllowedTypes('enterprise_id', ['string']);
-        $optionsResolver->setAllowedTypes('limit', ['int']);
-        $optionsResolver->setAllowedTypes('team_id', ['string']);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('enterprise_id', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

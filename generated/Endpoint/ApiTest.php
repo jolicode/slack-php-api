@@ -62,8 +62,8 @@ class ApiTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
         $optionsResolver->setDefined(['error', 'foo']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('error', ['string']);
-        $optionsResolver->setAllowedTypes('foo', ['string']);
+        $optionsResolver->addAllowedTypes('error', ['string']);
+        $optionsResolver->addAllowedTypes('foo', ['string']);
 
         return $optionsResolver;
     }

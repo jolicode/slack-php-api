@@ -69,9 +69,9 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(['text', 'time', 'user']);
         $optionsResolver->setRequired(['text', 'time']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('text', ['string']);
-        $optionsResolver->setAllowedTypes('time', ['string']);
-        $optionsResolver->setAllowedTypes('user', ['string']);
+        $optionsResolver->addAllowedTypes('text', ['string']);
+        $optionsResolver->addAllowedTypes('time', ['string']);
+        $optionsResolver->addAllowedTypes('user', ['string']);
 
         return $optionsResolver;
     }
@@ -82,7 +82,7 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->setAllowedTypes('token', ['string']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }
