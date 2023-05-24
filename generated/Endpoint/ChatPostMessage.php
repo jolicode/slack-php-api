@@ -17,6 +17,8 @@ class ChatPostMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
 {
     use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
+    protected array $formParameters;
+
     /**
      * Sends a message to a channel.
      *

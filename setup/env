@@ -1,0 +1,7 @@
+export SUNLIMEPHP=8.2
+export SUNLIMEARCH=`uname -m`
+export PATH=~/.sunlimePHP/$SUNLIMEPHP/$SUNLIMEARCH:`pwd`/bin:`pwd`/vendor/bin:/usr/local/mysql/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin
+export REPONAME=`basename $(pwd)`
+export MYSQL_UNIX_PORT=/tmp/mysql-$REPONAME.sock
+export PHP_INI_SCAN_DIR=`pwd`/setup
+export COMPOSER_MEMORY_LIMIT=-1
