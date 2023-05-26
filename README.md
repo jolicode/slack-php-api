@@ -1,13 +1,13 @@
 # A PHP client for Slack's API
 
-There is a bunch of existing PHP clients for Slack. But some are not up to date
+There is a bunch of existing PHP clients for Slack. But some are not up-to-date
 or miss features, some only cover a small part of the API and most are simply
 no longer maintained.
 
 This SDK is generated automatically with [JanePHP](https://github.com/janephp/janephp)
 from the [official Slack API specs](https://github.com/slackapi/slack-api-specs). 
 
-It also provides a **full object oriented interface** for all the endpoints,
+It also provides a **full object-oriented interface** for all the endpoints,
 requests and responses of the Slack Web API.
 
 ## Installation
@@ -47,7 +47,7 @@ Want more documentation or examples? See the [full documentation here](https://j
 You can see the current and past versions using one of the following:
 
 * the `git tag` command
-* the [releases page on Github](https://github.com/jolicode/slack-php-api/releases)
+* the [releases page on GitHub](https://github.com/jolicode/slack-php-api/releases)
 * the file listing the [changes between versions](CHANGELOG.md)
 
 Finally, some meta documentation:

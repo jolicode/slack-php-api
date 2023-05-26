@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+* Add support for PHP 8.2
+* Upgrade JanePHP generated code
+
 ## 4.5.0 (2022-03-30)
 
 * Fix `jane-php/open-api-2` version mismatch breaking the SDK generation
