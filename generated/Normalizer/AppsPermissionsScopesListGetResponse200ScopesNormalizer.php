@@ -30,19 +30,16 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsScopesListGetResponse200Scopes' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsScopesListGetResponse200Scopes' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -140,49 +137,49 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAppHome()) {
+        if ($object->isInitialized('appHome') && null !== $object->getAppHome()) {
             $values = [];
             foreach ($object->getAppHome() as $value) {
                 $values[] = $value;
             }
             $data['app_home'] = $values;
         }
-        if (null !== $object->getChannel()) {
+        if ($object->isInitialized('channel') && null !== $object->getChannel()) {
             $values_1 = [];
             foreach ($object->getChannel() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['channel'] = $values_1;
         }
-        if (null !== $object->getGroup()) {
+        if ($object->isInitialized('group') && null !== $object->getGroup()) {
             $values_2 = [];
             foreach ($object->getGroup() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['group'] = $values_2;
         }
-        if (null !== $object->getIm()) {
+        if ($object->isInitialized('im') && null !== $object->getIm()) {
             $values_3 = [];
             foreach ($object->getIm() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['im'] = $values_3;
         }
-        if (null !== $object->getMpim()) {
+        if ($object->isInitialized('mpim') && null !== $object->getMpim()) {
             $values_4 = [];
             foreach ($object->getMpim() as $value_4) {
                 $values_4[] = $value_4;
             }
             $data['mpim'] = $values_4;
         }
-        if (null !== $object->getTeam()) {
+        if ($object->isInitialized('team') && null !== $object->getTeam()) {
             $values_5 = [];
             foreach ($object->getTeam() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['team'] = $values_5;
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $values_6 = [];
             foreach ($object->getUser() as $value_6) {
                 $values_6[] = $value_6;

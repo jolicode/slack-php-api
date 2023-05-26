@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsTeamProfileFieldOption
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $isCustom;
@@ -32,6 +36,11 @@ class ObjsTeamProfileFieldOption
      */
     protected $isScim;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getIsCustom(): ?bool
     {
         return $this->isCustom;
@@ -39,6 +48,7 @@ class ObjsTeamProfileFieldOption
 
     public function setIsCustom(?bool $isCustom): self
     {
+        $this->initialized['isCustom'] = true;
         $this->isCustom = $isCustom;
 
         return $this;
@@ -51,6 +61,7 @@ class ObjsTeamProfileFieldOption
 
     public function setIsMultipleEntry(?bool $isMultipleEntry): self
     {
+        $this->initialized['isMultipleEntry'] = true;
         $this->isMultipleEntry = $isMultipleEntry;
 
         return $this;
@@ -63,6 +74,7 @@ class ObjsTeamProfileFieldOption
 
     public function setIsProtected(?bool $isProtected): self
     {
+        $this->initialized['isProtected'] = true;
         $this->isProtected = $isProtected;
 
         return $this;
@@ -75,6 +87,7 @@ class ObjsTeamProfileFieldOption
 
     public function setIsScim(?bool $isScim): self
     {
+        $this->initialized['isScim'] = true;
         $this->isScim = $isScim;
 
         return $this;

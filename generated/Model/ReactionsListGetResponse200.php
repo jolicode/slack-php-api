@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ReactionsListGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var mixed[]|null
      */
     protected $items;
@@ -32,6 +36,11 @@ class ReactionsListGetResponse200
      */
     protected $responseMetadata;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return mixed[]|null
      */
@@ -45,6 +54,7 @@ class ReactionsListGetResponse200
      */
     public function setItems(?array $items): self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
 
         return $this;
@@ -57,6 +67,7 @@ class ReactionsListGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -69,6 +80,7 @@ class ReactionsListGetResponse200
 
     public function setPaging(?ObjsPaging $paging): self
     {
+        $this->initialized['paging'] = true;
         $this->paging = $paging;
 
         return $this;
@@ -81,6 +93,7 @@ class ReactionsListGetResponse200
 
     public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;

@@ -30,19 +30,16 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsTeam' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsTeam' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -214,85 +211,85 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getArchived()) {
+        if ($object->isInitialized('archived') && null !== $object->getArchived()) {
             $data['archived'] = $object->getArchived();
         }
-        if (null !== $object->getAvatarBaseUrl()) {
+        if ($object->isInitialized('avatarBaseUrl') && null !== $object->getAvatarBaseUrl()) {
             $data['avatar_base_url'] = $object->getAvatarBaseUrl();
         }
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['created'] = $object->getCreated();
         }
-        if (null !== $object->getDateCreate()) {
+        if ($object->isInitialized('dateCreate') && null !== $object->getDateCreate()) {
             $data['date_create'] = $object->getDateCreate();
         }
-        if (null !== $object->getDeleted()) {
+        if ($object->isInitialized('deleted') && null !== $object->getDeleted()) {
             $data['deleted'] = $object->getDeleted();
         }
-        if (null !== $object->getDescription()) {
+        if ($object->isInitialized('description') && null !== $object->getDescription()) {
             $value = $object->getDescription();
             if (\is_string($object->getDescription())) {
                 $value = $object->getDescription();
             }
             $data['description'] = $value;
         }
-        if (null !== $object->getDiscoverable()) {
+        if ($object->isInitialized('discoverable') && null !== $object->getDiscoverable()) {
             $data['discoverable'] = $object->getDiscoverable();
         }
         $data['domain'] = $object->getDomain();
         $data['email_domain'] = $object->getEmailDomain();
-        if (null !== $object->getEnterpriseId()) {
+        if ($object->isInitialized('enterpriseId') && null !== $object->getEnterpriseId()) {
             $data['enterprise_id'] = $object->getEnterpriseId();
         }
-        if (null !== $object->getEnterpriseName()) {
+        if ($object->isInitialized('enterpriseName') && null !== $object->getEnterpriseName()) {
             $data['enterprise_name'] = $object->getEnterpriseName();
         }
-        if (null !== $object->getExternalOrgMigrations()) {
+        if ($object->isInitialized('externalOrgMigrations') && null !== $object->getExternalOrgMigrations()) {
             $data['external_org_migrations'] = $this->normalizer->normalize($object->getExternalOrgMigrations(), 'json', $context);
         }
-        if (null !== $object->getHasComplianceExport()) {
+        if ($object->isInitialized('hasComplianceExport') && null !== $object->getHasComplianceExport()) {
             $data['has_compliance_export'] = $object->getHasComplianceExport();
         }
         $data['icon'] = $this->normalizer->normalize($object->getIcon(), 'json', $context);
         $data['id'] = $object->getId();
-        if (null !== $object->getIsAssigned()) {
+        if ($object->isInitialized('isAssigned') && null !== $object->getIsAssigned()) {
             $data['is_assigned'] = $object->getIsAssigned();
         }
-        if (null !== $object->getIsEnterprise()) {
+        if ($object->isInitialized('isEnterprise') && null !== $object->getIsEnterprise()) {
             $data['is_enterprise'] = $object->getIsEnterprise();
         }
-        if (null !== $object->getIsOverStorageLimit()) {
+        if ($object->isInitialized('isOverStorageLimit') && null !== $object->getIsOverStorageLimit()) {
             $data['is_over_storage_limit'] = $object->getIsOverStorageLimit();
         }
-        if (null !== $object->getLimitTs()) {
+        if ($object->isInitialized('limitTs') && null !== $object->getLimitTs()) {
             $data['limit_ts'] = $object->getLimitTs();
         }
-        if (null !== $object->getLocale()) {
+        if ($object->isInitialized('locale') && null !== $object->getLocale()) {
             $data['locale'] = $object->getLocale();
         }
-        if (null !== $object->getMessagesCount()) {
+        if ($object->isInitialized('messagesCount') && null !== $object->getMessagesCount()) {
             $data['messages_count'] = $object->getMessagesCount();
         }
-        if (null !== $object->getMsgEditWindowMins()) {
+        if ($object->isInitialized('msgEditWindowMins') && null !== $object->getMsgEditWindowMins()) {
             $data['msg_edit_window_mins'] = $object->getMsgEditWindowMins();
         }
         $data['name'] = $object->getName();
-        if (null !== $object->getOverIntegrationsLimit()) {
+        if ($object->isInitialized('overIntegrationsLimit') && null !== $object->getOverIntegrationsLimit()) {
             $data['over_integrations_limit'] = $object->getOverIntegrationsLimit();
         }
-        if (null !== $object->getOverStorageLimit()) {
+        if ($object->isInitialized('overStorageLimit') && null !== $object->getOverStorageLimit()) {
             $data['over_storage_limit'] = $object->getOverStorageLimit();
         }
-        if (null !== $object->getPayProdCur()) {
+        if ($object->isInitialized('payProdCur') && null !== $object->getPayProdCur()) {
             $data['pay_prod_cur'] = $object->getPayProdCur();
         }
-        if (null !== $object->getPlan()) {
+        if ($object->isInitialized('plan') && null !== $object->getPlan()) {
             $data['plan'] = $object->getPlan();
         }
-        if (null !== $object->getPrimaryOwner()) {
+        if ($object->isInitialized('primaryOwner') && null !== $object->getPrimaryOwner()) {
             $data['primary_owner'] = $this->normalizer->normalize($object->getPrimaryOwner(), 'json', $context);
         }
-        if (null !== $object->getSsoProvider()) {
+        if ($object->isInitialized('ssoProvider') && null !== $object->getSsoProvider()) {
             $data['sso_provider'] = $this->normalizer->normalize($object->getSsoProvider(), 'json', $context);
         }
 

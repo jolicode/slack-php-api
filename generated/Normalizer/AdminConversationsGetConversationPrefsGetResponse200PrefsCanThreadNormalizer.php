@@ -30,19 +30,16 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormaliz
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -83,14 +80,14 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormaliz
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $values = [];
             foreach ($object->getType() as $value) {
                 $values[] = $value;
             }
             $data['type'] = $values;
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $values_1 = [];
             foreach ($object->getUser() as $value_1) {
                 $values_1[] = $value_1;

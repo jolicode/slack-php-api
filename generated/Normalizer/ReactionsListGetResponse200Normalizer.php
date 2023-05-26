@@ -30,19 +30,16 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ReactionsListGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ReactionsListGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -95,10 +92,10 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
         }
         $data['items'] = $values;
         $data['ok'] = $object->getOk();
-        if (null !== $object->getPaging()) {
+        if ($object->isInitialized('paging') && null !== $object->getPaging()) {
             $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
-        if (null !== $object->getResponseMetadata()) {
+        if ($object->isInitialized('responseMetadata') && null !== $object->getResponseMetadata()) {
             $data['response_metadata'] = $this->normalizer->normalize($object->getResponseMetadata(), 'json', $context);
         }
 

@@ -30,19 +30,16 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem1' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem1' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -120,14 +117,14 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getIsStarred()) {
+        if ($object->isInitialized('isStarred') && null !== $object->getIsStarred()) {
             $data['is_starred'] = $object->getIsStarred();
         }
         $data['parent_user_id'] = $object->getParentUserId();
-        if (null !== $object->getSourceTeam()) {
+        if ($object->isInitialized('sourceTeam') && null !== $object->getSourceTeam()) {
             $data['source_team'] = $object->getSourceTeam();
         }
-        if (null !== $object->getTeam()) {
+        if ($object->isInitialized('team') && null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
         $data['text'] = $object->getText();
@@ -135,10 +132,10 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         $data['ts'] = $object->getTs();
         $data['type'] = $object->getType();
         $data['user'] = $object->getUser();
-        if (null !== $object->getUserProfile()) {
+        if ($object->isInitialized('userProfile') && null !== $object->getUserProfile()) {
             $data['user_profile'] = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
         }
-        if (null !== $object->getUserTeam()) {
+        if ($object->isInitialized('userTeam') && null !== $object->getUserTeam()) {
             $data['user_team'] = $object->getUserTeam();
         }
 

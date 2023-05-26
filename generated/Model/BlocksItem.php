@@ -16,9 +16,18 @@ namespace JoliCode\Slack\Api\Model;
 class BlocksItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $type;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     public function getType(): ?string
     {
@@ -27,6 +36,7 @@ class BlocksItem extends \ArrayObject
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;

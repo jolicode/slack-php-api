@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ReactionsGetGetResponsedefault
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * Note: PHP callstack is only visible in dev/qa.
      *
      * @var string|null
@@ -30,6 +34,11 @@ class ReactionsGetGetResponsedefault
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Note: PHP callstack is only visible in dev/qa.
      */
@@ -43,6 +52,7 @@ class ReactionsGetGetResponsedefault
      */
     public function setCallstack(?string $callstack): self
     {
+        $this->initialized['callstack'] = true;
         $this->callstack = $callstack;
 
         return $this;
@@ -55,6 +65,7 @@ class ReactionsGetGetResponsedefault
 
     public function setError(?string $error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;
@@ -67,6 +78,7 @@ class ReactionsGetGetResponsedefault
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

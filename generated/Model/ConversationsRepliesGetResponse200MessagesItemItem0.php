@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsRepliesGetResponse200MessagesItemItem0
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $lastRead;
@@ -80,6 +84,11 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
      */
     protected $userTeam;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getLastRead(): ?string
     {
         return $this->lastRead;
@@ -87,6 +96,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setLastRead(?string $lastRead): self
     {
+        $this->initialized['lastRead'] = true;
         $this->lastRead = $lastRead;
 
         return $this;
@@ -99,6 +109,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setLatestReply(?string $latestReply): self
     {
+        $this->initialized['latestReply'] = true;
         $this->latestReply = $latestReply;
 
         return $this;
@@ -111,6 +122,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setReplyCount(?int $replyCount): self
     {
+        $this->initialized['replyCount'] = true;
         $this->replyCount = $replyCount;
 
         return $this;
@@ -129,6 +141,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
      */
     public function setReplyUsers(?array $replyUsers): self
     {
+        $this->initialized['replyUsers'] = true;
         $this->replyUsers = $replyUsers;
 
         return $this;
@@ -141,6 +154,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setReplyUsersCount(?int $replyUsersCount): self
     {
+        $this->initialized['replyUsersCount'] = true;
         $this->replyUsersCount = $replyUsersCount;
 
         return $this;
@@ -153,6 +167,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setSourceTeam(?string $sourceTeam): self
     {
+        $this->initialized['sourceTeam'] = true;
         $this->sourceTeam = $sourceTeam;
 
         return $this;
@@ -165,6 +180,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setSubscribed(?bool $subscribed): self
     {
+        $this->initialized['subscribed'] = true;
         $this->subscribed = $subscribed;
 
         return $this;
@@ -177,6 +193,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -189,6 +206,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -201,6 +219,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setThreadTs(?string $threadTs): self
     {
+        $this->initialized['threadTs'] = true;
         $this->threadTs = $threadTs;
 
         return $this;
@@ -213,6 +232,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setTs(?string $ts): self
     {
+        $this->initialized['ts'] = true;
         $this->ts = $ts;
 
         return $this;
@@ -225,6 +245,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
@@ -237,6 +258,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setUnreadCount(?int $unreadCount): self
     {
+        $this->initialized['unreadCount'] = true;
         $this->unreadCount = $unreadCount;
 
         return $this;
@@ -249,6 +271,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -261,6 +284,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setUserProfile(?ObjsUserProfileShort $userProfile): self
     {
+        $this->initialized['userProfile'] = true;
         $this->userProfile = $userProfile;
 
         return $this;
@@ -273,6 +297,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
 
     public function setUserTeam(?string $userTeam): self
     {
+        $this->initialized['userTeam'] = true;
         $this->userTeam = $userTeam;
 
         return $this;

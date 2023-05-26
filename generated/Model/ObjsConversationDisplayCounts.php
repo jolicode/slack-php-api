@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsConversationDisplayCounts
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $displayCounts;
@@ -24,6 +28,11 @@ class ObjsConversationDisplayCounts
      */
     protected $guestCounts;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getDisplayCounts(): ?int
     {
         return $this->displayCounts;
@@ -31,6 +40,7 @@ class ObjsConversationDisplayCounts
 
     public function setDisplayCounts(?int $displayCounts): self
     {
+        $this->initialized['displayCounts'] = true;
         $this->displayCounts = $displayCounts;
 
         return $this;
@@ -43,6 +53,7 @@ class ObjsConversationDisplayCounts
 
     public function setGuestCounts(?int $guestCounts): self
     {
+        $this->initialized['guestCounts'] = true;
         $this->guestCounts = $guestCounts;
 
         return $this;

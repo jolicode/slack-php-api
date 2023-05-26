@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItemActionsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $id;
@@ -40,6 +44,11 @@ class ObjsMessageAttachmentsItemActionsItem
      */
     protected $value;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?string
     {
         return $this->id;
@@ -47,6 +56,7 @@ class ObjsMessageAttachmentsItemActionsItem
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -59,6 +69,7 @@ class ObjsMessageAttachmentsItemActionsItem
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -71,6 +82,7 @@ class ObjsMessageAttachmentsItemActionsItem
 
     public function setStyle(?string $style): self
     {
+        $this->initialized['style'] = true;
         $this->style = $style;
 
         return $this;
@@ -83,6 +95,7 @@ class ObjsMessageAttachmentsItemActionsItem
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -95,6 +108,7 @@ class ObjsMessageAttachmentsItemActionsItem
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
@@ -107,6 +121,7 @@ class ObjsMessageAttachmentsItemActionsItem
 
     public function setValue(?string $value): self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
 
         return $this;

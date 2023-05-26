@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsIcon
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $image102;
@@ -48,6 +52,11 @@ class ObjsIcon
      */
     protected $imageDefault;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getImage102(): ?string
     {
         return $this->image102;
@@ -55,6 +64,7 @@ class ObjsIcon
 
     public function setImage102(?string $image102): self
     {
+        $this->initialized['image102'] = true;
         $this->image102 = $image102;
 
         return $this;
@@ -67,6 +77,7 @@ class ObjsIcon
 
     public function setImage132(?string $image132): self
     {
+        $this->initialized['image132'] = true;
         $this->image132 = $image132;
 
         return $this;
@@ -79,6 +90,7 @@ class ObjsIcon
 
     public function setImage230(?string $image230): self
     {
+        $this->initialized['image230'] = true;
         $this->image230 = $image230;
 
         return $this;
@@ -91,6 +103,7 @@ class ObjsIcon
 
     public function setImage34(?string $image34): self
     {
+        $this->initialized['image34'] = true;
         $this->image34 = $image34;
 
         return $this;
@@ -103,6 +116,7 @@ class ObjsIcon
 
     public function setImage44(?string $image44): self
     {
+        $this->initialized['image44'] = true;
         $this->image44 = $image44;
 
         return $this;
@@ -115,6 +129,7 @@ class ObjsIcon
 
     public function setImage68(?string $image68): self
     {
+        $this->initialized['image68'] = true;
         $this->image68 = $image68;
 
         return $this;
@@ -127,6 +142,7 @@ class ObjsIcon
 
     public function setImage88(?string $image88): self
     {
+        $this->initialized['image88'] = true;
         $this->image88 = $image88;
 
         return $this;
@@ -139,6 +155,7 @@ class ObjsIcon
 
     public function setImageDefault(?bool $imageDefault): self
     {
+        $this->initialized['imageDefault'] = true;
         $this->imageDefault = $imageDefault;
 
         return $this;

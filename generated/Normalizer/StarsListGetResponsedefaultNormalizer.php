@@ -30,19 +30,16 @@ class StarsListGetResponsedefaultNormalizer implements DenormalizerInterface, No
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\StarsListGetResponsedefault' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\StarsListGetResponsedefault' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -80,7 +77,7 @@ class StarsListGetResponsedefaultNormalizer implements DenormalizerInterface, No
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCallstack()) {
+        if ($object->isInitialized('callstack') && null !== $object->getCallstack()) {
             $data['callstack'] = $object->getCallstack();
         }
         $data['error'] = $object->getError();

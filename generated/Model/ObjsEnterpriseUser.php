@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsEnterpriseUser
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $enterpriseId;
@@ -40,6 +44,11 @@ class ObjsEnterpriseUser
      */
     protected $teams;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getEnterpriseId(): ?string
     {
         return $this->enterpriseId;
@@ -47,6 +56,7 @@ class ObjsEnterpriseUser
 
     public function setEnterpriseId(?string $enterpriseId): self
     {
+        $this->initialized['enterpriseId'] = true;
         $this->enterpriseId = $enterpriseId;
 
         return $this;
@@ -59,6 +69,7 @@ class ObjsEnterpriseUser
 
     public function setEnterpriseName(?string $enterpriseName): self
     {
+        $this->initialized['enterpriseName'] = true;
         $this->enterpriseName = $enterpriseName;
 
         return $this;
@@ -71,6 +82,7 @@ class ObjsEnterpriseUser
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -83,6 +95,7 @@ class ObjsEnterpriseUser
 
     public function setIsAdmin(?bool $isAdmin): self
     {
+        $this->initialized['isAdmin'] = true;
         $this->isAdmin = $isAdmin;
 
         return $this;
@@ -95,6 +108,7 @@ class ObjsEnterpriseUser
 
     public function setIsOwner(?bool $isOwner): self
     {
+        $this->initialized['isOwner'] = true;
         $this->isOwner = $isOwner;
 
         return $this;
@@ -113,6 +127,7 @@ class ObjsEnterpriseUser
      */
     public function setTeams(?array $teams): self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
 
         return $this;

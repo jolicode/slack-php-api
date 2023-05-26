@@ -30,19 +30,16 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\StarsListGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\StarsListGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -90,7 +87,7 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
         }
         $data['items'] = $values;
         $data['ok'] = $object->getOk();
-        if (null !== $object->getPaging()) {
+        if ($object->isInitialized('paging') && null !== $object->getPaging()) {
             $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
         }
 

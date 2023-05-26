@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersIdentityGetResponse200Item3
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -28,6 +32,11 @@ class UsersIdentityGetResponse200Item3
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -35,6 +44,7 @@ class UsersIdentityGetResponse200Item3
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -47,6 +57,7 @@ class UsersIdentityGetResponse200Item3
 
     public function setTeam(?UsersIdentityGetResponse200Item3Team $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -59,6 +70,7 @@ class UsersIdentityGetResponse200Item3
 
     public function setUser(?UsersIdentityGetResponse200Item3User $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

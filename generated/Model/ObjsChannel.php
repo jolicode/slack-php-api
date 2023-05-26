@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsChannel
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $acceptedUser;
@@ -144,6 +148,11 @@ class ObjsChannel
      */
     protected $unreadCountDisplay;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAcceptedUser(): ?string
     {
         return $this->acceptedUser;
@@ -151,6 +160,7 @@ class ObjsChannel
 
     public function setAcceptedUser(?string $acceptedUser): self
     {
+        $this->initialized['acceptedUser'] = true;
         $this->acceptedUser = $acceptedUser;
 
         return $this;
@@ -163,6 +173,7 @@ class ObjsChannel
 
     public function setCreated(?int $created): self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
 
         return $this;
@@ -175,6 +186,7 @@ class ObjsChannel
 
     public function setCreator(?string $creator): self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
 
         return $this;
@@ -187,6 +199,7 @@ class ObjsChannel
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -199,6 +212,7 @@ class ObjsChannel
 
     public function setIsArchived(?bool $isArchived): self
     {
+        $this->initialized['isArchived'] = true;
         $this->isArchived = $isArchived;
 
         return $this;
@@ -211,6 +225,7 @@ class ObjsChannel
 
     public function setIsChannel(?bool $isChannel): self
     {
+        $this->initialized['isChannel'] = true;
         $this->isChannel = $isChannel;
 
         return $this;
@@ -223,6 +238,7 @@ class ObjsChannel
 
     public function setIsFrozen(?bool $isFrozen): self
     {
+        $this->initialized['isFrozen'] = true;
         $this->isFrozen = $isFrozen;
 
         return $this;
@@ -235,6 +251,7 @@ class ObjsChannel
 
     public function setIsGeneral(?bool $isGeneral): self
     {
+        $this->initialized['isGeneral'] = true;
         $this->isGeneral = $isGeneral;
 
         return $this;
@@ -247,6 +264,7 @@ class ObjsChannel
 
     public function setIsMember(?bool $isMember): self
     {
+        $this->initialized['isMember'] = true;
         $this->isMember = $isMember;
 
         return $this;
@@ -259,6 +277,7 @@ class ObjsChannel
 
     public function setIsMoved(?int $isMoved): self
     {
+        $this->initialized['isMoved'] = true;
         $this->isMoved = $isMoved;
 
         return $this;
@@ -271,6 +290,7 @@ class ObjsChannel
 
     public function setIsMpim(?bool $isMpim): self
     {
+        $this->initialized['isMpim'] = true;
         $this->isMpim = $isMpim;
 
         return $this;
@@ -283,6 +303,7 @@ class ObjsChannel
 
     public function setIsNonThreadable(?bool $isNonThreadable): self
     {
+        $this->initialized['isNonThreadable'] = true;
         $this->isNonThreadable = $isNonThreadable;
 
         return $this;
@@ -295,6 +316,7 @@ class ObjsChannel
 
     public function setIsOrgShared(?bool $isOrgShared): self
     {
+        $this->initialized['isOrgShared'] = true;
         $this->isOrgShared = $isOrgShared;
 
         return $this;
@@ -307,6 +329,7 @@ class ObjsChannel
 
     public function setIsPendingExtShared(?bool $isPendingExtShared): self
     {
+        $this->initialized['isPendingExtShared'] = true;
         $this->isPendingExtShared = $isPendingExtShared;
 
         return $this;
@@ -319,6 +342,7 @@ class ObjsChannel
 
     public function setIsPrivate(?bool $isPrivate): self
     {
+        $this->initialized['isPrivate'] = true;
         $this->isPrivate = $isPrivate;
 
         return $this;
@@ -331,6 +355,7 @@ class ObjsChannel
 
     public function setIsReadOnly(?bool $isReadOnly): self
     {
+        $this->initialized['isReadOnly'] = true;
         $this->isReadOnly = $isReadOnly;
 
         return $this;
@@ -343,6 +368,7 @@ class ObjsChannel
 
     public function setIsShared(?bool $isShared): self
     {
+        $this->initialized['isShared'] = true;
         $this->isShared = $isShared;
 
         return $this;
@@ -355,6 +381,7 @@ class ObjsChannel
 
     public function setIsThreadOnly(?bool $isThreadOnly): self
     {
+        $this->initialized['isThreadOnly'] = true;
         $this->isThreadOnly = $isThreadOnly;
 
         return $this;
@@ -367,24 +394,20 @@ class ObjsChannel
 
     public function setLastRead(?string $lastRead): self
     {
+        $this->initialized['lastRead'] = true;
         $this->lastRead = $lastRead;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getLatest()
     {
         return $this->latest;
     }
 
-    /**
-     * @param mixed $latest
-     */
     public function setLatest($latest): self
     {
+        $this->initialized['latest'] = true;
         $this->latest = $latest;
 
         return $this;
@@ -403,6 +426,7 @@ class ObjsChannel
      */
     public function setMembers(?array $members): self
     {
+        $this->initialized['members'] = true;
         $this->members = $members;
 
         return $this;
@@ -415,6 +439,7 @@ class ObjsChannel
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -427,6 +452,7 @@ class ObjsChannel
 
     public function setNameNormalized(?string $nameNormalized): self
     {
+        $this->initialized['nameNormalized'] = true;
         $this->nameNormalized = $nameNormalized;
 
         return $this;
@@ -439,6 +465,7 @@ class ObjsChannel
 
     public function setNumMembers(?int $numMembers): self
     {
+        $this->initialized['numMembers'] = true;
         $this->numMembers = $numMembers;
 
         return $this;
@@ -457,6 +484,7 @@ class ObjsChannel
      */
     public function setPendingShared(?array $pendingShared): self
     {
+        $this->initialized['pendingShared'] = true;
         $this->pendingShared = $pendingShared;
 
         return $this;
@@ -475,6 +503,7 @@ class ObjsChannel
      */
     public function setPreviousNames(?array $previousNames): self
     {
+        $this->initialized['previousNames'] = true;
         $this->previousNames = $previousNames;
 
         return $this;
@@ -487,6 +516,7 @@ class ObjsChannel
 
     public function setPriority(?float $priority): self
     {
+        $this->initialized['priority'] = true;
         $this->priority = $priority;
 
         return $this;
@@ -499,6 +529,7 @@ class ObjsChannel
 
     public function setPurpose(?ObjsChannelPurpose $purpose): self
     {
+        $this->initialized['purpose'] = true;
         $this->purpose = $purpose;
 
         return $this;
@@ -511,6 +542,7 @@ class ObjsChannel
 
     public function setTopic(?ObjsChannelTopic $topic): self
     {
+        $this->initialized['topic'] = true;
         $this->topic = $topic;
 
         return $this;
@@ -523,6 +555,7 @@ class ObjsChannel
 
     public function setUnlinked(?int $unlinked): self
     {
+        $this->initialized['unlinked'] = true;
         $this->unlinked = $unlinked;
 
         return $this;
@@ -535,6 +568,7 @@ class ObjsChannel
 
     public function setUnreadCount(?int $unreadCount): self
     {
+        $this->initialized['unreadCount'] = true;
         $this->unreadCount = $unreadCount;
 
         return $this;
@@ -547,6 +581,7 @@ class ObjsChannel
 
     public function setUnreadCountDisplay(?int $unreadCountDisplay): self
     {
+        $this->initialized['unreadCountDisplay'] = true;
         $this->unreadCountDisplay = $unreadCountDisplay;
 
         return $this;

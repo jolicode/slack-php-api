@@ -30,19 +30,16 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -88,7 +85,7 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getMessages()) {
+        if ($object->isInitialized('messages') && null !== $object->getMessages()) {
             $values = [];
             foreach ($object->getMessages() as $value) {
                 $values[] = $value;
@@ -96,7 +93,7 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
             $data['messages'] = $values;
         }
         $data['next_cursor'] = $object->getNextCursor();
-        if (null !== $object->getWarnings()) {
+        if ($object->isInitialized('warnings') && null !== $object->getWarnings()) {
             $values_1 = [];
             foreach ($object->getWarnings() as $value_1) {
                 $values_1[] = $value_1;

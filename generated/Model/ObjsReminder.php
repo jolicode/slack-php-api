@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsReminder
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $completeTs;
@@ -44,6 +48,11 @@ class ObjsReminder
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCompleteTs(): ?int
     {
         return $this->completeTs;
@@ -51,6 +60,7 @@ class ObjsReminder
 
     public function setCompleteTs(?int $completeTs): self
     {
+        $this->initialized['completeTs'] = true;
         $this->completeTs = $completeTs;
 
         return $this;
@@ -63,6 +73,7 @@ class ObjsReminder
 
     public function setCreator(?string $creator): self
     {
+        $this->initialized['creator'] = true;
         $this->creator = $creator;
 
         return $this;
@@ -75,6 +86,7 @@ class ObjsReminder
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -87,6 +99,7 @@ class ObjsReminder
 
     public function setRecurring(?bool $recurring): self
     {
+        $this->initialized['recurring'] = true;
         $this->recurring = $recurring;
 
         return $this;
@@ -99,6 +112,7 @@ class ObjsReminder
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -111,6 +125,7 @@ class ObjsReminder
 
     public function setTime(?int $time): self
     {
+        $this->initialized['time'] = true;
         $this->time = $time;
 
         return $this;
@@ -123,6 +138,7 @@ class ObjsReminder
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

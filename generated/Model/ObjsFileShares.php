@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsFileShares
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var mixed|null
      */
     protected $private;
@@ -24,37 +28,32 @@ class ObjsFileShares
      */
     protected $public;
 
-    /**
-     * @return mixed
-     */
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getPrivate()
     {
         return $this->private;
     }
 
-    /**
-     * @param mixed $private
-     */
     public function setPrivate($private): self
     {
+        $this->initialized['private'] = true;
         $this->private = $private;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPublic()
     {
         return $this->public;
     }
 
-    /**
-     * @param mixed $public
-     */
     public function setPublic($public): self
     {
+        $this->initialized['public'] = true;
         $this->public = $public;
 
         return $this;

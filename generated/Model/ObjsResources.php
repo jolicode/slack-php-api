@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsResources
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var mixed[]|null
      */
     protected $excludedIds;
@@ -27,6 +31,11 @@ class ObjsResources
      * @var bool|null
      */
     protected $wildcard;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return mixed[]|null
@@ -41,6 +50,7 @@ class ObjsResources
      */
     public function setExcludedIds(?array $excludedIds): self
     {
+        $this->initialized['excludedIds'] = true;
         $this->excludedIds = $excludedIds;
 
         return $this;
@@ -59,6 +69,7 @@ class ObjsResources
      */
     public function setIds(?array $ids): self
     {
+        $this->initialized['ids'] = true;
         $this->ids = $ids;
 
         return $this;
@@ -71,6 +82,7 @@ class ObjsResources
 
     public function setWildcard(?bool $wildcard): self
     {
+        $this->initialized['wildcard'] = true;
         $this->wildcard = $wildcard;
 
         return $this;

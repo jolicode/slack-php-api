@@ -30,19 +30,16 @@ class TeamIntegrationLogsGetResponse200LogsItemNormalizer implements Denormalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\TeamIntegrationLogsGetResponse200LogsItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\TeamIntegrationLogsGetResponse200LogsItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -120,21 +117,21 @@ class TeamIntegrationLogsGetResponse200LogsItemNormalizer implements Denormalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAdminAppId()) {
+        if ($object->isInitialized('adminAppId') && null !== $object->getAdminAppId()) {
             $data['admin_app_id'] = $object->getAdminAppId();
         }
         $data['app_id'] = $object->getAppId();
         $data['app_type'] = $object->getAppType();
         $data['change_type'] = $object->getChangeType();
-        if (null !== $object->getChannel()) {
+        if ($object->isInitialized('channel') && null !== $object->getChannel()) {
             $data['channel'] = $object->getChannel();
         }
         $data['date'] = $object->getDate();
         $data['scope'] = $object->getScope();
-        if (null !== $object->getServiceId()) {
+        if ($object->isInitialized('serviceId') && null !== $object->getServiceId()) {
             $data['service_id'] = $object->getServiceId();
         }
-        if (null !== $object->getServiceType()) {
+        if ($object->isInitialized('serviceType') && null !== $object->getServiceType()) {
             $data['service_type'] = $object->getServiceType();
         }
         $data['user_id'] = $object->getUserId();

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsUserProfileShort
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $avatarHash;
@@ -60,6 +64,11 @@ class ObjsUserProfileShort
      */
     protected $team;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAvatarHash(): ?string
     {
         return $this->avatarHash;
@@ -67,6 +76,7 @@ class ObjsUserProfileShort
 
     public function setAvatarHash(?string $avatarHash): self
     {
+        $this->initialized['avatarHash'] = true;
         $this->avatarHash = $avatarHash;
 
         return $this;
@@ -79,6 +89,7 @@ class ObjsUserProfileShort
 
     public function setDisplayName(?string $displayName): self
     {
+        $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
 
         return $this;
@@ -91,6 +102,7 @@ class ObjsUserProfileShort
 
     public function setDisplayNameNormalized(?string $displayNameNormalized): self
     {
+        $this->initialized['displayNameNormalized'] = true;
         $this->displayNameNormalized = $displayNameNormalized;
 
         return $this;
@@ -103,6 +115,7 @@ class ObjsUserProfileShort
 
     public function setFirstName(?string $firstName): self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
 
         return $this;
@@ -115,6 +128,7 @@ class ObjsUserProfileShort
 
     public function setImage72(?string $image72): self
     {
+        $this->initialized['image72'] = true;
         $this->image72 = $image72;
 
         return $this;
@@ -127,6 +141,7 @@ class ObjsUserProfileShort
 
     public function setIsRestricted(?bool $isRestricted): self
     {
+        $this->initialized['isRestricted'] = true;
         $this->isRestricted = $isRestricted;
 
         return $this;
@@ -139,6 +154,7 @@ class ObjsUserProfileShort
 
     public function setIsUltraRestricted(?bool $isUltraRestricted): self
     {
+        $this->initialized['isUltraRestricted'] = true;
         $this->isUltraRestricted = $isUltraRestricted;
 
         return $this;
@@ -151,6 +167,7 @@ class ObjsUserProfileShort
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -163,6 +180,7 @@ class ObjsUserProfileShort
 
     public function setRealName(?string $realName): self
     {
+        $this->initialized['realName'] = true;
         $this->realName = $realName;
 
         return $this;
@@ -175,6 +193,7 @@ class ObjsUserProfileShort
 
     public function setRealNameNormalized(?string $realNameNormalized): self
     {
+        $this->initialized['realNameNormalized'] = true;
         $this->realNameNormalized = $realNameNormalized;
 
         return $this;
@@ -187,6 +206,7 @@ class ObjsUserProfileShort
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;

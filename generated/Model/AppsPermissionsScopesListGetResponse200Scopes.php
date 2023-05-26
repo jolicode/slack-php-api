@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string[]|null
      */
     protected $appHome;
@@ -44,6 +48,11 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return string[]|null
      */
@@ -57,6 +66,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setAppHome(?array $appHome): self
     {
+        $this->initialized['appHome'] = true;
         $this->appHome = $appHome;
 
         return $this;
@@ -75,6 +85,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setChannel(?array $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -93,6 +104,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setGroup(?array $group): self
     {
+        $this->initialized['group'] = true;
         $this->group = $group;
 
         return $this;
@@ -111,6 +123,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setIm(?array $im): self
     {
+        $this->initialized['im'] = true;
         $this->im = $im;
 
         return $this;
@@ -129,6 +142,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setMpim(?array $mpim): self
     {
+        $this->initialized['mpim'] = true;
         $this->mpim = $mpim;
 
         return $this;
@@ -147,6 +161,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setTeam(?array $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -165,6 +180,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     public function setUser(?array $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

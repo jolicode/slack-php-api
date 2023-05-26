@@ -30,19 +30,16 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AuthTestGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AuthTestGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -105,10 +102,10 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getBotId()) {
+        if ($object->isInitialized('botId') && null !== $object->getBotId()) {
             $data['bot_id'] = $object->getBotId();
         }
-        if (null !== $object->getIsEnterpriseInstall()) {
+        if ($object->isInitialized('isEnterpriseInstall') && null !== $object->getIsEnterpriseInstall()) {
             $data['is_enterprise_install'] = $object->getIsEnterpriseInstall();
         }
         $data['ok'] = $object->getOk();

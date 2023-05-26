@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItem extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsMessageAttachmentsItemActionsItem[]|null
      */
     protected $actions;
@@ -100,6 +104,11 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $ts;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return ObjsMessageAttachmentsItemActionsItem[]|null
      */
@@ -113,6 +122,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     public function setActions(?array $actions): self
     {
+        $this->initialized['actions'] = true;
         $this->actions = $actions;
 
         return $this;
@@ -125,6 +135,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setAuthorIcon(?string $authorIcon): self
     {
+        $this->initialized['authorIcon'] = true;
         $this->authorIcon = $authorIcon;
 
         return $this;
@@ -137,6 +148,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setAuthorLink(?string $authorLink): self
     {
+        $this->initialized['authorLink'] = true;
         $this->authorLink = $authorLink;
 
         return $this;
@@ -149,6 +161,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setAuthorName(?string $authorName): self
     {
+        $this->initialized['authorName'] = true;
         $this->authorName = $authorName;
 
         return $this;
@@ -161,6 +174,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setCallbackId(?string $callbackId): self
     {
+        $this->initialized['callbackId'] = true;
         $this->callbackId = $callbackId;
 
         return $this;
@@ -173,6 +187,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setColor(?string $color): self
     {
+        $this->initialized['color'] = true;
         $this->color = $color;
 
         return $this;
@@ -185,6 +200,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setFallback(?string $fallback): self
     {
+        $this->initialized['fallback'] = true;
         $this->fallback = $fallback;
 
         return $this;
@@ -203,6 +219,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     public function setFields(?array $fields): self
     {
+        $this->initialized['fields'] = true;
         $this->fields = $fields;
 
         return $this;
@@ -215,6 +232,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setFooter(?string $footer): self
     {
+        $this->initialized['footer'] = true;
         $this->footer = $footer;
 
         return $this;
@@ -227,6 +245,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setFooterIcon(?string $footerIcon): self
     {
+        $this->initialized['footerIcon'] = true;
         $this->footerIcon = $footerIcon;
 
         return $this;
@@ -239,6 +258,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setId(?int $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -251,6 +271,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setImageBytes(?int $imageBytes): self
     {
+        $this->initialized['imageBytes'] = true;
         $this->imageBytes = $imageBytes;
 
         return $this;
@@ -263,6 +284,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setImageHeight(?int $imageHeight): self
     {
+        $this->initialized['imageHeight'] = true;
         $this->imageHeight = $imageHeight;
 
         return $this;
@@ -275,6 +297,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setImageUrl(?string $imageUrl): self
     {
+        $this->initialized['imageUrl'] = true;
         $this->imageUrl = $imageUrl;
 
         return $this;
@@ -287,6 +310,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setImageWidth(?int $imageWidth): self
     {
+        $this->initialized['imageWidth'] = true;
         $this->imageWidth = $imageWidth;
 
         return $this;
@@ -299,6 +323,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setPretext(?string $pretext): self
     {
+        $this->initialized['pretext'] = true;
         $this->pretext = $pretext;
 
         return $this;
@@ -311,6 +336,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -323,6 +349,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setThumbUrl(?string $thumbUrl): self
     {
+        $this->initialized['thumbUrl'] = true;
         $this->thumbUrl = $thumbUrl;
 
         return $this;
@@ -335,6 +362,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setTitle(?string $title): self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
 
         return $this;
@@ -347,6 +375,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
 
     public function setTitleLink(?string $titleLink): self
     {
+        $this->initialized['titleLink'] = true;
         $this->titleLink = $titleLink;
 
         return $this;
@@ -365,6 +394,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     public function setTs($ts): self
     {
+        $this->initialized['ts'] = true;
         $this->ts = $ts;
 
         return $this;

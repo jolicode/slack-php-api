@@ -16,9 +16,18 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsJoinPostResponse200ResponseMetadata
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string[]|null
      */
     protected $warnings;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return string[]|null
@@ -33,6 +42,7 @@ class ConversationsJoinPostResponse200ResponseMetadata
      */
     public function setWarnings(?array $warnings): self
     {
+        $this->initialized['warnings'] = true;
         $this->warnings = $warnings;
 
         return $this;

@@ -30,19 +30,16 @@ class AppsPermissionsInfoGetResponse200InfoGroupNormalizer implements Denormaliz
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoGroup' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoGroup' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -79,10 +76,10 @@ class AppsPermissionsInfoGetResponse200InfoGroupNormalizer implements Denormaliz
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getResources()) {
+        if ($object->isInitialized('resources') && null !== $object->getResources()) {
             $data['resources'] = $this->normalizer->normalize($object->getResources(), 'json', $context);
         }
-        if (null !== $object->getScopes()) {
+        if ($object->isInitialized('scopes') && null !== $object->getScopes()) {
             $values = [];
             foreach ($object->getScopes() as $value) {
                 $values[] = $value;

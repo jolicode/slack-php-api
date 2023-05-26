@@ -30,19 +30,16 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\UsersProfileSetPostResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\UsersProfileSetPostResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -85,7 +82,7 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getEmailPending()) {
+        if ($object->isInitialized('emailPending') && null !== $object->getEmailPending()) {
             $data['email_pending'] = $object->getEmailPending();
         }
         $data['ok'] = $object->getOk();

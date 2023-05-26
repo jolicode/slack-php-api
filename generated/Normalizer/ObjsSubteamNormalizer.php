@@ -30,19 +30,16 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsSubteam' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsSubteam' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -176,7 +173,7 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data = [];
         $data['auto_provision'] = $object->getAutoProvision();
         $data['auto_type'] = $object->getAutoType();
-        if (null !== $object->getChannelCount()) {
+        if ($object->isInitialized('channelCount') && null !== $object->getChannelCount()) {
             $data['channel_count'] = $object->getChannelCount();
         }
         $data['created_by'] = $object->getCreatedBy();
@@ -195,10 +192,10 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['prefs'] = $this->normalizer->normalize($object->getPrefs(), 'json', $context);
         $data['team_id'] = $object->getTeamId();
         $data['updated_by'] = $object->getUpdatedBy();
-        if (null !== $object->getUserCount()) {
+        if ($object->isInitialized('userCount') && null !== $object->getUserCount()) {
             $data['user_count'] = $object->getUserCount();
         }
-        if (null !== $object->getUsers()) {
+        if ($object->isInitialized('users') && null !== $object->getUsers()) {
             $values = [];
             foreach ($object->getUsers() as $value) {
                 $values[] = $value;

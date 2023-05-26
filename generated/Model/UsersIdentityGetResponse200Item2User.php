@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersIdentityGetResponse200Item2User
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $id;
@@ -48,6 +52,11 @@ class UsersIdentityGetResponse200Item2User
      */
     protected $name;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getId(): ?string
     {
         return $this->id;
@@ -55,6 +64,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -67,6 +77,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setImage192(?string $image192): self
     {
+        $this->initialized['image192'] = true;
         $this->image192 = $image192;
 
         return $this;
@@ -79,6 +90,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setImage24(?string $image24): self
     {
+        $this->initialized['image24'] = true;
         $this->image24 = $image24;
 
         return $this;
@@ -91,6 +103,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setImage32(?string $image32): self
     {
+        $this->initialized['image32'] = true;
         $this->image32 = $image32;
 
         return $this;
@@ -103,6 +116,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setImage48(?string $image48): self
     {
+        $this->initialized['image48'] = true;
         $this->image48 = $image48;
 
         return $this;
@@ -115,6 +129,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setImage512(?string $image512): self
     {
+        $this->initialized['image512'] = true;
         $this->image512 = $image512;
 
         return $this;
@@ -127,6 +142,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setImage72(?string $image72): self
     {
+        $this->initialized['image72'] = true;
         $this->image72 = $image72;
 
         return $this;
@@ -139,6 +155,7 @@ class UsersIdentityGetResponse200Item2User
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;

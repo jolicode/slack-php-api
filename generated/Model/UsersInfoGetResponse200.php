@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersInfoGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -26,6 +30,11 @@ class UsersInfoGetResponse200 extends \ArrayObject
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -33,6 +42,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -51,6 +61,7 @@ class UsersInfoGetResponse200 extends \ArrayObject
      */
     public function setUser(?ObjsUser $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

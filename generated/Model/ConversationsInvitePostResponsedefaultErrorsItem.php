@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsInvitePostResponsedefaultErrorsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $error;
@@ -28,6 +32,11 @@ class ConversationsInvitePostResponsedefaultErrorsItem
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getError(): ?string
     {
         return $this->error;
@@ -35,6 +44,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem
 
     public function setError(?string $error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;
@@ -47,6 +57,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -59,6 +70,7 @@ class ConversationsInvitePostResponsedefaultErrorsItem
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ChatScheduleMessagePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $channel;
@@ -36,6 +40,11 @@ class ChatScheduleMessagePostResponse200
      */
     protected $scheduledMessageId;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getChannel(): ?string
     {
         return $this->channel;
@@ -43,6 +52,7 @@ class ChatScheduleMessagePostResponse200
 
     public function setChannel(?string $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -55,6 +65,7 @@ class ChatScheduleMessagePostResponse200
 
     public function setMessage(?ChatScheduleMessagePostResponse200Message $message): self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
 
         return $this;
@@ -67,6 +78,7 @@ class ChatScheduleMessagePostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -85,6 +97,7 @@ class ChatScheduleMessagePostResponse200
      */
     public function setPostAt($postAt): self
     {
+        $this->initialized['postAt'] = true;
         $this->postAt = $postAt;
 
         return $this;
@@ -97,6 +110,7 @@ class ChatScheduleMessagePostResponse200
 
     public function setScheduledMessageId(?string $scheduledMessageId): self
     {
+        $this->initialized['scheduledMessageId'] = true;
         $this->scheduledMessageId = $scheduledMessageId;
 
         return $this;

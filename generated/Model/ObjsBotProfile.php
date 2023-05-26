@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsBotProfile
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $appId;
@@ -44,6 +48,11 @@ class ObjsBotProfile
      */
     protected $updated;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAppId(): ?string
     {
         return $this->appId;
@@ -51,6 +60,7 @@ class ObjsBotProfile
 
     public function setAppId(?string $appId): self
     {
+        $this->initialized['appId'] = true;
         $this->appId = $appId;
 
         return $this;
@@ -63,6 +73,7 @@ class ObjsBotProfile
 
     public function setDeleted(?bool $deleted): self
     {
+        $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
 
         return $this;
@@ -75,6 +86,7 @@ class ObjsBotProfile
 
     public function setIcons(?ObjsBotProfileIcons $icons): self
     {
+        $this->initialized['icons'] = true;
         $this->icons = $icons;
 
         return $this;
@@ -87,6 +99,7 @@ class ObjsBotProfile
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -99,6 +112,7 @@ class ObjsBotProfile
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -111,6 +125,7 @@ class ObjsBotProfile
 
     public function setTeamId(?string $teamId): self
     {
+        $this->initialized['teamId'] = true;
         $this->teamId = $teamId;
 
         return $this;
@@ -123,6 +138,7 @@ class ObjsBotProfile
 
     public function setUpdated(?int $updated): self
     {
+        $this->initialized['updated'] = true;
         $this->updated = $updated;
 
         return $this;

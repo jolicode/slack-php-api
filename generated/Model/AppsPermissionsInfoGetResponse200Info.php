@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AppsPermissionsInfoGetResponse200Info
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var AppsPermissionsInfoGetResponse200InfoAppHome|null
      */
     protected $appHome;
@@ -40,6 +44,11 @@ class AppsPermissionsInfoGetResponse200Info
      */
     protected $team;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAppHome(): ?AppsPermissionsInfoGetResponse200InfoAppHome
     {
         return $this->appHome;
@@ -47,6 +56,7 @@ class AppsPermissionsInfoGetResponse200Info
 
     public function setAppHome(?AppsPermissionsInfoGetResponse200InfoAppHome $appHome): self
     {
+        $this->initialized['appHome'] = true;
         $this->appHome = $appHome;
 
         return $this;
@@ -59,6 +69,7 @@ class AppsPermissionsInfoGetResponse200Info
 
     public function setChannel(?AppsPermissionsInfoGetResponse200InfoChannel $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -71,6 +82,7 @@ class AppsPermissionsInfoGetResponse200Info
 
     public function setGroup(?AppsPermissionsInfoGetResponse200InfoGroup $group): self
     {
+        $this->initialized['group'] = true;
         $this->group = $group;
 
         return $this;
@@ -83,6 +95,7 @@ class AppsPermissionsInfoGetResponse200Info
 
     public function setIm(?AppsPermissionsInfoGetResponse200InfoIm $im): self
     {
+        $this->initialized['im'] = true;
         $this->im = $im;
 
         return $this;
@@ -95,6 +108,7 @@ class AppsPermissionsInfoGetResponse200Info
 
     public function setMpim(?AppsPermissionsInfoGetResponse200InfoMpim $mpim): self
     {
+        $this->initialized['mpim'] = true;
         $this->mpim = $mpim;
 
         return $this;
@@ -107,6 +121,7 @@ class AppsPermissionsInfoGetResponse200Info
 
     public function setTeam(?AppsPermissionsInfoGetResponse200InfoTeam $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;

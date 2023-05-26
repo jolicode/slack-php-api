@@ -30,19 +30,16 @@ class ConversationsInvitePostResponsedefaultErrorsItemNormalizer implements Deno
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefaultErrorsItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefaultErrorsItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -82,7 +79,7 @@ class ConversationsInvitePostResponsedefaultErrorsItemNormalizer implements Deno
         $data = [];
         $data['error'] = $object->getError();
         $data['ok'] = $object->getOk();
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
 

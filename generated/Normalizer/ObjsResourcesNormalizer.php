@@ -30,19 +30,16 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -88,7 +85,7 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getExcludedIds()) {
+        if ($object->isInitialized('excludedIds') && null !== $object->getExcludedIds()) {
             $values = [];
             foreach ($object->getExcludedIds() as $value) {
                 $values[] = $value;
@@ -100,7 +97,7 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             $values_1[] = $value_1;
         }
         $data['ids'] = $values_1;
-        if (null !== $object->getWildcard()) {
+        if ($object->isInitialized('wildcard') && null !== $object->getWildcard()) {
             $data['wildcard'] = $object->getWildcard();
         }
 

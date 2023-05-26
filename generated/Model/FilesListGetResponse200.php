@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class FilesListGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsFile[]|null
      */
     protected $files;
@@ -27,6 +31,11 @@ class FilesListGetResponse200
      * @var ObjsPaging|null
      */
     protected $paging;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return ObjsFile[]|null
@@ -41,6 +50,7 @@ class FilesListGetResponse200
      */
     public function setFiles(?array $files): self
     {
+        $this->initialized['files'] = true;
         $this->files = $files;
 
         return $this;
@@ -53,6 +63,7 @@ class FilesListGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -65,6 +76,7 @@ class FilesListGetResponse200
 
     public function setPaging(?ObjsPaging $paging): self
     {
+        $this->initialized['paging'] = true;
         $this->paging = $paging;
 
         return $this;

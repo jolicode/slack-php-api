@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class DndSetSnoozePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -32,6 +36,11 @@ class DndSetSnoozePostResponse200
      */
     protected $snoozeRemaining;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -39,6 +48,7 @@ class DndSetSnoozePostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -51,6 +61,7 @@ class DndSetSnoozePostResponse200
 
     public function setSnoozeEnabled(?bool $snoozeEnabled): self
     {
+        $this->initialized['snoozeEnabled'] = true;
         $this->snoozeEnabled = $snoozeEnabled;
 
         return $this;
@@ -63,6 +74,7 @@ class DndSetSnoozePostResponse200
 
     public function setSnoozeEndtime(?int $snoozeEndtime): self
     {
+        $this->initialized['snoozeEndtime'] = true;
         $this->snoozeEndtime = $snoozeEndtime;
 
         return $this;
@@ -75,6 +87,7 @@ class DndSetSnoozePostResponse200
 
     public function setSnoozeRemaining(?int $snoozeRemaining): self
     {
+        $this->initialized['snoozeRemaining'] = true;
         $this->snoozeRemaining = $snoozeRemaining;
 
         return $this;

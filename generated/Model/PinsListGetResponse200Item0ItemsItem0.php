@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class PinsListGetResponse200Item0ItemsItem0
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $created;
@@ -32,6 +36,11 @@ class PinsListGetResponse200Item0ItemsItem0
      */
     protected $type;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCreated(): ?int
     {
         return $this->created;
@@ -39,6 +48,7 @@ class PinsListGetResponse200Item0ItemsItem0
 
     public function setCreated(?int $created): self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
 
         return $this;
@@ -51,6 +61,7 @@ class PinsListGetResponse200Item0ItemsItem0
 
     public function setCreatedBy(?string $createdBy): self
     {
+        $this->initialized['createdBy'] = true;
         $this->createdBy = $createdBy;
 
         return $this;
@@ -63,6 +74,7 @@ class PinsListGetResponse200Item0ItemsItem0
 
     public function setFile(?ObjsFile $file): self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
 
         return $this;
@@ -75,6 +87,7 @@ class PinsListGetResponse200Item0ItemsItem0
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;

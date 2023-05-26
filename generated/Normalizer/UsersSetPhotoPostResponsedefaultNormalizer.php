@@ -30,19 +30,16 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\UsersSetPhotoPostResponsedefault' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\UsersSetPhotoPostResponsedefault' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -95,18 +92,18 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCallstack()) {
+        if ($object->isInitialized('callstack') && null !== $object->getCallstack()) {
             $data['callstack'] = $object->getCallstack();
         }
-        if (null !== $object->getDebugStep()) {
+        if ($object->isInitialized('debugStep') && null !== $object->getDebugStep()) {
             $data['debug_step'] = $object->getDebugStep();
         }
-        if (null !== $object->getDims()) {
+        if ($object->isInitialized('dims') && null !== $object->getDims()) {
             $data['dims'] = $object->getDims();
         }
         $data['error'] = $object->getError();
         $data['ok'] = $object->getOk();
-        if (null !== $object->getTimeIdent()) {
+        if ($object->isInitialized('timeIdent') && null !== $object->getTimeIdent()) {
             $data['time_ident'] = $object->getTimeIdent();
         }
 

@@ -30,19 +30,16 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\MigrationExchangeGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\MigrationExchangeGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -109,7 +106,7 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
     {
         $data = [];
         $data['enterprise_id'] = $object->getEnterpriseId();
-        if (null !== $object->getInvalidUserIds()) {
+        if ($object->isInitialized('invalidUserIds') && null !== $object->getInvalidUserIds()) {
             $values = [];
             foreach ($object->getInvalidUserIds() as $value) {
                 $values[] = $value;
@@ -118,7 +115,7 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
         }
         $data['ok'] = $object->getOk();
         $data['team_id'] = $object->getTeamId();
-        if (null !== $object->getUserIdMap()) {
+        if ($object->isInitialized('userIdMap') && null !== $object->getUserIdMap()) {
             $values_1 = [];
             foreach ($object->getUserIdMap() as $key => $value_1) {
                 $values_1[$key] = $value_1;

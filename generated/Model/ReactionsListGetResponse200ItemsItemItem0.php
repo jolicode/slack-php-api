@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ReactionsListGetResponse200ItemsItemItem0
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $channel;
@@ -28,6 +32,11 @@ class ReactionsListGetResponse200ItemsItemItem0
      */
     protected $type;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getChannel(): ?string
     {
         return $this->channel;
@@ -35,6 +44,7 @@ class ReactionsListGetResponse200ItemsItemItem0
 
     public function setChannel(?string $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -47,6 +57,7 @@ class ReactionsListGetResponse200ItemsItemItem0
 
     public function setMessage(?ObjsMessage $message): self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
 
         return $this;
@@ -59,6 +70,7 @@ class ReactionsListGetResponse200ItemsItemItem0
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;

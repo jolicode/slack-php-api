@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageIcons
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $emoji;
@@ -24,6 +28,11 @@ class ObjsMessageIcons
      */
     protected $image64;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getEmoji(): ?string
     {
         return $this->emoji;
@@ -31,6 +40,7 @@ class ObjsMessageIcons
 
     public function setEmoji(?string $emoji): self
     {
+        $this->initialized['emoji'] = true;
         $this->emoji = $emoji;
 
         return $this;
@@ -43,6 +53,7 @@ class ObjsMessageIcons
 
     public function setImage64(?string $image64): self
     {
+        $this->initialized['image64'] = true;
         $this->image64 = $image64;
 
         return $this;

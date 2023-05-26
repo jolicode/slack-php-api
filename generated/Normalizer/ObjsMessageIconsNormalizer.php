@@ -30,19 +30,16 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsMessageIcons' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMessageIcons' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -75,10 +72,10 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getEmoji()) {
+        if ($object->isInitialized('emoji') && null !== $object->getEmoji()) {
             $data['emoji'] = $object->getEmoji();
         }
-        if (null !== $object->getImage64()) {
+        if ($object->isInitialized('image64') && null !== $object->getImage64()) {
             $data['image_64'] = $object->getImage64();
         }
 

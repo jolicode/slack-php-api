@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsFile
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string[]|null
      */
     protected $channels;
@@ -308,6 +312,11 @@ class ObjsFile
      */
     protected $username;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return string[]|null
      */
@@ -321,6 +330,7 @@ class ObjsFile
      */
     public function setChannels(?array $channels): self
     {
+        $this->initialized['channels'] = true;
         $this->channels = $channels;
 
         return $this;
@@ -333,6 +343,7 @@ class ObjsFile
 
     public function setCommentsCount(?int $commentsCount): self
     {
+        $this->initialized['commentsCount'] = true;
         $this->commentsCount = $commentsCount;
 
         return $this;
@@ -345,6 +356,7 @@ class ObjsFile
 
     public function setCreated(?int $created): self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
 
         return $this;
@@ -357,6 +369,7 @@ class ObjsFile
 
     public function setDateDelete(?int $dateDelete): self
     {
+        $this->initialized['dateDelete'] = true;
         $this->dateDelete = $dateDelete;
 
         return $this;
@@ -369,6 +382,7 @@ class ObjsFile
 
     public function setDeanimateGif(?string $deanimateGif): self
     {
+        $this->initialized['deanimateGif'] = true;
         $this->deanimateGif = $deanimateGif;
 
         return $this;
@@ -381,6 +395,7 @@ class ObjsFile
 
     public function setDisplayAsBot(?bool $displayAsBot): self
     {
+        $this->initialized['displayAsBot'] = true;
         $this->displayAsBot = $displayAsBot;
 
         return $this;
@@ -393,6 +408,7 @@ class ObjsFile
 
     public function setEditable(?bool $editable): self
     {
+        $this->initialized['editable'] = true;
         $this->editable = $editable;
 
         return $this;
@@ -405,6 +421,7 @@ class ObjsFile
 
     public function setEditor(?string $editor): self
     {
+        $this->initialized['editor'] = true;
         $this->editor = $editor;
 
         return $this;
@@ -417,6 +434,7 @@ class ObjsFile
 
     public function setExternalId(?string $externalId): self
     {
+        $this->initialized['externalId'] = true;
         $this->externalId = $externalId;
 
         return $this;
@@ -429,6 +447,7 @@ class ObjsFile
 
     public function setExternalType(?string $externalType): self
     {
+        $this->initialized['externalType'] = true;
         $this->externalType = $externalType;
 
         return $this;
@@ -441,6 +460,7 @@ class ObjsFile
 
     public function setExternalUrl(?string $externalUrl): self
     {
+        $this->initialized['externalUrl'] = true;
         $this->externalUrl = $externalUrl;
 
         return $this;
@@ -453,6 +473,7 @@ class ObjsFile
 
     public function setFiletype(?string $filetype): self
     {
+        $this->initialized['filetype'] = true;
         $this->filetype = $filetype;
 
         return $this;
@@ -471,6 +492,7 @@ class ObjsFile
      */
     public function setGroups(?array $groups): self
     {
+        $this->initialized['groups'] = true;
         $this->groups = $groups;
 
         return $this;
@@ -483,6 +505,7 @@ class ObjsFile
 
     public function setHasRichPreview(?bool $hasRichPreview): self
     {
+        $this->initialized['hasRichPreview'] = true;
         $this->hasRichPreview = $hasRichPreview;
 
         return $this;
@@ -495,6 +518,7 @@ class ObjsFile
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -507,6 +531,7 @@ class ObjsFile
 
     public function setImageExifRotation(?int $imageExifRotation): self
     {
+        $this->initialized['imageExifRotation'] = true;
         $this->imageExifRotation = $imageExifRotation;
 
         return $this;
@@ -525,6 +550,7 @@ class ObjsFile
      */
     public function setIms(?array $ims): self
     {
+        $this->initialized['ims'] = true;
         $this->ims = $ims;
 
         return $this;
@@ -537,6 +563,7 @@ class ObjsFile
 
     public function setIsExternal(?bool $isExternal): self
     {
+        $this->initialized['isExternal'] = true;
         $this->isExternal = $isExternal;
 
         return $this;
@@ -549,6 +576,7 @@ class ObjsFile
 
     public function setIsPublic(?bool $isPublic): self
     {
+        $this->initialized['isPublic'] = true;
         $this->isPublic = $isPublic;
 
         return $this;
@@ -561,6 +589,7 @@ class ObjsFile
 
     public function setIsStarred(?bool $isStarred): self
     {
+        $this->initialized['isStarred'] = true;
         $this->isStarred = $isStarred;
 
         return $this;
@@ -573,6 +602,7 @@ class ObjsFile
 
     public function setIsTombstoned(?bool $isTombstoned): self
     {
+        $this->initialized['isTombstoned'] = true;
         $this->isTombstoned = $isTombstoned;
 
         return $this;
@@ -585,6 +615,7 @@ class ObjsFile
 
     public function setLastEditor(?string $lastEditor): self
     {
+        $this->initialized['lastEditor'] = true;
         $this->lastEditor = $lastEditor;
 
         return $this;
@@ -597,6 +628,7 @@ class ObjsFile
 
     public function setMimetype(?string $mimetype): self
     {
+        $this->initialized['mimetype'] = true;
         $this->mimetype = $mimetype;
 
         return $this;
@@ -609,6 +641,7 @@ class ObjsFile
 
     public function setMode(?string $mode): self
     {
+        $this->initialized['mode'] = true;
         $this->mode = $mode;
 
         return $this;
@@ -621,6 +654,7 @@ class ObjsFile
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -633,6 +667,7 @@ class ObjsFile
 
     public function setNonOwnerEditable(?bool $nonOwnerEditable): self
     {
+        $this->initialized['nonOwnerEditable'] = true;
         $this->nonOwnerEditable = $nonOwnerEditable;
 
         return $this;
@@ -645,6 +680,7 @@ class ObjsFile
 
     public function setNumStars(?int $numStars): self
     {
+        $this->initialized['numStars'] = true;
         $this->numStars = $numStars;
 
         return $this;
@@ -657,6 +693,7 @@ class ObjsFile
 
     public function setOriginalH(?int $originalH): self
     {
+        $this->initialized['originalH'] = true;
         $this->originalH = $originalH;
 
         return $this;
@@ -669,6 +706,7 @@ class ObjsFile
 
     public function setOriginalW(?int $originalW): self
     {
+        $this->initialized['originalW'] = true;
         $this->originalW = $originalW;
 
         return $this;
@@ -681,6 +719,7 @@ class ObjsFile
 
     public function setPermalink(?string $permalink): self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
 
         return $this;
@@ -693,24 +732,20 @@ class ObjsFile
 
     public function setPermalinkPublic(?string $permalinkPublic): self
     {
+        $this->initialized['permalinkPublic'] = true;
         $this->permalinkPublic = $permalinkPublic;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPinnedInfo()
     {
         return $this->pinnedInfo;
     }
 
-    /**
-     * @param mixed $pinnedInfo
-     */
     public function setPinnedInfo($pinnedInfo): self
     {
+        $this->initialized['pinnedInfo'] = true;
         $this->pinnedInfo = $pinnedInfo;
 
         return $this;
@@ -729,6 +764,7 @@ class ObjsFile
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
+        $this->initialized['pinnedTo'] = true;
         $this->pinnedTo = $pinnedTo;
 
         return $this;
@@ -741,6 +777,7 @@ class ObjsFile
 
     public function setPjpeg(?string $pjpeg): self
     {
+        $this->initialized['pjpeg'] = true;
         $this->pjpeg = $pjpeg;
 
         return $this;
@@ -753,6 +790,7 @@ class ObjsFile
 
     public function setPrettyType(?string $prettyType): self
     {
+        $this->initialized['prettyType'] = true;
         $this->prettyType = $prettyType;
 
         return $this;
@@ -765,6 +803,7 @@ class ObjsFile
 
     public function setPreview(?string $preview): self
     {
+        $this->initialized['preview'] = true;
         $this->preview = $preview;
 
         return $this;
@@ -777,6 +816,7 @@ class ObjsFile
 
     public function setPublicUrlShared(?bool $publicUrlShared): self
     {
+        $this->initialized['publicUrlShared'] = true;
         $this->publicUrlShared = $publicUrlShared;
 
         return $this;
@@ -795,6 +835,7 @@ class ObjsFile
      */
     public function setReactions(?array $reactions): self
     {
+        $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
 
         return $this;
@@ -807,6 +848,7 @@ class ObjsFile
 
     public function setShares(?ObjsFileShares $shares): self
     {
+        $this->initialized['shares'] = true;
         $this->shares = $shares;
 
         return $this;
@@ -819,6 +861,7 @@ class ObjsFile
 
     public function setSize(?int $size): self
     {
+        $this->initialized['size'] = true;
         $this->size = $size;
 
         return $this;
@@ -831,6 +874,7 @@ class ObjsFile
 
     public function setSourceTeam(?string $sourceTeam): self
     {
+        $this->initialized['sourceTeam'] = true;
         $this->sourceTeam = $sourceTeam;
 
         return $this;
@@ -843,6 +887,7 @@ class ObjsFile
 
     public function setState(?string $state): self
     {
+        $this->initialized['state'] = true;
         $this->state = $state;
 
         return $this;
@@ -855,6 +900,7 @@ class ObjsFile
 
     public function setThumb1024(?string $thumb1024): self
     {
+        $this->initialized['thumb1024'] = true;
         $this->thumb1024 = $thumb1024;
 
         return $this;
@@ -867,6 +913,7 @@ class ObjsFile
 
     public function setThumb1024H(?int $thumb1024H): self
     {
+        $this->initialized['thumb1024H'] = true;
         $this->thumb1024H = $thumb1024H;
 
         return $this;
@@ -879,6 +926,7 @@ class ObjsFile
 
     public function setThumb1024W(?int $thumb1024W): self
     {
+        $this->initialized['thumb1024W'] = true;
         $this->thumb1024W = $thumb1024W;
 
         return $this;
@@ -891,6 +939,7 @@ class ObjsFile
 
     public function setThumb160(?string $thumb160): self
     {
+        $this->initialized['thumb160'] = true;
         $this->thumb160 = $thumb160;
 
         return $this;
@@ -903,6 +952,7 @@ class ObjsFile
 
     public function setThumb360(?string $thumb360): self
     {
+        $this->initialized['thumb360'] = true;
         $this->thumb360 = $thumb360;
 
         return $this;
@@ -915,6 +965,7 @@ class ObjsFile
 
     public function setThumb360Gif(?string $thumb360Gif): self
     {
+        $this->initialized['thumb360Gif'] = true;
         $this->thumb360Gif = $thumb360Gif;
 
         return $this;
@@ -927,6 +978,7 @@ class ObjsFile
 
     public function setThumb360H(?int $thumb360H): self
     {
+        $this->initialized['thumb360H'] = true;
         $this->thumb360H = $thumb360H;
 
         return $this;
@@ -939,6 +991,7 @@ class ObjsFile
 
     public function setThumb360W(?int $thumb360W): self
     {
+        $this->initialized['thumb360W'] = true;
         $this->thumb360W = $thumb360W;
 
         return $this;
@@ -951,6 +1004,7 @@ class ObjsFile
 
     public function setThumb480(?string $thumb480): self
     {
+        $this->initialized['thumb480'] = true;
         $this->thumb480 = $thumb480;
 
         return $this;
@@ -963,6 +1017,7 @@ class ObjsFile
 
     public function setThumb480H(?int $thumb480H): self
     {
+        $this->initialized['thumb480H'] = true;
         $this->thumb480H = $thumb480H;
 
         return $this;
@@ -975,6 +1030,7 @@ class ObjsFile
 
     public function setThumb480W(?int $thumb480W): self
     {
+        $this->initialized['thumb480W'] = true;
         $this->thumb480W = $thumb480W;
 
         return $this;
@@ -987,6 +1043,7 @@ class ObjsFile
 
     public function setThumb64(?string $thumb64): self
     {
+        $this->initialized['thumb64'] = true;
         $this->thumb64 = $thumb64;
 
         return $this;
@@ -999,6 +1056,7 @@ class ObjsFile
 
     public function setThumb720(?string $thumb720): self
     {
+        $this->initialized['thumb720'] = true;
         $this->thumb720 = $thumb720;
 
         return $this;
@@ -1011,6 +1069,7 @@ class ObjsFile
 
     public function setThumb720H(?int $thumb720H): self
     {
+        $this->initialized['thumb720H'] = true;
         $this->thumb720H = $thumb720H;
 
         return $this;
@@ -1023,6 +1082,7 @@ class ObjsFile
 
     public function setThumb720W(?int $thumb720W): self
     {
+        $this->initialized['thumb720W'] = true;
         $this->thumb720W = $thumb720W;
 
         return $this;
@@ -1035,6 +1095,7 @@ class ObjsFile
 
     public function setThumb80(?string $thumb80): self
     {
+        $this->initialized['thumb80'] = true;
         $this->thumb80 = $thumb80;
 
         return $this;
@@ -1047,6 +1108,7 @@ class ObjsFile
 
     public function setThumb800(?string $thumb800): self
     {
+        $this->initialized['thumb800'] = true;
         $this->thumb800 = $thumb800;
 
         return $this;
@@ -1059,6 +1121,7 @@ class ObjsFile
 
     public function setThumb800H(?int $thumb800H): self
     {
+        $this->initialized['thumb800H'] = true;
         $this->thumb800H = $thumb800H;
 
         return $this;
@@ -1071,6 +1134,7 @@ class ObjsFile
 
     public function setThumb800W(?int $thumb800W): self
     {
+        $this->initialized['thumb800W'] = true;
         $this->thumb800W = $thumb800W;
 
         return $this;
@@ -1083,6 +1147,7 @@ class ObjsFile
 
     public function setThumb960(?string $thumb960): self
     {
+        $this->initialized['thumb960'] = true;
         $this->thumb960 = $thumb960;
 
         return $this;
@@ -1095,6 +1160,7 @@ class ObjsFile
 
     public function setThumb960H(?int $thumb960H): self
     {
+        $this->initialized['thumb960H'] = true;
         $this->thumb960H = $thumb960H;
 
         return $this;
@@ -1107,6 +1173,7 @@ class ObjsFile
 
     public function setThumb960W(?int $thumb960W): self
     {
+        $this->initialized['thumb960W'] = true;
         $this->thumb960W = $thumb960W;
 
         return $this;
@@ -1119,6 +1186,7 @@ class ObjsFile
 
     public function setThumbTiny(?string $thumbTiny): self
     {
+        $this->initialized['thumbTiny'] = true;
         $this->thumbTiny = $thumbTiny;
 
         return $this;
@@ -1137,6 +1205,7 @@ class ObjsFile
      */
     public function setTimestamp($timestamp): self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
 
         return $this;
@@ -1149,6 +1218,7 @@ class ObjsFile
 
     public function setTitle(?string $title): self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
 
         return $this;
@@ -1161,6 +1231,7 @@ class ObjsFile
 
     public function setUpdated(?int $updated): self
     {
+        $this->initialized['updated'] = true;
         $this->updated = $updated;
 
         return $this;
@@ -1173,6 +1244,7 @@ class ObjsFile
 
     public function setUrlPrivate(?string $urlPrivate): self
     {
+        $this->initialized['urlPrivate'] = true;
         $this->urlPrivate = $urlPrivate;
 
         return $this;
@@ -1185,6 +1257,7 @@ class ObjsFile
 
     public function setUrlPrivateDownload(?string $urlPrivateDownload): self
     {
+        $this->initialized['urlPrivateDownload'] = true;
         $this->urlPrivateDownload = $urlPrivateDownload;
 
         return $this;
@@ -1197,6 +1270,7 @@ class ObjsFile
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -1209,6 +1283,7 @@ class ObjsFile
 
     public function setUserTeam(?string $userTeam): self
     {
+        $this->initialized['userTeam'] = true;
         $this->userTeam = $userTeam;
 
         return $this;
@@ -1221,6 +1296,7 @@ class ObjsFile
 
     public function setUsername(?string $username): self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
 
         return $this;

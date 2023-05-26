@@ -30,19 +30,16 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsUser' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUser' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -225,85 +222,85 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getColor()) {
+        if ($object->isInitialized('color') && null !== $object->getColor()) {
             $data['color'] = $object->getColor();
         }
-        if (null !== $object->getDeleted()) {
+        if ($object->isInitialized('deleted') && null !== $object->getDeleted()) {
             $data['deleted'] = $object->getDeleted();
         }
-        if (null !== $object->getEnterpriseUser()) {
+        if ($object->isInitialized('enterpriseUser') && null !== $object->getEnterpriseUser()) {
             $data['enterprise_user'] = $this->normalizer->normalize($object->getEnterpriseUser(), 'json', $context);
         }
-        if (null !== $object->getHas2fa()) {
+        if ($object->isInitialized('has2fa') && null !== $object->getHas2fa()) {
             $data['has_2fa'] = $object->getHas2fa();
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getIsAdmin()) {
+        if ($object->isInitialized('isAdmin') && null !== $object->getIsAdmin()) {
             $data['is_admin'] = $object->getIsAdmin();
         }
         $data['is_app_user'] = $object->getIsAppUser();
         $data['is_bot'] = $object->getIsBot();
-        if (null !== $object->getIsExternal()) {
+        if ($object->isInitialized('isExternal') && null !== $object->getIsExternal()) {
             $data['is_external'] = $object->getIsExternal();
         }
-        if (null !== $object->getIsForgotten()) {
+        if ($object->isInitialized('isForgotten') && null !== $object->getIsForgotten()) {
             $data['is_forgotten'] = $object->getIsForgotten();
         }
-        if (null !== $object->getIsInvitedUser()) {
+        if ($object->isInitialized('isInvitedUser') && null !== $object->getIsInvitedUser()) {
             $data['is_invited_user'] = $object->getIsInvitedUser();
         }
-        if (null !== $object->getIsOwner()) {
+        if ($object->isInitialized('isOwner') && null !== $object->getIsOwner()) {
             $data['is_owner'] = $object->getIsOwner();
         }
-        if (null !== $object->getIsPrimaryOwner()) {
+        if ($object->isInitialized('isPrimaryOwner') && null !== $object->getIsPrimaryOwner()) {
             $data['is_primary_owner'] = $object->getIsPrimaryOwner();
         }
-        if (null !== $object->getIsRestricted()) {
+        if ($object->isInitialized('isRestricted') && null !== $object->getIsRestricted()) {
             $data['is_restricted'] = $object->getIsRestricted();
         }
-        if (null !== $object->getIsStranger()) {
+        if ($object->isInitialized('isStranger') && null !== $object->getIsStranger()) {
             $data['is_stranger'] = $object->getIsStranger();
         }
-        if (null !== $object->getIsUltraRestricted()) {
+        if ($object->isInitialized('isUltraRestricted') && null !== $object->getIsUltraRestricted()) {
             $data['is_ultra_restricted'] = $object->getIsUltraRestricted();
         }
-        if (null !== $object->getLocale()) {
+        if ($object->isInitialized('locale') && null !== $object->getLocale()) {
             $data['locale'] = $object->getLocale();
         }
         $data['name'] = $object->getName();
-        if (null !== $object->getPresence()) {
+        if ($object->isInitialized('presence') && null !== $object->getPresence()) {
             $data['presence'] = $object->getPresence();
         }
         $data['profile'] = $this->normalizer->normalize($object->getProfile(), 'json', $context);
-        if (null !== $object->getRealName()) {
+        if ($object->isInitialized('realName') && null !== $object->getRealName()) {
             $data['real_name'] = $object->getRealName();
         }
-        if (null !== $object->getTeam()) {
+        if ($object->isInitialized('team') && null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
-        if (null !== $object->getTeamId()) {
+        if ($object->isInitialized('teamId') && null !== $object->getTeamId()) {
             $data['team_id'] = $object->getTeamId();
         }
-        if (null !== $object->getTeamProfile()) {
+        if ($object->isInitialized('teamProfile') && null !== $object->getTeamProfile()) {
             $data['team_profile'] = $this->normalizer->normalize($object->getTeamProfile(), 'json', $context);
         }
-        if (null !== $object->getTeams()) {
+        if ($object->isInitialized('teams') && null !== $object->getTeams()) {
             $values = [];
             foreach ($object->getTeams() as $value) {
                 $values[] = $value;
             }
             $data['teams'] = $values;
         }
-        if (null !== $object->getTwoFactorType()) {
+        if ($object->isInitialized('twoFactorType') && null !== $object->getTwoFactorType()) {
             $data['two_factor_type'] = $object->getTwoFactorType();
         }
-        if (null !== $object->getTz()) {
+        if ($object->isInitialized('tz') && null !== $object->getTz()) {
             $data['tz'] = $object->getTz();
         }
-        if (null !== $object->getTzLabel()) {
+        if ($object->isInitialized('tzLabel') && null !== $object->getTzLabel()) {
             $data['tz_label'] = $object->getTzLabel();
         }
-        if (null !== $object->getTzOffset()) {
+        if ($object->isInitialized('tzOffset') && null !== $object->getTzOffset()) {
             $data['tz_offset'] = $object->getTzOffset();
         }
         $data['updated'] = $object->getUpdated();

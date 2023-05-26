@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AppsPermissionsInfoGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var AppsPermissionsInfoGetResponse200Info|null
      */
     protected $info;
@@ -24,6 +28,11 @@ class AppsPermissionsInfoGetResponse200
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getInfo(): ?AppsPermissionsInfoGetResponse200Info
     {
         return $this->info;
@@ -31,6 +40,7 @@ class AppsPermissionsInfoGetResponse200
 
     public function setInfo(?AppsPermissionsInfoGetResponse200Info $info): self
     {
+        $this->initialized['info'] = true;
         $this->info = $info;
 
         return $this;
@@ -43,6 +53,7 @@ class AppsPermissionsInfoGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

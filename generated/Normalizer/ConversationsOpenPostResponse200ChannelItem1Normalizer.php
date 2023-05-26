@@ -30,19 +30,16 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsOpenPostResponse200ChannelItem1' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsOpenPostResponse200ChannelItem1' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -116,29 +113,29 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['created'] = $object->getCreated();
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getIsIm()) {
+        if ($object->isInitialized('isIm') && null !== $object->getIsIm()) {
             $data['is_im'] = $object->getIsIm();
         }
-        if (null !== $object->getIsOpen()) {
+        if ($object->isInitialized('isOpen') && null !== $object->getIsOpen()) {
             $data['is_open'] = $object->getIsOpen();
         }
-        if (null !== $object->getLastRead()) {
+        if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
             $data['last_read'] = $object->getLastRead();
         }
-        if (null !== $object->getLatest()) {
+        if ($object->isInitialized('latest') && null !== $object->getLatest()) {
             $data['latest'] = $this->normalizer->normalize($object->getLatest(), 'json', $context);
         }
-        if (null !== $object->getUnreadCount()) {
+        if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
             $data['unread_count'] = $object->getUnreadCount();
         }
-        if (null !== $object->getUnreadCountDisplay()) {
+        if ($object->isInitialized('unreadCountDisplay') && null !== $object->getUnreadCountDisplay()) {
             $data['unread_count_display'] = $object->getUnreadCountDisplay();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
 

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AuthTestGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $botId;
@@ -48,6 +52,11 @@ class AuthTestGetResponse200
      */
     protected $userId;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getBotId(): ?string
     {
         return $this->botId;
@@ -55,6 +64,7 @@ class AuthTestGetResponse200
 
     public function setBotId(?string $botId): self
     {
+        $this->initialized['botId'] = true;
         $this->botId = $botId;
 
         return $this;
@@ -67,6 +77,7 @@ class AuthTestGetResponse200
 
     public function setIsEnterpriseInstall(?bool $isEnterpriseInstall): self
     {
+        $this->initialized['isEnterpriseInstall'] = true;
         $this->isEnterpriseInstall = $isEnterpriseInstall;
 
         return $this;
@@ -79,6 +90,7 @@ class AuthTestGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -91,6 +103,7 @@ class AuthTestGetResponse200
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -103,6 +116,7 @@ class AuthTestGetResponse200
 
     public function setTeamId(?string $teamId): self
     {
+        $this->initialized['teamId'] = true;
         $this->teamId = $teamId;
 
         return $this;
@@ -115,6 +129,7 @@ class AuthTestGetResponse200
 
     public function setUrl(?string $url): self
     {
+        $this->initialized['url'] = true;
         $this->url = $url;
 
         return $this;
@@ -127,6 +142,7 @@ class AuthTestGetResponse200
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -139,6 +155,7 @@ class AuthTestGetResponse200
 
     public function setUserId(?string $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;

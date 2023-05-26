@@ -30,19 +30,16 @@ class ObjsTeamProfileFieldOptionNormalizer implements DenormalizerInterface, Nor
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileFieldOption' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileFieldOption' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -101,28 +98,28 @@ class ObjsTeamProfileFieldOptionNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getIsCustom()) {
+        if ($object->isInitialized('isCustom') && null !== $object->getIsCustom()) {
             $value = $object->getIsCustom();
             if (\is_bool($object->getIsCustom())) {
                 $value = $object->getIsCustom();
             }
             $data['is_custom'] = $value;
         }
-        if (null !== $object->getIsMultipleEntry()) {
+        if ($object->isInitialized('isMultipleEntry') && null !== $object->getIsMultipleEntry()) {
             $value_1 = $object->getIsMultipleEntry();
             if (\is_bool($object->getIsMultipleEntry())) {
                 $value_1 = $object->getIsMultipleEntry();
             }
             $data['is_multiple_entry'] = $value_1;
         }
-        if (null !== $object->getIsProtected()) {
+        if ($object->isInitialized('isProtected') && null !== $object->getIsProtected()) {
             $value_2 = $object->getIsProtected();
             if (\is_bool($object->getIsProtected())) {
                 $value_2 = $object->getIsProtected();
             }
             $data['is_protected'] = $value_2;
         }
-        if (null !== $object->getIsScim()) {
+        if ($object->isInitialized('isScim') && null !== $object->getIsScim()) {
             $value_3 = $object->getIsScim();
             if (\is_bool($object->getIsScim())) {
                 $value_3 = $object->getIsScim();

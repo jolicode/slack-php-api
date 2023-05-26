@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsSubteam
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $autoProvision;
@@ -100,6 +104,11 @@ class ObjsSubteam
      */
     protected $users;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAutoProvision(): ?bool
     {
         return $this->autoProvision;
@@ -107,24 +116,20 @@ class ObjsSubteam
 
     public function setAutoProvision(?bool $autoProvision): self
     {
+        $this->initialized['autoProvision'] = true;
         $this->autoProvision = $autoProvision;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getAutoType()
     {
         return $this->autoType;
     }
 
-    /**
-     * @param mixed $autoType
-     */
     public function setAutoType($autoType): self
     {
+        $this->initialized['autoType'] = true;
         $this->autoType = $autoType;
 
         return $this;
@@ -137,6 +142,7 @@ class ObjsSubteam
 
     public function setChannelCount(?int $channelCount): self
     {
+        $this->initialized['channelCount'] = true;
         $this->channelCount = $channelCount;
 
         return $this;
@@ -149,6 +155,7 @@ class ObjsSubteam
 
     public function setCreatedBy(?string $createdBy): self
     {
+        $this->initialized['createdBy'] = true;
         $this->createdBy = $createdBy;
 
         return $this;
@@ -161,6 +168,7 @@ class ObjsSubteam
 
     public function setDateCreate(?int $dateCreate): self
     {
+        $this->initialized['dateCreate'] = true;
         $this->dateCreate = $dateCreate;
 
         return $this;
@@ -173,6 +181,7 @@ class ObjsSubteam
 
     public function setDateDelete(?int $dateDelete): self
     {
+        $this->initialized['dateDelete'] = true;
         $this->dateDelete = $dateDelete;
 
         return $this;
@@ -185,24 +194,20 @@ class ObjsSubteam
 
     public function setDateUpdate(?int $dateUpdate): self
     {
+        $this->initialized['dateUpdate'] = true;
         $this->dateUpdate = $dateUpdate;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDeletedBy()
     {
         return $this->deletedBy;
     }
 
-    /**
-     * @param mixed $deletedBy
-     */
     public function setDeletedBy($deletedBy): self
     {
+        $this->initialized['deletedBy'] = true;
         $this->deletedBy = $deletedBy;
 
         return $this;
@@ -215,6 +220,7 @@ class ObjsSubteam
 
     public function setDescription(?string $description): self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
 
         return $this;
@@ -227,6 +233,7 @@ class ObjsSubteam
 
     public function setEnterpriseSubteamId(?string $enterpriseSubteamId): self
     {
+        $this->initialized['enterpriseSubteamId'] = true;
         $this->enterpriseSubteamId = $enterpriseSubteamId;
 
         return $this;
@@ -239,6 +246,7 @@ class ObjsSubteam
 
     public function setHandle(?string $handle): self
     {
+        $this->initialized['handle'] = true;
         $this->handle = $handle;
 
         return $this;
@@ -251,6 +259,7 @@ class ObjsSubteam
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -263,6 +272,7 @@ class ObjsSubteam
 
     public function setIsExternal(?bool $isExternal): self
     {
+        $this->initialized['isExternal'] = true;
         $this->isExternal = $isExternal;
 
         return $this;
@@ -275,6 +285,7 @@ class ObjsSubteam
 
     public function setIsSubteam(?bool $isSubteam): self
     {
+        $this->initialized['isSubteam'] = true;
         $this->isSubteam = $isSubteam;
 
         return $this;
@@ -287,6 +298,7 @@ class ObjsSubteam
 
     public function setIsUsergroup(?bool $isUsergroup): self
     {
+        $this->initialized['isUsergroup'] = true;
         $this->isUsergroup = $isUsergroup;
 
         return $this;
@@ -299,6 +311,7 @@ class ObjsSubteam
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -311,6 +324,7 @@ class ObjsSubteam
 
     public function setPrefs(?ObjsSubteamPrefs $prefs): self
     {
+        $this->initialized['prefs'] = true;
         $this->prefs = $prefs;
 
         return $this;
@@ -323,6 +337,7 @@ class ObjsSubteam
 
     public function setTeamId(?string $teamId): self
     {
+        $this->initialized['teamId'] = true;
         $this->teamId = $teamId;
 
         return $this;
@@ -335,6 +350,7 @@ class ObjsSubteam
 
     public function setUpdatedBy(?string $updatedBy): self
     {
+        $this->initialized['updatedBy'] = true;
         $this->updatedBy = $updatedBy;
 
         return $this;
@@ -347,6 +363,7 @@ class ObjsSubteam
 
     public function setUserCount(?int $userCount): self
     {
+        $this->initialized['userCount'] = true;
         $this->userCount = $userCount;
 
         return $this;
@@ -365,6 +382,7 @@ class ObjsSubteam
      */
     public function setUsers(?array $users): self
     {
+        $this->initialized['users'] = true;
         $this->users = $users;
 
         return $this;

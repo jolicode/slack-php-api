@@ -22,8 +22,8 @@ trait EndpointTrait
     {
         $contentType = $response->hasHeader('Content-Type') ? current($response->getHeader('Content-Type')) : null;
 
-        return $this->transformResponseBody((string) $response->getBody(), $response->getStatusCode(), $serializer, $contentType);
+        return $this->transformResponseBody($response, $serializer, $contentType);
     }
 
-    abstract protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null);
+    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, string $contentType = null);
 }

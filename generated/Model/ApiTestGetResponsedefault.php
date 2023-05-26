@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ApiTestGetResponsedefault extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var mixed|null
      */
     protected $args;
@@ -28,19 +32,19 @@ class ApiTestGetResponsedefault extends \ArrayObject
      */
     protected $ok;
 
-    /**
-     * @return mixed
-     */
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getArgs()
     {
         return $this->args;
     }
 
-    /**
-     * @param mixed $args
-     */
     public function setArgs($args): self
     {
+        $this->initialized['args'] = true;
         $this->args = $args;
 
         return $this;
@@ -53,6 +57,7 @@ class ApiTestGetResponsedefault extends \ArrayObject
 
     public function setError(?string $error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;
@@ -65,6 +70,7 @@ class ApiTestGetResponsedefault extends \ArrayObject
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

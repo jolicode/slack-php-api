@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ChatScheduleMessagePostResponse200Message
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
      */
     protected $attachments;
@@ -52,6 +56,11 @@ class ChatScheduleMessagePostResponse200Message
      */
     protected $username;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
      */
@@ -65,6 +74,7 @@ class ChatScheduleMessagePostResponse200Message
      */
     public function setAttachments(?array $attachments): self
     {
+        $this->initialized['attachments'] = true;
         $this->attachments = $attachments;
 
         return $this;
@@ -77,6 +87,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setBotId(?string $botId): self
     {
+        $this->initialized['botId'] = true;
         $this->botId = $botId;
 
         return $this;
@@ -89,6 +100,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setBotProfile(?ObjsBotProfile $botProfile): self
     {
+        $this->initialized['botProfile'] = true;
         $this->botProfile = $botProfile;
 
         return $this;
@@ -101,6 +113,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setSubtype(?string $subtype): self
     {
+        $this->initialized['subtype'] = true;
         $this->subtype = $subtype;
 
         return $this;
@@ -113,6 +126,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -125,6 +139,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -137,6 +152,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
@@ -149,6 +165,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -161,6 +178,7 @@ class ChatScheduleMessagePostResponse200Message
 
     public function setUsername(?string $username): self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
 
         return $this;

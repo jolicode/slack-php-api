@@ -30,19 +30,16 @@ class ConversationsLeavePostResponse200Normalizer implements DenormalizerInterfa
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsLeavePostResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsLeavePostResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -75,7 +72,7 @@ class ConversationsLeavePostResponse200Normalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getNotInChannel()) {
+        if ($object->isInitialized('notInChannel') && null !== $object->getNotInChannel()) {
             $data['not_in_channel'] = $object->getNotInChannel();
         }
         $data['ok'] = $object->getOk();

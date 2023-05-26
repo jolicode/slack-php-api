@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class BotsInfoGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var BotsInfoGetResponse200Bot|null
      */
     protected $bot;
@@ -24,6 +28,11 @@ class BotsInfoGetResponse200
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getBot(): ?BotsInfoGetResponse200Bot
     {
         return $this->bot;
@@ -31,6 +40,7 @@ class BotsInfoGetResponse200
 
     public function setBot(?BotsInfoGetResponse200Bot $bot): self
     {
+        $this->initialized['bot'] = true;
         $this->bot = $bot;
 
         return $this;
@@ -43,6 +53,7 @@ class BotsInfoGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

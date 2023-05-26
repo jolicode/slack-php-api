@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AdminConversationsArchivePostResponsedefault
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $error;
@@ -24,6 +28,11 @@ class AdminConversationsArchivePostResponsedefault
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getError(): ?string
     {
         return $this->error;
@@ -31,6 +40,7 @@ class AdminConversationsArchivePostResponsedefault
 
     public function setError(?string $error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;
@@ -43,6 +53,7 @@ class AdminConversationsArchivePostResponsedefault
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

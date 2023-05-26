@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class FilesInfoGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var mixed[]|null
      */
     protected $comments;
@@ -44,6 +48,11 @@ class FilesInfoGetResponse200
      */
     protected $responseMetadata;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return mixed[]|null
      */
@@ -57,24 +66,20 @@ class FilesInfoGetResponse200
      */
     public function setComments(?array $comments): self
     {
+        $this->initialized['comments'] = true;
         $this->comments = $comments;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getContentHtml()
     {
         return $this->contentHtml;
     }
 
-    /**
-     * @param mixed $contentHtml
-     */
     public function setContentHtml($contentHtml): self
     {
+        $this->initialized['contentHtml'] = true;
         $this->contentHtml = $contentHtml;
 
         return $this;
@@ -87,6 +92,7 @@ class FilesInfoGetResponse200
 
     public function setEditor(?string $editor): self
     {
+        $this->initialized['editor'] = true;
         $this->editor = $editor;
 
         return $this;
@@ -99,6 +105,7 @@ class FilesInfoGetResponse200
 
     public function setFile(?ObjsFile $file): self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
 
         return $this;
@@ -111,6 +118,7 @@ class FilesInfoGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -123,6 +131,7 @@ class FilesInfoGetResponse200
 
     public function setPaging(?ObjsPaging $paging): self
     {
+        $this->initialized['paging'] = true;
         $this->paging = $paging;
 
         return $this;
@@ -135,6 +144,7 @@ class FilesInfoGetResponse200
 
     public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;

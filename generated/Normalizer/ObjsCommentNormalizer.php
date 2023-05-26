@@ -30,19 +30,16 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsComment' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsComment' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -138,23 +135,23 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['created'] = $object->getCreated();
         $data['id'] = $object->getId();
         $data['is_intro'] = $object->getIsIntro();
-        if (null !== $object->getIsStarred()) {
+        if ($object->isInitialized('isStarred') && null !== $object->getIsStarred()) {
             $data['is_starred'] = $object->getIsStarred();
         }
-        if (null !== $object->getNumStars()) {
+        if ($object->isInitialized('numStars') && null !== $object->getNumStars()) {
             $data['num_stars'] = $object->getNumStars();
         }
-        if (null !== $object->getPinnedInfo()) {
+        if ($object->isInitialized('pinnedInfo') && null !== $object->getPinnedInfo()) {
             $data['pinned_info'] = $object->getPinnedInfo();
         }
-        if (null !== $object->getPinnedTo()) {
+        if ($object->isInitialized('pinnedTo') && null !== $object->getPinnedTo()) {
             $values = [];
             foreach ($object->getPinnedTo() as $value) {
                 $values[] = $value;
             }
             $data['pinned_to'] = $values;
         }
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $values_1 = [];
             foreach ($object->getReactions() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

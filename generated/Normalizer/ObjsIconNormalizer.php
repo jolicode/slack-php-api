@@ -30,19 +30,16 @@ class ObjsIconNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsIcon' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsIcon' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -105,28 +102,28 @@ class ObjsIconNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getImage102()) {
+        if ($object->isInitialized('image102') && null !== $object->getImage102()) {
             $data['image_102'] = $object->getImage102();
         }
-        if (null !== $object->getImage132()) {
+        if ($object->isInitialized('image132') && null !== $object->getImage132()) {
             $data['image_132'] = $object->getImage132();
         }
-        if (null !== $object->getImage230()) {
+        if ($object->isInitialized('image230') && null !== $object->getImage230()) {
             $data['image_230'] = $object->getImage230();
         }
-        if (null !== $object->getImage34()) {
+        if ($object->isInitialized('image34') && null !== $object->getImage34()) {
             $data['image_34'] = $object->getImage34();
         }
-        if (null !== $object->getImage44()) {
+        if ($object->isInitialized('image44') && null !== $object->getImage44()) {
             $data['image_44'] = $object->getImage44();
         }
-        if (null !== $object->getImage68()) {
+        if ($object->isInitialized('image68') && null !== $object->getImage68()) {
             $data['image_68'] = $object->getImage68();
         }
-        if (null !== $object->getImage88()) {
+        if ($object->isInitialized('image88') && null !== $object->getImage88()) {
             $data['image_88'] = $object->getImage88();
         }
-        if (null !== $object->getImageDefault()) {
+        if ($object->isInitialized('imageDefault') && null !== $object->getImageDefault()) {
             $data['image_default'] = $object->getImageDefault();
         }
 

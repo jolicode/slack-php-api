@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsConversationSharesItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $acceptedUser;
@@ -44,6 +48,11 @@ class ObjsConversationSharesItem
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAcceptedUser(): ?string
     {
         return $this->acceptedUser;
@@ -51,6 +60,7 @@ class ObjsConversationSharesItem
 
     public function setAcceptedUser(?string $acceptedUser): self
     {
+        $this->initialized['acceptedUser'] = true;
         $this->acceptedUser = $acceptedUser;
 
         return $this;
@@ -63,6 +73,7 @@ class ObjsConversationSharesItem
 
     public function setDateCreate(?int $dateCreate): self
     {
+        $this->initialized['dateCreate'] = true;
         $this->dateCreate = $dateCreate;
 
         return $this;
@@ -75,6 +86,7 @@ class ObjsConversationSharesItem
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -87,6 +99,7 @@ class ObjsConversationSharesItem
 
     public function setIsActive(?bool $isActive): self
     {
+        $this->initialized['isActive'] = true;
         $this->isActive = $isActive;
 
         return $this;
@@ -99,6 +112,7 @@ class ObjsConversationSharesItem
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -111,6 +125,7 @@ class ObjsConversationSharesItem
 
     public function setTeam(?ObjsTeam $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -123,6 +138,7 @@ class ObjsConversationSharesItem
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

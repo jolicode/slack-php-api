@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsExternalOrgMigrations
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsExternalOrgMigrationsCurrentItem[]|null
      */
     protected $current;
@@ -23,6 +27,11 @@ class ObjsExternalOrgMigrations
      * @var int|null
      */
     protected $dateUpdated;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return ObjsExternalOrgMigrationsCurrentItem[]|null
@@ -37,6 +46,7 @@ class ObjsExternalOrgMigrations
      */
     public function setCurrent(?array $current): self
     {
+        $this->initialized['current'] = true;
         $this->current = $current;
 
         return $this;
@@ -49,6 +59,7 @@ class ObjsExternalOrgMigrations
 
     public function setDateUpdated(?int $dateUpdated): self
     {
+        $this->initialized['dateUpdated'] = true;
         $this->dateUpdated = $dateUpdated;
 
         return $this;
