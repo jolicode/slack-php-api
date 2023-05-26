@@ -92,7 +92,7 @@ class SchemaChecker
                             continue;
                         }
 
-                        if ('pattern' === $error->keyword() && isset($error->keywordArgs()['pattern']) && false !== strpos($error->keywordArgs()['pattern'], '[A-Z0-9]{8,}$')) {
+                        if ('pattern' === $error->keyword() && isset($error->keywordArgs()['pattern']) && str_contains($error->keywordArgs()['pattern'], '[A-Z0-9]{8,}$')) {
                             // Slack did not update their examples when they changed their id length definition.
                             continue;
                         }

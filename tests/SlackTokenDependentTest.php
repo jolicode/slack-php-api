@@ -26,7 +26,7 @@ abstract class SlackTokenDependentTest extends TestCase
         }
     }
 
-    protected function createClient(?string $token = null): Client
+    protected function createClient(string $token = null): Client
     {
         return ClientFactory::create(null === $token ? $_SERVER['SLACK_TOKEN'] : $token);
     }

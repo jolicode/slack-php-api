@@ -44,6 +44,7 @@ return (new PhpCsFixer\Config())
         'declare_strict_types' => true,
         'ordered_class_elements' => true, // Symfony(PSR12) override the default value, but we don't want
         'blank_line_before_statement' => true, // Symfony(PSR12) override the default value, but we don't want
+        'get_class_to_class_keyword' => false, // To keep PHP 7.4 compat
     ])
     ->setFinder($finder)
 ;
