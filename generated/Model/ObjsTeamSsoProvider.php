@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsTeamSsoProvider
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $label;
@@ -28,6 +32,11 @@ class ObjsTeamSsoProvider
      */
     protected $type;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getLabel(): ?string
     {
         return $this->label;
@@ -35,6 +44,7 @@ class ObjsTeamSsoProvider
 
     public function setLabel(?string $label): self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
 
         return $this;
@@ -47,6 +57,7 @@ class ObjsTeamSsoProvider
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -59,6 +70,7 @@ class ObjsTeamSsoProvider
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;

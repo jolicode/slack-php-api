@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersListGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $cacheTs;
@@ -32,6 +36,11 @@ class UsersListGetResponse200
      */
     protected $responseMetadata;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCacheTs(): ?int
     {
         return $this->cacheTs;
@@ -39,6 +48,7 @@ class UsersListGetResponse200
 
     public function setCacheTs(?int $cacheTs): self
     {
+        $this->initialized['cacheTs'] = true;
         $this->cacheTs = $cacheTs;
 
         return $this;
@@ -57,6 +67,7 @@ class UsersListGetResponse200
      */
     public function setMembers(?array $members): self
     {
+        $this->initialized['members'] = true;
         $this->members = $members;
 
         return $this;
@@ -69,6 +80,7 @@ class UsersListGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -81,6 +93,7 @@ class UsersListGetResponse200
 
     public function setResponseMetadata(?ObjsResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;

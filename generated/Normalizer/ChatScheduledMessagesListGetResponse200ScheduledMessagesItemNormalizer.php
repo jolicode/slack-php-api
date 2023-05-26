@@ -30,19 +30,16 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -106,7 +103,7 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
             $value = $object->getPostAt();
         }
         $data['post_at'] = $value;
-        if (null !== $object->getText()) {
+        if ($object->isInitialized('text') && null !== $object->getText()) {
             $data['text'] = $object->getText();
         }
 

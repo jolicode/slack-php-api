@@ -30,19 +30,16 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ChatUpdatePostResponse200Message' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ChatUpdatePostResponse200Message' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -84,14 +81,14 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAttachments()) {
+        if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
             $values = [];
             foreach ($object->getAttachments() as $value) {
                 $values[] = $value;
             }
             $data['attachments'] = $values;
         }
-        if (null !== $object->getBlocks()) {
+        if ($object->isInitialized('blocks') && null !== $object->getBlocks()) {
             $data['blocks'] = $object->getBlocks();
         }
         $data['text'] = $object->getText();

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ChatUpdatePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $channel;
@@ -36,6 +40,11 @@ class ChatUpdatePostResponse200
      */
     protected $ts;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getChannel(): ?string
     {
         return $this->channel;
@@ -43,6 +52,7 @@ class ChatUpdatePostResponse200
 
     public function setChannel(?string $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -55,6 +65,7 @@ class ChatUpdatePostResponse200
 
     public function setMessage(?ChatUpdatePostResponse200Message $message): self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
 
         return $this;
@@ -67,6 +78,7 @@ class ChatUpdatePostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -79,6 +91,7 @@ class ChatUpdatePostResponse200
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -91,6 +104,7 @@ class ChatUpdatePostResponse200
 
     public function setTs(?string $ts): self
     {
+        $this->initialized['ts'] = true;
         $this->ts = $ts;
 
         return $this;

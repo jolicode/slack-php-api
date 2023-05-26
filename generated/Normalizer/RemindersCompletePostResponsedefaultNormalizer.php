@@ -30,19 +30,16 @@ class RemindersCompletePostResponsedefaultNormalizer implements DenormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\RemindersCompletePostResponsedefault' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\RemindersCompletePostResponsedefault' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -80,7 +77,7 @@ class RemindersCompletePostResponsedefaultNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCallstack()) {
+        if ($object->isInitialized('callstack') && null !== $object->getCallstack()) {
             $data['callstack'] = $object->getCallstack();
         }
         $data['error'] = $object->getError();

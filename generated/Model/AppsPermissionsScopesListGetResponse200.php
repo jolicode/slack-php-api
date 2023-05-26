@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -24,6 +28,11 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
      */
     protected $scopes;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -31,6 +40,7 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -43,6 +53,7 @@ class AppsPermissionsScopesListGetResponse200 extends \ArrayObject
 
     public function setScopes(?AppsPermissionsScopesListGetResponse200Scopes $scopes): self
     {
+        $this->initialized['scopes'] = true;
         $this->scopes = $scopes;
 
         return $this;

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersSetPhotoPostResponsedefault
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * Note: PHP callstack is only visible in dev/qa.
      *
      * @var string|null
@@ -48,6 +52,11 @@ class UsersSetPhotoPostResponsedefault
      */
     protected $timeIdent;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * Note: PHP callstack is only visible in dev/qa.
      */
@@ -61,6 +70,7 @@ class UsersSetPhotoPostResponsedefault
      */
     public function setCallstack(?string $callstack): self
     {
+        $this->initialized['callstack'] = true;
         $this->callstack = $callstack;
 
         return $this;
@@ -79,6 +89,7 @@ class UsersSetPhotoPostResponsedefault
      */
     public function setDebugStep(?string $debugStep): self
     {
+        $this->initialized['debugStep'] = true;
         $this->debugStep = $debugStep;
 
         return $this;
@@ -97,6 +108,7 @@ class UsersSetPhotoPostResponsedefault
      */
     public function setDims(?string $dims): self
     {
+        $this->initialized['dims'] = true;
         $this->dims = $dims;
 
         return $this;
@@ -109,6 +121,7 @@ class UsersSetPhotoPostResponsedefault
 
     public function setError(?string $error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;
@@ -121,6 +134,7 @@ class UsersSetPhotoPostResponsedefault
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -139,6 +153,7 @@ class UsersSetPhotoPostResponsedefault
      */
     public function setTimeIdent(?int $timeIdent): self
     {
+        $this->initialized['timeIdent'] = true;
         $this->timeIdent = $timeIdent;
 
         return $this;

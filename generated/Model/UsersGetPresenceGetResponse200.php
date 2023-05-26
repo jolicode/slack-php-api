@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersGetPresenceGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $autoAway;
@@ -44,6 +48,11 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
      */
     protected $presence;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAutoAway(): ?bool
     {
         return $this->autoAway;
@@ -51,6 +60,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setAutoAway(?bool $autoAway): self
     {
+        $this->initialized['autoAway'] = true;
         $this->autoAway = $autoAway;
 
         return $this;
@@ -63,6 +73,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setConnectionCount(?int $connectionCount): self
     {
+        $this->initialized['connectionCount'] = true;
         $this->connectionCount = $connectionCount;
 
         return $this;
@@ -75,6 +86,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setLastActivity(?int $lastActivity): self
     {
+        $this->initialized['lastActivity'] = true;
         $this->lastActivity = $lastActivity;
 
         return $this;
@@ -87,6 +99,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setManualAway(?bool $manualAway): self
     {
+        $this->initialized['manualAway'] = true;
         $this->manualAway = $manualAway;
 
         return $this;
@@ -99,6 +112,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -111,6 +125,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setOnline(?bool $online): self
     {
+        $this->initialized['online'] = true;
         $this->online = $online;
 
         return $this;
@@ -123,6 +138,7 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
 
     public function setPresence(?string $presence): self
     {
+        $this->initialized['presence'] = true;
         $this->presence = $presence;
 
         return $this;

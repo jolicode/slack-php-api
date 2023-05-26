@@ -30,19 +30,16 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer implemen
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResourcesItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResourcesItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -75,10 +72,10 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer implemen
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
 

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersInfoGetResponsedefault
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $callstack;
@@ -28,6 +32,11 @@ class UsersInfoGetResponsedefault
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCallstack(): ?string
     {
         return $this->callstack;
@@ -35,6 +44,7 @@ class UsersInfoGetResponsedefault
 
     public function setCallstack(?string $callstack): self
     {
+        $this->initialized['callstack'] = true;
         $this->callstack = $callstack;
 
         return $this;
@@ -47,6 +57,7 @@ class UsersInfoGetResponsedefault
 
     public function setError(?string $error): self
     {
+        $this->initialized['error'] = true;
         $this->error = $error;
 
         return $this;
@@ -59,6 +70,7 @@ class UsersInfoGetResponsedefault
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

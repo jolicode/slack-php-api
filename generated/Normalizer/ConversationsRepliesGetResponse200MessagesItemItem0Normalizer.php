@@ -30,19 +30,16 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem0' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem0' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -149,42 +146,42 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getLastRead()) {
+        if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
             $data['last_read'] = $object->getLastRead();
         }
-        if (null !== $object->getLatestReply()) {
+        if ($object->isInitialized('latestReply') && null !== $object->getLatestReply()) {
             $data['latest_reply'] = $object->getLatestReply();
         }
         $data['reply_count'] = $object->getReplyCount();
-        if (null !== $object->getReplyUsers()) {
+        if ($object->isInitialized('replyUsers') && null !== $object->getReplyUsers()) {
             $values = [];
             foreach ($object->getReplyUsers() as $value) {
                 $values[] = $value;
             }
             $data['reply_users'] = $values;
         }
-        if (null !== $object->getReplyUsersCount()) {
+        if ($object->isInitialized('replyUsersCount') && null !== $object->getReplyUsersCount()) {
             $data['reply_users_count'] = $object->getReplyUsersCount();
         }
-        if (null !== $object->getSourceTeam()) {
+        if ($object->isInitialized('sourceTeam') && null !== $object->getSourceTeam()) {
             $data['source_team'] = $object->getSourceTeam();
         }
         $data['subscribed'] = $object->getSubscribed();
-        if (null !== $object->getTeam()) {
+        if ($object->isInitialized('team') && null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
         $data['text'] = $object->getText();
         $data['thread_ts'] = $object->getThreadTs();
         $data['ts'] = $object->getTs();
         $data['type'] = $object->getType();
-        if (null !== $object->getUnreadCount()) {
+        if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
             $data['unread_count'] = $object->getUnreadCount();
         }
         $data['user'] = $object->getUser();
-        if (null !== $object->getUserProfile()) {
+        if ($object->isInitialized('userProfile') && null !== $object->getUserProfile()) {
             $data['user_profile'] = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
         }
-        if (null !== $object->getUserTeam()) {
+        if ($object->isInitialized('userTeam') && null !== $object->getUserTeam()) {
             $data['user_team'] = $object->getUserTeam();
         }
 

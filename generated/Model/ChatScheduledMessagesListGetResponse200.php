@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ChatScheduledMessagesListGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -28,6 +32,11 @@ class ChatScheduledMessagesListGetResponse200
      */
     protected $scheduledMessages;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -35,6 +44,7 @@ class ChatScheduledMessagesListGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -47,6 +57,7 @@ class ChatScheduledMessagesListGetResponse200
 
     public function setResponseMetadata(?ChatScheduledMessagesListGetResponse200ResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;
@@ -65,6 +76,7 @@ class ChatScheduledMessagesListGetResponse200
      */
     public function setScheduledMessages(?array $scheduledMessages): self
     {
+        $this->initialized['scheduledMessages'] = true;
         $this->scheduledMessages = $scheduledMessages;
 
         return $this;

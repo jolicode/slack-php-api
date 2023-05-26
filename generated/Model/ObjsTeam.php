@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsTeam
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $archived;
@@ -132,6 +136,11 @@ class ObjsTeam
      */
     protected $ssoProvider;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getArchived(): ?bool
     {
         return $this->archived;
@@ -139,6 +148,7 @@ class ObjsTeam
 
     public function setArchived(?bool $archived): self
     {
+        $this->initialized['archived'] = true;
         $this->archived = $archived;
 
         return $this;
@@ -151,6 +161,7 @@ class ObjsTeam
 
     public function setAvatarBaseUrl(?string $avatarBaseUrl): self
     {
+        $this->initialized['avatarBaseUrl'] = true;
         $this->avatarBaseUrl = $avatarBaseUrl;
 
         return $this;
@@ -163,6 +174,7 @@ class ObjsTeam
 
     public function setCreated(?int $created): self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
 
         return $this;
@@ -175,6 +187,7 @@ class ObjsTeam
 
     public function setDateCreate(?int $dateCreate): self
     {
+        $this->initialized['dateCreate'] = true;
         $this->dateCreate = $dateCreate;
 
         return $this;
@@ -187,6 +200,7 @@ class ObjsTeam
 
     public function setDeleted(?bool $deleted): self
     {
+        $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
 
         return $this;
@@ -199,6 +213,7 @@ class ObjsTeam
 
     public function setDescription(?string $description): self
     {
+        $this->initialized['description'] = true;
         $this->description = $description;
 
         return $this;
@@ -211,6 +226,7 @@ class ObjsTeam
 
     public function setDiscoverable(?string $discoverable): self
     {
+        $this->initialized['discoverable'] = true;
         $this->discoverable = $discoverable;
 
         return $this;
@@ -223,6 +239,7 @@ class ObjsTeam
 
     public function setDomain(?string $domain): self
     {
+        $this->initialized['domain'] = true;
         $this->domain = $domain;
 
         return $this;
@@ -235,6 +252,7 @@ class ObjsTeam
 
     public function setEmailDomain(?string $emailDomain): self
     {
+        $this->initialized['emailDomain'] = true;
         $this->emailDomain = $emailDomain;
 
         return $this;
@@ -247,6 +265,7 @@ class ObjsTeam
 
     public function setEnterpriseId(?string $enterpriseId): self
     {
+        $this->initialized['enterpriseId'] = true;
         $this->enterpriseId = $enterpriseId;
 
         return $this;
@@ -259,6 +278,7 @@ class ObjsTeam
 
     public function setEnterpriseName(?string $enterpriseName): self
     {
+        $this->initialized['enterpriseName'] = true;
         $this->enterpriseName = $enterpriseName;
 
         return $this;
@@ -271,6 +291,7 @@ class ObjsTeam
 
     public function setExternalOrgMigrations(?ObjsExternalOrgMigrations $externalOrgMigrations): self
     {
+        $this->initialized['externalOrgMigrations'] = true;
         $this->externalOrgMigrations = $externalOrgMigrations;
 
         return $this;
@@ -283,6 +304,7 @@ class ObjsTeam
 
     public function setHasComplianceExport(?bool $hasComplianceExport): self
     {
+        $this->initialized['hasComplianceExport'] = true;
         $this->hasComplianceExport = $hasComplianceExport;
 
         return $this;
@@ -295,6 +317,7 @@ class ObjsTeam
 
     public function setIcon(?ObjsIcon $icon): self
     {
+        $this->initialized['icon'] = true;
         $this->icon = $icon;
 
         return $this;
@@ -307,6 +330,7 @@ class ObjsTeam
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -319,6 +343,7 @@ class ObjsTeam
 
     public function setIsAssigned(?bool $isAssigned): self
     {
+        $this->initialized['isAssigned'] = true;
         $this->isAssigned = $isAssigned;
 
         return $this;
@@ -331,6 +356,7 @@ class ObjsTeam
 
     public function setIsEnterprise(?int $isEnterprise): self
     {
+        $this->initialized['isEnterprise'] = true;
         $this->isEnterprise = $isEnterprise;
 
         return $this;
@@ -343,6 +369,7 @@ class ObjsTeam
 
     public function setIsOverStorageLimit(?bool $isOverStorageLimit): self
     {
+        $this->initialized['isOverStorageLimit'] = true;
         $this->isOverStorageLimit = $isOverStorageLimit;
 
         return $this;
@@ -355,6 +382,7 @@ class ObjsTeam
 
     public function setLimitTs(?int $limitTs): self
     {
+        $this->initialized['limitTs'] = true;
         $this->limitTs = $limitTs;
 
         return $this;
@@ -367,6 +395,7 @@ class ObjsTeam
 
     public function setLocale(?string $locale): self
     {
+        $this->initialized['locale'] = true;
         $this->locale = $locale;
 
         return $this;
@@ -379,6 +408,7 @@ class ObjsTeam
 
     public function setMessagesCount(?int $messagesCount): self
     {
+        $this->initialized['messagesCount'] = true;
         $this->messagesCount = $messagesCount;
 
         return $this;
@@ -391,6 +421,7 @@ class ObjsTeam
 
     public function setMsgEditWindowMins(?int $msgEditWindowMins): self
     {
+        $this->initialized['msgEditWindowMins'] = true;
         $this->msgEditWindowMins = $msgEditWindowMins;
 
         return $this;
@@ -403,6 +434,7 @@ class ObjsTeam
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -415,6 +447,7 @@ class ObjsTeam
 
     public function setOverIntegrationsLimit(?bool $overIntegrationsLimit): self
     {
+        $this->initialized['overIntegrationsLimit'] = true;
         $this->overIntegrationsLimit = $overIntegrationsLimit;
 
         return $this;
@@ -427,6 +460,7 @@ class ObjsTeam
 
     public function setOverStorageLimit(?bool $overStorageLimit): self
     {
+        $this->initialized['overStorageLimit'] = true;
         $this->overStorageLimit = $overStorageLimit;
 
         return $this;
@@ -439,6 +473,7 @@ class ObjsTeam
 
     public function setPayProdCur(?string $payProdCur): self
     {
+        $this->initialized['payProdCur'] = true;
         $this->payProdCur = $payProdCur;
 
         return $this;
@@ -451,6 +486,7 @@ class ObjsTeam
 
     public function setPlan(?string $plan): self
     {
+        $this->initialized['plan'] = true;
         $this->plan = $plan;
 
         return $this;
@@ -463,6 +499,7 @@ class ObjsTeam
 
     public function setPrimaryOwner(?ObjsPrimaryOwner $primaryOwner): self
     {
+        $this->initialized['primaryOwner'] = true;
         $this->primaryOwner = $primaryOwner;
 
         return $this;
@@ -475,6 +512,7 @@ class ObjsTeam
 
     public function setSsoProvider(?ObjsTeamSsoProvider $ssoProvider): self
     {
+        $this->initialized['ssoProvider'] = true;
         $this->ssoProvider = $ssoProvider;
 
         return $this;

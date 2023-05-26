@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -28,6 +32,11 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
      */
     protected $responseMetadata;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -35,6 +44,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -53,6 +63,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
      */
     public function setResources(?array $resources): self
     {
+        $this->initialized['resources'] = true;
         $this->resources = $resources;
 
         return $this;
@@ -65,6 +76,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
 
     public function setResponseMetadata(?AppsPermissionsResourcesListGetResponse200ResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;

@@ -30,19 +30,16 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem0' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item0ItemsItem0' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -85,16 +82,16 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['created'] = $object->getCreated();
         }
-        if (null !== $object->getCreatedBy()) {
+        if ($object->isInitialized('createdBy') && null !== $object->getCreatedBy()) {
             $data['created_by'] = $object->getCreatedBy();
         }
-        if (null !== $object->getFile()) {
+        if ($object->isInitialized('file') && null !== $object->getFile()) {
             $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
-        if (null !== $object->getType()) {
+        if ($object->isInitialized('type') && null !== $object->getType()) {
             $data['type'] = $object->getType();
         }
 

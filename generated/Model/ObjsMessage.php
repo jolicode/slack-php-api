@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessage
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsMessageAttachmentsItem[]|null
      */
     protected $attachments;
@@ -182,6 +186,11 @@ class ObjsMessage
      */
     protected $username;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * @return ObjsMessageAttachmentsItem[]|null
      */
@@ -195,6 +204,7 @@ class ObjsMessage
      */
     public function setAttachments(?array $attachments): self
     {
+        $this->initialized['attachments'] = true;
         $this->attachments = $attachments;
 
         return $this;
@@ -217,24 +227,20 @@ class ObjsMessage
      */
     public function setBlocks(?array $blocks): self
     {
+        $this->initialized['blocks'] = true;
         $this->blocks = $blocks;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBotId()
     {
         return $this->botId;
     }
 
-    /**
-     * @param mixed $botId
-     */
     public function setBotId($botId): self
     {
+        $this->initialized['botId'] = true;
         $this->botId = $botId;
 
         return $this;
@@ -247,6 +253,7 @@ class ObjsMessage
 
     public function setBotProfile(?ObjsBotProfile $botProfile): self
     {
+        $this->initialized['botProfile'] = true;
         $this->botProfile = $botProfile;
 
         return $this;
@@ -259,6 +266,7 @@ class ObjsMessage
 
     public function setClientMsgId(?string $clientMsgId): self
     {
+        $this->initialized['clientMsgId'] = true;
         $this->clientMsgId = $clientMsgId;
 
         return $this;
@@ -271,6 +279,7 @@ class ObjsMessage
 
     public function setComment(?ObjsComment $comment): self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
 
         return $this;
@@ -283,6 +292,7 @@ class ObjsMessage
 
     public function setDisplayAsBot(?bool $displayAsBot): self
     {
+        $this->initialized['displayAsBot'] = true;
         $this->displayAsBot = $displayAsBot;
 
         return $this;
@@ -295,6 +305,7 @@ class ObjsMessage
 
     public function setFile(?ObjsFile $file): self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
 
         return $this;
@@ -313,6 +324,7 @@ class ObjsMessage
      */
     public function setFiles(?array $files): self
     {
+        $this->initialized['files'] = true;
         $this->files = $files;
 
         return $this;
@@ -325,6 +337,7 @@ class ObjsMessage
 
     public function setIcons(?ObjsMessageIcons $icons): self
     {
+        $this->initialized['icons'] = true;
         $this->icons = $icons;
 
         return $this;
@@ -337,6 +350,7 @@ class ObjsMessage
 
     public function setInviter(?string $inviter): self
     {
+        $this->initialized['inviter'] = true;
         $this->inviter = $inviter;
 
         return $this;
@@ -349,6 +363,7 @@ class ObjsMessage
 
     public function setIsDelayedMessage(?bool $isDelayedMessage): self
     {
+        $this->initialized['isDelayedMessage'] = true;
         $this->isDelayedMessage = $isDelayedMessage;
 
         return $this;
@@ -361,6 +376,7 @@ class ObjsMessage
 
     public function setIsIntro(?bool $isIntro): self
     {
+        $this->initialized['isIntro'] = true;
         $this->isIntro = $isIntro;
 
         return $this;
@@ -373,6 +389,7 @@ class ObjsMessage
 
     public function setIsStarred(?bool $isStarred): self
     {
+        $this->initialized['isStarred'] = true;
         $this->isStarred = $isStarred;
 
         return $this;
@@ -385,6 +402,7 @@ class ObjsMessage
 
     public function setLastRead(?string $lastRead): self
     {
+        $this->initialized['lastRead'] = true;
         $this->lastRead = $lastRead;
 
         return $this;
@@ -397,6 +415,7 @@ class ObjsMessage
 
     public function setLatestReply(?string $latestReply): self
     {
+        $this->initialized['latestReply'] = true;
         $this->latestReply = $latestReply;
 
         return $this;
@@ -409,6 +428,7 @@ class ObjsMessage
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -421,6 +441,7 @@ class ObjsMessage
 
     public function setOldName(?string $oldName): self
     {
+        $this->initialized['oldName'] = true;
         $this->oldName = $oldName;
 
         return $this;
@@ -433,6 +454,7 @@ class ObjsMessage
 
     public function setParentUserId(?string $parentUserId): self
     {
+        $this->initialized['parentUserId'] = true;
         $this->parentUserId = $parentUserId;
 
         return $this;
@@ -445,6 +467,7 @@ class ObjsMessage
 
     public function setPermalink(?string $permalink): self
     {
+        $this->initialized['permalink'] = true;
         $this->permalink = $permalink;
 
         return $this;
@@ -463,6 +486,7 @@ class ObjsMessage
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
+        $this->initialized['pinnedTo'] = true;
         $this->pinnedTo = $pinnedTo;
 
         return $this;
@@ -475,6 +499,7 @@ class ObjsMessage
 
     public function setPurpose(?string $purpose): self
     {
+        $this->initialized['purpose'] = true;
         $this->purpose = $purpose;
 
         return $this;
@@ -493,6 +518,7 @@ class ObjsMessage
      */
     public function setReactions(?array $reactions): self
     {
+        $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
 
         return $this;
@@ -505,6 +531,7 @@ class ObjsMessage
 
     public function setReplyCount(?int $replyCount): self
     {
+        $this->initialized['replyCount'] = true;
         $this->replyCount = $replyCount;
 
         return $this;
@@ -523,6 +550,7 @@ class ObjsMessage
      */
     public function setReplyUsers(?array $replyUsers): self
     {
+        $this->initialized['replyUsers'] = true;
         $this->replyUsers = $replyUsers;
 
         return $this;
@@ -535,6 +563,7 @@ class ObjsMessage
 
     public function setReplyUsersCount(?int $replyUsersCount): self
     {
+        $this->initialized['replyUsersCount'] = true;
         $this->replyUsersCount = $replyUsersCount;
 
         return $this;
@@ -547,6 +576,7 @@ class ObjsMessage
 
     public function setSourceTeam(?string $sourceTeam): self
     {
+        $this->initialized['sourceTeam'] = true;
         $this->sourceTeam = $sourceTeam;
 
         return $this;
@@ -559,6 +589,7 @@ class ObjsMessage
 
     public function setSubscribed(?bool $subscribed): self
     {
+        $this->initialized['subscribed'] = true;
         $this->subscribed = $subscribed;
 
         return $this;
@@ -571,6 +602,7 @@ class ObjsMessage
 
     public function setSubtype(?string $subtype): self
     {
+        $this->initialized['subtype'] = true;
         $this->subtype = $subtype;
 
         return $this;
@@ -583,6 +615,7 @@ class ObjsMessage
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -595,6 +628,7 @@ class ObjsMessage
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -607,6 +641,7 @@ class ObjsMessage
 
     public function setThreadTs(?string $threadTs): self
     {
+        $this->initialized['threadTs'] = true;
         $this->threadTs = $threadTs;
 
         return $this;
@@ -619,6 +654,7 @@ class ObjsMessage
 
     public function setTopic(?string $topic): self
     {
+        $this->initialized['topic'] = true;
         $this->topic = $topic;
 
         return $this;
@@ -631,6 +667,7 @@ class ObjsMessage
 
     public function setTs(?string $ts): self
     {
+        $this->initialized['ts'] = true;
         $this->ts = $ts;
 
         return $this;
@@ -643,6 +680,7 @@ class ObjsMessage
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
@@ -655,6 +693,7 @@ class ObjsMessage
 
     public function setUnreadCount(?int $unreadCount): self
     {
+        $this->initialized['unreadCount'] = true;
         $this->unreadCount = $unreadCount;
 
         return $this;
@@ -667,6 +706,7 @@ class ObjsMessage
 
     public function setUpload(?bool $upload): self
     {
+        $this->initialized['upload'] = true;
         $this->upload = $upload;
 
         return $this;
@@ -679,6 +719,7 @@ class ObjsMessage
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -691,6 +732,7 @@ class ObjsMessage
 
     public function setUserProfile(?ObjsUserProfileShort $userProfile): self
     {
+        $this->initialized['userProfile'] = true;
         $this->userProfile = $userProfile;
 
         return $this;
@@ -703,6 +745,7 @@ class ObjsMessage
 
     public function setUserTeam(?string $userTeam): self
     {
+        $this->initialized['userTeam'] = true;
         $this->userTeam = $userTeam;
 
         return $this;
@@ -715,6 +758,7 @@ class ObjsMessage
 
     public function setUsername(?string $username): self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
 
         return $this;

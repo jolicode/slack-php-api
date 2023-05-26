@@ -30,19 +30,16 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200Bot' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200Bot' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -106,7 +103,7 @@ class BotsInfoGetResponse200BotNormalizer implements DenormalizerInterface, Norm
         $data['id'] = $object->getId();
         $data['name'] = $object->getName();
         $data['updated'] = $object->getUpdated();
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['user_id'] = $object->getUserId();
         }
 

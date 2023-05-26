@@ -30,19 +30,16 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -210,73 +207,73 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getActions()) {
+        if ($object->isInitialized('actions') && null !== $object->getActions()) {
             $values = [];
             foreach ($object->getActions() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['actions'] = $values;
         }
-        if (null !== $object->getAuthorIcon()) {
+        if ($object->isInitialized('authorIcon') && null !== $object->getAuthorIcon()) {
             $data['author_icon'] = $object->getAuthorIcon();
         }
-        if (null !== $object->getAuthorLink()) {
+        if ($object->isInitialized('authorLink') && null !== $object->getAuthorLink()) {
             $data['author_link'] = $object->getAuthorLink();
         }
-        if (null !== $object->getAuthorName()) {
+        if ($object->isInitialized('authorName') && null !== $object->getAuthorName()) {
             $data['author_name'] = $object->getAuthorName();
         }
-        if (null !== $object->getCallbackId()) {
+        if ($object->isInitialized('callbackId') && null !== $object->getCallbackId()) {
             $data['callback_id'] = $object->getCallbackId();
         }
-        if (null !== $object->getColor()) {
+        if ($object->isInitialized('color') && null !== $object->getColor()) {
             $data['color'] = $object->getColor();
         }
-        if (null !== $object->getFallback()) {
+        if ($object->isInitialized('fallback') && null !== $object->getFallback()) {
             $data['fallback'] = $object->getFallback();
         }
-        if (null !== $object->getFields()) {
+        if ($object->isInitialized('fields') && null !== $object->getFields()) {
             $values_1 = [];
             foreach ($object->getFields() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['fields'] = $values_1;
         }
-        if (null !== $object->getFooter()) {
+        if ($object->isInitialized('footer') && null !== $object->getFooter()) {
             $data['footer'] = $object->getFooter();
         }
-        if (null !== $object->getFooterIcon()) {
+        if ($object->isInitialized('footerIcon') && null !== $object->getFooterIcon()) {
             $data['footer_icon'] = $object->getFooterIcon();
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getImageBytes()) {
+        if ($object->isInitialized('imageBytes') && null !== $object->getImageBytes()) {
             $data['image_bytes'] = $object->getImageBytes();
         }
-        if (null !== $object->getImageHeight()) {
+        if ($object->isInitialized('imageHeight') && null !== $object->getImageHeight()) {
             $data['image_height'] = $object->getImageHeight();
         }
-        if (null !== $object->getImageUrl()) {
+        if ($object->isInitialized('imageUrl') && null !== $object->getImageUrl()) {
             $data['image_url'] = $object->getImageUrl();
         }
-        if (null !== $object->getImageWidth()) {
+        if ($object->isInitialized('imageWidth') && null !== $object->getImageWidth()) {
             $data['image_width'] = $object->getImageWidth();
         }
-        if (null !== $object->getPretext()) {
+        if ($object->isInitialized('pretext') && null !== $object->getPretext()) {
             $data['pretext'] = $object->getPretext();
         }
-        if (null !== $object->getText()) {
+        if ($object->isInitialized('text') && null !== $object->getText()) {
             $data['text'] = $object->getText();
         }
-        if (null !== $object->getThumbUrl()) {
+        if ($object->isInitialized('thumbUrl') && null !== $object->getThumbUrl()) {
             $data['thumb_url'] = $object->getThumbUrl();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getTitleLink()) {
+        if ($object->isInitialized('titleLink') && null !== $object->getTitleLink()) {
             $data['title_link'] = $object->getTitleLink();
         }
-        if (null !== $object->getTs()) {
+        if ($object->isInitialized('ts') && null !== $object->getTs()) {
             $value_2 = $object->getTs();
             if (\is_float($object->getTs())) {
                 $value_2 = $object->getTs();

@@ -30,19 +30,16 @@ class DndInfoGetResponse200Normalizer implements DenormalizerInterface, Normaliz
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\DndInfoGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\DndInfoGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -104,13 +101,13 @@ class DndInfoGetResponse200Normalizer implements DenormalizerInterface, Normaliz
         $data['next_dnd_end_ts'] = $object->getNextDndEndTs();
         $data['next_dnd_start_ts'] = $object->getNextDndStartTs();
         $data['ok'] = $object->getOk();
-        if (null !== $object->getSnoozeEnabled()) {
+        if ($object->isInitialized('snoozeEnabled') && null !== $object->getSnoozeEnabled()) {
             $data['snooze_enabled'] = $object->getSnoozeEnabled();
         }
-        if (null !== $object->getSnoozeEndtime()) {
+        if ($object->isInitialized('snoozeEndtime') && null !== $object->getSnoozeEndtime()) {
             $data['snooze_endtime'] = $object->getSnoozeEndtime();
         }
-        if (null !== $object->getSnoozeRemaining()) {
+        if ($object->isInitialized('snoozeRemaining') && null !== $object->getSnoozeRemaining()) {
             $data['snooze_remaining'] = $object->getSnoozeRemaining();
         }
 

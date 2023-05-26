@@ -30,19 +30,16 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsReminder' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsReminder' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -100,14 +97,14 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCompleteTs()) {
+        if ($object->isInitialized('completeTs') && null !== $object->getCompleteTs()) {
             $data['complete_ts'] = $object->getCompleteTs();
         }
         $data['creator'] = $object->getCreator();
         $data['id'] = $object->getId();
         $data['recurring'] = $object->getRecurring();
         $data['text'] = $object->getText();
-        if (null !== $object->getTime()) {
+        if ($object->isInitialized('time') && null !== $object->getTime()) {
             $data['time'] = $object->getTime();
         }
         $data['user'] = $object->getUser();

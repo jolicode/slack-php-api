@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsLeavePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $notInChannel;
@@ -24,6 +28,11 @@ class ConversationsLeavePostResponse200
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getNotInChannel(): ?bool
     {
         return $this->notInChannel;
@@ -31,6 +40,7 @@ class ConversationsLeavePostResponse200
 
     public function setNotInChannel(?bool $notInChannel): self
     {
+        $this->initialized['notInChannel'] = true;
         $this->notInChannel = $notInChannel;
 
         return $this;
@@ -43,6 +53,7 @@ class ConversationsLeavePostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

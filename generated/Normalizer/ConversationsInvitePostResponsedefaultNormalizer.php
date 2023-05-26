@@ -30,19 +30,16 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -99,24 +96,24 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCallstack()) {
+        if ($object->isInitialized('callstack') && null !== $object->getCallstack()) {
             $data['callstack'] = $object->getCallstack();
         }
-        if (null !== $object->getError()) {
+        if ($object->isInitialized('error') && null !== $object->getError()) {
             $data['error'] = $object->getError();
         }
-        if (null !== $object->getErrors()) {
+        if ($object->isInitialized('errors') && null !== $object->getErrors()) {
             $values = [];
             foreach ($object->getErrors() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['errors'] = $values;
         }
-        if (null !== $object->getNeeded()) {
+        if ($object->isInitialized('needed') && null !== $object->getNeeded()) {
             $data['needed'] = $object->getNeeded();
         }
         $data['ok'] = $object->getOk();
-        if (null !== $object->getProvided()) {
+        if ($object->isInitialized('provided') && null !== $object->getProvided()) {
             $data['provided'] = $object->getProvided();
         }
 

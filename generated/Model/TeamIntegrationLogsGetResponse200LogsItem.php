@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class TeamIntegrationLogsGetResponse200LogsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $adminAppId;
@@ -60,6 +64,11 @@ class TeamIntegrationLogsGetResponse200LogsItem
      */
     protected $userName;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAdminAppId(): ?string
     {
         return $this->adminAppId;
@@ -67,6 +76,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setAdminAppId(?string $adminAppId): self
     {
+        $this->initialized['adminAppId'] = true;
         $this->adminAppId = $adminAppId;
 
         return $this;
@@ -79,6 +89,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setAppId(?string $appId): self
     {
+        $this->initialized['appId'] = true;
         $this->appId = $appId;
 
         return $this;
@@ -91,6 +102,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setAppType(?string $appType): self
     {
+        $this->initialized['appType'] = true;
         $this->appType = $appType;
 
         return $this;
@@ -103,6 +115,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setChangeType(?string $changeType): self
     {
+        $this->initialized['changeType'] = true;
         $this->changeType = $changeType;
 
         return $this;
@@ -115,6 +128,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setChannel(?string $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -127,6 +141,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setDate(?string $date): self
     {
+        $this->initialized['date'] = true;
         $this->date = $date;
 
         return $this;
@@ -139,6 +154,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setScope(?string $scope): self
     {
+        $this->initialized['scope'] = true;
         $this->scope = $scope;
 
         return $this;
@@ -151,6 +167,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setServiceId(?string $serviceId): self
     {
+        $this->initialized['serviceId'] = true;
         $this->serviceId = $serviceId;
 
         return $this;
@@ -163,6 +180,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setServiceType(?string $serviceType): self
     {
+        $this->initialized['serviceType'] = true;
         $this->serviceType = $serviceType;
 
         return $this;
@@ -175,6 +193,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setUserId(?string $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -187,6 +206,7 @@ class TeamIntegrationLogsGetResponse200LogsItem
 
     public function setUserName(?string $userName): self
     {
+        $this->initialized['userName'] = true;
         $this->userName = $userName;
 
         return $this;

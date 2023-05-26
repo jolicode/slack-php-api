@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersIdentityGetResponse200Item1User
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $email;
@@ -28,6 +32,11 @@ class UsersIdentityGetResponse200Item1User
      */
     protected $name;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
@@ -35,6 +44,7 @@ class UsersIdentityGetResponse200Item1User
 
     public function setEmail(?string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;
@@ -47,6 +57,7 @@ class UsersIdentityGetResponse200Item1User
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -59,6 +70,7 @@ class UsersIdentityGetResponse200Item1User
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;

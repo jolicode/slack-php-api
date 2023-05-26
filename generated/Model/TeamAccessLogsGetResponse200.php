@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class TeamAccessLogsGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var TeamAccessLogsGetResponse200LoginsItem[]|null
      */
     protected $logins;
@@ -27,6 +31,11 @@ class TeamAccessLogsGetResponse200
      * @var ObjsPaging|null
      */
     protected $paging;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return TeamAccessLogsGetResponse200LoginsItem[]|null
@@ -41,6 +50,7 @@ class TeamAccessLogsGetResponse200
      */
     public function setLogins(?array $logins): self
     {
+        $this->initialized['logins'] = true;
         $this->logins = $logins;
 
         return $this;
@@ -53,6 +63,7 @@ class TeamAccessLogsGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -65,6 +76,7 @@ class TeamAccessLogsGetResponse200
 
     public function setPaging(?ObjsPaging $paging): self
     {
+        $this->initialized['paging'] = true;
         $this->paging = $paging;
 
         return $this;

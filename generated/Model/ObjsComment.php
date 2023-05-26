@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsComment
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $comment;
@@ -60,6 +64,11 @@ class ObjsComment
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getComment(): ?string
     {
         return $this->comment;
@@ -67,6 +76,7 @@ class ObjsComment
 
     public function setComment(?string $comment): self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
 
         return $this;
@@ -79,6 +89,7 @@ class ObjsComment
 
     public function setCreated(?int $created): self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
 
         return $this;
@@ -91,6 +102,7 @@ class ObjsComment
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -103,6 +115,7 @@ class ObjsComment
 
     public function setIsIntro(?bool $isIntro): self
     {
+        $this->initialized['isIntro'] = true;
         $this->isIntro = $isIntro;
 
         return $this;
@@ -115,6 +128,7 @@ class ObjsComment
 
     public function setIsStarred(?bool $isStarred): self
     {
+        $this->initialized['isStarred'] = true;
         $this->isStarred = $isStarred;
 
         return $this;
@@ -127,24 +141,20 @@ class ObjsComment
 
     public function setNumStars(?int $numStars): self
     {
+        $this->initialized['numStars'] = true;
         $this->numStars = $numStars;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPinnedInfo()
     {
         return $this->pinnedInfo;
     }
 
-    /**
-     * @param mixed $pinnedInfo
-     */
     public function setPinnedInfo($pinnedInfo): self
     {
+        $this->initialized['pinnedInfo'] = true;
         $this->pinnedInfo = $pinnedInfo;
 
         return $this;
@@ -163,6 +173,7 @@ class ObjsComment
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
+        $this->initialized['pinnedTo'] = true;
         $this->pinnedTo = $pinnedTo;
 
         return $this;
@@ -181,6 +192,7 @@ class ObjsComment
      */
     public function setReactions(?array $reactions): self
     {
+        $this->initialized['reactions'] = true;
         $this->reactions = $reactions;
 
         return $this;
@@ -199,6 +211,7 @@ class ObjsComment
      */
     public function setTimestamp($timestamp): self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
 
         return $this;
@@ -211,6 +224,7 @@ class ObjsComment
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

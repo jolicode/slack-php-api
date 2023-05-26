@@ -30,19 +30,16 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversationSharesItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -100,7 +97,7 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAcceptedUser()) {
+        if ($object->isInitialized('acceptedUser') && null !== $object->getAcceptedUser()) {
             $data['accepted_user'] = $object->getAcceptedUser();
         }
         $data['date_create'] = $object->getDateCreate();
@@ -108,7 +105,7 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
         $data['is_active'] = $object->getIsActive();
         $data['name'] = $object->getName();
         $data['team'] = $this->normalizer->normalize($object->getTeam(), 'json', $context);
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
 

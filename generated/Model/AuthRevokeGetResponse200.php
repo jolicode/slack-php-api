@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AuthRevokeGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $ok;
@@ -24,6 +28,11 @@ class AuthRevokeGetResponse200
      */
     protected $revoked;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getOk(): ?bool
     {
         return $this->ok;
@@ -31,6 +40,7 @@ class AuthRevokeGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -43,6 +53,7 @@ class AuthRevokeGetResponse200
 
     public function setRevoked(?bool $revoked): self
     {
+        $this->initialized['revoked'] = true;
         $this->revoked = $revoked;
 
         return $this;

@@ -30,19 +30,16 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfileShort' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -126,7 +123,7 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         $data = [];
         $data['avatar_hash'] = $object->getAvatarHash();
         $data['display_name'] = $object->getDisplayName();
-        if (null !== $object->getDisplayNameNormalized()) {
+        if ($object->isInitialized('displayNameNormalized') && null !== $object->getDisplayNameNormalized()) {
             $data['display_name_normalized'] = $object->getDisplayNameNormalized();
         }
         $value = $object->getFirstName();
@@ -139,7 +136,7 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
         $data['is_ultra_restricted'] = $object->getIsUltraRestricted();
         $data['name'] = $object->getName();
         $data['real_name'] = $object->getRealName();
-        if (null !== $object->getRealNameNormalized()) {
+        if ($object->isInitialized('realNameNormalized') && null !== $object->getRealNameNormalized()) {
             $data['real_name_normalized'] = $object->getRealNameNormalized();
         }
         $data['team'] = $object->getTeam();

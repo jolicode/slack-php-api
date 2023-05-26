@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsOpenPostResponse200ChannelItem1
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $created;
@@ -52,6 +56,11 @@ class ConversationsOpenPostResponse200ChannelItem1
      */
     protected $user;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCreated(): ?string
     {
         return $this->created;
@@ -59,6 +68,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setCreated(?string $created): self
     {
+        $this->initialized['created'] = true;
         $this->created = $created;
 
         return $this;
@@ -71,6 +81,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -83,6 +94,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setIsIm(?bool $isIm): self
     {
+        $this->initialized['isIm'] = true;
         $this->isIm = $isIm;
 
         return $this;
@@ -95,6 +107,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setIsOpen(?bool $isOpen): self
     {
+        $this->initialized['isOpen'] = true;
         $this->isOpen = $isOpen;
 
         return $this;
@@ -107,6 +120,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setLastRead(?string $lastRead): self
     {
+        $this->initialized['lastRead'] = true;
         $this->lastRead = $lastRead;
 
         return $this;
@@ -119,6 +133,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setLatest(?ObjsMessage $latest): self
     {
+        $this->initialized['latest'] = true;
         $this->latest = $latest;
 
         return $this;
@@ -131,6 +146,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setUnreadCount(?float $unreadCount): self
     {
+        $this->initialized['unreadCount'] = true;
         $this->unreadCount = $unreadCount;
 
         return $this;
@@ -143,6 +159,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setUnreadCountDisplay(?float $unreadCountDisplay): self
     {
+        $this->initialized['unreadCountDisplay'] = true;
         $this->unreadCountDisplay = $unreadCountDisplay;
 
         return $this;
@@ -155,6 +172,7 @@ class ConversationsOpenPostResponse200ChannelItem1
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;

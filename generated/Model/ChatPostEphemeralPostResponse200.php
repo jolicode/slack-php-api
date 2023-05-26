@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ChatPostEphemeralPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $messageTs;
@@ -24,6 +28,11 @@ class ChatPostEphemeralPostResponse200
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getMessageTs(): ?string
     {
         return $this->messageTs;
@@ -31,6 +40,7 @@ class ChatPostEphemeralPostResponse200
 
     public function setMessageTs(?string $messageTs): self
     {
+        $this->initialized['messageTs'] = true;
         $this->messageTs = $messageTs;
 
         return $this;
@@ -43,6 +53,7 @@ class ChatPostEphemeralPostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

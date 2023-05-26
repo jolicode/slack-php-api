@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsJoinPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsConversation|null
      */
     protected $channel;
@@ -32,6 +36,11 @@ class ConversationsJoinPostResponse200
      */
     protected $warning;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getChannel(): ?ObjsConversation
     {
         return $this->channel;
@@ -39,6 +48,7 @@ class ConversationsJoinPostResponse200
 
     public function setChannel(?ObjsConversation $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -51,6 +61,7 @@ class ConversationsJoinPostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -63,6 +74,7 @@ class ConversationsJoinPostResponse200
 
     public function setResponseMetadata(?ConversationsJoinPostResponse200ResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;
@@ -75,6 +87,7 @@ class ConversationsJoinPostResponse200
 
     public function setWarning(?string $warning): self
     {
+        $this->initialized['warning'] = true;
         $this->warning = $warning;
 
         return $this;

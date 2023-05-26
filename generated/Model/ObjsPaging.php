@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsPaging
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $count;
@@ -40,6 +44,11 @@ class ObjsPaging
      */
     protected $total;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCount(): ?int
     {
         return $this->count;
@@ -47,6 +56,7 @@ class ObjsPaging
 
     public function setCount(?int $count): self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
 
         return $this;
@@ -59,6 +69,7 @@ class ObjsPaging
 
     public function setPage(?int $page): self
     {
+        $this->initialized['page'] = true;
         $this->page = $page;
 
         return $this;
@@ -71,6 +82,7 @@ class ObjsPaging
 
     public function setPages(?int $pages): self
     {
+        $this->initialized['pages'] = true;
         $this->pages = $pages;
 
         return $this;
@@ -83,6 +95,7 @@ class ObjsPaging
 
     public function setPerPage(?int $perPage): self
     {
+        $this->initialized['perPage'] = true;
         $this->perPage = $perPage;
 
         return $this;
@@ -95,6 +108,7 @@ class ObjsPaging
 
     public function setSpill(?int $spill): self
     {
+        $this->initialized['spill'] = true;
         $this->spill = $spill;
 
         return $this;
@@ -107,6 +121,7 @@ class ObjsPaging
 
     public function setTotal(?int $total): self
     {
+        $this->initialized['total'] = true;
         $this->total = $total;
 
         return $this;

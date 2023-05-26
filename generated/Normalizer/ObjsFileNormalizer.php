@@ -30,19 +30,16 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsFile' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsFile' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -456,222 +453,222 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getChannels()) {
+        if ($object->isInitialized('channels') && null !== $object->getChannels()) {
             $values = [];
             foreach ($object->getChannels() as $value) {
                 $values[] = $value;
             }
             $data['channels'] = $values;
         }
-        if (null !== $object->getCommentsCount()) {
+        if ($object->isInitialized('commentsCount') && null !== $object->getCommentsCount()) {
             $data['comments_count'] = $object->getCommentsCount();
         }
-        if (null !== $object->getCreated()) {
+        if ($object->isInitialized('created') && null !== $object->getCreated()) {
             $data['created'] = $object->getCreated();
         }
-        if (null !== $object->getDateDelete()) {
+        if ($object->isInitialized('dateDelete') && null !== $object->getDateDelete()) {
             $data['date_delete'] = $object->getDateDelete();
         }
-        if (null !== $object->getDeanimateGif()) {
+        if ($object->isInitialized('deanimateGif') && null !== $object->getDeanimateGif()) {
             $data['deanimate_gif'] = $object->getDeanimateGif();
         }
-        if (null !== $object->getDisplayAsBot()) {
+        if ($object->isInitialized('displayAsBot') && null !== $object->getDisplayAsBot()) {
             $data['display_as_bot'] = $object->getDisplayAsBot();
         }
-        if (null !== $object->getEditable()) {
+        if ($object->isInitialized('editable') && null !== $object->getEditable()) {
             $data['editable'] = $object->getEditable();
         }
-        if (null !== $object->getEditor()) {
+        if ($object->isInitialized('editor') && null !== $object->getEditor()) {
             $data['editor'] = $object->getEditor();
         }
-        if (null !== $object->getExternalId()) {
+        if ($object->isInitialized('externalId') && null !== $object->getExternalId()) {
             $data['external_id'] = $object->getExternalId();
         }
-        if (null !== $object->getExternalType()) {
+        if ($object->isInitialized('externalType') && null !== $object->getExternalType()) {
             $data['external_type'] = $object->getExternalType();
         }
-        if (null !== $object->getExternalUrl()) {
+        if ($object->isInitialized('externalUrl') && null !== $object->getExternalUrl()) {
             $data['external_url'] = $object->getExternalUrl();
         }
-        if (null !== $object->getFiletype()) {
+        if ($object->isInitialized('filetype') && null !== $object->getFiletype()) {
             $data['filetype'] = $object->getFiletype();
         }
-        if (null !== $object->getGroups()) {
+        if ($object->isInitialized('groups') && null !== $object->getGroups()) {
             $values_1 = [];
             foreach ($object->getGroups() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['groups'] = $values_1;
         }
-        if (null !== $object->getHasRichPreview()) {
+        if ($object->isInitialized('hasRichPreview') && null !== $object->getHasRichPreview()) {
             $data['has_rich_preview'] = $object->getHasRichPreview();
         }
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getImageExifRotation()) {
+        if ($object->isInitialized('imageExifRotation') && null !== $object->getImageExifRotation()) {
             $data['image_exif_rotation'] = $object->getImageExifRotation();
         }
-        if (null !== $object->getIms()) {
+        if ($object->isInitialized('ims') && null !== $object->getIms()) {
             $values_2 = [];
             foreach ($object->getIms() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['ims'] = $values_2;
         }
-        if (null !== $object->getIsExternal()) {
+        if ($object->isInitialized('isExternal') && null !== $object->getIsExternal()) {
             $data['is_external'] = $object->getIsExternal();
         }
-        if (null !== $object->getIsPublic()) {
+        if ($object->isInitialized('isPublic') && null !== $object->getIsPublic()) {
             $data['is_public'] = $object->getIsPublic();
         }
-        if (null !== $object->getIsStarred()) {
+        if ($object->isInitialized('isStarred') && null !== $object->getIsStarred()) {
             $data['is_starred'] = $object->getIsStarred();
         }
-        if (null !== $object->getIsTombstoned()) {
+        if ($object->isInitialized('isTombstoned') && null !== $object->getIsTombstoned()) {
             $data['is_tombstoned'] = $object->getIsTombstoned();
         }
-        if (null !== $object->getLastEditor()) {
+        if ($object->isInitialized('lastEditor') && null !== $object->getLastEditor()) {
             $data['last_editor'] = $object->getLastEditor();
         }
-        if (null !== $object->getMimetype()) {
+        if ($object->isInitialized('mimetype') && null !== $object->getMimetype()) {
             $data['mimetype'] = $object->getMimetype();
         }
-        if (null !== $object->getMode()) {
+        if ($object->isInitialized('mode') && null !== $object->getMode()) {
             $data['mode'] = $object->getMode();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getNonOwnerEditable()) {
+        if ($object->isInitialized('nonOwnerEditable') && null !== $object->getNonOwnerEditable()) {
             $data['non_owner_editable'] = $object->getNonOwnerEditable();
         }
-        if (null !== $object->getNumStars()) {
+        if ($object->isInitialized('numStars') && null !== $object->getNumStars()) {
             $data['num_stars'] = $object->getNumStars();
         }
-        if (null !== $object->getOriginalH()) {
+        if ($object->isInitialized('originalH') && null !== $object->getOriginalH()) {
             $data['original_h'] = $object->getOriginalH();
         }
-        if (null !== $object->getOriginalW()) {
+        if ($object->isInitialized('originalW') && null !== $object->getOriginalW()) {
             $data['original_w'] = $object->getOriginalW();
         }
-        if (null !== $object->getPermalink()) {
+        if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();
         }
-        if (null !== $object->getPermalinkPublic()) {
+        if ($object->isInitialized('permalinkPublic') && null !== $object->getPermalinkPublic()) {
             $data['permalink_public'] = $object->getPermalinkPublic();
         }
-        if (null !== $object->getPinnedInfo()) {
+        if ($object->isInitialized('pinnedInfo') && null !== $object->getPinnedInfo()) {
             $data['pinned_info'] = $object->getPinnedInfo();
         }
-        if (null !== $object->getPinnedTo()) {
+        if ($object->isInitialized('pinnedTo') && null !== $object->getPinnedTo()) {
             $values_3 = [];
             foreach ($object->getPinnedTo() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['pinned_to'] = $values_3;
         }
-        if (null !== $object->getPjpeg()) {
+        if ($object->isInitialized('pjpeg') && null !== $object->getPjpeg()) {
             $data['pjpeg'] = $object->getPjpeg();
         }
-        if (null !== $object->getPrettyType()) {
+        if ($object->isInitialized('prettyType') && null !== $object->getPrettyType()) {
             $data['pretty_type'] = $object->getPrettyType();
         }
-        if (null !== $object->getPreview()) {
+        if ($object->isInitialized('preview') && null !== $object->getPreview()) {
             $data['preview'] = $object->getPreview();
         }
-        if (null !== $object->getPublicUrlShared()) {
+        if ($object->isInitialized('publicUrlShared') && null !== $object->getPublicUrlShared()) {
             $data['public_url_shared'] = $object->getPublicUrlShared();
         }
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $values_4 = [];
             foreach ($object->getReactions() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['reactions'] = $values_4;
         }
-        if (null !== $object->getShares()) {
+        if ($object->isInitialized('shares') && null !== $object->getShares()) {
             $data['shares'] = $this->normalizer->normalize($object->getShares(), 'json', $context);
         }
-        if (null !== $object->getSize()) {
+        if ($object->isInitialized('size') && null !== $object->getSize()) {
             $data['size'] = $object->getSize();
         }
-        if (null !== $object->getSourceTeam()) {
+        if ($object->isInitialized('sourceTeam') && null !== $object->getSourceTeam()) {
             $data['source_team'] = $object->getSourceTeam();
         }
-        if (null !== $object->getState()) {
+        if ($object->isInitialized('state') && null !== $object->getState()) {
             $data['state'] = $object->getState();
         }
-        if (null !== $object->getThumb1024()) {
+        if ($object->isInitialized('thumb1024') && null !== $object->getThumb1024()) {
             $data['thumb_1024'] = $object->getThumb1024();
         }
-        if (null !== $object->getThumb1024H()) {
+        if ($object->isInitialized('thumb1024H') && null !== $object->getThumb1024H()) {
             $data['thumb_1024_h'] = $object->getThumb1024H();
         }
-        if (null !== $object->getThumb1024W()) {
+        if ($object->isInitialized('thumb1024W') && null !== $object->getThumb1024W()) {
             $data['thumb_1024_w'] = $object->getThumb1024W();
         }
-        if (null !== $object->getThumb160()) {
+        if ($object->isInitialized('thumb160') && null !== $object->getThumb160()) {
             $data['thumb_160'] = $object->getThumb160();
         }
-        if (null !== $object->getThumb360()) {
+        if ($object->isInitialized('thumb360') && null !== $object->getThumb360()) {
             $data['thumb_360'] = $object->getThumb360();
         }
-        if (null !== $object->getThumb360Gif()) {
+        if ($object->isInitialized('thumb360Gif') && null !== $object->getThumb360Gif()) {
             $data['thumb_360_gif'] = $object->getThumb360Gif();
         }
-        if (null !== $object->getThumb360H()) {
+        if ($object->isInitialized('thumb360H') && null !== $object->getThumb360H()) {
             $data['thumb_360_h'] = $object->getThumb360H();
         }
-        if (null !== $object->getThumb360W()) {
+        if ($object->isInitialized('thumb360W') && null !== $object->getThumb360W()) {
             $data['thumb_360_w'] = $object->getThumb360W();
         }
-        if (null !== $object->getThumb480()) {
+        if ($object->isInitialized('thumb480') && null !== $object->getThumb480()) {
             $data['thumb_480'] = $object->getThumb480();
         }
-        if (null !== $object->getThumb480H()) {
+        if ($object->isInitialized('thumb480H') && null !== $object->getThumb480H()) {
             $data['thumb_480_h'] = $object->getThumb480H();
         }
-        if (null !== $object->getThumb480W()) {
+        if ($object->isInitialized('thumb480W') && null !== $object->getThumb480W()) {
             $data['thumb_480_w'] = $object->getThumb480W();
         }
-        if (null !== $object->getThumb64()) {
+        if ($object->isInitialized('thumb64') && null !== $object->getThumb64()) {
             $data['thumb_64'] = $object->getThumb64();
         }
-        if (null !== $object->getThumb720()) {
+        if ($object->isInitialized('thumb720') && null !== $object->getThumb720()) {
             $data['thumb_720'] = $object->getThumb720();
         }
-        if (null !== $object->getThumb720H()) {
+        if ($object->isInitialized('thumb720H') && null !== $object->getThumb720H()) {
             $data['thumb_720_h'] = $object->getThumb720H();
         }
-        if (null !== $object->getThumb720W()) {
+        if ($object->isInitialized('thumb720W') && null !== $object->getThumb720W()) {
             $data['thumb_720_w'] = $object->getThumb720W();
         }
-        if (null !== $object->getThumb80()) {
+        if ($object->isInitialized('thumb80') && null !== $object->getThumb80()) {
             $data['thumb_80'] = $object->getThumb80();
         }
-        if (null !== $object->getThumb800()) {
+        if ($object->isInitialized('thumb800') && null !== $object->getThumb800()) {
             $data['thumb_800'] = $object->getThumb800();
         }
-        if (null !== $object->getThumb800H()) {
+        if ($object->isInitialized('thumb800H') && null !== $object->getThumb800H()) {
             $data['thumb_800_h'] = $object->getThumb800H();
         }
-        if (null !== $object->getThumb800W()) {
+        if ($object->isInitialized('thumb800W') && null !== $object->getThumb800W()) {
             $data['thumb_800_w'] = $object->getThumb800W();
         }
-        if (null !== $object->getThumb960()) {
+        if ($object->isInitialized('thumb960') && null !== $object->getThumb960()) {
             $data['thumb_960'] = $object->getThumb960();
         }
-        if (null !== $object->getThumb960H()) {
+        if ($object->isInitialized('thumb960H') && null !== $object->getThumb960H()) {
             $data['thumb_960_h'] = $object->getThumb960H();
         }
-        if (null !== $object->getThumb960W()) {
+        if ($object->isInitialized('thumb960W') && null !== $object->getThumb960W()) {
             $data['thumb_960_w'] = $object->getThumb960W();
         }
-        if (null !== $object->getThumbTiny()) {
+        if ($object->isInitialized('thumbTiny') && null !== $object->getThumbTiny()) {
             $data['thumb_tiny'] = $object->getThumbTiny();
         }
-        if (null !== $object->getTimestamp()) {
+        if ($object->isInitialized('timestamp') && null !== $object->getTimestamp()) {
             $value_5 = $object->getTimestamp();
             if (\is_int($object->getTimestamp())) {
                 $value_5 = $object->getTimestamp();
@@ -680,25 +677,25 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $data['timestamp'] = $value_5;
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getUpdated()) {
+        if ($object->isInitialized('updated') && null !== $object->getUpdated()) {
             $data['updated'] = $object->getUpdated();
         }
-        if (null !== $object->getUrlPrivate()) {
+        if ($object->isInitialized('urlPrivate') && null !== $object->getUrlPrivate()) {
             $data['url_private'] = $object->getUrlPrivate();
         }
-        if (null !== $object->getUrlPrivateDownload()) {
+        if ($object->isInitialized('urlPrivateDownload') && null !== $object->getUrlPrivateDownload()) {
             $data['url_private_download'] = $object->getUrlPrivateDownload();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
-        if (null !== $object->getUserTeam()) {
+        if ($object->isInitialized('userTeam') && null !== $object->getUserTeam()) {
             $data['user_team'] = $object->getUserTeam();
         }
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
 

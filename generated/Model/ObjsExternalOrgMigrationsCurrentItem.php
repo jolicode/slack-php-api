@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsExternalOrgMigrationsCurrentItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $dateStarted;
@@ -24,6 +28,11 @@ class ObjsExternalOrgMigrationsCurrentItem
      */
     protected $teamId;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getDateStarted(): ?int
     {
         return $this->dateStarted;
@@ -31,6 +40,7 @@ class ObjsExternalOrgMigrationsCurrentItem
 
     public function setDateStarted(?int $dateStarted): self
     {
+        $this->initialized['dateStarted'] = true;
         $this->dateStarted = $dateStarted;
 
         return $this;
@@ -43,6 +53,7 @@ class ObjsExternalOrgMigrationsCurrentItem
 
     public function setTeamId(?string $teamId): self
     {
+        $this->initialized['teamId'] = true;
         $this->teamId = $teamId;
 
         return $this;

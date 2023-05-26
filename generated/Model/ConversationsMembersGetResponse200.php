@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsMembersGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string[]|null
      */
     protected $members;
@@ -27,6 +31,11 @@ class ConversationsMembersGetResponse200
      * @var ConversationsMembersGetResponse200ResponseMetadata|null
      */
     protected $responseMetadata;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return string[]|null
@@ -41,6 +50,7 @@ class ConversationsMembersGetResponse200
      */
     public function setMembers(?array $members): self
     {
+        $this->initialized['members'] = true;
         $this->members = $members;
 
         return $this;
@@ -53,6 +63,7 @@ class ConversationsMembersGetResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -65,6 +76,7 @@ class ConversationsMembersGetResponse200
 
     public function setResponseMetadata(?ConversationsMembersGetResponse200ResponseMetadata $responseMetadata): self
     {
+        $this->initialized['responseMetadata'] = true;
         $this->responseMetadata = $responseMetadata;
 
         return $this;

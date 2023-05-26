@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsTeamProfileField
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $fieldName;
@@ -52,6 +56,11 @@ class ObjsTeamProfileField
      */
     protected $type;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getFieldName(): ?string
     {
         return $this->fieldName;
@@ -59,6 +68,7 @@ class ObjsTeamProfileField
 
     public function setFieldName(?string $fieldName): self
     {
+        $this->initialized['fieldName'] = true;
         $this->fieldName = $fieldName;
 
         return $this;
@@ -71,6 +81,7 @@ class ObjsTeamProfileField
 
     public function setHint(?string $hint): self
     {
+        $this->initialized['hint'] = true;
         $this->hint = $hint;
 
         return $this;
@@ -83,6 +94,7 @@ class ObjsTeamProfileField
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -95,6 +107,7 @@ class ObjsTeamProfileField
 
     public function setIsHidden(?bool $isHidden): self
     {
+        $this->initialized['isHidden'] = true;
         $this->isHidden = $isHidden;
 
         return $this;
@@ -107,6 +120,7 @@ class ObjsTeamProfileField
 
     public function setLabel(?string $label): self
     {
+        $this->initialized['label'] = true;
         $this->label = $label;
 
         return $this;
@@ -119,6 +133,7 @@ class ObjsTeamProfileField
 
     public function setOptions(?ObjsTeamProfileFieldOption $options): self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
 
         return $this;
@@ -131,6 +146,7 @@ class ObjsTeamProfileField
 
     public function setOrdering(?float $ordering): self
     {
+        $this->initialized['ordering'] = true;
         $this->ordering = $ordering;
 
         return $this;
@@ -149,6 +165,7 @@ class ObjsTeamProfileField
      */
     public function setPossibleValues(?array $possibleValues): self
     {
+        $this->initialized['possibleValues'] = true;
         $this->possibleValues = $possibleValues;
 
         return $this;
@@ -161,6 +178,7 @@ class ObjsTeamProfileField
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;

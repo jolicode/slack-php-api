@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsUserProfile
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $alwaysActive;
@@ -192,6 +196,11 @@ class ObjsUserProfile
      */
     protected $username;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAlwaysActive(): ?bool
     {
         return $this->alwaysActive;
@@ -199,6 +208,7 @@ class ObjsUserProfile
 
     public function setAlwaysActive(?bool $alwaysActive): self
     {
+        $this->initialized['alwaysActive'] = true;
         $this->alwaysActive = $alwaysActive;
 
         return $this;
@@ -211,6 +221,7 @@ class ObjsUserProfile
 
     public function setApiAppId(?string $apiAppId): self
     {
+        $this->initialized['apiAppId'] = true;
         $this->apiAppId = $apiAppId;
 
         return $this;
@@ -223,6 +234,7 @@ class ObjsUserProfile
 
     public function setAvatarHash(?string $avatarHash): self
     {
+        $this->initialized['avatarHash'] = true;
         $this->avatarHash = $avatarHash;
 
         return $this;
@@ -235,6 +247,7 @@ class ObjsUserProfile
 
     public function setBotId(?string $botId): self
     {
+        $this->initialized['botId'] = true;
         $this->botId = $botId;
 
         return $this;
@@ -247,6 +260,7 @@ class ObjsUserProfile
 
     public function setDisplayName(?string $displayName): self
     {
+        $this->initialized['displayName'] = true;
         $this->displayName = $displayName;
 
         return $this;
@@ -259,6 +273,7 @@ class ObjsUserProfile
 
     public function setDisplayNameNormalized(?string $displayNameNormalized): self
     {
+        $this->initialized['displayNameNormalized'] = true;
         $this->displayNameNormalized = $displayNameNormalized;
 
         return $this;
@@ -271,6 +286,7 @@ class ObjsUserProfile
 
     public function setEmail(?string $email): self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
 
         return $this;
@@ -289,6 +305,7 @@ class ObjsUserProfile
      */
     public function setFields($fields): self
     {
+        $this->initialized['fields'] = true;
         $this->fields = $fields;
 
         return $this;
@@ -301,6 +318,7 @@ class ObjsUserProfile
 
     public function setFirstName(?string $firstName): self
     {
+        $this->initialized['firstName'] = true;
         $this->firstName = $firstName;
 
         return $this;
@@ -313,6 +331,7 @@ class ObjsUserProfile
 
     public function setGuestExpirationTs(?int $guestExpirationTs): self
     {
+        $this->initialized['guestExpirationTs'] = true;
         $this->guestExpirationTs = $guestExpirationTs;
 
         return $this;
@@ -325,6 +344,7 @@ class ObjsUserProfile
 
     public function setGuestInvitedBy(?string $guestInvitedBy): self
     {
+        $this->initialized['guestInvitedBy'] = true;
         $this->guestInvitedBy = $guestInvitedBy;
 
         return $this;
@@ -337,6 +357,7 @@ class ObjsUserProfile
 
     public function setImage1024(?string $image1024): self
     {
+        $this->initialized['image1024'] = true;
         $this->image1024 = $image1024;
 
         return $this;
@@ -349,6 +370,7 @@ class ObjsUserProfile
 
     public function setImage192(?string $image192): self
     {
+        $this->initialized['image192'] = true;
         $this->image192 = $image192;
 
         return $this;
@@ -361,6 +383,7 @@ class ObjsUserProfile
 
     public function setImage24(?string $image24): self
     {
+        $this->initialized['image24'] = true;
         $this->image24 = $image24;
 
         return $this;
@@ -373,6 +396,7 @@ class ObjsUserProfile
 
     public function setImage32(?string $image32): self
     {
+        $this->initialized['image32'] = true;
         $this->image32 = $image32;
 
         return $this;
@@ -385,6 +409,7 @@ class ObjsUserProfile
 
     public function setImage48(?string $image48): self
     {
+        $this->initialized['image48'] = true;
         $this->image48 = $image48;
 
         return $this;
@@ -397,6 +422,7 @@ class ObjsUserProfile
 
     public function setImage512(?string $image512): self
     {
+        $this->initialized['image512'] = true;
         $this->image512 = $image512;
 
         return $this;
@@ -409,6 +435,7 @@ class ObjsUserProfile
 
     public function setImage72(?string $image72): self
     {
+        $this->initialized['image72'] = true;
         $this->image72 = $image72;
 
         return $this;
@@ -421,6 +448,7 @@ class ObjsUserProfile
 
     public function setImageOriginal(?string $imageOriginal): self
     {
+        $this->initialized['imageOriginal'] = true;
         $this->imageOriginal = $imageOriginal;
 
         return $this;
@@ -433,6 +461,7 @@ class ObjsUserProfile
 
     public function setIsAppUser(?bool $isAppUser): self
     {
+        $this->initialized['isAppUser'] = true;
         $this->isAppUser = $isAppUser;
 
         return $this;
@@ -445,6 +474,7 @@ class ObjsUserProfile
 
     public function setIsCustomImage(?bool $isCustomImage): self
     {
+        $this->initialized['isCustomImage'] = true;
         $this->isCustomImage = $isCustomImage;
 
         return $this;
@@ -457,6 +487,7 @@ class ObjsUserProfile
 
     public function setIsRestricted(?bool $isRestricted): self
     {
+        $this->initialized['isRestricted'] = true;
         $this->isRestricted = $isRestricted;
 
         return $this;
@@ -469,6 +500,7 @@ class ObjsUserProfile
 
     public function setIsUltraRestricted(?bool $isUltraRestricted): self
     {
+        $this->initialized['isUltraRestricted'] = true;
         $this->isUltraRestricted = $isUltraRestricted;
 
         return $this;
@@ -481,6 +513,7 @@ class ObjsUserProfile
 
     public function setLastAvatarImageHash(?string $lastAvatarImageHash): self
     {
+        $this->initialized['lastAvatarImageHash'] = true;
         $this->lastAvatarImageHash = $lastAvatarImageHash;
 
         return $this;
@@ -493,6 +526,7 @@ class ObjsUserProfile
 
     public function setLastName(?string $lastName): self
     {
+        $this->initialized['lastName'] = true;
         $this->lastName = $lastName;
 
         return $this;
@@ -505,6 +539,7 @@ class ObjsUserProfile
 
     public function setMembershipsCount(?int $membershipsCount): self
     {
+        $this->initialized['membershipsCount'] = true;
         $this->membershipsCount = $membershipsCount;
 
         return $this;
@@ -517,6 +552,7 @@ class ObjsUserProfile
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -529,6 +565,7 @@ class ObjsUserProfile
 
     public function setPhone(?string $phone): self
     {
+        $this->initialized['phone'] = true;
         $this->phone = $phone;
 
         return $this;
@@ -541,6 +578,7 @@ class ObjsUserProfile
 
     public function setPronouns(?string $pronouns): self
     {
+        $this->initialized['pronouns'] = true;
         $this->pronouns = $pronouns;
 
         return $this;
@@ -553,6 +591,7 @@ class ObjsUserProfile
 
     public function setRealName(?string $realName): self
     {
+        $this->initialized['realName'] = true;
         $this->realName = $realName;
 
         return $this;
@@ -565,6 +604,7 @@ class ObjsUserProfile
 
     public function setRealNameNormalized(?string $realNameNormalized): self
     {
+        $this->initialized['realNameNormalized'] = true;
         $this->realNameNormalized = $realNameNormalized;
 
         return $this;
@@ -577,6 +617,7 @@ class ObjsUserProfile
 
     public function setSkype(?string $skype): self
     {
+        $this->initialized['skype'] = true;
         $this->skype = $skype;
 
         return $this;
@@ -589,6 +630,7 @@ class ObjsUserProfile
 
     public function setStatusDefaultEmoji(?string $statusDefaultEmoji): self
     {
+        $this->initialized['statusDefaultEmoji'] = true;
         $this->statusDefaultEmoji = $statusDefaultEmoji;
 
         return $this;
@@ -601,6 +643,7 @@ class ObjsUserProfile
 
     public function setStatusDefaultText(?string $statusDefaultText): self
     {
+        $this->initialized['statusDefaultText'] = true;
         $this->statusDefaultText = $statusDefaultText;
 
         return $this;
@@ -613,6 +656,7 @@ class ObjsUserProfile
 
     public function setStatusDefaultTextCanonical(?string $statusDefaultTextCanonical): self
     {
+        $this->initialized['statusDefaultTextCanonical'] = true;
         $this->statusDefaultTextCanonical = $statusDefaultTextCanonical;
 
         return $this;
@@ -625,6 +669,7 @@ class ObjsUserProfile
 
     public function setStatusEmoji(?string $statusEmoji): self
     {
+        $this->initialized['statusEmoji'] = true;
         $this->statusEmoji = $statusEmoji;
 
         return $this;
@@ -637,6 +682,7 @@ class ObjsUserProfile
 
     public function setStatusExpiration(?int $statusExpiration): self
     {
+        $this->initialized['statusExpiration'] = true;
         $this->statusExpiration = $statusExpiration;
 
         return $this;
@@ -649,6 +695,7 @@ class ObjsUserProfile
 
     public function setStatusText(?string $statusText): self
     {
+        $this->initialized['statusText'] = true;
         $this->statusText = $statusText;
 
         return $this;
@@ -661,6 +708,7 @@ class ObjsUserProfile
 
     public function setStatusTextCanonical(?string $statusTextCanonical): self
     {
+        $this->initialized['statusTextCanonical'] = true;
         $this->statusTextCanonical = $statusTextCanonical;
 
         return $this;
@@ -673,6 +721,7 @@ class ObjsUserProfile
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -685,6 +734,7 @@ class ObjsUserProfile
 
     public function setTitle(?string $title): self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
 
         return $this;
@@ -697,6 +747,7 @@ class ObjsUserProfile
 
     public function setUpdated(?int $updated): self
     {
+        $this->initialized['updated'] = true;
         $this->updated = $updated;
 
         return $this;
@@ -709,6 +760,7 @@ class ObjsUserProfile
 
     public function setUserId(?string $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -721,6 +773,7 @@ class ObjsUserProfile
 
     public function setUsername(?string $username): self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
 
         return $this;

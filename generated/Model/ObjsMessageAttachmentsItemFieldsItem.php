@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMessageAttachmentsItemFieldsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $short;
@@ -28,6 +32,11 @@ class ObjsMessageAttachmentsItemFieldsItem
      */
     protected $value;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getShort(): ?bool
     {
         return $this->short;
@@ -35,6 +44,7 @@ class ObjsMessageAttachmentsItemFieldsItem
 
     public function setShort(?bool $short): self
     {
+        $this->initialized['short'] = true;
         $this->short = $short;
 
         return $this;
@@ -47,6 +57,7 @@ class ObjsMessageAttachmentsItemFieldsItem
 
     public function setTitle(?string $title): self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
 
         return $this;
@@ -59,6 +70,7 @@ class ObjsMessageAttachmentsItemFieldsItem
 
     public function setValue(?string $value): self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
 
         return $this;

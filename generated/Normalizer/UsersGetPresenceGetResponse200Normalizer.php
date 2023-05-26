@@ -30,19 +30,16 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\UsersGetPresenceGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\UsersGetPresenceGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -112,20 +109,20 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAutoAway()) {
+        if ($object->isInitialized('autoAway') && null !== $object->getAutoAway()) {
             $data['auto_away'] = $object->getAutoAway();
         }
-        if (null !== $object->getConnectionCount()) {
+        if ($object->isInitialized('connectionCount') && null !== $object->getConnectionCount()) {
             $data['connection_count'] = $object->getConnectionCount();
         }
-        if (null !== $object->getLastActivity()) {
+        if ($object->isInitialized('lastActivity') && null !== $object->getLastActivity()) {
             $data['last_activity'] = $object->getLastActivity();
         }
-        if (null !== $object->getManualAway()) {
+        if ($object->isInitialized('manualAway') && null !== $object->getManualAway()) {
             $data['manual_away'] = $object->getManualAway();
         }
         $data['ok'] = $object->getOk();
-        if (null !== $object->getOnline()) {
+        if ($object->isInitialized('online') && null !== $object->getOnline()) {
             $data['online'] = $object->getOnline();
         }
         $data['presence'] = $object->getPresence();

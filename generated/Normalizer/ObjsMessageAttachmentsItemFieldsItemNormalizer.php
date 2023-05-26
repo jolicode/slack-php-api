@@ -30,19 +30,16 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -80,13 +77,13 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getShort()) {
+        if ($object->isInitialized('short') && null !== $object->getShort()) {
             $data['short'] = $object->getShort();
         }
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getValue()) {
+        if ($object->isInitialized('value') && null !== $object->getValue()) {
             $data['value'] = $object->getValue();
         }
 

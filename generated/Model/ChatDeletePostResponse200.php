@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ChatDeletePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $channel;
@@ -28,6 +32,11 @@ class ChatDeletePostResponse200
      */
     protected $ts;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getChannel(): ?string
     {
         return $this->channel;
@@ -35,6 +44,7 @@ class ChatDeletePostResponse200
 
     public function setChannel(?string $channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -47,6 +57,7 @@ class ChatDeletePostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -59,6 +70,7 @@ class ChatDeletePostResponse200
 
     public function setTs(?string $ts): self
     {
+        $this->initialized['ts'] = true;
         $this->ts = $ts;
 
         return $this;

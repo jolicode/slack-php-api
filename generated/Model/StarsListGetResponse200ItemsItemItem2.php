@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class StarsListGetResponse200ItemsItemItem2
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsComment|null
      */
     protected $comment;
@@ -32,6 +36,11 @@ class StarsListGetResponse200ItemsItemItem2
      */
     protected $type;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getComment(): ?ObjsComment
     {
         return $this->comment;
@@ -39,6 +48,7 @@ class StarsListGetResponse200ItemsItemItem2
 
     public function setComment(?ObjsComment $comment): self
     {
+        $this->initialized['comment'] = true;
         $this->comment = $comment;
 
         return $this;
@@ -51,6 +61,7 @@ class StarsListGetResponse200ItemsItemItem2
 
     public function setDateCreate(?int $dateCreate): self
     {
+        $this->initialized['dateCreate'] = true;
         $this->dateCreate = $dateCreate;
 
         return $this;
@@ -63,6 +74,7 @@ class StarsListGetResponse200ItemsItemItem2
 
     public function setFile(?ObjsFile $file): self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
 
         return $this;
@@ -75,6 +87,7 @@ class StarsListGetResponse200ItemsItemItem2
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;

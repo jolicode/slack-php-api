@@ -45,5 +45,10 @@
     },
     "conflict": {
         "php-http/httplug": "< 2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     }
 }

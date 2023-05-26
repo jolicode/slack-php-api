@@ -30,19 +30,16 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsChannel' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsChannel' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -240,48 +237,48 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAcceptedUser()) {
+        if ($object->isInitialized('acceptedUser') && null !== $object->getAcceptedUser()) {
             $data['accepted_user'] = $object->getAcceptedUser();
         }
         $data['created'] = $object->getCreated();
         $data['creator'] = $object->getCreator();
         $data['id'] = $object->getId();
-        if (null !== $object->getIsArchived()) {
+        if ($object->isInitialized('isArchived') && null !== $object->getIsArchived()) {
             $data['is_archived'] = $object->getIsArchived();
         }
         $data['is_channel'] = $object->getIsChannel();
-        if (null !== $object->getIsFrozen()) {
+        if ($object->isInitialized('isFrozen') && null !== $object->getIsFrozen()) {
             $data['is_frozen'] = $object->getIsFrozen();
         }
-        if (null !== $object->getIsGeneral()) {
+        if ($object->isInitialized('isGeneral') && null !== $object->getIsGeneral()) {
             $data['is_general'] = $object->getIsGeneral();
         }
-        if (null !== $object->getIsMember()) {
+        if ($object->isInitialized('isMember') && null !== $object->getIsMember()) {
             $data['is_member'] = $object->getIsMember();
         }
-        if (null !== $object->getIsMoved()) {
+        if ($object->isInitialized('isMoved') && null !== $object->getIsMoved()) {
             $data['is_moved'] = $object->getIsMoved();
         }
         $data['is_mpim'] = $object->getIsMpim();
-        if (null !== $object->getIsNonThreadable()) {
+        if ($object->isInitialized('isNonThreadable') && null !== $object->getIsNonThreadable()) {
             $data['is_non_threadable'] = $object->getIsNonThreadable();
         }
         $data['is_org_shared'] = $object->getIsOrgShared();
-        if (null !== $object->getIsPendingExtShared()) {
+        if ($object->isInitialized('isPendingExtShared') && null !== $object->getIsPendingExtShared()) {
             $data['is_pending_ext_shared'] = $object->getIsPendingExtShared();
         }
         $data['is_private'] = $object->getIsPrivate();
-        if (null !== $object->getIsReadOnly()) {
+        if ($object->isInitialized('isReadOnly') && null !== $object->getIsReadOnly()) {
             $data['is_read_only'] = $object->getIsReadOnly();
         }
         $data['is_shared'] = $object->getIsShared();
-        if (null !== $object->getIsThreadOnly()) {
+        if ($object->isInitialized('isThreadOnly') && null !== $object->getIsThreadOnly()) {
             $data['is_thread_only'] = $object->getIsThreadOnly();
         }
-        if (null !== $object->getLastRead()) {
+        if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
             $data['last_read'] = $object->getLastRead();
         }
-        if (null !== $object->getLatest()) {
+        if ($object->isInitialized('latest') && null !== $object->getLatest()) {
             $data['latest'] = $object->getLatest();
         }
         $values = [];
@@ -291,35 +288,35 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         $data['members'] = $values;
         $data['name'] = $object->getName();
         $data['name_normalized'] = $object->getNameNormalized();
-        if (null !== $object->getNumMembers()) {
+        if ($object->isInitialized('numMembers') && null !== $object->getNumMembers()) {
             $data['num_members'] = $object->getNumMembers();
         }
-        if (null !== $object->getPendingShared()) {
+        if ($object->isInitialized('pendingShared') && null !== $object->getPendingShared()) {
             $values_1 = [];
             foreach ($object->getPendingShared() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['pending_shared'] = $values_1;
         }
-        if (null !== $object->getPreviousNames()) {
+        if ($object->isInitialized('previousNames') && null !== $object->getPreviousNames()) {
             $values_2 = [];
             foreach ($object->getPreviousNames() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['previous_names'] = $values_2;
         }
-        if (null !== $object->getPriority()) {
+        if ($object->isInitialized('priority') && null !== $object->getPriority()) {
             $data['priority'] = $object->getPriority();
         }
         $data['purpose'] = $this->normalizer->normalize($object->getPurpose(), 'json', $context);
         $data['topic'] = $this->normalizer->normalize($object->getTopic(), 'json', $context);
-        if (null !== $object->getUnlinked()) {
+        if ($object->isInitialized('unlinked') && null !== $object->getUnlinked()) {
             $data['unlinked'] = $object->getUnlinked();
         }
-        if (null !== $object->getUnreadCount()) {
+        if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
             $data['unread_count'] = $object->getUnreadCount();
         }
-        if (null !== $object->getUnreadCountDisplay()) {
+        if ($object->isInitialized('unreadCountDisplay') && null !== $object->getUnreadCountDisplay()) {
             $data['unread_count_display'] = $object->getUnreadCountDisplay();
         }
 

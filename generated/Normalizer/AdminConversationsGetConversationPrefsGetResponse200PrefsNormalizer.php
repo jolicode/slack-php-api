@@ -30,19 +30,16 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer implem
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200Prefs' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200Prefs' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -75,10 +72,10 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer implem
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCanThread()) {
+        if ($object->isInitialized('canThread') && null !== $object->getCanThread()) {
             $data['can_thread'] = $this->normalizer->normalize($object->getCanThread(), 'json', $context);
         }
-        if (null !== $object->getWhoCanPost()) {
+        if ($object->isInitialized('whoCanPost') && null !== $object->getWhoCanPost()) {
             $data['who_can_post'] = $this->normalizer->normalize($object->getWhoCanPost(), 'json', $context);
         }
 

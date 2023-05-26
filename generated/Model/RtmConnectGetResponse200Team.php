@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class RtmConnectGetResponse200Team
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $domain;
@@ -28,6 +32,11 @@ class RtmConnectGetResponse200Team
      */
     protected $name;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getDomain(): ?string
     {
         return $this->domain;
@@ -35,6 +44,7 @@ class RtmConnectGetResponse200Team
 
     public function setDomain(?string $domain): self
     {
+        $this->initialized['domain'] = true;
         $this->domain = $domain;
 
         return $this;
@@ -47,6 +57,7 @@ class RtmConnectGetResponse200Team
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -59,6 +70,7 @@ class RtmConnectGetResponse200Team
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;

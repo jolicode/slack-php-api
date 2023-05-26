@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsOpenPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $alreadyOpen;
@@ -32,6 +36,11 @@ class ConversationsOpenPostResponse200
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getAlreadyOpen(): ?bool
     {
         return $this->alreadyOpen;
@@ -39,24 +48,20 @@ class ConversationsOpenPostResponse200
 
     public function setAlreadyOpen(?bool $alreadyOpen): self
     {
+        $this->initialized['alreadyOpen'] = true;
         $this->alreadyOpen = $alreadyOpen;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getChannel()
     {
         return $this->channel;
     }
 
-    /**
-     * @param mixed $channel
-     */
     public function setChannel($channel): self
     {
+        $this->initialized['channel'] = true;
         $this->channel = $channel;
 
         return $this;
@@ -69,6 +74,7 @@ class ConversationsOpenPostResponse200
 
     public function setNoOp(?bool $noOp): self
     {
+        $this->initialized['noOp'] = true;
         $this->noOp = $noOp;
 
         return $this;
@@ -81,6 +87,7 @@ class ConversationsOpenPostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

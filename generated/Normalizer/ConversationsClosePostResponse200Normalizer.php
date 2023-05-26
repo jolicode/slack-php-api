@@ -30,19 +30,16 @@ class ConversationsClosePostResponse200Normalizer implements DenormalizerInterfa
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ConversationsClosePostResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsClosePostResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -80,10 +77,10 @@ class ConversationsClosePostResponse200Normalizer implements DenormalizerInterfa
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAlreadyClosed()) {
+        if ($object->isInitialized('alreadyClosed') && null !== $object->getAlreadyClosed()) {
             $data['already_closed'] = $object->getAlreadyClosed();
         }
-        if (null !== $object->getNoOp()) {
+        if ($object->isInitialized('noOp') && null !== $object->getNoOp()) {
             $data['no_op'] = $object->getNoOp();
         }
         $data['ok'] = $object->getOk();

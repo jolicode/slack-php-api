@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class AdminConversationsSearchGetResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsChannel[]|null
      */
     protected $channels;
@@ -23,6 +27,11 @@ class AdminConversationsSearchGetResponse200
      * @var string|null
      */
     protected $nextCursor;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return ObjsChannel[]|null
@@ -37,6 +46,7 @@ class AdminConversationsSearchGetResponse200
      */
     public function setChannels(?array $channels): self
     {
+        $this->initialized['channels'] = true;
         $this->channels = $channels;
 
         return $this;
@@ -49,6 +59,7 @@ class AdminConversationsSearchGetResponse200
 
     public function setNextCursor(?string $nextCursor): self
     {
+        $this->initialized['nextCursor'] = true;
         $this->nextCursor = $nextCursor;
 
         return $this;

@@ -30,19 +30,16 @@ class AdminConversationsGetConversationPrefsGetResponse200Normalizer implements 
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -76,7 +73,7 @@ class AdminConversationsGetConversationPrefsGetResponse200Normalizer implements 
     {
         $data = [];
         $data['ok'] = $object->getOk();
-        if (null !== $object->getPrefs()) {
+        if ($object->isInitialized('prefs') && null !== $object->getPrefs()) {
             $data['prefs'] = $this->normalizer->normalize($object->getPrefs(), 'json', $context);
         }
 

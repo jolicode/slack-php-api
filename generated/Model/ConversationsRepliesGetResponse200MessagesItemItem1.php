@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsRepliesGetResponse200MessagesItemItem1
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $isStarred;
@@ -60,6 +64,11 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
      */
     protected $userTeam;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getIsStarred(): ?bool
     {
         return $this->isStarred;
@@ -67,6 +76,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setIsStarred(?bool $isStarred): self
     {
+        $this->initialized['isStarred'] = true;
         $this->isStarred = $isStarred;
 
         return $this;
@@ -79,6 +89,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setParentUserId(?string $parentUserId): self
     {
+        $this->initialized['parentUserId'] = true;
         $this->parentUserId = $parentUserId;
 
         return $this;
@@ -91,6 +102,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setSourceTeam(?string $sourceTeam): self
     {
+        $this->initialized['sourceTeam'] = true;
         $this->sourceTeam = $sourceTeam;
 
         return $this;
@@ -103,6 +115,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -115,6 +128,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setText(?string $text): self
     {
+        $this->initialized['text'] = true;
         $this->text = $text;
 
         return $this;
@@ -127,6 +141,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setThreadTs(?string $threadTs): self
     {
+        $this->initialized['threadTs'] = true;
         $this->threadTs = $threadTs;
 
         return $this;
@@ -139,6 +154,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setTs(?string $ts): self
     {
+        $this->initialized['ts'] = true;
         $this->ts = $ts;
 
         return $this;
@@ -151,6 +167,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setType(?string $type): self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
 
         return $this;
@@ -163,6 +180,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setUser(?string $user): self
     {
+        $this->initialized['user'] = true;
         $this->user = $user;
 
         return $this;
@@ -175,6 +193,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setUserProfile(?ObjsUserProfileShort $userProfile): self
     {
+        $this->initialized['userProfile'] = true;
         $this->userProfile = $userProfile;
 
         return $this;
@@ -187,6 +206,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1
 
     public function setUserTeam(?string $userTeam): self
     {
+        $this->initialized['userTeam'] = true;
         $this->userTeam = $userTeam;
 
         return $this;

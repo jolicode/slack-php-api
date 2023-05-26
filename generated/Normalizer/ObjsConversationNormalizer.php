@@ -30,19 +30,16 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsConversation' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsConversation' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -385,199 +382,199 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAcceptedUser()) {
+        if ($object->isInitialized('acceptedUser') && null !== $object->getAcceptedUser()) {
             $data['accepted_user'] = $object->getAcceptedUser();
         }
-        if (null !== $object->getConnectedTeamIds()) {
+        if ($object->isInitialized('connectedTeamIds') && null !== $object->getConnectedTeamIds()) {
             $values = [];
             foreach ($object->getConnectedTeamIds() as $value) {
                 $values[] = $value;
             }
             $data['connected_team_ids'] = $values;
         }
-        if (null !== $object->getConversationHostId()) {
+        if ($object->isInitialized('conversationHostId') && null !== $object->getConversationHostId()) {
             $data['conversation_host_id'] = $object->getConversationHostId();
         }
         $data['created'] = $object->getCreated();
-        if (null !== $object->getCreator()) {
+        if ($object->isInitialized('creator') && null !== $object->getCreator()) {
             $data['creator'] = $object->getCreator();
         }
-        if (null !== $object->getDisplayCounts()) {
+        if ($object->isInitialized('displayCounts') && null !== $object->getDisplayCounts()) {
             $data['display_counts'] = $this->normalizer->normalize($object->getDisplayCounts(), 'json', $context);
         }
-        if (null !== $object->getEnterpriseId()) {
+        if ($object->isInitialized('enterpriseId') && null !== $object->getEnterpriseId()) {
             $data['enterprise_id'] = $object->getEnterpriseId();
         }
-        if (null !== $object->getHasPins()) {
+        if ($object->isInitialized('hasPins') && null !== $object->getHasPins()) {
             $data['has_pins'] = $object->getHasPins();
         }
         $data['id'] = $object->getId();
-        if (null !== $object->getInternalTeamIds()) {
+        if ($object->isInitialized('internalTeamIds') && null !== $object->getInternalTeamIds()) {
             $values_1 = [];
             foreach ($object->getInternalTeamIds() as $value_1) {
                 $values_1[] = $value_1;
             }
             $data['internal_team_ids'] = $values_1;
         }
-        if (null !== $object->getIsArchived()) {
+        if ($object->isInitialized('isArchived') && null !== $object->getIsArchived()) {
             $data['is_archived'] = $object->getIsArchived();
         }
-        if (null !== $object->getIsChannel()) {
+        if ($object->isInitialized('isChannel') && null !== $object->getIsChannel()) {
             $data['is_channel'] = $object->getIsChannel();
         }
-        if (null !== $object->getIsExtShared()) {
+        if ($object->isInitialized('isExtShared') && null !== $object->getIsExtShared()) {
             $data['is_ext_shared'] = $object->getIsExtShared();
         }
-        if (null !== $object->getIsFrozen()) {
+        if ($object->isInitialized('isFrozen') && null !== $object->getIsFrozen()) {
             $data['is_frozen'] = $object->getIsFrozen();
         }
-        if (null !== $object->getIsGeneral()) {
+        if ($object->isInitialized('isGeneral') && null !== $object->getIsGeneral()) {
             $data['is_general'] = $object->getIsGeneral();
         }
-        if (null !== $object->getIsGlobalShared()) {
+        if ($object->isInitialized('isGlobalShared') && null !== $object->getIsGlobalShared()) {
             $data['is_global_shared'] = $object->getIsGlobalShared();
         }
-        if (null !== $object->getIsGroup()) {
+        if ($object->isInitialized('isGroup') && null !== $object->getIsGroup()) {
             $data['is_group'] = $object->getIsGroup();
         }
         $data['is_im'] = $object->getIsIm();
-        if (null !== $object->getIsMember()) {
+        if ($object->isInitialized('isMember') && null !== $object->getIsMember()) {
             $data['is_member'] = $object->getIsMember();
         }
-        if (null !== $object->getIsMoved()) {
+        if ($object->isInitialized('isMoved') && null !== $object->getIsMoved()) {
             $data['is_moved'] = $object->getIsMoved();
         }
-        if (null !== $object->getIsMpim()) {
+        if ($object->isInitialized('isMpim') && null !== $object->getIsMpim()) {
             $data['is_mpim'] = $object->getIsMpim();
         }
-        if (null !== $object->getIsNonThreadable()) {
+        if ($object->isInitialized('isNonThreadable') && null !== $object->getIsNonThreadable()) {
             $data['is_non_threadable'] = $object->getIsNonThreadable();
         }
-        if (null !== $object->getIsOpen()) {
+        if ($object->isInitialized('isOpen') && null !== $object->getIsOpen()) {
             $data['is_open'] = $object->getIsOpen();
         }
-        if (null !== $object->getIsOrgDefault()) {
+        if ($object->isInitialized('isOrgDefault') && null !== $object->getIsOrgDefault()) {
             $data['is_org_default'] = $object->getIsOrgDefault();
         }
-        if (null !== $object->getIsOrgMandatory()) {
+        if ($object->isInitialized('isOrgMandatory') && null !== $object->getIsOrgMandatory()) {
             $data['is_org_mandatory'] = $object->getIsOrgMandatory();
         }
         $data['is_org_shared'] = $object->getIsOrgShared();
-        if (null !== $object->getIsPendingExtShared()) {
+        if ($object->isInitialized('isPendingExtShared') && null !== $object->getIsPendingExtShared()) {
             $data['is_pending_ext_shared'] = $object->getIsPendingExtShared();
         }
-        if (null !== $object->getIsPrivate()) {
+        if ($object->isInitialized('isPrivate') && null !== $object->getIsPrivate()) {
             $data['is_private'] = $object->getIsPrivate();
         }
-        if (null !== $object->getIsReadOnly()) {
+        if ($object->isInitialized('isReadOnly') && null !== $object->getIsReadOnly()) {
             $data['is_read_only'] = $object->getIsReadOnly();
         }
-        if (null !== $object->getIsShared()) {
+        if ($object->isInitialized('isShared') && null !== $object->getIsShared()) {
             $data['is_shared'] = $object->getIsShared();
         }
-        if (null !== $object->getIsStarred()) {
+        if ($object->isInitialized('isStarred') && null !== $object->getIsStarred()) {
             $data['is_starred'] = $object->getIsStarred();
         }
-        if (null !== $object->getIsThreadOnly()) {
+        if ($object->isInitialized('isThreadOnly') && null !== $object->getIsThreadOnly()) {
             $data['is_thread_only'] = $object->getIsThreadOnly();
         }
-        if (null !== $object->getIsUserDeleted()) {
+        if ($object->isInitialized('isUserDeleted') && null !== $object->getIsUserDeleted()) {
             $data['is_user_deleted'] = $object->getIsUserDeleted();
         }
-        if (null !== $object->getLastRead()) {
+        if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
             $data['last_read'] = $object->getLastRead();
         }
-        if (null !== $object->getLatest()) {
+        if ($object->isInitialized('latest') && null !== $object->getLatest()) {
             $data['latest'] = $object->getLatest();
         }
-        if (null !== $object->getLocale()) {
+        if ($object->isInitialized('locale') && null !== $object->getLocale()) {
             $data['locale'] = $object->getLocale();
         }
-        if (null !== $object->getMembers()) {
+        if ($object->isInitialized('members') && null !== $object->getMembers()) {
             $values_2 = [];
             foreach ($object->getMembers() as $value_2) {
                 $values_2[] = $value_2;
             }
             $data['members'] = $values_2;
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getNameNormalized()) {
+        if ($object->isInitialized('nameNormalized') && null !== $object->getNameNormalized()) {
             $data['name_normalized'] = $object->getNameNormalized();
         }
-        if (null !== $object->getNumMembers()) {
+        if ($object->isInitialized('numMembers') && null !== $object->getNumMembers()) {
             $data['num_members'] = $object->getNumMembers();
         }
-        if (null !== $object->getParentConversation()) {
+        if ($object->isInitialized('parentConversation') && null !== $object->getParentConversation()) {
             $data['parent_conversation'] = $object->getParentConversation();
         }
-        if (null !== $object->getPendingConnectedTeamIds()) {
+        if ($object->isInitialized('pendingConnectedTeamIds') && null !== $object->getPendingConnectedTeamIds()) {
             $values_3 = [];
             foreach ($object->getPendingConnectedTeamIds() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['pending_connected_team_ids'] = $values_3;
         }
-        if (null !== $object->getPendingShared()) {
+        if ($object->isInitialized('pendingShared') && null !== $object->getPendingShared()) {
             $values_4 = [];
             foreach ($object->getPendingShared() as $value_4) {
                 $values_4[] = $value_4;
             }
             $data['pending_shared'] = $values_4;
         }
-        if (null !== $object->getPinCount()) {
+        if ($object->isInitialized('pinCount') && null !== $object->getPinCount()) {
             $data['pin_count'] = $object->getPinCount();
         }
-        if (null !== $object->getPreviousNames()) {
+        if ($object->isInitialized('previousNames') && null !== $object->getPreviousNames()) {
             $values_5 = [];
             foreach ($object->getPreviousNames() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['previous_names'] = $values_5;
         }
-        if (null !== $object->getPriority()) {
+        if ($object->isInitialized('priority') && null !== $object->getPriority()) {
             $data['priority'] = $object->getPriority();
         }
-        if (null !== $object->getPurpose()) {
+        if ($object->isInitialized('purpose') && null !== $object->getPurpose()) {
             $data['purpose'] = $this->normalizer->normalize($object->getPurpose(), 'json', $context);
         }
-        if (null !== $object->getSharedTeamIds()) {
+        if ($object->isInitialized('sharedTeamIds') && null !== $object->getSharedTeamIds()) {
             $values_6 = [];
             foreach ($object->getSharedTeamIds() as $value_6) {
                 $values_6[] = $value_6;
             }
             $data['shared_team_ids'] = $values_6;
         }
-        if (null !== $object->getShares()) {
+        if ($object->isInitialized('shares') && null !== $object->getShares()) {
             $values_7 = [];
             foreach ($object->getShares() as $value_7) {
                 $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
             }
             $data['shares'] = $values_7;
         }
-        if (null !== $object->getTimezoneCount()) {
+        if ($object->isInitialized('timezoneCount') && null !== $object->getTimezoneCount()) {
             $data['timezone_count'] = $object->getTimezoneCount();
         }
-        if (null !== $object->getTopic()) {
+        if ($object->isInitialized('topic') && null !== $object->getTopic()) {
             $data['topic'] = $this->normalizer->normalize($object->getTopic(), 'json', $context);
         }
-        if (null !== $object->getUnlinked()) {
+        if ($object->isInitialized('unlinked') && null !== $object->getUnlinked()) {
             $data['unlinked'] = $object->getUnlinked();
         }
-        if (null !== $object->getUnreadCount()) {
+        if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
             $data['unread_count'] = $object->getUnreadCount();
         }
-        if (null !== $object->getUnreadCountDisplay()) {
+        if ($object->isInitialized('unreadCountDisplay') && null !== $object->getUnreadCountDisplay()) {
             $data['unread_count_display'] = $object->getUnreadCountDisplay();
         }
-        if (null !== $object->getUseCase()) {
+        if ($object->isInitialized('useCase') && null !== $object->getUseCase()) {
             $data['use_case'] = $object->getUseCase();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
-        if (null !== $object->getVersion()) {
+        if ($object->isInitialized('version') && null !== $object->getVersion()) {
             $data['version'] = $object->getVersion();
         }
 

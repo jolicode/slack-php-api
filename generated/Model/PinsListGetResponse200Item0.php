@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class PinsListGetResponse200Item0
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null
      */
     protected $items;
@@ -23,6 +27,11 @@ class PinsListGetResponse200Item0
      * @var bool|null
      */
     protected $ok;
+
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
 
     /**
      * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null
@@ -37,6 +46,7 @@ class PinsListGetResponse200Item0
      */
     public function setItems($items): self
     {
+        $this->initialized['items'] = true;
         $this->items = $items;
 
         return $this;
@@ -49,6 +59,7 @@ class PinsListGetResponse200Item0
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

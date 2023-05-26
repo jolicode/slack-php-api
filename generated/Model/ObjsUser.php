@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsUser
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
      *
      * @var string|null
@@ -138,6 +142,11 @@ class ObjsUser
      */
     protected $updated;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     /**
      * refercing to bug: https://jira.tinyspeck.com/browse/EVALUE-1559.
      */
@@ -151,6 +160,7 @@ class ObjsUser
      */
     public function setColor(?string $color): self
     {
+        $this->initialized['color'] = true;
         $this->color = $color;
 
         return $this;
@@ -163,6 +173,7 @@ class ObjsUser
 
     public function setDeleted(?bool $deleted): self
     {
+        $this->initialized['deleted'] = true;
         $this->deleted = $deleted;
 
         return $this;
@@ -175,6 +186,7 @@ class ObjsUser
 
     public function setEnterpriseUser(?ObjsEnterpriseUser $enterpriseUser): self
     {
+        $this->initialized['enterpriseUser'] = true;
         $this->enterpriseUser = $enterpriseUser;
 
         return $this;
@@ -187,6 +199,7 @@ class ObjsUser
 
     public function setHas2fa(?bool $has2fa): self
     {
+        $this->initialized['has2fa'] = true;
         $this->has2fa = $has2fa;
 
         return $this;
@@ -199,6 +212,7 @@ class ObjsUser
 
     public function setId(?string $id): self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
 
         return $this;
@@ -211,6 +225,7 @@ class ObjsUser
 
     public function setIsAdmin(?bool $isAdmin): self
     {
+        $this->initialized['isAdmin'] = true;
         $this->isAdmin = $isAdmin;
 
         return $this;
@@ -223,6 +238,7 @@ class ObjsUser
 
     public function setIsAppUser(?bool $isAppUser): self
     {
+        $this->initialized['isAppUser'] = true;
         $this->isAppUser = $isAppUser;
 
         return $this;
@@ -235,6 +251,7 @@ class ObjsUser
 
     public function setIsBot(?bool $isBot): self
     {
+        $this->initialized['isBot'] = true;
         $this->isBot = $isBot;
 
         return $this;
@@ -247,6 +264,7 @@ class ObjsUser
 
     public function setIsExternal(?bool $isExternal): self
     {
+        $this->initialized['isExternal'] = true;
         $this->isExternal = $isExternal;
 
         return $this;
@@ -259,6 +277,7 @@ class ObjsUser
 
     public function setIsForgotten(?bool $isForgotten): self
     {
+        $this->initialized['isForgotten'] = true;
         $this->isForgotten = $isForgotten;
 
         return $this;
@@ -271,6 +290,7 @@ class ObjsUser
 
     public function setIsInvitedUser(?bool $isInvitedUser): self
     {
+        $this->initialized['isInvitedUser'] = true;
         $this->isInvitedUser = $isInvitedUser;
 
         return $this;
@@ -283,6 +303,7 @@ class ObjsUser
 
     public function setIsOwner(?bool $isOwner): self
     {
+        $this->initialized['isOwner'] = true;
         $this->isOwner = $isOwner;
 
         return $this;
@@ -295,6 +316,7 @@ class ObjsUser
 
     public function setIsPrimaryOwner(?bool $isPrimaryOwner): self
     {
+        $this->initialized['isPrimaryOwner'] = true;
         $this->isPrimaryOwner = $isPrimaryOwner;
 
         return $this;
@@ -307,6 +329,7 @@ class ObjsUser
 
     public function setIsRestricted(?bool $isRestricted): self
     {
+        $this->initialized['isRestricted'] = true;
         $this->isRestricted = $isRestricted;
 
         return $this;
@@ -319,6 +342,7 @@ class ObjsUser
 
     public function setIsStranger(?bool $isStranger): self
     {
+        $this->initialized['isStranger'] = true;
         $this->isStranger = $isStranger;
 
         return $this;
@@ -331,6 +355,7 @@ class ObjsUser
 
     public function setIsUltraRestricted(?bool $isUltraRestricted): self
     {
+        $this->initialized['isUltraRestricted'] = true;
         $this->isUltraRestricted = $isUltraRestricted;
 
         return $this;
@@ -343,6 +368,7 @@ class ObjsUser
 
     public function setLocale(?string $locale): self
     {
+        $this->initialized['locale'] = true;
         $this->locale = $locale;
 
         return $this;
@@ -355,6 +381,7 @@ class ObjsUser
 
     public function setName(?string $name): self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
 
         return $this;
@@ -367,6 +394,7 @@ class ObjsUser
 
     public function setPresence(?string $presence): self
     {
+        $this->initialized['presence'] = true;
         $this->presence = $presence;
 
         return $this;
@@ -379,6 +407,7 @@ class ObjsUser
 
     public function setProfile(?ObjsUserProfile $profile): self
     {
+        $this->initialized['profile'] = true;
         $this->profile = $profile;
 
         return $this;
@@ -391,6 +420,7 @@ class ObjsUser
 
     public function setRealName(?string $realName): self
     {
+        $this->initialized['realName'] = true;
         $this->realName = $realName;
 
         return $this;
@@ -403,6 +433,7 @@ class ObjsUser
 
     public function setTeam(?string $team): self
     {
+        $this->initialized['team'] = true;
         $this->team = $team;
 
         return $this;
@@ -415,6 +446,7 @@ class ObjsUser
 
     public function setTeamId(?string $teamId): self
     {
+        $this->initialized['teamId'] = true;
         $this->teamId = $teamId;
 
         return $this;
@@ -427,6 +459,7 @@ class ObjsUser
 
     public function setTeamProfile(?ObjsUserTeamProfile $teamProfile): self
     {
+        $this->initialized['teamProfile'] = true;
         $this->teamProfile = $teamProfile;
 
         return $this;
@@ -445,6 +478,7 @@ class ObjsUser
      */
     public function setTeams(?array $teams): self
     {
+        $this->initialized['teams'] = true;
         $this->teams = $teams;
 
         return $this;
@@ -457,24 +491,20 @@ class ObjsUser
 
     public function setTwoFactorType(?string $twoFactorType): self
     {
+        $this->initialized['twoFactorType'] = true;
         $this->twoFactorType = $twoFactorType;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getTz()
     {
         return $this->tz;
     }
 
-    /**
-     * @param mixed $tz
-     */
     public function setTz($tz): self
     {
+        $this->initialized['tz'] = true;
         $this->tz = $tz;
 
         return $this;
@@ -487,6 +517,7 @@ class ObjsUser
 
     public function setTzLabel(?string $tzLabel): self
     {
+        $this->initialized['tzLabel'] = true;
         $this->tzLabel = $tzLabel;
 
         return $this;
@@ -499,6 +530,7 @@ class ObjsUser
 
     public function setTzOffset(?float $tzOffset): self
     {
+        $this->initialized['tzOffset'] = true;
         $this->tzOffset = $tzOffset;
 
         return $this;
@@ -511,6 +543,7 @@ class ObjsUser
 
     public function setUpdated(?float $updated): self
     {
+        $this->initialized['updated'] = true;
         $this->updated = $updated;
 
         return $this;

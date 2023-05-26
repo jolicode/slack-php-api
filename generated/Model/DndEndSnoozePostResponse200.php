@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class DndEndSnoozePostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var bool|null
      */
     protected $dndEnabled;
@@ -36,6 +40,11 @@ class DndEndSnoozePostResponse200
      */
     protected $snoozeEnabled;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getDndEnabled(): ?bool
     {
         return $this->dndEnabled;
@@ -43,6 +52,7 @@ class DndEndSnoozePostResponse200
 
     public function setDndEnabled(?bool $dndEnabled): self
     {
+        $this->initialized['dndEnabled'] = true;
         $this->dndEnabled = $dndEnabled;
 
         return $this;
@@ -55,6 +65,7 @@ class DndEndSnoozePostResponse200
 
     public function setNextDndEndTs(?int $nextDndEndTs): self
     {
+        $this->initialized['nextDndEndTs'] = true;
         $this->nextDndEndTs = $nextDndEndTs;
 
         return $this;
@@ -67,6 +78,7 @@ class DndEndSnoozePostResponse200
 
     public function setNextDndStartTs(?int $nextDndStartTs): self
     {
+        $this->initialized['nextDndStartTs'] = true;
         $this->nextDndStartTs = $nextDndStartTs;
 
         return $this;
@@ -79,6 +91,7 @@ class DndEndSnoozePostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -91,6 +104,7 @@ class DndEndSnoozePostResponse200
 
     public function setSnoozeEnabled(?bool $snoozeEnabled): self
     {
+        $this->initialized['snoozeEnabled'] = true;
         $this->snoozeEnabled = $snoozeEnabled;
 
         return $this;

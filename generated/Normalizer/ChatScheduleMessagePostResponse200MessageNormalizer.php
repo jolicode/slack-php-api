@@ -30,19 +30,16 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200Message' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200Message' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -114,7 +111,7 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAttachments()) {
+        if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
             $values = [];
             foreach ($object->getAttachments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
@@ -122,17 +119,17 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
             $data['attachments'] = $values;
         }
         $data['bot_id'] = $object->getBotId();
-        if (null !== $object->getBotProfile()) {
+        if ($object->isInitialized('botProfile') && null !== $object->getBotProfile()) {
             $data['bot_profile'] = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
         }
-        if (null !== $object->getSubtype()) {
+        if ($object->isInitialized('subtype') && null !== $object->getSubtype()) {
             $data['subtype'] = $object->getSubtype();
         }
         $data['team'] = $object->getTeam();
         $data['text'] = $object->getText();
         $data['type'] = $object->getType();
         $data['user'] = $object->getUser();
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
 

@@ -30,19 +30,16 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsPaging' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsPaging' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -95,17 +92,17 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getCount()) {
+        if ($object->isInitialized('count') && null !== $object->getCount()) {
             $data['count'] = $object->getCount();
         }
         $data['page'] = $object->getPage();
-        if (null !== $object->getPages()) {
+        if ($object->isInitialized('pages') && null !== $object->getPages()) {
             $data['pages'] = $object->getPages();
         }
-        if (null !== $object->getPerPage()) {
+        if ($object->isInitialized('perPage') && null !== $object->getPerPage()) {
             $data['per_page'] = $object->getPerPage();
         }
-        if (null !== $object->getSpill()) {
+        if ($object->isInitialized('spill') && null !== $object->getSpill()) {
             $data['spill'] = $object->getSpill();
         }
         $data['total'] = $object->getTotal();

@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class TeamAccessLogsGetResponse200LoginsItem
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var int|null
      */
     protected $count;
@@ -56,6 +60,11 @@ class TeamAccessLogsGetResponse200LoginsItem
      */
     protected $username;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getCount(): ?int
     {
         return $this->count;
@@ -63,6 +72,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setCount(?int $count): self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
 
         return $this;
@@ -75,6 +85,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setCountry(?string $country): self
     {
+        $this->initialized['country'] = true;
         $this->country = $country;
 
         return $this;
@@ -87,6 +98,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setDateFirst(?int $dateFirst): self
     {
+        $this->initialized['dateFirst'] = true;
         $this->dateFirst = $dateFirst;
 
         return $this;
@@ -99,6 +111,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setDateLast(?int $dateLast): self
     {
+        $this->initialized['dateLast'] = true;
         $this->dateLast = $dateLast;
 
         return $this;
@@ -111,6 +124,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setIp(?string $ip): self
     {
+        $this->initialized['ip'] = true;
         $this->ip = $ip;
 
         return $this;
@@ -123,6 +137,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setIsp(?string $isp): self
     {
+        $this->initialized['isp'] = true;
         $this->isp = $isp;
 
         return $this;
@@ -135,6 +150,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setRegion(?string $region): self
     {
+        $this->initialized['region'] = true;
         $this->region = $region;
 
         return $this;
@@ -147,6 +163,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setUserAgent(?string $userAgent): self
     {
+        $this->initialized['userAgent'] = true;
         $this->userAgent = $userAgent;
 
         return $this;
@@ -159,6 +176,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setUserId(?string $userId): self
     {
+        $this->initialized['userId'] = true;
         $this->userId = $userId;
 
         return $this;
@@ -171,6 +189,7 @@ class TeamAccessLogsGetResponse200LoginsItem
 
     public function setUsername(?string $username): self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
 
         return $this;

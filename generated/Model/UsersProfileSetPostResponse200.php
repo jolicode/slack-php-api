@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class UsersProfileSetPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var string|null
      */
     protected $emailPending;
@@ -32,6 +36,11 @@ class UsersProfileSetPostResponse200
      */
     protected $username;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getEmailPending(): ?string
     {
         return $this->emailPending;
@@ -39,6 +48,7 @@ class UsersProfileSetPostResponse200
 
     public function setEmailPending(?string $emailPending): self
     {
+        $this->initialized['emailPending'] = true;
         $this->emailPending = $emailPending;
 
         return $this;
@@ -51,6 +61,7 @@ class UsersProfileSetPostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;
@@ -63,6 +74,7 @@ class UsersProfileSetPostResponse200
 
     public function setProfile(?ObjsUserProfile $profile): self
     {
+        $this->initialized['profile'] = true;
         $this->profile = $profile;
 
         return $this;
@@ -75,6 +87,7 @@ class UsersProfileSetPostResponse200
 
     public function setUsername(?string $username): self
     {
+        $this->initialized['username'] = true;
         $this->username = $username;
 
         return $this;

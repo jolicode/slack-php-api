@@ -30,19 +30,16 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileField' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsTeamProfileField' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -125,7 +122,7 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getFieldName()) {
+        if ($object->isInitialized('fieldName') && null !== $object->getFieldName()) {
             $value = $object->getFieldName();
             if (\is_string($object->getFieldName())) {
                 $value = $object->getFieldName();
@@ -134,15 +131,15 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
         }
         $data['hint'] = $object->getHint();
         $data['id'] = $object->getId();
-        if (null !== $object->getIsHidden()) {
+        if ($object->isInitialized('isHidden') && null !== $object->getIsHidden()) {
             $data['is_hidden'] = $object->getIsHidden();
         }
         $data['label'] = $object->getLabel();
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
         $data['ordering'] = $object->getOrdering();
-        if (null !== $object->getPossibleValues()) {
+        if ($object->isInitialized('possibleValues') && null !== $object->getPossibleValues()) {
             $value_1 = $object->getPossibleValues();
             if (\is_array($object->getPossibleValues())) {
                 $values = [];

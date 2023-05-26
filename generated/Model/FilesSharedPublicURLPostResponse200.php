@@ -16,6 +16,10 @@ namespace JoliCode\Slack\Api\Model;
 class FilesSharedPublicURLPostResponse200
 {
     /**
+     * @var array
+     */
+    protected $initialized = [];
+    /**
      * @var ObjsFile|null
      */
     protected $file;
@@ -24,6 +28,11 @@ class FilesSharedPublicURLPostResponse200
      */
     protected $ok;
 
+    public function isInitialized($property): bool
+    {
+        return \array_key_exists($property, $this->initialized);
+    }
+
     public function getFile(): ?ObjsFile
     {
         return $this->file;
@@ -31,6 +40,7 @@ class FilesSharedPublicURLPostResponse200
 
     public function setFile(?ObjsFile $file): self
     {
+        $this->initialized['file'] = true;
         $this->file = $file;
 
         return $this;
@@ -43,6 +53,7 @@ class FilesSharedPublicURLPostResponse200
 
     public function setOk(?bool $ok): self
     {
+        $this->initialized['ok'] = true;
         $this->ok = $ok;
 
         return $this;

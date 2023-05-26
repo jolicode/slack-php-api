@@ -30,19 +30,16 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsUserProfile' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -371,19 +368,19 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAlwaysActive()) {
+        if ($object->isInitialized('alwaysActive') && null !== $object->getAlwaysActive()) {
             $data['always_active'] = $object->getAlwaysActive();
         }
-        if (null !== $object->getApiAppId()) {
+        if ($object->isInitialized('apiAppId') && null !== $object->getApiAppId()) {
             $data['api_app_id'] = $object->getApiAppId();
         }
         $data['avatar_hash'] = $object->getAvatarHash();
-        if (null !== $object->getBotId()) {
+        if ($object->isInitialized('botId') && null !== $object->getBotId()) {
             $data['bot_id'] = $object->getBotId();
         }
         $data['display_name'] = $object->getDisplayName();
         $data['display_name_normalized'] = $object->getDisplayNameNormalized();
-        if (null !== $object->getEmail()) {
+        if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $value = $object->getEmail();
             if (\is_string($object->getEmail())) {
                 $value = $object->getEmail();
@@ -401,117 +398,117 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $value_1 = $object->getFields();
         }
         $data['fields'] = $value_1;
-        if (null !== $object->getFirstName()) {
+        if ($object->isInitialized('firstName') && null !== $object->getFirstName()) {
             $value_3 = $object->getFirstName();
             if (\is_string($object->getFirstName())) {
                 $value_3 = $object->getFirstName();
             }
             $data['first_name'] = $value_3;
         }
-        if (null !== $object->getGuestExpirationTs()) {
+        if ($object->isInitialized('guestExpirationTs') && null !== $object->getGuestExpirationTs()) {
             $value_4 = $object->getGuestExpirationTs();
             if (\is_int($object->getGuestExpirationTs())) {
                 $value_4 = $object->getGuestExpirationTs();
             }
             $data['guest_expiration_ts'] = $value_4;
         }
-        if (null !== $object->getGuestInvitedBy()) {
+        if ($object->isInitialized('guestInvitedBy') && null !== $object->getGuestInvitedBy()) {
             $value_5 = $object->getGuestInvitedBy();
             if (\is_string($object->getGuestInvitedBy())) {
                 $value_5 = $object->getGuestInvitedBy();
             }
             $data['guest_invited_by'] = $value_5;
         }
-        if (null !== $object->getImage1024()) {
+        if ($object->isInitialized('image1024') && null !== $object->getImage1024()) {
             $value_6 = $object->getImage1024();
             if (\is_string($object->getImage1024())) {
                 $value_6 = $object->getImage1024();
             }
             $data['image_1024'] = $value_6;
         }
-        if (null !== $object->getImage192()) {
+        if ($object->isInitialized('image192') && null !== $object->getImage192()) {
             $value_7 = $object->getImage192();
             if (\is_string($object->getImage192())) {
                 $value_7 = $object->getImage192();
             }
             $data['image_192'] = $value_7;
         }
-        if (null !== $object->getImage24()) {
+        if ($object->isInitialized('image24') && null !== $object->getImage24()) {
             $value_8 = $object->getImage24();
             if (\is_string($object->getImage24())) {
                 $value_8 = $object->getImage24();
             }
             $data['image_24'] = $value_8;
         }
-        if (null !== $object->getImage32()) {
+        if ($object->isInitialized('image32') && null !== $object->getImage32()) {
             $value_9 = $object->getImage32();
             if (\is_string($object->getImage32())) {
                 $value_9 = $object->getImage32();
             }
             $data['image_32'] = $value_9;
         }
-        if (null !== $object->getImage48()) {
+        if ($object->isInitialized('image48') && null !== $object->getImage48()) {
             $value_10 = $object->getImage48();
             if (\is_string($object->getImage48())) {
                 $value_10 = $object->getImage48();
             }
             $data['image_48'] = $value_10;
         }
-        if (null !== $object->getImage512()) {
+        if ($object->isInitialized('image512') && null !== $object->getImage512()) {
             $value_11 = $object->getImage512();
             if (\is_string($object->getImage512())) {
                 $value_11 = $object->getImage512();
             }
             $data['image_512'] = $value_11;
         }
-        if (null !== $object->getImage72()) {
+        if ($object->isInitialized('image72') && null !== $object->getImage72()) {
             $value_12 = $object->getImage72();
             if (\is_string($object->getImage72())) {
                 $value_12 = $object->getImage72();
             }
             $data['image_72'] = $value_12;
         }
-        if (null !== $object->getImageOriginal()) {
+        if ($object->isInitialized('imageOriginal') && null !== $object->getImageOriginal()) {
             $value_13 = $object->getImageOriginal();
             if (\is_string($object->getImageOriginal())) {
                 $value_13 = $object->getImageOriginal();
             }
             $data['image_original'] = $value_13;
         }
-        if (null !== $object->getIsAppUser()) {
+        if ($object->isInitialized('isAppUser') && null !== $object->getIsAppUser()) {
             $data['is_app_user'] = $object->getIsAppUser();
         }
-        if (null !== $object->getIsCustomImage()) {
+        if ($object->isInitialized('isCustomImage') && null !== $object->getIsCustomImage()) {
             $data['is_custom_image'] = $object->getIsCustomImage();
         }
-        if (null !== $object->getIsRestricted()) {
+        if ($object->isInitialized('isRestricted') && null !== $object->getIsRestricted()) {
             $value_14 = $object->getIsRestricted();
             if (\is_bool($object->getIsRestricted())) {
                 $value_14 = $object->getIsRestricted();
             }
             $data['is_restricted'] = $value_14;
         }
-        if (null !== $object->getIsUltraRestricted()) {
+        if ($object->isInitialized('isUltraRestricted') && null !== $object->getIsUltraRestricted()) {
             $value_15 = $object->getIsUltraRestricted();
             if (\is_bool($object->getIsUltraRestricted())) {
                 $value_15 = $object->getIsUltraRestricted();
             }
             $data['is_ultra_restricted'] = $value_15;
         }
-        if (null !== $object->getLastAvatarImageHash()) {
+        if ($object->isInitialized('lastAvatarImageHash') && null !== $object->getLastAvatarImageHash()) {
             $data['last_avatar_image_hash'] = $object->getLastAvatarImageHash();
         }
-        if (null !== $object->getLastName()) {
+        if ($object->isInitialized('lastName') && null !== $object->getLastName()) {
             $value_16 = $object->getLastName();
             if (\is_string($object->getLastName())) {
                 $value_16 = $object->getLastName();
             }
             $data['last_name'] = $value_16;
         }
-        if (null !== $object->getMembershipsCount()) {
+        if ($object->isInitialized('membershipsCount') && null !== $object->getMembershipsCount()) {
             $data['memberships_count'] = $object->getMembershipsCount();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $value_17 = $object->getName();
             if (\is_string($object->getName())) {
                 $value_17 = $object->getName();
@@ -519,19 +516,19 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $data['name'] = $value_17;
         }
         $data['phone'] = $object->getPhone();
-        if (null !== $object->getPronouns()) {
+        if ($object->isInitialized('pronouns') && null !== $object->getPronouns()) {
             $data['pronouns'] = $object->getPronouns();
         }
         $data['real_name'] = $object->getRealName();
         $data['real_name_normalized'] = $object->getRealNameNormalized();
         $data['skype'] = $object->getSkype();
-        if (null !== $object->getStatusDefaultEmoji()) {
+        if ($object->isInitialized('statusDefaultEmoji') && null !== $object->getStatusDefaultEmoji()) {
             $data['status_default_emoji'] = $object->getStatusDefaultEmoji();
         }
-        if (null !== $object->getStatusDefaultText()) {
+        if ($object->isInitialized('statusDefaultText') && null !== $object->getStatusDefaultText()) {
             $data['status_default_text'] = $object->getStatusDefaultText();
         }
-        if (null !== $object->getStatusDefaultTextCanonical()) {
+        if ($object->isInitialized('statusDefaultTextCanonical') && null !== $object->getStatusDefaultTextCanonical()) {
             $value_18 = $object->getStatusDefaultTextCanonical();
             if (\is_string($object->getStatusDefaultTextCanonical())) {
                 $value_18 = $object->getStatusDefaultTextCanonical();
@@ -539,28 +536,28 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $data['status_default_text_canonical'] = $value_18;
         }
         $data['status_emoji'] = $object->getStatusEmoji();
-        if (null !== $object->getStatusExpiration()) {
+        if ($object->isInitialized('statusExpiration') && null !== $object->getStatusExpiration()) {
             $data['status_expiration'] = $object->getStatusExpiration();
         }
         $data['status_text'] = $object->getStatusText();
-        if (null !== $object->getStatusTextCanonical()) {
+        if ($object->isInitialized('statusTextCanonical') && null !== $object->getStatusTextCanonical()) {
             $value_19 = $object->getStatusTextCanonical();
             if (\is_string($object->getStatusTextCanonical())) {
                 $value_19 = $object->getStatusTextCanonical();
             }
             $data['status_text_canonical'] = $value_19;
         }
-        if (null !== $object->getTeam()) {
+        if ($object->isInitialized('team') && null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
         $data['title'] = $object->getTitle();
-        if (null !== $object->getUpdated()) {
+        if ($object->isInitialized('updated') && null !== $object->getUpdated()) {
             $data['updated'] = $object->getUpdated();
         }
-        if (null !== $object->getUserId()) {
+        if ($object->isInitialized('userId') && null !== $object->getUserId()) {
             $data['user_id'] = $object->getUserId();
         }
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $value_20 = $object->getUsername();
             if (\is_string($object->getUsername())) {
                 $value_20 = $object->getUsername();

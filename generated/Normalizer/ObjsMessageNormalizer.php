@@ -30,19 +30,16 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
     use NormalizerAwareTrait;
     use ValidatorTrait;
 
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
     {
         return 'JoliCode\\Slack\\Api\\Model\\ObjsMessage' === $type;
     }
 
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMessage' === \get_class($data);
     }
 
-    /**
-     * @return mixed
-     */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
         if (isset($data['$ref'])) {
@@ -294,145 +291,145 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize($object, $format = null, array $context = [])
     {
         $data = [];
-        if (null !== $object->getAttachments()) {
+        if ($object->isInitialized('attachments') && null !== $object->getAttachments()) {
             $values = [];
             foreach ($object->getAttachments() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['attachments'] = $values;
         }
-        if (null !== $object->getBlocks()) {
+        if ($object->isInitialized('blocks') && null !== $object->getBlocks()) {
             $values_1 = [];
             foreach ($object->getBlocks() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['blocks'] = $values_1;
         }
-        if (null !== $object->getBotId()) {
+        if ($object->isInitialized('botId') && null !== $object->getBotId()) {
             $data['bot_id'] = $object->getBotId();
         }
-        if (null !== $object->getBotProfile()) {
+        if ($object->isInitialized('botProfile') && null !== $object->getBotProfile()) {
             $data['bot_profile'] = $this->normalizer->normalize($object->getBotProfile(), 'json', $context);
         }
-        if (null !== $object->getClientMsgId()) {
+        if ($object->isInitialized('clientMsgId') && null !== $object->getClientMsgId()) {
             $data['client_msg_id'] = $object->getClientMsgId();
         }
-        if (null !== $object->getComment()) {
+        if ($object->isInitialized('comment') && null !== $object->getComment()) {
             $data['comment'] = $this->normalizer->normalize($object->getComment(), 'json', $context);
         }
-        if (null !== $object->getDisplayAsBot()) {
+        if ($object->isInitialized('displayAsBot') && null !== $object->getDisplayAsBot()) {
             $data['display_as_bot'] = $object->getDisplayAsBot();
         }
-        if (null !== $object->getFile()) {
+        if ($object->isInitialized('file') && null !== $object->getFile()) {
             $data['file'] = $this->normalizer->normalize($object->getFile(), 'json', $context);
         }
-        if (null !== $object->getFiles()) {
+        if ($object->isInitialized('files') && null !== $object->getFiles()) {
             $values_2 = [];
             foreach ($object->getFiles() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
             $data['files'] = $values_2;
         }
-        if (null !== $object->getIcons()) {
+        if ($object->isInitialized('icons') && null !== $object->getIcons()) {
             $data['icons'] = $this->normalizer->normalize($object->getIcons(), 'json', $context);
         }
-        if (null !== $object->getInviter()) {
+        if ($object->isInitialized('inviter') && null !== $object->getInviter()) {
             $data['inviter'] = $object->getInviter();
         }
-        if (null !== $object->getIsDelayedMessage()) {
+        if ($object->isInitialized('isDelayedMessage') && null !== $object->getIsDelayedMessage()) {
             $data['is_delayed_message'] = $object->getIsDelayedMessage();
         }
-        if (null !== $object->getIsIntro()) {
+        if ($object->isInitialized('isIntro') && null !== $object->getIsIntro()) {
             $data['is_intro'] = $object->getIsIntro();
         }
-        if (null !== $object->getIsStarred()) {
+        if ($object->isInitialized('isStarred') && null !== $object->getIsStarred()) {
             $data['is_starred'] = $object->getIsStarred();
         }
-        if (null !== $object->getLastRead()) {
+        if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
             $data['last_read'] = $object->getLastRead();
         }
-        if (null !== $object->getLatestReply()) {
+        if ($object->isInitialized('latestReply') && null !== $object->getLatestReply()) {
             $data['latest_reply'] = $object->getLatestReply();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getOldName()) {
+        if ($object->isInitialized('oldName') && null !== $object->getOldName()) {
             $data['old_name'] = $object->getOldName();
         }
-        if (null !== $object->getParentUserId()) {
+        if ($object->isInitialized('parentUserId') && null !== $object->getParentUserId()) {
             $data['parent_user_id'] = $object->getParentUserId();
         }
-        if (null !== $object->getPermalink()) {
+        if ($object->isInitialized('permalink') && null !== $object->getPermalink()) {
             $data['permalink'] = $object->getPermalink();
         }
-        if (null !== $object->getPinnedTo()) {
+        if ($object->isInitialized('pinnedTo') && null !== $object->getPinnedTo()) {
             $values_3 = [];
             foreach ($object->getPinnedTo() as $value_3) {
                 $values_3[] = $value_3;
             }
             $data['pinned_to'] = $values_3;
         }
-        if (null !== $object->getPurpose()) {
+        if ($object->isInitialized('purpose') && null !== $object->getPurpose()) {
             $data['purpose'] = $object->getPurpose();
         }
-        if (null !== $object->getReactions()) {
+        if ($object->isInitialized('reactions') && null !== $object->getReactions()) {
             $values_4 = [];
             foreach ($object->getReactions() as $value_4) {
                 $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
             }
             $data['reactions'] = $values_4;
         }
-        if (null !== $object->getReplyCount()) {
+        if ($object->isInitialized('replyCount') && null !== $object->getReplyCount()) {
             $data['reply_count'] = $object->getReplyCount();
         }
-        if (null !== $object->getReplyUsers()) {
+        if ($object->isInitialized('replyUsers') && null !== $object->getReplyUsers()) {
             $values_5 = [];
             foreach ($object->getReplyUsers() as $value_5) {
                 $values_5[] = $value_5;
             }
             $data['reply_users'] = $values_5;
         }
-        if (null !== $object->getReplyUsersCount()) {
+        if ($object->isInitialized('replyUsersCount') && null !== $object->getReplyUsersCount()) {
             $data['reply_users_count'] = $object->getReplyUsersCount();
         }
-        if (null !== $object->getSourceTeam()) {
+        if ($object->isInitialized('sourceTeam') && null !== $object->getSourceTeam()) {
             $data['source_team'] = $object->getSourceTeam();
         }
-        if (null !== $object->getSubscribed()) {
+        if ($object->isInitialized('subscribed') && null !== $object->getSubscribed()) {
             $data['subscribed'] = $object->getSubscribed();
         }
-        if (null !== $object->getSubtype()) {
+        if ($object->isInitialized('subtype') && null !== $object->getSubtype()) {
             $data['subtype'] = $object->getSubtype();
         }
-        if (null !== $object->getTeam()) {
+        if ($object->isInitialized('team') && null !== $object->getTeam()) {
             $data['team'] = $object->getTeam();
         }
         $data['text'] = $object->getText();
-        if (null !== $object->getThreadTs()) {
+        if ($object->isInitialized('threadTs') && null !== $object->getThreadTs()) {
             $data['thread_ts'] = $object->getThreadTs();
         }
-        if (null !== $object->getTopic()) {
+        if ($object->isInitialized('topic') && null !== $object->getTopic()) {
             $data['topic'] = $object->getTopic();
         }
         $data['ts'] = $object->getTs();
         $data['type'] = $object->getType();
-        if (null !== $object->getUnreadCount()) {
+        if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
             $data['unread_count'] = $object->getUnreadCount();
         }
-        if (null !== $object->getUpload()) {
+        if ($object->isInitialized('upload') && null !== $object->getUpload()) {
             $data['upload'] = $object->getUpload();
         }
-        if (null !== $object->getUser()) {
+        if ($object->isInitialized('user') && null !== $object->getUser()) {
             $data['user'] = $object->getUser();
         }
-        if (null !== $object->getUserProfile()) {
+        if ($object->isInitialized('userProfile') && null !== $object->getUserProfile()) {
             $data['user_profile'] = $this->normalizer->normalize($object->getUserProfile(), 'json', $context);
         }
-        if (null !== $object->getUserTeam()) {
+        if ($object->isInitialized('userTeam') && null !== $object->getUserTeam()) {
             $data['user_team'] = $object->getUserTeam();
         }
-        if (null !== $object->getUsername()) {
+        if ($object->isInitialized('username') && null !== $object->getUsername()) {
             $data['username'] = $object->getUsername();
         }
 
