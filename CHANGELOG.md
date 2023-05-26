@@ -2,7 +2,6 @@
 
 ## Unreleased
 
-* Add support for PHP 8.2
 * Upgrade JanePHP generated code
 
 ## 4.5.0 (2022-03-30)
