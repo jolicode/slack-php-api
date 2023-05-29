@@ -1327,6 +1327,9 @@
                 "latest_reply": {
                     "$ref": "#/definitions/defs_ts"
                 },
+                "metadata": {
+                    "$ref": "#/definitions/objs_metadata"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -1421,6 +1424,23 @@
                 "type"
             ],
             "title": "Message object",
+            "type": "object"
+        },
+        "objs_metadata": {
+            "additionalProperties": false,
+            "properties": {
+                "event_payload": {
+                    "type": "object"
+                },
+                "event_type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "event_payload",
+                "event_type"
+            ],
+            "title": "Metadata object",
             "type": "object"
         },
         "objs_paging": {
@@ -11638,6 +11658,12 @@
                         "type": "boolean"
                     },
                     {
+                        "description": "JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace.",
+                        "in": "formData",
+                        "name": "metadata",
+                        "type": "string"
+                    },
+                    {
                         "description": "Disable Slack markup parsing by setting to `false`. Enabled by default.",
                         "in": "formData",
                         "name": "mrkdwn",
@@ -13135,6 +13161,12 @@
                         "in": "query",
                         "name": "cursor",
                         "type": "string"
+                    },
+                    {
+                        "description": "Return all metadata associated with this message.",
+                        "in": "query",
+                        "name": "include_all_metadata",
+                        "type": "boolean"
                     },
                     {
                         "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",

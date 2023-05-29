@@ -144,6 +144,11 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         } elseif (\array_key_exists('latest_reply', $data) && null === $data['latest_reply']) {
             $object->setLatestReply(null);
         }
+        if (\array_key_exists('metadata', $data) && null !== $data['metadata']) {
+            $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata', 'json', $context));
+        } elseif (\array_key_exists('metadata', $data) && null === $data['metadata']) {
+            $object->setMetadata(null);
+        }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
@@ -350,6 +355,9 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if ($object->isInitialized('latestReply') && null !== $object->getLatestReply()) {
             $data['latest_reply'] = $object->getLatestReply();
+        }
+        if ($object->isInitialized('metadata') && null !== $object->getMetadata()) {
+            $data['metadata'] = $this->normalizer->normalize($object->getMetadata(), 'json', $context);
         }
         if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
