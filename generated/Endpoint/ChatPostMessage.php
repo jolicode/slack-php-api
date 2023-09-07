@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
+#[\AllowDynamicProperties]
 class ChatPostMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
     use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
