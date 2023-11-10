@@ -22,15 +22,15 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $text The content of the reminder
-     *     @var string $time When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday")
-     *     @var string $user The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.
-     * }
+     * @var string $text The content of the reminder
+     * @var string $time When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday")
+     * @var string $user The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `reminders:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `reminders:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

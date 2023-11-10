@@ -82,4 +82,9 @@ class AdminAppsApprovedListGetResponse200Normalizer implements DenormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminAppsApprovedListGetResponse200' => false];
+    }
 }

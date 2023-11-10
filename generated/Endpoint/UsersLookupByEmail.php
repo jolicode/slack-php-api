@@ -22,9 +22,9 @@ class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
      *
      * @param array $queryParameters {
      *
-     *     @var string $email An email address belonging to a user in the workspace
-     *     @var string $token Authentication token. Requires scope: `users:read.email`
-     * }
+     * @var string $email An email address belonging to a user in the workspace
+     * @var string $token Authentication token. Requires scope: `users:read.email`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

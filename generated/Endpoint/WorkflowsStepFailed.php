@@ -22,14 +22,14 @@ class WorkflowsStepFailed extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var string $error a JSON-based object with a `message` property that should contain a human readable error message
-     *     @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
-     * }
+     * @var string $error a JSON-based object with a `message` property that should contain a human readable error message
+     * @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `workflow.steps:execute`
-     * }
+     * @var string $token Authentication token. Requires scope: `workflow.steps:execute`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

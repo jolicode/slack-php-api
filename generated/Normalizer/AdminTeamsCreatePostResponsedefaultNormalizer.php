@@ -82,4 +82,9 @@ class AdminTeamsCreatePostResponsedefaultNormalizer implements DenormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsCreatePostResponsedefault' => false];
+    }
 }

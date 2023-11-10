@@ -22,11 +22,11 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     *     @var int $limit the maximum number of items to return
-     *     @var string $team_id
-     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
-     * }
+     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     * @var int    $limit the maximum number of items to return
+     * @var string $team_id
+     * @var string $token Authentication token. Requires scope: `admin.teams:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

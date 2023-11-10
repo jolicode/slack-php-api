@@ -22,8 +22,8 @@ class AppsPermissionsScopesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

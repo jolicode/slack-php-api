@@ -22,21 +22,21 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_ids A comma-separated list of `channel_id`s for this user to join. At least one channel is required.
-     *     @var string $custom_message an optional message to send to the user in the invite email
-     *     @var string $email the email address of the person to invite
-     *     @var string $guest_expiration_ts Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
-     *     @var bool $is_restricted Is this user a multi-channel guest user? (default: false)
-     *     @var bool $is_ultra_restricted Is this user a single channel guest user? (default: false)
-     *     @var string $real_name full name of the user
-     *     @var bool $resend Allow this invite to be resent in the future if a user has not signed up yet. (default: false)
-     *     @var string $team_id The ID (`T1234`) of the workspace.
-     * }
+     * @var string $channel_ids A comma-separated list of `channel_id`s for this user to join. At least one channel is required.
+     * @var string $custom_message an optional message to send to the user in the invite email
+     * @var string $email the email address of the person to invite
+     * @var string $guest_expiration_ts Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
+     * @var bool   $is_restricted Is this user a multi-channel guest user? (default: false)
+     * @var bool   $is_ultra_restricted Is this user a single channel guest user? (default: false)
+     * @var string $real_name full name of the user
+     * @var bool   $resend Allow this invite to be resent in the future if a user has not signed up yet. (default: false)
+     * @var string $team_id The ID (`T1234`) of the workspace.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

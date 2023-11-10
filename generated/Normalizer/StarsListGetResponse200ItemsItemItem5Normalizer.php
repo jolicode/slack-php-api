@@ -83,4 +83,9 @@ class StarsListGetResponse200ItemsItemItem5Normalizer implements DenormalizerInt
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\StarsListGetResponse200ItemsItemItem5' => false];
+    }
 }

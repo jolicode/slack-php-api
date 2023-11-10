@@ -82,4 +82,9 @@ class FilesRemoteInfoGetResponsedefaultNormalizer implements DenormalizerInterfa
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\FilesRemoteInfoGetResponsedefault' => false];
+    }
 }

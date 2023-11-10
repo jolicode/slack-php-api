@@ -22,9 +22,9 @@ class BotsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $queryParameters {
      *
-     *     @var string $bot Bot user to get info on
-     *     @var string $token Authentication token. Requires scope: `users:read`
-     * }
+     * @var string $bot Bot user to get info on
+     * @var string $token Authentication token. Requires scope: `users:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

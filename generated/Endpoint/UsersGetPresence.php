@@ -22,9 +22,9 @@ class UsersGetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users:read`
-     *     @var string $user User to get presence info on. Defaults to the authed user.
-     * }
+     * @var string $token Authentication token. Requires scope: `users:read`
+     * @var string $user User to get presence info on. Defaults to the authed user.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

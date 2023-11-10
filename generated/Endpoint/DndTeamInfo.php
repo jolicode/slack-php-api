@@ -22,9 +22,9 @@ class DndTeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `dnd:read`
-     *     @var string $users Comma-separated list of users to fetch Do Not Disturb status for
-     * }
+     * @var string $token Authentication token. Requires scope: `dnd:read`
+     * @var string $users Comma-separated list of users to fetch Do Not Disturb status for
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

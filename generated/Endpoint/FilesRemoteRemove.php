@@ -22,10 +22,10 @@ class FilesRemoteRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $external_id creator defined GUID for the file
-     *     @var string $file specify a file by providing its ID
-     *     @var string $token Authentication token. Requires scope: `remote_files:write`
-     * }
+     * @var string $external_id creator defined GUID for the file
+     * @var string $file specify a file by providing its ID
+     * @var string $token Authentication token. Requires scope: `remote_files:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

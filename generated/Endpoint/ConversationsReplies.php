@@ -22,15 +22,15 @@ class ConversationsReplies extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel conversation ID to fetch thread from
-     *     @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     *     @var bool $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
-     *     @var string $latest end of time range of messages to include in results
-     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     *     @var string $oldest start of time range of messages to include in results
-     *     @var string $token Authentication token. Requires scope: `conversations:history`
-     *     @var string $ts Unique identifier of a thread's parent message. `ts` must be the timestamp of an existing message with 0 or more replies. If there are no replies then just the single message referenced by `ts` will return - it is just an ordinary, unthreaded message.
-     * }
+     * @var string $channel conversation ID to fetch thread from
+     * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     * @var bool   $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
+     * @var string $latest end of time range of messages to include in results
+     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
+     * @var string $oldest start of time range of messages to include in results
+     * @var string $token Authentication token. Requires scope: `conversations:history`
+     * @var string $ts Unique identifier of a thread's parent message. `ts` must be the timestamp of an existing message with 0 or more replies. If there are no replies then just the single message referenced by `ts` will return - it is just an ordinary, unthreaded message.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

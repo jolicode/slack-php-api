@@ -22,8 +22,8 @@ class RemindersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `reminders:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `reminders:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

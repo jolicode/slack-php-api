@@ -22,14 +22,14 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $formParameters {
      *
-     *     @var string $channel Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.
-     *     @var string $text Text of the message to send.
-     * }
+     * @var string $channel Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.
+     * @var string $text Text of the message to send.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `chat:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `chat:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

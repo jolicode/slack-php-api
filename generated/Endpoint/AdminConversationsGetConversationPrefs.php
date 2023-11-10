@@ -22,13 +22,13 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel_id The channel to get preferences for.
-     * }
+     * @var string $channel_id The channel to get preferences for.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.conversations:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

@@ -22,15 +22,15 @@ class AdminInviteRequestsApprovedList extends \JoliCode\Slack\Api\Runtime\Client
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor Value of the `next_cursor` field sent as part of the previous API response
-     *     @var int $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive
-     *     @var string $team_id ID for the workspace where the invite requests were made.
-     * }
+     * @var string $cursor Value of the `next_cursor` field sent as part of the previous API response
+     * @var int    $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive
+     * @var string $team_id ID for the workspace where the invite requests were made.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.invites:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.invites:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

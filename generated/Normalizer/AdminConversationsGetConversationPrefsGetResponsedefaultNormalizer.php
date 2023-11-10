@@ -77,4 +77,9 @@ class AdminConversationsGetConversationPrefsGetResponsedefaultNormalizer impleme
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponsedefault' => false];
+    }
 }

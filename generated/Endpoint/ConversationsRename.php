@@ -22,14 +22,14 @@ class ConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var string $channel ID of conversation to rename
-     *     @var string $name New name for conversation.
-     * }
+     * @var string $channel ID of conversation to rename
+     * @var string $name New name for conversation.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

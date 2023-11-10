@@ -82,4 +82,9 @@ class AdminUsersSessionInvalidatePostResponse200Normalizer implements Denormaliz
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminUsersSessionInvalidatePostResponse200' => false];
+    }
 }

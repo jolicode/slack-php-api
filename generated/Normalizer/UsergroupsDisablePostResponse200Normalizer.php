@@ -77,4 +77,9 @@ class UsergroupsDisablePostResponse200Normalizer implements DenormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\UsergroupsDisablePostResponse200' => false];
+    }
 }

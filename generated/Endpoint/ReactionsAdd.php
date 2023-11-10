@@ -22,15 +22,15 @@ class ReactionsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel where the message to add reaction to was posted
-     *     @var string $name reaction (emoji) name
-     *     @var string $timestamp Timestamp of the message to add reaction to.
-     * }
+     * @var string $channel channel where the message to add reaction to was posted
+     * @var string $name reaction (emoji) name
+     * @var string $timestamp Timestamp of the message to add reaction to.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `reactions:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `reactions:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

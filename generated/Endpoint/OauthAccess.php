@@ -22,12 +22,12 @@ class OauthAccess extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
      *
      * @param array $queryParameters {
      *
-     *     @var string $client_id issued when you created your application
-     *     @var string $client_secret issued when you created your application
-     *     @var string $code the `code` param returned via the OAuth callback
-     *     @var string $redirect_uri this must match the originally submitted URI (if one was sent)
-     *     @var bool $single_channel Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
-     * }
+     * @var string $client_id issued when you created your application
+     * @var string $client_secret issued when you created your application
+     * @var string $code the `code` param returned via the OAuth callback
+     * @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     * @var bool   $single_channel Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

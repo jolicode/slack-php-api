@@ -22,12 +22,12 @@ class OauthToken extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
      *
      * @param array $queryParameters {
      *
-     *     @var string $client_id issued when you created your application
-     *     @var string $client_secret issued when you created your application
-     *     @var string $code the `code` param returned via the OAuth callback
-     *     @var string $redirect_uri this must match the originally submitted URI (if one was sent)
-     *     @var bool $single_channel Request the user to add your app only to a single channel.
-     * }
+     * @var string $client_id issued when you created your application
+     * @var string $client_secret issued when you created your application
+     * @var string $code the `code` param returned via the OAuth callback
+     * @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     * @var bool   $single_channel Request the user to add your app only to a single channel.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

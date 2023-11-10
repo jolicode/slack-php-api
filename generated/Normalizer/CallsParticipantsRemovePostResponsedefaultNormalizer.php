@@ -82,4 +82,9 @@ class CallsParticipantsRemovePostResponsedefaultNormalizer implements Denormaliz
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\CallsParticipantsRemovePostResponsedefault' => false];
+    }
 }

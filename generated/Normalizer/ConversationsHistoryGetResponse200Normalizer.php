@@ -117,4 +117,9 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' => false];
+    }
 }

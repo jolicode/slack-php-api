@@ -22,15 +22,15 @@ class AdminUsersSetExpiration extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
      *
      * @param array $formParameters {
      *
-     *     @var int $expiration_ts timestamp when guest account should be disabled
-     *     @var string $team_id the ID (`T1234`) of the workspace
-     *     @var string $user_id The ID of the user to set an expiration for.
-     * }
+     * @var int    $expiration_ts timestamp when guest account should be disabled
+     * @var string $team_id the ID (`T1234`) of the workspace
+     * @var string $user_id The ID of the user to set an expiration for.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

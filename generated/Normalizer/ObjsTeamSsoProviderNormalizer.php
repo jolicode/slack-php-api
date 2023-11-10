@@ -89,4 +89,9 @@ class ObjsTeamSsoProviderNormalizer implements DenormalizerInterface, Normalizer
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ObjsTeamSsoProvider' => false];
+    }
 }

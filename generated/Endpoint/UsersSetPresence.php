@@ -22,13 +22,13 @@ class UsersSetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $presence Either `auto` or `away`
-     * }
+     * @var string $presence Either `auto` or `away`
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

@@ -82,4 +82,9 @@ class AdminInviteRequestsDenyPostResponse200Normalizer implements DenormalizerIn
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminInviteRequestsDenyPostResponse200' => false];
+    }
 }

@@ -22,15 +22,15 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
      *
      * @param array $formParameters {
      *
-     *     @var bool $mobile_only Only expire mobile sessions (default: false)
-     *     @var string $user_id The ID of the user to wipe sessions for
-     *     @var bool $web_only Only expire web sessions (default: false)
-     * }
+     * @var bool   $mobile_only Only expire mobile sessions (default: false)
+     * @var string $user_id The ID of the user to wipe sessions for
+     * @var bool   $web_only Only expire web sessions (default: false)
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

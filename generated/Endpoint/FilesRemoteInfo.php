@@ -22,10 +22,10 @@ class FilesRemoteInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *
      * @param array $queryParameters {
      *
-     *     @var string $external_id creator defined GUID for the file
-     *     @var string $file specify a file by providing its ID
-     *     @var string $token Authentication token. Requires scope: `remote_files:read`
-     * }
+     * @var string $external_id creator defined GUID for the file
+     * @var string $file specify a file by providing its ID
+     * @var string $token Authentication token. Requires scope: `remote_files:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

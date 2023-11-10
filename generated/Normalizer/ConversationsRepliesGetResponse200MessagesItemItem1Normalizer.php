@@ -141,4 +141,9 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200MessagesItemItem1' => false];
+    }
 }

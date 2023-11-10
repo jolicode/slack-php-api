@@ -22,14 +22,14 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var bool $include_count include the number of users in the User Group
-     *     @var string $usergroup The encoded ID of the User Group to disable.
-     * }
+     * @var bool   $include_count include the number of users in the User Group
+     * @var string $usergroup The encoded ID of the User Group to disable.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `usergroups:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `usergroups:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

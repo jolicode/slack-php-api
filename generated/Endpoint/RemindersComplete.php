@@ -22,13 +22,13 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $reminder The ID of the reminder to be marked as complete
-     * }
+     * @var string $reminder The ID of the reminder to be marked as complete
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `reminders:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `reminders:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

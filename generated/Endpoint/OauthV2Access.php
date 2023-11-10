@@ -22,11 +22,11 @@ class OauthV2Access extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $queryParameters {
      *
-     *     @var string $client_id issued when you created your application
-     *     @var string $client_secret issued when you created your application
-     *     @var string $code the `code` param returned via the OAuth callback
-     *     @var string $redirect_uri This must match the originally submitted URI (if one was sent).
-     * }
+     * @var string $client_id issued when you created your application
+     * @var string $client_secret issued when you created your application
+     * @var string $code the `code` param returned via the OAuth callback
+     * @var string $redirect_uri This must match the originally submitted URI (if one was sent).
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

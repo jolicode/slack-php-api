@@ -22,16 +22,16 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
      *
      * @param array $formParameters {
      *
-     *     @var string $desktop_app_join_url when supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL
-     *     @var string $id `id` returned by the [`calls.add`](/methods/calls.add) method.
-     *     @var string $join_url the URL required for a client to join the Call
-     *     @var string $title The name of the Call.
-     * }
+     * @var string $desktop_app_join_url when supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL
+     * @var string $id `id` returned by the [`calls.add`](/methods/calls.add) method.
+     * @var string $join_url the URL required for a client to join the Call
+     * @var string $title The name of the Call.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `calls:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `calls:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

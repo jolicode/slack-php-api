@@ -22,9 +22,9 @@ class DndSetSnooze extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $num_minutes number of minutes, from now, to snooze until
-     *     @var string $token Authentication token. Requires scope: `dnd:write`
-     * }
+     * @var string $num_minutes number of minutes, from now, to snooze until
+     * @var string $token Authentication token. Requires scope: `dnd:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

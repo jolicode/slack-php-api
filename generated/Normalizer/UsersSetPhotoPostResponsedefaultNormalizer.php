@@ -109,4 +109,9 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\UsersSetPhotoPostResponsedefault' => false];
+    }
 }

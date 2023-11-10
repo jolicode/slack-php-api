@@ -22,15 +22,15 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
      *
      * @param array $queryParameters {
      *
-     *     @var bool $include_num_members flag to include or exclude the count of members per channel
-     *     @var string $team_id ID of the the workspace
-     *     @var string $usergroup_id ID of the IDP group to list default channels for.
-     * }
+     * @var bool   $include_num_members flag to include or exclude the count of members per channel
+     * @var string $team_id ID of the the workspace
+     * @var string $usergroup_id ID of the IDP group to list default channels for.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.usergroups:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.usergroups:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

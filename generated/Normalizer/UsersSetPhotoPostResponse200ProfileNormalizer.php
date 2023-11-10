@@ -119,4 +119,9 @@ class UsersSetPhotoPostResponse200ProfileNormalizer implements DenormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\UsersSetPhotoPostResponse200Profile' => false];
+    }
 }

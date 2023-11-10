@@ -22,8 +22,8 @@ class UsersSetActive extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `users:write`
+     *             }
      */
     public function __construct(array $headerParameters = [])
     {

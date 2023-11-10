@@ -82,4 +82,9 @@ class AdminUsersSetExpirationPostResponse200Normalizer implements DenormalizerIn
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminUsersSetExpirationPostResponse200' => false];
+    }
 }

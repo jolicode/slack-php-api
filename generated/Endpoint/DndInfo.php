@@ -22,9 +22,9 @@ class DndInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `dnd:read`
-     *     @var string $user User to fetch status for (defaults to current user)
-     * }
+     * @var string $token Authentication token. Requires scope: `dnd:read`
+     * @var string $user User to fetch status for (defaults to current user)
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

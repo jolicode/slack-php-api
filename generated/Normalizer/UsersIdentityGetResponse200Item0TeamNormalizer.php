@@ -71,4 +71,9 @@ class UsersIdentityGetResponse200Item0TeamNormalizer implements DenormalizerInte
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item0Team' => false];
+    }
 }

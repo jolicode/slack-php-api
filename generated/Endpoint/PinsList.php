@@ -22,9 +22,9 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel channel to get pinned items for
-     *     @var string $token Authentication token. Requires scope: `pins:read`
-     * }
+     * @var string $channel channel to get pinned items for
+     * @var string $token Authentication token. Requires scope: `pins:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

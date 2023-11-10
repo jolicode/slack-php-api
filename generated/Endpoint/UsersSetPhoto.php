@@ -22,12 +22,12 @@ class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $formParameters {
      *
-     *     @var string $crop_w Width/height of crop box (always square)
-     *     @var string $crop_x X coordinate of top-left corner of crop box
-     *     @var string $crop_y Y coordinate of top-left corner of crop box
-     *     @var string $image file contents via `multipart/form-data`
-     *     @var string $token Authentication token. Requires scope: `users.profile:write`
-     * }
+     * @var string $crop_w Width/height of crop box (always square)
+     * @var string $crop_x X coordinate of top-left corner of crop box
+     * @var string $crop_y Y coordinate of top-left corner of crop box
+     * @var string $image file contents via `multipart/form-data`
+     * @var string $token Authentication token. Requires scope: `users.profile:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

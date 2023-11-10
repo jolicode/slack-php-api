@@ -22,14 +22,14 @@ class ConversationsSetPurpose extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
      *
      * @param array $formParameters {
      *
-     *     @var string $channel Conversation to set the purpose of
-     *     @var string $purpose A new, specialer purpose
-     * }
+     * @var string $channel Conversation to set the purpose of
+     * @var string $purpose A new, specialer purpose
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
