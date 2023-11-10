@@ -26,7 +26,6 @@
                  "created",
                  "id",
                  "is_intro",
-\ No newline at end of file
 @@ -507,20 +510,21 @@
                      "type": "boolean"
                  },
@@ -49,7 +48,6 @@
                  "is_open": {
                      "type": "boolean"
                  },
-\ No newline at end of file
 @@ -559,20 +563,23 @@
                  },
                  "latest": {
@@ -74,7 +72,6 @@
                      "uniqueItems": true
                  },
                  "name": {
-\ No newline at end of file
 @@ -822,20 +829,24 @@
                  },
                  "comments_count": {
@@ -100,7 +97,6 @@
                      "$ref": "#/definitions/defs_user_id"
                  },
                  "external_id": {
-\ No newline at end of file
 @@ -920,43 +931,67 @@
                  },
                  "pinned_info": {
@@ -171,7 +167,6 @@
                  "source_team": {
                      "$ref": "#/definitions/defs_team"
                  },
-\ No newline at end of file
 @@ -974,20 +1009,24 @@
                      "type": "integer"
                  },
@@ -197,7 +192,6 @@
                      "format": "uri",
                      "type": "string"
                  },
-\ No newline at end of file
 @@ -1032,21 +1071,24 @@
                  "thumb_960_h": {
                      "type": "integer"
@@ -224,7 +218,6 @@
                  "url_private": {
                      "format": "uri",
                      "type": "string"
-\ No newline at end of file
 @@ -1095,39 +1137,124 @@
                      "type": "boolean"
                  }
@@ -351,7 +344,6 @@
                      "minItems": 1,
                      "type": "array",
                      "uniqueItems": true
-\ No newline at end of file
 @@ -1193,20 +1320,23 @@
                  },
                  "is_starred": {
@@ -376,7 +368,6 @@
                      "$ref": "#/definitions/defs_user_id"
                  },
                  "permalink": {
-\ No newline at end of file
 @@ -1287,20 +1417,37 @@
                  "username": {
                      "type": "string"
@@ -415,7 +406,6 @@
                  },
                  "page": {
                      "type": "integer"
-\ No newline at end of file
 @@ -1431,91 +1578,46 @@
                      "type": "boolean"
                  }
@@ -530,7 +520,6 @@
                      "im:history",
                      "im:read"
                  ]
-\ No newline at end of file
 @@ -1671,28 +1773,21 @@
                  "deleted": {
                      "type": "boolean"
@@ -561,7 +550,6 @@
                  "enterprise_id": {
                      "$ref": "#/definitions/defs_enterprise_id"
                  },
-\ No newline at end of file
 @@ -1798,28 +1893,21 @@
                      "pattern": "^X[a-zA-Z0-9]{9,}$",
                      "type": "string"
@@ -592,7 +580,6 @@
                      },
                      "type": [
                          "array",
-\ No newline at end of file
 @@ -2332,21 +2420,20 @@
                      },
                      {
@@ -615,7 +602,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -2437,21 +2524,20 @@
                      },
                      {
@@ -638,7 +624,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -2582,21 +2668,20 @@
                      },
                      {
@@ -661,7 +646,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -2738,21 +2823,20 @@
                      },
                      {
@@ -684,7 +668,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -2843,21 +2927,20 @@
                      },
                      {
@@ -707,7 +690,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -2979,21 +3062,20 @@
                          "description": "The channel to archive.",
                          "in": "formData",
@@ -730,7 +712,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3084,21 +3166,20 @@
                          "description": "The channel to convert to private.",
                          "in": "formData",
@@ -753,7 +734,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3215,21 +3296,20 @@
                      {
                          "description": "The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.",
@@ -776,7 +756,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3324,21 +3404,20 @@
                          "description": "The channel to delete.",
                          "in": "formData",
@@ -799,7 +778,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3435,21 +3514,20 @@
                      {
                          "description": "The team to be removed from the channel. Currently only a single team id can be specified.",
@@ -822,7 +800,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3561,21 +3639,20 @@
                      {
                          "description": "A comma-separated list of the workspaces to which the channels you would like returned belong.",
@@ -845,7 +822,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3660,21 +3737,20 @@
                          "description": "The channel to get preferences for.",
                          "in": "query",
@@ -868,7 +844,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3816,21 +3892,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
@@ -891,7 +866,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -3944,21 +4019,20 @@
                          "description": "The channel that the users will be invited to.",
                          "in": "formData",
@@ -914,7 +888,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -4061,21 +4135,20 @@
                      {
                          "in": "formData",
@@ -937,7 +910,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4177,21 +4250,20 @@
                      {
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
@@ -960,7 +932,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4272,21 +4344,20 @@
                      {
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
@@ -983,7 +954,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4379,21 +4450,20 @@
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
                          "in": "formData",
@@ -1006,7 +976,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4505,21 +4575,20 @@
                      {
                          "description": "Comma separated string of team IDs, signifying the workspaces to search through.",
@@ -1029,7 +998,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4664,21 +4733,20 @@
                          "description": "The prefs for this channel in a stringified JSON format.",
                          "in": "formData",
@@ -1052,7 +1020,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4787,21 +4855,20 @@
                      {
                          "description": "The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.",
@@ -1075,7 +1042,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4878,21 +4945,20 @@
                          "description": "The channel to unarchive.",
                          "in": "formData",
@@ -1098,7 +1064,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -4982,21 +5048,20 @@
                          "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
@@ -1121,7 +1086,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -5086,21 +5151,20 @@
                          "description": "The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
@@ -1144,7 +1108,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5181,21 +5245,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
@@ -1167,7 +1130,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5303,21 +5366,20 @@
                          "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
@@ -1190,7 +1152,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5400,21 +5462,20 @@
                          "description": "The new name of the emoji.",
                          "in": "formData",
@@ -1213,7 +1174,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5497,21 +5558,20 @@
                      {
                          "description": "ID for the workspace where the invite request was made.",
@@ -1236,7 +1196,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5599,21 +5659,20 @@
                      {
                          "description": "ID for the workspace where the invite requests were made.",
@@ -1259,7 +1218,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5701,21 +5760,20 @@
                      {
                          "description": "ID for the workspace where the invite requests were made.",
@@ -1282,7 +1240,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5798,21 +5856,20 @@
                      {
                          "description": "ID for the workspace where the invite request was made.",
@@ -1305,7 +1262,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -5900,21 +5957,20 @@
                      {
                          "description": "ID for the workspace where the invite requests were made.",
@@ -1328,7 +1284,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6001,21 +6057,20 @@
                      {
                          "in": "query",
@@ -1351,7 +1306,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6114,21 +6169,20 @@
                          "description": "Team name (for example, Slack Softball Team).",
                          "in": "formData",
@@ -1374,7 +1328,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6211,21 +6265,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 100 both inclusive.",
@@ -1397,7 +1350,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6324,21 +6377,20 @@
                      {
                          "in": "query",
@@ -1420,7 +1372,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6417,21 +6469,20 @@
                      {
                          "in": "query",
@@ -1443,7 +1394,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6524,21 +6575,20 @@
                          "description": "ID for the workspace to set the default channel for.",
                          "in": "formData",
@@ -1466,7 +1416,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6622,21 +6672,20 @@
                          "description": "ID for the workspace to set the description for.",
                          "in": "formData",
@@ -1489,7 +1438,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6720,21 +6769,20 @@
                          "description": "The ID of the workspace to set discoverability on.",
                          "in": "formData",
@@ -1512,7 +1460,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6817,21 +6865,20 @@
                          "description": "ID for the workspace to set the icon for.",
                          "in": "formData",
@@ -1535,7 +1482,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -6915,21 +6962,20 @@
                          "description": "ID for the workspace to set the name for.",
                          "in": "formData",
@@ -1558,7 +1504,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -7012,21 +7058,20 @@
                      {
                          "description": "The workspace to add default channels in.",
@@ -1581,7 +1526,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -7116,21 +7161,20 @@
                          "description": "A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token.",
                          "in": "formData",
@@ -1604,7 +1548,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -7219,21 +7263,20 @@
                      {
                          "description": "ID of the the workspace.",
@@ -1627,7 +1570,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -7342,21 +7385,20 @@
                          "description": "Comma-separated string of channel IDs",
                          "in": "formData",
@@ -1650,7 +1592,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -7458,21 +7500,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1673,7 +1614,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -7606,21 +7647,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1696,7 +1636,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -7709,21 +7749,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "query",
@@ -1719,7 +1658,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -7812,21 +7851,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1742,7 +1680,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -7916,21 +7954,20 @@
                          "description": "ID of the team that the session belongs to",
                          "in": "formData",
@@ -1765,7 +1702,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -8006,21 +8043,20 @@
                      {
                          "description": "Only expire mobile sessions (default: false)",
@@ -1788,7 +1724,6 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
 @@ -8110,21 +8146,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1811,7 +1746,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -8215,21 +8250,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1834,7 +1768,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -8313,21 +8347,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1857,7 +1790,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -8411,21 +8444,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
@@ -1880,7 +1812,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -8528,20 +8560,23 @@
                              "application/json": {
                                  "ok": true
@@ -1905,7 +1836,6 @@
                              "title": "api.test success schema",
                              "type": "object"
                          }
-\ No newline at end of file
 @@ -8556,20 +8591,23 @@
                                  "error": "my_error",
                                  "ok": false
@@ -1930,7 +1860,6 @@
                              "required": [
                                  "error",
                                  "ok"
-\ No newline at end of file
 @@ -8617,21 +8655,20 @@
                      },
                      {
@@ -1953,7 +1882,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -8959,21 +8996,20 @@
                          "description": "A comma separated list of scopes to request for",
                          "in": "query",
@@ -1976,7 +1904,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -9094,21 +9130,20 @@
                      {
                          "description": "The maximum number of items to return.",
@@ -1999,7 +1926,6 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "examples": {
-\ No newline at end of file
 @@ -9265,21 +9300,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -2022,7 +1948,6 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "examples": {
-\ No newline at end of file
 @@ -9441,21 +9475,20 @@
                      {
                          "description": "The maximum number of items to return.",
@@ -2045,7 +1970,6 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "examples": {
-\ No newline at end of file
 @@ -9549,21 +9582,20 @@
                          "description": "A comma separated list of user scopes to request for",
                          "in": "query",
@@ -2068,7 +1992,6 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
 @@ -9777,21 +9809,20 @@
                      {
                          "description": "Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.",
@@ -2091,7 +2014,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -9893,21 +9924,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -2114,7 +2036,6 @@
                      "200": {
                          "description": "Standard success response when used with a user token",
                          "examples": {
-\ No newline at end of file
 @@ -10036,21 +10066,20 @@
                      {
                          "description": "Bot user to get info on",
@@ -2137,7 +2058,6 @@
                      "200": {
                          "description": "When successful, returns bot info by bot ID.",
                          "examples": {
-\ No newline at end of file
 @@ -10261,21 +10290,20 @@
                      {
                          "description": "The name of the Call.",
@@ -2160,7 +2080,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -10363,21 +10391,20 @@
                          "description": "`id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
@@ -2183,7 +2102,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -10453,21 +10480,20 @@
                          "description": "`id` of the Call returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "query",
@@ -2206,7 +2124,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -10543,21 +10569,20 @@
                          "description": "`id` returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
@@ -2229,7 +2146,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -10641,21 +10666,20 @@
                          "description": "`id` returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
@@ -2252,7 +2168,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -10757,21 +10781,20 @@
                      {
                          "description": "The name of the Call.",
@@ -2275,7 +2190,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -10858,21 +10881,21 @@
                      {
                          "description": "Authentication token. Requires scope: `chat:write`",
@@ -2299,7 +2213,6 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
 @@ -11002,21 +11025,20 @@
                          "description": "`scheduled_message_id` returned from call to chat.scheduleMessage",
                          "in": "formData",
@@ -2322,7 +2235,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -11132,21 +11154,20 @@
                          "description": "A message's `ts` value, uniquely identifying it within a channel",
                          "in": "query",
@@ -2345,7 +2257,6 @@
                      "200": {
                          "description": "Standard success response",
                          "examples": {
-\ No newline at end of file
 @@ -11454,21 +11475,20 @@
                      {
                          "description": "Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.",
@@ -2368,7 +2279,6 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
 @@ -11591,21 +11611,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -2392,7 +2302,6 @@
                      {
                          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
                          "in": "formData",
-\ No newline at end of file
 @@ -11631,20 +11651,26 @@
                          "name": "icon_url",
                          "type": "string"
@@ -2420,7 +2329,6 @@
                          "in": "formData",
                          "name": "parse",
                          "type": "string"
-\ No newline at end of file
 @@ -11664,21 +11690,20 @@
                      {
                          "description": "Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.",
@@ -2443,7 +2351,6 @@
                      },
                      {
                          "description": "Pass false to disable unfurling of media content.",
-\ No newline at end of file
 @@ -11857,39 +11882,39 @@
                      {
                          "description": "Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).",
@@ -2486,7 +2393,6 @@
                      {
                          "description": "Pass true to enable unfurling of primarily text-based content.",
                          "in": "formData",
-\ No newline at end of file
 @@ -11934,26 +11959,46 @@
                          "schema": {
                              "additionalProperties": false,
@@ -2534,7 +2440,6 @@
                                              "type": "string"
                                          },
                                          "user": {
-\ No newline at end of file
 @@ -11969,22 +12014,24 @@
                                          "text",
                                          "type",
@@ -2562,7 +2467,6 @@
                              "required": [
                                  "channel",
                                  "message",
-\ No newline at end of file
 @@ -12099,33 +12146,33 @@
                      {
                          "description": "For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.",
@@ -2599,7 +2503,6 @@
                  ],
                  "produces": [
                      "application/json"
-\ No newline at end of file
 @@ -12175,25 +12222,27 @@
                                          "properties": {
                                              "channel_id": {
@@ -2631,7 +2534,6 @@
                                              "date_created",
                                              "id",
                                              "post_at"
-\ No newline at end of file
 @@ -12297,21 +12346,20 @@
                          "description": "Channel ID of the message",
                          "in": "formData",
@@ -2654,7 +2556,6 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
 @@ -12444,21 +12492,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -2678,7 +2579,6 @@
                      {
                          "description": "A JSON-based array of [structured blocks](/block-kit/building), presented as a URL-encoded string. If you don't include this field, the message's previous `blocks` will be retained. To remove previous `blocks`, include an empty array for this field.",
                          "in": "formData",
-\ No newline at end of file
 @@ -12487,21 +12535,20 @@
                      {
                          "description": "New text for the message, using the [default formatting rules](/reference/surfaces/formatting). It's not required when presenting `blocks` or `attachments`.",
@@ -2701,7 +2601,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -13109,42 +13156,48 @@
                          "name": "channel",
                          "type": "string"
@@ -2753,7 +2652,6 @@
                  ],
                  "produces": [
                      "application/json"
-\ No newline at end of file
 @@ -13202,20 +13255,32 @@
                                      },
                                      "minItems": 1,
@@ -2787,7 +2685,6 @@
                                  "ok",
                                  "pin_count"
                              ],
-\ No newline at end of file
 @@ -14202,20 +14267,26 @@
                          "name": "exclude_archived",
                          "type": "boolean"
@@ -2815,7 +2712,6 @@
                          "in": "query",
                          "name": "types",
                          "type": "string"
-\ No newline at end of file
 @@ -14429,21 +14500,21 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:write`",
@@ -2839,7 +2735,6 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
 @@ -15097,45 +15168,45 @@
                      {
                          "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
@@ -2889,7 +2784,6 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
 @@ -15306,20 +15377,32 @@
                                                      "user"
                                                  ],
@@ -2923,7 +2817,6 @@
                              "type": "object"
                          }
                      },
-\ No newline at end of file
 @@ -15818,21 +15901,20 @@
                          "description": "The dialog definition. This must be a JSON-encoded string.",
                          "in": "query",
@@ -2946,7 +2839,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -15945,21 +16027,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -2969,7 +2861,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -16058,21 +16139,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -2992,7 +2883,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -16331,21 +16411,20 @@
                          "description": "Number of minutes, from now, to snooze until.",
                          "in": "formData",
@@ -3015,7 +2905,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -16556,21 +16635,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3038,7 +2927,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -17126,27 +17204,27 @@
                      {
                          "description": "Authentication token. Requires scope: `files:read`",
@@ -3069,7 +2957,6 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
-\ No newline at end of file
 @@ -17594,27 +17672,27 @@
                      {
                          "description": "Authentication token. Requires scope: `remote_files:read`",
@@ -3100,7 +2987,6 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
 @@ -18234,21 +18312,21 @@
                      }
                  ],
@@ -3124,7 +3010,6 @@
                  "parameters": [
                      {
                          "description": "Comma-separated list of channel names or IDs where the file will be shared.",
-\ No newline at end of file
 @@ -18259,21 +18337,21 @@
                      {
                          "description": "File contents via a POST variable. If omitting this parameter, you must provide a `file`.",
@@ -3148,7 +3033,6 @@
                      {
                          "description": "A [file type](/types/file#file_types) identifier.",
                          "in": "formData",
-\ No newline at end of file
 @@ -18283,21 +18361,21 @@
                      {
                          "description": "The message text introducing the file in specified `channels`.",
@@ -3172,7 +3056,6 @@
                      {
                          "description": "Authentication token. Requires scope: `files:write:user`",
                          "in": "formData",
-\ No newline at end of file
 @@ -18478,21 +18556,20 @@
                      {
                          "description": "Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.",
@@ -3195,7 +3078,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -18984,34 +19061,32 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3231,7 +3113,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -19112,28 +19187,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3261,7 +3142,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -19349,21 +19422,20 @@
                      {
                          "description": "Timestamp of the message to un-pin.",
@@ -3284,7 +3164,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -19485,21 +19557,20 @@
                          "description": "Timestamp of the message to add reaction to.",
                          "in": "formData",
@@ -3307,7 +3186,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -19629,21 +19700,20 @@
                      {
                          "description": "Timestamp of the message to get reactions for.",
@@ -3330,7 +3208,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -19670,21 +19740,21 @@
                                      "timestamp": 1507850315,
                                      "title": "computer.gif",
@@ -3354,7 +3231,6 @@
                                              "$ref": "#/definitions/objs_message"
                                          },
                                          "ok": {
-\ No newline at end of file
 @@ -19859,21 +19929,20 @@
                      },
                      {
@@ -3377,7 +3253,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -20173,21 +20242,20 @@
                      {
                          "description": "Timestamp of the message to remove reaction from.",
@@ -3400,7 +3275,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -20303,21 +20371,20 @@
                          "description": "When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. \"in 15 minutes,\" or \"every Thursday\")",
                          "in": "formData",
@@ -3423,7 +3297,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -20918,21 +20985,20 @@
                      {
                          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).",
@@ -3446,7 +3319,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -21116,21 +21182,20 @@
                      {
                          "description": "Change sort direction to ascending (`asc`) or descending (`desc`).",
@@ -3469,7 +3341,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -21285,21 +21350,20 @@
                      {
                          "description": "Timestamp of the message to add star to.",
@@ -3492,7 +3363,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -21716,21 +21780,20 @@
                      {
                          "description": "Timestamp of the message to remove star from.",
@@ -3515,7 +3385,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -21849,21 +21912,20 @@
                      },
                      {
@@ -3538,7 +3407,6 @@
                      "200": {
                          "description": "This response demonstrates pagination and two access log entries.",
                          "examples": {
-\ No newline at end of file
 @@ -22064,21 +22126,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3561,7 +3429,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -22169,21 +22230,20 @@
                      {
                          "description": "Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels",
@@ -3584,7 +3451,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -22327,21 +22387,20 @@
                      {
                          "description": "Filter logs to this service. Defaults to all logs.",
@@ -3607,7 +3473,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -22502,21 +22561,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3630,7 +3495,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -22732,21 +22790,20 @@
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
@@ -3653,7 +3517,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -22856,21 +22913,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
@@ -3676,7 +3539,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -22987,21 +23043,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
@@ -3699,7 +3561,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -23127,24 +23182,29 @@
                          "name": "include_disabled",
                          "type": "boolean"
@@ -3731,7 +3592,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -23347,21 +23407,20 @@
                      {
                          "description": "A name for the User Group. Must be unique among User Groups.",
@@ -3754,7 +3614,6 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
 @@ -23504,25 +23563,24 @@
                      {
                          "description": "Allow results that involve disabled User Groups.",
@@ -3782,7 +3641,6 @@
                      "application/json"
                  ],
                  "responses": {
-\ No newline at end of file
 @@ -23644,21 +23702,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
@@ -3805,7 +3663,6 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
 @@ -24036,21 +24093,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3828,7 +3685,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -24147,21 +24203,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3851,7 +3707,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -24630,21 +24685,20 @@
                      {
                          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
@@ -3874,7 +3729,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -24800,20 +24854,26 @@
                          "name": "include_locale",
                          "type": "boolean"
@@ -3902,7 +3756,6 @@
                      "application/json"
                  ],
                  "responses": {
-\ No newline at end of file
 @@ -25011,28 +25071,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -3932,7 +3785,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -25175,21 +25233,20 @@
                      {
                          "description": "Include labels for each ID in custom profile fields",
@@ -3955,7 +3807,6 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
 @@ -25330,21 +25387,20 @@
                      {
                          "description": "Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.",
@@ -3978,7 +3829,6 @@
                      },
                      {
                          "description": "Value to set a single key to. Usable only if `profile` is not passed.",
-\ No newline at end of file
 @@ -25491,21 +25547,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
@@ -4001,7 +3851,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -25625,21 +25680,20 @@
                      {
                          "description": "File contents via `multipart/form-data`.",
@@ -4024,7 +3873,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -25814,21 +25868,20 @@
                          "description": "Either `auto` or `away`",
                          "in": "formData",
@@ -4047,7 +3895,6 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
 @@ -25910,49 +25963,48 @@
                              "users:write"
                          ]
@@ -4101,7 +3948,6 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
 @@ -26053,55 +26105,54 @@
                              "none"
                          ]
@@ -4162,7 +4008,6 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
 @@ -26192,49 +26243,48 @@
                              "none"
                          ]
@@ -4216,7 +4061,6 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
 @@ -26341,60 +26391,59 @@
                              "none"
                          ]
@@ -4283,7 +4127,6 @@
                  "responses": {
                      "200": {
                          "description": "Typical success response includes the updated view payload.",
-\ No newline at end of file
 @@ -26496,48 +26545,47 @@
                              "none"
                          ]
@@ -4336,7 +4179,6 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
 @@ -26592,49 +26640,48 @@
                              "workflow.steps:execute"
                          ]
@@ -4390,7 +4232,6 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
 @@ -26689,66 +26736,65 @@
                              "workflow.steps:execute"
                          ]
@@ -4464,4 +4305,3 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
