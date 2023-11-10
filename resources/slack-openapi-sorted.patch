@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2023-11-10 09:45:10
-+++ resources/slack-openapi-patched.json	2023-11-10 09:45:31
+--- resources/slack-openapi-sorted.json	2023-11-10 10:07:30
++++ resources/slack-openapi-patched.json	2023-11-10 10:07:30
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
