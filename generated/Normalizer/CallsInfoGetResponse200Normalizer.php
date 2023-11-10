@@ -82,4 +82,9 @@ class CallsInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\CallsInfoGetResponse200' => false];
+    }
 }

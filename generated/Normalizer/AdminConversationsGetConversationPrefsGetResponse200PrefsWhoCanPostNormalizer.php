@@ -97,4 +97,9 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPostNormali
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost' => false];
+    }
 }

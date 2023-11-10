@@ -22,9 +22,9 @@ class AuthRevoke extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
      *
      * @param array $queryParameters {
      *
-     *     @var bool $test setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var bool   $test setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -22,16 +22,16 @@ class FilesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel filter files appearing in a specific channel, indicated by its ID
-     *     @var string $count
-     *     @var string $page
-     *     @var bool $show_files_hidden_by_limit show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit
-     *     @var string $token Authentication token. Requires scope: `files:read`
-     *     @var string $ts_from filter files created after this timestamp (inclusive)
-     *     @var string $ts_to filter files created before this timestamp (inclusive)
-     *     @var string $types Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
-     *     @var string $user Filter files created by a single user.
-     * }
+     * @var string $channel filter files appearing in a specific channel, indicated by its ID
+     * @var string $count
+     * @var string $page
+     * @var bool   $show_files_hidden_by_limit show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit
+     * @var string $token Authentication token. Requires scope: `files:read`
+     * @var string $ts_from filter files created after this timestamp (inclusive)
+     * @var string $ts_to filter files created before this timestamp (inclusive)
+     * @var string $types Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
+     * @var string $user Filter files created by a single user.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

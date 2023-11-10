@@ -82,4 +82,9 @@ class AdminTeamsSettingsSetDefaultChannelsPostResponsedefaultNormalizer implemen
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault' => false];
+    }
 }

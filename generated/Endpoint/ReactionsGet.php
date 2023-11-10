@@ -22,13 +22,13 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel channel where the message to get reactions for was posted
-     *     @var string $file file to get reactions for
-     *     @var string $file_comment file comment to get reactions for
-     *     @var bool $full if true always return the complete reaction list
-     *     @var string $timestamp timestamp of the message to get reactions for
-     *     @var string $token Authentication token. Requires scope: `reactions:read`
-     * }
+     * @var string $channel channel where the message to get reactions for was posted
+     * @var string $file file to get reactions for
+     * @var string $file_comment file comment to get reactions for
+     * @var bool   $full if true always return the complete reaction list
+     * @var string $timestamp timestamp of the message to get reactions for
+     * @var string $token Authentication token. Requires scope: `reactions:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

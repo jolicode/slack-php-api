@@ -22,14 +22,14 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var bool $is_private Create a private channel instead of a public one
-     *     @var string $name Name of the public or private channel to create
-     * }
+     * @var bool   $is_private Create a private channel instead of a public one
+     * @var string $name Name of the public or private channel to create
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

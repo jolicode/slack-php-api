@@ -22,10 +22,10 @@ class RtmConnect extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
      *
      * @param array $queryParameters {
      *
-     *     @var bool $batch_presence_aware Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).
-     *     @var bool $presence_sub Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).
-     *     @var string $token Authentication token. Requires scope: `rtm:stream`
-     * }
+     * @var bool   $batch_presence_aware Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).
+     * @var bool   $presence_sub Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).
+     * @var string $token Authentication token. Requires scope: `rtm:stream`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

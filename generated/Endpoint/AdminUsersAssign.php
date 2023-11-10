@@ -22,17 +22,17 @@ class AdminUsersAssign extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_ids comma separated values of channel IDs to add user in the new workspace
-     *     @var bool $is_restricted true if user should be added to the workspace as a guest
-     *     @var bool $is_ultra_restricted true if user should be added to the workspace as a single-channel guest
-     *     @var string $team_id the ID (`T1234`) of the workspace
-     *     @var string $user_id The ID of the user to add to the workspace.
-     * }
+     * @var string $channel_ids comma separated values of channel IDs to add user in the new workspace
+     * @var bool   $is_restricted true if user should be added to the workspace as a guest
+     * @var bool   $is_ultra_restricted true if user should be added to the workspace as a single-channel guest
+     * @var string $team_id the ID (`T1234`) of the workspace
+     * @var string $user_id The ID of the user to add to the workspace.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

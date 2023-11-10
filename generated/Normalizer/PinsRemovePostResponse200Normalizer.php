@@ -71,4 +71,9 @@ class PinsRemovePostResponse200Normalizer implements DenormalizerInterface, Norm
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\PinsRemovePostResponse200' => false];
+    }
 }

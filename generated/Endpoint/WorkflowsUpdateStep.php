@@ -22,17 +22,17 @@ class WorkflowsUpdateStep extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var string $inputs A JSON key-value map of inputs required from a user during configuration. This is the data your app expects to receive when the workflow step starts. **Please note**: the embedded variable format is set and replaced by the workflow system. You cannot create custom variables that will be replaced at runtime. [Read more about variables in workflow steps here](/workflows/steps#variables).
-     *     @var string $outputs An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed.
-     *     @var string $step_image_url an optional field that can be used to override app image that is shown in the Workflow Builder
-     *     @var string $step_name an optional field that can be used to override the step name that is shown in the Workflow Builder
-     *     @var string $workflow_step_edit_id A context identifier provided with `view_submission` payloads used to call back to `workflows.updateStep`.
-     * }
+     * @var string $inputs A JSON key-value map of inputs required from a user during configuration. This is the data your app expects to receive when the workflow step starts. **Please note**: the embedded variable format is set and replaced by the workflow system. You cannot create custom variables that will be replaced at runtime. [Read more about variables in workflow steps here](/workflows/steps#variables).
+     * @var string $outputs An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed.
+     * @var string $step_image_url an optional field that can be used to override app image that is shown in the Workflow Builder
+     * @var string $step_name an optional field that can be used to override the step name that is shown in the Workflow Builder
+     * @var string $workflow_step_edit_id A context identifier provided with `view_submission` payloads used to call back to `workflows.updateStep`.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `workflow.steps:execute`
-     * }
+     * @var string $token Authentication token. Requires scope: `workflow.steps:execute`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

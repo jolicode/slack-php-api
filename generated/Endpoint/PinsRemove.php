@@ -22,14 +22,14 @@ class PinsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel where the item is pinned to
-     *     @var string $timestamp Timestamp of the message to un-pin.
-     * }
+     * @var string $channel channel where the item is pinned to
+     * @var string $timestamp Timestamp of the message to un-pin.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `pins:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `pins:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

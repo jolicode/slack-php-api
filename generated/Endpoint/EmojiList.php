@@ -22,8 +22,8 @@ class EmojiList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `emoji:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `emoji:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

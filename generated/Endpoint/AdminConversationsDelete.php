@@ -22,13 +22,13 @@ class AdminConversationsDelete extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_id The channel to delete.
-     * }
+     * @var string $channel_id The channel to delete.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

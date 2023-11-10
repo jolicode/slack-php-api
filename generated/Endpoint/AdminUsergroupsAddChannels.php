@@ -22,15 +22,15 @@ class AdminUsergroupsAddChannels extends \JoliCode\Slack\Api\Runtime\Client\Base
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_ids comma separated string of channel IDs
-     *     @var string $team_id the workspace to add default channels in
-     *     @var string $usergroup_id ID of the IDP group to add default channels for.
-     * }
+     * @var string $channel_ids comma separated string of channel IDs
+     * @var string $team_id the workspace to add default channels in
+     * @var string $usergroup_id ID of the IDP group to add default channels for.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.usergroups:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.usergroups:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

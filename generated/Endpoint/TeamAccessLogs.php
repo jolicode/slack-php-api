@@ -22,11 +22,11 @@ class TeamAccessLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $queryParameters {
      *
-     *     @var string $before end of time range of logs to include in results (inclusive)
-     *     @var string $count
-     *     @var string $page
-     *     @var string $token Authentication token. Requires scope: `admin`
-     * }
+     * @var string $before end of time range of logs to include in results (inclusive)
+     * @var string $count
+     * @var string $page
+     * @var string $token Authentication token. Requires scope: `admin`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

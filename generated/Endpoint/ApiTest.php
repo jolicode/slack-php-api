@@ -22,9 +22,9 @@ class ApiTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
      *
      * @param array $queryParameters {
      *
-     *     @var string $error Error response to return
-     *     @var string $foo example property to return
-     * }
+     * @var string $error Error response to return
+     * @var string $foo example property to return
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

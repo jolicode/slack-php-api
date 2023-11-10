@@ -22,15 +22,15 @@ class AdminUsergroupsAddTeams extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
      *
      * @param array $formParameters {
      *
-     *     @var bool $auto_provision when `true`, this method automatically creates new workspace accounts for the IDP group members
-     *     @var string $team_ids A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token.
-     *     @var string $usergroup_id An encoded usergroup (IDP Group) ID.
-     * }
+     * @var bool   $auto_provision when `true`, this method automatically creates new workspace accounts for the IDP group members
+     * @var string $team_ids A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token.
+     * @var string $usergroup_id An encoded usergroup (IDP Group) ID.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

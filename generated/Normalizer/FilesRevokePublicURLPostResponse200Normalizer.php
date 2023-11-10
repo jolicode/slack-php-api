@@ -77,4 +77,9 @@ class FilesRevokePublicURLPostResponse200Normalizer implements DenormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\FilesRevokePublicURLPostResponse200' => false];
+    }
 }

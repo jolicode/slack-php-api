@@ -22,13 +22,13 @@ class CallsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *
      * @param array $queryParameters {
      *
-     *     @var string $id `id` of the Call returned by the [`calls.add`](/methods/calls.add) method.
-     * }
+     * @var string $id `id` of the Call returned by the [`calls.add`](/methods/calls.add) method.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `calls:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `calls:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

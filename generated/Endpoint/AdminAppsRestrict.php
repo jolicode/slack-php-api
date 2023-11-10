@@ -22,15 +22,15 @@ class AdminAppsRestrict extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $app_id the id of the app to restrict
-     *     @var string $request_id the id of the request to restrict
-     *     @var string $team_id
-     * }
+     * @var string $app_id the id of the app to restrict
+     * @var string $request_id the id of the request to restrict
+     * @var string $team_id
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.apps:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.apps:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

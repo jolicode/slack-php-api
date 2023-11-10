@@ -22,14 +22,14 @@ class AdminUsersSetOwner extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
      *
      * @param array $formParameters {
      *
-     *     @var string $team_id the ID (`T1234`) of the workspace
-     *     @var string $user_id Id of the user to promote to owner.
-     * }
+     * @var string $team_id the ID (`T1234`) of the workspace
+     * @var string $user_id Id of the user to promote to owner.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

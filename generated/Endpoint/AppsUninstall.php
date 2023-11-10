@@ -22,10 +22,10 @@ class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $queryParameters {
      *
-     *     @var string $client_id issued when you created your application
-     *     @var string $client_secret issued when you created your application
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $client_id issued when you created your application
+     * @var string $client_secret issued when you created your application
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

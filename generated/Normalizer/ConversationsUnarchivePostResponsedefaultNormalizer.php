@@ -101,4 +101,9 @@ class ConversationsUnarchivePostResponsedefaultNormalizer implements Denormalize
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsUnarchivePostResponsedefault' => false];
+    }
 }

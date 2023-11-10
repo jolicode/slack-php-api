@@ -22,8 +22,8 @@ class DndEndDnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `dnd:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `dnd:write`
+     *             }
      */
     public function __construct(array $headerParameters = [])
     {

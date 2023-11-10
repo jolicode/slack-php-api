@@ -81,4 +81,9 @@ class AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer implemen
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AppsPermissionsResourcesListGetResponse200ResourcesItem' => false];
+    }
 }

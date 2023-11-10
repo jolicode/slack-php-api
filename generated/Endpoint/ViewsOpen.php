@@ -22,14 +22,14 @@ class ViewsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *
      * @param array $formParameters {
      *
-     *     @var string $trigger_id exchange a trigger to post to the user
-     *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
-     * }
+     * @var string $trigger_id exchange a trigger to post to the user
+     * @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

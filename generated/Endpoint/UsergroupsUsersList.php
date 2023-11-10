@@ -22,10 +22,10 @@ class UsergroupsUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $queryParameters {
      *
-     *     @var bool $include_disabled allow results that involve disabled User Groups
-     *     @var string $token Authentication token. Requires scope: `usergroups:read`
-     *     @var string $usergroup The encoded ID of the User Group to read.
-     * }
+     * @var bool   $include_disabled allow results that involve disabled User Groups
+     * @var string $token Authentication token. Requires scope: `usergroups:read`
+     * @var string $usergroup The encoded ID of the User Group to read.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

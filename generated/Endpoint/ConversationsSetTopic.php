@@ -22,14 +22,14 @@ class ConversationsSetTopic extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
      *
      * @param array $formParameters {
      *
-     *     @var string $channel Conversation to set the topic of
-     *     @var string $topic The new topic string. Does not support formatting or linkification.
-     * }
+     * @var string $channel Conversation to set the topic of
+     * @var string $topic The new topic string. Does not support formatting or linkification.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

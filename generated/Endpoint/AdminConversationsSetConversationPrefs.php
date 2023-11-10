@@ -22,14 +22,14 @@ class AdminConversationsSetConversationPrefs extends \JoliCode\Slack\Api\Runtime
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_id The channel to set the prefs for
-     *     @var string $prefs The prefs for this channel in a stringified JSON format.
-     * }
+     * @var string $channel_id The channel to set the prefs for
+     * @var string $prefs The prefs for this channel in a stringified JSON format.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

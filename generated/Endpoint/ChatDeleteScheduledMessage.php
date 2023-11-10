@@ -22,15 +22,15 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
      *
      * @param array $formParameters {
      *
-     *     @var bool $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
-     *     @var string $channel The channel the scheduled_message is posting to
-     *     @var string $scheduled_message_id `scheduled_message_id` returned from call to chat.scheduleMessage
-     * }
+     * @var bool   $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
+     * @var string $channel The channel the scheduled_message is posting to
+     * @var string $scheduled_message_id `scheduled_message_id` returned from call to chat.scheduleMessage
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `chat:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `chat:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

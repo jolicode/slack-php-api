@@ -22,14 +22,14 @@ class AdminTeamsSettingsSetDiscoverability extends \JoliCode\Slack\Api\Runtime\C
      *
      * @param array $formParameters {
      *
-     *     @var string $discoverability This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.
-     *     @var string $team_id The ID of the workspace to set discoverability on.
-     * }
+     * @var string $discoverability This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.
+     * @var string $team_id The ID of the workspace to set discoverability on.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

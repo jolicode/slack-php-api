@@ -77,4 +77,9 @@ class ConversationsSetTopicPostResponse200Normalizer implements DenormalizerInte
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsSetTopicPostResponse200' => false];
+    }
 }

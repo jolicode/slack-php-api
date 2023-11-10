@@ -22,16 +22,16 @@ class StarsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
-     *     @var string $file file to add star to
-     *     @var string $file_comment file comment to add star to
-     *     @var string $timestamp Timestamp of the message to add star to.
-     * }
+     * @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
+     * @var string $file file to add star to
+     * @var string $file_comment file comment to add star to
+     * @var string $timestamp Timestamp of the message to add star to.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `stars:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `stars:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

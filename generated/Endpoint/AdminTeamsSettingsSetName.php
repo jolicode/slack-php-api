@@ -22,14 +22,14 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
      *
      * @param array $formParameters {
      *
-     *     @var string $name the new name of the workspace
-     *     @var string $team_id ID for the workspace to set the name for.
-     * }
+     * @var string $name the new name of the workspace
+     * @var string $team_id ID for the workspace to set the name for.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

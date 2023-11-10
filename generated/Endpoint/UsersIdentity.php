@@ -22,8 +22,8 @@ class UsersIdentity extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `identity.basic`
-     * }
+     * @var string $token Authentication token. Requires scope: `identity.basic`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

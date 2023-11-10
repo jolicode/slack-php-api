@@ -22,14 +22,14 @@ class WorkflowsStepCompleted extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
      *
      * @param array $formParameters {
      *
-     *     @var string $outputs Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your [`outputs`](/reference/workflows/workflow_step#output) array from your `workflow_step` object.
-     *     @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
-     * }
+     * @var string $outputs Key-value object of outputs from your step. Keys of this object reflect the configured `key` properties of your [`outputs`](/reference/workflows/workflow_step#output) array from your `workflow_step` object.
+     * @var string $workflow_step_execute_id Context identifier that maps to the correct workflow step execution.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `workflow.steps:execute`
-     * }
+     * @var string $token Authentication token. Requires scope: `workflow.steps:execute`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

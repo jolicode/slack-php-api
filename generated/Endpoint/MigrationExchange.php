@@ -22,11 +22,11 @@ class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $queryParameters {
      *
-     *     @var string $team_id Specify team_id starts with `T` in case of Org Token
-     *     @var bool $to_old Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
-     *     @var string $token Authentication token. Requires scope: `tokens.basic`
-     *     @var string $users A comma-separated list of user ids, up to 400 per request
-     * }
+     * @var string $team_id Specify team_id starts with `T` in case of Org Token
+     * @var bool   $to_old Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
+     * @var string $token Authentication token. Requires scope: `tokens.basic`
+     * @var string $users A comma-separated list of user ids, up to 400 per request
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

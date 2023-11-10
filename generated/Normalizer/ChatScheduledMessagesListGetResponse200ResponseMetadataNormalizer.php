@@ -71,4 +71,9 @@ class ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer implemen
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponse200ResponseMetadata' => false];
+    }
 }

@@ -71,4 +71,9 @@ class ConversationsMarkPostResponse200Normalizer implements DenormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsMarkPostResponse200' => false];
+    }
 }

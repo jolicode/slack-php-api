@@ -22,10 +22,10 @@ class AppsPermissionsRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
      *
      * @param array $queryParameters {
      *
-     *     @var string $scopes A comma separated list of scopes to request for
-     *     @var string $token Authentication token. Requires scope: `none`
-     *     @var string $trigger_id Token used to trigger the permissions API
-     * }
+     * @var string $scopes A comma separated list of scopes to request for
+     * @var string $token Authentication token. Requires scope: `none`
+     * @var string $trigger_id Token used to trigger the permissions API
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

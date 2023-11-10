@@ -22,15 +22,15 @@ class ViewsPublish extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
      *
      * @param array $formParameters {
      *
-     *     @var string $hash a string that represents view state to protect against possible race conditions
-     *     @var string $user_id `id` of the user you want publish a view to
-     *     @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
-     * }
+     * @var string $hash a string that represents view state to protect against possible race conditions
+     * @var string $user_id `id` of the user you want publish a view to
+     * @var string $view A [view payload](/reference/surfaces/views). This must be a JSON-encoded string.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

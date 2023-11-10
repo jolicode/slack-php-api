@@ -71,4 +71,9 @@ class ConversationsRepliesGetResponse200ResponseMetadataNormalizer implements De
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200ResponseMetadata' => false];
+    }
 }

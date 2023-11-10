@@ -71,4 +71,9 @@ class StarsRemovePostResponse200Normalizer implements DenormalizerInterface, Nor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\StarsRemovePostResponse200' => false];
+    }
 }

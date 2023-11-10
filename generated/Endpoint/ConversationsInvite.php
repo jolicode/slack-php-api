@@ -22,14 +22,14 @@ class ConversationsInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var string $channel the ID of the public or private channel to invite user(s) to
-     *     @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
-     * }
+     * @var string $channel the ID of the public or private channel to invite user(s) to
+     * @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

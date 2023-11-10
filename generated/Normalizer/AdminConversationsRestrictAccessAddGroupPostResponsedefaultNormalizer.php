@@ -82,4 +82,9 @@ class AdminConversationsRestrictAccessAddGroupPostResponsedefaultNormalizer impl
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsRestrictAccessAddGroupPostResponsedefault' => false];
+    }
 }

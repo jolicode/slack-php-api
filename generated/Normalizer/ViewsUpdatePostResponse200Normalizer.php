@@ -82,4 +82,9 @@ class ViewsUpdatePostResponse200Normalizer implements DenormalizerInterface, Nor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ViewsUpdatePostResponse200' => false];
+    }
 }

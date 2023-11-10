@@ -22,14 +22,14 @@ class PinsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel to pin the item in
-     *     @var string $timestamp Timestamp of the message to pin.
-     * }
+     * @var string $channel channel to pin the item in
+     * @var string $timestamp Timestamp of the message to pin.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `pins:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `pins:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

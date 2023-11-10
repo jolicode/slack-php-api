@@ -82,4 +82,9 @@ class AdminEmojiAddAliasPostResponse200Normalizer implements DenormalizerInterfa
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminEmojiAddAliasPostResponse200' => false];
+    }
 }

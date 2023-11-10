@@ -82,4 +82,9 @@ class AdminTeamsSettingsSetDescriptionPostResponsedefaultNormalizer implements D
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsSettingsSetDescriptionPostResponsedefault' => false];
+    }
 }

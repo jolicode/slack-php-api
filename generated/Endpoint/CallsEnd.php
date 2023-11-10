@@ -22,14 +22,14 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $formParameters {
      *
-     *     @var int $duration Call duration in seconds
-     *     @var string $id `id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.
-     * }
+     * @var int    $duration Call duration in seconds
+     * @var string $id `id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `calls:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `calls:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

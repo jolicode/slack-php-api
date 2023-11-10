@@ -22,18 +22,18 @@ class UsergroupsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $channels a comma separated string of encoded channel IDs for which the User Group uses as a default
-     *     @var string $description a short description of the User Group
-     *     @var string $handle A mention handle. Must be unique among channels, users and User Groups.
-     *     @var bool $include_count include the number of users in the User Group
-     *     @var string $name A name for the User Group. Must be unique among User Groups.
-     *     @var string $usergroup The encoded ID of the User Group to update.
-     * }
+     * @var string $channels a comma separated string of encoded channel IDs for which the User Group uses as a default
+     * @var string $description a short description of the User Group
+     * @var string $handle A mention handle. Must be unique among channels, users and User Groups.
+     * @var bool   $include_count include the number of users in the User Group
+     * @var string $name A name for the User Group. Must be unique among User Groups.
+     * @var string $usergroup The encoded ID of the User Group to update.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `usergroups:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `usergroups:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

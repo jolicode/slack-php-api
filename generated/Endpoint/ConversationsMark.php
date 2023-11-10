@@ -22,14 +22,14 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel or conversation to set the read cursor for
-     *     @var string $ts Unique identifier of message you want marked as most recently seen in this conversation.
-     * }
+     * @var string $channel channel or conversation to set the read cursor for
+     * @var string $ts Unique identifier of message you want marked as most recently seen in this conversation.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

@@ -135,4 +135,9 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200Message' => false];
+    }
 }

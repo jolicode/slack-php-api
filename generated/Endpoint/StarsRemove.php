@@ -22,16 +22,16 @@ class StarsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
-     *     @var string $file file to remove star from
-     *     @var string $file_comment file comment to remove star from
-     *     @var string $timestamp Timestamp of the message to remove star from.
-     * }
+     * @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
+     * @var string $file file to remove star from
+     * @var string $file_comment file comment to remove star from
+     * @var string $timestamp Timestamp of the message to remove star from.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `stars:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `stars:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

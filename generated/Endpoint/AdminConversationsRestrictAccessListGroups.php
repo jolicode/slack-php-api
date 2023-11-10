@@ -22,10 +22,10 @@ class AdminConversationsRestrictAccessListGroups extends \JoliCode\Slack\Api\Run
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel_id
-     *     @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:read`
-     * }
+     * @var string $channel_id
+     * @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
+     * @var string $token Authentication token. Requires scope: `admin.conversations:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

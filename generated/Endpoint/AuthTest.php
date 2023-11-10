@@ -22,8 +22,8 @@ class AuthTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $headerParameters = [])
     {

@@ -22,14 +22,14 @@ class AdminConversationsInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_id the channel that the users will be invited to
-     *     @var string $user_ids The users to invite.
-     * }
+     * @var string $channel_id the channel that the users will be invited to
+     * @var string $user_ids The users to invite.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

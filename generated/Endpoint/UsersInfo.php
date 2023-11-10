@@ -22,10 +22,10 @@ class UsersInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
      *
      * @param array $queryParameters {
      *
-     *     @var bool $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
-     *     @var string $token Authentication token. Requires scope: `users:read`
-     *     @var string $user User to get info on
-     * }
+     * @var bool   $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
+     * @var string $token Authentication token. Requires scope: `users:read`
+     * @var string $user User to get info on
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

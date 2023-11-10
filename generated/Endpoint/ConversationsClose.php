@@ -22,13 +22,13 @@ class ConversationsClose extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
      *
      * @param array $formParameters {
      *
-     *     @var string $channel Conversation to close.
-     * }
+     * @var string $channel Conversation to close.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

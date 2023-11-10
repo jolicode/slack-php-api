@@ -22,15 +22,15 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor
-     *     @var string $event_context
-     *     @var int $limit
-     * }
+     * @var string $cursor
+     * @var string $event_context
+     * @var int    $limit
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `authorizations:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `authorizations:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

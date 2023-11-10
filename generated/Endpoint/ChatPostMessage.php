@@ -22,28 +22,28 @@ class ChatPostMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *
      * @param array $formParameters {
      *
-     *     @var bool $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
-     *     @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
-     *     @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
-     *     @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
-     *     @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
-     *     @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
-     *     @var bool $link_names find and link channel names and usernames
-     *     @var string $metadata JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace.
-     *     @var bool $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
-     *     @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
-     *     @var bool $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
-     *     @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
-     *     @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
-     *     @var bool $unfurl_links pass true to enable unfurling of primarily text-based content
-     *     @var bool $unfurl_media pass false to disable unfurling of media content
-     *     @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
-     * }
+     * @var bool   $as_user Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See [authorship](#authorship) below.
+     * @var string $attachments a JSON-based array of structured attachments, presented as a URL-encoded string
+     * @var string $blocks a JSON-based array of structured blocks, presented as a URL-encoded string
+     * @var string $channel Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See [below](#channels) for more details.
+     * @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
+     * @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
+     * @var bool   $link_names find and link channel names and usernames
+     * @var string $metadata JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace.
+     * @var bool   $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
+     * @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
+     * @var bool   $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
+     * @var string $text How this field works and whether it is required depends on other fields you use in your API call. [See below](#text_usage) for more detail.
+     * @var string $thread_ts Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.
+     * @var bool   $unfurl_links pass true to enable unfurling of primarily text-based content
+     * @var bool   $unfurl_media pass false to disable unfurling of media content
+     * @var string $username Set your bot's user name. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `chat:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `chat:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

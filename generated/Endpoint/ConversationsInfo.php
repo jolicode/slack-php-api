@@ -22,11 +22,11 @@ class ConversationsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel Conversation ID to learn more about
-     *     @var bool $include_locale Set this to `true` to receive the locale for this conversation. Defaults to `false`
-     *     @var bool $include_num_members Set to `true` to include the member count for the specified conversation. Defaults to `false`
-     *     @var string $token Authentication token. Requires scope: `conversations:read`
-     * }
+     * @var string $channel Conversation ID to learn more about
+     * @var bool   $include_locale Set this to `true` to receive the locale for this conversation. Defaults to `false`
+     * @var bool   $include_num_members Set to `true` to include the member count for the specified conversation. Defaults to `false`
+     * @var string $token Authentication token. Requires scope: `conversations:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

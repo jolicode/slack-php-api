@@ -22,10 +22,10 @@ class ChatGetPermalink extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel The ID of the conversation or channel containing the message
-     *     @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $channel The ID of the conversation or channel containing the message
+     * @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

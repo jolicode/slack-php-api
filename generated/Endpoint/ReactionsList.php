@@ -22,14 +22,14 @@ class ReactionsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $queryParameters {
      *
-     *     @var int $count
-     *     @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
-     *     @var bool $full if true always return the complete reaction list
-     *     @var int $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
-     *     @var int $page
-     *     @var string $token Authentication token. Requires scope: `reactions:read`
-     *     @var string $user Show reactions made by this user. Defaults to the authed user.
-     * }
+     * @var int    $count
+     * @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
+     * @var bool   $full if true always return the complete reaction list
+     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
+     * @var int    $page
+     * @var string $token Authentication token. Requires scope: `reactions:read`
+     * @var string $user Show reactions made by this user. Defaults to the authed user.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -85,4 +85,9 @@ class TeamProfileGetGetResponsedefaultNormalizer implements DenormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\TeamProfileGetGetResponsedefault' => false];
+    }
 }
