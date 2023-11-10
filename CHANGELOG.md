@@ -1,8 +1,9 @@
 # Changes between versions
 
-## Unreleased
+## 4.6.0 (2023-11-10)
 
 * Upgrade JanePHP generated code
+* **Specification override** `metadata` added on `chat.postMessage`
 
 ## 4.5.0 (2022-03-30)
 
