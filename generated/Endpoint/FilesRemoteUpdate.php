@@ -22,15 +22,15 @@ class FilesRemoteUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $external_id creator defined GUID for the file
-     *     @var string $external_url URL of the remote file
-     *     @var string $file specify a file by providing its ID
-     *     @var string $filetype type of file
-     *     @var string $indexable_file_contents file containing contents that can be used to improve searchability for the remote file
-     *     @var string $preview_image preview of the document via `multipart/form-data`
-     *     @var string $title title of the file being shared
-     *     @var string $token Authentication token. Requires scope: `remote_files:write`
-     * }
+     * @var string $external_id creator defined GUID for the file
+     * @var string $external_url URL of the remote file
+     * @var string $file specify a file by providing its ID
+     * @var string $filetype type of file
+     * @var string $indexable_file_contents file containing contents that can be used to improve searchability for the remote file
+     * @var string $preview_image preview of the document via `multipart/form-data`
+     * @var string $title title of the file being shared
+     * @var string $token Authentication token. Requires scope: `remote_files:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

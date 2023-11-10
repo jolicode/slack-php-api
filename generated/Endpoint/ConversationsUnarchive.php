@@ -22,13 +22,13 @@ class ConversationsUnarchive extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
      *
      * @param array $formParameters {
      *
-     *     @var string $channel ID of conversation to unarchive
-     * }
+     * @var string $channel ID of conversation to unarchive
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

@@ -101,4 +101,9 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsRepliesGetResponse200' => false];
+    }
 }

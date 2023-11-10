@@ -77,4 +77,9 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\TeamInfoGetResponse200' => false];
+    }
 }

@@ -71,4 +71,9 @@ class ConversationsListGetResponse200ResponseMetadataNormalizer implements Denor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsListGetResponse200ResponseMetadata' => false];
+    }
 }

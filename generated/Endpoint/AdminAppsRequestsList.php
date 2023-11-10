@@ -22,11 +22,11 @@ class AdminAppsRequestsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpo
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-     *     @var string $team_id
-     *     @var string $token Authentication token. Requires scope: `admin.apps:read`
-     * }
+     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     * @var string $team_id
+     * @var string $token Authentication token. Requires scope: `admin.apps:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

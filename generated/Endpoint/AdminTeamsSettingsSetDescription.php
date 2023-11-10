@@ -22,14 +22,14 @@ class AdminTeamsSettingsSetDescription extends \JoliCode\Slack\Api\Runtime\Clien
      *
      * @param array $formParameters {
      *
-     *     @var string $description the new description for the workspace
-     *     @var string $team_id ID for the workspace to set the description for.
-     * }
+     * @var string $description the new description for the workspace
+     * @var string $team_id ID for the workspace to set the description for.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

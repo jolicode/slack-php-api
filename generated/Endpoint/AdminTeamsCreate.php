@@ -22,16 +22,16 @@ class AdminTeamsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $team_description description for the team
-     *     @var string $team_discoverability Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`.
-     *     @var string $team_domain team domain (for example, slacksoftballteam)
-     *     @var string $team_name Team name (for example, Slack Softball Team).
-     * }
+     * @var string $team_description description for the team
+     * @var string $team_discoverability Who can join the team. A team's discoverability can be `open`, `closed`, `invite_only`, or `unlisted`.
+     * @var string $team_domain team domain (for example, slacksoftballteam)
+     * @var string $team_name Team name (for example, Slack Softball Team).
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

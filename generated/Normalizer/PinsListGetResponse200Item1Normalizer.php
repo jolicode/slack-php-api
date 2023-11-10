@@ -77,4 +77,9 @@ class PinsListGetResponse200Item1Normalizer implements DenormalizerInterface, No
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\PinsListGetResponse200Item1' => false];
+    }
 }

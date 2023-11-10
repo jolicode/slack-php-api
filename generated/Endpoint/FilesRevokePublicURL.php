@@ -22,13 +22,13 @@ class FilesRevokePublicURL extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      *
      * @param array $formParameters {
      *
-     *     @var string $file File to revoke
-     * }
+     * @var string $file File to revoke
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `files:write:user`
-     * }
+     * @var string $token Authentication token. Requires scope: `files:write:user`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

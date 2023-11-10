@@ -82,4 +82,9 @@ class AdminConversationsRestrictAccessRemoveGroupPostResponse200Normalizer imple
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsRestrictAccessRemoveGroupPostResponse200' => false];
+    }
 }

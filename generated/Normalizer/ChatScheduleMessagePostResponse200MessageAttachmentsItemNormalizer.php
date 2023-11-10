@@ -89,4 +89,9 @@ class ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer impleme
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ChatScheduleMessagePostResponse200MessageAttachmentsItem' => false];
+    }
 }

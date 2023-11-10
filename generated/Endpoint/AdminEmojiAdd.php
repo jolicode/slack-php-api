@@ -22,10 +22,10 @@ class AdminEmojiAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      *
      * @param array $formParameters {
      *
-     *     @var string $name The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *     @var string $url The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best.
-     * }
+     * @var string $name The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     * @var string $url The URL of a file to use as an image for the emoji. Square images under 128KB and with transparent backgrounds work best.
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

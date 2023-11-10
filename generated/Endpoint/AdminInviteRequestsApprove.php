@@ -22,14 +22,14 @@ class AdminInviteRequestsApprove extends \JoliCode\Slack\Api\Runtime\Client\Base
      *
      * @param array $formParameters {
      *
-     *     @var string $invite_request_id ID of the request to invite
-     *     @var string $team_id ID for the workspace where the invite request was made.
-     * }
+     * @var string $invite_request_id ID of the request to invite
+     * @var string $team_id ID for the workspace where the invite request was made.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.invites:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.invites:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

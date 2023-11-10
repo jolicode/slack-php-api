@@ -82,4 +82,9 @@ class AdminUsergroupsRemoveChannelsPostResponsedefaultNormalizer implements Deno
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminUsergroupsRemoveChannelsPostResponsedefault' => false];
+    }
 }

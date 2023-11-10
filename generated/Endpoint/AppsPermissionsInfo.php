@@ -22,8 +22,8 @@ class AppsPermissionsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -22,17 +22,17 @@ class ChatScheduledMessagesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel The channel of the scheduled messages
-     *     @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
-     *     @var string $latest A UNIX timestamp of the latest value in the time range
-     *     @var int $limit maximum number of original entries to return
-     *     @var string $oldest A UNIX timestamp of the oldest value in the time range
-     * }
+     * @var string $channel The channel of the scheduled messages
+     * @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
+     * @var string $latest A UNIX timestamp of the latest value in the time range
+     * @var int    $limit maximum number of original entries to return
+     * @var string $oldest A UNIX timestamp of the oldest value in the time range
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `none`
-     * }
+     * @var string $token Authentication token. Requires scope: `none`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

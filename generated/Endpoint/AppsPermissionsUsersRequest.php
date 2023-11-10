@@ -22,11 +22,11 @@ class AppsPermissionsUsersRequest extends \JoliCode\Slack\Api\Runtime\Client\Bas
      *
      * @param array $queryParameters {
      *
-     *     @var string $scopes A comma separated list of user scopes to request for
-     *     @var string $token Authentication token. Requires scope: `none`
-     *     @var string $trigger_id Token used to trigger the request
-     *     @var string $user The user this scope is being requested for
-     * }
+     * @var string $scopes A comma separated list of user scopes to request for
+     * @var string $token Authentication token. Requires scope: `none`
+     * @var string $trigger_id Token used to trigger the request
+     * @var string $user The user this scope is being requested for
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

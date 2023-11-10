@@ -22,10 +22,10 @@ class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\C
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_ids an array of channel IDs
-     *     @var string $team_id ID for the workspace to set the default channel for
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $channel_ids an array of channel IDs
+     * @var string $team_id ID for the workspace to set the default channel for
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

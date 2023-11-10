@@ -22,9 +22,9 @@ class TeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $queryParameters {
      *
-     *     @var string $team Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels
-     *     @var string $token Authentication token. Requires scope: `team:read`
-     * }
+     * @var string $team Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels
+     * @var string $token Authentication token. Requires scope: `team:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

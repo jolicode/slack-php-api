@@ -22,14 +22,14 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_id the channel to be disconnected from some workspaces
-     *     @var string $leaving_team_ids The team to be removed from the channel. Currently only a single team id can be specified.
-     * }
+     * @var string $channel_id the channel to be disconnected from some workspaces
+     * @var string $leaving_team_ids The team to be removed from the channel. Currently only a single team id can be specified.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

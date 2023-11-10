@@ -82,4 +82,9 @@ class FilesRemoteAddPostResponse200Normalizer implements DenormalizerInterface, 
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\FilesRemoteAddPostResponse200' => false];
+    }
 }

@@ -82,4 +82,9 @@ class AdminInviteRequestsApprovedListGetResponse200Normalizer implements Denorma
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminInviteRequestsApprovedListGetResponse200' => false];
+    }
 }

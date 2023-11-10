@@ -139,4 +139,9 @@ class TeamIntegrationLogsGetResponse200LogsItemNormalizer implements Denormalize
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\TeamIntegrationLogsGetResponse200LogsItem' => false];
+    }
 }

@@ -82,4 +82,9 @@ class ViewsPushPostResponse200Normalizer implements DenormalizerInterface, Norma
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ViewsPushPostResponse200' => false];
+    }
 }

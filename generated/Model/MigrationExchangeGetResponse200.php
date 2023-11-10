@@ -36,7 +36,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
      */
     protected $teamId;
     /**
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $userIdMap;
 
@@ -104,7 +104,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
     public function getUserIdMap(): ?iterable
     {
@@ -112,7 +112,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param mixed[]|null $userIdMap
+     * @param array<string, mixed>|null $userIdMap
      */
     public function setUserIdMap(?iterable $userIdMap): self
     {

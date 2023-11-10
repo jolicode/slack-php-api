@@ -85,4 +85,9 @@ class AuthTestGetResponsedefaultNormalizer implements DenormalizerInterface, Nor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AuthTestGetResponsedefault' => false];
+    }
 }

@@ -77,4 +77,9 @@ class ReactionsListGetResponse200ItemsItemItem1Normalizer implements Denormalize
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ReactionsListGetResponse200ItemsItemItem1' => false];
+    }
 }

@@ -22,8 +22,8 @@ class UsersDeletePhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $formParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users.profile:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `users.profile:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

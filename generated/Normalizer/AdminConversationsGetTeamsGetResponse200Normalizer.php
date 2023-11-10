@@ -93,4 +93,9 @@ class AdminConversationsGetTeamsGetResponse200Normalizer implements Denormalizer
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsGetTeamsGetResponse200' => false];
+    }
 }

@@ -83,4 +83,9 @@ class UsersIdentityGetResponse200Item2Normalizer implements DenormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\UsersIdentityGetResponse200Item2' => false];
+    }
 }

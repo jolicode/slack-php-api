@@ -22,10 +22,10 @@ class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseE
      *
      * @param array $formParameters {
      *
-     *     @var string $image_url Image URL for the icon
-     *     @var string $team_id ID for the workspace to set the icon for
-     *     @var string $token Authentication token. Requires scope: `admin.teams:write`
-     * }
+     * @var string $image_url Image URL for the icon
+     * @var string $team_id ID for the workspace to set the icon for
+     * @var string $token Authentication token. Requires scope: `admin.teams:write`
+     *             }
      */
     public function __construct(array $formParameters = [])
     {

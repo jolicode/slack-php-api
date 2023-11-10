@@ -82,4 +82,9 @@ class AdminTeamsSettingsSetIconPostResponsedefaultNormalizer implements Denormal
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsSettingsSetIconPostResponsedefault' => false];
+    }
 }

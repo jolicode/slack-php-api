@@ -22,9 +22,9 @@ class TeamProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users.profile:read`
-     *     @var string $visibility Filter by visibility.
-     * }
+     * @var string $token Authentication token. Requires scope: `users.profile:read`
+     * @var string $visibility Filter by visibility.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

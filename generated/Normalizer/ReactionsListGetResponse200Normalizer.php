@@ -101,4 +101,9 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ReactionsListGetResponse200' => false];
+    }
 }

@@ -22,20 +22,20 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $formParameters {
      *
-     *     @var string $created_by The valid Slack user ID of the user who created this Call. When this method is called with a user token, the `created_by` field is optional and defaults to the authed user of the token. Otherwise, the field is required.
-     *     @var int $date_start Call start time in UTC UNIX timestamp format
-     *     @var string $desktop_app_join_url when supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL
-     *     @var string $external_display_id An optional, human-readable ID supplied by the 3rd-party Call provider. If supplied, this ID will be displayed in the Call object.
-     *     @var string $external_unique_id An ID supplied by the 3rd-party Call provider. It must be unique across all Calls from that service.
-     *     @var string $join_url the URL required for a client to join the Call
-     *     @var string $title the name of the Call
-     *     @var string $users The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/calls#users).
-     * }
+     * @var string $created_by The valid Slack user ID of the user who created this Call. When this method is called with a user token, the `created_by` field is optional and defaults to the authed user of the token. Otherwise, the field is required.
+     * @var int    $date_start Call start time in UTC UNIX timestamp format
+     * @var string $desktop_app_join_url when supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL
+     * @var string $external_display_id An optional, human-readable ID supplied by the 3rd-party Call provider. If supplied, this ID will be displayed in the Call object.
+     * @var string $external_unique_id An ID supplied by the 3rd-party Call provider. It must be unique across all Calls from that service.
+     * @var string $join_url the URL required for a client to join the Call
+     * @var string $title the name of the Call
+     * @var string $users The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/calls#users).
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `calls:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `calls:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

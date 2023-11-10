@@ -71,4 +71,9 @@ class FilesCommentsDeletePostResponse200Normalizer implements DenormalizerInterf
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\FilesCommentsDeletePostResponse200' => false];
+    }
 }

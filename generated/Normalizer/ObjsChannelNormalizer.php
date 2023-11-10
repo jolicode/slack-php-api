@@ -322,4 +322,9 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ObjsChannel' => false];
+    }
 }

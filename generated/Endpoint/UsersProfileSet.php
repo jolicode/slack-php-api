@@ -22,16 +22,16 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *
      * @param array $formParameters {
      *
-     *     @var string $name Name of a single key to set. Usable only if `profile` is not passed.
-     *     @var string $profile Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.
-     *     @var string $user ID of user to change. This argument may only be specified by team admins on paid teams.
-     *     @var string $value Value to set a single key to. Usable only if `profile` is not passed.
-     * }
+     * @var string $name Name of a single key to set. Usable only if `profile` is not passed.
+     * @var string $profile Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.
+     * @var string $user ID of user to change. This argument may only be specified by team admins on paid teams.
+     * @var string $value Value to set a single key to. Usable only if `profile` is not passed.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `users.profile:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `users.profile:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

@@ -83,4 +83,9 @@ class ChatDeletePostResponse200Normalizer implements DenormalizerInterface, Norm
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ChatDeletePostResponse200' => false];
+    }
 }

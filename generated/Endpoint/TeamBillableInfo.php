@@ -22,9 +22,9 @@ class TeamBillableInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
      *
      * @param array $queryParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin`
-     *     @var string $user A user to retrieve the billable information for. Defaults to all users.
-     * }
+     * @var string $token Authentication token. Requires scope: `admin`
+     * @var string $user A user to retrieve the billable information for. Defaults to all users.
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

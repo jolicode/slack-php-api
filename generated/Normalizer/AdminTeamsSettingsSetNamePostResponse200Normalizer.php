@@ -82,4 +82,9 @@ class AdminTeamsSettingsSetNamePostResponse200Normalizer implements Denormalizer
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsSettingsSetNamePostResponse200' => false];
+    }
 }

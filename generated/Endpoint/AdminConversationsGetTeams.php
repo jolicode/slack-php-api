@@ -22,15 +22,15 @@ class AdminConversationsGetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
      *
      * @param array $queryParameters {
      *
-     *     @var string $channel_id the channel to determine connected workspaces within the organization for
-     *     @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     *     @var int $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-     * }
+     * @var string $channel_id the channel to determine connected workspaces within the organization for
+     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.conversations:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.conversations:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

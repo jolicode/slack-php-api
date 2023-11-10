@@ -22,14 +22,14 @@ class SearchMessages extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $queryParameters {
      *
-     *     @var int $count Pass the number of results you want per "page". Maximum of `100`.
-     *     @var bool $highlight pass a value of `true` to enable query highlight markers (see below)
-     *     @var int $page
-     *     @var string $query search query
-     *     @var string $sort return matches sorted by either `score` or `timestamp`
-     *     @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
-     *     @var string $token Authentication token. Requires scope: `search:read`
-     * }
+     * @var int    $count Pass the number of results you want per "page". Maximum of `100`.
+     * @var bool   $highlight pass a value of `true` to enable query highlight markers (see below)
+     * @var int    $page
+     * @var string $query search query
+     * @var string $sort return matches sorted by either `score` or `timestamp`
+     * @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
+     * @var string $token Authentication token. Requires scope: `search:read`
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

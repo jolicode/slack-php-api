@@ -82,4 +82,9 @@ class AdminUsersSetRegularPostResponse200Normalizer implements DenormalizerInter
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminUsersSetRegularPostResponse200' => false];
+    }
 }

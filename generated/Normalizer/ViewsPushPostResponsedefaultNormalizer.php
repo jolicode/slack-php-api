@@ -82,4 +82,9 @@ class ViewsPushPostResponsedefaultNormalizer implements DenormalizerInterface, N
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ViewsPushPostResponsedefault' => false];
+    }
 }

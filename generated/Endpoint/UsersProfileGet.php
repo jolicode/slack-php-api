@@ -22,10 +22,10 @@ class UsersProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *
      * @param array $queryParameters {
      *
-     *     @var bool $include_labels Include labels for each ID in custom profile fields
-     *     @var string $token Authentication token. Requires scope: `users.profile:read`
-     *     @var string $user User to retrieve profile info for
-     * }
+     * @var bool   $include_labels Include labels for each ID in custom profile fields
+     * @var string $token Authentication token. Requires scope: `users.profile:read`
+     * @var string $user User to retrieve profile info for
+     *             }
      */
     public function __construct(array $queryParameters = [])
     {

@@ -82,4 +82,9 @@ class AdminInviteRequestsDeniedListGetResponse200Normalizer implements Denormali
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminInviteRequestsDeniedListGetResponse200' => false];
+    }
 }

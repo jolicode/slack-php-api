@@ -22,15 +22,15 @@ class AdminUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $queryParameters {
      *
-     *     @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     *     @var int $limit Limit for how many users to be retrieved per page
-     *     @var string $team_id The ID (`T1234`) of the workspace.
-     * }
+     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     * @var int    $limit Limit for how many users to be retrieved per page
+     * @var string $team_id The ID (`T1234`) of the workspace.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

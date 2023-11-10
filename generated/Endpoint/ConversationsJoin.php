@@ -22,13 +22,13 @@ class ConversationsJoin extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $channel ID of conversation to join
-     * }
+     * @var string $channel ID of conversation to join
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `channels:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `channels:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

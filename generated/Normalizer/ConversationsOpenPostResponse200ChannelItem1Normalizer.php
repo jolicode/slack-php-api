@@ -141,4 +141,9 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsOpenPostResponse200ChannelItem1' => false];
+    }
 }

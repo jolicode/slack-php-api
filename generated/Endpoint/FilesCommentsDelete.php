@@ -22,14 +22,14 @@ class FilesCommentsDelete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     *     @var string $file file to delete a comment from
-     *     @var string $id The comment to delete.
-     * }
+     * @var string $file file to delete a comment from
+     * @var string $id The comment to delete.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `files:write:user`
-     * }
+     * @var string $token Authentication token. Requires scope: `files:write:user`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

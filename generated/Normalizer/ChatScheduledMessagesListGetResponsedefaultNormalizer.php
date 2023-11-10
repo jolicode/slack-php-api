@@ -85,4 +85,9 @@ class ChatScheduledMessagesListGetResponsedefaultNormalizer implements Denormali
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ChatScheduledMessagesListGetResponsedefault' => false];
+    }
 }

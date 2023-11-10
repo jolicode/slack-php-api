@@ -22,13 +22,13 @@ class AdminTeamsSettingsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
      *
      * @param array $queryParameters {
      *
-     *     @var string $team_id
-     * }
+     * @var string $team_id
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.teams:read`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.teams:read`
+     *             }
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {

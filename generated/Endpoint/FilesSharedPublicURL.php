@@ -22,13 +22,13 @@ class FilesSharedPublicURL extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      *
      * @param array $formParameters {
      *
-     *     @var string $file File to share
-     * }
+     * @var string $file File to share
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `files:write:user`
-     * }
+     * @var string $token Authentication token. Requires scope: `files:write:user`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

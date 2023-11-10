@@ -82,4 +82,9 @@ class AdminTeamsSettingsSetDescriptionPostResponse200Normalizer implements Denor
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsSettingsSetDescriptionPostResponse200' => false];
+    }
 }

@@ -22,17 +22,17 @@ class ReactionsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *
      * @param array $formParameters {
      *
-     *     @var string $channel channel where the message to remove reaction from was posted
-     *     @var string $file file to remove reaction from
-     *     @var string $file_comment file comment to remove reaction from
-     *     @var string $name reaction (emoji) name
-     *     @var string $timestamp Timestamp of the message to remove reaction from.
-     * }
+     * @var string $channel channel where the message to remove reaction from was posted
+     * @var string $file file to remove reaction from
+     * @var string $file_comment file comment to remove reaction from
+     * @var string $name reaction (emoji) name
+     * @var string $timestamp Timestamp of the message to remove reaction from.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `reactions:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `reactions:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

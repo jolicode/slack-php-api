@@ -82,4 +82,9 @@ class AdminUsersRemovePostResponse200Normalizer implements DenormalizerInterface
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminUsersRemovePostResponse200' => false];
+    }
 }

@@ -85,4 +85,9 @@ class ConversationsMembersGetResponsedefaultNormalizer implements DenormalizerIn
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\ConversationsMembersGetResponsedefault' => false];
+    }
 }

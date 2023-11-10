@@ -85,4 +85,9 @@ class UsersListGetResponsedefaultNormalizer implements DenormalizerInterface, No
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\UsersListGetResponsedefault' => false];
+    }
 }

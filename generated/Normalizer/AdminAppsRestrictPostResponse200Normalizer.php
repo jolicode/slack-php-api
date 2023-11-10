@@ -82,4 +82,9 @@ class AdminAppsRestrictPostResponse200Normalizer implements DenormalizerInterfac
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminAppsRestrictPostResponse200' => false];
+    }
 }

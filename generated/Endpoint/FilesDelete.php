@@ -22,13 +22,13 @@ class FilesDelete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
      *
      * @param array $formParameters {
      *
-     *     @var string $file ID of file to delete.
-     * }
+     * @var string $file ID of file to delete.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `files:write:user`
-     * }
+     * @var string $token Authentication token. Requires scope: `files:write:user`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

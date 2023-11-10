@@ -22,14 +22,14 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
      *
      * @param array $formParameters {
      *
-     *     @var int $session_id
-     *     @var string $team_id ID of the team that the session belongs to
-     * }
+     * @var int    $session_id
+     * @var string $team_id ID of the team that the session belongs to
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.users:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.users:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

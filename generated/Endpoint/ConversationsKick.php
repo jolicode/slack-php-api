@@ -22,14 +22,14 @@ class ConversationsKick extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     *     @var string $channel ID of conversation to remove user from
-     *     @var string $user User ID to be removed.
-     * }
+     * @var string $channel ID of conversation to remove user from
+     * @var string $user User ID to be removed.
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `conversations:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `conversations:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

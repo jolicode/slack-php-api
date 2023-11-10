@@ -22,14 +22,14 @@ class AdminUsergroupsRemoveChannels extends \JoliCode\Slack\Api\Runtime\Client\B
      *
      * @param array $formParameters {
      *
-     *     @var string $channel_ids Comma-separated string of channel IDs
-     *     @var string $usergroup_id ID of the IDP Group
-     * }
+     * @var string $channel_ids Comma-separated string of channel IDs
+     * @var string $usergroup_id ID of the IDP Group
+     *             }
      *
      * @param array $headerParameters {
      *
-     *     @var string $token Authentication token. Requires scope: `admin.usergroups:write`
-     * }
+     * @var string $token Authentication token. Requires scope: `admin.usergroups:write`
+     *             }
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {

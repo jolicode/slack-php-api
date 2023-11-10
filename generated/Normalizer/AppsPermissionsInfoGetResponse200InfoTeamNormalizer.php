@@ -85,4 +85,9 @@ class AppsPermissionsInfoGetResponse200InfoTeamNormalizer implements Denormalize
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoTeam' => false];
+    }
 }

@@ -82,4 +82,9 @@ class AdminTeamsSettingsInfoGetResponsedefaultNormalizer implements Denormalizer
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminTeamsSettingsInfoGetResponsedefault' => false];
+    }
 }

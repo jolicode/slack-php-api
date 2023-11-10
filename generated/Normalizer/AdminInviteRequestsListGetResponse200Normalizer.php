@@ -82,4 +82,9 @@ class AdminInviteRequestsListGetResponse200Normalizer implements DenormalizerInt
 
         return $data;
     }
+
+    public function getSupportedTypes(string $format = null): array
+    {
+        return ['JoliCode\\Slack\\Api\\Model\\AdminInviteRequestsListGetResponse200' => false];
+    }
 }
