@@ -24,6 +24,7 @@ class ConversationsHistory extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      *
      * @var string $channel conversation ID to fetch history for
      * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     * @var bool   $include_all_metadata return all metadata associated with this message
      * @var bool   $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
      * @var string $latest end of time range of messages to include in results
      * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
@@ -64,11 +65,12 @@ class ConversationsHistory extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['channel', 'cursor', 'inclusive', 'latest', 'limit', 'oldest', 'token']);
+        $optionsResolver->setDefined(['channel', 'cursor', 'include_all_metadata', 'inclusive', 'latest', 'limit', 'oldest', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('channel', ['string']);
         $optionsResolver->addAllowedTypes('cursor', ['string']);
+        $optionsResolver->addAllowedTypes('include_all_metadata', ['bool']);
         $optionsResolver->addAllowedTypes('inclusive', ['bool']);
         $optionsResolver->addAllowedTypes('latest', ['string']);
         $optionsResolver->addAllowedTypes('limit', ['int']);

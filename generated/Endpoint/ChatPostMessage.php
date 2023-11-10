@@ -29,6 +29,7 @@ class ChatPostMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      * @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
      * @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      * @var bool   $link_names find and link channel names and usernames
+     * @var string $metadata JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace.
      * @var bool   $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
      * @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
      * @var bool   $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
@@ -78,7 +79,7 @@ class ChatPostMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['as_user', 'attachments', 'blocks', 'channel', 'icon_emoji', 'icon_url', 'link_names', 'mrkdwn', 'parse', 'reply_broadcast', 'text', 'thread_ts', 'unfurl_links', 'unfurl_media', 'username']);
+        $optionsResolver->setDefined(['as_user', 'attachments', 'blocks', 'channel', 'icon_emoji', 'icon_url', 'link_names', 'metadata', 'mrkdwn', 'parse', 'reply_broadcast', 'text', 'thread_ts', 'unfurl_links', 'unfurl_media', 'username']);
         $optionsResolver->setRequired(['channel']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('as_user', ['bool']);
@@ -88,6 +89,7 @@ class ChatPostMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         $optionsResolver->addAllowedTypes('icon_emoji', ['string']);
         $optionsResolver->addAllowedTypes('icon_url', ['string']);
         $optionsResolver->addAllowedTypes('link_names', ['bool']);
+        $optionsResolver->addAllowedTypes('metadata', ['string']);
         $optionsResolver->addAllowedTypes('mrkdwn', ['bool']);
         $optionsResolver->addAllowedTypes('parse', ['string']);
         $optionsResolver->addAllowedTypes('reply_broadcast', ['bool']);

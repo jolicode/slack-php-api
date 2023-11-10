@@ -1782,6 +1782,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      * @var string $icon_emoji Emoji to use as the icon for this message. Overrides `icon_url`. Must be used in conjunction with `as_user` set to `false`, otherwise ignored. See [authorship](#authorship) below.
      * @var string $icon_url URL to an image to use as the icon for this message. Must be used in conjunction with `as_user` set to false, otherwise ignored. See [authorship](#authorship) below.
      * @var bool   $link_names find and link channel names and usernames
+     * @var string $metadata JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace.
      * @var bool   $mrkdwn Disable Slack markup parsing by setting to `false`. Enabled by default.
      * @var string $parse Change how messages are treated. Defaults to `none`. See [below](#formatting).
      * @var bool   $reply_broadcast Used in conjunction with `thread_ts` and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to `false`.
@@ -1995,6 +1996,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      *
      * @var string $channel conversation ID to fetch history for
      * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     * @var bool   $include_all_metadata return all metadata associated with this message
      * @var bool   $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
      * @var string $latest end of time range of messages to include in results
      * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.

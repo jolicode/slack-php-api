@@ -86,6 +86,10 @@ class ObjsMessage
      */
     protected $latestReply;
     /**
+     * @var ObjsMetadata|null
+     */
+    protected $metadata;
+    /**
      * @var string|null
      */
     protected $name;
@@ -417,6 +421,19 @@ class ObjsMessage
     {
         $this->initialized['latestReply'] = true;
         $this->latestReply = $latestReply;
+
+        return $this;
+    }
+
+    public function getMetadata(): ?ObjsMetadata
+    {
+        return $this->metadata;
+    }
+
+    public function setMetadata(?ObjsMetadata $metadata): self
+    {
+        $this->initialized['metadata'] = true;
+        $this->metadata = $metadata;
 
         return $this;
     }
