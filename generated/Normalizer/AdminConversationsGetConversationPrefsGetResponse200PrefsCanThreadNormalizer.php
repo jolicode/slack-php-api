@@ -16,6 +16,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -23,83 +24,163 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === \get_class($data);
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === \get_class($data);
         }
-        $object = new \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('type', $data) && null !== $data['type']) {
+                $values = [];
+                foreach ($data['type'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setType($values);
+            } elseif (\array_key_exists('type', $data) && null === $data['type']) {
+                $object->setType(null);
+            }
+            if (\array_key_exists('user', $data) && null !== $data['user']) {
+                $values_1 = [];
+                foreach ($data['user'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setUser($values_1);
+            } elseif (\array_key_exists('user', $data) && null === $data['user']) {
+                $object->setUser(null);
+            }
+
             return $object;
         }
-        if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $values = [];
-            foreach ($data['type'] as $value) {
-                $values[] = $value;
+
+        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        {
+            $data = [];
+            if ($object->isInitialized('type') && null !== $object->getType()) {
+                $values = [];
+                foreach ($object->getType() as $value) {
+                    $values[] = $value;
+                }
+                $data['type'] = $values;
             }
-            $object->setType($values);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
-        }
-        if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $values_1 = [];
-            foreach ($data['user'] as $value_1) {
-                $values_1[] = $value_1;
+            if ($object->isInitialized('user') && null !== $object->getUser()) {
+                $values_1 = [];
+                foreach ($object->getUser() as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $data['user'] = $values_1;
             }
-            $object->setUser($values_1);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        if ($object->isInitialized('type') && null !== $object->getType()) {
-            $values = [];
-            foreach ($object->getType() as $value) {
-                $values[] = $value;
-            }
-            $data['type'] = $values;
-        }
-        if ($object->isInitialized('user') && null !== $object->getUser()) {
-            $values_1 = [];
-            foreach ($object->getUser() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['user'] = $values_1;
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === $type;
         }
 
-        return $data;
-    }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' === \get_class($data);
+        }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => false];
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('type', $data) && null !== $data['type']) {
+                $values = [];
+                foreach ($data['type'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setType($values);
+            } elseif (\array_key_exists('type', $data) && null === $data['type']) {
+                $object->setType(null);
+            }
+            if (\array_key_exists('user', $data) && null !== $data['user']) {
+                $values_1 = [];
+                foreach ($data['user'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setUser($values_1);
+            } elseif (\array_key_exists('user', $data) && null === $data['user']) {
+                $object->setUser(null);
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('type') && null !== $object->getType()) {
+                $values = [];
+                foreach ($object->getType() as $value) {
+                    $values[] = $value;
+                }
+                $data['type'] = $values;
+            }
+            if ($object->isInitialized('user') && null !== $object->getUser()) {
+                $values_1 = [];
+                foreach ($object->getUser() as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $data['user'] = $values_1;
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => false];
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -23,89 +24,175 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === \get_class($data);
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === \get_class($data);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsResources();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\ObjsResources();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('excluded_ids', $data) && null !== $data['excluded_ids']) {
+                $values = [];
+                foreach ($data['excluded_ids'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setExcludedIds($values);
+            } elseif (\array_key_exists('excluded_ids', $data) && null === $data['excluded_ids']) {
+                $object->setExcludedIds(null);
+            }
+            if (\array_key_exists('ids', $data) && null !== $data['ids']) {
+                $values_1 = [];
+                foreach ($data['ids'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setIds($values_1);
+            } elseif (\array_key_exists('ids', $data) && null === $data['ids']) {
+                $object->setIds(null);
+            }
+            if (\array_key_exists('wildcard', $data) && null !== $data['wildcard']) {
+                $object->setWildcard($data['wildcard']);
+            } elseif (\array_key_exists('wildcard', $data) && null === $data['wildcard']) {
+                $object->setWildcard(null);
+            }
+
             return $object;
         }
-        if (\array_key_exists('excluded_ids', $data) && null !== $data['excluded_ids']) {
-            $values = [];
-            foreach ($data['excluded_ids'] as $value) {
-                $values[] = $value;
+
+        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        {
+            $data = [];
+            if ($object->isInitialized('excludedIds') && null !== $object->getExcludedIds()) {
+                $values = [];
+                foreach ($object->getExcludedIds() as $value) {
+                    $values[] = $value;
+                }
+                $data['excluded_ids'] = $values;
             }
-            $object->setExcludedIds($values);
-        } elseif (\array_key_exists('excluded_ids', $data) && null === $data['excluded_ids']) {
-            $object->setExcludedIds(null);
-        }
-        if (\array_key_exists('ids', $data) && null !== $data['ids']) {
             $values_1 = [];
-            foreach ($data['ids'] as $value_1) {
+            foreach ($object->getIds() as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setIds($values_1);
-        } elseif (\array_key_exists('ids', $data) && null === $data['ids']) {
-            $object->setIds(null);
-        }
-        if (\array_key_exists('wildcard', $data) && null !== $data['wildcard']) {
-            $object->setWildcard($data['wildcard']);
-        } elseif (\array_key_exists('wildcard', $data) && null === $data['wildcard']) {
-            $object->setWildcard(null);
-        }
-
-        return $object;
-    }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        if ($object->isInitialized('excludedIds') && null !== $object->getExcludedIds()) {
-            $values = [];
-            foreach ($object->getExcludedIds() as $value) {
-                $values[] = $value;
+            $data['ids'] = $values_1;
+            if ($object->isInitialized('wildcard') && null !== $object->getWildcard()) {
+                $data['wildcard'] = $object->getWildcard();
             }
-            $data['excluded_ids'] = $values;
-        }
-        $values_1 = [];
-        foreach ($object->getIds() as $value_1) {
-            $values_1[] = $value_1;
-        }
-        $data['ids'] = $values_1;
-        if ($object->isInitialized('wildcard') && null !== $object->getWildcard()) {
-            $data['wildcard'] = $object->getWildcard();
+
+            return $data;
         }
 
-        return $data;
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\ObjsResources' => false];
+        }
     }
-
-    public function getSupportedTypes(string $format = null): array
+} else {
+    class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return ['JoliCode\\Slack\\Api\\Model\\ObjsResources' => false];
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === $type;
+        }
+
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResources' === \get_class($data);
+        }
+
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\ObjsResources();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('excluded_ids', $data) && null !== $data['excluded_ids']) {
+                $values = [];
+                foreach ($data['excluded_ids'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setExcludedIds($values);
+            } elseif (\array_key_exists('excluded_ids', $data) && null === $data['excluded_ids']) {
+                $object->setExcludedIds(null);
+            }
+            if (\array_key_exists('ids', $data) && null !== $data['ids']) {
+                $values_1 = [];
+                foreach ($data['ids'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setIds($values_1);
+            } elseif (\array_key_exists('ids', $data) && null === $data['ids']) {
+                $object->setIds(null);
+            }
+            if (\array_key_exists('wildcard', $data) && null !== $data['wildcard']) {
+                $object->setWildcard($data['wildcard']);
+            } elseif (\array_key_exists('wildcard', $data) && null === $data['wildcard']) {
+                $object->setWildcard(null);
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('excludedIds') && null !== $object->getExcludedIds()) {
+                $values = [];
+                foreach ($object->getExcludedIds() as $value) {
+                    $values[] = $value;
+                }
+                $data['excluded_ids'] = $values;
+            }
+            $values_1 = [];
+            foreach ($object->getIds() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['ids'] = $values_1;
+            if ($object->isInitialized('wildcard') && null !== $object->getWildcard()) {
+                $data['wildcard'] = $object->getWildcard();
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\ObjsResources' => false];
+        }
     }
 }
