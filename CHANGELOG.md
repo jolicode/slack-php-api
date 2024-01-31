@@ -1,5 +1,10 @@
 # Changes between versions
 
+## 4.7.0 (2024-01-31)
+
+* Upgrade JanePHP generated code
+* Drop support for PHP 7
+
 ## 4.6.0 (2023-11-10)
 
 * Upgrade JanePHP generated code

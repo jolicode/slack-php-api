@@ -26,7 +26,7 @@
         }
     },
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.0",
         "jane-php/open-api-runtime": "~7.1",
         "psr/http-client-implementation": "*",
         "php-http/client-common": "^1.9 || ^2.0",
@@ -35,13 +35,13 @@
     },
     "require-dev": {
         "jane-php/open-api-2": "~7.1",
-        "symfony/http-client": "^5.4 || ^6.0",
+        "symfony/http-client": "^5.4 || ^6.0 || ^7.0",
         "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^3.2.2",
-        "symfony/phpunit-bridge": "^5.4 || ^6.0",
+        "symfony/phpunit-bridge": "^5.4 || ^6.0 || ^7.0",
         "opis/json-schema": "^1.0",
-        "symfony/console": "^5.4 || ^6.0",
-        "symfony/process": "^5.4 || ^6.0"
+        "symfony/console": "^5.4 || ^6.0 || ^7.0",
+        "symfony/process": "^5.4 || ^6.0 || ^7.0"
     },
     "conflict": {
         "php-http/httplug": "< 2.0"
