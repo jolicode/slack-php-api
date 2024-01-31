@@ -27,14 +27,14 @@
     },
     "require": {
         "php": ">=8.0",
-        "jane-php/open-api-runtime": "~7.1",
+        "jane-php/open-api-runtime": "~7.6.0",
         "psr/http-client-implementation": "*",
         "php-http/client-common": "^1.9 || ^2.0",
         "php-http/discovery": "^1.11",
         "php-http/multipart-stream-builder": "^1.1"
     },
     "require-dev": {
-        "jane-php/open-api-2": "~7.1",
+        "jane-php/open-api-2": "~v7.6.0",
         "symfony/http-client": "^6.0 || ^7.0",
         "nyholm/psr7": "^1.2",
         "friendsofphp/php-cs-fixer": "^3.2.2",
