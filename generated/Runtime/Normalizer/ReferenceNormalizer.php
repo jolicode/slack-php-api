@@ -14,20 +14,39 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Runtime\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ReferenceNormalizer implements NormalizerInterface
-{
-    public function normalize($object, $format = null, array $context = [])
+if (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4) {
+    class ReferenceNormalizer implements NormalizerInterface
     {
-        $ref = [];
-        $ref['$ref'] = (string) $object->getReferenceUri();
+        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        {
+            $ref = [];
+            $ref['$ref'] = (string) $object->getReferenceUri();
 
-        return $ref;
+            return $ref;
+        }
+
+        public function supportsNormalization($data, $format = null): bool
+        {
+            return $data instanceof Reference;
+        }
     }
-
-    public function supportsNormalization($data, $format = null): bool
+} else {
+    class ReferenceNormalizer implements NormalizerInterface
     {
-        return $data instanceof Reference;
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $ref = [];
+            $ref['$ref'] = (string) $object->getReferenceUri();
+
+            return $ref;
+        }
+
+        public function supportsNormalization($data, $format = null): bool
+        {
+            return $data instanceof Reference;
+        }
     }
 }

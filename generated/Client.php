@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api;
 
-class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
+class Client extends Runtime\Client\Client
 {
     /**
      * Approve an app for installation on a workspace.
@@ -36,7 +36,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminAppsApprove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsApprove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminAppsApprove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -57,7 +57,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminAppsApprovedList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsApprovedList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminAppsApprovedList($queryParameters), $fetch);
     }
 
     /**
@@ -77,7 +77,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminAppsRequestsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsRequestsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminAppsRequestsList($queryParameters), $fetch);
     }
 
     /**
@@ -101,7 +101,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminAppsRestrict(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsRestrict($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminAppsRestrict($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -122,7 +122,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminAppsRestrictedList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminAppsRestrictedList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminAppsRestrictedList($queryParameters), $fetch);
     }
 
     /**
@@ -144,7 +144,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsArchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsArchive($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsArchive($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -166,7 +166,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsConvertToPrivate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsConvertToPrivate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsConvertToPrivate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -192,7 +192,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsCreate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsCreate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -214,7 +214,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsDelete($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsDelete($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -237,7 +237,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsDisconnectShared(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsDisconnectShared($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsDisconnectShared($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -258,7 +258,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsEkmListOriginalConnectedChannelInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsEkmListOriginalConnectedChannelInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsEkmListOriginalConnectedChannelInfo($queryParameters), $fetch);
     }
 
     /**
@@ -280,7 +280,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsGetConversationPrefs(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsGetConversationPrefs($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsGetConversationPrefs($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -304,7 +304,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsGetTeams(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsGetTeams($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsGetTeams($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -327,7 +327,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsInvite($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsInvite($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -350,7 +350,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsRename(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsRename($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsRename($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -370,7 +370,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsRestrictAccessAddGroup(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsRestrictAccessAddGroup($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsRestrictAccessAddGroup($formParameters), $fetch);
     }
 
     /**
@@ -389,7 +389,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsRestrictAccessListGroups(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsRestrictAccessListGroups($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsRestrictAccessListGroups($queryParameters), $fetch);
     }
 
     /**
@@ -409,7 +409,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsRestrictAccessRemoveGroup(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsRestrictAccessRemoveGroup($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsRestrictAccessRemoveGroup($formParameters), $fetch);
     }
 
     /**
@@ -437,7 +437,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsSearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsSearch($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsSearch($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -460,7 +460,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsSetConversationPrefs(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsSetConversationPrefs($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsSetConversationPrefs($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -485,7 +485,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsSetTeams(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsSetTeams($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsSetTeams($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -507,7 +507,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminConversationsUnarchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminConversationsUnarchive($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminConversationsUnarchive($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -526,7 +526,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminEmojiAdd(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiAdd($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminEmojiAdd($formParameters), $fetch);
     }
 
     /**
@@ -545,7 +545,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminEmojiAddAlias(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiAddAlias($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminEmojiAddAlias($formParameters), $fetch);
     }
 
     /**
@@ -564,7 +564,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminEmojiList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminEmojiList($queryParameters), $fetch);
     }
 
     /**
@@ -582,7 +582,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminEmojiRemove(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiRemove($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminEmojiRemove($formParameters), $fetch);
     }
 
     /**
@@ -601,7 +601,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminEmojiRename(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminEmojiRename($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminEmojiRename($formParameters), $fetch);
     }
 
     /**
@@ -624,7 +624,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminInviteRequestsApprove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsApprove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminInviteRequestsApprove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -648,7 +648,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminInviteRequestsApprovedList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsApprovedList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminInviteRequestsApprovedList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -672,7 +672,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminInviteRequestsDeniedList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsDeniedList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminInviteRequestsDeniedList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -695,7 +695,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminInviteRequestsDeny(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsDeny($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminInviteRequestsDeny($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -719,7 +719,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminInviteRequestsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminInviteRequestsList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminInviteRequestsList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -739,7 +739,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsAdminsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsAdminsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsAdminsList($queryParameters), $fetch);
     }
 
     /**
@@ -764,7 +764,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsCreate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsCreate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -787,7 +787,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -807,7 +807,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsOwnersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsOwnersList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsOwnersList($queryParameters), $fetch);
     }
 
     /**
@@ -829,7 +829,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsSettingsInfo(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsInfo($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsSettingsInfo($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -848,7 +848,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsSettingsSetDefaultChannels(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetDefaultChannels($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsSettingsSetDefaultChannels($formParameters), $fetch);
     }
 
     /**
@@ -871,7 +871,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsSettingsSetDescription(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetDescription($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsSettingsSetDescription($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -894,7 +894,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsSettingsSetDiscoverability(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetDiscoverability($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsSettingsSetDiscoverability($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -913,7 +913,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsSettingsSetIcon(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetIcon($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsSettingsSetIcon($formParameters), $fetch);
     }
 
     /**
@@ -936,7 +936,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminTeamsSettingsSetName(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminTeamsSettingsSetName($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminTeamsSettingsSetName($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -960,7 +960,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsergroupsAddChannels(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsergroupsAddChannels($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsergroupsAddChannels($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -984,7 +984,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsergroupsAddTeams(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsergroupsAddTeams($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsergroupsAddTeams($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1008,7 +1008,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsergroupsListChannels(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsergroupsListChannels($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsergroupsListChannels($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1031,7 +1031,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsergroupsRemoveChannels(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsergroupsRemoveChannels($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsergroupsRemoveChannels($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1057,7 +1057,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersAssign(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersAssign($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersAssign($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1087,7 +1087,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersInvite($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersInvite($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1111,7 +1111,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1134,7 +1134,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersRemove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersRemove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1157,7 +1157,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersSessionInvalidate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSessionInvalidate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersSessionInvalidate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1181,7 +1181,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersSessionReset(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSessionReset($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersSessionReset($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1204,7 +1204,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersSetAdmin(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetAdmin($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersSetAdmin($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1228,7 +1228,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersSetExpiration(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetExpiration($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersSetExpiration($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1251,7 +1251,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersSetOwner(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetOwner($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersSetOwner($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1274,7 +1274,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function adminUsersSetRegular(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AdminUsersSetRegular($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AdminUsersSetRegular($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1292,7 +1292,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function apiTest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ApiTest($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ApiTest($queryParameters), $fetch);
     }
 
     /**
@@ -1316,7 +1316,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsEventAuthorizationsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsEventAuthorizationsList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsEventAuthorizationsList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1333,7 +1333,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsPermissionsInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsPermissionsInfo($queryParameters), $fetch);
     }
 
     /**
@@ -1352,7 +1352,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsPermissionsRequest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsRequest($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsPermissionsRequest($queryParameters), $fetch);
     }
 
     /**
@@ -1371,7 +1371,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsPermissionsResourcesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsResourcesList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsPermissionsResourcesList($queryParameters), $fetch);
     }
 
     /**
@@ -1388,7 +1388,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsPermissionsScopesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsScopesList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsPermissionsScopesList($queryParameters), $fetch);
     }
 
     /**
@@ -1407,7 +1407,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsPermissionsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsUsersList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsPermissionsUsersList($queryParameters), $fetch);
     }
 
     /**
@@ -1427,7 +1427,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsPermissionsUsersRequest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsPermissionsUsersRequest($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsPermissionsUsersRequest($queryParameters), $fetch);
     }
 
     /**
@@ -1446,7 +1446,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function appsUninstall(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AppsUninstall($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AppsUninstall($queryParameters), $fetch);
     }
 
     /**
@@ -1464,7 +1464,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function authRevoke(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AuthRevoke($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AuthRevoke($queryParameters), $fetch);
     }
 
     /**
@@ -1481,7 +1481,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function authTest(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\AuthTest($headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\AuthTest($headerParameters), $fetch);
     }
 
     /**
@@ -1499,7 +1499,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function botsInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\BotsInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\BotsInfo($queryParameters), $fetch);
     }
 
     /**
@@ -1528,7 +1528,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function callsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\CallsAdd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\CallsAdd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1551,7 +1551,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function callsEnd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\CallsEnd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\CallsEnd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1573,7 +1573,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function callsInfo(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\CallsInfo($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\CallsInfo($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1596,7 +1596,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function callsParticipantsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\CallsParticipantsAdd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\CallsParticipantsAdd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1619,7 +1619,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function callsParticipantsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\CallsParticipantsRemove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\CallsParticipantsRemove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1644,7 +1644,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function callsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\CallsUpdate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\CallsUpdate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1668,7 +1668,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatDelete($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatDelete($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1692,7 +1692,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatDeleteScheduledMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatDeleteScheduledMessage($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatDeleteScheduledMessage($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1711,7 +1711,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatGetPermalink(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatGetPermalink($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatGetPermalink($queryParameters), $fetch);
     }
 
     /**
@@ -1734,7 +1734,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatMeMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatMeMessage($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatMeMessage($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1767,7 +1767,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatPostEphemeral(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatPostEphemeral($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatPostEphemeral($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1804,7 +1804,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatPostMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatPostMessage($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatPostMessage($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1837,7 +1837,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatScheduleMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatScheduleMessage($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatScheduleMessage($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1863,7 +1863,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatScheduledMessagesList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatScheduledMessagesList($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatScheduledMessagesList($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1890,7 +1890,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatUnfurl(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatUnfurl($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatUnfurl($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1919,7 +1919,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function chatUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ChatUpdate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ChatUpdate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1941,7 +1941,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsArchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsArchive($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsArchive($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1963,7 +1963,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsClose(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsClose($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsClose($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -1986,7 +1986,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsCreate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsCreate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2010,7 +2010,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsHistory(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsHistory($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsHistory($queryParameters), $fetch);
     }
 
     /**
@@ -2030,7 +2030,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsInfo($queryParameters), $fetch);
     }
 
     /**
@@ -2053,7 +2053,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsInvite($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsInvite($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2075,7 +2075,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsJoin(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsJoin($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsJoin($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2098,7 +2098,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsKick(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsKick($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsKick($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2120,7 +2120,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsLeave(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsLeave($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsLeave($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2142,7 +2142,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsList($queryParameters), $fetch);
     }
 
     /**
@@ -2165,7 +2165,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsMark(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsMark($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsMark($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2185,7 +2185,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsMembers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsMembers($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsMembers($queryParameters), $fetch);
     }
 
     /**
@@ -2209,7 +2209,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsOpen(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsOpen($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsOpen($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2232,7 +2232,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsRename(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsRename($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsRename($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2256,7 +2256,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsReplies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsReplies($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsReplies($queryParameters), $fetch);
     }
 
     /**
@@ -2279,7 +2279,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsSetPurpose(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsSetPurpose($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsSetPurpose($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2302,7 +2302,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsSetTopic(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsSetTopic($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsSetTopic($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2324,7 +2324,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function conversationsUnarchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsUnarchive($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ConversationsUnarchive($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2347,7 +2347,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function dialogOpen(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\DialogOpen($queryParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\DialogOpen($queryParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2364,7 +2364,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function dndEndDnd(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\DndEndDnd($headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\DndEndDnd($headerParameters), $fetch);
     }
 
     /**
@@ -2381,7 +2381,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function dndEndSnooze(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\DndEndSnooze($headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\DndEndSnooze($headerParameters), $fetch);
     }
 
     /**
@@ -2399,7 +2399,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function dndInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\DndInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\DndInfo($queryParameters), $fetch);
     }
 
     /**
@@ -2417,7 +2417,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function dndSetSnooze(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\DndSetSnooze($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\DndSetSnooze($formParameters), $fetch);
     }
 
     /**
@@ -2435,7 +2435,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function dndTeamInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\DndTeamInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\DndTeamInfo($queryParameters), $fetch);
     }
 
     /**
@@ -2452,7 +2452,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function emojiList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\EmojiList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\EmojiList($queryParameters), $fetch);
     }
 
     /**
@@ -2475,7 +2475,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesCommentsDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesCommentsDelete($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesCommentsDelete($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2497,7 +2497,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesDelete($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesDelete($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2519,7 +2519,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesInfo($queryParameters), $fetch);
     }
 
     /**
@@ -2544,7 +2544,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesList($queryParameters), $fetch);
     }
 
     /**
@@ -2567,7 +2567,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRemoteAdd(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteAdd($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRemoteAdd($formParameters), $fetch);
     }
 
     /**
@@ -2586,7 +2586,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRemoteInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRemoteInfo($queryParameters), $fetch);
     }
 
     /**
@@ -2608,7 +2608,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRemoteList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRemoteList($queryParameters), $fetch);
     }
 
     /**
@@ -2627,7 +2627,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRemoteRemove(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteRemove($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRemoteRemove($formParameters), $fetch);
     }
 
     /**
@@ -2647,7 +2647,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRemoteShare(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteShare($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRemoteShare($queryParameters), $fetch);
     }
 
     /**
@@ -2671,7 +2671,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRemoteUpdate(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRemoteUpdate($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRemoteUpdate($formParameters), $fetch);
     }
 
     /**
@@ -2693,7 +2693,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesRevokePublicURL(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesRevokePublicURL($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesRevokePublicURL($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2715,7 +2715,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesSharedPublicURL(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesSharedPublicURL($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesSharedPublicURL($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2740,7 +2740,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function filesUpload(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\FilesUpload($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\FilesUpload($formParameters), $fetch);
     }
 
     /**
@@ -2760,7 +2760,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function migrationExchange(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\MigrationExchange($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\MigrationExchange($queryParameters), $fetch);
     }
 
     /**
@@ -2781,7 +2781,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function oauthAccess(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\OauthAccess($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\OauthAccess($queryParameters), $fetch);
     }
 
     /**
@@ -2802,7 +2802,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function oauthToken(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\OauthToken($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\OauthToken($queryParameters), $fetch);
     }
 
     /**
@@ -2822,7 +2822,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function oauthV2Access(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\OauthV2Access($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\OauthV2Access($queryParameters), $fetch);
     }
 
     /**
@@ -2845,7 +2845,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function pinsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\PinsAdd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\PinsAdd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2863,7 +2863,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function pinsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\PinsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\PinsList($queryParameters), $fetch);
     }
 
     /**
@@ -2886,7 +2886,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function pinsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\PinsRemove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\PinsRemove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2910,7 +2910,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function reactionsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ReactionsAdd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ReactionsAdd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -2932,7 +2932,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function reactionsGet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ReactionsGet($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ReactionsGet($queryParameters), $fetch);
     }
 
     /**
@@ -2955,7 +2955,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function reactionsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ReactionsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ReactionsList($queryParameters), $fetch);
     }
 
     /**
@@ -2981,7 +2981,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function reactionsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ReactionsRemove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ReactionsRemove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3005,7 +3005,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function remindersAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\RemindersAdd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RemindersAdd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3027,7 +3027,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function remindersComplete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\RemindersComplete($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RemindersComplete($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3049,7 +3049,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function remindersDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\RemindersDelete($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RemindersDelete($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3067,7 +3067,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function remindersInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\RemindersInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RemindersInfo($queryParameters), $fetch);
     }
 
     /**
@@ -3084,7 +3084,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function remindersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\RemindersList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RemindersList($queryParameters), $fetch);
     }
 
     /**
@@ -3103,7 +3103,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function rtmConnect(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\RtmConnect($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\RtmConnect($queryParameters), $fetch);
     }
 
     /**
@@ -3126,7 +3126,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function searchMessages(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\SearchMessages($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\SearchMessages($queryParameters), $fetch);
     }
 
     /**
@@ -3151,7 +3151,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function starsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\StarsAdd($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\StarsAdd($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3172,7 +3172,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function starsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\StarsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\StarsList($queryParameters), $fetch);
     }
 
     /**
@@ -3197,7 +3197,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function starsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\StarsRemove($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\StarsRemove($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3217,7 +3217,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function teamAccessLogs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\TeamAccessLogs($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamAccessLogs($queryParameters), $fetch);
     }
 
     /**
@@ -3235,7 +3235,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function teamBillableInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\TeamBillableInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamBillableInfo($queryParameters), $fetch);
     }
 
     /**
@@ -3253,7 +3253,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function teamInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\TeamInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamInfo($queryParameters), $fetch);
     }
 
     /**
@@ -3276,7 +3276,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function teamIntegrationLogs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\TeamIntegrationLogs($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamIntegrationLogs($queryParameters), $fetch);
     }
 
     /**
@@ -3294,7 +3294,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function teamProfileGet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\TeamProfileGet($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\TeamProfileGet($queryParameters), $fetch);
     }
 
     /**
@@ -3320,7 +3320,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsCreate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsCreate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3343,7 +3343,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsDisable(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsDisable($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsDisable($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3366,7 +3366,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsEnable(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsEnable($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsEnable($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3387,7 +3387,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsList($queryParameters), $fetch);
     }
 
     /**
@@ -3414,7 +3414,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUpdate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsUpdate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3433,7 +3433,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUsersList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsUsersList($queryParameters), $fetch);
     }
 
     /**
@@ -3457,7 +3457,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usergroupsUsersUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsergroupsUsersUpdate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsergroupsUsersUpdate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3479,7 +3479,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersConversations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersConversations($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersConversations($queryParameters), $fetch);
     }
 
     /**
@@ -3496,7 +3496,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersDeletePhoto(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersDeletePhoto($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersDeletePhoto($formParameters), $fetch);
     }
 
     /**
@@ -3514,7 +3514,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersGetPresence(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersGetPresence($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersGetPresence($queryParameters), $fetch);
     }
 
     /**
@@ -3531,7 +3531,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersIdentity(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersIdentity($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersIdentity($queryParameters), $fetch);
     }
 
     /**
@@ -3550,7 +3550,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersInfo($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersInfo($queryParameters), $fetch);
     }
 
     /**
@@ -3571,7 +3571,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersList($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersList($queryParameters), $fetch);
     }
 
     /**
@@ -3589,7 +3589,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersLookupByEmail(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersLookupByEmail($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersLookupByEmail($queryParameters), $fetch);
     }
 
     /**
@@ -3608,7 +3608,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersProfileGet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersProfileGet($queryParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersProfileGet($queryParameters), $fetch);
     }
 
     /**
@@ -3633,7 +3633,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersProfileSet(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersProfileSet($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersProfileSet($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3650,7 +3650,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersSetActive(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersSetActive($headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersSetActive($headerParameters), $fetch);
     }
 
     /**
@@ -3671,7 +3671,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersSetPhoto(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersSetPhoto($formParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersSetPhoto($formParameters), $fetch);
     }
 
     /**
@@ -3693,7 +3693,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function usersSetPresence(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\UsersSetPresence($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\UsersSetPresence($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3716,7 +3716,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function viewsOpen(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsOpen($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ViewsOpen($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3740,7 +3740,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function viewsPublish(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPublish($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ViewsPublish($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3763,7 +3763,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function viewsPush(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsPush($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ViewsPush($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3788,7 +3788,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function viewsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ViewsUpdate($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\ViewsUpdate($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3811,7 +3811,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function workflowsStepCompleted(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsStepCompleted($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\WorkflowsStepCompleted($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3834,7 +3834,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function workflowsStepFailed(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsStepFailed($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\WorkflowsStepFailed($formParameters, $headerParameters), $fetch);
     }
 
     /**
@@ -3860,7 +3860,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
      */
     public function workflowsUpdateStep(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\WorkflowsUpdateStep($formParameters, $headerParameters), $fetch);
+        return $this->executeEndpoint(new Endpoint\WorkflowsUpdateStep($formParameters, $headerParameters), $fetch);
     }
 
     public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
@@ -3878,7 +3878,7 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
         }
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
-        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \JoliCode\Slack\Api\Normalizer\JaneObjectNormalizer()];
+        $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new Normalizer\JaneObjectNormalizer()];
         if (\count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }

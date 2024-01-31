@@ -16,6 +16,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -23,63 +24,123 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class ObjsMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata' === \get_class($data);
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata' === \get_class($data);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsMetadata();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\ObjsMetadata();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('event_payload', $data) && null !== $data['event_payload']) {
+                $object->setEventPayload($data['event_payload']);
+            } elseif (\array_key_exists('event_payload', $data) && null === $data['event_payload']) {
+                $object->setEventPayload(null);
+            }
+            if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
+                $object->setEventType($data['event_type']);
+            } elseif (\array_key_exists('event_type', $data) && null === $data['event_type']) {
+                $object->setEventType(null);
+            }
+
             return $object;
         }
-        if (\array_key_exists('event_payload', $data) && null !== $data['event_payload']) {
-            $object->setEventPayload($data['event_payload']);
-        } elseif (\array_key_exists('event_payload', $data) && null === $data['event_payload']) {
-            $object->setEventPayload(null);
+
+        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        {
+            $data = [];
+            $data['event_payload'] = $object->getEventPayload();
+            $data['event_type'] = $object->getEventType();
+
+            return $data;
         }
-        if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
-            $object->setEventType($data['event_type']);
-        } elseif (\array_key_exists('event_type', $data) && null === $data['event_type']) {
-            $object->setEventType(null);
+
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\ObjsMetadata' => false];
+        }
+    }
+} else {
+    class ObjsMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+    {
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata' === $type;
         }
 
-        return $object;
-    }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMetadata' === \get_class($data);
+        }
 
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        $data = [];
-        $data['event_payload'] = $object->getEventPayload();
-        $data['event_type'] = $object->getEventType();
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\ObjsMetadata();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('event_payload', $data) && null !== $data['event_payload']) {
+                $object->setEventPayload($data['event_payload']);
+            } elseif (\array_key_exists('event_payload', $data) && null === $data['event_payload']) {
+                $object->setEventPayload(null);
+            }
+            if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
+                $object->setEventType($data['event_type']);
+            } elseif (\array_key_exists('event_type', $data) && null === $data['event_type']) {
+                $object->setEventType(null);
+            }
 
-        return $data;
-    }
+            return $object;
+        }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['JoliCode\\Slack\\Api\\Model\\ObjsMetadata' => false];
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            $data['event_payload'] = $object->getEventPayload();
+            $data['event_type'] = $object->getEventType();
+
+            return $data;
+        }
+
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\ObjsMetadata' => false];
+        }
     }
 }

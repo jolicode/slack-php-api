@@ -16,6 +16,7 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -23,89 +24,175 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class ObjsResponseMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
-{
-    use CheckArray;
-    use DenormalizerAwareTrait;
-    use NormalizerAwareTrait;
-    use ValidatorTrait;
-
-    public function supportsDenormalization($data, $type, $format = null, array $context = []): bool
+if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
+    class ObjsResponseMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        return 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === $type;
-    }
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
 
-    public function supportsNormalization($data, $format = null, array $context = []): bool
-    {
-        return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === \get_class($data);
-    }
-
-    public function denormalize($data, $class, $format = null, array $context = [])
-    {
-        if (isset($data['$ref'])) {
-            return new Reference($data['$ref'], $context['document-origin']);
+        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === $type;
         }
-        if (isset($data['$recursiveRef'])) {
-            return new Reference($data['$recursiveRef'], $context['document-origin']);
+
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === \get_class($data);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsResponseMetadata();
-        if (null === $data || false === \is_array($data)) {
+
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\ObjsResponseMetadata();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('messages', $data) && null !== $data['messages']) {
+                $values = [];
+                foreach ($data['messages'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setMessages($values);
+            } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
+                $object->setMessages(null);
+            }
+            if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
+                $object->setNextCursor($data['next_cursor']);
+            } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
+                $object->setNextCursor(null);
+            }
+            if (\array_key_exists('warnings', $data) && null !== $data['warnings']) {
+                $values_1 = [];
+                foreach ($data['warnings'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setWarnings($values_1);
+            } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
+                $object->setWarnings(null);
+            }
+
             return $object;
         }
-        if (\array_key_exists('messages', $data) && null !== $data['messages']) {
-            $values = [];
-            foreach ($data['messages'] as $value) {
-                $values[] = $value;
+
+        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        {
+            $data = [];
+            if ($object->isInitialized('messages') && null !== $object->getMessages()) {
+                $values = [];
+                foreach ($object->getMessages() as $value) {
+                    $values[] = $value;
+                }
+                $data['messages'] = $values;
             }
-            $object->setMessages($values);
-        } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
-            $object->setMessages(null);
-        }
-        if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
-            $object->setNextCursor($data['next_cursor']);
-        } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
-            $object->setNextCursor(null);
-        }
-        if (\array_key_exists('warnings', $data) && null !== $data['warnings']) {
-            $values_1 = [];
-            foreach ($data['warnings'] as $value_1) {
-                $values_1[] = $value_1;
+            $data['next_cursor'] = $object->getNextCursor();
+            if ($object->isInitialized('warnings') && null !== $object->getWarnings()) {
+                $values_1 = [];
+                foreach ($object->getWarnings() as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $data['warnings'] = $values_1;
             }
-            $object->setWarnings($values_1);
-        } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
-            $object->setWarnings(null);
+
+            return $data;
         }
 
-        return $object;
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' => false];
+        }
     }
-
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = [])
+} else {
+    class ObjsResponseMetadataNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
     {
-        $data = [];
-        if ($object->isInitialized('messages') && null !== $object->getMessages()) {
-            $values = [];
-            foreach ($object->getMessages() as $value) {
-                $values[] = $value;
-            }
-            $data['messages'] = $values;
-        }
-        $data['next_cursor'] = $object->getNextCursor();
-        if ($object->isInitialized('warnings') && null !== $object->getWarnings()) {
-            $values_1 = [];
-            foreach ($object->getWarnings() as $value_1) {
-                $values_1[] = $value_1;
-            }
-            $data['warnings'] = $values_1;
+        use CheckArray;
+        use DenormalizerAwareTrait;
+        use NormalizerAwareTrait;
+        use ValidatorTrait;
+
+        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        {
+            return 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === $type;
         }
 
-        return $data;
-    }
+        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        {
+            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' === \get_class($data);
+        }
 
-    public function getSupportedTypes(string $format = null): array
-    {
-        return ['JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' => false];
+        public function denormalize($data, $type, $format = null, array $context = [])
+        {
+            if (isset($data['$ref'])) {
+                return new Reference($data['$ref'], $context['document-origin']);
+            }
+            if (isset($data['$recursiveRef'])) {
+                return new Reference($data['$recursiveRef'], $context['document-origin']);
+            }
+            $object = new \JoliCode\Slack\Api\Model\ObjsResponseMetadata();
+            if (null === $data || false === \is_array($data)) {
+                return $object;
+            }
+            if (\array_key_exists('messages', $data) && null !== $data['messages']) {
+                $values = [];
+                foreach ($data['messages'] as $value) {
+                    $values[] = $value;
+                }
+                $object->setMessages($values);
+            } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
+                $object->setMessages(null);
+            }
+            if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
+                $object->setNextCursor($data['next_cursor']);
+            } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
+                $object->setNextCursor(null);
+            }
+            if (\array_key_exists('warnings', $data) && null !== $data['warnings']) {
+                $values_1 = [];
+                foreach ($data['warnings'] as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $object->setWarnings($values_1);
+            } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
+                $object->setWarnings(null);
+            }
+
+            return $object;
+        }
+
+        /**
+         * @return array|string|int|float|bool|\ArrayObject|null
+         */
+        public function normalize($object, $format = null, array $context = [])
+        {
+            $data = [];
+            if ($object->isInitialized('messages') && null !== $object->getMessages()) {
+                $values = [];
+                foreach ($object->getMessages() as $value) {
+                    $values[] = $value;
+                }
+                $data['messages'] = $values;
+            }
+            $data['next_cursor'] = $object->getNextCursor();
+            if ($object->isInitialized('warnings') && null !== $object->getWarnings()) {
+                $values_1 = [];
+                foreach ($object->getWarnings() as $value_1) {
+                    $values_1[] = $value_1;
+                }
+                $data['warnings'] = $values_1;
+            }
+
+            return $data;
+        }
+
+        public function getSupportedTypes(string $format = null): array
+        {
+            return ['JoliCode\\Slack\\Api\\Model\\ObjsResponseMetadata' => false];
+        }
     }
 }
