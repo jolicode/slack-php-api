@@ -100,7 +100,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\BotsInfoGetResponse200' === \get_class($data);
         }
 
-        public function denormalize($data, $type, $format = null, array $context = [])
+        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
