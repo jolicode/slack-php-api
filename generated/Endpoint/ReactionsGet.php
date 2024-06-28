@@ -79,7 +79,7 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * @return \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
@@ -87,6 +87,6 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
             return json_decode($body);
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\ReactionsGetGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault', 'json');
     }
 }

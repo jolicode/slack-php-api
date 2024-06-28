@@ -20,7 +20,7 @@ class ObjsExternalOrgMigrations
      */
     protected $initialized = [];
     /**
-     * @var ObjsExternalOrgMigrationsCurrentItem[]|null
+     * @var list<ObjsExternalOrgMigrationsCurrentItem>|null
      */
     protected $current;
     /**
@@ -34,7 +34,7 @@ class ObjsExternalOrgMigrations
     }
 
     /**
-     * @return ObjsExternalOrgMigrationsCurrentItem[]|null
+     * @return list<ObjsExternalOrgMigrationsCurrentItem>|null
      */
     public function getCurrent(): ?array
     {
@@ -42,7 +42,7 @@ class ObjsExternalOrgMigrations
     }
 
     /**
-     * @param ObjsExternalOrgMigrationsCurrentItem[]|null $current
+     * @param list<ObjsExternalOrgMigrationsCurrentItem>|null $current
      */
     public function setCurrent(?array $current): self
     {

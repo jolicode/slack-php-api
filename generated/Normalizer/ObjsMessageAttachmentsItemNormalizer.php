@@ -32,17 +32,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' === $type;
+            return 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' === \get_class($data);
         }
 
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -57,7 +57,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('actions', $data) && null !== $data['actions']) {
                 $values = [];
                 foreach ($data['actions'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
                 }
                 $object->setActions($values);
                 unset($data['actions']);
@@ -103,7 +103,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('fields', $data) && null !== $data['fields']) {
                 $values_1 = [];
                 foreach ($data['fields'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
                 }
                 $object->setFields($values_1);
                 unset($data['fields']);
@@ -203,7 +203,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('actions') && null !== $object->getActions()) {
@@ -290,9 +290,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' => false];
+            return ['JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' => false];
         }
     }
 } else {
@@ -303,14 +303,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' === $type;
+            return 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -328,7 +328,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('actions', $data) && null !== $data['actions']) {
                 $values = [];
                 foreach ($data['actions'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem', 'json', $context);
                 }
                 $object->setActions($values);
                 unset($data['actions']);
@@ -374,7 +374,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('fields', $data) && null !== $data['fields']) {
                 $values_1 = [];
                 foreach ($data['fields'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem', 'json', $context);
                 }
                 $object->setFields($values_1);
                 unset($data['fields']);
@@ -564,9 +564,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ObjsMessageAttachmentsItem' => false];
+            return ['JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' => false];
         }
     }
 }

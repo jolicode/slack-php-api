@@ -20,7 +20,7 @@ class FilesInfoGetResponse200
      */
     protected $initialized = [];
     /**
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $comments;
     /**
@@ -54,7 +54,7 @@ class FilesInfoGetResponse200
     }
 
     /**
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getComments(): ?array
     {
@@ -62,7 +62,7 @@ class FilesInfoGetResponse200
     }
 
     /**
-     * @param mixed[]|null $comments
+     * @param list<mixed>|null $comments
      */
     public function setComments(?array $comments): self
     {

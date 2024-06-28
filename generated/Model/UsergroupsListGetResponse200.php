@@ -24,7 +24,7 @@ class UsergroupsListGetResponse200
      */
     protected $ok;
     /**
-     * @var ObjsSubteam[]|null
+     * @var list<ObjsSubteam>|null
      */
     protected $usergroups;
 
@@ -47,7 +47,7 @@ class UsergroupsListGetResponse200
     }
 
     /**
-     * @return ObjsSubteam[]|null
+     * @return list<ObjsSubteam>|null
      */
     public function getUsergroups(): ?array
     {
@@ -55,7 +55,7 @@ class UsergroupsListGetResponse200
     }
 
     /**
-     * @param ObjsSubteam[]|null $usergroups
+     * @param list<ObjsSubteam>|null $usergroups
      */
     public function setUsergroups(?array $usergroups): self
     {

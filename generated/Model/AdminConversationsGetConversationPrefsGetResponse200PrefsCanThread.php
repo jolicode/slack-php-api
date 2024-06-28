@@ -20,11 +20,11 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread
      */
     protected $initialized = [];
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $type;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $user;
 
@@ -34,7 +34,7 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getType(): ?array
     {
@@ -42,7 +42,7 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread
     }
 
     /**
-     * @param string[]|null $type
+     * @param list<string>|null $type
      */
     public function setType(?array $type): self
     {
@@ -53,7 +53,7 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUser(): ?array
     {
@@ -61,7 +61,7 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread
     }
 
     /**
-     * @param string[]|null $user
+     * @param list<string>|null $user
      */
     public function setUser(?array $user): self
     {

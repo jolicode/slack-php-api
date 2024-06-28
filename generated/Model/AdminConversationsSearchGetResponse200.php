@@ -20,7 +20,7 @@ class AdminConversationsSearchGetResponse200
      */
     protected $initialized = [];
     /**
-     * @var ObjsChannel[]|null
+     * @var list<ObjsChannel>|null
      */
     protected $channels;
     /**
@@ -34,7 +34,7 @@ class AdminConversationsSearchGetResponse200
     }
 
     /**
-     * @return ObjsChannel[]|null
+     * @return list<ObjsChannel>|null
      */
     public function getChannels(): ?array
     {
@@ -42,7 +42,7 @@ class AdminConversationsSearchGetResponse200
     }
 
     /**
-     * @param ObjsChannel[]|null $channels
+     * @param list<ObjsChannel>|null $channels
      */
     public function setChannels(?array $channels): self
     {

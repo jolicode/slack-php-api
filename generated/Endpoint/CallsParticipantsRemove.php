@@ -88,14 +88,14 @@ class CallsParticipantsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
     /**
      * @return \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200|\JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\CallsParticipantsRemovePostResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\CallsParticipantsRemovePostResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault', 'json');
     }
 }

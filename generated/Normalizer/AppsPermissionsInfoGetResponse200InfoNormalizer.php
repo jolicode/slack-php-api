@@ -32,17 +32,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info' === $type;
+            return 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' === \get_class($data);
         }
 
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -55,32 +55,32 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('app_home', $data) && null !== $data['app_home']) {
-                $object->setAppHome($this->denormalizer->denormalize($data['app_home'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoAppHome', 'json', $context));
+                $object->setAppHome($this->denormalizer->denormalize($data['app_home'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome', 'json', $context));
             } elseif (\array_key_exists('app_home', $data) && null === $data['app_home']) {
                 $object->setAppHome(null);
             }
             if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-                $object->setChannel($this->denormalizer->denormalize($data['channel'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoChannel', 'json', $context));
+                $object->setChannel($this->denormalizer->denormalize($data['channel'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel', 'json', $context));
             } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
                 $object->setChannel(null);
             }
             if (\array_key_exists('group', $data) && null !== $data['group']) {
-                $object->setGroup($this->denormalizer->denormalize($data['group'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoGroup', 'json', $context));
+                $object->setGroup($this->denormalizer->denormalize($data['group'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup', 'json', $context));
             } elseif (\array_key_exists('group', $data) && null === $data['group']) {
                 $object->setGroup(null);
             }
             if (\array_key_exists('im', $data) && null !== $data['im']) {
-                $object->setIm($this->denormalizer->denormalize($data['im'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoIm', 'json', $context));
+                $object->setIm($this->denormalizer->denormalize($data['im'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm', 'json', $context));
             } elseif (\array_key_exists('im', $data) && null === $data['im']) {
                 $object->setIm(null);
             }
             if (\array_key_exists('mpim', $data) && null !== $data['mpim']) {
-                $object->setMpim($this->denormalizer->denormalize($data['mpim'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoMpim', 'json', $context));
+                $object->setMpim($this->denormalizer->denormalize($data['mpim'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim', 'json', $context));
             } elseif (\array_key_exists('mpim', $data) && null === $data['mpim']) {
                 $object->setMpim(null);
             }
             if (\array_key_exists('team', $data) && null !== $data['team']) {
-                $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoTeam', 'json', $context));
+                $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam', 'json', $context));
             } elseif (\array_key_exists('team', $data) && null === $data['team']) {
                 $object->setTeam(null);
             }
@@ -88,7 +88,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['app_home'] = $this->normalizer->normalize($object->getAppHome(), 'json', $context);
@@ -101,9 +101,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info' => false];
+            return ['JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' => false];
         }
     }
 } else {
@@ -114,14 +114,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info' === $type;
+            return 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -137,32 +137,32 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('app_home', $data) && null !== $data['app_home']) {
-                $object->setAppHome($this->denormalizer->denormalize($data['app_home'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoAppHome', 'json', $context));
+                $object->setAppHome($this->denormalizer->denormalize($data['app_home'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome', 'json', $context));
             } elseif (\array_key_exists('app_home', $data) && null === $data['app_home']) {
                 $object->setAppHome(null);
             }
             if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-                $object->setChannel($this->denormalizer->denormalize($data['channel'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoChannel', 'json', $context));
+                $object->setChannel($this->denormalizer->denormalize($data['channel'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel', 'json', $context));
             } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
                 $object->setChannel(null);
             }
             if (\array_key_exists('group', $data) && null !== $data['group']) {
-                $object->setGroup($this->denormalizer->denormalize($data['group'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoGroup', 'json', $context));
+                $object->setGroup($this->denormalizer->denormalize($data['group'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup', 'json', $context));
             } elseif (\array_key_exists('group', $data) && null === $data['group']) {
                 $object->setGroup(null);
             }
             if (\array_key_exists('im', $data) && null !== $data['im']) {
-                $object->setIm($this->denormalizer->denormalize($data['im'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoIm', 'json', $context));
+                $object->setIm($this->denormalizer->denormalize($data['im'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm', 'json', $context));
             } elseif (\array_key_exists('im', $data) && null === $data['im']) {
                 $object->setIm(null);
             }
             if (\array_key_exists('mpim', $data) && null !== $data['mpim']) {
-                $object->setMpim($this->denormalizer->denormalize($data['mpim'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoMpim', 'json', $context));
+                $object->setMpim($this->denormalizer->denormalize($data['mpim'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim', 'json', $context));
             } elseif (\array_key_exists('mpim', $data) && null === $data['mpim']) {
                 $object->setMpim(null);
             }
             if (\array_key_exists('team', $data) && null !== $data['team']) {
-                $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200InfoTeam', 'json', $context));
+                $object->setTeam($this->denormalizer->denormalize($data['team'], 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam', 'json', $context));
             } elseif (\array_key_exists('team', $data) && null === $data['team']) {
                 $object->setTeam(null);
             }
@@ -186,9 +186,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\AppsPermissionsInfoGetResponse200Info' => false];
+            return ['JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' => false];
         }
     }
 }

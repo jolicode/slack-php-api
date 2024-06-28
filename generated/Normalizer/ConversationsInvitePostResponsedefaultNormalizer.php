@@ -32,17 +32,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' === $type;
+            return 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' === \get_class($data);
         }
 
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -67,7 +67,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('errors', $data) && null !== $data['errors']) {
                 $values = [];
                 foreach ($data['errors'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefaultErrorsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem', 'json', $context);
                 }
                 $object->setErrors($values);
             } elseif (\array_key_exists('errors', $data) && null === $data['errors']) {
@@ -92,7 +92,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('callstack') && null !== $object->getCallstack()) {
@@ -119,9 +119,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' => false];
+            return ['JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' => false];
         }
     }
 } else {
@@ -132,14 +132,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' === $type;
+            return 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -167,7 +167,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('errors', $data) && null !== $data['errors']) {
                 $values = [];
                 foreach ($data['errors'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefaultErrorsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem', 'json', $context);
                 }
                 $object->setErrors($values);
             } elseif (\array_key_exists('errors', $data) && null === $data['errors']) {
@@ -222,9 +222,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ConversationsInvitePostResponsedefault' => false];
+            return ['JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' => false];
         }
     }
 }

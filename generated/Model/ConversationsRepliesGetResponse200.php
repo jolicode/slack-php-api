@@ -24,7 +24,7 @@ class ConversationsRepliesGetResponse200
      */
     protected $hasMore;
     /**
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $messages;
     /**
@@ -55,7 +55,7 @@ class ConversationsRepliesGetResponse200
     }
 
     /**
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getMessages(): ?array
     {
@@ -63,7 +63,7 @@ class ConversationsRepliesGetResponse200
     }
 
     /**
-     * @param mixed[]|null $messages
+     * @param list<mixed>|null $messages
      */
     public function setMessages(?array $messages): self
     {

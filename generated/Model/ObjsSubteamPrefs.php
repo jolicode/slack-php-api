@@ -20,11 +20,11 @@ class ObjsSubteamPrefs
      */
     protected $initialized = [];
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $channels;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $groups;
 
@@ -34,7 +34,7 @@ class ObjsSubteamPrefs
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getChannels(): ?array
     {
@@ -42,7 +42,7 @@ class ObjsSubteamPrefs
     }
 
     /**
-     * @param string[]|null $channels
+     * @param list<string>|null $channels
      */
     public function setChannels(?array $channels): self
     {
@@ -53,7 +53,7 @@ class ObjsSubteamPrefs
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getGroups(): ?array
     {
@@ -61,7 +61,7 @@ class ObjsSubteamPrefs
     }
 
     /**
-     * @param string[]|null $groups
+     * @param list<string>|null $groups
      */
     public function setGroups(?array $groups): self
     {

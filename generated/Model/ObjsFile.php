@@ -20,7 +20,7 @@ class ObjsFile
      */
     protected $initialized = [];
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $channels;
     /**
@@ -68,7 +68,7 @@ class ObjsFile
      */
     protected $filetype;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $groups;
     /**
@@ -84,7 +84,7 @@ class ObjsFile
      */
     protected $imageExifRotation;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $ims;
     /**
@@ -148,7 +148,7 @@ class ObjsFile
      */
     protected $pinnedInfo;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $pinnedTo;
     /**
@@ -168,7 +168,7 @@ class ObjsFile
      */
     protected $publicUrlShared;
     /**
-     * @var ObjsReaction[]|null
+     * @var list<ObjsReaction>|null
      */
     protected $reactions;
     /**
@@ -318,7 +318,7 @@ class ObjsFile
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getChannels(): ?array
     {
@@ -326,7 +326,7 @@ class ObjsFile
     }
 
     /**
-     * @param string[]|null $channels
+     * @param list<string>|null $channels
      */
     public function setChannels(?array $channels): self
     {
@@ -480,7 +480,7 @@ class ObjsFile
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getGroups(): ?array
     {
@@ -488,7 +488,7 @@ class ObjsFile
     }
 
     /**
-     * @param string[]|null $groups
+     * @param list<string>|null $groups
      */
     public function setGroups(?array $groups): self
     {
@@ -538,7 +538,7 @@ class ObjsFile
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIms(): ?array
     {
@@ -546,7 +546,7 @@ class ObjsFile
     }
 
     /**
-     * @param string[]|null $ims
+     * @param list<string>|null $ims
      */
     public function setIms(?array $ims): self
     {
@@ -752,7 +752,7 @@ class ObjsFile
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPinnedTo(): ?array
     {
@@ -760,7 +760,7 @@ class ObjsFile
     }
 
     /**
-     * @param string[]|null $pinnedTo
+     * @param list<string>|null $pinnedTo
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
@@ -823,7 +823,7 @@ class ObjsFile
     }
 
     /**
-     * @return ObjsReaction[]|null
+     * @return list<ObjsReaction>|null
      */
     public function getReactions(): ?array
     {
@@ -831,7 +831,7 @@ class ObjsFile
     }
 
     /**
-     * @param ObjsReaction[]|null $reactions
+     * @param list<ObjsReaction>|null $reactions
      */
     public function setReactions(?array $reactions): self
     {

@@ -20,7 +20,7 @@ class PinsListGetResponse200Item0
      */
     protected $initialized = [];
     /**
-     * @var PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null
+     * @var list<PinsListGetResponse200Item0ItemsItem0>|list<PinsListGetResponse200Item0ItemsItem1>|null
      */
     protected $items;
     /**
@@ -34,7 +34,7 @@ class PinsListGetResponse200Item0
     }
 
     /**
-     * @return PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null
+     * @return list<PinsListGetResponse200Item0ItemsItem0>|list<PinsListGetResponse200Item0ItemsItem1>|null
      */
     public function getItems()
     {
@@ -42,7 +42,7 @@ class PinsListGetResponse200Item0
     }
 
     /**
-     * @param PinsListGetResponse200Item0ItemsItem0[]|PinsListGetResponse200Item0ItemsItem1[]|null $items
+     * @param list<PinsListGetResponse200Item0ItemsItem0>|list<PinsListGetResponse200Item0ItemsItem1>|null $items
      */
     public function setItems($items): self
     {

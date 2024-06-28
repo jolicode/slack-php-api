@@ -20,7 +20,7 @@ class ChatScheduleMessagePostResponse200Message
      */
     protected $initialized = [];
     /**
-     * @var ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
+     * @var list<ChatScheduleMessagePostResponse200MessageAttachmentsItem>|null
      */
     protected $attachments;
     /**
@@ -62,7 +62,7 @@ class ChatScheduleMessagePostResponse200Message
     }
 
     /**
-     * @return ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null
+     * @return list<ChatScheduleMessagePostResponse200MessageAttachmentsItem>|null
      */
     public function getAttachments(): ?array
     {
@@ -70,7 +70,7 @@ class ChatScheduleMessagePostResponse200Message
     }
 
     /**
-     * @param ChatScheduleMessagePostResponse200MessageAttachmentsItem[]|null $attachments
+     * @param list<ChatScheduleMessagePostResponse200MessageAttachmentsItem>|null $attachments
      */
     public function setAttachments(?array $attachments): self
     {

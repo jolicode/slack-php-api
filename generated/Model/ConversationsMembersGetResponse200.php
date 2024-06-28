@@ -20,7 +20,7 @@ class ConversationsMembersGetResponse200
      */
     protected $initialized = [];
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $members;
     /**
@@ -38,7 +38,7 @@ class ConversationsMembersGetResponse200
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMembers(): ?array
     {
@@ -46,7 +46,7 @@ class ConversationsMembersGetResponse200
     }
 
     /**
-     * @param string[]|null $members
+     * @param list<string>|null $members
      */
     public function setMembers(?array $members): self
     {

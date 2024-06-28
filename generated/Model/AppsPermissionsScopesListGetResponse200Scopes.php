@@ -20,31 +20,31 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $appHome;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $channel;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $group;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $im;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $mpim;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $team;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $user;
 
@@ -54,7 +54,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getAppHome(): ?array
     {
@@ -62,7 +62,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $appHome
+     * @param list<string>|null $appHome
      */
     public function setAppHome(?array $appHome): self
     {
@@ -73,7 +73,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getChannel(): ?array
     {
@@ -81,7 +81,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $channel
+     * @param list<string>|null $channel
      */
     public function setChannel(?array $channel): self
     {
@@ -92,7 +92,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getGroup(): ?array
     {
@@ -100,7 +100,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $group
+     * @param list<string>|null $group
      */
     public function setGroup(?array $group): self
     {
@@ -111,7 +111,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getIm(): ?array
     {
@@ -119,7 +119,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $im
+     * @param list<string>|null $im
      */
     public function setIm(?array $im): self
     {
@@ -130,7 +130,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMpim(): ?array
     {
@@ -138,7 +138,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $mpim
+     * @param list<string>|null $mpim
      */
     public function setMpim(?array $mpim): self
     {
@@ -149,7 +149,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTeam(): ?array
     {
@@ -157,7 +157,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $team
+     * @param list<string>|null $team
      */
     public function setTeam(?array $team): self
     {
@@ -168,7 +168,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUser(): ?array
     {
@@ -176,7 +176,7 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $user
+     * @param list<string>|null $user
      */
     public function setUser(?array $user): self
     {

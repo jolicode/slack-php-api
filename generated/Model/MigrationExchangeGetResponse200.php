@@ -24,7 +24,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
      */
     protected $enterpriseId;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $invalidUserIds;
     /**
@@ -59,7 +59,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getInvalidUserIds(): ?array
     {
@@ -67,7 +67,7 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $invalidUserIds
+     * @param list<string>|null $invalidUserIds
      */
     public function setInvalidUserIds(?array $invalidUserIds): self
     {

@@ -20,13 +20,13 @@ class ObjsMessage
      */
     protected $initialized = [];
     /**
-     * @var ObjsMessageAttachmentsItem[]|null
+     * @var list<ObjsMessageAttachmentsItem>|null
      */
     protected $attachments;
     /**
      * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
      *
-     * @var BlocksItem[]|null
+     * @var list<BlocksItem>|null
      */
     protected $blocks;
     /**
@@ -54,7 +54,7 @@ class ObjsMessage
      */
     protected $file;
     /**
-     * @var ObjsFile[]|null
+     * @var list<ObjsFile>|null
      */
     protected $files;
     /**
@@ -106,7 +106,7 @@ class ObjsMessage
      */
     protected $permalink;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $pinnedTo;
     /**
@@ -114,7 +114,7 @@ class ObjsMessage
      */
     protected $purpose;
     /**
-     * @var ObjsReaction[]|null
+     * @var list<ObjsReaction>|null
      */
     protected $reactions;
     /**
@@ -122,7 +122,7 @@ class ObjsMessage
      */
     protected $replyCount;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $replyUsers;
     /**
@@ -196,7 +196,7 @@ class ObjsMessage
     }
 
     /**
-     * @return ObjsMessageAttachmentsItem[]|null
+     * @return list<ObjsMessageAttachmentsItem>|null
      */
     public function getAttachments(): ?array
     {
@@ -204,7 +204,7 @@ class ObjsMessage
     }
 
     /**
-     * @param ObjsMessageAttachmentsItem[]|null $attachments
+     * @param list<ObjsMessageAttachmentsItem>|null $attachments
      */
     public function setAttachments(?array $attachments): self
     {
@@ -217,7 +217,7 @@ class ObjsMessage
     /**
      * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
      *
-     * @return BlocksItem[]|null
+     * @return list<BlocksItem>|null
      */
     public function getBlocks(): ?array
     {
@@ -227,7 +227,7 @@ class ObjsMessage
     /**
      * This is a very loose definition, in the future, we'll populate this with deeper schema in this definition namespace.
      *
-     * @param BlocksItem[]|null $blocks
+     * @param list<BlocksItem>|null $blocks
      */
     public function setBlocks(?array $blocks): self
     {
@@ -316,7 +316,7 @@ class ObjsMessage
     }
 
     /**
-     * @return ObjsFile[]|null
+     * @return list<ObjsFile>|null
      */
     public function getFiles(): ?array
     {
@@ -324,7 +324,7 @@ class ObjsMessage
     }
 
     /**
-     * @param ObjsFile[]|null $files
+     * @param list<ObjsFile>|null $files
      */
     public function setFiles(?array $files): self
     {
@@ -491,7 +491,7 @@ class ObjsMessage
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPinnedTo(): ?array
     {
@@ -499,7 +499,7 @@ class ObjsMessage
     }
 
     /**
-     * @param string[]|null $pinnedTo
+     * @param list<string>|null $pinnedTo
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
@@ -523,7 +523,7 @@ class ObjsMessage
     }
 
     /**
-     * @return ObjsReaction[]|null
+     * @return list<ObjsReaction>|null
      */
     public function getReactions(): ?array
     {
@@ -531,7 +531,7 @@ class ObjsMessage
     }
 
     /**
-     * @param ObjsReaction[]|null $reactions
+     * @param list<ObjsReaction>|null $reactions
      */
     public function setReactions(?array $reactions): self
     {
@@ -555,7 +555,7 @@ class ObjsMessage
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getReplyUsers(): ?array
     {
@@ -563,7 +563,7 @@ class ObjsMessage
     }
 
     /**
-     * @param string[]|null $replyUsers
+     * @param list<string>|null $replyUsers
      */
     public function setReplyUsers(?array $replyUsers): self
     {

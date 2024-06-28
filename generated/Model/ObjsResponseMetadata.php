@@ -20,7 +20,7 @@ class ObjsResponseMetadata
      */
     protected $initialized = [];
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $messages;
     /**
@@ -28,7 +28,7 @@ class ObjsResponseMetadata
      */
     protected $nextCursor;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $warnings;
 
@@ -38,7 +38,7 @@ class ObjsResponseMetadata
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMessages(): ?array
     {
@@ -46,7 +46,7 @@ class ObjsResponseMetadata
     }
 
     /**
-     * @param string[]|null $messages
+     * @param list<string>|null $messages
      */
     public function setMessages(?array $messages): self
     {
@@ -70,7 +70,7 @@ class ObjsResponseMetadata
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getWarnings(): ?array
     {
@@ -78,7 +78,7 @@ class ObjsResponseMetadata
     }
 
     /**
-     * @param string[]|null $warnings
+     * @param list<string>|null $warnings
      */
     public function setWarnings(?array $warnings): self
     {

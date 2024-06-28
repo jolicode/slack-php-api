@@ -24,7 +24,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
      */
     protected $ok;
     /**
-     * @var AppsPermissionsResourcesListGetResponse200ResourcesItem[]|null
+     * @var list<AppsPermissionsResourcesListGetResponse200ResourcesItem>|null
      */
     protected $resources;
     /**
@@ -51,7 +51,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return AppsPermissionsResourcesListGetResponse200ResourcesItem[]|null
+     * @return list<AppsPermissionsResourcesListGetResponse200ResourcesItem>|null
      */
     public function getResources(): ?array
     {
@@ -59,7 +59,7 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param AppsPermissionsResourcesListGetResponse200ResourcesItem[]|null $resources
+     * @param list<AppsPermissionsResourcesListGetResponse200ResourcesItem>|null $resources
      */
     public function setResources(?array $resources): self
     {

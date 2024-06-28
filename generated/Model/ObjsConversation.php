@@ -24,7 +24,7 @@ class ObjsConversation
      */
     protected $acceptedUser;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $connectedTeamIds;
     /**
@@ -56,7 +56,7 @@ class ObjsConversation
      */
     protected $id;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $internalTeamIds;
     /**
@@ -164,7 +164,7 @@ class ObjsConversation
      */
     protected $locale;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $members;
     /**
@@ -184,11 +184,11 @@ class ObjsConversation
      */
     protected $parentConversation;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $pendingConnectedTeamIds;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $pendingShared;
     /**
@@ -196,7 +196,7 @@ class ObjsConversation
      */
     protected $pinCount;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $previousNames;
     /**
@@ -208,11 +208,11 @@ class ObjsConversation
      */
     protected $purpose;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $sharedTeamIds;
     /**
-     * @var ObjsConversationSharesItem[]|null
+     * @var list<ObjsConversationSharesItem>|null
      */
     protected $shares;
     /**
@@ -267,7 +267,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getConnectedTeamIds(): ?array
     {
@@ -275,7 +275,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $connectedTeamIds
+     * @param list<string>|null $connectedTeamIds
      */
     public function setConnectedTeamIds(?array $connectedTeamIds): self
     {
@@ -377,7 +377,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getInternalTeamIds(): ?array
     {
@@ -385,7 +385,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $internalTeamIds
+     * @param list<string>|null $internalTeamIds
      */
     public function setInternalTeamIds(?array $internalTeamIds): self
     {
@@ -734,7 +734,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMembers(): ?array
     {
@@ -742,7 +742,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $members
+     * @param list<string>|null $members
      */
     public function setMembers(?array $members): self
     {
@@ -805,7 +805,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPendingConnectedTeamIds(): ?array
     {
@@ -813,7 +813,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $pendingConnectedTeamIds
+     * @param list<string>|null $pendingConnectedTeamIds
      */
     public function setPendingConnectedTeamIds(?array $pendingConnectedTeamIds): self
     {
@@ -824,7 +824,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPendingShared(): ?array
     {
@@ -832,7 +832,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $pendingShared
+     * @param list<string>|null $pendingShared
      */
     public function setPendingShared(?array $pendingShared): self
     {
@@ -856,7 +856,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPreviousNames(): ?array
     {
@@ -864,7 +864,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $previousNames
+     * @param list<string>|null $previousNames
      */
     public function setPreviousNames(?array $previousNames): self
     {
@@ -901,7 +901,7 @@ class ObjsConversation
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getSharedTeamIds(): ?array
     {
@@ -909,7 +909,7 @@ class ObjsConversation
     }
 
     /**
-     * @param string[]|null $sharedTeamIds
+     * @param list<string>|null $sharedTeamIds
      */
     public function setSharedTeamIds(?array $sharedTeamIds): self
     {
@@ -920,7 +920,7 @@ class ObjsConversation
     }
 
     /**
-     * @return ObjsConversationSharesItem[]|null
+     * @return list<ObjsConversationSharesItem>|null
      */
     public function getShares(): ?array
     {
@@ -928,7 +928,7 @@ class ObjsConversation
     }
 
     /**
-     * @param ObjsConversationSharesItem[]|null $shares
+     * @param list<ObjsConversationSharesItem>|null $shares
      */
     public function setShares(?array $shares): self
     {

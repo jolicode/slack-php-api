@@ -48,7 +48,7 @@ class ObjsTeamProfileField
      */
     protected $ordering;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $possibleValues;
     /**
@@ -153,7 +153,7 @@ class ObjsTeamProfileField
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPossibleValues(): ?array
     {
@@ -161,7 +161,7 @@ class ObjsTeamProfileField
     }
 
     /**
-     * @param string[]|null $possibleValues
+     * @param list<string>|null $possibleValues
      */
     public function setPossibleValues(?array $possibleValues): self
     {

@@ -28,7 +28,7 @@ class ChatScheduledMessagesListGetResponse200
      */
     protected $responseMetadata;
     /**
-     * @var ChatScheduledMessagesListGetResponse200ScheduledMessagesItem[]|null
+     * @var list<ChatScheduledMessagesListGetResponse200ScheduledMessagesItem>|null
      */
     protected $scheduledMessages;
 
@@ -64,7 +64,7 @@ class ChatScheduledMessagesListGetResponse200
     }
 
     /**
-     * @return ChatScheduledMessagesListGetResponse200ScheduledMessagesItem[]|null
+     * @return list<ChatScheduledMessagesListGetResponse200ScheduledMessagesItem>|null
      */
     public function getScheduledMessages(): ?array
     {
@@ -72,7 +72,7 @@ class ChatScheduledMessagesListGetResponse200
     }
 
     /**
-     * @param ChatScheduledMessagesListGetResponse200ScheduledMessagesItem[]|null $scheduledMessages
+     * @param list<ChatScheduledMessagesListGetResponse200ScheduledMessagesItem>|null $scheduledMessages
      */
     public function setScheduledMessages(?array $scheduledMessages): self
     {

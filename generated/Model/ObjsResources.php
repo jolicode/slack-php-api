@@ -20,11 +20,11 @@ class ObjsResources
      */
     protected $initialized = [];
     /**
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $excludedIds;
     /**
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $ids;
     /**
@@ -38,7 +38,7 @@ class ObjsResources
     }
 
     /**
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getExcludedIds(): ?array
     {
@@ -46,7 +46,7 @@ class ObjsResources
     }
 
     /**
-     * @param mixed[]|null $excludedIds
+     * @param list<mixed>|null $excludedIds
      */
     public function setExcludedIds(?array $excludedIds): self
     {
@@ -57,7 +57,7 @@ class ObjsResources
     }
 
     /**
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getIds(): ?array
     {
@@ -65,7 +65,7 @@ class ObjsResources
     }
 
     /**
-     * @param mixed[]|null $ids
+     * @param list<mixed>|null $ids
      */
     public function setIds(?array $ids): self
     {

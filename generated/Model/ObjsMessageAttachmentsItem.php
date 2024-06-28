@@ -20,7 +20,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var ObjsMessageAttachmentsItemActionsItem[]|null
+     * @var list<ObjsMessageAttachmentsItemActionsItem>|null
      */
     protected $actions;
     /**
@@ -48,7 +48,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      */
     protected $fallback;
     /**
-     * @var ObjsMessageAttachmentsItemFieldsItem[]|null
+     * @var list<ObjsMessageAttachmentsItemFieldsItem>|null
      */
     protected $fields;
     /**
@@ -110,7 +110,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessageAttachmentsItemActionsItem[]|null
+     * @return list<ObjsMessageAttachmentsItemActionsItem>|null
      */
     public function getActions(): ?array
     {
@@ -118,7 +118,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageAttachmentsItemActionsItem[]|null $actions
+     * @param list<ObjsMessageAttachmentsItemActionsItem>|null $actions
      */
     public function setActions(?array $actions): self
     {
@@ -207,7 +207,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @return ObjsMessageAttachmentsItemFieldsItem[]|null
+     * @return list<ObjsMessageAttachmentsItemFieldsItem>|null
      */
     public function getFields(): ?array
     {
@@ -215,7 +215,7 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     }
 
     /**
-     * @param ObjsMessageAttachmentsItemFieldsItem[]|null $fields
+     * @param list<ObjsMessageAttachmentsItemFieldsItem>|null $fields
      */
     public function setFields(?array $fields): self
     {
