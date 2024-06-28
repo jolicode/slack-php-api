@@ -27,7 +27,7 @@
     },
     "require": {
         "php": ">=8.0",
-        "jane-php/open-api-runtime": "~7.6.0",
+        "jane-php/open-api-runtime": "^7.7",
         "psr/http-client-implementation": "*",
         "php-http/client-common": "^1.9 || ^2.0",
         "php-http/discovery": "^1.11",
