@@ -19,7 +19,7 @@ class SlackErrorResponse extends \Exception
 
     private $responseMetadata;
 
-    public function __construct(string $errorCode, ?array $responseMetadata, \Throwable $previous = null)
+    public function __construct(string $errorCode, ?array $responseMetadata, ?\Throwable $previous = null)
     {
         $this->errorCode = $errorCode;
 

@@ -24,7 +24,7 @@ use Psr\Http\Client\ClientInterface;
 
 class ClientFactory
 {
-    public static function create(string $token, ClientInterface $httpClient = null): Client
+    public static function create(string $token, ?ClientInterface $httpClient = null): Client
     {
         // Find a default HTTP client if none provided
         if (null === $httpClient) {

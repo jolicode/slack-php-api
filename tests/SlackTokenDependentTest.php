@@ -26,7 +26,7 @@ abstract class SlackTokenDependentTest extends TestCase
         }
     }
 
-    protected function createClient(string $token = null): Client
+    protected function createClient(?string $token = null): Client
     {
         // On GitHub Action, we get rate limit issues with Slack API calls because tests are run in parallel
         // This "sleep" method tries to share the load.
