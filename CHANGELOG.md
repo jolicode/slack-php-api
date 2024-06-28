@@ -1,5 +1,10 @@
 # Changes between versions
 
+## 4.7.1 (2024-06-28)
+
+* Upgrade JanePHP generated code
+* Allow more version of `jane-php/open-api-runtime`
+
 ## 4.7.0 (2024-01-31)
 
 * Upgrade JanePHP generated code
