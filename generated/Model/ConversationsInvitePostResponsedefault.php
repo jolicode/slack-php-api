@@ -30,7 +30,7 @@ class ConversationsInvitePostResponsedefault
      */
     protected $error;
     /**
-     * @var ConversationsInvitePostResponsedefaultErrorsItem[]|null
+     * @var list<ConversationsInvitePostResponsedefaultErrorsItem>|null
      */
     protected $errors;
     /**
@@ -84,7 +84,7 @@ class ConversationsInvitePostResponsedefault
     }
 
     /**
-     * @return ConversationsInvitePostResponsedefaultErrorsItem[]|null
+     * @return list<ConversationsInvitePostResponsedefaultErrorsItem>|null
      */
     public function getErrors(): ?array
     {
@@ -92,7 +92,7 @@ class ConversationsInvitePostResponsedefault
     }
 
     /**
-     * @param ConversationsInvitePostResponsedefaultErrorsItem[]|null $errors
+     * @param list<ConversationsInvitePostResponsedefaultErrorsItem>|null $errors
      */
     public function setErrors(?array $errors): self
     {

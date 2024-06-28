@@ -24,7 +24,7 @@ class AppsPermissionsInfoGetResponse200InfoGroup
      */
     protected $resources;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $scopes;
 
@@ -47,7 +47,7 @@ class AppsPermissionsInfoGetResponse200InfoGroup
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getScopes(): ?array
     {
@@ -55,7 +55,7 @@ class AppsPermissionsInfoGetResponse200InfoGroup
     }
 
     /**
-     * @param string[]|null $scopes
+     * @param list<string>|null $scopes
      */
     public function setScopes(?array $scopes): self
     {

@@ -20,7 +20,7 @@ class StarsListGetResponse200
      */
     protected $initialized = [];
     /**
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $items;
     /**
@@ -38,7 +38,7 @@ class StarsListGetResponse200
     }
 
     /**
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getItems(): ?array
     {
@@ -46,7 +46,7 @@ class StarsListGetResponse200
     }
 
     /**
-     * @param mixed[]|null $items
+     * @param list<mixed>|null $items
      */
     public function setItems(?array $items): self
     {

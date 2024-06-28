@@ -32,7 +32,7 @@ class ConversationsHistoryGetResponse200
      */
     protected $hasMore;
     /**
-     * @var ObjsMessage[]|null
+     * @var list<ObjsMessage>|null
      */
     protected $messages;
     /**
@@ -93,7 +93,7 @@ class ConversationsHistoryGetResponse200
     }
 
     /**
-     * @return ObjsMessage[]|null
+     * @return list<ObjsMessage>|null
      */
     public function getMessages(): ?array
     {
@@ -101,7 +101,7 @@ class ConversationsHistoryGetResponse200
     }
 
     /**
-     * @param ObjsMessage[]|null $messages
+     * @param list<ObjsMessage>|null $messages
      */
     public function setMessages(?array $messages): self
     {

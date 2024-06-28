@@ -118,7 +118,7 @@ class ObjsUser
      */
     protected $teamProfile;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $teams;
     /**
@@ -466,7 +466,7 @@ class ObjsUser
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTeams(): ?array
     {
@@ -474,7 +474,7 @@ class ObjsUser
     }
 
     /**
-     * @param string[]|null $teams
+     * @param list<string>|null $teams
      */
     public function setTeams(?array $teams): self
     {

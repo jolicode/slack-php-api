@@ -40,7 +40,7 @@ class ObjsEnterpriseUser
      */
     protected $isOwner;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $teams;
 
@@ -115,7 +115,7 @@ class ObjsEnterpriseUser
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTeams(): ?array
     {
@@ -123,7 +123,7 @@ class ObjsEnterpriseUser
     }
 
     /**
-     * @param string[]|null $teams
+     * @param list<string>|null $teams
      */
     public function setTeams(?array $teams): self
     {

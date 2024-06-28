@@ -24,7 +24,7 @@ class RemindersListGetResponse200
      */
     protected $ok;
     /**
-     * @var ObjsReminder[]|null
+     * @var list<ObjsReminder>|null
      */
     protected $reminders;
 
@@ -47,7 +47,7 @@ class RemindersListGetResponse200
     }
 
     /**
-     * @return ObjsReminder[]|null
+     * @return list<ObjsReminder>|null
      */
     public function getReminders(): ?array
     {
@@ -55,7 +55,7 @@ class RemindersListGetResponse200
     }
 
     /**
-     * @param ObjsReminder[]|null $reminders
+     * @param list<ObjsReminder>|null $reminders
      */
     public function setReminders(?array $reminders): self
     {

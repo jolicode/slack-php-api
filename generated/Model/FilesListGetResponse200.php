@@ -20,7 +20,7 @@ class FilesListGetResponse200
      */
     protected $initialized = [];
     /**
-     * @var ObjsFile[]|null
+     * @var list<ObjsFile>|null
      */
     protected $files;
     /**
@@ -38,7 +38,7 @@ class FilesListGetResponse200
     }
 
     /**
-     * @return ObjsFile[]|null
+     * @return list<ObjsFile>|null
      */
     public function getFiles(): ?array
     {
@@ -46,7 +46,7 @@ class FilesListGetResponse200
     }
 
     /**
-     * @param ObjsFile[]|null $files
+     * @param list<ObjsFile>|null $files
      */
     public function setFiles(?array $files): self
     {

@@ -25,5 +25,5 @@ trait EndpointTrait
         return $this->transformResponseBody($response, $serializer, $contentType);
     }
 
-    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, string $contentType = null);
+    abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
 }

@@ -24,7 +24,7 @@ class UsergroupsUsersListGetResponse200
      */
     protected $ok;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $users;
 
@@ -47,7 +47,7 @@ class UsergroupsUsersListGetResponse200
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUsers(): ?array
     {
@@ -55,7 +55,7 @@ class UsergroupsUsersListGetResponse200
     }
 
     /**
-     * @param string[]|null $users
+     * @param list<string>|null $users
      */
     public function setUsers(?array $users): self
     {

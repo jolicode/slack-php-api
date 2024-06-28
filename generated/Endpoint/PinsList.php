@@ -71,7 +71,7 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * @return \JoliCode\Slack\Api\Model\PinsListGetResponsedefault|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, string $contentType = null)
+    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
@@ -79,6 +79,6 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
             return json_decode($body);
         }
 
-        return $serializer->deserialize($body, 'JoliCode\\Slack\\Api\\Model\\PinsListGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\PinsListGetResponsedefault', 'json');
     }
 }

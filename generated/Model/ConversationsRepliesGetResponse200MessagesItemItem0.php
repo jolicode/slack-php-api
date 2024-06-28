@@ -32,7 +32,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
      */
     protected $replyCount;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $replyUsers;
     /**
@@ -129,7 +129,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getReplyUsers(): ?array
     {
@@ -137,7 +137,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem0
     }
 
     /**
-     * @param string[]|null $replyUsers
+     * @param list<string>|null $replyUsers
      */
     public function setReplyUsers(?array $replyUsers): self
     {

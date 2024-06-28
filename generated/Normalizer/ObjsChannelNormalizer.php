@@ -32,17 +32,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ObjsChannel' === $type;
+            return 'JoliCode\Slack\Api\Model\ObjsChannel' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsChannel' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsChannel' === \get_class($data);
         }
 
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -205,12 +205,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPriority(null);
             }
             if (\array_key_exists('purpose', $data) && null !== $data['purpose']) {
-                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], 'JoliCode\\Slack\\Api\\Model\\ObjsChannelPurpose', 'json', $context));
+                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], 'JoliCode\Slack\Api\Model\ObjsChannelPurpose', 'json', $context));
             } elseif (\array_key_exists('purpose', $data) && null === $data['purpose']) {
                 $object->setPurpose(null);
             }
             if (\array_key_exists('topic', $data) && null !== $data['topic']) {
-                $object->setTopic($this->denormalizer->denormalize($data['topic'], 'JoliCode\\Slack\\Api\\Model\\ObjsChannelTopic', 'json', $context));
+                $object->setTopic($this->denormalizer->denormalize($data['topic'], 'JoliCode\Slack\Api\Model\ObjsChannelTopic', 'json', $context));
             } elseif (\array_key_exists('topic', $data) && null === $data['topic']) {
                 $object->setTopic(null);
             }
@@ -233,7 +233,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             if ($object->isInitialized('acceptedUser') && null !== $object->getAcceptedUser()) {
@@ -322,9 +322,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ObjsChannel' => false];
+            return ['JoliCode\Slack\Api\Model\ObjsChannel' => false];
         }
     }
 } else {
@@ -335,14 +335,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ObjsChannel' === $type;
+            return 'JoliCode\Slack\Api\Model\ObjsChannel' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ObjsChannel' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsChannel' === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -508,12 +508,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPriority(null);
             }
             if (\array_key_exists('purpose', $data) && null !== $data['purpose']) {
-                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], 'JoliCode\\Slack\\Api\\Model\\ObjsChannelPurpose', 'json', $context));
+                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], 'JoliCode\Slack\Api\Model\ObjsChannelPurpose', 'json', $context));
             } elseif (\array_key_exists('purpose', $data) && null === $data['purpose']) {
                 $object->setPurpose(null);
             }
             if (\array_key_exists('topic', $data) && null !== $data['topic']) {
-                $object->setTopic($this->denormalizer->denormalize($data['topic'], 'JoliCode\\Slack\\Api\\Model\\ObjsChannelTopic', 'json', $context));
+                $object->setTopic($this->denormalizer->denormalize($data['topic'], 'JoliCode\Slack\Api\Model\ObjsChannelTopic', 'json', $context));
             } elseif (\array_key_exists('topic', $data) && null === $data['topic']) {
                 $object->setTopic(null);
             }
@@ -628,9 +628,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ObjsChannel' => false];
+            return ['JoliCode\Slack\Api\Model\ObjsChannel' => false];
         }
     }
 }

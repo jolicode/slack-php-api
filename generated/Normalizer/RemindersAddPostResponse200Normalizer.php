@@ -32,17 +32,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\RemindersAddPostResponse200' === $type;
+            return 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\RemindersAddPostResponse200' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' === \get_class($data);
         }
 
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('reminder', $data) && null !== $data['reminder']) {
-                $object->setReminder($this->denormalizer->denormalize($data['reminder'], 'JoliCode\\Slack\\Api\\Model\\ObjsReminder', 'json', $context));
+                $object->setReminder($this->denormalizer->denormalize($data['reminder'], 'JoliCode\Slack\Api\Model\ObjsReminder', 'json', $context));
             } elseif (\array_key_exists('reminder', $data) && null === $data['reminder']) {
                 $object->setReminder(null);
             }
@@ -68,7 +68,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['ok'] = $object->getOk();
@@ -77,9 +77,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\RemindersAddPostResponse200' => false];
+            return ['JoliCode\Slack\Api\Model\RemindersAddPostResponse200' => false];
         }
     }
 } else {
@@ -90,14 +90,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\RemindersAddPostResponse200' === $type;
+            return 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\RemindersAddPostResponse200' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -118,7 +118,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('reminder', $data) && null !== $data['reminder']) {
-                $object->setReminder($this->denormalizer->denormalize($data['reminder'], 'JoliCode\\Slack\\Api\\Model\\ObjsReminder', 'json', $context));
+                $object->setReminder($this->denormalizer->denormalize($data['reminder'], 'JoliCode\Slack\Api\Model\ObjsReminder', 'json', $context));
             } elseif (\array_key_exists('reminder', $data) && null === $data['reminder']) {
                 $object->setReminder(null);
             }
@@ -138,9 +138,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\RemindersAddPostResponse200' => false];
+            return ['JoliCode\Slack\Api\Model\RemindersAddPostResponse200' => false];
         }
     }
 }

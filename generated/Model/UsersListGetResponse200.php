@@ -24,7 +24,7 @@ class UsersListGetResponse200
      */
     protected $cacheTs;
     /**
-     * @var ObjsUser[]|null
+     * @var list<ObjsUser>|null
      */
     protected $members;
     /**
@@ -55,7 +55,7 @@ class UsersListGetResponse200
     }
 
     /**
-     * @return ObjsUser[]|null
+     * @return list<ObjsUser>|null
      */
     public function getMembers(): ?array
     {
@@ -63,7 +63,7 @@ class UsersListGetResponse200
     }
 
     /**
-     * @param ObjsUser[]|null $members
+     * @param list<ObjsUser>|null $members
      */
     public function setMembers(?array $members): self
     {

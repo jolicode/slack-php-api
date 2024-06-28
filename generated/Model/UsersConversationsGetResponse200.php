@@ -20,7 +20,7 @@ class UsersConversationsGetResponse200 extends \ArrayObject
      */
     protected $initialized = [];
     /**
-     * @var ObjsConversation[]|null
+     * @var list<ObjsConversation>|null
      */
     protected $channels;
     /**
@@ -38,7 +38,7 @@ class UsersConversationsGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @return ObjsConversation[]|null
+     * @return list<ObjsConversation>|null
      */
     public function getChannels(): ?array
     {
@@ -46,7 +46,7 @@ class UsersConversationsGetResponse200 extends \ArrayObject
     }
 
     /**
-     * @param ObjsConversation[]|null $channels
+     * @param list<ObjsConversation>|null $channels
      */
     public function setChannels(?array $channels): self
     {

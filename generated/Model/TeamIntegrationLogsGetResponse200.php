@@ -20,7 +20,7 @@ class TeamIntegrationLogsGetResponse200
      */
     protected $initialized = [];
     /**
-     * @var TeamIntegrationLogsGetResponse200LogsItem[]|null
+     * @var list<TeamIntegrationLogsGetResponse200LogsItem>|null
      */
     protected $logs;
     /**
@@ -38,7 +38,7 @@ class TeamIntegrationLogsGetResponse200
     }
 
     /**
-     * @return TeamIntegrationLogsGetResponse200LogsItem[]|null
+     * @return list<TeamIntegrationLogsGetResponse200LogsItem>|null
      */
     public function getLogs(): ?array
     {
@@ -46,7 +46,7 @@ class TeamIntegrationLogsGetResponse200
     }
 
     /**
-     * @param TeamIntegrationLogsGetResponse200LogsItem[]|null $logs
+     * @param list<TeamIntegrationLogsGetResponse200LogsItem>|null $logs
      */
     public function setLogs(?array $logs): self
     {

@@ -28,7 +28,7 @@ class AdminConversationsGetTeamsGetResponse200
      */
     protected $responseMetadata;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $teamIds;
 
@@ -64,7 +64,7 @@ class AdminConversationsGetTeamsGetResponse200
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getTeamIds(): ?array
     {
@@ -72,7 +72,7 @@ class AdminConversationsGetTeamsGetResponse200
     }
 
     /**
-     * @param string[]|null $teamIds
+     * @param list<string>|null $teamIds
      */
     public function setTeamIds(?array $teamIds): self
     {

@@ -20,7 +20,7 @@ class TeamProfileGetGetResponse200Profile
      */
     protected $initialized = [];
     /**
-     * @var ObjsTeamProfileField[]|null
+     * @var list<ObjsTeamProfileField>|null
      */
     protected $fields;
 
@@ -30,7 +30,7 @@ class TeamProfileGetGetResponse200Profile
     }
 
     /**
-     * @return ObjsTeamProfileField[]|null
+     * @return list<ObjsTeamProfileField>|null
      */
     public function getFields(): ?array
     {
@@ -38,7 +38,7 @@ class TeamProfileGetGetResponse200Profile
     }
 
     /**
-     * @param ObjsTeamProfileField[]|null $fields
+     * @param list<ObjsTeamProfileField>|null $fields
      */
     public function setFields(?array $fields): self
     {

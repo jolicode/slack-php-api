@@ -32,17 +32,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization(mixed $data, string $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' === $type;
+            return 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' === \get_class($data);
         }
 
-        public function denormalize(mixed $data, string $type, string $format = null, array $context = []): mixed
+        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
         {
             if (isset($data['$ref'])) {
                 return new Reference($data['$ref'], $context['document-origin']);
@@ -72,7 +72,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('messages', $data) && null !== $data['messages']) {
                 $values = [];
                 foreach ($data['messages'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ObjsMessage', 'json', $context);
                 }
                 $object->setMessages($values);
             } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
@@ -89,7 +89,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPinCount(null);
             }
             if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200ResponseMetadata', 'json', $context));
+                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata', 'json', $context));
             } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
                 $object->setResponseMetadata(null);
             }
@@ -97,7 +97,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $object;
         }
 
-        public function normalize(mixed $object, string $format = null, array $context = []): null|array|\ArrayObject|bool|float|int|string
+        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
             $data['channel_actions_count'] = $object->getChannelActionsCount();
@@ -117,9 +117,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' => false];
+            return ['JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' => false];
         }
     }
 } else {
@@ -130,14 +130,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
 
-        public function supportsDenormalization($data, $type, string $format = null, array $context = []): bool
+        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' === $type;
+            return 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' === $type;
         }
 
-        public function supportsNormalization(mixed $data, string $format = null, array $context = []): bool
+        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' === \get_class($data);
+            return \is_object($data) && 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -170,7 +170,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('messages', $data) && null !== $data['messages']) {
                 $values = [];
                 foreach ($data['messages'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\\Slack\\Api\\Model\\ObjsMessage', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ObjsMessage', 'json', $context);
                 }
                 $object->setMessages($values);
             } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
@@ -187,7 +187,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPinCount(null);
             }
             if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200ResponseMetadata', 'json', $context));
+                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata', 'json', $context));
             } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
                 $object->setResponseMetadata(null);
             }
@@ -218,9 +218,9 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             return $data;
         }
 
-        public function getSupportedTypes(string $format = null): array
+        public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\\Slack\\Api\\Model\\ConversationsHistoryGetResponse200' => false];
+            return ['JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' => false];
         }
     }
 }

@@ -48,7 +48,7 @@ class ObjsUserProfile
      */
     protected $email;
     /**
-     * @var mixed[]|mixed|null
+     * @var list<mixed>|mixed|null
      */
     protected $fields;
     /**
@@ -293,7 +293,7 @@ class ObjsUserProfile
     }
 
     /**
-     * @return mixed[]|mixed
+     * @return list<mixed>|mixed
      */
     public function getFields()
     {
@@ -301,7 +301,7 @@ class ObjsUserProfile
     }
 
     /**
-     * @param mixed[]|mixed $fields
+     * @param list<mixed>|mixed $fields
      */
     public function setFields($fields): self
     {

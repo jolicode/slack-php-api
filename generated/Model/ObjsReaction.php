@@ -28,7 +28,7 @@ class ObjsReaction extends \ArrayObject
      */
     protected $name;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $users;
 
@@ -64,7 +64,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getUsers(): ?array
     {
@@ -72,7 +72,7 @@ class ObjsReaction extends \ArrayObject
     }
 
     /**
-     * @param string[]|null $users
+     * @param list<string>|null $users
      */
     public function setUsers(?array $users): self
     {

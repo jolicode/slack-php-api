@@ -48,11 +48,11 @@ class ObjsComment
      */
     protected $pinnedInfo;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $pinnedTo;
     /**
-     * @var ObjsReaction[]|null
+     * @var list<ObjsReaction>|null
      */
     protected $reactions;
     /**
@@ -161,7 +161,7 @@ class ObjsComment
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPinnedTo(): ?array
     {
@@ -169,7 +169,7 @@ class ObjsComment
     }
 
     /**
-     * @param string[]|null $pinnedTo
+     * @param list<string>|null $pinnedTo
      */
     public function setPinnedTo(?array $pinnedTo): self
     {
@@ -180,7 +180,7 @@ class ObjsComment
     }
 
     /**
-     * @return ObjsReaction[]|null
+     * @return list<ObjsReaction>|null
      */
     public function getReactions(): ?array
     {
@@ -188,7 +188,7 @@ class ObjsComment
     }
 
     /**
-     * @param ObjsReaction[]|null $reactions
+     * @param list<ObjsReaction>|null $reactions
      */
     public function setReactions(?array $reactions): self
     {

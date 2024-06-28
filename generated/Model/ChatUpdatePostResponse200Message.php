@@ -20,7 +20,7 @@ class ChatUpdatePostResponse200Message
      */
     protected $initialized = [];
     /**
-     * @var mixed[]|null
+     * @var list<mixed>|null
      */
     protected $attachments;
     /**
@@ -38,7 +38,7 @@ class ChatUpdatePostResponse200Message
     }
 
     /**
-     * @return mixed[]|null
+     * @return list<mixed>|null
      */
     public function getAttachments(): ?array
     {
@@ -46,7 +46,7 @@ class ChatUpdatePostResponse200Message
     }
 
     /**
-     * @param mixed[]|null $attachments
+     * @param list<mixed>|null $attachments
      */
     public function setAttachments(?array $attachments): self
     {

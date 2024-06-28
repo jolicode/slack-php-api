@@ -100,7 +100,7 @@ class ObjsChannel
      */
     protected $latest;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $members;
     /**
@@ -116,11 +116,11 @@ class ObjsChannel
      */
     protected $numMembers;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $pendingShared;
     /**
-     * @var string[]|null
+     * @var list<string>|null
      */
     protected $previousNames;
     /**
@@ -414,7 +414,7 @@ class ObjsChannel
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getMembers(): ?array
     {
@@ -422,7 +422,7 @@ class ObjsChannel
     }
 
     /**
-     * @param string[]|null $members
+     * @param list<string>|null $members
      */
     public function setMembers(?array $members): self
     {
@@ -472,7 +472,7 @@ class ObjsChannel
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPendingShared(): ?array
     {
@@ -480,7 +480,7 @@ class ObjsChannel
     }
 
     /**
-     * @param string[]|null $pendingShared
+     * @param list<string>|null $pendingShared
      */
     public function setPendingShared(?array $pendingShared): self
     {
@@ -491,7 +491,7 @@ class ObjsChannel
     }
 
     /**
-     * @return string[]|null
+     * @return list<string>|null
      */
     public function getPreviousNames(): ?array
     {
@@ -499,7 +499,7 @@ class ObjsChannel
     }
 
     /**
-     * @param string[]|null $previousNames
+     * @param list<string>|null $previousNames
      */
     public function setPreviousNames(?array $previousNames): self
     {
