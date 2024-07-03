@@ -8,8 +8,6 @@ use JoliCode\Slack\Command\GeneratePatchCommand;
 use JoliCode\Slack\Command\UpdateSpecificationCommand;
 use Symfony\Component\Console\Application;
 
-ini_set('memory_limit', -1);
-
 $application = new Application();
 $application->add(new CheckerCommand());
 $application->add(new GeneratePatchCommand());
