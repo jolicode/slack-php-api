@@ -2813,7 +2813,9 @@ class Client extends Runtime\Client\Client
      * @var string $client_id issued when you created your application
      * @var string $client_secret issued when you created your application
      * @var string $code the `code` param returned via the OAuth callback
-     * @var string $redirect_uri This must match the originally submitted URI (if one was sent).
+     * @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     * @var string $refresh_token the token used to obtain a new access token
+     * @var string $grant_type The type of grant used to obtain a new access token.
      *             }
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)

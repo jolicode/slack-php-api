@@ -29,11 +29,11 @@ class UpdateSpecificationCommand extends Command
     protected function configure(): void
     {
         $this
-            ->setDescription('Downloads a new version of the official Slack OpenAPI file, and applies our patches to it.')
-        ;
+            ->setName(self::$defaultName)
+            ->setDescription('Downloads a new version of the official Slack OpenAPI file, and applies our patches to it.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
