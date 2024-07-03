@@ -29,7 +29,8 @@ class GeneratePatchCommand extends Command
     {
         $this
             ->setName(self::$defaultName)
-            ->setDescription('Generates the patch by comparing Slack\'s official sorted spec to the currently patched one.');
+            ->setDescription('Generates the patch by comparing Slack\'s official sorted spec to the currently patched one.')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

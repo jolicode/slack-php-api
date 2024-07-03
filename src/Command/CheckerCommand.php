@@ -27,7 +27,8 @@ class CheckerCommand extends Command
     {
         $this
             ->setName(self::$defaultName)
-            ->setDescription('Checks the patched file and displays a summary table.');
+            ->setDescription('Checks the patched file and displays a summary table.')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -52,7 +53,8 @@ class CheckerCommand extends Command
         $table = new Table($output);
         $table
             ->setHeaders(['Path', 'Method', 'Response', 'Property', 'Errors'])
-            ->setRows($rows);
+            ->setRows($rows)
+        ;
         $table->render();
 
         return Command::SUCCESS;

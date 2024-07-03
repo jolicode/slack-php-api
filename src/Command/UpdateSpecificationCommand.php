@@ -30,7 +30,8 @@ class UpdateSpecificationCommand extends Command
     {
         $this
             ->setName(self::$defaultName)
-            ->setDescription('Downloads a new version of the official Slack OpenAPI file, and applies our patches to it.');
+            ->setDescription('Downloads a new version of the official Slack OpenAPI file, and applies our patches to it.')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
