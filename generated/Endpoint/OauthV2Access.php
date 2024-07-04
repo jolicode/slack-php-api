@@ -25,7 +25,9 @@ class OauthV2Access extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
      * @var string $client_id issued when you created your application
      * @var string $client_secret issued when you created your application
      * @var string $code the `code` param returned via the OAuth callback
-     * @var string $redirect_uri This must match the originally submitted URI (if one was sent).
+     * @var string $grant_type the type of grant used to obtain a new access token
+     * @var string $redirect_uri this must match the originally submitted URI (if one was sent)
+     * @var string $refresh_token The token used to obtain a new access token.
      *             }
      */
     public function __construct(array $queryParameters = [])
@@ -61,13 +63,15 @@ class OauthV2Access extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['client_id', 'client_secret', 'code', 'redirect_uri']);
-        $optionsResolver->setRequired(['code']);
+        $optionsResolver->setDefined(['client_id', 'client_secret', 'code', 'grant_type', 'redirect_uri', 'refresh_token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('client_id', ['string']);
         $optionsResolver->addAllowedTypes('client_secret', ['string']);
         $optionsResolver->addAllowedTypes('code', ['string']);
+        $optionsResolver->addAllowedTypes('grant_type', ['string']);
         $optionsResolver->addAllowedTypes('redirect_uri', ['string']);
+        $optionsResolver->addAllowedTypes('refresh_token', ['string']);
 
         return $optionsResolver;
     }

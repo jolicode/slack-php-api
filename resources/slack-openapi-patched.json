@@ -18959,13 +18959,24 @@
                         "description": "The `code` param returned via the OAuth callback.",
                         "in": "query",
                         "name": "code",
-                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "The type of grant used to obtain a new access token.",
+                        "in": "query",
+                        "name": "grant_type",
                         "type": "string"
                     },
                     {
                         "description": "This must match the originally submitted URI (if one was sent).",
                         "in": "query",
                         "name": "redirect_uri",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The token used to obtain a new access token.",
+                        "in": "query",
+                        "name": "refresh_token",
                         "type": "string"
                     }
                 ],

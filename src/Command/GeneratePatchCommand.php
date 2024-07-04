@@ -28,11 +28,12 @@ class GeneratePatchCommand extends Command
     protected function configure(): void
     {
         $this
+            ->setName(self::$defaultName)
             ->setDescription('Generates the patch by comparing Slack\'s official sorted spec to the currently patched one.')
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // ensure the patched specification is alphabetically sorted
         $content = file_get_contents(__DIR__ . '/../../resources/slack-openapi-patched.json');
