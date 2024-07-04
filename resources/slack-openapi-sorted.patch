@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2024-07-03 17:48:23.396856000 +0200
-+++ resources/slack-openapi-patched.json	2024-07-03 17:50:47.496823800 +0200
+--- resources/slack-openapi-sorted.json	2024-07-03 17:51:32.173508600 +0200
++++ resources/slack-openapi-patched.json	2024-07-04 17:16:46.608180900 +0200
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
