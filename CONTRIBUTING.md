@@ -4,7 +4,7 @@ First of all, **thank you** for contributing, **you are awesome**!
 
 Everybody should be able to help. Here's how you can do it:
 
-1. [Fork it](https://github.com/jolicode/slack-php-api/fork_select)
+1. [Fork it](https://github.com/jolicode/slack-php-api/fork)
 2. improve it
 3. submit a [pull request](https://help.github.com/articles/creating-a-pull-request)
 
@@ -20,20 +20,20 @@ Here's some tips to make you the best contributor ever:
 Here are a few rules to follow in order to ease code reviews, and discussions
 before maintainers accept and merge your work.
 
-* You MUST follow the [PSR-1](http://www.php-fig.org/psr/1/) and
-[PSR-2](http://www.php-fig.org/psr/2/) (see [Rules](#rules)).
+* You MUST follow the [PSR-1](https://www.php-fig.org/psr/psr-1/) and
+  [PSR-12](https://www.php-fig.org/psr/psr-12/) (see [Rules](#rules)).
 * You MUST run the test suite (see [Green tests](#green-tests)).
 * You MUST write (or update) unit tests.
 * You SHOULD write documentation.
 
 Please, write [commit messages that make
-sense](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html),
-and [rebase your branch](http://git-scm.com/book/en/Git-Branching-Rebasing)
+sense](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html),
+and [rebase your branch](https://git-scm.com/book/en/Git-Branching-Rebasing)
 before submitting your Pull Request (see also how to [keep your
 fork up-to-date](#keeping-your-fork-up-to-date)).
 
 One may ask you to [squash your
-commits](http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)
+commits](https://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html)
 too. This is used to "clean" your Pull Request before merging it (we don't want
 commits such as `fix tests`, `fix 2`, `fix 3`, etc.).
 
@@ -53,7 +53,7 @@ make test
 
 ## Standard code
 
-Use [PHP CS fixer](http://cs.sensiolabs.org/) to make your code compliant with
+Use [PHP CS fixer](https://cs.symfony.com/) to make your code compliant with
 our coding standards:
 
 ```shell
@@ -64,7 +64,6 @@ make cs
 
 To keep your fork up-to-date, you should track the upstream (original) one
 using the following command:
-
 
 ```shell
 git remote add upstream https://github.com/jolicode/slack-php-api.git
@@ -87,6 +86,5 @@ git push -f origin <your-branch>
 ```
 
 Your pull request will be automatically updated.
-
 
 Thank you!
