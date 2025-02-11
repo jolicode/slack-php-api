@@ -78,7 +78,7 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

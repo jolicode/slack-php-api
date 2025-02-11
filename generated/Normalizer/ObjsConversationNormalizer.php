@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsConversation' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsConversation::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsConversation' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsConversation::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -87,7 +87,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setCreator(null);
             }
             if (\array_key_exists('display_counts', $data) && null !== $data['display_counts']) {
-                $object->setDisplayCounts($this->denormalizer->denormalize($data['display_counts'], 'JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts', 'json', $context));
+                $object->setDisplayCounts($this->denormalizer->denormalize($data['display_counts'], \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts::class, 'json', $context));
             } elseif (\array_key_exists('display_counts', $data) && null === $data['display_counts']) {
                 $object->setDisplayCounts(null);
             }
@@ -312,7 +312,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPriority(null);
             }
             if (\array_key_exists('purpose', $data) && null !== $data['purpose']) {
-                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], 'JoliCode\Slack\Api\Model\ObjsConversationPurpose', 'json', $context));
+                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], \JoliCode\Slack\Api\Model\ObjsConversationPurpose::class, 'json', $context));
             } elseif (\array_key_exists('purpose', $data) && null === $data['purpose']) {
                 $object->setPurpose(null);
             }
@@ -328,7 +328,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('shares', $data) && null !== $data['shares']) {
                 $values_7 = [];
                 foreach ($data['shares'] as $value_7) {
-                    $values_7[] = $this->denormalizer->denormalize($value_7, 'JoliCode\Slack\Api\Model\ObjsConversationSharesItem', 'json', $context);
+                    $values_7[] = $this->denormalizer->denormalize($value_7, \JoliCode\Slack\Api\Model\ObjsConversationSharesItem::class, 'json', $context);
                 }
                 $object->setShares($values_7);
             } elseif (\array_key_exists('shares', $data) && null === $data['shares']) {
@@ -340,7 +340,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setTimezoneCount(null);
             }
             if (\array_key_exists('topic', $data) && null !== $data['topic']) {
-                $object->setTopic($this->denormalizer->denormalize($data['topic'], 'JoliCode\Slack\Api\Model\ObjsConversationTopic', 'json', $context));
+                $object->setTopic($this->denormalizer->denormalize($data['topic'], \JoliCode\Slack\Api\Model\ObjsConversationTopic::class, 'json', $context));
             } elseif (\array_key_exists('topic', $data) && null === $data['topic']) {
                 $object->setTopic(null);
             }
@@ -582,7 +582,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsConversation' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsConversation::class => false];
         }
     }
 } else {
@@ -595,12 +595,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsConversation' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsConversation::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsConversation' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsConversation::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -648,7 +648,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setCreator(null);
             }
             if (\array_key_exists('display_counts', $data) && null !== $data['display_counts']) {
-                $object->setDisplayCounts($this->denormalizer->denormalize($data['display_counts'], 'JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts', 'json', $context));
+                $object->setDisplayCounts($this->denormalizer->denormalize($data['display_counts'], \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts::class, 'json', $context));
             } elseif (\array_key_exists('display_counts', $data) && null === $data['display_counts']) {
                 $object->setDisplayCounts(null);
             }
@@ -873,7 +873,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPriority(null);
             }
             if (\array_key_exists('purpose', $data) && null !== $data['purpose']) {
-                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], 'JoliCode\Slack\Api\Model\ObjsConversationPurpose', 'json', $context));
+                $object->setPurpose($this->denormalizer->denormalize($data['purpose'], \JoliCode\Slack\Api\Model\ObjsConversationPurpose::class, 'json', $context));
             } elseif (\array_key_exists('purpose', $data) && null === $data['purpose']) {
                 $object->setPurpose(null);
             }
@@ -889,7 +889,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('shares', $data) && null !== $data['shares']) {
                 $values_7 = [];
                 foreach ($data['shares'] as $value_7) {
-                    $values_7[] = $this->denormalizer->denormalize($value_7, 'JoliCode\Slack\Api\Model\ObjsConversationSharesItem', 'json', $context);
+                    $values_7[] = $this->denormalizer->denormalize($value_7, \JoliCode\Slack\Api\Model\ObjsConversationSharesItem::class, 'json', $context);
                 }
                 $object->setShares($values_7);
             } elseif (\array_key_exists('shares', $data) && null === $data['shares']) {
@@ -901,7 +901,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setTimezoneCount(null);
             }
             if (\array_key_exists('topic', $data) && null !== $data['topic']) {
-                $object->setTopic($this->denormalizer->denormalize($data['topic'], 'JoliCode\Slack\Api\Model\ObjsConversationTopic', 'json', $context));
+                $object->setTopic($this->denormalizer->denormalize($data['topic'], \JoliCode\Slack\Api\Model\ObjsConversationTopic::class, 'json', $context));
             } elseif (\array_key_exists('topic', $data) && null === $data['topic']) {
                 $object->setTopic(null);
             }
@@ -1146,7 +1146,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsConversation' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsConversation::class => false];
         }
     }
 }

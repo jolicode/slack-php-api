@@ -4257,6 +4257,7 @@
                         "description": "Authentication token. Requires scope: `admin.conversations:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -4457,6 +4458,7 @@
                         "description": "Authentication token. Requires scope: `admin.conversations:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5158,6 +5160,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5252,6 +5255,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5469,6 +5473,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5565,6 +5570,7 @@
                         "description": "Authentication token. Requires scope: `admin.invites:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5666,6 +5672,7 @@
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5767,6 +5774,7 @@
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5863,6 +5871,7 @@
                         "description": "Authentication token. Requires scope: `admin.invites:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5964,6 +5973,7 @@
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6064,6 +6074,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6176,6 +6187,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6272,6 +6284,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6582,6 +6595,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6679,6 +6693,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6776,6 +6791,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6969,6 +6985,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -7756,6 +7773,7 @@
                         "description": "Authentication token. Requires scope: `admin.users:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -7961,6 +7979,7 @@
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -10398,6 +10417,7 @@
                         "description": "Authentication token. Requires scope: `calls:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -24859,12 +24879,6 @@
                         "in": "query",
                         "name": "limit",
                         "type": "integer"
-                    },
-                    {
-                        "description": "Encoded team id to list users in, required if org token is used",
-                        "in": "query",
-                        "name": "team_id",
-                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `users:read`",

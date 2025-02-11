@@ -78,7 +78,7 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

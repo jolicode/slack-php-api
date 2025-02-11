@@ -78,7 +78,7 @@ class AdminTeamsSettingsSetDiscoverability extends \JoliCode\Slack\Api\Runtime\C
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

@@ -80,7 +80,7 @@ class AdminInviteRequestsApprovedList extends \JoliCode\Slack\Api\Runtime\Client
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

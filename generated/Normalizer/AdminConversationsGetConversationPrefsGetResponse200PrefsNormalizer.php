@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' === $type;
+            return \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -55,12 +55,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('can_thread', $data) && null !== $data['can_thread']) {
-                $object->setCanThread($this->denormalizer->denormalize($data['can_thread'], 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread', 'json', $context));
+                $object->setCanThread($this->denormalizer->denormalize($data['can_thread'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class, 'json', $context));
             } elseif (\array_key_exists('can_thread', $data) && null === $data['can_thread']) {
                 $object->setCanThread(null);
             }
             if (\array_key_exists('who_can_post', $data) && null !== $data['who_can_post']) {
-                $object->setWhoCanPost($this->denormalizer->denormalize($data['who_can_post'], 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost', 'json', $context));
+                $object->setWhoCanPost($this->denormalizer->denormalize($data['who_can_post'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class, 'json', $context));
             } elseif (\array_key_exists('who_can_post', $data) && null === $data['who_can_post']) {
                 $object->setWhoCanPost(null);
             }
@@ -83,7 +83,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' => false];
+            return [\JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class => false];
         }
     }
 } else {
@@ -96,12 +96,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' === $type;
+            return \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -117,12 +117,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('can_thread', $data) && null !== $data['can_thread']) {
-                $object->setCanThread($this->denormalizer->denormalize($data['can_thread'], 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread', 'json', $context));
+                $object->setCanThread($this->denormalizer->denormalize($data['can_thread'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class, 'json', $context));
             } elseif (\array_key_exists('can_thread', $data) && null === $data['can_thread']) {
                 $object->setCanThread(null);
             }
             if (\array_key_exists('who_can_post', $data) && null !== $data['who_can_post']) {
-                $object->setWhoCanPost($this->denormalizer->denormalize($data['who_can_post'], 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost', 'json', $context));
+                $object->setWhoCanPost($this->denormalizer->denormalize($data['who_can_post'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class, 'json', $context));
             } elseif (\array_key_exists('who_can_post', $data) && null === $data['who_can_post']) {
                 $object->setWhoCanPost(null);
             }
@@ -148,7 +148,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' => false];
+            return [\JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class => false];
         }
     }
 }

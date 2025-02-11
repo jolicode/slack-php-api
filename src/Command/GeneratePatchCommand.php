@@ -25,6 +25,11 @@ class GeneratePatchCommand extends Command
 {
     protected static $defaultName = 'spec:generate-patch';
 
+    public function __construct()
+    {
+        parent::__construct(self::$defaultName);
+    }
+    
     protected function configure(): void
     {
         $this
@@ -32,7 +37,7 @@ class GeneratePatchCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // ensure the patched specification is alphabetically sorted
         $content = file_get_contents(__DIR__ . '/../../resources/slack-openapi-patched.json');

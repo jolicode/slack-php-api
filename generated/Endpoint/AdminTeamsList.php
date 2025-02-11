@@ -78,7 +78,7 @@ class AdminTeamsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

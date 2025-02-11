@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -60,7 +60,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata', 'json', $context));
+                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class, 'json', $context));
             } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
                 $object->setResponseMetadata(null);
             }
@@ -95,7 +95,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class => false];
         }
     }
 } else {
@@ -108,12 +108,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -134,7 +134,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata', 'json', $context));
+                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class, 'json', $context));
             } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
                 $object->setResponseMetadata(null);
             }
@@ -172,7 +172,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class => false];
         }
     }
 }

@@ -61,7 +61,7 @@ class AdminEmojiList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['cursor', 'limit', 'token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('cursor', ['string']);
         $optionsResolver->addAllowedTypes('limit', ['int']);

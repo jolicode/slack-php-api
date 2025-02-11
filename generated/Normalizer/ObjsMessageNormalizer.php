@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsMessage' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsMessage::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsMessage' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsMessage::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -57,7 +57,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('attachments', $data) && null !== $data['attachments']) {
                 $values = [];
                 foreach ($data['attachments'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem::class, 'json', $context);
                 }
                 $object->setAttachments($values);
             } elseif (\array_key_exists('attachments', $data) && null === $data['attachments']) {
@@ -66,7 +66,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('blocks', $data) && null !== $data['blocks']) {
                 $values_1 = [];
                 foreach ($data['blocks'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\BlocksItem', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\BlocksItem::class, 'json', $context);
                 }
                 $object->setBlocks($values_1);
             } elseif (\array_key_exists('blocks', $data) && null === $data['blocks']) {
@@ -78,7 +78,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setBotId(null);
             }
             if (\array_key_exists('bot_profile', $data) && null !== $data['bot_profile']) {
-                $object->setBotProfile($this->denormalizer->denormalize($data['bot_profile'], 'JoliCode\Slack\Api\Model\ObjsBotProfile', 'json', $context));
+                $object->setBotProfile($this->denormalizer->denormalize($data['bot_profile'], \JoliCode\Slack\Api\Model\ObjsBotProfile::class, 'json', $context));
             } elseif (\array_key_exists('bot_profile', $data) && null === $data['bot_profile']) {
                 $object->setBotProfile(null);
             }
@@ -88,7 +88,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setClientMsgId(null);
             }
             if (\array_key_exists('comment', $data) && null !== $data['comment']) {
-                $object->setComment($this->denormalizer->denormalize($data['comment'], 'JoliCode\Slack\Api\Model\ObjsComment', 'json', $context));
+                $object->setComment($this->denormalizer->denormalize($data['comment'], \JoliCode\Slack\Api\Model\ObjsComment::class, 'json', $context));
             } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
                 $object->setComment(null);
             }
@@ -98,21 +98,21 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setDisplayAsBot(null);
             }
             if (\array_key_exists('file', $data) && null !== $data['file']) {
-                $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context));
+                $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
             } elseif (\array_key_exists('file', $data) && null === $data['file']) {
                 $object->setFile(null);
             }
             if (\array_key_exists('files', $data) && null !== $data['files']) {
                 $values_2 = [];
                 foreach ($data['files'] as $value_2) {
-                    $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context);
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
                 }
                 $object->setFiles($values_2);
             } elseif (\array_key_exists('files', $data) && null === $data['files']) {
                 $object->setFiles(null);
             }
             if (\array_key_exists('icons', $data) && null !== $data['icons']) {
-                $object->setIcons($this->denormalizer->denormalize($data['icons'], 'JoliCode\Slack\Api\Model\ObjsMessageIcons', 'json', $context));
+                $object->setIcons($this->denormalizer->denormalize($data['icons'], \JoliCode\Slack\Api\Model\ObjsMessageIcons::class, 'json', $context));
             } elseif (\array_key_exists('icons', $data) && null === $data['icons']) {
                 $object->setIcons(null);
             }
@@ -147,7 +147,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setLatestReply(null);
             }
             if (\array_key_exists('metadata', $data) && null !== $data['metadata']) {
-                $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'JoliCode\Slack\Api\Model\ObjsMetadata', 'json', $context));
+                $object->setMetadata($this->denormalizer->denormalize($data['metadata'], \JoliCode\Slack\Api\Model\ObjsMetadata::class, 'json', $context));
             } elseif (\array_key_exists('metadata', $data) && null === $data['metadata']) {
                 $object->setMetadata(null);
             }
@@ -188,7 +188,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
                 $values_4 = [];
                 foreach ($data['reactions'] as $value_4) {
-                    $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\Slack\Api\Model\ObjsReaction', 'json', $context);
+                    $values_4[] = $this->denormalizer->denormalize($value_4, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
                 }
                 $object->setReactions($values_4);
             } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
@@ -274,7 +274,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setUser(null);
             }
             if (\array_key_exists('user_profile', $data) && null !== $data['user_profile']) {
-                $object->setUserProfile($this->denormalizer->denormalize($data['user_profile'], 'JoliCode\Slack\Api\Model\ObjsUserProfileShort', 'json', $context));
+                $object->setUserProfile($this->denormalizer->denormalize($data['user_profile'], \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class, 'json', $context));
             } elseif (\array_key_exists('user_profile', $data) && null === $data['user_profile']) {
                 $object->setUserProfile(null);
             }
@@ -445,7 +445,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsMessage' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsMessage::class => false];
         }
     }
 } else {
@@ -458,12 +458,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsMessage' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsMessage::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsMessage' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsMessage::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -481,7 +481,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('attachments', $data) && null !== $data['attachments']) {
                 $values = [];
                 foreach ($data['attachments'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem::class, 'json', $context);
                 }
                 $object->setAttachments($values);
             } elseif (\array_key_exists('attachments', $data) && null === $data['attachments']) {
@@ -490,7 +490,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('blocks', $data) && null !== $data['blocks']) {
                 $values_1 = [];
                 foreach ($data['blocks'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\BlocksItem', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\BlocksItem::class, 'json', $context);
                 }
                 $object->setBlocks($values_1);
             } elseif (\array_key_exists('blocks', $data) && null === $data['blocks']) {
@@ -502,7 +502,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setBotId(null);
             }
             if (\array_key_exists('bot_profile', $data) && null !== $data['bot_profile']) {
-                $object->setBotProfile($this->denormalizer->denormalize($data['bot_profile'], 'JoliCode\Slack\Api\Model\ObjsBotProfile', 'json', $context));
+                $object->setBotProfile($this->denormalizer->denormalize($data['bot_profile'], \JoliCode\Slack\Api\Model\ObjsBotProfile::class, 'json', $context));
             } elseif (\array_key_exists('bot_profile', $data) && null === $data['bot_profile']) {
                 $object->setBotProfile(null);
             }
@@ -512,7 +512,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setClientMsgId(null);
             }
             if (\array_key_exists('comment', $data) && null !== $data['comment']) {
-                $object->setComment($this->denormalizer->denormalize($data['comment'], 'JoliCode\Slack\Api\Model\ObjsComment', 'json', $context));
+                $object->setComment($this->denormalizer->denormalize($data['comment'], \JoliCode\Slack\Api\Model\ObjsComment::class, 'json', $context));
             } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
                 $object->setComment(null);
             }
@@ -522,21 +522,21 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setDisplayAsBot(null);
             }
             if (\array_key_exists('file', $data) && null !== $data['file']) {
-                $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context));
+                $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
             } elseif (\array_key_exists('file', $data) && null === $data['file']) {
                 $object->setFile(null);
             }
             if (\array_key_exists('files', $data) && null !== $data['files']) {
                 $values_2 = [];
                 foreach ($data['files'] as $value_2) {
-                    $values_2[] = $this->denormalizer->denormalize($value_2, 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context);
+                    $values_2[] = $this->denormalizer->denormalize($value_2, \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
                 }
                 $object->setFiles($values_2);
             } elseif (\array_key_exists('files', $data) && null === $data['files']) {
                 $object->setFiles(null);
             }
             if (\array_key_exists('icons', $data) && null !== $data['icons']) {
-                $object->setIcons($this->denormalizer->denormalize($data['icons'], 'JoliCode\Slack\Api\Model\ObjsMessageIcons', 'json', $context));
+                $object->setIcons($this->denormalizer->denormalize($data['icons'], \JoliCode\Slack\Api\Model\ObjsMessageIcons::class, 'json', $context));
             } elseif (\array_key_exists('icons', $data) && null === $data['icons']) {
                 $object->setIcons(null);
             }
@@ -571,7 +571,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setLatestReply(null);
             }
             if (\array_key_exists('metadata', $data) && null !== $data['metadata']) {
-                $object->setMetadata($this->denormalizer->denormalize($data['metadata'], 'JoliCode\Slack\Api\Model\ObjsMetadata', 'json', $context));
+                $object->setMetadata($this->denormalizer->denormalize($data['metadata'], \JoliCode\Slack\Api\Model\ObjsMetadata::class, 'json', $context));
             } elseif (\array_key_exists('metadata', $data) && null === $data['metadata']) {
                 $object->setMetadata(null);
             }
@@ -612,7 +612,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
                 $values_4 = [];
                 foreach ($data['reactions'] as $value_4) {
-                    $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\Slack\Api\Model\ObjsReaction', 'json', $context);
+                    $values_4[] = $this->denormalizer->denormalize($value_4, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
                 }
                 $object->setReactions($values_4);
             } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
@@ -698,7 +698,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setUser(null);
             }
             if (\array_key_exists('user_profile', $data) && null !== $data['user_profile']) {
-                $object->setUserProfile($this->denormalizer->denormalize($data['user_profile'], 'JoliCode\Slack\Api\Model\ObjsUserProfileShort', 'json', $context));
+                $object->setUserProfile($this->denormalizer->denormalize($data['user_profile'], \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class, 'json', $context));
             } elseif (\array_key_exists('user_profile', $data) && null === $data['user_profile']) {
                 $object->setUserProfile(null);
             }
@@ -872,7 +872,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsMessage' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsMessage::class => false];
         }
     }
 }

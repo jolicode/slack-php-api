@@ -62,7 +62,7 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['cursor', 'limit', 'team_id', 'token']);
-        $optionsResolver->setRequired(['team_id']);
+        $optionsResolver->setRequired(['team_id', 'token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('cursor', ['string']);
         $optionsResolver->addAllowedTypes('limit', ['int']);

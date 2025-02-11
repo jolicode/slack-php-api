@@ -78,7 +78,7 @@ class AdminInviteRequestsDeny extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

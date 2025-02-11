@@ -26,6 +26,11 @@ class UpdateSpecificationCommand extends Command
 {
     protected static $defaultName = 'spec:update';
 
+    public function __construct()
+    {
+        parent::__construct(self::$defaultName);
+    }
+
     protected function configure(): void
     {
         $this
@@ -33,7 +38,7 @@ class UpdateSpecificationCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 

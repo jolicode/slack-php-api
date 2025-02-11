@@ -61,7 +61,7 @@ class AdminEmojiAddAlias extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['alias_for', 'name', 'token']);
-        $optionsResolver->setRequired(['alias_for', 'name']);
+        $optionsResolver->setRequired(['alias_for', 'name', 'token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('alias_for', ['string']);
         $optionsResolver->addAllowedTypes('name', ['string']);

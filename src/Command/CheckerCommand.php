@@ -23,6 +23,11 @@ class CheckerCommand extends Command
 {
     protected static $defaultName = 'checker';
 
+    public function __construct()
+    {
+        parent::__construct(self::$defaultName);
+    }
+
     protected function configure(): void
     {
         $this
@@ -30,7 +35,7 @@ class CheckerCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $result = (new SchemaChecker())->check(__DIR__ . '/../../resources/slack-openapi-patched.json');
         $rows = [];
