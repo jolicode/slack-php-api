@@ -1,5 +1,5 @@
---- resources/slack-openapi-sorted.json	2025-02-11 17:46:04
-+++ resources/slack-openapi-patched.json	2025-02-11 17:59:17
+--- resources/slack-openapi-sorted.json	2024-08-17 01:20:08.731590710 +0700
++++ resources/slack-openapi-patched.json	2024-08-17 01:21:23.835742659 +0700
 @@ -397,21 +397,24 @@
                      },
                      "type": "array"
@@ -26,7 +26,6 @@
                  "created",
                  "id",
                  "is_intro",
-\ No newline at end of file
 @@ -507,20 +510,21 @@
                      "type": "boolean"
                  },
@@ -49,7 +48,6 @@
                  "is_open": {
                      "type": "boolean"
                  },
-\ No newline at end of file
 @@ -560,20 +564,23 @@
                  "latest": {
                      "items": [
@@ -74,7 +72,6 @@
                  },
                  "name": {
                      "type": "string"
-\ No newline at end of file
 @@ -822,20 +829,24 @@
                  },
                  "comments_count": {
@@ -100,9 +97,7 @@
                      "$ref": "#/definitions/defs_user_id"
                  },
                  "external_id": {
-\ No newline at end of file
-@@ -919,44 +930,68 @@
-                     "type": "string"
+@@ -920,43 +931,67 @@
                  },
                  "pinned_info": {
                      "$ref": "#/definitions/defs_pinned_info"
@@ -112,11 +107,11 @@
                          "$ref": "#/definitions/defs_channel"
                      },
                      "type": "array"
-+                },
+                 },
 +                "pjpeg": {
 +                    "format": "uri",
 +                    "type": "string"
-                 },
++                },
                  "pretty_type": {
                      "type": "string"
                  },
@@ -172,7 +167,6 @@
                  "source_team": {
                      "$ref": "#/definitions/defs_team"
                  },
-\ No newline at end of file
 @@ -974,20 +1009,24 @@
                      "type": "integer"
                  },
@@ -198,7 +192,6 @@
                      "format": "uri",
                      "type": "string"
                  },
-\ No newline at end of file
 @@ -1032,21 +1071,24 @@
                  "thumb_960_h": {
                      "type": "integer"
@@ -225,8 +218,7 @@
                  "url_private": {
                      "format": "uri",
                      "type": "string"
-\ No newline at end of file
-@@ -1095,39 +1137,124 @@
+@@ -1110,39 +1152,124 @@
                      "type": "boolean"
                  }
              },
@@ -352,8 +344,7 @@
                      "minItems": 1,
                      "type": "array",
                      "uniqueItems": true
-\ No newline at end of file
-@@ -1193,20 +1320,23 @@
+@@ -1208,20 +1335,23 @@
                  },
                  "is_starred": {
                      "type": "boolean"
@@ -377,10 +368,7 @@
                      "$ref": "#/definitions/defs_user_id"
                  },
                  "permalink": {
-\ No newline at end of file
-@@ -1287,20 +1417,37 @@
-                 "username": {
-                     "type": "string"
+@@ -1304,20 +1434,37 @@
                  }
              },
              "required": [
@@ -389,8 +377,8 @@
                  "type"
              ],
              "title": "Message object",
-+            "type": "object"
-+        },
+             "type": "object"
+         },
 +        "objs_metadata": {
 +            "additionalProperties": false,
 +            "properties": {
@@ -406,8 +394,8 @@
 +                "event_type"
 +            ],
 +            "title": "Metadata object",
-             "type": "object"
-         },
++            "type": "object"
++        },
          "objs_paging": {
              "additionalProperties": false,
              "properties": {
@@ -416,8 +404,9 @@
                  },
                  "page": {
                      "type": "integer"
-\ No newline at end of file
-@@ -1431,91 +1578,46 @@
+                 },
+                 "pages": {
+@@ -1446,91 +1593,46 @@
                      "type": "boolean"
                  }
              },
@@ -435,13 +424,19 @@
 -                        "next_cursor": {
 -                            "type": "string"
 -                        }
--                    },
++            "additionalProperties": false,
++            "properties": {
++                "messages": {
++                    "items": {
++                        "type": "string"
+                     },
 -                    "required": [
 -                        "next_cursor"
 -                    ],
 -                    "title": "new paging style",
 -                    "type": "object"
--                },
++                    "type": "array"
+                 },
 -                {
 -                    "additionalProperties": false,
 -                    "properties": {
@@ -460,19 +455,15 @@
 -                            },
 -                            "type": "array"
 -                        }
-+            "additionalProperties": false,
-+            "properties": {
-+                "messages": {
-+                    "items": {
-+                        "type": "string"
-                     },
+-                    },
 -                    "required": [
 -                        "messages",
 -                        "warnings"
 -                    ],
 -                    "title": "deprecation_warning",
 -                    "type": "object"
-+                    "type": "array"
++                "next_cursor": {
++                    "type": "string"
                  },
 -                {
 -                    "additionalProperties": false,
@@ -495,9 +486,6 @@
 -                            },
 -                            "type": "array"
 -                        }
-+                "next_cursor": {
-+                    "type": "string"
-+                },
 +                "warnings": {
 +                    "items": {
 +                        "enum": [
@@ -531,8 +519,7 @@
                      "im:history",
                      "im:read"
                  ]
-\ No newline at end of file
-@@ -1671,28 +1773,21 @@
+@@ -1686,28 +1788,21 @@
                  "deleted": {
                      "type": "boolean"
                  },
@@ -562,8 +549,7 @@
                  "enterprise_id": {
                      "$ref": "#/definitions/defs_enterprise_id"
                  },
-\ No newline at end of file
-@@ -1798,28 +1893,21 @@
+@@ -1813,28 +1908,21 @@
                      "pattern": "^X[a-zA-Z0-9]{9,}$",
                      "type": "string"
                  },
@@ -593,8 +579,7 @@
                      },
                      "type": [
                          "array",
-\ No newline at end of file
-@@ -2332,21 +2420,20 @@
+@@ -2347,21 +2435,20 @@
                      },
                      {
                          "in": "formData",
@@ -616,9 +601,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -2411,47 +2498,46 @@
-                 "consumes": [
+@@ -2427,46 +2514,45 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List approved apps for an org or workspace.",
@@ -628,13 +611,13 @@
                  },
                  "operationId": "admin_apps_approved_list",
                  "parameters": [
--                    {
+                     {
 -                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
 -                        "in": "query",
 -                        "name": "limit",
 -                        "type": "integer"
 -                    },
-                     {
+-                    {
                          "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
                          "in": "query",
                          "name": "cursor",
@@ -647,12 +630,12 @@
                      },
                      {
 +                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
-                         "in": "query",
++                        "in": "query",
 +                        "name": "limit",
 +                        "type": "integer"
 +                    },
 +                    {
-+                        "in": "query",
+                         "in": "query",
                          "name": "team_id",
                          "type": "string"
                      },
@@ -671,8 +654,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -2562,41 +2648,40 @@
+@@ -2577,41 +2663,40 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List app requests for a team/workspace.",
@@ -693,14 +675,14 @@
                          "in": "query",
                          "name": "cursor",
                          "type": "string"
-+                    },
-+                    {
+                     },
+                     {
 +                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
 +                        "in": "query",
 +                        "name": "limit",
 +                        "type": "integer"
-                     },
-                     {
++                    },
++                    {
                          "in": "query",
                          "name": "team_id",
                          "type": "string"
@@ -720,8 +702,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -2738,21 +2823,20 @@
+@@ -2753,21 +2838,20 @@
                      },
                      {
                          "in": "formData",
@@ -743,9 +724,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -2817,47 +2901,46 @@
-                 "consumes": [
+@@ -2833,46 +2917,45 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List restricted apps for an org or workspace.",
@@ -755,13 +734,13 @@
                  },
                  "operationId": "admin_apps_restricted_list",
                  "parameters": [
--                    {
+                     {
 -                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
 -                        "in": "query",
 -                        "name": "limit",
 -                        "type": "integer"
 -                    },
-                     {
+-                    {
                          "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
                          "in": "query",
                          "name": "cursor",
@@ -771,14 +750,14 @@
                          "in": "query",
                          "name": "enterprise_id",
                          "type": "string"
-+                    },
-+                    {
+                     },
+                     {
 +                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
 +                        "in": "query",
 +                        "name": "limit",
 +                        "type": "integer"
-                     },
-                     {
++                    },
++                    {
                          "in": "query",
                          "name": "team_id",
                          "type": "string"
@@ -798,8 +777,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -2979,21 +3062,20 @@
+@@ -2994,21 +3077,20 @@
                          "description": "The channel to archive.",
                          "in": "formData",
                          "name": "channel_id",
@@ -821,8 +799,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3084,21 +3166,20 @@
+@@ -3099,21 +3181,20 @@
                          "description": "The channel to convert to private.",
                          "in": "formData",
                          "name": "channel_id",
@@ -844,8 +821,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3215,21 +3296,20 @@
+@@ -3230,21 +3311,20 @@
                      {
                          "description": "The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.",
                          "in": "formData",
@@ -867,8 +843,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3324,21 +3404,20 @@
+@@ -3339,21 +3419,20 @@
                          "description": "The channel to delete.",
                          "in": "formData",
                          "name": "channel_id",
@@ -890,8 +865,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3435,21 +3514,20 @@
+@@ -3450,21 +3529,20 @@
                      {
                          "description": "The team to be removed from the channel. Currently only a single team id can be specified.",
                          "in": "formData",
@@ -913,8 +887,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3561,21 +3639,20 @@
+@@ -3576,21 +3654,20 @@
                      {
                          "description": "A comma-separated list of the workspaces to which the channels you would like returned belong.",
                          "in": "query",
@@ -936,8 +909,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3660,21 +3737,20 @@
+@@ -3675,21 +3752,20 @@
                          "description": "The channel to get preferences for.",
                          "in": "query",
                          "name": "channel_id",
@@ -959,8 +931,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3816,21 +3892,20 @@
+@@ -3831,21 +3907,20 @@
                      {
                          "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
                          "in": "query",
@@ -982,8 +953,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -3944,21 +4019,20 @@
+@@ -3959,21 +4034,20 @@
                          "description": "The channel that the users will be invited to.",
                          "in": "formData",
                          "name": "channel_id",
@@ -1005,8 +975,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -4061,21 +4135,20 @@
+@@ -4076,21 +4150,20 @@
                      {
                          "in": "formData",
                          "name": "name",
@@ -1028,8 +997,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -4161,30 +4234,30 @@
+@@ -4176,30 +4249,30 @@
                  "operationId": "admin_conversations_restrictAccess_addGroup",
                  "parameters": [
                      {
@@ -1065,8 +1033,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -4272,21 +4345,20 @@
+@@ -4287,21 +4360,20 @@
                      {
                          "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
                          "in": "query",
@@ -1088,8 +1055,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -4362,30 +4434,30 @@
+@@ -4377,30 +4449,30 @@
                  "operationId": "admin_conversations_restrictAccess_removeGroup",
                  "parameters": [
                      {
@@ -1124,8 +1090,7 @@
                          "required": true,
                          "type": "string"
                      }
-\ No newline at end of file
-@@ -4505,21 +4577,20 @@
+@@ -4520,21 +4592,20 @@
                      {
                          "description": "Comma separated string of team IDs, signifying the workspaces to search through.",
                          "in": "query",
@@ -1147,8 +1112,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -4664,21 +4735,20 @@
+@@ -4679,21 +4750,20 @@
                          "description": "The prefs for this channel in a stringified JSON format.",
                          "in": "formData",
                          "name": "prefs",
@@ -1170,8 +1134,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -4787,21 +4857,20 @@
+@@ -4802,21 +4872,20 @@
                      {
                          "description": "The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.",
                          "in": "formData",
@@ -1193,8 +1156,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -4878,21 +4947,20 @@
+@@ -4893,21 +4962,20 @@
                          "description": "The channel to unarchive.",
                          "in": "formData",
                          "name": "channel_id",
@@ -1216,8 +1178,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -4982,21 +5050,20 @@
+@@ -4997,21 +5065,20 @@
                          "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
                          "name": "name",
@@ -1239,8 +1200,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -5069,30 +5136,30 @@
+@@ -5084,30 +5151,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Add an emoji alias.",
@@ -1275,8 +1235,7 @@
                          "required": true,
                          "type": "string"
                      }
-\ No newline at end of file
-@@ -5303,21 +5370,20 @@
+@@ -5318,21 +5385,20 @@
                          "description": "The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                          "in": "formData",
                          "name": "name",
@@ -1298,8 +1257,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -5481,30 +5547,30 @@
+@@ -5496,30 +5562,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Approve a workspace invite request.",
@@ -1335,8 +1293,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -5578,38 +5644,38 @@
+@@ -5593,38 +5659,38 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List all approved workspace invite requests.",
@@ -1381,8 +1338,7 @@
                  "produces": [
                      "application/json"
                  ],
-\ No newline at end of file
-@@ -5680,38 +5746,38 @@
+@@ -5695,38 +5761,38 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List all denied workspace invite requests.",
@@ -1427,9 +1383,7 @@
                  "produces": [
                      "application/json"
                  ],
-\ No newline at end of file
-@@ -5781,34 +5847,34 @@
-                     "application/json",
+@@ -5797,30 +5863,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Deny a workspace invite request.",
@@ -1439,26 +1393,25 @@
                  },
                  "operationId": "admin_inviteRequests_deny",
                  "parameters": [
--                    {
--                        "description": "ID for the workspace where the invite request was made.",
--                        "in": "formData",
--                        "name": "team_id",
--                        "type": "string"
--                    },
                      {
-                         "description": "ID of the request to invite.",
+-                        "description": "ID for the workspace where the invite request was made.",
++                        "description": "ID of the request to invite.",
                          "in": "formData",
-                         "name": "invite_request_id",
-                         "required": true,
+-                        "name": "team_id",
++                        "name": "invite_request_id",
++                        "required": true,
                          "type": "string"
                      },
                      {
+-                        "description": "ID of the request to invite.",
 +                        "description": "ID for the workspace where the invite request was made.",
-+                        "in": "formData",
+                         "in": "formData",
+-                        "name": "invite_request_id",
+-                        "required": true,
 +                        "name": "team_id",
-+                        "type": "string"
-+                    },
-+                    {
+                         "type": "string"
+                     },
+                     {
                          "description": "Authentication token. Requires scope: `admin.invites:write`",
                          "in": "header",
                          "name": "token",
@@ -1466,11 +1419,7 @@
                          "type": "string"
                      }
                  ],
-                 "produces": [
-                     "application/json"
-                 ],
-\ No newline at end of file
-@@ -5879,38 +5945,38 @@
+@@ -5894,38 +5960,38 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List all pending workspace invite requests.",
@@ -1515,9 +1464,7 @@
                  "produces": [
                      "application/json"
                  ],
-\ No newline at end of file
-@@ -5979,34 +6045,34 @@
-                 "consumes": [
+@@ -5995,32 +6061,32 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List all of the admins on a given workspace.",
@@ -1527,13 +1474,13 @@
                  },
                  "operationId": "admin_teams_admins_list",
                  "parameters": [
--                    {
+                     {
 -                        "description": "The maximum number of items to return.",
 -                        "in": "query",
 -                        "name": "limit",
 -                        "type": "integer"
 -                    },
-                     {
+-                    {
                          "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
                          "in": "query",
                          "name": "cursor",
@@ -1541,12 +1488,12 @@
                      },
                      {
 +                        "description": "The maximum number of items to return.",
-                         "in": "query",
++                        "in": "query",
 +                        "name": "limit",
 +                        "type": "integer"
 +                    },
 +                    {
-+                        "in": "query",
+                         "in": "query",
                          "name": "team_id",
                          "required": true,
                          "type": "string"
@@ -1556,9 +1503,7 @@
                          "in": "query",
                          "name": "token",
                          "required": true,
-                         "type": "string"
-\ No newline at end of file
-@@ -6196,32 +6262,32 @@
+@@ -6211,32 +6277,32 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List all teams on an Enterprise organization",
@@ -1597,11 +1542,7 @@
                  "produces": [
                      "application/json"
                  ],
-\ No newline at end of file
-@@ -6306,39 +6372,38 @@
-                 "externalDocs": {
-                     "description": "API method documentation",
-                     "url": "https://api.slack.com/methods/admin.teams.owners.list"
+@@ -6324,36 +6390,35 @@
                  },
                  "operationId": "admin_teams_owners_list",
                  "parameters": [
@@ -1609,15 +1550,15 @@
                          "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
                          "in": "query",
                          "name": "cursor",
--                        "type": "string"
--                    },
--                    {
--                        "in": "query",
--                        "name": "team_id",
--                        "required": true,
                          "type": "string"
                      },
                      {
+-                        "in": "query",
+-                        "name": "team_id",
+-                        "required": true,
+-                        "type": "string"
+-                    },
+-                    {
                          "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
                          "in": "query",
                          "name": "limit",
@@ -1644,8 +1585,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -6417,21 +6482,20 @@
+@@ -6432,21 +6497,20 @@
                      {
                          "in": "query",
                          "name": "team_id",
@@ -1667,8 +1607,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -6507,30 +6571,30 @@
+@@ -6522,30 +6586,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Set the default channels of a workspace.",
@@ -1703,8 +1642,7 @@
                          "required": true,
                          "type": "string"
                      }
-\ No newline at end of file
-@@ -6605,30 +6669,30 @@
+@@ -6620,30 +6684,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Set the description of a given workspace.",
@@ -1739,8 +1677,7 @@
                          "required": true,
                          "type": "string"
                      }
-\ No newline at end of file
-@@ -6703,30 +6767,30 @@
+@@ -6718,30 +6782,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "An API method that allows admins to set the discoverability of a given workspace",
@@ -1775,8 +1712,7 @@
                          "required": true,
                          "type": "string"
                      }
-\ No newline at end of file
-@@ -6817,21 +6881,20 @@
+@@ -6832,21 +6896,20 @@
                          "description": "ID for the workspace to set the icon for.",
                          "in": "formData",
                          "name": "team_id",
@@ -1798,8 +1734,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -6898,30 +6961,30 @@
+@@ -6913,30 +6976,30 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Set the name of a given workspace.",
@@ -1834,8 +1769,7 @@
                          "required": true,
                          "type": "string"
                      }
-\ No newline at end of file
-@@ -7012,21 +7075,20 @@
+@@ -7027,21 +7090,20 @@
                      {
                          "description": "The workspace to add default channels in.",
                          "in": "formData",
@@ -1857,8 +1791,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -7116,21 +7178,20 @@
+@@ -7131,21 +7193,20 @@
                          "description": "A comma separated list of encoded team (workspace) IDs. Each workspace *MUST* belong to the organization associated with the token.",
                          "in": "formData",
                          "name": "team_ids",
@@ -1880,8 +1813,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -7219,21 +7280,20 @@
+@@ -7234,21 +7295,20 @@
                      {
                          "description": "ID of the the workspace.",
                          "in": "query",
@@ -1903,8 +1835,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -7342,21 +7402,20 @@
+@@ -7357,21 +7417,20 @@
                          "description": "Comma-separated string of channel IDs",
                          "in": "formData",
                          "name": "channel_ids",
@@ -1926,8 +1857,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -7458,21 +7517,20 @@
+@@ -7473,21 +7532,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1949,8 +1879,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -7606,21 +7664,20 @@
+@@ -7621,21 +7679,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -1972,9 +1901,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -7686,40 +7743,40 @@
-                     "application/json",
+@@ -7702,39 +7759,39 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "List users on a workspace",
@@ -1984,14 +1911,14 @@
                  },
                  "operationId": "admin_users_list",
                  "parameters": [
--                    {
+                     {
 -                        "description": "The ID (`T1234`) of the workspace.",
 -                        "in": "query",
 -                        "name": "team_id",
 -                        "required": true,
 -                        "type": "string"
 -                    },
-                     {
+-                    {
                          "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
                          "in": "query",
                          "name": "cursor",
@@ -2021,8 +1948,7 @@
                  "produces": [
                      "application/json"
                  ],
-\ No newline at end of file
-@@ -7812,21 +7869,20 @@
+@@ -7827,21 +7884,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -2044,8 +1970,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -7900,31 +7956,31 @@
+@@ -7915,31 +7971,31 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Invalidate a single session for a user by session_id",
@@ -2082,8 +2007,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -8006,21 +8062,20 @@
+@@ -8021,21 +8077,20 @@
                      {
                          "description": "Only expire mobile sessions (default: false)",
                          "in": "formData",
@@ -2105,8 +2029,7 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
-@@ -8110,21 +8165,20 @@
+@@ -8125,21 +8180,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -2128,8 +2051,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -8215,21 +8269,20 @@
+@@ -8230,21 +8284,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -2151,8 +2073,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -8313,21 +8366,20 @@
+@@ -8328,21 +8381,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -2174,8 +2095,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -8411,21 +8463,20 @@
+@@ -8426,21 +8478,20 @@
                          "description": "The ID (`T1234`) of the workspace.",
                          "in": "formData",
                          "name": "team_id",
@@ -2197,8 +2117,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -8528,20 +8579,23 @@
+@@ -8543,20 +8594,23 @@
                              "application/json": {
                                  "ok": true
                              }
@@ -2222,8 +2141,7 @@
                              "title": "api.test success schema",
                              "type": "object"
                          }
-\ No newline at end of file
-@@ -8556,20 +8610,23 @@
+@@ -8571,20 +8625,23 @@
                                  "error": "my_error",
                                  "ok": false
                              }
@@ -2247,8 +2165,7 @@
                              "required": [
                                  "error",
                                  "ok"
-\ No newline at end of file
-@@ -8599,39 +8656,38 @@
+@@ -8614,39 +8671,38 @@
                  ],
                  "description": "Get a list of authorizations for the given event context. Each authorization represents an app installation that the event is visible to.",
                  "externalDocs": {
@@ -2291,8 +2208,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -8959,21 +9015,20 @@
+@@ -8974,21 +9030,20 @@
                          "description": "A comma separated list of scopes to request for",
                          "in": "query",
                          "name": "scopes",
@@ -2314,8 +2230,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -9094,21 +9149,20 @@
+@@ -9109,21 +9164,20 @@
                      {
                          "description": "The maximum number of items to return.",
                          "in": "query",
@@ -2337,8 +2252,7 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "examples": {
-\ No newline at end of file
-@@ -9265,21 +9319,20 @@
+@@ -9280,21 +9334,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/apps.permissions.scopes.list"
@@ -2360,8 +2274,7 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "examples": {
-\ No newline at end of file
-@@ -9441,21 +9494,20 @@
+@@ -9456,21 +9509,20 @@
                      {
                          "description": "The maximum number of items to return.",
                          "in": "query",
@@ -2383,8 +2296,7 @@
                      "200": {
                          "description": "Typical successful paginated response",
                          "examples": {
-\ No newline at end of file
-@@ -9549,21 +9601,20 @@
+@@ -9564,21 +9616,20 @@
                          "description": "A comma separated list of user scopes to request for",
                          "in": "query",
                          "name": "scopes",
@@ -2406,8 +2318,7 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
-@@ -9777,21 +9828,20 @@
+@@ -9792,21 +9843,20 @@
                      {
                          "description": "Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.",
                          "in": "query",
@@ -2429,8 +2340,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -9893,21 +9943,20 @@
+@@ -9908,21 +9958,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/auth.test"
@@ -2452,8 +2362,7 @@
                      "200": {
                          "description": "Standard success response when used with a user token",
                          "examples": {
-\ No newline at end of file
-@@ -10036,21 +10085,20 @@
+@@ -10051,21 +10100,20 @@
                      {
                          "description": "Bot user to get info on",
                          "in": "query",
@@ -2475,8 +2384,7 @@
                      "200": {
                          "description": "When successful, returns bot info by bot ID.",
                          "examples": {
-\ No newline at end of file
-@@ -10261,21 +10309,20 @@
+@@ -10276,21 +10324,20 @@
                      {
                          "description": "The name of the Call.",
                          "in": "formData",
@@ -2498,8 +2406,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -10347,33 +10394,33 @@
+@@ -10362,33 +10409,33 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Ends a Call.",
@@ -2539,8 +2446,7 @@
                  "produces": [
                      "application/json"
                  ],
-\ No newline at end of file
-@@ -10453,21 +10500,20 @@
+@@ -10468,21 +10515,20 @@
                          "description": "`id` of the Call returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "query",
                          "name": "id",
@@ -2562,8 +2468,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -10543,21 +10589,20 @@
+@@ -10558,21 +10604,20 @@
                          "description": "`id` returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
                          "name": "id",
@@ -2585,8 +2490,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -10641,21 +10686,20 @@
+@@ -10656,21 +10701,20 @@
                          "description": "`id` returned by the [`calls.add`](/methods/calls.add) method.",
                          "in": "formData",
                          "name": "id",
@@ -2608,8 +2512,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -10757,21 +10801,20 @@
+@@ -10772,21 +10816,20 @@
                      {
                          "description": "The name of the Call.",
                          "in": "formData",
@@ -2631,8 +2534,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -10858,21 +10901,21 @@
+@@ -10873,21 +10916,21 @@
                      {
                          "description": "Authentication token. Requires scope: `chat:write`",
                          "in": "header",
@@ -2655,8 +2557,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
-@@ -11002,21 +11045,20 @@
+@@ -11017,21 +11060,20 @@
                          "description": "`scheduled_message_id` returned from call to chat.scheduleMessage",
                          "in": "formData",
                          "name": "scheduled_message_id",
@@ -2678,8 +2579,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -11132,21 +11174,20 @@
+@@ -11147,21 +11189,20 @@
                          "description": "A message's `ts` value, uniquely identifying it within a channel",
                          "in": "query",
                          "name": "message_ts",
@@ -2701,8 +2601,7 @@
                      "200": {
                          "description": "Standard success response",
                          "examples": {
-\ No newline at end of file
-@@ -11454,21 +11495,20 @@
+@@ -11469,21 +11510,20 @@
                      {
                          "description": "Provide another message's `ts` value to post this message in a thread. Avoid using a reply's `ts` value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread.",
                          "in": "formData",
@@ -2724,8 +2623,7 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
-@@ -11591,21 +11631,21 @@
+@@ -11606,21 +11646,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/chat.postMessage"
@@ -2748,8 +2646,7 @@
                      {
                          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string.",
                          "in": "formData",
-\ No newline at end of file
-@@ -11631,20 +11671,26 @@
+@@ -11646,20 +11686,26 @@
                          "name": "icon_url",
                          "type": "string"
                      },
@@ -2776,8 +2673,7 @@
                          "in": "formData",
                          "name": "parse",
                          "type": "string"
-\ No newline at end of file
-@@ -11664,21 +11710,20 @@
+@@ -11679,21 +11725,20 @@
                      {
                          "description": "Provide another message's `ts` value to make this message a reply. Avoid using a reply's `ts` value; use its parent instead.",
                          "in": "formData",
@@ -2799,8 +2695,7 @@
                      },
                      {
                          "description": "Pass false to disable unfurling of media content.",
-\ No newline at end of file
-@@ -11857,39 +11902,39 @@
+@@ -11872,39 +11917,39 @@
                      {
                          "description": "Change how messages are treated. Defaults to `none`. See [chat.postMessage](chat.postMessage#formatting).",
                          "in": "formData",
@@ -2842,8 +2737,7 @@
                      {
                          "description": "Pass true to enable unfurling of primarily text-based content.",
                          "in": "formData",
-\ No newline at end of file
-@@ -11934,25 +11979,45 @@
+@@ -11949,26 +11994,46 @@
                          "schema": {
                              "additionalProperties": false,
                              "description": "Schema for successful response of chat.scheduleMessage method",
@@ -2876,10 +2770,10 @@
                                          },
                                          "bot_profile": {
                                              "$ref": "#/definitions/objs_bot_profile"
-+                                        },
+                                         },
 +                                        "subtype": {
 +                                            "type": "string"
-                                         },
++                                        },
                                          "team": {
                                              "$ref": "#/definitions/defs_team"
                                          },
@@ -2889,8 +2783,8 @@
                                          "type": {
                                              "type": "string"
                                          },
-\ No newline at end of file
-@@ -11969,22 +12034,24 @@
+                                         "user": {
+@@ -11984,22 +12049,24 @@
                                          "text",
                                          "type",
                                          "user"
@@ -2917,8 +2811,7 @@
                              "required": [
                                  "channel",
                                  "message",
-\ No newline at end of file
-@@ -12099,33 +12166,33 @@
+@@ -12114,33 +12181,33 @@
                      {
                          "description": "For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.",
                          "in": "query",
@@ -2954,8 +2847,7 @@
                  ],
                  "produces": [
                      "application/json"
-\ No newline at end of file
-@@ -12175,25 +12242,27 @@
+@@ -12190,25 +12257,27 @@
                                          "properties": {
                                              "channel_id": {
                                                  "$ref": "#/definitions/defs_channel_id"
@@ -2986,8 +2878,7 @@
                                              "date_created",
                                              "id",
                                              "post_at"
-\ No newline at end of file
-@@ -12297,21 +12366,20 @@
+@@ -12312,21 +12381,20 @@
                          "description": "Channel ID of the message",
                          "in": "formData",
                          "name": "channel",
@@ -3009,8 +2900,7 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
-@@ -12444,21 +12512,21 @@
+@@ -12459,21 +12527,21 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/chat.update"
@@ -3033,8 +2923,7 @@
                      {
                          "description": "A JSON-based array of [structured blocks](/block-kit/building), presented as a URL-encoded string. If you don't include this field, the message's previous `blocks` will be retained. To remove previous `blocks`, include an empty array for this field.",
                          "in": "formData",
-\ No newline at end of file
-@@ -12487,21 +12555,20 @@
+@@ -12502,21 +12570,20 @@
                      {
                          "description": "New text for the message, using the [default formatting rules](/reference/surfaces/formatting). It's not required when presenting `blocks` or `attachments`.",
                          "in": "formData",
@@ -3056,8 +2945,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -12915,32 +12982,32 @@
+@@ -12930,32 +12997,32 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Initiates a public or private channel-based conversation",
@@ -3096,8 +2984,7 @@
                      "application/json"
                  ],
                  "responses": {
-\ No newline at end of file
-@@ -13109,42 +13176,48 @@
+@@ -13124,42 +13191,48 @@
                          "name": "channel",
                          "type": "string"
                      },
@@ -3148,8 +3035,7 @@
                  ],
                  "produces": [
                      "application/json"
-\ No newline at end of file
-@@ -13202,20 +13275,32 @@
+@@ -13217,20 +13290,32 @@
                                      },
                                      "minItems": 1,
                                      "type": "array",
@@ -3182,10 +3068,7 @@
                                  "ok",
                                  "pin_count"
                              ],
-\ No newline at end of file
-@@ -14200,20 +14285,26 @@
-                         "description": "Set to `true` to exclude archived channels from the list",
-                         "in": "query",
+@@ -14217,20 +14302,26 @@
                          "name": "exclude_archived",
                          "type": "boolean"
                      },
@@ -3194,14 +3077,14 @@
                          "in": "query",
                          "name": "limit",
                          "type": "integer"
-+                    },
-+                    {
+                     },
+                     {
 +                        "description": "Encoded team id to list channels in, required if token belongs to org-wide app",
 +                        "in": "query",
 +                        "name": "team_id",
 +                        "type": "string"
-                     },
-                     {
++                    },
++                    {
                          "description": "Authentication token. Requires scope: `conversations:read`",
                          "in": "query",
                          "name": "token",
@@ -3210,8 +3093,9 @@
                      {
                          "description": "Mix and match channel types by providing a comma-separated list of any combination of `public_channel`, `private_channel`, `mpim`, `im`",
                          "in": "query",
-\ No newline at end of file
-@@ -14429,21 +14520,21 @@
+                         "name": "types",
+                         "type": "string"
+@@ -14444,21 +14535,21 @@
                      {
                          "description": "Authentication token. Requires scope: `conversations:write`",
                          "in": "header",
@@ -3234,8 +3118,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
-@@ -15097,45 +15188,45 @@
+@@ -15112,45 +15203,45 @@
                      {
                          "description": "Include messages with latest or oldest timestamp in results only when either timestamp is specified.",
                          "in": "query",
@@ -3284,8 +3167,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
-@@ -15306,20 +15397,32 @@
+@@ -15321,20 +15412,32 @@
                                                      "user"
                                                  ],
                                                  "type": "object"
@@ -3318,8 +3200,7 @@
                              "type": "object"
                          }
                      },
-\ No newline at end of file
-@@ -15818,21 +15921,20 @@
+@@ -15833,21 +15936,20 @@
                          "description": "The dialog definition. This must be a JSON-encoded string.",
                          "in": "query",
                          "name": "dialog",
@@ -3341,8 +3222,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -15945,21 +16047,20 @@
+@@ -15960,21 +16062,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endDnd"
@@ -3364,8 +3244,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -16058,21 +16159,20 @@
+@@ -16073,21 +16174,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/dnd.endSnooze"
@@ -3387,8 +3266,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -16331,21 +16431,20 @@
+@@ -16346,21 +16446,20 @@
                          "description": "Number of minutes, from now, to snooze until.",
                          "in": "formData",
                          "name": "num_minutes",
@@ -3410,8 +3288,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -16556,21 +16655,20 @@
+@@ -16571,21 +16670,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/emoji.list"
@@ -3433,8 +3310,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -17126,27 +17224,27 @@
+@@ -17467,27 +17565,27 @@
                      {
                          "description": "Authentication token. Requires scope: `files:read`",
                          "in": "query",
@@ -3464,8 +3340,7 @@
                      {
                          "description": "Filter files created by a single user.",
                          "in": "query",
-\ No newline at end of file
-@@ -17473,29 +17571,29 @@
+@@ -17814,29 +17912,29 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Retrieve information about a remote file added to Slack",
@@ -3499,8 +3374,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -17594,27 +17692,27 @@
+@@ -17935,27 +18033,27 @@
                      {
                          "description": "Authentication token. Requires scope: `remote_files:read`",
                          "in": "query",
@@ -3530,8 +3404,7 @@
                          "description": "Typical success response",
                          "examples": {
                              "application/json": {
-\ No newline at end of file
-@@ -17679,29 +17777,29 @@
+@@ -18020,29 +18118,29 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Remove a remote file.",
@@ -3565,8 +3438,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -17779,29 +17877,29 @@
+@@ -18120,29 +18218,29 @@
                  },
                  "operationId": "files_remote_share",
                  "parameters": [
@@ -3600,8 +3472,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -18234,21 +18332,21 @@
+@@ -18575,21 +18673,21 @@
                      }
                  ],
                  "tags": [
@@ -3624,8 +3495,7 @@
                  "parameters": [
                      {
                          "description": "Comma-separated list of channel names or IDs where the file will be shared.",
-\ No newline at end of file
-@@ -18259,21 +18357,21 @@
+@@ -18600,21 +18698,21 @@
                      {
                          "description": "File contents via a POST variable. If omitting this parameter, you must provide a `file`.",
                          "in": "formData",
@@ -3648,8 +3518,7 @@
                      {
                          "description": "A [file type](/types/file#file_types) identifier.",
                          "in": "formData",
-\ No newline at end of file
-@@ -18283,21 +18381,21 @@
+@@ -18624,21 +18722,21 @@
                      {
                          "description": "The message text introducing the file in specified `channels`.",
                          "in": "formData",
@@ -3672,8 +3541,7 @@
                      {
                          "description": "Authentication token. Requires scope: `files:write:user`",
                          "in": "formData",
-\ No newline at end of file
-@@ -18478,21 +18576,20 @@
+@@ -18819,21 +18917,20 @@
                      {
                          "description": "Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.",
                          "in": "query",
@@ -3695,8 +3563,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -18984,34 +19081,32 @@
+@@ -19325,34 +19422,32 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.add"
@@ -3731,8 +3598,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -19112,28 +19207,26 @@
+@@ -19453,28 +19548,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/pins.list"
@@ -3761,8 +3627,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -19349,21 +19442,20 @@
+@@ -19690,21 +19783,20 @@
                      {
                          "description": "Timestamp of the message to un-pin.",
                          "in": "formData",
@@ -3784,8 +3649,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -19485,21 +19577,20 @@
+@@ -19826,21 +19918,20 @@
                          "description": "Timestamp of the message to add reaction to.",
                          "in": "formData",
                          "name": "timestamp",
@@ -3807,8 +3671,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -19629,21 +19720,20 @@
+@@ -19970,21 +20061,20 @@
                      {
                          "description": "Timestamp of the message to get reactions for.",
                          "in": "query",
@@ -3830,8 +3693,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -19670,21 +19760,21 @@
+@@ -20011,21 +20101,21 @@
                                      "timestamp": 1507850315,
                                      "title": "computer.gif",
                                      "user": "U2U85N1RV"
@@ -3854,8 +3716,7 @@
                                              "$ref": "#/definitions/objs_message"
                                          },
                                          "ok": {
-\ No newline at end of file
-@@ -19859,21 +19949,20 @@
+@@ -20200,21 +20290,20 @@
                      },
                      {
                          "in": "query",
@@ -3877,8 +3738,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -20173,21 +20262,20 @@
+@@ -20514,21 +20603,20 @@
                      {
                          "description": "Timestamp of the message to remove reaction from.",
                          "in": "formData",
@@ -3900,8 +3760,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -20303,21 +20391,20 @@
+@@ -20644,21 +20732,20 @@
                          "description": "When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. \"in 15 minutes,\" or \"every Thursday\")",
                          "in": "formData",
                          "name": "time",
@@ -3923,8 +3782,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -20918,21 +21005,20 @@
+@@ -21259,21 +21346,20 @@
                      {
                          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).",
                          "in": "query",
@@ -3946,8 +3804,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -21116,21 +21202,20 @@
+@@ -21457,21 +21543,20 @@
                      {
                          "description": "Change sort direction to ascending (`asc`) or descending (`desc`).",
                          "in": "query",
@@ -3969,8 +3826,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -21285,21 +21370,20 @@
+@@ -21626,21 +21711,20 @@
                      {
                          "description": "Timestamp of the message to add star to.",
                          "in": "formData",
@@ -3992,8 +3848,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -21716,21 +21800,20 @@
+@@ -22057,21 +22141,20 @@
                      {
                          "description": "Timestamp of the message to remove star from.",
                          "in": "formData",
@@ -4015,8 +3870,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -21849,21 +21932,20 @@
+@@ -22190,21 +22273,20 @@
                      },
                      {
                          "in": "query",
@@ -4038,8 +3892,7 @@
                      "200": {
                          "description": "This response demonstrates pagination and two access log entries.",
                          "examples": {
-\ No newline at end of file
-@@ -22064,21 +22146,20 @@
+@@ -22405,21 +22487,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.billableInfo"
@@ -4061,8 +3914,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -22169,21 +22250,20 @@
+@@ -22510,21 +22591,20 @@
                      {
                          "description": "Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels",
                          "in": "query",
@@ -4084,8 +3936,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -22327,21 +22407,20 @@
+@@ -22668,21 +22748,20 @@
                      {
                          "description": "Filter logs to this service. Defaults to all logs.",
                          "in": "query",
@@ -4107,8 +3958,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -22502,21 +22581,20 @@
+@@ -22843,21 +22922,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/team.profile.get"
@@ -4130,8 +3980,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -22732,21 +22810,20 @@
+@@ -23073,21 +23151,20 @@
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
                          "name": "name",
@@ -4153,8 +4002,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -22856,21 +22933,20 @@
+@@ -23197,21 +23274,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -4176,8 +4024,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -22987,21 +23063,20 @@
+@@ -23328,21 +23404,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -4199,10 +4046,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -23125,26 +23200,31 @@
-                         "description": "Include disabled User Groups.",
-                         "in": "query",
+@@ -23468,24 +23543,29 @@
                          "name": "include_disabled",
                          "type": "boolean"
                      },
@@ -4211,14 +4055,14 @@
                          "in": "query",
                          "name": "include_users",
                          "type": "boolean"
-+                    },
-+                    {
+                     },
+                     {
 +                        "description": "Encoded team id to list user groups in, required if org token is used",
 +                        "in": "query",
 +                        "name": "team_id",
 +                        "type": "string"
-                     },
-                     {
++                    },
++                    {
                          "description": "Authentication token. Requires scope: `usergroups:read`",
                          "in": "query",
                          "name": "token",
@@ -4233,8 +4077,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -23347,21 +23427,20 @@
+@@ -23688,21 +23768,20 @@
                      {
                          "description": "A name for the User Group. Must be unique among User Groups.",
                          "in": "formData",
@@ -4256,8 +4099,7 @@
                          "type": "string"
                      }
                  ],
-\ No newline at end of file
-@@ -23504,25 +23583,24 @@
+@@ -23845,25 +23924,24 @@
                      {
                          "description": "Allow results that involve disabled User Groups.",
                          "in": "query",
@@ -4284,8 +4126,7 @@
                      "application/json"
                  ],
                  "responses": {
-\ No newline at end of file
-@@ -23644,21 +23722,20 @@
+@@ -23985,21 +24063,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -4307,8 +4148,7 @@
                          "type": "string"
                      },
                      {
-\ No newline at end of file
-@@ -24036,21 +24113,20 @@
+@@ -24377,21 +24454,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.deletePhoto"
@@ -4330,8 +4170,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -24147,21 +24223,20 @@
+@@ -24488,21 +24564,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.getPresence"
@@ -4353,8 +4192,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -24630,21 +24705,20 @@
+@@ -24971,21 +25046,20 @@
                      {
                          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
                          "in": "query",
@@ -4376,9 +4214,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -24781,37 +24855,37 @@
-                 "consumes": [
+@@ -25123,38 +25197,38 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Lists all users in a Slack team.",
@@ -4388,13 +4224,13 @@
                  },
                  "operationId": "users_list",
                  "parameters": [
--                    {
+                     {
 -                        "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.",
 -                        "in": "query",
 -                        "name": "limit",
 -                        "type": "integer"
 -                    },
-                     {
+-                    {
                          "description": "Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more detail.",
                          "in": "query",
                          "name": "cursor",
@@ -4405,14 +4241,14 @@
                          "in": "query",
                          "name": "include_locale",
                          "type": "boolean"
-+                    },
-+                    {
+                     },
+                     {
 +                        "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.",
 +                        "in": "query",
 +                        "name": "limit",
 +                        "type": "integer"
-                     },
-                     {
++                    },
++                    {
                          "description": "Authentication token. Requires scope: `users:read`",
                          "in": "query",
                          "name": "token",
@@ -4421,8 +4257,9 @@
                  ],
                  "produces": [
                      "application/json"
-\ No newline at end of file
-@@ -25011,28 +25085,26 @@
+                 ],
+                 "responses": {
+@@ -25352,28 +25426,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.lookupByEmail"
@@ -4451,8 +4288,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -25175,21 +25247,20 @@
+@@ -25516,21 +25588,20 @@
                      {
                          "description": "Include labels for each ID in custom profile fields",
                          "in": "query",
@@ -4474,8 +4310,7 @@
                      }
                  ],
                  "produces": [
-\ No newline at end of file
-@@ -25330,21 +25401,20 @@
+@@ -25671,21 +25742,20 @@
                      {
                          "description": "Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.",
                          "in": "formData",
@@ -4497,8 +4332,7 @@
                      },
                      {
                          "description": "Value to set a single key to. Usable only if `profile` is not passed.",
-\ No newline at end of file
-@@ -25491,21 +25561,20 @@
+@@ -25832,21 +25902,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.setActive"
@@ -4520,8 +4354,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -25625,21 +25694,20 @@
+@@ -25966,21 +26035,20 @@
                      {
                          "description": "File contents via `multipart/form-data`.",
                          "in": "formData",
@@ -4543,8 +4376,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -25814,21 +25882,20 @@
+@@ -26155,21 +26223,20 @@
                          "description": "Either `auto` or `away`",
                          "in": "formData",
                          "name": "presence",
@@ -4566,8 +4398,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-\ No newline at end of file
-@@ -25910,49 +25977,48 @@
+@@ -26251,49 +26318,48 @@
                              "users:write"
                          ]
                      }
@@ -4620,8 +4451,7 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
-@@ -26053,55 +26119,54 @@
+@@ -26394,55 +26460,54 @@
                              "none"
                          ]
                      }
@@ -4681,8 +4511,7 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
-@@ -26192,49 +26257,48 @@
+@@ -26533,49 +26598,48 @@
                              "none"
                          ]
                      }
@@ -4735,8 +4564,7 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
-@@ -26341,60 +26405,59 @@
+@@ -26682,60 +26746,59 @@
                              "none"
                          ]
                      }
@@ -4802,8 +4630,7 @@
                  "responses": {
                      "200": {
                          "description": "Typical success response includes the updated view payload.",
-\ No newline at end of file
-@@ -26496,48 +26559,47 @@
+@@ -26837,48 +26900,47 @@
                              "none"
                          ]
                      }
@@ -4855,8 +4682,7 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
-@@ -26592,49 +26654,48 @@
+@@ -26933,49 +26995,48 @@
                              "workflow.steps:execute"
                          ]
                      }
@@ -4909,8 +4735,7 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file
-@@ -26689,66 +26750,65 @@
+@@ -27030,66 +27091,65 @@
                              "workflow.steps:execute"
                          ]
                      }
@@ -4983,4 +4808,3 @@
                  ],
                  "responses": {
                      "200": {
-\ No newline at end of file

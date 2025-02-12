@@ -1068,6 +1068,21 @@
             "title": "file object",
             "type": "object"
         },
+        "objs_files": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        },
         "objs_icon": {
             "properties": {
                 "image_102": {
@@ -16750,6 +16765,168 @@
                 ]
             }
         },
+        "/files.completeUploadExternal": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "description": "Finishes an upload started with files.getUploadURLExternal.",
+                "externalDocs": {
+                    "description": "API method documentation",
+                    "url": "https://api.slack.com/methods/files.completeUploadExternal"
+                },
+                "operationId": "files_completeUploadExternal",
+                "parameters": [
+                    {
+                        "description": "Channel ID where the file will be shared. If not specified the file will be private.",
+                        "in": "formData",
+                        "name": "channels",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Array of file ids and their corresponding (optional) titles..",
+                        "in": "formData",
+                        "name": "files",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The message text introducing the file in specified `channels`.",
+                        "in": "formData",
+                        "name": "initial_comment",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead.",
+                        "in": "formData",
+                        "name": "thread_ts",
+                        "type": "number"
+                    },
+                    {
+                        "description": "Authentication token. Requires scope: `files:write` `files:read`",
+                        "in": "formData",
+                        "name": "token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Typical success response",
+                        "examples": {
+                            "application/json": {
+                                "files": [
+                                    {
+                                        "id": "F123ABC456",
+                                        "title": "slack-test"
+                                    }
+                                ],
+                                "ok": true
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for successful response files.completeUploadExternal method",
+                            "properties": {
+                                "files": {
+                                    "$ref": "#/definitions/objs_files"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_true"
+                                }
+                            },
+                            "required": [
+                                "files",
+                                "ok"
+                            ],
+                            "title": "files.completeUploadExternal schema",
+                            "type": "object"
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_auth",
+                                "ok": false
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for error response files.completeUploadExternal method",
+                            "properties": {
+                                "callstack": {
+                                    "description": "Note: PHP callstack is only visible in dev/qa",
+                                    "type": "string"
+                                },
+                                "error": {
+                                    "enum": [
+                                        "access_denied",
+                                        "accesslimited",
+                                        "account_inactive",
+                                        "channel_not_found",
+                                        "deprecated_endpoint",
+                                        "ekm_access_denied",
+                                        "enterprise_is_restricted",
+                                        "fatal_error",
+                                        "file_not_found",
+                                        "file_update_failed",
+                                        "internal_error",
+                                        "internal_error",
+                                        "invalid_arg_name",
+                                        "invalid_arguments",
+                                        "invalid_array_arg",
+                                        "invalid_auth",
+                                        "invalid_channel",
+                                        "invalid_charset",
+                                        "invalid_form_data",
+                                        "invalid_post_type",
+                                        "method_deprecated",
+                                        "missing_post_type",
+                                        "missing_scope",
+                                        "no_permission",
+                                        "not_allowed_token_type",
+                                        "not_authed",
+                                        "org_login_required",
+                                        "posting_to_channel_denied",
+                                        "ratelimited",
+                                        "request_timeout",
+                                        "service_unavailable",
+                                        "team_access_not_granted",
+                                        "team_added_to_org",
+                                        "token_expired",
+                                        "token_revoked",
+                                        "two_factor_setup_required"
+                                    ],
+                                    "type": "string"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_false"
+                                }
+                            },
+                            "required": [
+                                "error",
+                                "ok"
+                            ],
+                            "title": "files.getUploadURLExternal error schema",
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "slackAuth": [
+                            "files:read",
+                            "files:write"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "files"
+                ]
+            }
+        },
         "/files.delete": {
             "post": {
                 "consumes": [
@@ -16858,6 +17035,170 @@
                     {
                         "slackAuth": [
                             "files:write:user"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "files"
+                ]
+            }
+        },
+        "/files.getUploadURLExternal": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "description": "Gets a URL for an edge external file upload.",
+                "externalDocs": {
+                    "description": "API method documentation",
+                    "url": "https://api.slack.com/methods/files.getUploadURLExternal"
+                },
+                "operationId": "files_getUploadURLExternal",
+                "parameters": [
+                    {
+                        "description": "Description of image for screen-reader.",
+                        "in": "formData",
+                        "name": "alt_txt",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Name of the file being uploaded.",
+                        "in": "formData",
+                        "name": "filename",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Size in bytes of the file being uploaded.",
+                        "in": "formData",
+                        "name": "length",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Syntax type of the snippet being uploaded.",
+                        "in": "formData",
+                        "name": "snippet_type",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Authentication token. Requires scope: `files:write` `files:read`",
+                        "in": "formData",
+                        "name": "token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Typical success response",
+                        "examples": {
+                            "application/json": {
+                                "file_id": "F123ABC456",
+                                "ok": true,
+                                "upload_url": "https://files.slack.com/upload/v1/ABC123..."
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for successful response files.getUploadURLExternal method",
+                            "properties": {
+                                "file_id": {
+                                    "$ref": "#/definitions/defs_file_id"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "upload_url": {
+                                    "format": "uri",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "file_id",
+                                "ok",
+                                "upload_url"
+                            ],
+                            "title": "files.getUploadURLExternal schema",
+                            "type": "object"
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_auth",
+                                "ok": false
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for error response files.getUploadURLExternal method",
+                            "properties": {
+                                "callstack": {
+                                    "description": "Note: PHP callstack is only visible in dev/qa",
+                                    "type": "string"
+                                },
+                                "error": {
+                                    "enum": [
+                                        "access_denied",
+                                        "accesslimited",
+                                        "account_inactive",
+                                        "alt_txt_too_large",
+                                        "deprecated_endpoint",
+                                        "ekm_access_denied",
+                                        "enterprise_is_restricted",
+                                        "fatal_error",
+                                        "file_upload_size_restricted",
+                                        "file_uploads_disabled",
+                                        "internal_error",
+                                        "invalid_arg_name",
+                                        "invalid_arguments",
+                                        "invalid_array_arg",
+                                        "invalid_auth",
+                                        "invalid_charset",
+                                        "invalid_form_data",
+                                        "invalid_post_type",
+                                        "method_deprecated",
+                                        "missing_argument",
+                                        "missing_post_type",
+                                        "missing_scope",
+                                        "no_permission",
+                                        "not_allowed_token_type",
+                                        "not_authed",
+                                        "org_login_required",
+                                        "ratelimited",
+                                        "request_timeout",
+                                        "service_unavailable",
+                                        "snippet_too_large",
+                                        "storage_limit_reached",
+                                        "team_added_to_org",
+                                        "token_expired",
+                                        "token_revoked",
+                                        "two_factor_setup_required",
+                                        "unknown_snippet_type",
+                                        "unknown_subtype"
+                                    ],
+                                    "type": "string"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_false"
+                                }
+                            },
+                            "required": [
+                                "error",
+                                "ok"
+                            ],
+                            "title": "files.getUploadURLExternal error schema",
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "slackAuth": [
+                            "files:read",
+                            "files:write"
                         ]
                     }
                 ],
