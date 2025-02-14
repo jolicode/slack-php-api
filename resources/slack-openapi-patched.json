@@ -16944,6 +16944,101 @@
                 ]
             }
         },
+        "files.getUploadURLExternal": {
+          "get": {
+              "consumes": [
+                "application/x-www-form-urlencoded"
+              ],
+            "description": "Gets a URL for an edge external file upload",
+            "externalDocs": {
+              "description": "API method documentation",
+              "url": "https://api.slack.com/methods/files.getUploadURLExternal"
+            },
+            "operationId": "files_getUploadURLExternal",
+            "parameters": [
+              {
+                "description": "Authentication token. Requires scope: `files:write`",
+                "in": "query",
+                "name": "token",
+                "type": "string"
+              },
+              {
+                "description": "Name of the file being uploaded",
+                "in": "query",
+                "name": "filename",
+                "type": "string"
+              },
+              {
+                "description": "Size in bytes of the file being uploaded",
+                "in": "query",
+                "name": "length",
+                "type": "integer"
+              }
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "Typical success response",
+                "examples": {
+                  "application/json": {
+                    "ok": true,
+                    "upload_url": "https://files.slack.com/upload/v1/ABC123...",
+                    "file_id": "F123ABC456"
+                  }
+                },
+                "schema": {
+                  "additionalProperties": true,
+                  "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
+                  "properties": {
+                    "ok": {
+                      "$ref": "#/definitions/defs_ok_true"
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "title": "Default success template",
+                  "type": "object"
+                }
+              },
+              "default": {
+                "description": "Typical error response",
+                "examples": {
+                  "application/json": {
+                    "error": "invalid_auth",
+                    "ok": false
+                  }
+                },
+                "schema": {
+                  "additionalProperties": true,
+                  "description": "This method either only returns a brief _not OK_ response or a verbose schema is not available for this method.",
+                  "properties": {
+                    "ok": {
+                      "$ref": "#/definitions/defs_ok_false"
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "title": "Default error template",
+                  "type": "object"
+                }
+              }
+            },
+            "security": [
+              {
+                "slackAuth": [
+                  "files:write"
+                ]
+              }
+            ],
+            "tags": [
+              "files"
+            ]
+          }
+        },
         "/files.info": {
             "get": {
                 "consumes": [
