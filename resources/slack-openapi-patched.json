@@ -17068,7 +17068,7 @@
                 ]
             }
         },
-        "files.getUploadURLExternal": {
+        "/files.getUploadURLExternal": {
           "get": {
               "consumes": [
                 "application/x-www-form-urlencoded"
