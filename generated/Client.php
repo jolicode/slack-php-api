@@ -2479,6 +2479,32 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Finishes an upload started with files.getUploadURLExternal.
+     *
+     * @param array $queryParameters {
+     *
+     * @var array  $files array of file ids and their corresponding (optional) titles
+     * @var string $channel_id Channel ID where the file will be shared. If not specified the file will be private.
+     * @var string $channels comma-separated string of channel IDs where the file will be shared
+     * @var string $initial_comment the message text introducing the file in specified channels
+     * @var string $thread_ts Provide another message's ts value to upload this file as a reply. Never use a reply's ts value; use its parent instead. Also make sure to provide only one channel when using 'thread_ts'
+     *             }
+     *
+     * @param array $headerParameters {
+     *
+     * @var string $token Authentication token. Requires scope: `files:write:user`
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\FilesCompleteUploadExternalPostResponse200|Model\FilesCompleteUploadExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesCompleteUploadExternal(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\FilesCompleteUploadExternal($queryParameters, $headerParameters), $fetch);
+    }
+
+    /**
      * Deletes a file.
      *
      * @param array $formParameters {
@@ -2498,6 +2524,25 @@ class Client extends Runtime\Client\Client
     public function filesDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\FilesDelete($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Gets a URL for an edge external file upload.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $token Authentication token. Requires scope: `files:write`
+     * @var string $filename Name of the file being uploaded
+     * @var int    $length Size in bytes of the file being uploaded
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\FilesGetUploadURLExternalGetResponse200|Model\FilesGetUploadURLExternalGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesGetUploadURLExternal(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\FilesGetUploadURLExternal($queryParameters), $fetch);
     }
 
     /**
