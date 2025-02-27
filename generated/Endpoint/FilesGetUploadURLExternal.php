@@ -22,9 +22,9 @@ class FilesGetUploadURLExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseE
      *
      * @param array $queryParameters {
      *
-     * @var string $token Authentication token. Requires scope: `files:write`
      * @var string $filename Name of the file being uploaded
      * @var int    $length Size in bytes of the file being uploaded
+     * @var string $token Authentication token. Requires scope: `files:write`
      *             }
      */
     public function __construct(array $queryParameters = [])
@@ -60,12 +60,12 @@ class FilesGetUploadURLExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['token', 'filename', 'length']);
+        $optionsResolver->setDefined(['filename', 'length', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('token', ['string']);
         $optionsResolver->addAllowedTypes('filename', ['string']);
         $optionsResolver->addAllowedTypes('length', ['int']);
+        $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;
     }

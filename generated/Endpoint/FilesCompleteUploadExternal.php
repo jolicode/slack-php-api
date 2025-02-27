@@ -22,9 +22,9 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
      *
      * @param array $queryParameters {
      *
-     * @var array  $files array of file ids and their corresponding (optional) titles
      * @var string $channel_id Channel ID where the file will be shared. If not specified the file will be private.
      * @var string $channels comma-separated string of channel IDs where the file will be shared
+     * @var array  $files array of file ids and their corresponding (optional) titles
      * @var string $initial_comment the message text introducing the file in specified channels
      * @var string $thread_ts Provide another message's ts value to upload this file as a reply. Never use a reply's ts value; use its parent instead. Also make sure to provide only one channel when using 'thread_ts'
      *             }
@@ -68,12 +68,12 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['files', 'channel_id', 'channels', 'initial_comment', 'thread_ts']);
+        $optionsResolver->setDefined(['channel_id', 'channels', 'files', 'initial_comment', 'thread_ts']);
         $optionsResolver->setRequired(['files']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('files', ['array']);
         $optionsResolver->addAllowedTypes('channel_id', ['string']);
         $optionsResolver->addAllowedTypes('channels', ['string']);
+        $optionsResolver->addAllowedTypes('files', ['array']);
         $optionsResolver->addAllowedTypes('initial_comment', ['string']);
         $optionsResolver->addAllowedTypes('thread_ts', ['string']);
 
@@ -84,7 +84,7 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired(['token']);
+        $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 
