@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ObjsUser;
+use JoliCode\Slack\Client;
 
 class ClientTest extends SlackTokenDependentTest
 {
@@ -51,5 +52,66 @@ class ClientTest extends SlackTokenDependentTest
         self::expectExceptionMessage('Unknown method JoliCode\Slack\Client::foobar()');
 
         $client->foobar();
+    }
+
+    public function testAllCursorPaginationMethodExists()
+    {
+        $client = $this->createClient();
+
+        foreach (Client::CURSOR_PAGINATION as $methodName => $getterMethod) {
+            $getterMethod = 'get' . $getterMethod;
+            $method = lcfirst(str_replace('iterate', '', $methodName));
+
+            $responseFromMethod = $client->{$method}($this->argumentsForCursorPaginationRequest($method, $client));
+
+            self::assertTrue(
+                method_exists($responseFromMethod, $getterMethod),
+                \sprintf('Expected that response from %s would contain method %s', $method, $getterMethod)
+            );
+        }
+    }
+
+    private function argumentsForCursorPaginationRequest(string $method, Client $client): array
+    {
+        if (\in_array($method, ['conversationsMembers', 'conversationsHistory'])) {
+            return ['channel' => $_SERVER['SLACK_TEST_CHANNEL']];
+        }
+
+        if ('conversationsReplies' === $method) {
+            return [
+                'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+                'ts' => $this->findLastThreadTsInChannel($client),
+            ];
+        }
+
+        if ('filesInfo' === $method) {
+            return ['file' => $this->findLastFileIdInChannel($client)];
+        }
+
+        return [];
+    }
+
+    private function findLastThreadTsInChannel(Client $client): string
+    {
+        $messages = $client->conversationsHistory([
+            'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'limit' => 100,
+        ])->getMessages();
+
+        foreach ($messages as $message) {
+            if (\is_string($message->getThreadTs()) && $message->getThreadTs() === $message->getTs()) {
+                return $message->getThreadTs();
+            }
+        }
+
+        throw new \RuntimeException('Unable to find thread in your test channel');
+    }
+
+    private function findLastFileIdInChannel(Client $client): string
+    {
+        return $client->filesList(['channel' => $_SERVER['SLACK_TEST_CHANNEL']])
+            ->getFiles()[0]
+            ?->getId() ?? throw new \RuntimeException('Unable to find file in your test channel')
+        ;
     }
 }
