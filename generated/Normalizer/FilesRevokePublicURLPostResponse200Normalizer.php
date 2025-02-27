@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -55,7 +55,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('file', $data) && null !== $data['file']) {
-                $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context));
+                $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
             } elseif (\array_key_exists('file', $data) && null === $data['file']) {
                 $object->setFile(null);
             }
@@ -79,7 +79,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class => false];
         }
     }
 } else {
@@ -92,12 +92,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -113,7 +113,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 return $object;
             }
             if (\array_key_exists('file', $data) && null !== $data['file']) {
-                $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context));
+                $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
             } elseif (\array_key_exists('file', $data) && null === $data['file']) {
                 $object->setFile(null);
             }
@@ -140,7 +140,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class => false];
         }
     }
 }

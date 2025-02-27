@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -74,7 +74,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setEditor(null);
             }
             if (\array_key_exists('file', $data) && null !== $data['file']) {
-                $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context));
+                $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
             } elseif (\array_key_exists('file', $data) && null === $data['file']) {
                 $object->setFile(null);
             }
@@ -84,12 +84,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-                $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\Slack\Api\Model\ObjsPaging', 'json', $context));
+                $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
             } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
                 $object->setPaging(null);
             }
             if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\Slack\Api\Model\ObjsResponseMetadata', 'json', $context));
+                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context));
             } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
                 $object->setResponseMetadata(null);
             }
@@ -125,7 +125,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\FilesInfoGetResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => false];
         }
     }
 } else {
@@ -138,12 +138,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -178,7 +178,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setEditor(null);
             }
             if (\array_key_exists('file', $data) && null !== $data['file']) {
-                $object->setFile($this->denormalizer->denormalize($data['file'], 'JoliCode\Slack\Api\Model\ObjsFile', 'json', $context));
+                $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
             } elseif (\array_key_exists('file', $data) && null === $data['file']) {
                 $object->setFile(null);
             }
@@ -188,12 +188,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-                $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\Slack\Api\Model\ObjsPaging', 'json', $context));
+                $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
             } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
                 $object->setPaging(null);
             }
             if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], 'JoliCode\Slack\Api\Model\ObjsResponseMetadata', 'json', $context));
+                $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context));
             } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
                 $object->setResponseMetadata(null);
             }
@@ -232,7 +232,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\FilesInfoGetResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => false];
         }
     }
 }

@@ -40,7 +40,7 @@ class Client extends ApiClient
             return $this->iterate($method, $arguments);
         }
 
-        throw new \BadMethodCallException(sprintf('Unknown method %s::%s()', self::class, $name));
+        throw new \BadMethodCallException(\sprintf('Unknown method %s::%s()', self::class, $name));
     }
 
     public function iterate(string $method, array $arguments): iterable

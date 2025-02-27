@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' === $type;
+            return \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -59,13 +59,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 if (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                     $values = [];
                     foreach ($data['items'] as $value_1) {
-                        $values[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0', 'json', $context);
+                        $values[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0::class, 'json', $context);
                     }
                     $value = $values;
                 } elseif (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                     $values_1 = [];
                     foreach ($data['items'] as $value_2) {
-                        $values_1[] = $this->denormalizer->denormalize($value_2, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1', 'json', $context);
+                        $values_1[] = $this->denormalizer->denormalize($value_2, \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1::class, 'json', $context);
                     }
                     $value = $values_1;
                 }
@@ -107,7 +107,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' => false];
+            return [\JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class => false];
         }
     }
 } else {
@@ -120,12 +120,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' === $type;
+            return \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -145,13 +145,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 if (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                     $values = [];
                     foreach ($data['items'] as $value_1) {
-                        $values[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0', 'json', $context);
+                        $values[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0::class, 'json', $context);
                     }
                     $value = $values;
                 } elseif (\is_array($data['items']) && $this->isOnlyNumericKeys($data['items'])) {
                     $values_1 = [];
                     foreach ($data['items'] as $value_2) {
-                        $values_1[] = $this->denormalizer->denormalize($value_2, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1', 'json', $context);
+                        $values_1[] = $this->denormalizer->denormalize($value_2, \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1::class, 'json', $context);
                     }
                     $value = $values_1;
                 }
@@ -196,7 +196,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' => false];
+            return [\JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class => false];
         }
     }
 }

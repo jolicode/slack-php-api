@@ -31,454 +31,901 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
         protected $normalizers = [
-            'JoliCode\Slack\Api\Model\BlocksItem' => 'JoliCode\Slack\Api\Normalizer\BlocksItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsBotProfile' => 'JoliCode\Slack\Api\Normalizer\ObjsBotProfileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsBotProfileIcons' => 'JoliCode\Slack\Api\Normalizer\ObjsBotProfileIconsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsChannel' => 'JoliCode\Slack\Api\Normalizer\ObjsChannelNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsChannelPurpose' => 'JoliCode\Slack\Api\Normalizer\ObjsChannelPurposeNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsChannelTopic' => 'JoliCode\Slack\Api\Normalizer\ObjsChannelTopicNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsComment' => 'JoliCode\Slack\Api\Normalizer\ObjsCommentNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversation' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationDisplayCountsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationPurpose' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationPurposeNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationSharesItem' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationSharesItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationTopic' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationTopicNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsEnterpriseUser' => 'JoliCode\Slack\Api\Normalizer\ObjsEnterpriseUserNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations' => 'JoliCode\Slack\Api\Normalizer\ObjsExternalOrgMigrationsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem' => 'JoliCode\Slack\Api\Normalizer\ObjsExternalOrgMigrationsCurrentItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsFile' => 'JoliCode\Slack\Api\Normalizer\ObjsFileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsFileShares' => 'JoliCode\Slack\Api\Normalizer\ObjsFileSharesNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsIcon' => 'JoliCode\Slack\Api\Normalizer\ObjsIconNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessage' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageAttachmentsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageAttachmentsItemActionsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageAttachmentsItemFieldsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageIcons' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageIconsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMetadata' => 'JoliCode\Slack\Api\Normalizer\ObjsMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsPaging' => 'JoliCode\Slack\Api\Normalizer\ObjsPagingNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsPrimaryOwner' => 'JoliCode\Slack\Api\Normalizer\ObjsPrimaryOwnerNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsReaction' => 'JoliCode\Slack\Api\Normalizer\ObjsReactionNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsReminder' => 'JoliCode\Slack\Api\Normalizer\ObjsReminderNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsResources' => 'JoliCode\Slack\Api\Normalizer\ObjsResourcesNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ObjsResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsSubteam' => 'JoliCode\Slack\Api\Normalizer\ObjsSubteamNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsSubteamPrefs' => 'JoliCode\Slack\Api\Normalizer\ObjsSubteamPrefsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeam' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeamSsoProvider' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamSsoProviderNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeamProfileField' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamProfileFieldNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamProfileFieldOptionNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUser' => 'JoliCode\Slack\Api\Normalizer\ObjsUserNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUserTeamProfile' => 'JoliCode\Slack\Api\Normalizer\ObjsUserTeamProfileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUserProfile' => 'JoliCode\Slack\Api\Normalizer\ObjsUserProfileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUserProfileShort' => 'JoliCode\Slack\Api\Normalizer\ObjsUserProfileShortNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRequestsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRequestsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsArchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsArchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsConvertToPrivatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsConvertToPrivatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDisconnectSharedPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDisconnectSharedPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPostNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetTeamsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetTeamsGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetTeamsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsInvitePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsInvitePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRenamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRenamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessAddGroupPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessAddGroupPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessListGroupsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessListGroupsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessRemoveGroupPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessRemoveGroupPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSearchGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSearchGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetConversationPrefsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetConversationPrefsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetTeamsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetTeamsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsUnarchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsUnarchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddAliasPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddAliasPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRenamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRenamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDeniedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDeniedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDenyPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDenyPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsAdminsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsAdminsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsOwnersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsOwnersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDefaultChannelsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDefaultChannelsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDescriptionPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDescriptionPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDiscoverabilityPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDiscoverabilityPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetIconPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetIconPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetNamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetNamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddChannelsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddChannelsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddTeamsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddTeamsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsListChannelsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsListChannelsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsRemoveChannelsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsRemoveChannelsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersAssignPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersAssignPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersInvitePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersInvitePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionInvalidatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionInvalidatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionResetPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionResetPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetAdminPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetAdminPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetExpirationPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetExpirationPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetOwnerPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetOwnerPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetRegularPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetRegularPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ApiTestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ApiTestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ApiTestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ApiTestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsEventAuthorizationsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsEventAuthorizationsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoAppHomeNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoChannelNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoGroupNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoImNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoMpimNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoTeamNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsRequestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsRequestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsScopesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsScopesListGetResponse200ScopesNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsScopesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersRequestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersRequestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsUninstallGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsUninstallGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsUninstallGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AuthRevokeGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AuthRevokeGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AuthRevokeGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AuthTestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AuthTestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AuthTestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AuthTestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponse200BotNormalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponse200BotIconsNormalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsEndPostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsEndPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsEndPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsEndPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatDeleteScheduledMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatDeleteScheduledMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatGetPermalinkGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatGetPermalinkGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatMeMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatMeMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatPostEphemeralPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatPostEphemeralPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatPostMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatPostMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponse200MessageNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatUnfurlPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatUnfurlPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message' => 'JoliCode\Slack\Api\Normalizer\ChatUpdatePostResponse200MessageNormalizer',
-            'JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsArchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsArchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsClosePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsClosePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsClosePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsHistoryGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsHistoryGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsHistoryGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsInvitePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsInvitePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem' => 'JoliCode\Slack\Api\Normalizer\ConversationsInvitePostResponsedefaultErrorsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsJoinPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsJoinPostResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsJoinPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsKickPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsKickPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsKickPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsLeavePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsLeavePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsListGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsMarkPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsMarkPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsMembersGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsMembersGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsMembersGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsOpenPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1' => 'JoliCode\Slack\Api\Normalizer\ConversationsOpenPostResponse200ChannelItem1Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsOpenPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsRenamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsRenamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200MessagesItemItem0Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200MessagesItemItem1Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetPurposePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetPurposePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetTopicPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetTopicPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsUnarchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsUnarchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DialogOpenGetResponse200' => 'JoliCode\Slack\Api\Normalizer\DialogOpenGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DialogOpenGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndEndDndPostResponse200' => 'JoliCode\Slack\Api\Normalizer\DndEndDndPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndEndDndPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200' => 'JoliCode\Slack\Api\Normalizer\DndEndSnoozePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndEndSnoozePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\DndInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200' => 'JoliCode\Slack\Api\Normalizer\DndSetSnoozePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndSetSnoozePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\DndTeamInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndTeamInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\EmojiListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\EmojiListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\EmojiListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\EmojiListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesCommentsDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesCommentsDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteShareGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteShareGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRevokePublicURLPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRevokePublicURLPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesSharedPublicURLPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesSharedPublicURLPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesUploadPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesUploadPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesUploadPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200' => 'JoliCode\Slack\Api\Normalizer\MigrationExchangeGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\MigrationExchangeGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\OauthAccessGetResponse200' => 'JoliCode\Slack\Api\Normalizer\OauthAccessGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\OauthAccessGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\OauthTokenGetResponse200' => 'JoliCode\Slack\Api\Normalizer\OauthTokenGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\OauthTokenGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200' => 'JoliCode\Slack\Api\Normalizer\OauthV2AccessGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\OauthV2AccessGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\PinsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\PinsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\PinsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\PinsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item0Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item0ItemsItem0Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item0ItemsItem1Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item1' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item1Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\PinsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\PinsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\PinsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ReactionsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsGetGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200ItemsItemItem0Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200ItemsItemItem1Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200ItemsItemItem2Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ReactionsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersCompletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersCompletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersCompletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponse200' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponse200SelfNormalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponse200TeamNormalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\SearchMessagesGetResponse200' => 'JoliCode\Slack\Api\Normalizer\SearchMessagesGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\SearchMessagesGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\StarsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\StarsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\StarsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\StarsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem0Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem1Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem2Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem3Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem4Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem5Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\StarsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\StarsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\StarsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamAccessLogsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem' => 'JoliCode\Slack\Api\Normalizer\TeamAccessLogsGetResponse200LoginsItemNormalizer',
-            'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamAccessLogsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamBillableInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamBillableInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamIntegrationLogsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem' => 'JoliCode\Slack\Api\Normalizer\TeamIntegrationLogsGetResponse200LogsItemNormalizer',
-            'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamIntegrationLogsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamProfileGetGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile' => 'JoliCode\Slack\Api\Normalizer\TeamProfileGetGetResponse200ProfileNormalizer',
-            'JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamProfileGetGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsDisablePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsDisablePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsEnablePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsEnablePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersConversationsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\UsersConversationsGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersConversationsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersDeletePhotoPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersDeletePhotoPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersGetPresenceGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersGetPresenceGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item0Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item0TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item0UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item1Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item1TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item1UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item2Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item2TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item2UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item3Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item3TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item3UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersLookupByEmailGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersLookupByEmailGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersProfileGetGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersProfileGetGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersProfileSetPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersProfileSetPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetActivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersSetActivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersSetActivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersSetPhotoPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile' => 'JoliCode\Slack\Api\Normalizer\UsersSetPhotoPostResponse200ProfileNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersSetPhotoPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersSetPresencePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersSetPresencePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsOpenPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsOpenPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsOpenPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsPublishPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsPublishPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsPublishPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsPushPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsPushPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsPushPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepCompletedPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepCompletedPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepFailedPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepFailedPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200' => 'JoliCode\Slack\Api\Normalizer\WorkflowsUpdateStepPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\WorkflowsUpdateStepPostResponsedefaultNormalizer',
-            '\Jane\Component\JsonSchemaRuntime\Reference' => '\JoliCode\Slack\Api\Runtime\Normalizer\ReferenceNormalizer',
+            \JoliCode\Slack\Api\Model\BlocksItem::class => BlocksItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsBotProfile::class => ObjsBotProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsBotProfileIcons::class => ObjsBotProfileIconsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsChannel::class => ObjsChannelNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsChannelPurpose::class => ObjsChannelPurposeNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsChannelTopic::class => ObjsChannelTopicNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsComment::class => ObjsCommentNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversation::class => ObjsConversationNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts::class => ObjsConversationDisplayCountsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationPurpose::class => ObjsConversationPurposeNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationSharesItem::class => ObjsConversationSharesItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationTopic::class => ObjsConversationTopicNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsEnterpriseUser::class => ObjsEnterpriseUserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => ObjsExternalOrgMigrationsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class => ObjsExternalOrgMigrationsCurrentItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsFile::class => ObjsFileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsFileShares::class => ObjsFileSharesNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsIcon::class => ObjsIconNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessage::class => ObjsMessageNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem::class => ObjsMessageAttachmentsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem::class => ObjsMessageAttachmentsItemActionsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem::class => ObjsMessageAttachmentsItemFieldsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageIcons::class => ObjsMessageIconsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMetadata::class => ObjsMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsPaging::class => ObjsPagingNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsPrimaryOwner::class => ObjsPrimaryOwnerNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsReaction::class => ObjsReactionNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsReminder::class => ObjsReminderNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsResources::class => ObjsResourcesNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class => ObjsResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsSubteam::class => ObjsSubteamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsSubteamPrefs::class => ObjsSubteamPrefsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeam::class => ObjsTeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeamSsoProvider::class => ObjsTeamSsoProviderNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeamProfileField::class => ObjsTeamProfileFieldNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption::class => ObjsTeamProfileFieldOptionNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUser::class => ObjsUserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUserTeamProfile::class => ObjsUserTeamProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUserProfile::class => ObjsUserProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class => ObjsUserProfileShortNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200::class => AdminAppsApprovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault::class => AdminAppsApprovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200::class => AdminAppsApprovedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault::class => AdminAppsApprovedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200::class => AdminAppsRequestsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault::class => AdminAppsRequestsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200::class => AdminAppsRestrictPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault::class => AdminAppsRestrictPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200::class => AdminAppsRestrictedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault::class => AdminAppsRestrictedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200::class => AdminConversationsArchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault::class => AdminConversationsArchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200::class => AdminConversationsConvertToPrivatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault::class => AdminConversationsConvertToPrivatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200::class => AdminConversationsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault::class => AdminConversationsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200::class => AdminConversationsDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault::class => AdminConversationsDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200::class => AdminConversationsDisconnectSharedPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault::class => AdminConversationsDisconnectSharedPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200::class => AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault::class => AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200::class => AdminConversationsGetConversationPrefsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class => AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class => AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class => AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPostNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault::class => AdminConversationsGetConversationPrefsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class => AdminConversationsGetTeamsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class => AdminConversationsGetTeamsGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault::class => AdminConversationsGetTeamsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200::class => AdminConversationsInvitePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault::class => AdminConversationsInvitePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200::class => AdminConversationsRenamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault::class => AdminConversationsRenamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200::class => AdminConversationsRestrictAccessAddGroupPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault::class => AdminConversationsRestrictAccessAddGroupPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200::class => AdminConversationsRestrictAccessListGroupsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault::class => AdminConversationsRestrictAccessListGroupsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200::class => AdminConversationsRestrictAccessRemoveGroupPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault::class => AdminConversationsRestrictAccessRemoveGroupPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200::class => AdminConversationsSearchGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault::class => AdminConversationsSearchGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200::class => AdminConversationsSetConversationPrefsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault::class => AdminConversationsSetConversationPrefsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200::class => AdminConversationsSetTeamsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault::class => AdminConversationsSetTeamsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200::class => AdminConversationsUnarchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault::class => AdminConversationsUnarchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200::class => AdminEmojiAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault::class => AdminEmojiAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200::class => AdminEmojiAddAliasPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault::class => AdminEmojiAddAliasPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200::class => AdminEmojiListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault::class => AdminEmojiListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200::class => AdminEmojiRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault::class => AdminEmojiRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200::class => AdminEmojiRenamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault::class => AdminEmojiRenamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200::class => AdminInviteRequestsApprovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault::class => AdminInviteRequestsApprovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200::class => AdminInviteRequestsApprovedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault::class => AdminInviteRequestsApprovedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200::class => AdminInviteRequestsDeniedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault::class => AdminInviteRequestsDeniedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200::class => AdminInviteRequestsDenyPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault::class => AdminInviteRequestsDenyPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200::class => AdminInviteRequestsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault::class => AdminInviteRequestsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200::class => AdminTeamsAdminsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault::class => AdminTeamsAdminsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200::class => AdminTeamsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault::class => AdminTeamsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200::class => AdminTeamsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault::class => AdminTeamsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200::class => AdminTeamsOwnersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault::class => AdminTeamsOwnersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200::class => AdminTeamsSettingsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault::class => AdminTeamsSettingsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200::class => AdminTeamsSettingsSetDefaultChannelsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault::class => AdminTeamsSettingsSetDefaultChannelsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200::class => AdminTeamsSettingsSetDescriptionPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault::class => AdminTeamsSettingsSetDescriptionPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200::class => AdminTeamsSettingsSetDiscoverabilityPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault::class => AdminTeamsSettingsSetDiscoverabilityPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200::class => AdminTeamsSettingsSetIconPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault::class => AdminTeamsSettingsSetIconPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200::class => AdminTeamsSettingsSetNamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault::class => AdminTeamsSettingsSetNamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200::class => AdminUsergroupsAddChannelsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault::class => AdminUsergroupsAddChannelsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200::class => AdminUsergroupsAddTeamsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault::class => AdminUsergroupsAddTeamsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200::class => AdminUsergroupsListChannelsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault::class => AdminUsergroupsListChannelsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200::class => AdminUsergroupsRemoveChannelsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault::class => AdminUsergroupsRemoveChannelsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200::class => AdminUsersAssignPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault::class => AdminUsersAssignPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200::class => AdminUsersInvitePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault::class => AdminUsersInvitePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersListGetResponse200::class => AdminUsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault::class => AdminUsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200::class => AdminUsersRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault::class => AdminUsersRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200::class => AdminUsersSessionInvalidatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault::class => AdminUsersSessionInvalidatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200::class => AdminUsersSessionResetPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault::class => AdminUsersSessionResetPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200::class => AdminUsersSetAdminPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault::class => AdminUsersSetAdminPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200::class => AdminUsersSetExpirationPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault::class => AdminUsersSetExpirationPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200::class => AdminUsersSetOwnerPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault::class => AdminUsersSetOwnerPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200::class => AdminUsersSetRegularPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault::class => AdminUsersSetRegularPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ApiTestGetResponse200::class => ApiTestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ApiTestGetResponsedefault::class => ApiTestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200::class => AppsEventAuthorizationsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault::class => AppsEventAuthorizationsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200::class => AppsPermissionsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info::class => AppsPermissionsInfoGetResponse200InfoNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome::class => AppsPermissionsInfoGetResponse200InfoAppHomeNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel::class => AppsPermissionsInfoGetResponse200InfoChannelNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup::class => AppsPermissionsInfoGetResponse200InfoGroupNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm::class => AppsPermissionsInfoGetResponse200InfoImNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim::class => AppsPermissionsInfoGetResponse200InfoMpimNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam::class => AppsPermissionsInfoGetResponse200InfoTeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault::class => AppsPermissionsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200::class => AppsPermissionsRequestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault::class => AppsPermissionsRequestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200::class => AppsPermissionsResourcesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem::class => AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata::class => AppsPermissionsResourcesListGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault::class => AppsPermissionsResourcesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200::class => AppsPermissionsScopesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes::class => AppsPermissionsScopesListGetResponse200ScopesNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault::class => AppsPermissionsScopesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200::class => AppsPermissionsUsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault::class => AppsPermissionsUsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200::class => AppsPermissionsUsersRequestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault::class => AppsPermissionsUsersRequestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200::class => AppsUninstallGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault::class => AppsUninstallGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthRevokeGetResponse200::class => AuthRevokeGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault::class => AuthRevokeGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthTestGetResponse200::class => AuthTestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthTestGetResponsedefault::class => AuthTestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponse200::class => BotsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot::class => BotsInfoGetResponse200BotNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons::class => BotsInfoGetResponse200BotIconsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault::class => BotsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsAddPostResponse200::class => CallsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsAddPostResponsedefault::class => CallsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsEndPostResponse200::class => CallsEndPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsEndPostResponsedefault::class => CallsEndPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsInfoGetResponse200::class => CallsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault::class => CallsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200::class => CallsParticipantsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault::class => CallsParticipantsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200::class => CallsParticipantsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault::class => CallsParticipantsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsUpdatePostResponse200::class => CallsUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault::class => CallsUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeletePostResponse200::class => ChatDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault::class => ChatDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200::class => ChatDeleteScheduledMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault::class => ChatDeleteScheduledMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200::class => ChatGetPermalinkGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault::class => ChatGetPermalinkGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200::class => ChatMeMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault::class => ChatMeMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200::class => ChatPostEphemeralPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault::class => ChatPostEphemeralPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200::class => ChatPostMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault::class => ChatPostMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200::class => ChatScheduleMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message::class => ChatScheduleMessagePostResponse200MessageNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem::class => ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault::class => ChatScheduleMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200::class => ChatScheduledMessagesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata::class => ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem::class => ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault::class => ChatScheduledMessagesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200::class => ChatUnfurlPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault::class => ChatUnfurlPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200::class => ChatUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message::class => ChatUpdatePostResponse200MessageNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault::class => ChatUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200::class => ConversationsArchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault::class => ConversationsArchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => ConversationsClosePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault::class => ConversationsClosePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200::class => ConversationsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault::class => ConversationsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200::class => ConversationsHistoryGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata::class => ConversationsHistoryGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault::class => ConversationsHistoryGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200::class => ConversationsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault::class => ConversationsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200::class => ConversationsInvitePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault::class => ConversationsInvitePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem::class => ConversationsInvitePostResponsedefaultErrorsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200::class => ConversationsJoinPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata::class => ConversationsJoinPostResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault::class => ConversationsJoinPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsKickPostResponse200::class => ConversationsKickPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault::class => ConversationsKickPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200::class => ConversationsLeavePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault::class => ConversationsLeavePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsListGetResponse200::class => ConversationsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata::class => ConversationsListGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault::class => ConversationsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200::class => ConversationsMarkPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault::class => ConversationsMarkPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200::class => ConversationsMembersGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata::class => ConversationsMembersGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault::class => ConversationsMembersGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200::class => ConversationsOpenPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => ConversationsOpenPostResponse200ChannelItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault::class => ConversationsOpenPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200::class => ConversationsRenamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault::class => ConversationsRenamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200::class => ConversationsRepliesGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0::class => ConversationsRepliesGetResponse200MessagesItemItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1::class => ConversationsRepliesGetResponse200MessagesItemItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata::class => ConversationsRepliesGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault::class => ConversationsRepliesGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200::class => ConversationsSetPurposePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault::class => ConversationsSetPurposePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200::class => ConversationsSetTopicPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault::class => ConversationsSetTopicPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200::class => ConversationsUnarchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault::class => ConversationsUnarchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DialogOpenGetResponse200::class => DialogOpenGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault::class => DialogOpenGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndDndPostResponse200::class => DndEndDndPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault::class => DndEndDndPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200::class => DndEndSnoozePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault::class => DndEndSnoozePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndInfoGetResponse200::class => DndInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndInfoGetResponsedefault::class => DndInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200::class => DndSetSnoozePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault::class => DndSetSnoozePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200::class => DndTeamInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault::class => DndTeamInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\EmojiListGetResponse200::class => EmojiListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\EmojiListGetResponsedefault::class => EmojiListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200::class => FilesCommentsDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => FilesCommentsDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => FilesDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => FilesDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => FilesInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault::class => FilesInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesListGetResponse200::class => FilesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesListGetResponsedefault::class => FilesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200::class => FilesRemoteAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault::class => FilesRemoteAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200::class => FilesRemoteInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault::class => FilesRemoteInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200::class => FilesRemoteListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault::class => FilesRemoteListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200::class => FilesRemoteRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault::class => FilesRemoteRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200::class => FilesRemoteShareGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault::class => FilesRemoteShareGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200::class => FilesRemoteUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault::class => FilesRemoteUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class => FilesRevokePublicURLPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault::class => FilesRevokePublicURLPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200::class => FilesSharedPublicURLPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault::class => FilesSharedPublicURLPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesUploadPostResponse200::class => FilesUploadPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault::class => FilesUploadPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200::class => MigrationExchangeGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault::class => MigrationExchangeGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthAccessGetResponse200::class => OauthAccessGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault::class => OauthAccessGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthTokenGetResponse200::class => OauthTokenGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault::class => OauthTokenGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200::class => OauthV2AccessGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault::class => OauthV2AccessGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsAddPostResponse200::class => PinsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsAddPostResponsedefault::class => PinsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class => PinsListGetResponse200Item0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0::class => PinsListGetResponse200Item0ItemsItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1::class => PinsListGetResponse200Item0ItemsItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item1::class => PinsListGetResponse200Item1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponsedefault::class => PinsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsRemovePostResponse200::class => PinsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault::class => PinsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsAddPostResponse200::class => ReactionsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault::class => ReactionsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault::class => ReactionsGetGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200::class => ReactionsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => ReactionsListGetResponse200ItemsItemItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1::class => ReactionsListGetResponse200ItemsItemItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2::class => ReactionsListGetResponse200ItemsItemItem2Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault::class => ReactionsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200::class => ReactionsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault::class => ReactionsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersAddPostResponse200::class => RemindersAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault::class => RemindersAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersCompletePostResponse200::class => RemindersCompletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault::class => RemindersCompletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersDeletePostResponse200::class => RemindersDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault::class => RemindersDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersInfoGetResponse200::class => RemindersInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault::class => RemindersInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersListGetResponse200::class => RemindersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersListGetResponsedefault::class => RemindersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponse200::class => RtmConnectGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self::class => RtmConnectGetResponse200SelfNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team::class => RtmConnectGetResponse200TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault::class => RtmConnectGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\SearchMessagesGetResponse200::class => SearchMessagesGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault::class => SearchMessagesGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsAddPostResponse200::class => StarsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsAddPostResponsedefault::class => StarsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200::class => StarsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0::class => StarsListGetResponse200ItemsItemItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1::class => StarsListGetResponse200ItemsItemItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2::class => StarsListGetResponse200ItemsItemItem2Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3::class => StarsListGetResponse200ItemsItemItem3Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4::class => StarsListGetResponse200ItemsItemItem4Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5::class => StarsListGetResponse200ItemsItemItem5Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponsedefault::class => StarsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsRemovePostResponse200::class => StarsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault::class => StarsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class => TeamAccessLogsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem::class => TeamAccessLogsGetResponse200LoginsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault::class => TeamAccessLogsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200::class => TeamBillableInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault::class => TeamBillableInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamInfoGetResponse200::class => TeamInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault::class => TeamInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200::class => TeamIntegrationLogsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem::class => TeamIntegrationLogsGetResponse200LogsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault::class => TeamIntegrationLogsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200::class => TeamProfileGetGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile::class => TeamProfileGetGetResponse200ProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault::class => TeamProfileGetGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200::class => UsergroupsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault::class => UsergroupsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200::class => UsergroupsDisablePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault::class => UsergroupsDisablePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200::class => UsergroupsEnablePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault::class => UsergroupsEnablePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200::class => UsergroupsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault::class => UsergroupsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200::class => UsergroupsUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault::class => UsergroupsUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200::class => UsergroupsUsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault::class => UsergroupsUsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200::class => UsergroupsUsersUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault::class => UsergroupsUsersUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200::class => UsersConversationsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata::class => UsersConversationsGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault::class => UsersConversationsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200::class => UsersDeletePhotoPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault::class => UsersDeletePhotoPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200::class => UsersGetPresenceGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault::class => UsersGetPresenceGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0::class => UsersIdentityGetResponse200Item0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team::class => UsersIdentityGetResponse200Item0TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User::class => UsersIdentityGetResponse200Item0UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1::class => UsersIdentityGetResponse200Item1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team::class => UsersIdentityGetResponse200Item1TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User::class => UsersIdentityGetResponse200Item1UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2::class => UsersIdentityGetResponse200Item2Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team::class => UsersIdentityGetResponse200Item2TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User::class => UsersIdentityGetResponse200Item2UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3::class => UsersIdentityGetResponse200Item3Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => UsersIdentityGetResponse200Item3TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User::class => UsersIdentityGetResponse200Item3UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault::class => UsersIdentityGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersInfoGetResponse200::class => UsersInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault::class => UsersInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersListGetResponse200::class => UsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersListGetResponsedefault::class => UsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200::class => UsersLookupByEmailGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault::class => UsersLookupByEmailGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200::class => UsersProfileGetGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault::class => UsersProfileGetGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200::class => UsersProfileSetPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault::class => UsersProfileSetPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetActivePostResponse200::class => UsersSetActivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault::class => UsersSetActivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200::class => UsersSetPhotoPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile::class => UsersSetPhotoPostResponse200ProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault::class => UsersSetPhotoPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200::class => UsersSetPresencePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault::class => UsersSetPresencePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200::class => ViewsOpenPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault::class => ViewsOpenPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPublishPostResponse200::class => ViewsPublishPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault::class => ViewsPublishPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPushPostResponse200::class => ViewsPushPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault::class => ViewsPushPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200::class => ViewsUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault::class => ViewsUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200::class => WorkflowsStepCompletedPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault::class => WorkflowsStepCompletedPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200::class => WorkflowsStepFailedPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault::class => WorkflowsStepFailedPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200::class => WorkflowsUpdateStepPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault::class => WorkflowsUpdateStepPostResponsedefaultNormalizer::class,
+
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \JoliCode\Slack\Api\Runtime\Normalizer\ReferenceNormalizer::class,
         ];
         protected $normalizersCache = [];
 
@@ -510,7 +957,456 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\BlocksItem' => false, 'JoliCode\Slack\Api\Model\ObjsBotProfile' => false, 'JoliCode\Slack\Api\Model\ObjsBotProfileIcons' => false, 'JoliCode\Slack\Api\Model\ObjsChannel' => false, 'JoliCode\Slack\Api\Model\ObjsChannelPurpose' => false, 'JoliCode\Slack\Api\Model\ObjsChannelTopic' => false, 'JoliCode\Slack\Api\Model\ObjsComment' => false, 'JoliCode\Slack\Api\Model\ObjsConversation' => false, 'JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts' => false, 'JoliCode\Slack\Api\Model\ObjsConversationPurpose' => false, 'JoliCode\Slack\Api\Model\ObjsConversationSharesItem' => false, 'JoliCode\Slack\Api\Model\ObjsConversationTopic' => false, 'JoliCode\Slack\Api\Model\ObjsEnterpriseUser' => false, 'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations' => false, 'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem' => false, 'JoliCode\Slack\Api\Model\ObjsFile' => false, 'JoliCode\Slack\Api\Model\ObjsFileShares' => false, 'JoliCode\Slack\Api\Model\ObjsIcon' => false, 'JoliCode\Slack\Api\Model\ObjsMessage' => false, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' => false, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem' => false, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem' => false, 'JoliCode\Slack\Api\Model\ObjsMessageIcons' => false, 'JoliCode\Slack\Api\Model\ObjsMetadata' => false, 'JoliCode\Slack\Api\Model\ObjsPaging' => false, 'JoliCode\Slack\Api\Model\ObjsPrimaryOwner' => false, 'JoliCode\Slack\Api\Model\ObjsReaction' => false, 'JoliCode\Slack\Api\Model\ObjsReminder' => false, 'JoliCode\Slack\Api\Model\ObjsResources' => false, 'JoliCode\Slack\Api\Model\ObjsResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ObjsSubteam' => false, 'JoliCode\Slack\Api\Model\ObjsSubteamPrefs' => false, 'JoliCode\Slack\Api\Model\ObjsTeam' => false, 'JoliCode\Slack\Api\Model\ObjsTeamSsoProvider' => false, 'JoliCode\Slack\Api\Model\ObjsTeamProfileField' => false, 'JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption' => false, 'JoliCode\Slack\Api\Model\ObjsUser' => false, 'JoliCode\Slack\Api\Model\ObjsUserTeamProfile' => false, 'JoliCode\Slack\Api\Model\ObjsUserProfile' => false, 'JoliCode\Slack\Api\Model\ObjsUserProfileShort' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ApiTestGetResponse200' => false, 'JoliCode\Slack\Api\Model\ApiTestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsUninstallGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AuthRevokeGetResponse200' => false, 'JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AuthTestGetResponse200' => false, 'JoliCode\Slack\Api\Model\AuthTestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsEndPostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsEndPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200' => false, 'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message' => false, 'JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsClosePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem' => false, 'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsKickPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1' => false, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DialogOpenGetResponse200' => false, 'JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndEndDndPostResponse200' => false, 'JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200' => false, 'JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\DndInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200' => false, 'JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\EmojiListGetResponse200' => false, 'JoliCode\Slack\Api\Model\EmojiListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesUploadPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200' => false, 'JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\OauthAccessGetResponse200' => false, 'JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\OauthTokenGetResponse200' => false, 'JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200' => false, 'JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\PinsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\PinsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item1' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\PinsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersCompletePostResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\SearchMessagesGetResponse200' => false, 'JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\StarsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\StarsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\StarsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem' => false, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem' => false, 'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile' => false, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersSetActivePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile' => false, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsOpenPostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsPublishPostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsPushPostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200' => false, 'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault' => false, '\Jane\Component\JsonSchemaRuntime\Reference' => false];
+            return [
+                \JoliCode\Slack\Api\Model\BlocksItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsBotProfile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsBotProfileIcons::class => false,
+                \JoliCode\Slack\Api\Model\ObjsChannel::class => false,
+                \JoliCode\Slack\Api\Model\ObjsChannelPurpose::class => false,
+                \JoliCode\Slack\Api\Model\ObjsChannelTopic::class => false,
+                \JoliCode\Slack\Api\Model\ObjsComment::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversation::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationPurpose::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationSharesItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationTopic::class => false,
+                \JoliCode\Slack\Api\Model\ObjsEnterpriseUser::class => false,
+                \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => false,
+                \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsFile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsFileShares::class => false,
+                \JoliCode\Slack\Api\Model\ObjsIcon::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessage::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageIcons::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ObjsPaging::class => false,
+                \JoliCode\Slack\Api\Model\ObjsPrimaryOwner::class => false,
+                \JoliCode\Slack\Api\Model\ObjsReaction::class => false,
+                \JoliCode\Slack\Api\Model\ObjsReminder::class => false,
+                \JoliCode\Slack\Api\Model\ObjsResources::class => false,
+                \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ObjsSubteam::class => false,
+                \JoliCode\Slack\Api\Model\ObjsSubteamPrefs::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeam::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeamSsoProvider::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeamProfileField::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUser::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUserTeamProfile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUserProfile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ApiTestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ApiTestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AuthRevokeGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AuthTestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AuthTestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsEndPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsEndPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message::class => false,
+                \JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsKickPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DialogOpenGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndEndDndPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\EmojiListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\EmojiListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesUploadPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\OauthAccessGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\OauthTokenGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\PinsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\PinsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item1::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\PinsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersCompletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\SearchMessagesGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\StarsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\StarsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\StarsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem::class => false,
+                \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem::class => false,
+                \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile::class => false,
+                \JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetActivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPublishPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPushPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
 
         private function getNormalizer(string $normalizerClass)
@@ -536,454 +1432,901 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         use NormalizerAwareTrait;
         use ValidatorTrait;
         protected $normalizers = [
-            'JoliCode\Slack\Api\Model\BlocksItem' => 'JoliCode\Slack\Api\Normalizer\BlocksItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsBotProfile' => 'JoliCode\Slack\Api\Normalizer\ObjsBotProfileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsBotProfileIcons' => 'JoliCode\Slack\Api\Normalizer\ObjsBotProfileIconsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsChannel' => 'JoliCode\Slack\Api\Normalizer\ObjsChannelNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsChannelPurpose' => 'JoliCode\Slack\Api\Normalizer\ObjsChannelPurposeNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsChannelTopic' => 'JoliCode\Slack\Api\Normalizer\ObjsChannelTopicNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsComment' => 'JoliCode\Slack\Api\Normalizer\ObjsCommentNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversation' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationDisplayCountsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationPurpose' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationPurposeNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationSharesItem' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationSharesItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsConversationTopic' => 'JoliCode\Slack\Api\Normalizer\ObjsConversationTopicNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsEnterpriseUser' => 'JoliCode\Slack\Api\Normalizer\ObjsEnterpriseUserNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations' => 'JoliCode\Slack\Api\Normalizer\ObjsExternalOrgMigrationsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem' => 'JoliCode\Slack\Api\Normalizer\ObjsExternalOrgMigrationsCurrentItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsFile' => 'JoliCode\Slack\Api\Normalizer\ObjsFileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsFileShares' => 'JoliCode\Slack\Api\Normalizer\ObjsFileSharesNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsIcon' => 'JoliCode\Slack\Api\Normalizer\ObjsIconNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessage' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageAttachmentsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageAttachmentsItemActionsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageAttachmentsItemFieldsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMessageIcons' => 'JoliCode\Slack\Api\Normalizer\ObjsMessageIconsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsMetadata' => 'JoliCode\Slack\Api\Normalizer\ObjsMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsPaging' => 'JoliCode\Slack\Api\Normalizer\ObjsPagingNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsPrimaryOwner' => 'JoliCode\Slack\Api\Normalizer\ObjsPrimaryOwnerNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsReaction' => 'JoliCode\Slack\Api\Normalizer\ObjsReactionNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsReminder' => 'JoliCode\Slack\Api\Normalizer\ObjsReminderNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsResources' => 'JoliCode\Slack\Api\Normalizer\ObjsResourcesNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ObjsResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsSubteam' => 'JoliCode\Slack\Api\Normalizer\ObjsSubteamNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsSubteamPrefs' => 'JoliCode\Slack\Api\Normalizer\ObjsSubteamPrefsNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeam' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeamSsoProvider' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamSsoProviderNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeamProfileField' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamProfileFieldNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption' => 'JoliCode\Slack\Api\Normalizer\ObjsTeamProfileFieldOptionNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUser' => 'JoliCode\Slack\Api\Normalizer\ObjsUserNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUserTeamProfile' => 'JoliCode\Slack\Api\Normalizer\ObjsUserTeamProfileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUserProfile' => 'JoliCode\Slack\Api\Normalizer\ObjsUserProfileNormalizer',
-            'JoliCode\Slack\Api\Model\ObjsUserProfileShort' => 'JoliCode\Slack\Api\Normalizer\ObjsUserProfileShortNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsApprovedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRequestsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRequestsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminAppsRestrictedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsArchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsArchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsConvertToPrivatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsConvertToPrivatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDisconnectSharedPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsDisconnectSharedPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPostNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetConversationPrefsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetTeamsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetTeamsGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsGetTeamsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsInvitePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsInvitePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRenamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRenamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessAddGroupPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessAddGroupPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessListGroupsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessListGroupsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessRemoveGroupPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsRestrictAccessRemoveGroupPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSearchGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSearchGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetConversationPrefsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetConversationPrefsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetTeamsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsSetTeamsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsUnarchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminConversationsUnarchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddAliasPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiAddAliasPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRenamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminEmojiRenamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsApprovedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDeniedListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDeniedListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDenyPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsDenyPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminInviteRequestsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsAdminsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsAdminsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsOwnersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsOwnersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDefaultChannelsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDefaultChannelsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDescriptionPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDescriptionPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDiscoverabilityPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetDiscoverabilityPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetIconPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetIconPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetNamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminTeamsSettingsSetNamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddChannelsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddChannelsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddTeamsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsAddTeamsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsListChannelsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsListChannelsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsRemoveChannelsPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsergroupsRemoveChannelsPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersAssignPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersAssignPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersInvitePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersInvitePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionInvalidatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionInvalidatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionResetPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSessionResetPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetAdminPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetAdminPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetExpirationPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetExpirationPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetOwnerPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetOwnerPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetRegularPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AdminUsersSetRegularPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ApiTestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ApiTestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ApiTestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ApiTestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsEventAuthorizationsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsEventAuthorizationsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoAppHomeNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoChannelNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoGroupNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoImNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoMpimNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponse200InfoTeamNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsRequestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsRequestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsResourcesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsScopesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsScopesListGetResponse200ScopesNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsScopesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersRequestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsPermissionsUsersRequestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AppsUninstallGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AppsUninstallGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AppsUninstallGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AuthRevokeGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AuthRevokeGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AuthRevokeGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\AuthTestGetResponse200' => 'JoliCode\Slack\Api\Normalizer\AuthTestGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\AuthTestGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\AuthTestGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponse200BotNormalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponse200BotIconsNormalizer',
-            'JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\BotsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsEndPostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsEndPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsEndPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsEndPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsParticipantsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\CallsUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\CallsUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\CallsUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatDeleteScheduledMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatDeleteScheduledMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatGetPermalinkGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatGetPermalinkGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatMeMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatMeMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatPostEphemeralPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatPostEphemeralPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatPostMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatPostMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponse200MessageNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatScheduleMessagePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer',
-            'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatScheduledMessagesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatUnfurlPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatUnfurlPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ChatUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message' => 'JoliCode\Slack\Api\Normalizer\ChatUpdatePostResponse200MessageNormalizer',
-            'JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ChatUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsArchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsArchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsClosePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsClosePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsClosePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsHistoryGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsHistoryGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsHistoryGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsInvitePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsInvitePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem' => 'JoliCode\Slack\Api\Normalizer\ConversationsInvitePostResponsedefaultErrorsItemNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsJoinPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsJoinPostResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsJoinPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsKickPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsKickPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsKickPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsLeavePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsLeavePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsListGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsMarkPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsMarkPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsMembersGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsMembersGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsMembersGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsOpenPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1' => 'JoliCode\Slack\Api\Normalizer\ConversationsOpenPostResponse200ChannelItem1Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsOpenPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsRenamePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsRenamePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200MessagesItemItem0Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200MessagesItemItem1Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsRepliesGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetPurposePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetPurposePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetTopicPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsSetTopicPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ConversationsUnarchivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ConversationsUnarchivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DialogOpenGetResponse200' => 'JoliCode\Slack\Api\Normalizer\DialogOpenGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DialogOpenGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndEndDndPostResponse200' => 'JoliCode\Slack\Api\Normalizer\DndEndDndPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndEndDndPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200' => 'JoliCode\Slack\Api\Normalizer\DndEndSnoozePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndEndSnoozePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\DndInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200' => 'JoliCode\Slack\Api\Normalizer\DndSetSnoozePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndSetSnoozePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\DndTeamInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\DndTeamInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\EmojiListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\EmojiListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\EmojiListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\EmojiListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesCommentsDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesCommentsDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteShareGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteShareGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRemoteUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesRevokePublicURLPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesRevokePublicURLPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesSharedPublicURLPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesSharedPublicURLPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\FilesUploadPostResponse200' => 'JoliCode\Slack\Api\Normalizer\FilesUploadPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\FilesUploadPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200' => 'JoliCode\Slack\Api\Normalizer\MigrationExchangeGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\MigrationExchangeGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\OauthAccessGetResponse200' => 'JoliCode\Slack\Api\Normalizer\OauthAccessGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\OauthAccessGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\OauthTokenGetResponse200' => 'JoliCode\Slack\Api\Normalizer\OauthTokenGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\OauthTokenGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200' => 'JoliCode\Slack\Api\Normalizer\OauthV2AccessGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\OauthV2AccessGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\PinsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\PinsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\PinsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\PinsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item0Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item0ItemsItem0Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item0ItemsItem1Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponse200Item1' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponse200Item1Normalizer',
-            'JoliCode\Slack\Api\Model\PinsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\PinsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\PinsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\PinsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\PinsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ReactionsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsGetGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200ItemsItemItem0Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200ItemsItemItem1Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponse200ItemsItemItem2Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ReactionsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ReactionsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersCompletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersCompletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersCompletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersDeletePostResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersDeletePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersDeletePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RemindersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\RemindersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RemindersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RemindersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponse200' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponse200SelfNormalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponse200TeamNormalizer',
-            'JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\RtmConnectGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\SearchMessagesGetResponse200' => 'JoliCode\Slack\Api\Normalizer\SearchMessagesGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\SearchMessagesGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\StarsAddPostResponse200' => 'JoliCode\Slack\Api\Normalizer\StarsAddPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\StarsAddPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\StarsAddPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem0Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem1Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem2Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem3Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem4Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponse200ItemsItemItem5Normalizer',
-            'JoliCode\Slack\Api\Model\StarsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\StarsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\StarsRemovePostResponse200' => 'JoliCode\Slack\Api\Normalizer\StarsRemovePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\StarsRemovePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamAccessLogsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem' => 'JoliCode\Slack\Api\Normalizer\TeamAccessLogsGetResponse200LoginsItemNormalizer',
-            'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamAccessLogsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamBillableInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamBillableInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamIntegrationLogsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem' => 'JoliCode\Slack\Api\Normalizer\TeamIntegrationLogsGetResponse200LogsItemNormalizer',
-            'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamIntegrationLogsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200' => 'JoliCode\Slack\Api\Normalizer\TeamProfileGetGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile' => 'JoliCode\Slack\Api\Normalizer\TeamProfileGetGetResponse200ProfileNormalizer',
-            'JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\TeamProfileGetGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsCreatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsCreatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsDisablePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsDisablePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsEnablePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsEnablePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsergroupsUsersUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersConversationsGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata' => 'JoliCode\Slack\Api\Normalizer\UsersConversationsGetResponse200ResponseMetadataNormalizer',
-            'JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersConversationsGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersDeletePhotoPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersDeletePhotoPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersGetPresenceGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersGetPresenceGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item0Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item0TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item0UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item1Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item1TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item1UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item2Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item2TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item2UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item3Normalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item3TeamNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponse200Item3UserNormalizer',
-            'JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersIdentityGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersInfoGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersInfoGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersInfoGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersListGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersListGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersListGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersListGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersLookupByEmailGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersLookupByEmailGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersProfileGetGetResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersProfileGetGetResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersProfileSetPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersProfileSetPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetActivePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersSetActivePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersSetActivePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersSetPhotoPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile' => 'JoliCode\Slack\Api\Normalizer\UsersSetPhotoPostResponse200ProfileNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersSetPhotoPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200' => 'JoliCode\Slack\Api\Normalizer\UsersSetPresencePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\UsersSetPresencePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsOpenPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsOpenPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsOpenPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsPublishPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsPublishPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsPublishPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsPushPostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsPushPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsPushPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200' => 'JoliCode\Slack\Api\Normalizer\ViewsUpdatePostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\ViewsUpdatePostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepCompletedPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepCompletedPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepFailedPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\WorkflowsStepFailedPostResponsedefaultNormalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200' => 'JoliCode\Slack\Api\Normalizer\WorkflowsUpdateStepPostResponse200Normalizer',
-            'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault' => 'JoliCode\Slack\Api\Normalizer\WorkflowsUpdateStepPostResponsedefaultNormalizer',
-            '\Jane\Component\JsonSchemaRuntime\Reference' => '\JoliCode\Slack\Api\Runtime\Normalizer\ReferenceNormalizer',
+            \JoliCode\Slack\Api\Model\BlocksItem::class => BlocksItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsBotProfile::class => ObjsBotProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsBotProfileIcons::class => ObjsBotProfileIconsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsChannel::class => ObjsChannelNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsChannelPurpose::class => ObjsChannelPurposeNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsChannelTopic::class => ObjsChannelTopicNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsComment::class => ObjsCommentNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversation::class => ObjsConversationNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts::class => ObjsConversationDisplayCountsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationPurpose::class => ObjsConversationPurposeNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationSharesItem::class => ObjsConversationSharesItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsConversationTopic::class => ObjsConversationTopicNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsEnterpriseUser::class => ObjsEnterpriseUserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => ObjsExternalOrgMigrationsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class => ObjsExternalOrgMigrationsCurrentItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsFile::class => ObjsFileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsFileShares::class => ObjsFileSharesNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsIcon::class => ObjsIconNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessage::class => ObjsMessageNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem::class => ObjsMessageAttachmentsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem::class => ObjsMessageAttachmentsItemActionsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem::class => ObjsMessageAttachmentsItemFieldsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMessageIcons::class => ObjsMessageIconsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsMetadata::class => ObjsMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsPaging::class => ObjsPagingNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsPrimaryOwner::class => ObjsPrimaryOwnerNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsReaction::class => ObjsReactionNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsReminder::class => ObjsReminderNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsResources::class => ObjsResourcesNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class => ObjsResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsSubteam::class => ObjsSubteamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsSubteamPrefs::class => ObjsSubteamPrefsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeam::class => ObjsTeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeamSsoProvider::class => ObjsTeamSsoProviderNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeamProfileField::class => ObjsTeamProfileFieldNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption::class => ObjsTeamProfileFieldOptionNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUser::class => ObjsUserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUserTeamProfile::class => ObjsUserTeamProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUserProfile::class => ObjsUserProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class => ObjsUserProfileShortNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200::class => AdminAppsApprovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault::class => AdminAppsApprovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200::class => AdminAppsApprovedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault::class => AdminAppsApprovedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200::class => AdminAppsRequestsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault::class => AdminAppsRequestsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200::class => AdminAppsRestrictPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault::class => AdminAppsRestrictPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200::class => AdminAppsRestrictedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault::class => AdminAppsRestrictedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200::class => AdminConversationsArchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault::class => AdminConversationsArchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200::class => AdminConversationsConvertToPrivatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault::class => AdminConversationsConvertToPrivatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200::class => AdminConversationsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault::class => AdminConversationsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200::class => AdminConversationsDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault::class => AdminConversationsDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200::class => AdminConversationsDisconnectSharedPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault::class => AdminConversationsDisconnectSharedPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200::class => AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault::class => AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200::class => AdminConversationsGetConversationPrefsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class => AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class => AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class => AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPostNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault::class => AdminConversationsGetConversationPrefsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class => AdminConversationsGetTeamsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class => AdminConversationsGetTeamsGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault::class => AdminConversationsGetTeamsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200::class => AdminConversationsInvitePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault::class => AdminConversationsInvitePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200::class => AdminConversationsRenamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault::class => AdminConversationsRenamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200::class => AdminConversationsRestrictAccessAddGroupPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault::class => AdminConversationsRestrictAccessAddGroupPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200::class => AdminConversationsRestrictAccessListGroupsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault::class => AdminConversationsRestrictAccessListGroupsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200::class => AdminConversationsRestrictAccessRemoveGroupPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault::class => AdminConversationsRestrictAccessRemoveGroupPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200::class => AdminConversationsSearchGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault::class => AdminConversationsSearchGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200::class => AdminConversationsSetConversationPrefsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault::class => AdminConversationsSetConversationPrefsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200::class => AdminConversationsSetTeamsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault::class => AdminConversationsSetTeamsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200::class => AdminConversationsUnarchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault::class => AdminConversationsUnarchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200::class => AdminEmojiAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault::class => AdminEmojiAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200::class => AdminEmojiAddAliasPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault::class => AdminEmojiAddAliasPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200::class => AdminEmojiListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault::class => AdminEmojiListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200::class => AdminEmojiRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault::class => AdminEmojiRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200::class => AdminEmojiRenamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault::class => AdminEmojiRenamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200::class => AdminInviteRequestsApprovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault::class => AdminInviteRequestsApprovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200::class => AdminInviteRequestsApprovedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault::class => AdminInviteRequestsApprovedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200::class => AdminInviteRequestsDeniedListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault::class => AdminInviteRequestsDeniedListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200::class => AdminInviteRequestsDenyPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault::class => AdminInviteRequestsDenyPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200::class => AdminInviteRequestsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault::class => AdminInviteRequestsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200::class => AdminTeamsAdminsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault::class => AdminTeamsAdminsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200::class => AdminTeamsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault::class => AdminTeamsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200::class => AdminTeamsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault::class => AdminTeamsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200::class => AdminTeamsOwnersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault::class => AdminTeamsOwnersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200::class => AdminTeamsSettingsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault::class => AdminTeamsSettingsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200::class => AdminTeamsSettingsSetDefaultChannelsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault::class => AdminTeamsSettingsSetDefaultChannelsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200::class => AdminTeamsSettingsSetDescriptionPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault::class => AdminTeamsSettingsSetDescriptionPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200::class => AdminTeamsSettingsSetDiscoverabilityPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault::class => AdminTeamsSettingsSetDiscoverabilityPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200::class => AdminTeamsSettingsSetIconPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault::class => AdminTeamsSettingsSetIconPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200::class => AdminTeamsSettingsSetNamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault::class => AdminTeamsSettingsSetNamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200::class => AdminUsergroupsAddChannelsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault::class => AdminUsergroupsAddChannelsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200::class => AdminUsergroupsAddTeamsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault::class => AdminUsergroupsAddTeamsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200::class => AdminUsergroupsListChannelsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault::class => AdminUsergroupsListChannelsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200::class => AdminUsergroupsRemoveChannelsPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault::class => AdminUsergroupsRemoveChannelsPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200::class => AdminUsersAssignPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault::class => AdminUsersAssignPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200::class => AdminUsersInvitePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault::class => AdminUsersInvitePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersListGetResponse200::class => AdminUsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault::class => AdminUsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200::class => AdminUsersRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault::class => AdminUsersRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200::class => AdminUsersSessionInvalidatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault::class => AdminUsersSessionInvalidatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200::class => AdminUsersSessionResetPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault::class => AdminUsersSessionResetPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200::class => AdminUsersSetAdminPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault::class => AdminUsersSetAdminPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200::class => AdminUsersSetExpirationPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault::class => AdminUsersSetExpirationPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200::class => AdminUsersSetOwnerPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault::class => AdminUsersSetOwnerPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200::class => AdminUsersSetRegularPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault::class => AdminUsersSetRegularPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ApiTestGetResponse200::class => ApiTestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ApiTestGetResponsedefault::class => ApiTestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200::class => AppsEventAuthorizationsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault::class => AppsEventAuthorizationsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200::class => AppsPermissionsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info::class => AppsPermissionsInfoGetResponse200InfoNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome::class => AppsPermissionsInfoGetResponse200InfoAppHomeNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel::class => AppsPermissionsInfoGetResponse200InfoChannelNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup::class => AppsPermissionsInfoGetResponse200InfoGroupNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm::class => AppsPermissionsInfoGetResponse200InfoImNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim::class => AppsPermissionsInfoGetResponse200InfoMpimNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam::class => AppsPermissionsInfoGetResponse200InfoTeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault::class => AppsPermissionsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200::class => AppsPermissionsRequestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault::class => AppsPermissionsRequestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200::class => AppsPermissionsResourcesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem::class => AppsPermissionsResourcesListGetResponse200ResourcesItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata::class => AppsPermissionsResourcesListGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault::class => AppsPermissionsResourcesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200::class => AppsPermissionsScopesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes::class => AppsPermissionsScopesListGetResponse200ScopesNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault::class => AppsPermissionsScopesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200::class => AppsPermissionsUsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault::class => AppsPermissionsUsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200::class => AppsPermissionsUsersRequestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault::class => AppsPermissionsUsersRequestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200::class => AppsUninstallGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault::class => AppsUninstallGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthRevokeGetResponse200::class => AuthRevokeGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault::class => AuthRevokeGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthTestGetResponse200::class => AuthTestGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\AuthTestGetResponsedefault::class => AuthTestGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponse200::class => BotsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot::class => BotsInfoGetResponse200BotNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons::class => BotsInfoGetResponse200BotIconsNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault::class => BotsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsAddPostResponse200::class => CallsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsAddPostResponsedefault::class => CallsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsEndPostResponse200::class => CallsEndPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsEndPostResponsedefault::class => CallsEndPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsInfoGetResponse200::class => CallsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault::class => CallsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200::class => CallsParticipantsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault::class => CallsParticipantsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200::class => CallsParticipantsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault::class => CallsParticipantsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsUpdatePostResponse200::class => CallsUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault::class => CallsUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeletePostResponse200::class => ChatDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault::class => ChatDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200::class => ChatDeleteScheduledMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault::class => ChatDeleteScheduledMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200::class => ChatGetPermalinkGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault::class => ChatGetPermalinkGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200::class => ChatMeMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault::class => ChatMeMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200::class => ChatPostEphemeralPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault::class => ChatPostEphemeralPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200::class => ChatPostMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault::class => ChatPostMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200::class => ChatScheduleMessagePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message::class => ChatScheduleMessagePostResponse200MessageNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem::class => ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault::class => ChatScheduleMessagePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200::class => ChatScheduledMessagesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata::class => ChatScheduledMessagesListGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem::class => ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault::class => ChatScheduledMessagesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200::class => ChatUnfurlPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault::class => ChatUnfurlPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200::class => ChatUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message::class => ChatUpdatePostResponse200MessageNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault::class => ChatUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200::class => ConversationsArchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault::class => ConversationsArchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => ConversationsClosePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault::class => ConversationsClosePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200::class => ConversationsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault::class => ConversationsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200::class => ConversationsHistoryGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata::class => ConversationsHistoryGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault::class => ConversationsHistoryGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200::class => ConversationsInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault::class => ConversationsInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200::class => ConversationsInvitePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault::class => ConversationsInvitePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem::class => ConversationsInvitePostResponsedefaultErrorsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200::class => ConversationsJoinPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata::class => ConversationsJoinPostResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault::class => ConversationsJoinPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsKickPostResponse200::class => ConversationsKickPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault::class => ConversationsKickPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200::class => ConversationsLeavePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault::class => ConversationsLeavePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsListGetResponse200::class => ConversationsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata::class => ConversationsListGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault::class => ConversationsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200::class => ConversationsMarkPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault::class => ConversationsMarkPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200::class => ConversationsMembersGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata::class => ConversationsMembersGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault::class => ConversationsMembersGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200::class => ConversationsOpenPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => ConversationsOpenPostResponse200ChannelItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault::class => ConversationsOpenPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200::class => ConversationsRenamePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault::class => ConversationsRenamePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200::class => ConversationsRepliesGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0::class => ConversationsRepliesGetResponse200MessagesItemItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1::class => ConversationsRepliesGetResponse200MessagesItemItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata::class => ConversationsRepliesGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault::class => ConversationsRepliesGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200::class => ConversationsSetPurposePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault::class => ConversationsSetPurposePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200::class => ConversationsSetTopicPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault::class => ConversationsSetTopicPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200::class => ConversationsUnarchivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault::class => ConversationsUnarchivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DialogOpenGetResponse200::class => DialogOpenGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault::class => DialogOpenGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndDndPostResponse200::class => DndEndDndPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault::class => DndEndDndPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200::class => DndEndSnoozePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault::class => DndEndSnoozePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndInfoGetResponse200::class => DndInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndInfoGetResponsedefault::class => DndInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200::class => DndSetSnoozePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault::class => DndSetSnoozePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200::class => DndTeamInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault::class => DndTeamInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\EmojiListGetResponse200::class => EmojiListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\EmojiListGetResponsedefault::class => EmojiListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200::class => FilesCommentsDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => FilesCommentsDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => FilesDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => FilesDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => FilesInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault::class => FilesInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesListGetResponse200::class => FilesListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesListGetResponsedefault::class => FilesListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200::class => FilesRemoteAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault::class => FilesRemoteAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200::class => FilesRemoteInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault::class => FilesRemoteInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200::class => FilesRemoteListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault::class => FilesRemoteListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200::class => FilesRemoteRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault::class => FilesRemoteRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200::class => FilesRemoteShareGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault::class => FilesRemoteShareGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200::class => FilesRemoteUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault::class => FilesRemoteUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class => FilesRevokePublicURLPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault::class => FilesRevokePublicURLPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200::class => FilesSharedPublicURLPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault::class => FilesSharedPublicURLPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesUploadPostResponse200::class => FilesUploadPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault::class => FilesUploadPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200::class => MigrationExchangeGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault::class => MigrationExchangeGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthAccessGetResponse200::class => OauthAccessGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault::class => OauthAccessGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthTokenGetResponse200::class => OauthTokenGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault::class => OauthTokenGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200::class => OauthV2AccessGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault::class => OauthV2AccessGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsAddPostResponse200::class => PinsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsAddPostResponsedefault::class => PinsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class => PinsListGetResponse200Item0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0::class => PinsListGetResponse200Item0ItemsItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1::class => PinsListGetResponse200Item0ItemsItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponse200Item1::class => PinsListGetResponse200Item1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsListGetResponsedefault::class => PinsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsRemovePostResponse200::class => PinsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault::class => PinsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsAddPostResponse200::class => ReactionsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault::class => ReactionsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault::class => ReactionsGetGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200::class => ReactionsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => ReactionsListGetResponse200ItemsItemItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1::class => ReactionsListGetResponse200ItemsItemItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2::class => ReactionsListGetResponse200ItemsItemItem2Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault::class => ReactionsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200::class => ReactionsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault::class => ReactionsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersAddPostResponse200::class => RemindersAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault::class => RemindersAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersCompletePostResponse200::class => RemindersCompletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault::class => RemindersCompletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersDeletePostResponse200::class => RemindersDeletePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault::class => RemindersDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersInfoGetResponse200::class => RemindersInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault::class => RemindersInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersListGetResponse200::class => RemindersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RemindersListGetResponsedefault::class => RemindersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponse200::class => RtmConnectGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self::class => RtmConnectGetResponse200SelfNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team::class => RtmConnectGetResponse200TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault::class => RtmConnectGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\SearchMessagesGetResponse200::class => SearchMessagesGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault::class => SearchMessagesGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsAddPostResponse200::class => StarsAddPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsAddPostResponsedefault::class => StarsAddPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200::class => StarsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0::class => StarsListGetResponse200ItemsItemItem0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1::class => StarsListGetResponse200ItemsItemItem1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2::class => StarsListGetResponse200ItemsItemItem2Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3::class => StarsListGetResponse200ItemsItemItem3Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4::class => StarsListGetResponse200ItemsItemItem4Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5::class => StarsListGetResponse200ItemsItemItem5Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsListGetResponsedefault::class => StarsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsRemovePostResponse200::class => StarsRemovePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault::class => StarsRemovePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class => TeamAccessLogsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem::class => TeamAccessLogsGetResponse200LoginsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault::class => TeamAccessLogsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200::class => TeamBillableInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault::class => TeamBillableInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamInfoGetResponse200::class => TeamInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault::class => TeamInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200::class => TeamIntegrationLogsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem::class => TeamIntegrationLogsGetResponse200LogsItemNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault::class => TeamIntegrationLogsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200::class => TeamProfileGetGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile::class => TeamProfileGetGetResponse200ProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault::class => TeamProfileGetGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200::class => UsergroupsCreatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault::class => UsergroupsCreatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200::class => UsergroupsDisablePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault::class => UsergroupsDisablePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200::class => UsergroupsEnablePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault::class => UsergroupsEnablePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200::class => UsergroupsListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault::class => UsergroupsListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200::class => UsergroupsUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault::class => UsergroupsUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200::class => UsergroupsUsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault::class => UsergroupsUsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200::class => UsergroupsUsersUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault::class => UsergroupsUsersUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200::class => UsersConversationsGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata::class => UsersConversationsGetResponse200ResponseMetadataNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault::class => UsersConversationsGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200::class => UsersDeletePhotoPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault::class => UsersDeletePhotoPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200::class => UsersGetPresenceGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault::class => UsersGetPresenceGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0::class => UsersIdentityGetResponse200Item0Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team::class => UsersIdentityGetResponse200Item0TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User::class => UsersIdentityGetResponse200Item0UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1::class => UsersIdentityGetResponse200Item1Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team::class => UsersIdentityGetResponse200Item1TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User::class => UsersIdentityGetResponse200Item1UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2::class => UsersIdentityGetResponse200Item2Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team::class => UsersIdentityGetResponse200Item2TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User::class => UsersIdentityGetResponse200Item2UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3::class => UsersIdentityGetResponse200Item3Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => UsersIdentityGetResponse200Item3TeamNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User::class => UsersIdentityGetResponse200Item3UserNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault::class => UsersIdentityGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersInfoGetResponse200::class => UsersInfoGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault::class => UsersInfoGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersListGetResponse200::class => UsersListGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersListGetResponsedefault::class => UsersListGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200::class => UsersLookupByEmailGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault::class => UsersLookupByEmailGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200::class => UsersProfileGetGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault::class => UsersProfileGetGetResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200::class => UsersProfileSetPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault::class => UsersProfileSetPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetActivePostResponse200::class => UsersSetActivePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault::class => UsersSetActivePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200::class => UsersSetPhotoPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile::class => UsersSetPhotoPostResponse200ProfileNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault::class => UsersSetPhotoPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200::class => UsersSetPresencePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault::class => UsersSetPresencePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200::class => ViewsOpenPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault::class => ViewsOpenPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPublishPostResponse200::class => ViewsPublishPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault::class => ViewsPublishPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPushPostResponse200::class => ViewsPushPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault::class => ViewsPushPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200::class => ViewsUpdatePostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault::class => ViewsUpdatePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200::class => WorkflowsStepCompletedPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault::class => WorkflowsStepCompletedPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200::class => WorkflowsStepFailedPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault::class => WorkflowsStepFailedPostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200::class => WorkflowsUpdateStepPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault::class => WorkflowsUpdateStepPostResponsedefaultNormalizer::class,
+
+            \Jane\Component\JsonSchemaRuntime\Reference::class => \JoliCode\Slack\Api\Runtime\Normalizer\ReferenceNormalizer::class,
         ];
         protected $normalizersCache = [];
 
@@ -1018,7 +2361,456 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\BlocksItem' => false, 'JoliCode\Slack\Api\Model\ObjsBotProfile' => false, 'JoliCode\Slack\Api\Model\ObjsBotProfileIcons' => false, 'JoliCode\Slack\Api\Model\ObjsChannel' => false, 'JoliCode\Slack\Api\Model\ObjsChannelPurpose' => false, 'JoliCode\Slack\Api\Model\ObjsChannelTopic' => false, 'JoliCode\Slack\Api\Model\ObjsComment' => false, 'JoliCode\Slack\Api\Model\ObjsConversation' => false, 'JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts' => false, 'JoliCode\Slack\Api\Model\ObjsConversationPurpose' => false, 'JoliCode\Slack\Api\Model\ObjsConversationSharesItem' => false, 'JoliCode\Slack\Api\Model\ObjsConversationTopic' => false, 'JoliCode\Slack\Api\Model\ObjsEnterpriseUser' => false, 'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations' => false, 'JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem' => false, 'JoliCode\Slack\Api\Model\ObjsFile' => false, 'JoliCode\Slack\Api\Model\ObjsFileShares' => false, 'JoliCode\Slack\Api\Model\ObjsIcon' => false, 'JoliCode\Slack\Api\Model\ObjsMessage' => false, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem' => false, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem' => false, 'JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem' => false, 'JoliCode\Slack\Api\Model\ObjsMessageIcons' => false, 'JoliCode\Slack\Api\Model\ObjsMetadata' => false, 'JoliCode\Slack\Api\Model\ObjsPaging' => false, 'JoliCode\Slack\Api\Model\ObjsPrimaryOwner' => false, 'JoliCode\Slack\Api\Model\ObjsReaction' => false, 'JoliCode\Slack\Api\Model\ObjsReminder' => false, 'JoliCode\Slack\Api\Model\ObjsResources' => false, 'JoliCode\Slack\Api\Model\ObjsResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ObjsSubteam' => false, 'JoliCode\Slack\Api\Model\ObjsSubteamPrefs' => false, 'JoliCode\Slack\Api\Model\ObjsTeam' => false, 'JoliCode\Slack\Api\Model\ObjsTeamSsoProvider' => false, 'JoliCode\Slack\Api\Model\ObjsTeamProfileField' => false, 'JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption' => false, 'JoliCode\Slack\Api\Model\ObjsUser' => false, 'JoliCode\Slack\Api\Model\ObjsUserTeamProfile' => false, 'JoliCode\Slack\Api\Model\ObjsUserProfile' => false, 'JoliCode\Slack\Api\Model\ObjsUserProfileShort' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200' => false, 'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ApiTestGetResponse200' => false, 'JoliCode\Slack\Api\Model\ApiTestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AppsUninstallGetResponse200' => false, 'JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AuthRevokeGetResponse200' => false, 'JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\AuthTestGetResponse200' => false, 'JoliCode\Slack\Api\Model\AuthTestGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons' => false, 'JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsEndPostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsEndPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\CallsUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200' => false, 'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem' => false, 'JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem' => false, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message' => false, 'JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsClosePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem' => false, 'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsKickPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1' => false, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200' => false, 'JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DialogOpenGetResponse200' => false, 'JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndEndDndPostResponse200' => false, 'JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200' => false, 'JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\DndInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200' => false, 'JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\EmojiListGetResponse200' => false, 'JoliCode\Slack\Api\Model\EmojiListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesListGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\FilesUploadPostResponse200' => false, 'JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200' => false, 'JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\OauthAccessGetResponse200' => false, 'JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\OauthTokenGetResponse200' => false, 'JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200' => false, 'JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\PinsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\PinsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponse200Item1' => false, 'JoliCode\Slack\Api\Model\PinsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\PinsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2' => false, 'JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersCompletePostResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersDeletePostResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\RemindersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\RemindersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team' => false, 'JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\SearchMessagesGetResponse200' => false, 'JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\StarsAddPostResponse200' => false, 'JoliCode\Slack\Api\Model\StarsAddPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5' => false, 'JoliCode\Slack\Api\Model\StarsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\StarsRemovePostResponse200' => false, 'JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem' => false, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem' => false, 'JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200' => false, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile' => false, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsListGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata' => false, 'JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User' => false, 'JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersInfoGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersListGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersListGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200' => false, 'JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersSetActivePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile' => false, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200' => false, 'JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsOpenPostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsPublishPostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsPushPostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200' => false, 'JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200' => false, 'JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault' => false, 'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200' => false, 'JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault' => false, '\Jane\Component\JsonSchemaRuntime\Reference' => false];
+            return [
+                \JoliCode\Slack\Api\Model\BlocksItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsBotProfile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsBotProfileIcons::class => false,
+                \JoliCode\Slack\Api\Model\ObjsChannel::class => false,
+                \JoliCode\Slack\Api\Model\ObjsChannelPurpose::class => false,
+                \JoliCode\Slack\Api\Model\ObjsChannelTopic::class => false,
+                \JoliCode\Slack\Api\Model\ObjsComment::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversation::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationDisplayCounts::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationPurpose::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationSharesItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsConversationTopic::class => false,
+                \JoliCode\Slack\Api\Model\ObjsEnterpriseUser::class => false,
+                \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => false,
+                \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsFile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsFileShares::class => false,
+                \JoliCode\Slack\Api\Model\ObjsIcon::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessage::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemActionsItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMessageIcons::class => false,
+                \JoliCode\Slack\Api\Model\ObjsMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ObjsPaging::class => false,
+                \JoliCode\Slack\Api\Model\ObjsPrimaryOwner::class => false,
+                \JoliCode\Slack\Api\Model\ObjsReaction::class => false,
+                \JoliCode\Slack\Api\Model\ObjsReminder::class => false,
+                \JoliCode\Slack\Api\Model\ObjsResources::class => false,
+                \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ObjsSubteam::class => false,
+                \JoliCode\Slack\Api\Model\ObjsSubteamPrefs::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeam::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeamSsoProvider::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeamProfileField::class => false,
+                \JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUser::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUserTeamProfile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUserProfile::class => false,
+                \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsApprovedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRequestsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsArchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsConvertToPrivatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSearchGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetConversationPrefsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminConversationsUnarchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiAddAliasPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminEmojiRenamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsApprovedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsDenyPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminInviteRequestsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsOwnersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDescriptionPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddChannelsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsAddTeamsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsergroupsRemoveChannelsPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersAssignPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionInvalidatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetAdminPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetExpirationPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ApiTestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ApiTestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsPermissionsUsersRequestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AuthRevokeGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\AuthTestGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\AuthTestGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponse200Bot::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponse200BotIcons::class => false,
+                \JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsEndPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsEndPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsParticipantsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\CallsUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostEphemeralPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatPostMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200Message::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponse200MessageAttachmentsItem::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduleMessagePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem::class => false,
+                \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatUnfurlPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatUnfurlPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ChatUpdatePostResponse200Message::class => false,
+                \JoliCode\Slack\Api\Model\ChatUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsArchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsArchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsClosePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsJoinPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsKickPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsKickPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsLeavePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsLeavePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsListGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRenamePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRenamePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem0::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200MessagesItemItem1::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetPurposePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsSetTopicPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ConversationsUnarchivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DialogOpenGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DialogOpenGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndEndDndPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndEndDndPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndEndSnoozePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\DndTeamInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\DndTeamInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\EmojiListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\EmojiListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteShareGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRemoteUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesRevokePublicURLPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesSharedPublicURLPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesUploadPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesUploadPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\OauthAccessGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\OauthTokenGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\OauthTokenGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\OauthV2AccessGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\OauthV2AccessGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\PinsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\PinsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem0::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item0ItemsItem1::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponse200Item1::class => false,
+                \JoliCode\Slack\Api\Model\PinsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\PinsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\PinsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem1::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem2::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersCompletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersDeletePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RemindersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RemindersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team::class => false,
+                \JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\SearchMessagesGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\StarsAddPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\StarsAddPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem0::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem1::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem2::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem3::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem4::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponse200ItemsItemItem5::class => false,
+                \JoliCode\Slack\Api\Model\StarsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\StarsRemovePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem::class => false,
+                \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponse200LogsItem::class => false,
+                \JoliCode\Slack\Api\Model\TeamIntegrationLogsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200Profile::class => false,
+                \JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsCreatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsEnablePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsergroupsUsersUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersConversationsGetResponse200ResponseMetadata::class => false,
+                \JoliCode\Slack\Api\Model\UsersConversationsGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item0User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item1User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item2User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3User::class => false,
+                \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersInfoGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersListGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersListGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileGetGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileGetGetResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetActivePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetActivePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200Profile::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPresencePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\UsersSetPresencePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsOpenPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsOpenPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPublishPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPublishPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPushPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsPushPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\ViewsUpdatePostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\ViewsUpdatePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepCompletedPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsStepFailedPostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\WorkflowsUpdateStepPostResponsedefault::class => false,
+                \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+            ];
         }
 
         private function getNormalizer(string $normalizerClass)
