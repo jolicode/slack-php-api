@@ -51,6 +51,30 @@ Run the tests using the following script:
 make test
 ```
 
+You need a Slack Application OAuth token to run all the tests.
+
+Scope are at least:
+
+- channels:history
+- channels:read
+- channels:write
+- chat:write
+- files:read
+- files:write
+- im:history
+- im:read
+- reactions:read
+- search:read
+- stars:read
+- usergroups:read
+- users:read
+
+Set the token in `phpunit.xml`:
+
+```xml
+<server name="SLACK_TOKEN" value="edit_me" />
+```
+
 ## Standard code
 
 Use [PHP CS fixer](https://cs.symfony.com/) to make your code compliant with
