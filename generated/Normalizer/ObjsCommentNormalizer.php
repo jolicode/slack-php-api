@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsComment' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsComment::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsComment' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsComment::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -101,7 +101,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
                 $values_1 = [];
                 foreach ($data['reactions'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\ObjsReaction', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
                 }
                 $object->setReactions($values_1);
             } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
@@ -171,7 +171,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsComment' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsComment::class => false];
         }
     }
 } else {
@@ -184,12 +184,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsComment' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsComment::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsComment' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsComment::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -251,7 +251,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
                 $values_1 = [];
                 foreach ($data['reactions'] as $value_1) {
-                    $values_1[] = $this->denormalizer->denormalize($value_1, 'JoliCode\Slack\Api\Model\ObjsReaction', 'json', $context);
+                    $values_1[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
                 }
                 $object->setReactions($values_1);
             } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
@@ -324,7 +324,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsComment' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsComment::class => false];
         }
     }
 }

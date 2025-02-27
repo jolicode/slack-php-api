@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -57,7 +57,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('logins', $data) && null !== $data['logins']) {
                 $values = [];
                 foreach ($data['logins'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem::class, 'json', $context);
                 }
                 $object->setLogins($values);
             } elseif (\array_key_exists('logins', $data) && null === $data['logins']) {
@@ -69,7 +69,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-                $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\Slack\Api\Model\ObjsPaging', 'json', $context));
+                $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
             } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
                 $object->setPaging(null);
             }
@@ -93,7 +93,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class => false];
         }
     }
 } else {
@@ -106,12 +106,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' === $type;
+            return \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -129,7 +129,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('logins', $data) && null !== $data['logins']) {
                 $values = [];
                 foreach ($data['logins'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem', 'json', $context);
+                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200LoginsItem::class, 'json', $context);
                 }
                 $object->setLogins($values);
             } elseif (\array_key_exists('logins', $data) && null === $data['logins']) {
@@ -141,7 +141,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setOk(null);
             }
             if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-                $object->setPaging($this->denormalizer->denormalize($data['paging'], 'JoliCode\Slack\Api\Model\ObjsPaging', 'json', $context));
+                $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
             } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
                 $object->setPaging(null);
             }
@@ -168,7 +168,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200' => false];
+            return [\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200::class => false];
         }
     }
 }

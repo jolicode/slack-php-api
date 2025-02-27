@@ -25,7 +25,7 @@ class SlackErrorResponse extends \Exception
 
         $this->responseMetadata = $responseMetadata;
 
-        parent::__construct(sprintf('Slack returned error code "%s"', $errorCode), 0, $previous);
+        parent::__construct(\sprintf('Slack returned error code "%s"', $errorCode), 0, $previous);
     }
 
     public function getErrorCode()

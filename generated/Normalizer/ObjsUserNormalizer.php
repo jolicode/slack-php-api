@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsUser' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsUser::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsUser' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsUser::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -71,7 +71,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setDeleted(null);
             }
             if (\array_key_exists('enterprise_user', $data) && null !== $data['enterprise_user']) {
-                $object->setEnterpriseUser($this->denormalizer->denormalize($data['enterprise_user'], 'JoliCode\Slack\Api\Model\ObjsEnterpriseUser', 'json', $context));
+                $object->setEnterpriseUser($this->denormalizer->denormalize($data['enterprise_user'], \JoliCode\Slack\Api\Model\ObjsEnterpriseUser::class, 'json', $context));
             } elseif (\array_key_exists('enterprise_user', $data) && null === $data['enterprise_user']) {
                 $object->setEnterpriseUser(null);
             }
@@ -156,7 +156,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPresence(null);
             }
             if (\array_key_exists('profile', $data) && null !== $data['profile']) {
-                $object->setProfile($this->denormalizer->denormalize($data['profile'], 'JoliCode\Slack\Api\Model\ObjsUserProfile', 'json', $context));
+                $object->setProfile($this->denormalizer->denormalize($data['profile'], \JoliCode\Slack\Api\Model\ObjsUserProfile::class, 'json', $context));
             } elseif (\array_key_exists('profile', $data) && null === $data['profile']) {
                 $object->setProfile(null);
             }
@@ -176,7 +176,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setTeamId(null);
             }
             if (\array_key_exists('team_profile', $data) && null !== $data['team_profile']) {
-                $object->setTeamProfile($this->denormalizer->denormalize($data['team_profile'], 'JoliCode\Slack\Api\Model\ObjsUserTeamProfile', 'json', $context));
+                $object->setTeamProfile($this->denormalizer->denormalize($data['team_profile'], \JoliCode\Slack\Api\Model\ObjsUserTeamProfile::class, 'json', $context));
             } elseif (\array_key_exists('team_profile', $data) && null === $data['team_profile']) {
                 $object->setTeamProfile(null);
             }
@@ -309,7 +309,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsUser' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsUser::class => false];
         }
     }
 } else {
@@ -322,12 +322,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsUser' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsUser::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsUser' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsUser::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -359,7 +359,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setDeleted(null);
             }
             if (\array_key_exists('enterprise_user', $data) && null !== $data['enterprise_user']) {
-                $object->setEnterpriseUser($this->denormalizer->denormalize($data['enterprise_user'], 'JoliCode\Slack\Api\Model\ObjsEnterpriseUser', 'json', $context));
+                $object->setEnterpriseUser($this->denormalizer->denormalize($data['enterprise_user'], \JoliCode\Slack\Api\Model\ObjsEnterpriseUser::class, 'json', $context));
             } elseif (\array_key_exists('enterprise_user', $data) && null === $data['enterprise_user']) {
                 $object->setEnterpriseUser(null);
             }
@@ -444,7 +444,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setPresence(null);
             }
             if (\array_key_exists('profile', $data) && null !== $data['profile']) {
-                $object->setProfile($this->denormalizer->denormalize($data['profile'], 'JoliCode\Slack\Api\Model\ObjsUserProfile', 'json', $context));
+                $object->setProfile($this->denormalizer->denormalize($data['profile'], \JoliCode\Slack\Api\Model\ObjsUserProfile::class, 'json', $context));
             } elseif (\array_key_exists('profile', $data) && null === $data['profile']) {
                 $object->setProfile(null);
             }
@@ -464,7 +464,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 $object->setTeamId(null);
             }
             if (\array_key_exists('team_profile', $data) && null !== $data['team_profile']) {
-                $object->setTeamProfile($this->denormalizer->denormalize($data['team_profile'], 'JoliCode\Slack\Api\Model\ObjsUserTeamProfile', 'json', $context));
+                $object->setTeamProfile($this->denormalizer->denormalize($data['team_profile'], \JoliCode\Slack\Api\Model\ObjsUserTeamProfile::class, 'json', $context));
             } elseif (\array_key_exists('team_profile', $data) && null === $data['team_profile']) {
                 $object->setTeamProfile(null);
             }
@@ -600,7 +600,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsUser' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsUser::class => false];
         }
     }
 }

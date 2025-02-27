@@ -34,12 +34,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsFile' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsFile::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsFile' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsFile::class === \get_class($data);
         }
 
         public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
@@ -258,14 +258,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
                 $values_4 = [];
                 foreach ($data['reactions'] as $value_4) {
-                    $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\Slack\Api\Model\ObjsReaction', 'json', $context);
+                    $values_4[] = $this->denormalizer->denormalize($value_4, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
                 }
                 $object->setReactions($values_4);
             } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
                 $object->setReactions(null);
             }
             if (\array_key_exists('shares', $data) && null !== $data['shares']) {
-                $object->setShares($this->denormalizer->denormalize($data['shares'], 'JoliCode\Slack\Api\Model\ObjsFileShares', 'json', $context));
+                $object->setShares($this->denormalizer->denormalize($data['shares'], \JoliCode\Slack\Api\Model\ObjsFileShares::class, 'json', $context));
             } elseif (\array_key_exists('shares', $data) && null === $data['shares']) {
                 $object->setShares(null);
             }
@@ -703,7 +703,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsFile' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsFile::class => false];
         }
     }
 } else {
@@ -716,12 +716,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
         {
-            return 'JoliCode\Slack\Api\Model\ObjsFile' === $type;
+            return \JoliCode\Slack\Api\Model\ObjsFile::class === $type;
         }
 
         public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
         {
-            return \is_object($data) && 'JoliCode\Slack\Api\Model\ObjsFile' === \get_class($data);
+            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsFile::class === \get_class($data);
         }
 
         public function denormalize($data, $type, $format = null, array $context = [])
@@ -940,14 +940,14 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
                 $values_4 = [];
                 foreach ($data['reactions'] as $value_4) {
-                    $values_4[] = $this->denormalizer->denormalize($value_4, 'JoliCode\Slack\Api\Model\ObjsReaction', 'json', $context);
+                    $values_4[] = $this->denormalizer->denormalize($value_4, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
                 }
                 $object->setReactions($values_4);
             } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
                 $object->setReactions(null);
             }
             if (\array_key_exists('shares', $data) && null !== $data['shares']) {
-                $object->setShares($this->denormalizer->denormalize($data['shares'], 'JoliCode\Slack\Api\Model\ObjsFileShares', 'json', $context));
+                $object->setShares($this->denormalizer->denormalize($data['shares'], \JoliCode\Slack\Api\Model\ObjsFileShares::class, 'json', $context));
             } elseif (\array_key_exists('shares', $data) && null === $data['shares']) {
                 $object->setShares(null);
             }
@@ -1388,7 +1388,7 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
         public function getSupportedTypes(?string $format = null): array
         {
-            return ['JoliCode\Slack\Api\Model\ObjsFile' => false];
+            return [\JoliCode\Slack\Api\Model\ObjsFile::class => false];
         }
     }
 }
