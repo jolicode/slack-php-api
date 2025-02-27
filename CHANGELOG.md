@@ -1,5 +1,10 @@
 # Changes between versions
 
+## Unreleased (2025)
+
+* Upgrade JanePHP generated code
+* Improve the Cursor paginated methods, add missing and remove obsoletes
+
 ## 4.7.1 (2024-06-28)
 
 * Upgrade JanePHP generated code

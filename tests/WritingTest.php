@@ -88,6 +88,10 @@ class WritingTest extends SlackTokenDependentTest
             'text' => 'First message',
         ]);
 
+        if ($_SERVER['CI'] ?? false) {
+            sleep(5); // @see https://github.com/jolicode/slack-php-api/issues/163
+        }
+
         $response2 = $client->chatPostMessage([
             'username' => 'User B',
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
@@ -150,6 +154,10 @@ class WritingTest extends SlackTokenDependentTest
 
         $ts = $response->getTs();
 
+        if ($_SERVER['CI'] ?? false) {
+            sleep(5); // @see https://github.com/jolicode/slack-php-api/issues/163
+        }
+        
         $markResponse = $client->conversationsMark([
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
             'ts' => $ts,

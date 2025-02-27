@@ -62,6 +62,10 @@ class ClientTest extends SlackTokenDependentTest
             $getterMethod = 'get' . $getterMethod;
             $method = lcfirst(str_replace('iterate', '', $methodName));
 
+            if ($_SERVER['CI'] ?? false) {
+                sleep(5); // @see https://github.com/jolicode/slack-php-api/issues/163
+            }
+
             $responseFromMethod = $client->{$method}($this->argumentsForCursorPaginationRequest($method, $client));
 
             self::assertTrue(
