@@ -89,7 +89,7 @@ class WritingTest extends SlackTokenDependentTest
         ]);
 
         if ($_SERVER['CI'] ?? false) {
-            sleep(5); // @see https://github.com/jolicode/slack-php-api/issues/163
+            sleep(10); // @see https://github.com/jolicode/slack-php-api/issues/163
         }
 
         $response2 = $client->chatPostMessage([
@@ -155,9 +155,9 @@ class WritingTest extends SlackTokenDependentTest
         $ts = $response->getTs();
 
         if ($_SERVER['CI'] ?? false) {
-            sleep(5); // @see https://github.com/jolicode/slack-php-api/issues/163
+            sleep(10); // @see https://github.com/jolicode/slack-php-api/issues/163
         }
-        
+
         $markResponse = $client->conversationsMark([
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
             'ts' => $ts,

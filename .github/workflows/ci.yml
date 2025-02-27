@@ -70,4 +70,4 @@ jobs:
               env:
                   SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
                   SLACK_TEST_CHANNEL: ${{ secrets.SLACK_TEST_CHANNEL }}
-                  CI: ${{ vars.CI }}
+                  CI: true
