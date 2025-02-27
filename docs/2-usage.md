@@ -77,9 +77,6 @@ do {
 } while (!empty($cursor));
 ```
 
->Note: the virtual methods are not yet documented with PHPDoc so your IDE will
-not autocomplete them.
-
 ## Concrete examples
 
 Here are some real-life examples of interacting with the SDK:
