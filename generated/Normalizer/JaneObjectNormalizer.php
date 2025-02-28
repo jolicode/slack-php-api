@@ -611,9 +611,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
             \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => FilesCommentsDeletePostResponsedefaultNormalizer::class,
 
+            \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200::class => FilesCompleteUploadExternalPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault::class => FilesCompleteUploadExternalPostResponsedefaultNormalizer::class,
+
             \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => FilesDeletePostResponse200Normalizer::class,
 
             \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => FilesDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponse200::class => FilesGetUploadURLExternalGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponsedefault::class => FilesGetUploadURLExternalGetResponsedefaultNormalizer::class,
 
             \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => FilesInfoGetResponse200Normalizer::class,
 
@@ -1248,8 +1256,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 \JoliCode\Slack\Api\Model\EmojiListGetResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200::class => false,
                 \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => false,
                 \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => false,
                 \JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false,
@@ -2012,9 +2024,17 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
 
             \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => FilesCommentsDeletePostResponsedefaultNormalizer::class,
 
+            \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200::class => FilesCompleteUploadExternalPostResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault::class => FilesCompleteUploadExternalPostResponsedefaultNormalizer::class,
+
             \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => FilesDeletePostResponse200Normalizer::class,
 
             \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => FilesDeletePostResponsedefaultNormalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponse200::class => FilesGetUploadURLExternalGetResponse200Normalizer::class,
+
+            \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponsedefault::class => FilesGetUploadURLExternalGetResponsedefaultNormalizer::class,
 
             \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => FilesInfoGetResponse200Normalizer::class,
 
@@ -2652,8 +2672,12 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
                 \JoliCode\Slack\Api\Model\EmojiListGetResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponse200::class => false,
                 \JoliCode\Slack\Api\Model\FilesCommentsDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesDeletePostResponse200::class => false,
                 \JoliCode\Slack\Api\Model\FilesDeletePostResponsedefault::class => false,
+                \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponse200::class => false,
+                \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesInfoGetResponse200::class => false,
                 \JoliCode\Slack\Api\Model\FilesInfoGetResponsedefault::class => false,
                 \JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false,
