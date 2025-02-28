@@ -54,11 +54,23 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('file_id', $data) && null !== $data['file_id']) {
+                $object->setFileId($data['file_id']);
+                unset($data['file_id']);
+            } elseif (\array_key_exists('file_id', $data) && null === $data['file_id']) {
+                $object->setFileId(null);
+            }
             if (\array_key_exists('ok', $data) && null !== $data['ok']) {
                 $object->setOk($data['ok']);
                 unset($data['ok']);
             } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
                 $object->setOk(null);
+            }
+            if (\array_key_exists('upload_url', $data) && null !== $data['upload_url']) {
+                $object->setUploadUrl($data['upload_url']);
+                unset($data['upload_url']);
+            } elseif (\array_key_exists('upload_url', $data) && null === $data['upload_url']) {
+                $object->setUploadUrl(null);
             }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -72,7 +84,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
         {
             $data = [];
+            if ($object->isInitialized('fileId') && null !== $object->getFileId()) {
+                $data['file_id'] = $object->getFileId();
+            }
             $data['ok'] = $object->getOk();
+            if ($object->isInitialized('uploadUrl') && null !== $object->getUploadUrl()) {
+                $data['upload_url'] = $object->getUploadUrl();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;
@@ -117,11 +135,23 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
             if (null === $data || false === \is_array($data)) {
                 return $object;
             }
+            if (\array_key_exists('file_id', $data) && null !== $data['file_id']) {
+                $object->setFileId($data['file_id']);
+                unset($data['file_id']);
+            } elseif (\array_key_exists('file_id', $data) && null === $data['file_id']) {
+                $object->setFileId(null);
+            }
             if (\array_key_exists('ok', $data) && null !== $data['ok']) {
                 $object->setOk($data['ok']);
                 unset($data['ok']);
             } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
                 $object->setOk(null);
+            }
+            if (\array_key_exists('upload_url', $data) && null !== $data['upload_url']) {
+                $object->setUploadUrl($data['upload_url']);
+                unset($data['upload_url']);
+            } elseif (\array_key_exists('upload_url', $data) && null === $data['upload_url']) {
+                $object->setUploadUrl(null);
             }
             foreach ($data as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
@@ -138,7 +168,13 @@ if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR
         public function normalize($object, $format = null, array $context = [])
         {
             $data = [];
+            if ($object->isInitialized('fileId') && null !== $object->getFileId()) {
+                $data['file_id'] = $object->getFileId();
+            }
             $data['ok'] = $object->getOk();
+            if ($object->isInitialized('uploadUrl') && null !== $object->getUploadUrl()) {
+                $data['upload_url'] = $object->getUploadUrl();
+            }
             foreach ($object as $key => $value) {
                 if (preg_match('/.*/', (string) $key)) {
                     $data[$key] = $value;

@@ -20,13 +20,34 @@ class FilesGetUploadURLExternalGetResponse200 extends \ArrayObject
      */
     protected $initialized = [];
     /**
+     * @var string|null
+     */
+    protected $fileId;
+    /**
      * @var bool|null
      */
     protected $ok;
+    /**
+     * @var string|null
+     */
+    protected $uploadUrl;
 
     public function isInitialized($property): bool
     {
         return \array_key_exists($property, $this->initialized);
+    }
+
+    public function getFileId(): ?string
+    {
+        return $this->fileId;
+    }
+
+    public function setFileId(?string $fileId): self
+    {
+        $this->initialized['fileId'] = true;
+        $this->fileId = $fileId;
+
+        return $this;
     }
 
     public function getOk(): ?bool
@@ -38,6 +59,19 @@ class FilesGetUploadURLExternalGetResponse200 extends \ArrayObject
     {
         $this->initialized['ok'] = true;
         $this->ok = $ok;
+
+        return $this;
+    }
+
+    public function getUploadUrl(): ?string
+    {
+        return $this->uploadUrl;
+    }
+
+    public function setUploadUrl(?string $uploadUrl): self
+    {
+        $this->initialized['uploadUrl'] = true;
+        $this->uploadUrl = $uploadUrl;
 
         return $this;
     }

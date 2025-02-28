@@ -16856,11 +16856,11 @@
                         "type": "string"
                     },
                     {
-                        "description": "Array of file ids and their corresponding (optional) titles.",
+                        "description": "JSON-encoded array of file ids and their corresponding (optional) titles.",
                         "in": "query",
                         "name": "files",
                         "required": true,
-                        "type": "array"
+                        "type": "string"
                     },
                     {
                         "description": "The message text introducing the file in specified channels.",
@@ -17115,8 +17115,14 @@
                             "additionalProperties": true,
                             "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
                             "properties": {
+                                "file_id": {
+                                    "type": "string"
+                                },
                                 "ok": {
                                     "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "upload_url": {
+                                    "type": "string"
                                 }
                             },
                             "required": [
