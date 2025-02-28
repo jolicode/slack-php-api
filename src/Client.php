@@ -14,10 +14,12 @@ declare(strict_types=1);
 namespace JoliCode\Slack;
 
 use JoliCode\Slack\Api\Client as ApiClient;
+use JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponse200;
 use JoliCode\Slack\Api\Model\ObjsConversation;
 use JoliCode\Slack\Api\Model\ObjsMessage;
 use JoliCode\Slack\Api\Model\ObjsSubteam;
 use JoliCode\Slack\Api\Model\ObjsUser;
+use JoliCode\Slack\CustomRoutes\Model\FilesUploadToURLExternalPostResponse200;
 
 /**
  * @method iterable<ObjsMessage>      iterateConversationsHistory(array $arguments = [])
@@ -75,5 +77,51 @@ class Client extends ApiClient
 
             $cursor = $response->getResponseMetadata() ? $response->getResponseMetadata()->getNextCursor() : '';
         } while (!empty($cursor));
+    }
+
+    public function FileUploadToURLExternal(string $uploadUri, array $formParameters = [], string $fetch = self::FETCH_OBJECT): \Psr\Http\Message\ResponseInterface
+    {
+        return $this->executeEndpoint(new CustomRoutes\Endpoint\FilesUploadToURLExternal($uploadUri, $formParameters), $fetch);
+    }
+
+    /**
+     * In following with additions to the Slack Web API, filesUploadV2 is being provided as a convenience wrapper
+     * around the new file upload methods.
+     */
+    public function filesUploadV2(string $fileWithPath, string $channelId): void
+    {
+        $filename = basename($fileWithPath);
+
+        // Step 1: Get an upload url
+        /** @var FilesGetUploadURLExternalGetResponse200 $response */
+        $response = $this->filesGetUploadURLExternal([
+            'filename' => $filename,
+            'length' => filesize($fileWithPath),
+        ]);
+
+        // Save values for confirming upload
+        $fileId = $response->getFileId();
+        $uploadUrl = $response->getUploadUrl();
+
+        // Step 2: Send file in post request
+        /** @var FilesUploadToURLExternalPostResponse200 $response */
+        $response = $this->FileUploadToURLExternal($uploadUrl, [
+            'filename' => $filename,
+            'content' => file_get_contents(__DIR__ . '/resources/test-image.png'),
+        ]);
+
+        // Step 3: Confirm upload
+
+        $filesArr = [
+            [
+                'id' => $fileId,
+                'title' => $filename,
+            ],
+        ];
+
+        $response = $this->filesCompleteUploadExternal([
+            'channel_id' => $channelId,
+            'files' => json_encode($filesArr),
+        ]);
     }
 }

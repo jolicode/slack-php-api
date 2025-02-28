@@ -16,6 +16,7 @@ namespace JoliCode\Slack\Tests;
 use JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200;
 use JoliCode\Slack\Api\Model\FilesGetUploadURLExternalGetResponse200;
 use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
+use JoliCode\Slack\CustomRoutes\Model\FilesUploadToURLExternalPostResponse200;
 use Nyholm\Psr7\Stream;
 
 class WritingTest extends SlackTokenDependentTest
@@ -141,6 +142,67 @@ class WritingTest extends SlackTokenDependentTest
 
         $this->assertNotEmpty($response->getUploadUrl());
         $this->assertNotEmpty($response->getFileId());
+    }
+
+    public function testCompleteUploadExternal(): void
+    {
+        /* Step 1: Get the upload url */
+        $client = $this->createClient();
+
+        $filename = 'test-image.png';
+
+        /** @var FilesGetUploadURLExternalGetResponse200 $response */
+        $response = $client->filesGetUploadURLExternal([
+            'filename' => $filename,
+            'length' => filesize(__DIR__ . '/resources/test-image.png'),
+        ]);
+
+        $this->assertTrue($response->getOk());
+
+        $this->assertNotEmpty($response->getUploadUrl());
+        $this->assertNotEmpty($response->getFileId());
+
+        // Save values for confirming upload
+        $fileId = $response->getFileId();
+        $uploadUrl = $response->getUploadUrl();
+
+        /* Step 2: Send file to slack with post method */
+
+        /** @var FilesUploadToURLExternalPostResponse200 $response */
+        $response = $client->FileUploadToURLExternal($uploadUrl, [
+            'filename' => $filename,
+            'content' => file_get_contents(__DIR__ . '/resources/test-image.png'), // , 'r'),
+        ]);
+
+        //        /** @var FilesUploadToURLExternalPostResponse200 $response */ 07221997
+        //        $response = $client->FileUploadToURLExternal($uploadUrl, [
+        //            'filename' => $filename,
+        //            'content' => fopen(__DIR__ . '/resources/test-image.png', 'r'),
+        //        ]);
+
+        $this->assertTrue($response->getOk());
+
+        /* Step 3: confirm upload */
+        $filesArr = [
+            [
+                'id' => $fileId,
+                'title' => $filename,
+            ],
+        ];
+
+        $response = $client->filesCompleteUploadExternal([
+            'channel_id' => $_SERVER['SLACK_TEST_CHANNEL'],
+            'files' => json_encode($filesArr),
+        ]);
+
+        $this->assertTrue($response->getOk());
+
+        $expected = [
+            'id' => $fileId,
+            'title' => $filename,
+        ];
+
+        $this->assertSame($expected, $response['files']);
     }
 
     public function testScheduleMessage(): void
