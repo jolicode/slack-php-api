@@ -22,8 +22,8 @@ class AdminInviteRequestsApprove extends \JoliCode\Slack\Api\Runtime\Client\Base
      *
      * @param array $formParameters {
      *
-     * @var string $invite_request_id ID of the request to invite
-     * @var string $team_id ID for the workspace where the invite request was made.
+     * @var string $team_id ID for the workspace where the invite request was made
+     * @var string $invite_request_id ID of the request to invite.
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminInviteRequestsApprove extends \JoliCode\Slack\Api\Runtime\Client\Base
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['invite_request_id', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'invite_request_id']);
         $optionsResolver->setRequired(['invite_request_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('invite_request_id', ['string']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('invite_request_id', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminInviteRequestsApprove extends \JoliCode\Slack\Api\Runtime\Client\Base
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

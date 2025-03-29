@@ -22,8 +22,8 @@ class AdminTeamsSettingsSetDiscoverability extends \JoliCode\Slack\Api\Runtime\C
      *
      * @param array $formParameters {
      *
+     * @var string $team_id the ID of the workspace to set discoverability on
      * @var string $discoverability This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.
-     * @var string $team_id The ID of the workspace to set discoverability on.
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsSettingsSetDiscoverability extends \JoliCode\Slack\Api\Runtime\C
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['discoverability', 'team_id']);
-        $optionsResolver->setRequired(['discoverability', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'discoverability']);
+        $optionsResolver->setRequired(['team_id', 'discoverability']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('discoverability', ['string']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('discoverability', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminTeamsSettingsSetDiscoverability extends \JoliCode\Slack\Api\Runtime\C
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

@@ -22,8 +22,8 @@ class FilesRemoteInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
      *
      * @param array $queryParameters {
      *
-     * @var string $external_id creator defined GUID for the file
      * @var string $file specify a file by providing its ID
+     * @var string $external_id creator defined GUID for the file
      * @var string $token Authentication token. Requires scope: `remote_files:read`
      *             }
      */
@@ -60,11 +60,11 @@ class FilesRemoteInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['external_id', 'file', 'token']);
+        $optionsResolver->setDefined(['file', 'external_id', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('external_id', ['string']);
         $optionsResolver->addAllowedTypes('file', ['string']);
+        $optionsResolver->addAllowedTypes('external_id', ['string']);
         $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;

@@ -22,8 +22,8 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      *
      * @param array $formParameters {
      *
-     * @var bool   $is_private Create a private channel instead of a public one
      * @var string $name Name of the public or private channel to create
+     * @var bool   $is_private Create a private channel instead of a public one
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['is_private', 'name']);
+        $optionsResolver->setDefined(['name', 'is_private']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('is_private', ['bool']);
         $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('is_private', ['bool']);
 
         return $optionsResolver;
     }

@@ -61,7 +61,7 @@ class AdminEmojiRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     {
         $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['name', 'new_name', 'token']);
-        $optionsResolver->setRequired(['name', 'new_name']);
+        $optionsResolver->setRequired(['name', 'new_name', 'token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('name', ['string']);
         $optionsResolver->addAllowedTypes('new_name', ['string']);

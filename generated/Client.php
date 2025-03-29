@@ -44,9 +44,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var string $enterprise_id
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $team_id
      * @var string $token Authentication token. Requires scope: `admin.apps:read`
      *             }
@@ -65,8 +65,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var string $team_id
      * @var string $token Authentication token. Requires scope: `admin.apps:read`
      *             }
@@ -109,9 +109,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var string $enterprise_id
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $team_id
      * @var string $token Authentication token. Requires scope: `admin.apps:read`
      *             }
@@ -359,8 +359,8 @@ class Client extends Runtime\Client\Client
      * @param array $formParameters {
      *
      * @var string $channel_id the channel to link this group to
-     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel.
      * @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
+     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel.
      * @var string $token Authentication token. Requires scope: `admin.conversations:write`
      *             }
      *
@@ -398,8 +398,8 @@ class Client extends Runtime\Client\Client
      * @param array $formParameters {
      *
      * @var string $channel_id the channel to remove the linked group from
-     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel.
      * @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
+     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel.
      * @var string $token Authentication token. Requires scope: `admin.conversations:write`
      *             }
      *
@@ -534,8 +534,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $alias_for the alias of the emoji
      * @var string $name The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     * @var string $alias_for the alias of the emoji
      * @var string $token Authentication token. Requires scope: `admin.teams:write`
      *             }
      *
@@ -609,8 +609,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $invite_request_id ID of the request to invite
-     * @var string $team_id ID for the workspace where the invite request was made.
+     * @var string $team_id ID for the workspace where the invite request was made
+     * @var string $invite_request_id ID of the request to invite.
      *             }
      *
      * @param array $headerParameters {
@@ -632,9 +632,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var string $team_id ID for the workspace where the invite requests were made
      * @var string $cursor Value of the `next_cursor` field sent as part of the previous API response
      * @var int    $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive
-     * @var string $team_id ID for the workspace where the invite requests were made.
      *             }
      *
      * @param array $headerParameters {
@@ -656,9 +656,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var string $team_id ID for the workspace where the invite requests were made
      * @var string $cursor Value of the `next_cursor` field sent as part of the previous api response
      * @var int    $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive
-     * @var string $team_id ID for the workspace where the invite requests were made.
      *             }
      *
      * @param array $headerParameters {
@@ -680,8 +680,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $invite_request_id ID of the request to invite
-     * @var string $team_id ID for the workspace where the invite request was made.
+     * @var string $team_id ID for the workspace where the invite request was made
+     * @var string $invite_request_id ID of the request to invite.
      *             }
      *
      * @param array $headerParameters {
@@ -703,9 +703,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var string $team_id ID for the workspace where the invite requests were made
      * @var string $cursor Value of the `next_cursor` field sent as part of the previous API response
      * @var int    $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000, both inclusive
-     * @var string $team_id ID for the workspace where the invite requests were made.
      *             }
      *
      * @param array $headerParameters {
@@ -727,8 +727,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit the maximum number of items to return
+     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var string $team_id
      * @var string $token Authentication token. Requires scope: `admin.teams:read`
      *             }
@@ -772,8 +772,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit The maximum number of items to return. Must be between 1 - 100 both inclusive.
+     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.
      *             }
      *
      * @param array $headerParameters {
@@ -796,8 +796,8 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $team_id
+     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $token Authentication token. Requires scope: `admin.teams:read`
      *             }
      *
@@ -837,8 +837,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $channel_ids an array of channel IDs
      * @var string $team_id ID for the workspace to set the default channel for
+     * @var string $channel_ids an array of channel IDs
      * @var string $token Authentication token. Requires scope: `admin.teams:write`
      *             }
      *
@@ -856,8 +856,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $description the new description for the workspace
-     * @var string $team_id ID for the workspace to set the description for.
+     * @var string $team_id ID for the workspace to set the description for
+     * @var string $description The new description for the workspace.
      *             }
      *
      * @param array $headerParameters {
@@ -879,8 +879,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
+     * @var string $team_id the ID of the workspace to set discoverability on
      * @var string $discoverability This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.
-     * @var string $team_id The ID of the workspace to set discoverability on.
      *             }
      *
      * @param array $headerParameters {
@@ -921,8 +921,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $name the new name of the workspace
-     * @var string $team_id ID for the workspace to set the name for.
+     * @var string $team_id ID for the workspace to set the name for
+     * @var string $name The new name of the workspace.
      *             }
      *
      * @param array $headerParameters {
@@ -1095,9 +1095,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var string $team_id the ID (`T1234`) of the workspace
      * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit Limit for how many users to be retrieved per page
-     * @var string $team_id The ID (`T1234`) of the workspace.
      *             }
      *
      * @param array $headerParameters {
@@ -1142,8 +1142,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var int    $session_id
      * @var string $team_id ID of the team that the session belongs to
+     * @var int    $session_id
      *             }
      *
      * @param array $headerParameters {
@@ -1300,8 +1300,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $cursor
      * @var string $event_context
+     * @var string $cursor
      * @var int    $limit
      *             }
      *
@@ -1536,8 +1536,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var int    $duration Call duration in seconds
      * @var string $id `id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.
+     * @var int    $duration Call duration in seconds
      *             }
      *
      * @param array $headerParameters {
@@ -1971,8 +1971,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var bool   $is_private Create a private channel instead of a public one
      * @var string $name Name of the public or private channel to create
+     * @var bool   $is_private Create a private channel instead of a public one
      *             }
      *
      * @param array $headerParameters {
@@ -2479,6 +2479,33 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Finishes an upload started with files.completeUploadExternal.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $blocks A JSON-based array of structured rich text blocks, presented as a URL-encoded string. If the `initial_comment` field is provided, the `blocks` field is ignored.
+     * @var string $channel_id Channel ID where the file will be shared. If not specified, the file will remain private.
+     * @var string $channels comma-separated list of channel IDs where the file will be shared
+     * @var string $files an array of file objects, each containing the `id` of the file to be completed
+     * @var string $initial_comment the message text introducing the file in specified channels
+     * @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead. Also, make sure to provide only one channel when using `thread_ts`.
+     *             }
+     *
+     * @param array $formParameters {
+     *
+     * @var string $token Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\FilesCompleteUploadExternalPostResponse200|Model\FilesCompleteUploadExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesCompleteUploadExternal(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\FilesCompleteUploadExternal($queryParameters, $formParameters), $fetch);
+    }
+
+    /**
      * Deletes a file.
      *
      * @param array $formParameters {
@@ -2498,6 +2525,31 @@ class Client extends Runtime\Client\Client
     public function filesDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\FilesDelete($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Gets a URL for an edge external file upload.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $alt_txt description of image for screen-reader
+     * @var string $filename name of the file being uploaded
+     * @var int    $length size in bytes of the file being uploaded
+     * @var string $snippet_type Syntax type of the snippet being uploaded.
+     *             }
+     *
+     * @param array $formParameters {
+     *
+     * @var string $token Authentication token. Requires scope: `files:write`
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\FilesGetUploadURLExternalPostResponse200|Model\FilesGetUploadURLExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesGetUploadUrlExternal(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\FilesGetUploadUrlExternal($queryParameters, $formParameters), $fetch);
     }
 
     /**
@@ -2575,8 +2627,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
-     * @var string $external_id creator defined GUID for the file
      * @var string $file specify a file by providing its ID
+     * @var string $external_id creator defined GUID for the file
      * @var string $token Authentication token. Requires scope: `remote_files:read`
      *             }
      *
@@ -2616,8 +2668,8 @@ class Client extends Runtime\Client\Client
      *
      * @param array $formParameters {
      *
-     * @var string $external_id creator defined GUID for the file
      * @var string $file specify a file by providing its ID
+     * @var string $external_id creator defined GUID for the file
      * @var string $token Authentication token. Requires scope: `remote_files:write`
      *             }
      *
@@ -2636,8 +2688,8 @@ class Client extends Runtime\Client\Client
      * @param array $queryParameters {
      *
      * @var string $channels comma-separated list of channel IDs where the file will be shared
-     * @var string $external_id The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.
      * @var string $file Specify a file registered with Slack by providing its ID. Either this field or `external_id` or both are required.
+     * @var string $external_id The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.
      * @var string $token Authentication token. Requires scope: `remote_files:share`
      *             }
      *
@@ -3558,10 +3610,9 @@ class Client extends Runtime\Client\Client
      *
      * @param array $queryParameters {
      *
+     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.
      * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
      * @var bool   $include_locale Set this to `true` to receive the locale for users. Defaults to `false`
-     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.
-     * @var string $team_id Encoded team id to list users in, required if org token is used
      * @var string $token Authentication token. Requires scope: `users:read`
      *             }
      *

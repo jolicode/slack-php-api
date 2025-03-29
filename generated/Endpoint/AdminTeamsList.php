@@ -22,8 +22,8 @@ class AdminTeamsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $queryParameters {
      *
-     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit The maximum number of items to return. Must be between 1 - 100 both inclusive.
+     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'limit']);
+        $optionsResolver->setDefined(['limit', 'cursor']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('cursor', ['string']);
         $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminTeamsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

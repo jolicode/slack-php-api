@@ -23,8 +23,8 @@ class AdminConversationsRestrictAccessRemoveGroup extends \JoliCode\Slack\Api\Ru
      * @param array $formParameters {
      *
      * @var string $channel_id the channel to remove the linked group from
-     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel.
      * @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
+     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel.
      * @var string $token Authentication token. Requires scope: `admin.conversations:write`
      *             }
      */
@@ -61,12 +61,12 @@ class AdminConversationsRestrictAccessRemoveGroup extends \JoliCode\Slack\Api\Ru
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['channel_id', 'group_id', 'team_id', 'token']);
-        $optionsResolver->setRequired(['channel_id', 'group_id', 'team_id']);
+        $optionsResolver->setDefined(['channel_id', 'team_id', 'group_id', 'token']);
+        $optionsResolver->setRequired(['channel_id', 'team_id', 'group_id', 'token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('channel_id', ['string']);
-        $optionsResolver->addAllowedTypes('group_id', ['string']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('group_id', ['string']);
         $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;

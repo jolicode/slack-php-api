@@ -22,8 +22,8 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
      *
      * @param array $formParameters {
      *
-     * @var string $name the new name of the workspace
-     * @var string $team_id ID for the workspace to set the name for.
+     * @var string $team_id ID for the workspace to set the name for
+     * @var string $name The new name of the workspace.
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['name', 'team_id']);
-        $optionsResolver->setRequired(['name', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'name']);
+        $optionsResolver->setRequired(['team_id', 'name']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('name', ['string']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('name', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

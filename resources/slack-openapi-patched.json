@@ -71,6 +71,12 @@
             "title": "File ID",
             "type": "string"
         },
+        "defs_get_upload_url_external": {
+            "description": "URL where the file should be uploaded.",
+            "example": "https://files.slack.com/upload/v1/ABC123...",
+            "pattern": "^https://files\\.slack\\.com/upload/v1/[A-Z0-9]+$",
+            "type": "string"
+        },
         "defs_group_id": {
             "pattern": "^[G][A-Z0-9]{8,}$",
             "title": "Private Channel ID",
@@ -2506,6 +2512,12 @@
                 "operationId": "admin_apps_approved_list",
                 "parameters": [
                     {
+                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                        "in": "query",
+                        "name": "limit",
+                        "type": "integer"
+                    },
+                    {
                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
                         "in": "query",
                         "name": "cursor",
@@ -2515,12 +2527,6 @@
                         "in": "query",
                         "name": "enterprise_id",
                         "type": "string"
-                    },
-                    {
-                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
-                        "in": "query",
-                        "name": "limit",
-                        "type": "integer"
                     },
                     {
                         "in": "query",
@@ -2655,16 +2661,16 @@
                 "operationId": "admin_apps_requests_list",
                 "parameters": [
                     {
-                        "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
-                        "in": "query",
-                        "name": "cursor",
-                        "type": "string"
-                    },
-                    {
                         "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
                         "in": "query",
                         "name": "limit",
                         "type": "integer"
+                    },
+                    {
+                        "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
+                        "in": "query",
+                        "name": "cursor",
+                        "type": "string"
                     },
                     {
                         "in": "query",
@@ -2909,6 +2915,12 @@
                 "operationId": "admin_apps_restricted_list",
                 "parameters": [
                     {
+                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                        "in": "query",
+                        "name": "limit",
+                        "type": "integer"
+                    },
+                    {
                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page",
                         "in": "query",
                         "name": "cursor",
@@ -2918,12 +2930,6 @@
                         "in": "query",
                         "name": "enterprise_id",
                         "type": "string"
-                    },
-                    {
-                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
-                        "in": "query",
-                        "name": "limit",
-                        "type": "integer"
                     },
                     {
                         "in": "query",
@@ -4241,6 +4247,12 @@
                         "type": "string"
                     },
                     {
+                        "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
+                        "in": "formData",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel.",
                         "in": "formData",
                         "name": "group_id",
@@ -4248,15 +4260,10 @@
                         "type": "string"
                     },
                     {
-                        "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
-                        "in": "formData",
-                        "name": "team_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.conversations:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -4440,13 +4447,6 @@
                         "type": "string"
                     },
                     {
-                        "description": "The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel.",
-                        "in": "formData",
-                        "name": "group_id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.",
                         "in": "formData",
                         "name": "team_id",
@@ -4454,9 +4454,17 @@
                         "type": "string"
                     },
                     {
+                        "description": "The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to remove from the private channel.",
+                        "in": "formData",
+                        "name": "group_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.conversations:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5141,13 +5149,6 @@
                 "operationId": "admin_emoji_addAlias",
                 "parameters": [
                     {
-                        "description": "The alias of the emoji.",
-                        "in": "formData",
-                        "name": "alias_for",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.",
                         "in": "formData",
                         "name": "name",
@@ -5155,9 +5156,17 @@
                         "type": "string"
                     },
                     {
+                        "description": "The alias of the emoji.",
+                        "in": "formData",
+                        "name": "alias_for",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5252,6 +5261,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5469,6 +5479,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5549,6 +5560,12 @@
                 "operationId": "admin_inviteRequests_approve",
                 "parameters": [
                     {
+                        "description": "ID for the workspace where the invite request was made.",
+                        "in": "formData",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "ID of the request to invite.",
                         "in": "formData",
                         "name": "invite_request_id",
@@ -5556,15 +5573,10 @@
                         "type": "string"
                     },
                     {
-                        "description": "ID for the workspace where the invite request was made.",
-                        "in": "formData",
-                        "name": "team_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.invites:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5645,6 +5657,12 @@
                 "operationId": "admin_inviteRequests_approved_list",
                 "parameters": [
                     {
+                        "description": "ID for the workspace where the invite requests were made.",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "Value of the `next_cursor` field sent as part of the previous API response",
                         "in": "query",
                         "name": "cursor",
@@ -5657,15 +5675,10 @@
                         "type": "integer"
                     },
                     {
-                        "description": "ID for the workspace where the invite requests were made.",
-                        "in": "query",
-                        "name": "team_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5746,6 +5759,12 @@
                 "operationId": "admin_inviteRequests_denied_list",
                 "parameters": [
                     {
+                        "description": "ID for the workspace where the invite requests were made.",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "Value of the `next_cursor` field sent as part of the previous api response",
                         "in": "query",
                         "name": "cursor",
@@ -5758,15 +5777,10 @@
                         "type": "integer"
                     },
                     {
-                        "description": "ID for the workspace where the invite requests were made.",
-                        "in": "query",
-                        "name": "team_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5847,6 +5861,12 @@
                 "operationId": "admin_inviteRequests_deny",
                 "parameters": [
                     {
+                        "description": "ID for the workspace where the invite request was made.",
+                        "in": "formData",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "ID of the request to invite.",
                         "in": "formData",
                         "name": "invite_request_id",
@@ -5854,15 +5874,10 @@
                         "type": "string"
                     },
                     {
-                        "description": "ID for the workspace where the invite request was made.",
-                        "in": "formData",
-                        "name": "team_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.invites:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -5943,6 +5958,12 @@
                 "operationId": "admin_inviteRequests_list",
                 "parameters": [
                     {
+                        "description": "ID for the workspace where the invite requests were made.",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "Value of the `next_cursor` field sent as part of the previous API response",
                         "in": "query",
                         "name": "cursor",
@@ -5955,15 +5976,10 @@
                         "type": "integer"
                     },
                     {
-                        "description": "ID for the workspace where the invite requests were made.",
-                        "in": "query",
-                        "name": "team_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.invites:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6043,16 +6059,16 @@
                 "operationId": "admin_teams_admins_list",
                 "parameters": [
                     {
-                        "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
-                        "in": "query",
-                        "name": "cursor",
-                        "type": "string"
-                    },
-                    {
                         "description": "The maximum number of items to return.",
                         "in": "query",
                         "name": "limit",
                         "type": "integer"
+                    },
+                    {
+                        "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
+                        "in": "query",
+                        "name": "cursor",
+                        "type": "string"
                     },
                     {
                         "in": "query",
@@ -6176,6 +6192,7 @@
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6257,21 +6274,22 @@
                 "operationId": "admin_teams_list",
                 "parameters": [
                     {
-                        "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
-                        "in": "query",
-                        "name": "cursor",
-                        "type": "string"
-                    },
-                    {
                         "description": "The maximum number of items to return. Must be between 1 - 100 both inclusive.",
                         "in": "query",
                         "name": "limit",
                         "type": "integer"
                     },
                     {
+                        "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
+                        "in": "query",
+                        "name": "cursor",
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6369,21 +6387,22 @@
                         "type": "string"
                     },
                     {
-                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
-                        "in": "query",
-                        "name": "limit",
-                        "type": "integer"
-                    },
-                    {
                         "in": "query",
                         "name": "team_id",
                         "required": true,
                         "type": "string"
                     },
                     {
+                        "description": "The maximum number of items to return. Must be between 1 - 1000 both inclusive.",
+                        "in": "query",
+                        "name": "limit",
+                        "type": "integer"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:read`",
                         "in": "query",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6565,13 +6584,6 @@
                 "operationId": "admin_teams_settings_setDefaultChannels",
                 "parameters": [
                     {
-                        "description": "An array of channel IDs.",
-                        "in": "formData",
-                        "name": "channel_ids",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "ID for the workspace to set the default channel for.",
                         "in": "formData",
                         "name": "team_id",
@@ -6579,9 +6591,17 @@
                         "type": "string"
                     },
                     {
+                        "description": "An array of channel IDs.",
+                        "in": "formData",
+                        "name": "channel_ids",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "formData",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6662,13 +6682,6 @@
                 "operationId": "admin_teams_settings_setDescription",
                 "parameters": [
                     {
-                        "description": "The new description for the workspace.",
-                        "in": "formData",
-                        "name": "description",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "ID for the workspace to set the description for.",
                         "in": "formData",
                         "name": "team_id",
@@ -6676,9 +6689,17 @@
                         "type": "string"
                     },
                     {
+                        "description": "The new description for the workspace.",
+                        "in": "formData",
+                        "name": "description",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6759,13 +6780,6 @@
                 "operationId": "admin_teams_settings_setDiscoverability",
                 "parameters": [
                     {
-                        "description": "This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.",
-                        "in": "formData",
-                        "name": "discoverability",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "The ID of the workspace to set discoverability on.",
                         "in": "formData",
                         "name": "team_id",
@@ -6773,9 +6787,17 @@
                         "type": "string"
                     },
                     {
+                        "description": "This workspace's discovery setting. It must be set to one of `open`, `invite_only`, `closed`, or `unlisted`.",
+                        "in": "formData",
+                        "name": "discoverability",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -6952,13 +6974,6 @@
                 "operationId": "admin_teams_settings_setName",
                 "parameters": [
                     {
-                        "description": "The new name of the workspace.",
-                        "in": "formData",
-                        "name": "name",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "ID for the workspace to set the name for.",
                         "in": "formData",
                         "name": "team_id",
@@ -6966,9 +6981,17 @@
                         "type": "string"
                     },
                     {
+                        "description": "The new name of the workspace.",
+                        "in": "formData",
+                        "name": "name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.teams:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -7734,6 +7757,13 @@
                 "operationId": "admin_users_list",
                 "parameters": [
                     {
+                        "description": "The ID (`T1234`) of the workspace.",
+                        "in": "query",
+                        "name": "team_id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "description": "Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.",
                         "in": "query",
                         "name": "cursor",
@@ -7746,16 +7776,10 @@
                         "type": "integer"
                     },
                     {
-                        "description": "The ID (`T1234`) of the workspace.",
-                        "in": "query",
-                        "name": "team_id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "description": "Authentication token. Requires scope: `admin.users:read`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -7945,12 +7969,6 @@
                 "operationId": "admin_users_session_invalidate",
                 "parameters": [
                     {
-                        "in": "formData",
-                        "name": "session_id",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
                         "description": "ID of the team that the session belongs to",
                         "in": "formData",
                         "name": "team_id",
@@ -7958,9 +7976,16 @@
                         "type": "string"
                     },
                     {
+                        "in": "formData",
+                        "name": "session_id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `admin.users:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -8644,13 +8669,13 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "name": "cursor",
+                        "name": "event_context",
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "in": "query",
-                        "name": "event_context",
-                        "required": true,
+                        "name": "cursor",
                         "type": "string"
                     },
                     {
@@ -10382,12 +10407,6 @@
                 "operationId": "calls_end",
                 "parameters": [
                     {
-                        "description": "Call duration in seconds",
-                        "in": "formData",
-                        "name": "duration",
-                        "type": "integer"
-                    },
-                    {
                         "description": "`id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.",
                         "in": "formData",
                         "name": "id",
@@ -10395,9 +10414,16 @@
                         "type": "string"
                     },
                     {
+                        "description": "Call duration in seconds",
+                        "in": "formData",
+                        "name": "duration",
+                        "type": "integer"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `calls:write`",
                         "in": "header",
                         "name": "token",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -12969,16 +12995,16 @@
                 "operationId": "conversations_create",
                 "parameters": [
                     {
-                        "description": "Create a private channel instead of a public one",
-                        "in": "formData",
-                        "name": "is_private",
-                        "type": "boolean"
-                    },
-                    {
                         "description": "Name of the public or private channel to create",
                         "in": "formData",
                         "name": "name",
                         "type": "string"
+                    },
+                    {
+                        "description": "Create a private channel instead of a public one",
+                        "in": "formData",
+                        "name": "is_private",
+                        "type": "boolean"
                     },
                     {
                         "description": "Authentication token. Requires scope: `conversations:write`",
@@ -16828,6 +16854,198 @@
                 ]
             }
         },
+        "/files.completeUploadExternal": {
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "description": "Finishes an upload started with files.completeUploadExternal",
+                "externalDocs": {
+                    "description": "API method documentation",
+                    "url": "https://api.slack.com/methods/files.completeUploadExternal"
+                },
+                "operationId": "files_complete_upload_external",
+                "parameters": [
+                    {
+                        "description": "A JSON-based array of structured rich text blocks, presented as a URL-encoded string. If the `initial_comment` field is provided, the `blocks` field is ignored.",
+                        "example": "[{\"type\": \"section\", \"text\": {\"type\": \"plain_text\", \"text\": \"Hello world\"}}]",
+                        "in": "query",
+                        "name": "blocks",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Channel ID where the file will be shared. If not specified, the file will remain private.",
+                        "example": "C0NF841BK",
+                        "in": "query",
+                        "name": "channel_id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Comma-separated list of channel IDs where the file will be shared.",
+                        "example": "C0NF841BK,C2AW648GH",
+                        "in": "query",
+                        "name": "channels",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "An array of file objects, each containing the `id` of the file to be completed.",
+                        "in": "query",
+                        "name": "files",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "The message text introducing the file in specified channels.",
+                        "in": "query",
+                        "name": "initial_comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead. Also, make sure to provide only one channel when using `thread_ts`.",
+                        "example": "1524523204.000192",
+                        "in": "query",
+                        "name": "thread_ts",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.",
+                        "in": "formData",
+                        "name": "token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Typical success response",
+                        "examples": {
+                            "application/json": {
+                                "files": [
+                                    {
+                                        "id": "F123ABC456",
+                                        "title": "slack-test"
+                                    }
+                                ],
+                                "ok": true
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for successful response files.completeUploadExternal method",
+                            "properties": {
+                                "files": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "$ref": "#/definitions/defs_file_id"
+                                            },
+                                            "title": {
+                                                "example": "slack-test",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_true"
+                                }
+                            },
+                            "required": [
+                                "files",
+                                "ok"
+                            ],
+                            "title": "files.completeUploadExternal schema",
+                            "type": "object"
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_auth",
+                                "ok": false
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for error response files.completeUploadExternal method",
+                            "properties": {
+                                "callstack": {
+                                    "description": "Note: PHP callstack is only visible in dev/qa",
+                                    "type": "string"
+                                },
+                                "error": {
+                                    "enum": [
+                                        "access_denied",
+                                        "accesslimited",
+                                        "account_inactive",
+                                        "channel_not_found",
+                                        "channels_limit_exceeded",
+                                        "deprecated_endpoint",
+                                        "ekm_access_denied",
+                                        "enterprise_is_restricted",
+                                        "fatal_error",
+                                        "file_not_found",
+                                        "file_update_failed",
+                                        "invalid_array_arg",
+                                        "invalid_auth",
+                                        "invalid_blocks",
+                                        "invalid_channel",
+                                        "invalid_charset",
+                                        "invalid_form_data",
+                                        "invalid_post_type",
+                                        "method_deprecated",
+                                        "missing_post_type",
+                                        "missing_scope",
+                                        "no_permission",
+                                        "not_allowed_token_type",
+                                        "not_authed",
+                                        "not_in_channel",
+                                        "posting_to_channel_denied",
+                                        "ratelimited",
+                                        "request_timeout",
+                                        "service_unavailable",
+                                        "team_access_not_granted",
+                                        "team_added_to_org",
+                                        "two_factor_setup_required"
+                                    ],
+                                    "type": "string"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_false"
+                                }
+                            },
+                            "required": [
+                                "error",
+                                "ok"
+                            ],
+                            "title": "files.completeUploadExternal error schema",
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "slackAuth": [
+                            "files:write:user"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "files"
+                ]
+            }
+        },
         "/files.delete": {
             "post": {
                 "consumes": [
@@ -16928,6 +17146,153 @@
                                 "ok"
                             ],
                             "title": "files.delete error schema",
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "slackAuth": [
+                            "files:write:user"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "files"
+                ]
+            }
+        },
+        "/files.getUploadURLExternal": {
+            "post": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "description": "Gets a URL for an edge external file upload",
+                "externalDocs": {
+                    "description": "API method documentation",
+                    "url": "https://api.slack.com/methods/files.getUploadURLExternal"
+                },
+                "operationId": "files_get_upload_url_external",
+                "parameters": [
+                    {
+                        "description": "Description of image for screen-reader.",
+                        "in": "query",
+                        "name": "alt_txt",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Name of the file being uploaded.",
+                        "in": "query",
+                        "name": "filename",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Size in bytes of the file being uploaded.",
+                        "in": "query",
+                        "name": "length",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Syntax type of the snippet being uploaded.",
+                        "in": "query",
+                        "name": "snippet_type",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Authentication token. Requires scope: `files:write`",
+                        "in": "formData",
+                        "name": "token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Typical success response",
+                        "examples": {
+                            "application/json": {
+                                "file_id": "F123ABC456",
+                                "ok": true,
+                                "upload_url": "https://files.slack.com/upload/v1/ABC123..."
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for successful response files.getUploadURLExternal method",
+                            "properties": {
+                                "file_id": {
+                                    "$ref": "#/definitions/defs_file_id"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "upload_url": {
+                                    "$ref": "#/definitions/defs_get_upload_url_external"
+                                }
+                            },
+                            "required": [
+                                "file_id",
+                                "ok",
+                                "upload_url"
+                            ],
+                            "title": "files.getUploadURLExternal schema",
+                            "type": "object"
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_auth",
+                                "ok": false
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": false,
+                            "description": "Schema for error response files.getUploadURLExternal method",
+                            "properties": {
+                                "callstack": {
+                                    "description": "Note: PHP callstack is only visible in dev/qa",
+                                    "type": "string"
+                                },
+                                "error": {
+                                    "enum": [
+                                        "account_inactive",
+                                        "cant_delete_file",
+                                        "file_deleted",
+                                        "file_not_found",
+                                        "invalid_arg_name",
+                                        "invalid_array_arg",
+                                        "invalid_auth",
+                                        "invalid_charset",
+                                        "invalid_form_data",
+                                        "invalid_json",
+                                        "invalid_post_type",
+                                        "json_not_object",
+                                        "missing_post_type",
+                                        "no_permission",
+                                        "not_authed",
+                                        "request_timeout",
+                                        "team_added_to_org",
+                                        "upgrade_required"
+                                    ],
+                                    "type": "string"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_false"
+                                }
+                            },
+                            "required": [
+                                "error",
+                                "ok"
+                            ],
+                            "title": "files.getUploadURLExternal error schema",
                             "type": "object"
                         }
                     }
@@ -17558,15 +17923,15 @@
                 "operationId": "files_remote_info",
                 "parameters": [
                     {
-                        "description": "Creator defined GUID for the file.",
-                        "in": "query",
-                        "name": "external_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Specify a file by providing its ID.",
                         "in": "query",
                         "name": "file",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Creator defined GUID for the file.",
+                        "in": "query",
+                        "name": "external_id",
                         "type": "string"
                     },
                     {
@@ -17764,15 +18129,15 @@
                 "operationId": "files_remote_remove",
                 "parameters": [
                     {
-                        "description": "Creator defined GUID for the file.",
-                        "in": "formData",
-                        "name": "external_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Specify a file by providing its ID.",
                         "in": "formData",
                         "name": "file",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Creator defined GUID for the file.",
+                        "in": "formData",
+                        "name": "external_id",
                         "type": "string"
                     },
                     {
@@ -17864,15 +18229,15 @@
                         "type": "string"
                     },
                     {
-                        "description": "The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.",
-                        "in": "query",
-                        "name": "external_id",
-                        "type": "string"
-                    },
-                    {
                         "description": "Specify a file registered with Slack by providing its ID. Either this field or `external_id` or both are required.",
                         "in": "query",
                         "name": "file",
+                        "type": "string"
+                    },
+                    {
+                        "description": "The globally unique identifier (GUID) for the file, as set by the app registering the file with Slack.  Either this field or `file` or both are required.",
+                        "in": "query",
+                        "name": "external_id",
                         "type": "string"
                     },
                     {
@@ -24843,6 +25208,12 @@
                 "operationId": "users_list",
                 "parameters": [
                     {
+                        "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.",
+                        "in": "query",
+                        "name": "limit",
+                        "type": "integer"
+                    },
+                    {
                         "description": "Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first \"page\" of the collection. See [pagination](/docs/pagination) for more detail.",
                         "in": "query",
                         "name": "cursor",
@@ -24853,18 +25224,6 @@
                         "in": "query",
                         "name": "include_locale",
                         "type": "boolean"
-                    },
-                    {
-                        "description": "The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached. Providing no `limit` value will result in Slack attempting to deliver you the entire result set. If the collection is too large you may experience `limit_required` or HTTP 500 errors.",
-                        "in": "query",
-                        "name": "limit",
-                        "type": "integer"
-                    },
-                    {
-                        "description": "Encoded team id to list users in, required if org token is used",
-                        "in": "query",
-                        "name": "team_id",
-                        "type": "string"
                     },
                     {
                         "description": "Authentication token. Requires scope: `users:read`",

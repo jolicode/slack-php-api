@@ -22,8 +22,8 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      *
      * @param array $queryParameters {
      *
-     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit the maximum number of items to return
+     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var string $team_id
      * @var string $token Authentication token. Requires scope: `admin.teams:read`
      *             }
@@ -61,11 +61,11 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'limit', 'team_id', 'token']);
+        $optionsResolver->setDefined(['limit', 'cursor', 'team_id', 'token']);
         $optionsResolver->setRequired(['team_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('cursor', ['string']);
         $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('cursor', ['string']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

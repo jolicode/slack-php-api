@@ -22,9 +22,9 @@ class AdminUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
      *
      * @param array $queryParameters {
      *
+     * @var string $team_id the ID (`T1234`) of the workspace
      * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
      * @var int    $limit Limit for how many users to be retrieved per page
-     * @var string $team_id The ID (`T1234`) of the workspace.
      *             }
      *
      * @param array $headerParameters {
@@ -66,12 +66,12 @@ class AdminUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'limit', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'cursor', 'limit']);
         $optionsResolver->setRequired(['team_id']);
         $optionsResolver->setDefaults([]);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
         $optionsResolver->addAllowedTypes('cursor', ['string']);
         $optionsResolver->addAllowedTypes('limit', ['int']);
-        $optionsResolver->addAllowedTypes('team_id', ['string']);
 
         return $optionsResolver;
     }
@@ -80,7 +80,7 @@ class AdminUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

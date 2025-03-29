@@ -22,8 +22,8 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
      *
      * @param array $formParameters {
      *
-     * @var int    $duration Call duration in seconds
      * @var string $id `id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.
+     * @var int    $duration Call duration in seconds
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['duration', 'id']);
+        $optionsResolver->setDefined(['id', 'duration']);
         $optionsResolver->setRequired(['id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('duration', ['int']);
         $optionsResolver->addAllowedTypes('id', ['string']);
+        $optionsResolver->addAllowedTypes('duration', ['int']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

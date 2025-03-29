@@ -23,8 +23,8 @@ class AdminTeamsOwnersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
      * @param array $queryParameters {
      *
      * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $team_id
+     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
      * @var string $token Authentication token. Requires scope: `admin.teams:read`
      *             }
      */
@@ -61,12 +61,12 @@ class AdminTeamsOwnersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['cursor', 'limit', 'team_id', 'token']);
-        $optionsResolver->setRequired(['team_id']);
+        $optionsResolver->setDefined(['cursor', 'team_id', 'limit', 'token']);
+        $optionsResolver->setRequired(['team_id', 'token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('cursor', ['string']);
-        $optionsResolver->addAllowedTypes('limit', ['int']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('limit', ['int']);
         $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;

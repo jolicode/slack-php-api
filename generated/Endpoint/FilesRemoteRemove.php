@@ -22,8 +22,8 @@ class FilesRemoteRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
      *
      * @param array $formParameters {
      *
-     * @var string $external_id creator defined GUID for the file
      * @var string $file specify a file by providing its ID
+     * @var string $external_id creator defined GUID for the file
      * @var string $token Authentication token. Requires scope: `remote_files:write`
      *             }
      */
@@ -60,11 +60,11 @@ class FilesRemoteRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['external_id', 'file', 'token']);
+        $optionsResolver->setDefined(['file', 'external_id', 'token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('external_id', ['string']);
         $optionsResolver->addAllowedTypes('file', ['string']);
+        $optionsResolver->addAllowedTypes('external_id', ['string']);
         $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;

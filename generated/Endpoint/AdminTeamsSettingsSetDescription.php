@@ -22,8 +22,8 @@ class AdminTeamsSettingsSetDescription extends \JoliCode\Slack\Api\Runtime\Clien
      *
      * @param array $formParameters {
      *
-     * @var string $description the new description for the workspace
-     * @var string $team_id ID for the workspace to set the description for.
+     * @var string $team_id ID for the workspace to set the description for
+     * @var string $description The new description for the workspace.
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminTeamsSettingsSetDescription extends \JoliCode\Slack\Api\Runtime\Clien
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['description', 'team_id']);
-        $optionsResolver->setRequired(['description', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'description']);
+        $optionsResolver->setRequired(['team_id', 'description']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('description', ['string']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('description', ['string']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminTeamsSettingsSetDescription extends \JoliCode\Slack\Api\Runtime\Clien
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

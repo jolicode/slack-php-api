@@ -22,8 +22,8 @@ class AdminEmojiAddAlias extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
      *
      * @param array $formParameters {
      *
-     * @var string $alias_for the alias of the emoji
      * @var string $name The name of the emoji to be aliased. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     * @var string $alias_for the alias of the emoji
      * @var string $token Authentication token. Requires scope: `admin.teams:write`
      *             }
      */
@@ -60,11 +60,11 @@ class AdminEmojiAddAlias extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['alias_for', 'name', 'token']);
-        $optionsResolver->setRequired(['alias_for', 'name']);
+        $optionsResolver->setDefined(['name', 'alias_for', 'token']);
+        $optionsResolver->setRequired(['name', 'alias_for', 'token']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('alias_for', ['string']);
         $optionsResolver->addAllowedTypes('name', ['string']);
+        $optionsResolver->addAllowedTypes('alias_for', ['string']);
         $optionsResolver->addAllowedTypes('token', ['string']);
 
         return $optionsResolver;

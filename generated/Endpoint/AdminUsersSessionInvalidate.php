@@ -22,8 +22,8 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
      *
      * @param array $formParameters {
      *
-     * @var int    $session_id
      * @var string $team_id ID of the team that the session belongs to
+     * @var int    $session_id
      *             }
      *
      * @param array $headerParameters {
@@ -65,11 +65,11 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
-        $optionsResolver->setDefined(['session_id', 'team_id']);
-        $optionsResolver->setRequired(['session_id', 'team_id']);
+        $optionsResolver->setDefined(['team_id', 'session_id']);
+        $optionsResolver->setRequired(['team_id', 'session_id']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('session_id', ['int']);
         $optionsResolver->addAllowedTypes('team_id', ['string']);
+        $optionsResolver->addAllowedTypes('session_id', ['int']);
 
         return $optionsResolver;
     }
@@ -78,7 +78,7 @@ class AdminUsersSessionInvalidate extends \JoliCode\Slack\Api\Runtime\Client\Bas
     {
         $optionsResolver = parent::getHeadersOptionsResolver();
         $optionsResolver->setDefined(['token']);
-        $optionsResolver->setRequired([]);
+        $optionsResolver->setRequired(['token']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('token', ['string']);
 

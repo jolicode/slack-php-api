@@ -13,44 +13,45 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Endpoint;
 
-class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
+class FilesGetUploadUrlExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements \JoliCode\Slack\Api\Runtime\Client\Endpoint
 {
     use \JoliCode\Slack\Api\Runtime\Client\EndpointTrait;
 
     /**
-     * Get a list of authorizations for the given event context. Each authorization represents an app installation that the event is visible to.
+     * Gets a URL for an edge external file upload.
      *
      * @param array $queryParameters {
      *
-     * @var string $event_context
-     * @var string $cursor
-     * @var int    $limit
+     * @var string $alt_txt description of image for screen-reader
+     * @var string $filename name of the file being uploaded
+     * @var int    $length size in bytes of the file being uploaded
+     * @var string $snippet_type Syntax type of the snippet being uploaded.
      *             }
      *
-     * @param array $headerParameters {
+     * @param array $formParameters {
      *
-     * @var string $token Authentication token. Requires scope: `authorizations:read`
+     * @var string $token Authentication token. Requires scope: `files:write`
      *             }
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $queryParameters = [], array $formParameters = [])
     {
         $this->queryParameters = $queryParameters;
-        $this->headerParameters = $headerParameters;
+        $this->formParameters = $formParameters;
     }
 
     public function getMethod(): string
     {
-        return 'GET';
+        return 'POST';
     }
 
     public function getUri(): string
     {
-        return '/apps.event.authorizations.list';
+        return '/files.getUploadURLExternal';
     }
 
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        return [[], null];
+        return $this->getFormBody();
     }
 
     public function getExtraHeaders(): array
@@ -66,19 +67,20 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['event_context', 'cursor', 'limit']);
-        $optionsResolver->setRequired(['event_context']);
+        $optionsResolver->setDefined(['alt_txt', 'filename', 'length', 'snippet_type']);
+        $optionsResolver->setRequired(['filename', 'length']);
         $optionsResolver->setDefaults([]);
-        $optionsResolver->addAllowedTypes('event_context', ['string']);
-        $optionsResolver->addAllowedTypes('cursor', ['string']);
-        $optionsResolver->addAllowedTypes('limit', ['int']);
+        $optionsResolver->addAllowedTypes('alt_txt', ['string']);
+        $optionsResolver->addAllowedTypes('filename', ['string']);
+        $optionsResolver->addAllowedTypes('length', ['int']);
+        $optionsResolver->addAllowedTypes('snippet_type', ['string']);
 
         return $optionsResolver;
     }
 
-    protected function getHeadersOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
+    protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
-        $optionsResolver = parent::getHeadersOptionsResolver();
+        $optionsResolver = parent::getFormOptionsResolver();
         $optionsResolver->setDefined(['token']);
         $optionsResolver->setRequired([]);
         $optionsResolver->setDefaults([]);
@@ -88,16 +90,16 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200|\JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200|\JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponsedefault|null
      */
     protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200', 'json');
+            return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200', 'json');
         }
 
-        return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault', 'json');
+        return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponsedefault', 'json');
     }
 }

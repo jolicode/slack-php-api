@@ -26,11 +26,12 @@ class CheckerCommand extends Command
     protected function configure(): void
     {
         $this
+            ->setName(self::$defaultName)
             ->setDescription('Checks the patched file and displays a summary table.')
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $result = (new SchemaChecker())->check(__DIR__ . '/../../resources/slack-openapi-patched.json');
         $rows = [];
