@@ -241,4 +241,31 @@ class WritingTest extends SlackTokenDependentTest
         self::assertTrue($completeResponse->getOk());
         self::assertNotEmpty($completeResponse->getFiles());
     }
+
+    public function testItCanFileCompleteUploadExternall(): void
+    {
+        $client = $this->createClient();
+
+        $filePath = __DIR__ . '/resources/test-image.png';
+
+        $response = $client->filesUploadV2(
+            [
+                [
+                    'path' => $filePath,
+                    'title' => 'Test Image',
+                    'alt_text' => 'Slack Bot Logo'
+                ],
+                [
+                    'path' => $filePath,
+                    'title' => 'Test Image 2',
+                    'alt_text' => 'Slack Bot Logo 2'
+                ]
+            ],
+            $_SERVER['SLACK_TEST_CHANNEL'],
+            'test initial comment'
+        );
+
+        self::assertTrue($response->getOk());
+        self::assertNotEmpty($response->getFiles());
+    }
 }
