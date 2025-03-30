@@ -2479,6 +2479,33 @@ class Client extends Runtime\Client\Client
     }
 
     /**
+     * Finishes an upload started with files.getUploadURLExternal.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $blocks A JSON-based array of structured rich text blocks, presented as a URL-encoded string. If the `initial_comment` field is provided, the `blocks` field is ignored.
+     * @var string $channel_id Channel ID where the file will be shared. If not specified, the file will remain private.
+     * @var string $channels comma-separated list of channel IDs where the file will be shared
+     * @var string $files an array of file objects, each containing the `id` of the file to be completed
+     * @var string $initial_comment the message text introducing the file in specified channels
+     * @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead. Also, make sure to provide only one channel when using `thread_ts`.
+     *             }
+     *
+     * @param array $formParameters {
+     *
+     * @var string $token Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\FilesCompleteUploadExternalPostResponse200|Model\FilesCompleteUploadExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesCompleteUploadExternal(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\FilesCompleteUploadExternal($queryParameters, $formParameters), $fetch);
+    }
+
+    /**
      * Deletes a file.
      *
      * @param array $formParameters {
@@ -2498,6 +2525,31 @@ class Client extends Runtime\Client\Client
     public function filesDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new Endpoint\FilesDelete($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
+     * Gets a URL for an edge external file upload.
+     *
+     * @param array $queryParameters {
+     *
+     * @var string $alt_txt description of image for screen-reader
+     * @var string $filename name of the file being uploaded
+     * @var int    $length size in bytes of the file being uploaded
+     * @var string $snippet_type Syntax type of the snippet being uploaded.
+     *             }
+     *
+     * @param array $formParameters {
+     *
+     * @var string $token Authentication token. Requires scope: `files:write`
+     *             }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return Model\FilesGetUploadURLExternalPostResponse200|Model\FilesGetUploadURLExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function filesGetUploadUrlExternal(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new Endpoint\FilesGetUploadUrlExternal($queryParameters, $formParameters), $fetch);
     }
 
     /**
