@@ -16828,6 +16828,129 @@
                 ]
             }
         },
+        "/files.completeUploadExternal": {
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "application/x-www-form-urlencoded"
+                ],
+                "description": "Finishes an upload started with files.getUploadURLExternal",
+                "externalDocs": {
+                    "description": "API method documentation",
+                    "url": "https://api.slack.com/methods/files.completeUploadExternal"
+                },
+                "operationId": "files_completeUploadExternal",
+                "parameters": [
+                    {
+                        "description": "Channel ID where the file will be shared. If not specified the file will be private.",
+                        "in": "query",
+                        "name": "channel_id",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Comma-separated string of channel IDs where the file will be shared.",
+                        "in": "query",
+                        "name": "channels",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "JSON-encoded array of file ids and their corresponding (optional) titles.",
+                        "in": "query",
+                        "name": "files",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "description": "The message text introducing the file in specified channels.",
+                        "in": "query",
+                        "name": "initial_comment",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Provide another message's ts value to upload this file as a reply. Never use a reply's ts value; use its parent instead. Also make sure to provide only one channel when using 'thread_ts'",
+                        "in": "query",
+                        "name": "thread_ts",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "Authentication token. Requires scope: `files:write:user`",
+                        "in": "header",
+                        "name": "token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Typical success response",
+                        "examples": {
+                            "application/json": {
+                                "files": [
+                                    {
+                                        "id": "F123ABC456",
+                                        "title": "slack-test"
+                                    }
+                                ],
+                                "ok": true
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": true,
+                            "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
+                            "properties": {
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_true"
+                                }
+                            },
+                            "required": [
+                                "ok"
+                            ],
+                            "title": "Default success template",
+                            "type": "object"
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_auth",
+                                "ok": false
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": true,
+                            "description": "This method either only returns a brief _not OK_ response or a verbose schema is not available for this method.",
+                            "properties": {
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_false"
+                                }
+                            },
+                            "required": [
+                                "ok"
+                            ],
+                            "title": "Default error template",
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "slackAuth": [
+                            "files:write:user"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "files"
+                ]
+            }
+        },
         "/files.delete": {
             "post": {
                 "consumes": [
@@ -16936,6 +17059,107 @@
                     {
                         "slackAuth": [
                             "files:write:user"
+                        ]
+                    }
+                ],
+                "tags": [
+                    "files"
+                ]
+            }
+        },
+        "/files.getUploadURLExternal": {
+            "get": {
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "description": "Gets a URL for an edge external file upload",
+                "externalDocs": {
+                    "description": "API method documentation",
+                    "url": "https://api.slack.com/methods/files.getUploadURLExternal"
+                },
+                "operationId": "files_getUploadURLExternal",
+                "parameters": [
+                    {
+                        "description": "Name of the file being uploaded",
+                        "in": "query",
+                        "name": "filename",
+                        "type": "string"
+                    },
+                    {
+                        "description": "Size in bytes of the file being uploaded",
+                        "in": "query",
+                        "name": "length",
+                        "type": "integer"
+                    },
+                    {
+                        "description": "Authentication token. Requires scope: `files:write`",
+                        "in": "query",
+                        "name": "token",
+                        "type": "string"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Typical success response",
+                        "examples": {
+                            "application/json": {
+                                "file_id": "F123ABC456",
+                                "ok": true,
+                                "upload_url": "https://files.slack.com/upload/v1/ABC123..."
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": true,
+                            "description": "This method either only returns a brief _OK_ response or a verbose schema is not available for this method.",
+                            "properties": {
+                                "file_id": {
+                                    "type": "string"
+                                },
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_true"
+                                },
+                                "upload_url": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "ok"
+                            ],
+                            "title": "Default success template",
+                            "type": "object"
+                        }
+                    },
+                    "default": {
+                        "description": "Typical error response",
+                        "examples": {
+                            "application/json": {
+                                "error": "invalid_auth",
+                                "ok": false
+                            }
+                        },
+                        "schema": {
+                            "additionalProperties": true,
+                            "description": "This method either only returns a brief _not OK_ response or a verbose schema is not available for this method.",
+                            "properties": {
+                                "ok": {
+                                    "$ref": "#/definitions/defs_ok_false"
+                                }
+                            },
+                            "required": [
+                                "ok"
+                            ],
+                            "title": "Default error template",
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "slackAuth": [
+                            "files:write"
                         ]
                     }
                 ],
