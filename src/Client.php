@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace JoliCode\Slack;
 
 use JoliCode\Slack\Api\Client as ApiClient;
+use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200;
+use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault;
 use JoliCode\Slack\Api\Model\ObjsConversation;
 use JoliCode\Slack\Api\Model\ObjsMessage;
 use JoliCode\Slack\Api\Model\ObjsSubteam;
@@ -86,19 +88,18 @@ class Client extends ApiClient
      * - 'alt_text': Description for screen readers
      * - 'snippet_type': Syntax highlighting language (for code snippets)
      *
-     * @param array $files Array of files to upload. Each file should be an associative array:
-     *                     [
-     *                         'path' => '/path/to/file.png',
-     *                         'title' => 'My File', // optional
-     *                         'alt_text' => 'Screen reader description', // optional
-     *                         'snippet_type' => 'php', // optional
-     *                     ]
-     * @param string $channelId The Slack channel ID to upload files to (e.g., 'C12345678').
-     * @param string|null $initialComment Optional comment to add with the upload.
+     * @param array       $files          Array of files to upload. Each file should be an associative array:
+     *                                    [
+     *                                    'path' => '/path/to/file.png',
+     *                                    'title' => 'My File', // optional
+     *                                    'alt_text' => 'Screen reader description', // optional
+     *                                    'snippet_type' => 'php', // optional
+     *                                    ]
+     * @param string      $channelId      The Slack channel ID to upload files to (e.g., 'C12345678').
+     * @param string|null $initialComment optional comment to add with the upload
      *
-     * @return \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200|\JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault|null
-     *
-     * @throws \RuntimeException If upload or Slack API interaction fails.
+     * @throws \RuntimeException if upload or Slack API interaction fails
+     * @throws \JsonException
      *
      * @example
      * $this->filesUploadV2([
@@ -106,8 +107,11 @@ class Client extends ApiClient
      *     ['path' => '/tmp/script.js', 'snippet_type' => 'javascript']
      * ], 'C12345678', 'Here are the uploaded files:');
      */
-    public function filesUploadV2(array $files, string $channelId, ?string $initialComment = null)
-    {
+    public function filesUploadV2(
+        array $files,
+        string $channelId,
+        ?string $initialComment = null,
+    ): FilesCompleteUploadExternalPostResponsedefault|FilesCompleteUploadExternalPostResponse200|null {
         $filesPayload = [];
 
         foreach ($files as $file) {
@@ -131,10 +135,10 @@ class Client extends ApiClient
             );
 
             $uploadInfo = $this->filesGetUploadUrlExternal($queryParams);
-            $uploadUrl = $uploadInfo->getUploadUrl();
-            $fileId = $uploadInfo->getFileId();
+            $uploadUrl = $uploadInfo?->getUploadUrl();
+            $fileId = $uploadInfo?->getFileId();
 
-            if (!$uploadUrl || !$fileId) {
+            if (null === $uploadUrl || null === $fileId) {
                 throw new \RuntimeException("Slack did not return upload URL or file ID for {$fileName}");
             }
 
@@ -152,7 +156,7 @@ class Client extends ApiClient
         return $this->filesCompleteUploadExternal(
             array_filter(
                 [
-                    'files' => json_encode($filesPayload),
+                    'files' => json_encode($filesPayload, \JSON_THROW_ON_ERROR),
                     'channel_id' => $channelId,
                     'initial_comment' => $initialComment,
                 ]
@@ -162,22 +166,22 @@ class Client extends ApiClient
 
     private function uploadToSlackUrlWithCurl(string $uploadUrl, string $filePath): void
     {
-        $fileHandle = fopen($filePath, 'r');
+        $fileHandle = fopen($filePath, 'rb');
 
         $ch = curl_init($uploadUrl);
         curl_setopt_array(
             $ch,
             [
-                CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS => fread($fileHandle, filesize($filePath)),
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_HTTPHEADER => ['Content-Type: application/octet-stream'],
+                \CURLOPT_POST => true,
+                \CURLOPT_POSTFIELDS => fread($fileHandle, filesize($filePath)),
+                \CURLOPT_RETURNTRANSFER => true,
+                \CURLOPT_HTTPHEADER => ['Content-Type: application/octet-stream'],
             ]
         );
 
         $response = curl_exec($ch);
         $error = curl_error($ch);
-        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $status = curl_getinfo($ch, \CURLINFO_HTTP_CODE);
 
         curl_close($ch);
         fclose($fileHandle);

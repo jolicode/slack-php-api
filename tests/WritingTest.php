@@ -13,11 +13,9 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Tests;
 
-use JoliCode\Slack\Api\Endpoint\FilesGetUploadUrlExternal;
 use JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200;
-use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200;
-use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
 use JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200;
+use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
 use Nyholm\Psr7\Stream;
 
 class WritingTest extends SlackTokenDependentTest
@@ -219,20 +217,21 @@ class WritingTest extends SlackTokenDependentTest
 
         // Step 2: Upload file data to the URL
         $ch = curl_init($uploadUrl);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fileStream);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, \CURLOPT_POST, true);
+        curl_setopt($ch, \CURLOPT_POSTFIELDS, $fileStream);
+        curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
         curl_exec($ch);
         curl_close($ch);
 
         $completeResponse = $client->filesCompleteUploadExternal(
             [
-                'files' => json_encode([
+                'files' => json_encode(
                     [
-                        'id' => $fileId,
-                        'title' => 'test image file'
-                    ]
-                ]),
+                        [
+                            'id' => $fileId,
+                            'title' => 'test image file',
+                        ],
+                    ]),
                 'channel_id' => $_SERVER['SLACK_TEST_CHANNEL'],
                 'initial_comment' => 'Testing file upload via Slack API with test-image.png',
             ]
@@ -242,7 +241,7 @@ class WritingTest extends SlackTokenDependentTest
         self::assertNotEmpty($completeResponse->getFiles());
     }
 
-    public function testItCanFileCompleteUploadExternall(): void
+    public function testItCanUploadFilesViaFilesUploadV2(): void
     {
         $client = $this->createClient();
 
@@ -253,13 +252,13 @@ class WritingTest extends SlackTokenDependentTest
                 [
                     'path' => $filePath,
                     'title' => 'Test Image',
-                    'alt_text' => 'Slack Bot Logo'
+                    'alt_text' => 'Slack Bot Logo',
                 ],
                 [
                     'path' => $filePath,
                     'title' => 'Test Image 2',
-                    'alt_text' => 'Slack Bot Logo 2'
-                ]
+                    'alt_text' => 'Slack Bot Logo 2',
+                ],
             ],
             $_SERVER['SLACK_TEST_CHANNEL'],
             'test initial comment'
@@ -267,5 +266,6 @@ class WritingTest extends SlackTokenDependentTest
 
         self::assertTrue($response->getOk());
         self::assertNotEmpty($response->getFiles());
+        self::assertCount(2, $response->getFiles());
     }
 }
