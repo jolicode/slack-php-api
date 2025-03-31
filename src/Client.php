@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack;
 
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use JoliCode\Slack\Api\Client as ApiClient;
 use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200;
 use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault;
@@ -21,6 +23,7 @@ use JoliCode\Slack\Api\Model\ObjsMessage;
 use JoliCode\Slack\Api\Model\ObjsSubteam;
 use JoliCode\Slack\Api\Model\ObjsUser;
 use Nyholm\Psr7\Stream;
+use Psr\Http\Client\ClientExceptionInterface;
 
 /**
  * @method iterable<ObjsMessage>      iterateConversationsHistory(array $arguments = [])
@@ -98,8 +101,9 @@ class Client extends ApiClient
      * @param string      $channelId      The Slack channel ID to upload files to (e.g., 'C12345678').
      * @param string|null $initialComment optional comment to add with the upload
      *
-     * @throws \RuntimeException if upload or Slack API interaction fails
+     * @throws \RuntimeException        if upload or Slack API interaction fails
      * @throws \JsonException
+     * @throws ClientExceptionInterface
      *
      * @example
      * $this->filesUploadV2([
@@ -143,7 +147,7 @@ class Client extends ApiClient
             }
 
             // Step 2: Upload file data using cURL
-            $this->uploadToSlackUrlWithCurl($uploadUrl, $filePath);
+            $this->uploadToSlackUrl($uploadUrl, $filePath);
 
             // Step 3: Build file metadata
             $filesPayload[] = [
@@ -164,30 +168,26 @@ class Client extends ApiClient
         );
     }
 
-    private function uploadToSlackUrlWithCurl(string $uploadUrl, string $filePath): void
+    /**
+     * @throws ClientExceptionInterface
+     */
+    private function uploadToSlackUrl(string $uploadUrl, string $filePath): void
     {
-        $fileHandle = fopen($filePath, 'rb');
+        $uriFactory = Psr17FactoryDiscovery::findUriFactory();
+        $uri = $uriFactory->createUri($uploadUrl);
 
-        $ch = curl_init($uploadUrl);
-        curl_setopt_array(
-            $ch,
-            [
-                \CURLOPT_POST => true,
-                \CURLOPT_POSTFIELDS => fread($fileHandle, filesize($filePath)),
-                \CURLOPT_RETURNTRANSFER => true,
-                \CURLOPT_HTTPHEADER => ['Content-Type: application/octet-stream'],
-            ]
-        );
+        $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
+        $stream = $streamFactory->createStreamFromFile($filePath);
 
-        $response = curl_exec($ch);
-        $error = curl_error($ch);
-        $status = curl_getinfo($ch, \CURLINFO_HTTP_CODE);
+        $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
+        $request = $requestFactory->createRequest('POST', $uri);
+        $request = $request->withBody($stream);
 
-        curl_close($ch);
-        fclose($fileHandle);
-
-        if ($error || $status >= 400) {
-            throw new \RuntimeException("Upload failed: {$error} (HTTP {$status})");
+        $client = Psr18ClientDiscovery::find();
+        $response = $client->sendRequest($request);
+        $responseStatusCode = $response->getStatusCode();
+        if ($responseStatusCode >= 400) {
+            throw new \RuntimeException(\sprintf('Upload failed: %s - %s', $response->getStatusCode(), $response->getBody()));
         }
     }
 }
