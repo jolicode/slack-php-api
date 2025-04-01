@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Tests;
 
 use JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200;
+use JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200;
 use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
 use Nyholm\Psr7\Stream;
 
@@ -164,5 +165,113 @@ class WritingTest extends SlackTokenDependentTest
         ]);
 
         self::assertTrue($markResponse->getOk());
+    }
+
+    public function testItCanFileGetUploadUrlExternal(): void
+    {
+        $client = $this->createClient();
+        $fileName = 'test-image.png';
+        $filePath = __DIR__ . '/resources/' . $fileName;
+        $fileStream = Stream::create(fopen($filePath, 'r'));
+        $fileSize = $fileStream->getSize();
+
+        $response = $client->filesGetUploadUrlExternal(
+            [
+                'filename' => 'test-image.png',
+                'length' => $fileSize,
+            ]
+        );
+
+        self::assertInstanceOf(FilesGetUploadURLExternalPostResponse200::class, $response);
+        self::assertTrue($response->getOk());
+        self::assertNotEmpty($response->getUploadUrl());
+        self::assertIsString($response->getUploadUrl());
+        self::assertNotEmpty($response->getFileId());
+        self::assertIsString($response->getFileId());
+
+        $uploadResponse = $client->filesUploadV2([
+            ['path' => $filePath, 'title' => 'Test image', 'alt_text' => 'Test image'],
+        ], $_SERVER['SLACK_TEST_CHANNEL'], 'Uploaded with the 2025 API.');
+
+        self::assertTrue($uploadResponse->getOk());
+    }
+
+    public function testItCanFileCompleteUploadExternal(): void
+    {
+        $client = $this->createClient();
+        $fileName = 'test-image.png';
+        $filePath = __DIR__ . '/resources/' . $fileName;
+        $fileStream = Stream::create(fopen($filePath, 'r'));
+        $fileSize = $fileStream->getSize();
+
+        $response = $client->filesGetUploadUrlExternal(
+            [
+                'filename' => 'test-image.png',
+                'length' => $fileSize,
+            ]
+        );
+
+        self::assertInstanceOf(FilesGetUploadURLExternalPostResponse200::class, $response);
+        self::assertTrue($response->getOk());
+        self::assertNotEmpty($response->getUploadUrl());
+        self::assertIsString($response->getUploadUrl());
+        self::assertNotEmpty($response->getFileId());
+        self::assertIsString($response->getFileId());
+
+        $uploadUrl = $response->getUploadUrl();
+        $fileId = $response->getFileId();
+
+        // Step 2: Upload file data to the URL
+        $ch = curl_init($uploadUrl);
+        curl_setopt($ch, \CURLOPT_POST, true);
+        curl_setopt($ch, \CURLOPT_POSTFIELDS, $fileStream);
+        curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
+        curl_exec($ch);
+        curl_close($ch);
+
+        $completeResponse = $client->filesCompleteUploadExternal(
+            [
+                'files' => json_encode(
+                    [
+                        [
+                            'id' => $fileId,
+                            'title' => 'test image file',
+                        ],
+                    ]),
+                'channel_id' => $_SERVER['SLACK_TEST_CHANNEL'],
+                'initial_comment' => 'Testing file upload via Slack API with test-image.png',
+            ]
+        );
+
+        self::assertTrue($completeResponse->getOk());
+        self::assertNotEmpty($completeResponse->getFiles());
+    }
+
+    public function testItCanUploadFilesViaFilesUploadV2(): void
+    {
+        $client = $this->createClient();
+
+        $filePath = __DIR__ . '/resources/test-image.png';
+
+        $response = $client->filesUploadV2(
+            [
+                [
+                    'path' => $filePath,
+                    'title' => 'Test Image',
+                    'alt_text' => 'Slack Bot Logo',
+                ],
+                [
+                    'path' => $filePath,
+                    'title' => 'Test Image 2',
+                    'alt_text' => 'Slack Bot Logo 2',
+                ],
+            ],
+            $_SERVER['SLACK_TEST_CHANNEL'],
+            'test initial comment'
+        );
+
+        self::assertTrue($response->getOk());
+        self::assertNotEmpty($response->getFiles());
+        self::assertCount(2, $response->getFiles());
     }
 }

@@ -26,6 +26,7 @@
         }
     },
     "require": {
+        "ext-curl": "*",
         "php": ">=8.0",
         "jane-php/open-api-runtime": "^7.7",
         "psr/http-client-implementation": "*",

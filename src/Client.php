@@ -13,11 +13,16 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack;
 
+use Http\Discovery\Psr17FactoryDiscovery;
 use JoliCode\Slack\Api\Client as ApiClient;
+use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200;
+use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault;
 use JoliCode\Slack\Api\Model\ObjsConversation;
 use JoliCode\Slack\Api\Model\ObjsMessage;
 use JoliCode\Slack\Api\Model\ObjsSubteam;
 use JoliCode\Slack\Api\Model\ObjsUser;
+use Nyholm\Psr7\Stream;
+use Psr\Http\Client\ClientExceptionInterface;
 
 /**
  * @method iterable<ObjsMessage>      iterateConversationsHistory(array $arguments = [])
@@ -75,5 +80,109 @@ class Client extends ApiClient
 
             $cursor = $response->getResponseMetadata() ? $response->getResponseMetadata()->getNextCursor() : '';
         } while (!empty($cursor));
+    }
+
+    /**
+     * Uploads one or more files to Slack using the external file upload flow.
+     *
+     * Each file must include a 'path' key. Optional keys per file:
+     * - 'title': Custom display name (defaults to file name)
+     * - 'alt_text': Description for screen readers
+     * - 'snippet_type': Syntax highlighting language (for code snippets)
+     *
+     * @param array       $files          Array of files to upload. Each file should be an associative array:
+     *                                    [
+     *                                    'path' => '/path/to/file.png',
+     *                                    'title' => 'My File', // optional
+     *                                    'alt_text' => 'Screen reader description', // optional
+     *                                    'snippet_type' => 'php', // optional
+     *                                    ]
+     * @param string      $channelId      The Slack channel ID to upload files to (e.g., 'C12345678').
+     * @param string|null $initialComment optional comment to add with the upload
+     *
+     * @throws \RuntimeException        if upload or Slack API interaction fails
+     * @throws \JsonException
+     * @throws ClientExceptionInterface
+     *
+     * @example
+     * $this->filesUploadV2([
+     *     ['path' => '/tmp/image.png', 'title' => 'Bot Logo', 'alt_text' => 'Slack Bot Logo'],
+     *     ['path' => '/tmp/script.js', 'snippet_type' => 'javascript']
+     * ], 'C12345678', 'Here are the uploaded files:');
+     */
+    public function filesUploadV2(
+        array $files,
+        string $channelId,
+        ?string $initialComment = null,
+    ): FilesCompleteUploadExternalPostResponsedefault|FilesCompleteUploadExternalPostResponse200|null {
+        $filesPayload = [];
+
+        foreach ($files as $file) {
+            $filePath = $file['path'];
+            $fileName = basename($filePath);
+            $title = $file['title'] ?? $fileName;
+            $altText = $file['alt_text'] ?? null;
+            $snippetType = $file['snippet_type'] ?? null;
+
+            $fileStream = Stream::create(fopen($filePath, 'r'));
+            $fileSize = $fileStream->getSize();
+
+            // Step 1: Get upload URL from Slack
+            $queryParams = array_filter(
+                [
+                    'filename' => $fileName,
+                    'length' => $fileSize,
+                    'alt_txt' => $altText,
+                    'snippet_type' => $snippetType,
+                ]
+            );
+
+            $uploadInfo = $this->filesGetUploadUrlExternal($queryParams);
+            $uploadUrl = $uploadInfo?->getUploadUrl();
+            $fileId = $uploadInfo?->getFileId();
+
+            if (null === $uploadUrl || null === $fileId) {
+                throw new \RuntimeException("Slack did not return upload URL or file ID for {$fileName}");
+            }
+
+            // Step 2: Upload file data using cURL
+            $this->uploadToSlackUrl($uploadUrl, $filePath);
+
+            // Step 3: Build file metadata
+            $filesPayload[] = [
+                'id' => $fileId,
+                'title' => $title,
+            ];
+        }
+
+        // Step 4: Complete upload
+        return $this->filesCompleteUploadExternal(
+            array_filter(
+                [
+                    'files' => json_encode($filesPayload, \JSON_THROW_ON_ERROR),
+                    'channel_id' => $channelId,
+                    'initial_comment' => $initialComment,
+                ]
+            )
+        );
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     */
+    private function uploadToSlackUrl(string $uploadUrl, string $filePath): void
+    {
+        $uriFactory = Psr17FactoryDiscovery::findUriFactory();
+        $uri = $uriFactory->createUri($uploadUrl);
+
+        $stream = $this->streamFactory->createStreamFromFile($filePath);
+        $request = $this->requestFactory->createRequest('POST', $uri);
+        $request = $request->withBody($stream);
+
+        $response = $this->httpClient->sendRequest($request);
+        $responseStatusCode = $response->getStatusCode();
+        if ($responseStatusCode >= 400) {
+            throw new \RuntimeException(\sprintf('Upload failed: %s - %s', $response->getStatusCode(), $response->getBody()));
+        }
     }
 }
