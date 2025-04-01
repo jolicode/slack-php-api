@@ -44,7 +44,8 @@ class AddSlackPathAndHostPlugin implements Plugin
 
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
-        if ($this->uri->getHost() !== $request->getUri()->getHost()) {
+        if ($this->uri->getHost() !== $request->getUri()->getHost()
+            && 'files.slack.com' !== $request->getUri()->getHost()) {
             $uri = $request->getUri()
                 ->withHost($this->uri->getHost())
                 ->withScheme($this->uri->getScheme())

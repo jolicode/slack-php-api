@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace JoliCode\Slack;
 
 use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
 use JoliCode\Slack\Api\Client as ApiClient;
 use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200;
 use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault;
@@ -176,15 +175,11 @@ class Client extends ApiClient
         $uriFactory = Psr17FactoryDiscovery::findUriFactory();
         $uri = $uriFactory->createUri($uploadUrl);
 
-        $streamFactory = Psr17FactoryDiscovery::findStreamFactory();
-        $stream = $streamFactory->createStreamFromFile($filePath);
-
-        $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
-        $request = $requestFactory->createRequest('POST', $uri);
+        $stream = $this->streamFactory->createStreamFromFile($filePath);
+        $request = $this->requestFactory->createRequest('POST', $uri);
         $request = $request->withBody($stream);
 
-        $client = Psr18ClientDiscovery::find();
-        $response = $client->sendRequest($request);
+        $response = $this->httpClient->sendRequest($request);
         $responseStatusCode = $response->getStatusCode();
         if ($responseStatusCode >= 400) {
             throw new \RuntimeException(\sprintf('Upload failed: %s - %s', $response->getStatusCode(), $response->getBody()));

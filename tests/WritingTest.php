@@ -188,6 +188,12 @@ class WritingTest extends SlackTokenDependentTest
         self::assertIsString($response->getUploadUrl());
         self::assertNotEmpty($response->getFileId());
         self::assertIsString($response->getFileId());
+
+        $uploadResponse = $client->filesUploadV2([
+            ['path' => $filePath, 'title' => 'Test image', 'alt_text' => 'Test image'],
+        ], $_SERVER['SLACK_TEST_CHANNEL'], 'Uploaded with the 2025 API.');
+
+        self::assertTrue($uploadResponse->getOk());
     }
 
     public function testItCanFileCompleteUploadExternal(): void
