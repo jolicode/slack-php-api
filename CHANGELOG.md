@@ -1,9 +1,13 @@
 # Changes between versions
 
-## Unreleased (2025)
+## Unreleased
+
+## 4.8.0 (2025-04-01)
 
 * Upgrade JanePHP generated code
 * Improve the Cursor paginated methods, add missing and remove obsoletes
+* **Specification override** Add the new `files.getUploadURLExternal` and `files.completeUploadExternal` endpoints
+* New `filesUploadV2` Client method to manipulate the new endpoints correctly
 
 ## 4.7.1 (2024-06-28)
 
