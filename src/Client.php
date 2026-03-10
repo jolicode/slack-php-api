@@ -99,7 +99,7 @@ class Client extends ApiClient
      *                                    ]
      * @param string      $channelId      The Slack channel ID to upload files to (e.g., 'C12345678').
      * @param string|null $initialComment optional comment to add with the upload
-     * @param string|null $threadTs       optional threadts to use with the upload
+     * @param string|null $threadTs       optional thread_ts (Slack thread timestamp) to attach the upload to a thread
      *
      * @throws \RuntimeException        if upload or Slack API interaction fails
      * @throws \JsonException
