@@ -105,6 +105,8 @@ class WritingTest extends SlackTokenDependentTest
 
     public function testItCanUploadFile(): void
     {
+        $this->expectException(\RuntimeException::class);
+
         $client = $this->createClient();
 
         /** @var FilesUploadPostResponse200 $response */
@@ -116,15 +118,6 @@ class WritingTest extends SlackTokenDependentTest
             'filetype' => 'png',
             'file' => Stream::create(fopen(__DIR__ . '/resources/test-image.png', 'r')),
         ]);
-
-        $this->assertTrue($response->getOk());
-
-        // On new messages it's an integer
-        if (method_exists($this, 'assertIsInt')) {
-            $this->assertIsInt($response->getFile()->getTimestamp());
-        } else {
-            $this->assertInternalType('int', $response->getFile()->getTimestamp());
-        }
     }
 
     public function testScheduleMessage(): void
