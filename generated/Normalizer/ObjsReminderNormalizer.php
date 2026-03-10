@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,191 +23,97 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ObjsReminder::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsReminder::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ObjsReminder();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('complete_ts', $data) && null !== $data['complete_ts']) {
-                $object->setCompleteTs($data['complete_ts']);
-            } elseif (\array_key_exists('complete_ts', $data) && null === $data['complete_ts']) {
-                $object->setCompleteTs(null);
-            }
-            if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-                $object->setCreator($data['creator']);
-            } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
-                $object->setCreator(null);
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('recurring', $data) && null !== $data['recurring']) {
-                $object->setRecurring($data['recurring']);
-            } elseif (\array_key_exists('recurring', $data) && null === $data['recurring']) {
-                $object->setRecurring(null);
-            }
-            if (\array_key_exists('text', $data) && null !== $data['text']) {
-                $object->setText($data['text']);
-            } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-                $object->setText(null);
-            }
-            if (\array_key_exists('time', $data) && null !== $data['time']) {
-                $object->setTime($data['time']);
-            } elseif (\array_key_exists('time', $data) && null === $data['time']) {
-                $object->setTime(null);
-            }
-            if (\array_key_exists('user', $data) && null !== $data['user']) {
-                $object->setUser($data['user']);
-            } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-                $object->setUser(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('completeTs') && null !== $object->getCompleteTs()) {
-                $data['complete_ts'] = $object->getCompleteTs();
-            }
-            $data['creator'] = $object->getCreator();
-            $data['id'] = $object->getId();
-            $data['recurring'] = $object->getRecurring();
-            $data['text'] = $object->getText();
-            if ($object->isInitialized('time') && null !== $object->getTime()) {
-                $data['time'] = $object->getTime();
-            }
-            $data['user'] = $object->getUser();
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ObjsReminder::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\ObjsReminder::class === $type;
     }
-} else {
-    class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsReminder::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ObjsReminder::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsReminder::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ObjsReminder();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('complete_ts', $data) && null !== $data['complete_ts']) {
-                $object->setCompleteTs($data['complete_ts']);
-            } elseif (\array_key_exists('complete_ts', $data) && null === $data['complete_ts']) {
-                $object->setCompleteTs(null);
-            }
-            if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-                $object->setCreator($data['creator']);
-            } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
-                $object->setCreator(null);
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('recurring', $data) && null !== $data['recurring']) {
-                $object->setRecurring($data['recurring']);
-            } elseif (\array_key_exists('recurring', $data) && null === $data['recurring']) {
-                $object->setRecurring(null);
-            }
-            if (\array_key_exists('text', $data) && null !== $data['text']) {
-                $object->setText($data['text']);
-            } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-                $object->setText(null);
-            }
-            if (\array_key_exists('time', $data) && null !== $data['time']) {
-                $object->setTime($data['time']);
-            } elseif (\array_key_exists('time', $data) && null === $data['time']) {
-                $object->setTime(null);
-            }
-            if (\array_key_exists('user', $data) && null !== $data['user']) {
-                $object->setUser($data['user']);
-            } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-                $object->setUser(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\ObjsReminder();
+        if (\array_key_exists('recurring', $data) && \is_int($data['recurring'])) {
+            $data['recurring'] = (bool) $data['recurring'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('completeTs') && null !== $object->getCompleteTs()) {
-                $data['complete_ts'] = $object->getCompleteTs();
-            }
-            $data['creator'] = $object->getCreator();
-            $data['id'] = $object->getId();
-            $data['recurring'] = $object->getRecurring();
-            $data['text'] = $object->getText();
-            if ($object->isInitialized('time') && null !== $object->getTime()) {
-                $data['time'] = $object->getTime();
-            }
-            $data['user'] = $object->getUser();
-
-            return $data;
+        if (\array_key_exists('complete_ts', $data) && null !== $data['complete_ts']) {
+            $object->setCompleteTs($data['complete_ts']);
+        } elseif (\array_key_exists('complete_ts', $data) && null === $data['complete_ts']) {
+            $object->setCompleteTs(null);
+        }
+        if (\array_key_exists('creator', $data) && null !== $data['creator']) {
+            $object->setCreator($data['creator']);
+        } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
+            $object->setCreator(null);
+        }
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('recurring', $data) && null !== $data['recurring']) {
+            $object->setRecurring($data['recurring']);
+        } elseif (\array_key_exists('recurring', $data) && null === $data['recurring']) {
+            $object->setRecurring(null);
+        }
+        if (\array_key_exists('text', $data) && null !== $data['text']) {
+            $object->setText($data['text']);
+        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
+            $object->setText(null);
+        }
+        if (\array_key_exists('time', $data) && null !== $data['time']) {
+            $object->setTime($data['time']);
+        } elseif (\array_key_exists('time', $data) && null === $data['time']) {
+            $object->setTime(null);
+        }
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
+            $object->setUser(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ObjsReminder::class => false];
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('completeTs') && null !== $data->getCompleteTs()) {
+            $dataArray['complete_ts'] = $data->getCompleteTs();
         }
+        $dataArray['creator'] = $data->getCreator();
+        $dataArray['id'] = $data->getId();
+        $dataArray['recurring'] = $data->getRecurring();
+        $dataArray['text'] = $data->getText();
+        if ($data->isInitialized('time') && null !== $data->getTime()) {
+            $dataArray['time'] = $data->getTime();
+        }
+        $dataArray['user'] = $data->getUser();
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\ObjsReminder::class => false];
     }
 }

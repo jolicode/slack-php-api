@@ -14,39 +14,25 @@ declare(strict_types=1);
 namespace JoliCode\Slack\Api\Runtime\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4) {
-    class ReferenceNormalizer implements NormalizerInterface
+class ReferenceNormalizer implements NormalizerInterface
+{
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $ref = [];
-            $ref['$ref'] = (string) $object->getReferenceUri();
+        $ref = [];
+        $ref['$ref'] = (string) $data->getReferenceUri();
 
-            return $ref;
-        }
-
-        public function supportsNormalization($data, $format = null): bool
-        {
-            return $data instanceof Reference;
-        }
+        return $ref;
     }
-} else {
-    class ReferenceNormalizer implements NormalizerInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $ref = [];
-            $ref['$ref'] = (string) $object->getReferenceUri();
+        return $data instanceof Reference;
+    }
 
-            return $ref;
-        }
-
-        public function supportsNormalization($data, $format = null): bool
-        {
-            return $data instanceof Reference;
-        }
+    public function getSupportedTypes(?string $format): array
+    {
+        return [Reference::class => false];
     }
 }
