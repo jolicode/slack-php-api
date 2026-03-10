@@ -37,7 +37,7 @@ class JsonSorter
                 $asArray[$key] = $this->recursiveAlphabeticalSort($item->{$key});
 
                 if ('parameters' === $key) {
-                    usort($asArray['parameters'], function ($a, $b) {
+                    usort($asArray['parameters'], static function ($a, $b) {
                         return (isset($a['name'], $b['name']) && $a['name'] > $b['name']) ? 1 : 0;
                     });
                 }
