@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,151 +23,77 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class FilesListGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class FilesListGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\FilesListGetResponse200::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\FilesListGetResponse200::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\FilesListGetResponse200();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('files', $data) && null !== $data['files']) {
-                $values = [];
-                foreach ($data['files'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
-                }
-                $object->setFiles($values);
-            } elseif (\array_key_exists('files', $data) && null === $data['files']) {
-                $object->setFiles(null);
-            }
-            if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-                $object->setOk($data['ok']);
-            } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-                $object->setOk(null);
-            }
-            if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-                $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
-            } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
-                $object->setPaging(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $values = [];
-            foreach ($object->getFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['files'] = $values;
-            $data['ok'] = $object->getOk();
-            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\FilesListGetResponse200::class === $type;
     }
-} else {
-    class FilesListGetResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\FilesListGetResponse200::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\FilesListGetResponse200::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\FilesListGetResponse200::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\FilesListGetResponse200();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('files', $data) && null !== $data['files']) {
-                $values = [];
-                foreach ($data['files'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
-                }
-                $object->setFiles($values);
-            } elseif (\array_key_exists('files', $data) && null === $data['files']) {
-                $object->setFiles(null);
-            }
-            if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-                $object->setOk($data['ok']);
-            } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-                $object->setOk(null);
-            }
-            if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-                $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
-            } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
-                $object->setPaging(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\FilesListGetResponse200();
+        if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
+            $data['ok'] = (bool) $data['ok'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
+        if (\array_key_exists('files', $data) && null !== $data['files']) {
             $values = [];
-            foreach ($object->getFiles() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data['files'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
             }
-            $data['files'] = $values;
-            $data['ok'] = $object->getOk();
-            $data['paging'] = $this->normalizer->normalize($object->getPaging(), 'json', $context);
-
-            return $data;
+            $object->setFiles($values);
+        } elseif (\array_key_exists('files', $data) && null === $data['files']) {
+            $object->setFiles(null);
+        }
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
+            $object->setOk(null);
+        }
+        if (\array_key_exists('paging', $data) && null !== $data['paging']) {
+            $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
+        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
+            $object->setPaging(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false];
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $values = [];
+        foreach ($data->getFiles() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $dataArray['files'] = $values;
+        $dataArray['ok'] = $data->getOk();
+        $dataArray['paging'] = $this->normalizer->normalize($data->getPaging(), 'json', $context);
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\FilesListGetResponse200::class => false];
     }
 }

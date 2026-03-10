@@ -32,7 +32,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminAppsApprovePostResponse200|Model\AdminAppsApprovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminAppsApprovePostResponse200|Model\AdminAppsApprovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminAppsApprove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -53,7 +53,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminAppsApprovedListGetResponse200|Model\AdminAppsApprovedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminAppsApprovedListGetResponse200|Model\AdminAppsApprovedListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminAppsApprovedList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -73,7 +73,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminAppsRequestsListGetResponse200|Model\AdminAppsRequestsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminAppsRequestsListGetResponse200|Model\AdminAppsRequestsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminAppsRequestsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -97,7 +97,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminAppsRestrictPostResponse200|Model\AdminAppsRestrictPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminAppsRestrictPostResponse200|Model\AdminAppsRestrictPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminAppsRestrict(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -118,7 +118,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminAppsRestrictedListGetResponse200|Model\AdminAppsRestrictedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminAppsRestrictedListGetResponse200|Model\AdminAppsRestrictedListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminAppsRestrictedList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -140,7 +140,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsArchivePostResponse200|Model\AdminConversationsArchivePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsArchivePostResponse200|Model\AdminConversationsArchivePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsArchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -162,7 +162,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsConvertToPrivatePostResponse200|Model\AdminConversationsConvertToPrivatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsConvertToPrivatePostResponse200|Model\AdminConversationsConvertToPrivatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsConvertToPrivate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -188,7 +188,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsCreatePostResponse200|Model\AdminConversationsCreatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsCreatePostResponse200|Model\AdminConversationsCreatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -210,7 +210,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsDeletePostResponse200|Model\AdminConversationsDeletePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsDeletePostResponse200|Model\AdminConversationsDeletePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -233,7 +233,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsDisconnectSharedPostResponse200|Model\AdminConversationsDisconnectSharedPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsDisconnectSharedPostResponse200|Model\AdminConversationsDisconnectSharedPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsDisconnectShared(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -254,7 +254,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200|Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200|Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsEkmListOriginalConnectedChannelInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -276,7 +276,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsGetConversationPrefsGetResponse200|Model\AdminConversationsGetConversationPrefsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsGetConversationPrefsGetResponse200|Model\AdminConversationsGetConversationPrefsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsGetConversationPrefs(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -300,7 +300,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsGetTeamsGetResponse200|Model\AdminConversationsGetTeamsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsGetTeamsGetResponse200|Model\AdminConversationsGetTeamsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsGetTeams(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -323,7 +323,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsInvitePostResponse200|Model\AdminConversationsInvitePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsInvitePostResponse200|Model\AdminConversationsInvitePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -346,7 +346,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsRenamePostResponse200|Model\AdminConversationsRenamePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsRenamePostResponse200|Model\AdminConversationsRenamePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsRename(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -366,7 +366,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsRestrictAccessAddGroupPostResponse200|Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsRestrictAccessAddGroupPostResponse200|Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsRestrictAccessAddGroup(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -385,7 +385,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsRestrictAccessListGroupsGetResponse200|Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsRestrictAccessListGroupsGetResponse200|Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsRestrictAccessListGroups(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -405,7 +405,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200|Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsRestrictAccessRemoveGroupPostResponse200|Model\AdminConversationsRestrictAccessRemoveGroupPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsRestrictAccessRemoveGroup(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -433,7 +433,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsSearchGetResponse200|Model\AdminConversationsSearchGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsSearchGetResponse200|Model\AdminConversationsSearchGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsSearch(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -456,7 +456,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsSetConversationPrefsPostResponse200|Model\AdminConversationsSetConversationPrefsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsSetConversationPrefsPostResponse200|Model\AdminConversationsSetConversationPrefsPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsSetConversationPrefs(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -481,7 +481,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsSetTeamsPostResponse200|Model\AdminConversationsSetTeamsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsSetTeamsPostResponse200|Model\AdminConversationsSetTeamsPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsSetTeams(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -503,7 +503,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminConversationsUnarchivePostResponse200|Model\AdminConversationsUnarchivePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminConversationsUnarchivePostResponse200|Model\AdminConversationsUnarchivePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminConversationsUnarchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -522,7 +522,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminEmojiAddPostResponse200|Model\AdminEmojiAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminEmojiAddPostResponse200|Model\AdminEmojiAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminEmojiAdd(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -541,7 +541,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminEmojiAddAliasPostResponse200|Model\AdminEmojiAddAliasPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminEmojiAddAliasPostResponse200|Model\AdminEmojiAddAliasPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminEmojiAddAlias(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -560,7 +560,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminEmojiListGetResponse200|Model\AdminEmojiListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminEmojiListGetResponse200|Model\AdminEmojiListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminEmojiList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -578,7 +578,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminEmojiRemovePostResponse200|Model\AdminEmojiRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminEmojiRemovePostResponse200|Model\AdminEmojiRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminEmojiRemove(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -597,7 +597,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminEmojiRenamePostResponse200|Model\AdminEmojiRenamePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminEmojiRenamePostResponse200|Model\AdminEmojiRenamePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminEmojiRename(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -620,7 +620,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminInviteRequestsApprovePostResponse200|Model\AdminInviteRequestsApprovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminInviteRequestsApprovePostResponse200|Model\AdminInviteRequestsApprovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminInviteRequestsApprove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -644,7 +644,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminInviteRequestsApprovedListGetResponse200|Model\AdminInviteRequestsApprovedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminInviteRequestsApprovedListGetResponse200|Model\AdminInviteRequestsApprovedListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminInviteRequestsApprovedList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -668,7 +668,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminInviteRequestsDeniedListGetResponse200|Model\AdminInviteRequestsDeniedListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminInviteRequestsDeniedListGetResponse200|Model\AdminInviteRequestsDeniedListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminInviteRequestsDeniedList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -691,7 +691,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminInviteRequestsDenyPostResponse200|Model\AdminInviteRequestsDenyPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminInviteRequestsDenyPostResponse200|Model\AdminInviteRequestsDenyPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminInviteRequestsDeny(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -715,7 +715,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminInviteRequestsListGetResponse200|Model\AdminInviteRequestsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminInviteRequestsListGetResponse200|Model\AdminInviteRequestsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminInviteRequestsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -735,7 +735,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsAdminsListGetResponse200|Model\AdminTeamsAdminsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsAdminsListGetResponse200|Model\AdminTeamsAdminsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsAdminsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -760,7 +760,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsCreatePostResponse200|Model\AdminTeamsCreatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsCreatePostResponse200|Model\AdminTeamsCreatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -783,7 +783,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsListGetResponse200|Model\AdminTeamsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsListGetResponse200|Model\AdminTeamsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -803,7 +803,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsOwnersListGetResponse200|Model\AdminTeamsOwnersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsOwnersListGetResponse200|Model\AdminTeamsOwnersListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsOwnersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -825,7 +825,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsSettingsInfoGetResponse200|Model\AdminTeamsSettingsInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsSettingsInfoGetResponse200|Model\AdminTeamsSettingsInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsSettingsInfo(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -844,7 +844,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200|Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200|Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsSettingsSetDefaultChannels(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -867,7 +867,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsSettingsSetDescriptionPostResponse200|Model\AdminTeamsSettingsSetDescriptionPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsSettingsSetDescriptionPostResponse200|Model\AdminTeamsSettingsSetDescriptionPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsSettingsSetDescription(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -890,7 +890,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200|Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsSettingsSetDiscoverabilityPostResponse200|Model\AdminTeamsSettingsSetDiscoverabilityPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsSettingsSetDiscoverability(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -909,7 +909,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsSettingsSetIconPostResponse200|Model\AdminTeamsSettingsSetIconPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsSettingsSetIconPostResponse200|Model\AdminTeamsSettingsSetIconPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsSettingsSetIcon(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -932,7 +932,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminTeamsSettingsSetNamePostResponse200|Model\AdminTeamsSettingsSetNamePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminTeamsSettingsSetNamePostResponse200|Model\AdminTeamsSettingsSetNamePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminTeamsSettingsSetName(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -956,7 +956,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsergroupsAddChannelsPostResponse200|Model\AdminUsergroupsAddChannelsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsergroupsAddChannelsPostResponse200|Model\AdminUsergroupsAddChannelsPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsergroupsAddChannels(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -980,7 +980,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsergroupsAddTeamsPostResponse200|Model\AdminUsergroupsAddTeamsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsergroupsAddTeamsPostResponse200|Model\AdminUsergroupsAddTeamsPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsergroupsAddTeams(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1004,7 +1004,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsergroupsListChannelsGetResponse200|Model\AdminUsergroupsListChannelsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsergroupsListChannelsGetResponse200|Model\AdminUsergroupsListChannelsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsergroupsListChannels(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1027,7 +1027,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsergroupsRemoveChannelsPostResponse200|Model\AdminUsergroupsRemoveChannelsPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsergroupsRemoveChannelsPostResponse200|Model\AdminUsergroupsRemoveChannelsPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsergroupsRemoveChannels(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1053,7 +1053,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersAssignPostResponse200|Model\AdminUsersAssignPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersAssignPostResponse200|Model\AdminUsersAssignPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersAssign(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1083,7 +1083,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersInvitePostResponse200|Model\AdminUsersInvitePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersInvitePostResponse200|Model\AdminUsersInvitePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1107,7 +1107,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersListGetResponse200|Model\AdminUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersListGetResponse200|Model\AdminUsersListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1130,7 +1130,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersRemovePostResponse200|Model\AdminUsersRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersRemovePostResponse200|Model\AdminUsersRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1153,7 +1153,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersSessionInvalidatePostResponse200|Model\AdminUsersSessionInvalidatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersSessionInvalidatePostResponse200|Model\AdminUsersSessionInvalidatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersSessionInvalidate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1177,7 +1177,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersSessionResetPostResponse200|Model\AdminUsersSessionResetPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersSessionResetPostResponse200|Model\AdminUsersSessionResetPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersSessionReset(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1200,7 +1200,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersSetAdminPostResponse200|Model\AdminUsersSetAdminPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersSetAdminPostResponse200|Model\AdminUsersSetAdminPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersSetAdmin(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1224,7 +1224,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersSetExpirationPostResponse200|Model\AdminUsersSetExpirationPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersSetExpirationPostResponse200|Model\AdminUsersSetExpirationPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersSetExpiration(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1247,7 +1247,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersSetOwnerPostResponse200|Model\AdminUsersSetOwnerPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersSetOwnerPostResponse200|Model\AdminUsersSetOwnerPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersSetOwner(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1270,7 +1270,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AdminUsersSetRegularPostResponse200|Model\AdminUsersSetRegularPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AdminUsersSetRegularPostResponse200|Model\AdminUsersSetRegularPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function adminUsersSetRegular(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1288,7 +1288,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ApiTestGetResponse200|Model\ApiTestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ApiTestGetResponse200|Model\ApiTestGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function apiTest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1312,7 +1312,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsEventAuthorizationsListGetResponse200|Model\AppsEventAuthorizationsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsEventAuthorizationsListGetResponse200|Model\AppsEventAuthorizationsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsEventAuthorizationsList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1329,7 +1329,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsPermissionsInfoGetResponse200|Model\AppsPermissionsInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsPermissionsInfoGetResponse200|Model\AppsPermissionsInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsPermissionsInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1348,7 +1348,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsPermissionsRequestGetResponse200|Model\AppsPermissionsRequestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsPermissionsRequestGetResponse200|Model\AppsPermissionsRequestGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsPermissionsRequest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1367,7 +1367,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsPermissionsResourcesListGetResponse200|Model\AppsPermissionsResourcesListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsPermissionsResourcesListGetResponse200|Model\AppsPermissionsResourcesListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsPermissionsResourcesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1384,7 +1384,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsPermissionsScopesListGetResponse200|Model\AppsPermissionsScopesListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsPermissionsScopesListGetResponse200|Model\AppsPermissionsScopesListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsPermissionsScopesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1403,7 +1403,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsPermissionsUsersListGetResponse200|Model\AppsPermissionsUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsPermissionsUsersListGetResponse200|Model\AppsPermissionsUsersListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsPermissionsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1423,7 +1423,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsPermissionsUsersRequestGetResponse200|Model\AppsPermissionsUsersRequestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsPermissionsUsersRequestGetResponse200|Model\AppsPermissionsUsersRequestGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsPermissionsUsersRequest(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1442,7 +1442,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AppsUninstallGetResponse200|Model\AppsUninstallGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AppsUninstallGetResponse200|Model\AppsUninstallGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function appsUninstall(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1460,7 +1460,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AuthRevokeGetResponse200|Model\AuthRevokeGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AuthRevokeGetResponse200|Model\AuthRevokeGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function authRevoke(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1477,7 +1477,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\AuthTestGetResponse200|Model\AuthTestGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\AuthTestGetResponse200|Model\AuthTestGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function authTest(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1495,7 +1495,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\BotsInfoGetResponse200|Model\BotsInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\BotsInfoGetResponse200|Model\BotsInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function botsInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1524,7 +1524,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CallsAddPostResponse200|Model\CallsAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CallsAddPostResponse200|Model\CallsAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function callsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1547,7 +1547,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CallsEndPostResponse200|Model\CallsEndPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CallsEndPostResponse200|Model\CallsEndPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function callsEnd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1569,7 +1569,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CallsInfoGetResponse200|Model\CallsInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CallsInfoGetResponse200|Model\CallsInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function callsInfo(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1592,7 +1592,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CallsParticipantsAddPostResponse200|Model\CallsParticipantsAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CallsParticipantsAddPostResponse200|Model\CallsParticipantsAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function callsParticipantsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1615,7 +1615,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CallsParticipantsRemovePostResponse200|Model\CallsParticipantsRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CallsParticipantsRemovePostResponse200|Model\CallsParticipantsRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function callsParticipantsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1640,7 +1640,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\CallsUpdatePostResponse200|Model\CallsUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\CallsUpdatePostResponse200|Model\CallsUpdatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function callsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1664,7 +1664,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatDeletePostResponse200|Model\ChatDeletePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatDeletePostResponse200|Model\ChatDeletePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1688,7 +1688,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatDeleteScheduledMessagePostResponse200|Model\ChatDeleteScheduledMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatDeleteScheduledMessagePostResponse200|Model\ChatDeleteScheduledMessagePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatDeleteScheduledMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1707,7 +1707,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatGetPermalinkGetResponse200|Model\ChatGetPermalinkGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatGetPermalinkGetResponse200|Model\ChatGetPermalinkGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatGetPermalink(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1730,7 +1730,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatMeMessagePostResponse200|Model\ChatMeMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatMeMessagePostResponse200|Model\ChatMeMessagePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatMeMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1763,7 +1763,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatPostEphemeralPostResponse200|Model\ChatPostEphemeralPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatPostEphemeralPostResponse200|Model\ChatPostEphemeralPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatPostEphemeral(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1800,7 +1800,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatPostMessagePostResponse200|Model\ChatPostMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatPostMessagePostResponse200|Model\ChatPostMessagePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatPostMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1833,7 +1833,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatScheduleMessagePostResponse200|Model\ChatScheduleMessagePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatScheduleMessagePostResponse200|Model\ChatScheduleMessagePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatScheduleMessage(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1859,7 +1859,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatScheduledMessagesListGetResponse200|Model\ChatScheduledMessagesListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatScheduledMessagesListGetResponse200|Model\ChatScheduledMessagesListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatScheduledMessagesList(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1886,7 +1886,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatUnfurlPostResponse200|Model\ChatUnfurlPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatUnfurlPostResponse200|Model\ChatUnfurlPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatUnfurl(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1915,7 +1915,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ChatUpdatePostResponse200|Model\ChatUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ChatUpdatePostResponse200|Model\ChatUpdatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function chatUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1937,7 +1937,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsArchivePostResponse200|Model\ConversationsArchivePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsArchivePostResponse200|Model\ConversationsArchivePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsArchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1959,7 +1959,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsClosePostResponse200|Model\ConversationsClosePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsClosePostResponse200|Model\ConversationsClosePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsClose(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -1982,7 +1982,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsCreatePostResponse200|Model\ConversationsCreatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsCreatePostResponse200|Model\ConversationsCreatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2006,7 +2006,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsHistoryGetResponse200|Model\ConversationsHistoryGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsHistoryGetResponse200|Model\ConversationsHistoryGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsHistory(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2026,7 +2026,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsInfoGetResponse200|Model\ConversationsInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsInfoGetResponse200|Model\ConversationsInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2049,7 +2049,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsInvitePostResponse200|Model\ConversationsInvitePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsInvitePostResponse200|Model\ConversationsInvitePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsInvite(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2071,7 +2071,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsJoinPostResponse200|Model\ConversationsJoinPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsJoinPostResponse200|Model\ConversationsJoinPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsJoin(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2094,7 +2094,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsKickPostResponse200|Model\ConversationsKickPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsKickPostResponse200|Model\ConversationsKickPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsKick(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2116,7 +2116,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsLeavePostResponse200|Model\ConversationsLeavePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsLeavePostResponse200|Model\ConversationsLeavePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsLeave(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2138,7 +2138,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsListGetResponse200|Model\ConversationsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsListGetResponse200|Model\ConversationsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2161,7 +2161,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsMarkPostResponse200|Model\ConversationsMarkPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsMarkPostResponse200|Model\ConversationsMarkPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsMark(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2181,7 +2181,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsMembersGetResponse200|Model\ConversationsMembersGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsMembersGetResponse200|Model\ConversationsMembersGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsMembers(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2205,7 +2205,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsOpenPostResponse200|Model\ConversationsOpenPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsOpenPostResponse200|Model\ConversationsOpenPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsOpen(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2228,7 +2228,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsRenamePostResponse200|Model\ConversationsRenamePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsRenamePostResponse200|Model\ConversationsRenamePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsRename(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2252,7 +2252,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsRepliesGetResponse200|Model\ConversationsRepliesGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsRepliesGetResponse200|Model\ConversationsRepliesGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsReplies(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2275,7 +2275,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsSetPurposePostResponse200|Model\ConversationsSetPurposePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsSetPurposePostResponse200|Model\ConversationsSetPurposePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsSetPurpose(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2298,7 +2298,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsSetTopicPostResponse200|Model\ConversationsSetTopicPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsSetTopicPostResponse200|Model\ConversationsSetTopicPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsSetTopic(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2320,7 +2320,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ConversationsUnarchivePostResponse200|Model\ConversationsUnarchivePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ConversationsUnarchivePostResponse200|Model\ConversationsUnarchivePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function conversationsUnarchive(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2343,7 +2343,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DialogOpenGetResponse200|Model\DialogOpenGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\DialogOpenGetResponse200|Model\DialogOpenGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function dialogOpen(array $queryParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2360,7 +2360,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DndEndDndPostResponse200|Model\DndEndDndPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\DndEndDndPostResponse200|Model\DndEndDndPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function dndEndDnd(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2377,7 +2377,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DndEndSnoozePostResponse200|Model\DndEndSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\DndEndSnoozePostResponse200|Model\DndEndSnoozePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function dndEndSnooze(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2395,7 +2395,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DndInfoGetResponse200|Model\DndInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\DndInfoGetResponse200|Model\DndInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function dndInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2413,7 +2413,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DndSetSnoozePostResponse200|Model\DndSetSnoozePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\DndSetSnoozePostResponse200|Model\DndSetSnoozePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function dndSetSnooze(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2431,7 +2431,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\DndTeamInfoGetResponse200|Model\DndTeamInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\DndTeamInfoGetResponse200|Model\DndTeamInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function dndTeamInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2448,7 +2448,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\EmojiListGetResponse200|Model\EmojiListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\EmojiListGetResponse200|Model\EmojiListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function emojiList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2471,7 +2471,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesCommentsDeletePostResponse200|Model\FilesCommentsDeletePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesCommentsDeletePostResponse200|Model\FilesCommentsDeletePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesCommentsDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2498,7 +2498,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesCompleteUploadExternalPostResponse200|Model\FilesCompleteUploadExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesCompleteUploadExternalPostResponse200|Model\FilesCompleteUploadExternalPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesCompleteUploadExternal(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2520,7 +2520,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesDeletePostResponse200|Model\FilesDeletePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesDeletePostResponse200|Model\FilesDeletePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2545,7 +2545,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesGetUploadURLExternalPostResponse200|Model\FilesGetUploadURLExternalPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesGetUploadURLExternalPostResponse200|Model\FilesGetUploadURLExternalPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesGetUploadUrlExternal(array $queryParameters = [], array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2567,7 +2567,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesInfoGetResponse200|Model\FilesInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesInfoGetResponse200|Model\FilesInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2592,7 +2592,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesListGetResponse200|Model\FilesListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesListGetResponse200|Model\FilesListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2615,7 +2615,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRemoteAddPostResponse200|Model\FilesRemoteAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRemoteAddPostResponse200|Model\FilesRemoteAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRemoteAdd(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2634,7 +2634,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRemoteInfoGetResponse200|Model\FilesRemoteInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRemoteInfoGetResponse200|Model\FilesRemoteInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRemoteInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2656,7 +2656,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRemoteListGetResponse200|Model\FilesRemoteListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRemoteListGetResponse200|Model\FilesRemoteListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRemoteList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2675,7 +2675,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRemoteRemovePostResponse200|Model\FilesRemoteRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRemoteRemovePostResponse200|Model\FilesRemoteRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRemoteRemove(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2695,7 +2695,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRemoteShareGetResponse200|Model\FilesRemoteShareGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRemoteShareGetResponse200|Model\FilesRemoteShareGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRemoteShare(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2719,7 +2719,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRemoteUpdatePostResponse200|Model\FilesRemoteUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRemoteUpdatePostResponse200|Model\FilesRemoteUpdatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRemoteUpdate(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2741,7 +2741,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesRevokePublicURLPostResponse200|Model\FilesRevokePublicURLPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesRevokePublicURLPostResponse200|Model\FilesRevokePublicURLPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesRevokePublicURL(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2763,7 +2763,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesSharedPublicURLPostResponse200|Model\FilesSharedPublicURLPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesSharedPublicURLPostResponse200|Model\FilesSharedPublicURLPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesSharedPublicURL(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2788,7 +2788,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\FilesUploadPostResponse200|Model\FilesUploadPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\FilesUploadPostResponse200|Model\FilesUploadPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function filesUpload(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2808,7 +2808,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\MigrationExchangeGetResponse200|Model\MigrationExchangeGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\MigrationExchangeGetResponse200|Model\MigrationExchangeGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function migrationExchange(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2829,7 +2829,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\OauthAccessGetResponse200|Model\OauthAccessGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\OauthAccessGetResponse200|Model\OauthAccessGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthAccess(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2850,7 +2850,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\OauthTokenGetResponse200|Model\OauthTokenGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\OauthTokenGetResponse200|Model\OauthTokenGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthToken(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2870,7 +2870,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\OauthV2AccessGetResponse200|Model\OauthV2AccessGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\OauthV2AccessGetResponse200|Model\OauthV2AccessGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function oauthV2Access(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2893,7 +2893,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\PinsAddPostResponse200|Model\PinsAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\PinsAddPostResponse200|Model\PinsAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function pinsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2911,7 +2911,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\PinsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\PinsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function pinsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2934,7 +2934,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\PinsRemovePostResponse200|Model\PinsRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\PinsRemovePostResponse200|Model\PinsRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function pinsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2958,7 +2958,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ReactionsAddPostResponse200|Model\ReactionsAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ReactionsAddPostResponse200|Model\ReactionsAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -2980,7 +2980,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ReactionsGetGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ReactionsGetGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsGet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3003,7 +3003,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ReactionsListGetResponse200|Model\ReactionsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ReactionsListGetResponse200|Model\ReactionsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3029,7 +3029,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ReactionsRemovePostResponse200|Model\ReactionsRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ReactionsRemovePostResponse200|Model\ReactionsRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function reactionsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3053,7 +3053,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\RemindersAddPostResponse200|Model\RemindersAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\RemindersAddPostResponse200|Model\RemindersAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function remindersAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3075,7 +3075,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\RemindersCompletePostResponse200|Model\RemindersCompletePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\RemindersCompletePostResponse200|Model\RemindersCompletePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function remindersComplete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3097,7 +3097,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\RemindersDeletePostResponse200|Model\RemindersDeletePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\RemindersDeletePostResponse200|Model\RemindersDeletePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function remindersDelete(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3115,7 +3115,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\RemindersInfoGetResponse200|Model\RemindersInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\RemindersInfoGetResponse200|Model\RemindersInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function remindersInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3132,7 +3132,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\RemindersListGetResponse200|Model\RemindersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\RemindersListGetResponse200|Model\RemindersListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function remindersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3151,7 +3151,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\RtmConnectGetResponse200|Model\RtmConnectGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\RtmConnectGetResponse200|Model\RtmConnectGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function rtmConnect(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3174,7 +3174,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\SearchMessagesGetResponse200|Model\SearchMessagesGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\SearchMessagesGetResponse200|Model\SearchMessagesGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function searchMessages(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3199,7 +3199,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\StarsAddPostResponse200|Model\StarsAddPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\StarsAddPostResponse200|Model\StarsAddPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function starsAdd(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3220,7 +3220,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\StarsListGetResponse200|Model\StarsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\StarsListGetResponse200|Model\StarsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function starsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3245,7 +3245,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\StarsRemovePostResponse200|Model\StarsRemovePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\StarsRemovePostResponse200|Model\StarsRemovePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function starsRemove(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3265,7 +3265,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TeamAccessLogsGetResponse200|Model\TeamAccessLogsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TeamAccessLogsGetResponse200|Model\TeamAccessLogsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamAccessLogs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3283,7 +3283,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TeamBillableInfoGetResponse200|Model\TeamBillableInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TeamBillableInfoGetResponse200|Model\TeamBillableInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamBillableInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3301,7 +3301,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TeamInfoGetResponse200|Model\TeamInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TeamInfoGetResponse200|Model\TeamInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3324,7 +3324,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TeamIntegrationLogsGetResponse200|Model\TeamIntegrationLogsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TeamIntegrationLogsGetResponse200|Model\TeamIntegrationLogsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamIntegrationLogs(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3342,7 +3342,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\TeamProfileGetGetResponse200|Model\TeamProfileGetGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\TeamProfileGetGetResponse200|Model\TeamProfileGetGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function teamProfileGet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3368,7 +3368,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsCreatePostResponse200|Model\UsergroupsCreatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsCreatePostResponse200|Model\UsergroupsCreatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsCreate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3391,7 +3391,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsDisablePostResponse200|Model\UsergroupsDisablePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsDisablePostResponse200|Model\UsergroupsDisablePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsDisable(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3414,7 +3414,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsEnablePostResponse200|Model\UsergroupsEnablePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsEnablePostResponse200|Model\UsergroupsEnablePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsEnable(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3435,7 +3435,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsListGetResponse200|Model\UsergroupsListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsListGetResponse200|Model\UsergroupsListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3462,7 +3462,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsUpdatePostResponse200|Model\UsergroupsUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsUpdatePostResponse200|Model\UsergroupsUpdatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3481,7 +3481,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsUsersListGetResponse200|Model\UsergroupsUsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsUsersListGetResponse200|Model\UsergroupsUsersListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsUsersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3505,7 +3505,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsergroupsUsersUpdatePostResponse200|Model\UsergroupsUsersUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsergroupsUsersUpdatePostResponse200|Model\UsergroupsUsersUpdatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usergroupsUsersUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3527,7 +3527,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersConversationsGetResponse200|Model\UsersConversationsGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersConversationsGetResponse200|Model\UsersConversationsGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersConversations(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3544,7 +3544,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersDeletePhotoPostResponse200|Model\UsersDeletePhotoPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersDeletePhotoPostResponse200|Model\UsersDeletePhotoPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersDeletePhoto(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3562,7 +3562,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersGetPresenceGetResponse200|Model\UsersGetPresenceGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersGetPresenceGetResponse200|Model\UsersGetPresenceGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersGetPresence(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3579,7 +3579,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersIdentityGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersIdentityGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersIdentity(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3598,7 +3598,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersInfoGetResponse200|Model\UsersInfoGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersInfoGetResponse200|Model\UsersInfoGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersInfo(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3619,7 +3619,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersListGetResponse200|Model\UsersListGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersListGetResponse200|Model\UsersListGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3637,7 +3637,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersLookupByEmailGetResponse200|Model\UsersLookupByEmailGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersLookupByEmailGetResponse200|Model\UsersLookupByEmailGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersLookupByEmail(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3656,7 +3656,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersProfileGetGetResponse200|Model\UsersProfileGetGetResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersProfileGetGetResponse200|Model\UsersProfileGetGetResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersProfileGet(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3681,7 +3681,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersProfileSetPostResponse200|Model\UsersProfileSetPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersProfileSetPostResponse200|Model\UsersProfileSetPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersProfileSet(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3698,7 +3698,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersSetActivePostResponse200|Model\UsersSetActivePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersSetActivePostResponse200|Model\UsersSetActivePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersSetActive(array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3719,7 +3719,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersSetPhotoPostResponse200|Model\UsersSetPhotoPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersSetPhotoPostResponse200|Model\UsersSetPhotoPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersSetPhoto(array $formParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3741,7 +3741,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\UsersSetPresencePostResponse200|Model\UsersSetPresencePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\UsersSetPresencePostResponse200|Model\UsersSetPresencePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function usersSetPresence(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3764,7 +3764,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ViewsOpenPostResponse200|Model\ViewsOpenPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ViewsOpenPostResponse200|Model\ViewsOpenPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function viewsOpen(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3788,7 +3788,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ViewsPublishPostResponse200|Model\ViewsPublishPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ViewsPublishPostResponse200|Model\ViewsPublishPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function viewsPublish(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3811,7 +3811,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ViewsPushPostResponse200|Model\ViewsPushPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ViewsPushPostResponse200|Model\ViewsPushPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function viewsPush(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3836,7 +3836,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\ViewsUpdatePostResponse200|Model\ViewsUpdatePostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\ViewsUpdatePostResponse200|Model\ViewsUpdatePostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function viewsUpdate(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3859,7 +3859,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\WorkflowsStepCompletedPostResponse200|Model\WorkflowsStepCompletedPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\WorkflowsStepCompletedPostResponse200|Model\WorkflowsStepCompletedPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function workflowsStepCompleted(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3882,7 +3882,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\WorkflowsStepFailedPostResponse200|Model\WorkflowsStepFailedPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\WorkflowsStepFailedPostResponse200|Model\WorkflowsStepFailedPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function workflowsStepFailed(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {
@@ -3908,7 +3908,7 @@ class Client extends Runtime\Client\Client
      *
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Model\WorkflowsUpdateStepPostResponse200|Model\WorkflowsUpdateStepPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     * @return ($fetch is 'object' ? Model\WorkflowsUpdateStepPostResponse200|Model\WorkflowsUpdateStepPostResponsedefault|null : \Psr\Http\Message\ResponseInterface)
      */
     public function workflowsUpdateStep(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
     {

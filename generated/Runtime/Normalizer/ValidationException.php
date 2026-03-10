@@ -17,12 +17,8 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class ValidationException extends \RuntimeException
 {
-    /** @var ConstraintViolationListInterface */
-    private $violationList;
-
-    public function __construct(ConstraintViolationListInterface $violationList)
+    public function __construct(private readonly ConstraintViolationListInterface $violationList)
     {
-        $this->violationList = $violationList;
         parent::__construct(\sprintf('Model validation failed with %d errors.', $violationList->count()), 400);
     }
 

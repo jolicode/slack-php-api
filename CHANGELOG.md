@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 4.9.0 (2026-03-10)
+
+* Upgrade JanePHP generated code
+* Dropped PHP 8.O support
+* Added Symfony 8 support
+* Removed `filesUpload` as it's not working anymore on Slack
+* New `filesUploadV2` argument to publish in a thread
+
 ## 4.8.0 (2025-04-01)
 
 * Upgrade JanePHP generated code

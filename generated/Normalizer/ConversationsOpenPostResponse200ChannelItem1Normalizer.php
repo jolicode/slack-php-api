@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,251 +23,130 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class ConversationsOpenPostResponse200ChannelItem1Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ConversationsOpenPostResponse200ChannelItem1Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
-            if (\array_key_exists('unread_count', $data) && \is_int($data['unread_count'])) {
-                $data['unread_count'] = (float) $data['unread_count'];
-            }
-            if (\array_key_exists('unread_count_display', $data) && \is_int($data['unread_count_display'])) {
-                $data['unread_count_display'] = (float) $data['unread_count_display'];
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('created', $data) && null !== $data['created']) {
-                $object->setCreated($data['created']);
-            } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-                $object->setCreated(null);
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('is_im', $data) && null !== $data['is_im']) {
-                $object->setIsIm($data['is_im']);
-            } elseif (\array_key_exists('is_im', $data) && null === $data['is_im']) {
-                $object->setIsIm(null);
-            }
-            if (\array_key_exists('is_open', $data) && null !== $data['is_open']) {
-                $object->setIsOpen($data['is_open']);
-            } elseif (\array_key_exists('is_open', $data) && null === $data['is_open']) {
-                $object->setIsOpen(null);
-            }
-            if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
-                $object->setLastRead($data['last_read']);
-            } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
-                $object->setLastRead(null);
-            }
-            if (\array_key_exists('latest', $data) && null !== $data['latest']) {
-                $object->setLatest($this->denormalizer->denormalize($data['latest'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-            } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
-                $object->setLatest(null);
-            }
-            if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
-                $object->setUnreadCount($data['unread_count']);
-            } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
-                $object->setUnreadCount(null);
-            }
-            if (\array_key_exists('unread_count_display', $data) && null !== $data['unread_count_display']) {
-                $object->setUnreadCountDisplay($data['unread_count_display']);
-            } elseif (\array_key_exists('unread_count_display', $data) && null === $data['unread_count_display']) {
-                $object->setUnreadCountDisplay(null);
-            }
-            if (\array_key_exists('user', $data) && null !== $data['user']) {
-                $object->setUser($data['user']);
-            } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-                $object->setUser(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('created') && null !== $object->getCreated()) {
-                $data['created'] = $object->getCreated();
-            }
-            $data['id'] = $object->getId();
-            if ($object->isInitialized('isIm') && null !== $object->getIsIm()) {
-                $data['is_im'] = $object->getIsIm();
-            }
-            if ($object->isInitialized('isOpen') && null !== $object->getIsOpen()) {
-                $data['is_open'] = $object->getIsOpen();
-            }
-            if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
-                $data['last_read'] = $object->getLastRead();
-            }
-            if ($object->isInitialized('latest') && null !== $object->getLatest()) {
-                $data['latest'] = $this->normalizer->normalize($object->getLatest(), 'json', $context);
-            }
-            if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
-                $data['unread_count'] = $object->getUnreadCount();
-            }
-            if ($object->isInitialized('unreadCountDisplay') && null !== $object->getUnreadCountDisplay()) {
-                $data['unread_count_display'] = $object->getUnreadCountDisplay();
-            }
-            if ($object->isInitialized('user') && null !== $object->getUser()) {
-                $data['user'] = $object->getUser();
-            }
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class === $type;
     }
-} else {
-    class ConversationsOpenPostResponse200ChannelItem1Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
-            if (\array_key_exists('unread_count', $data) && \is_int($data['unread_count'])) {
-                $data['unread_count'] = (float) $data['unread_count'];
-            }
-            if (\array_key_exists('unread_count_display', $data) && \is_int($data['unread_count_display'])) {
-                $data['unread_count_display'] = (float) $data['unread_count_display'];
-            }
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('created', $data) && null !== $data['created']) {
-                $object->setCreated($data['created']);
-            } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-                $object->setCreated(null);
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('is_im', $data) && null !== $data['is_im']) {
-                $object->setIsIm($data['is_im']);
-            } elseif (\array_key_exists('is_im', $data) && null === $data['is_im']) {
-                $object->setIsIm(null);
-            }
-            if (\array_key_exists('is_open', $data) && null !== $data['is_open']) {
-                $object->setIsOpen($data['is_open']);
-            } elseif (\array_key_exists('is_open', $data) && null === $data['is_open']) {
-                $object->setIsOpen(null);
-            }
-            if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
-                $object->setLastRead($data['last_read']);
-            } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
-                $object->setLastRead(null);
-            }
-            if (\array_key_exists('latest', $data) && null !== $data['latest']) {
-                $object->setLatest($this->denormalizer->denormalize($data['latest'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-            } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
-                $object->setLatest(null);
-            }
-            if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
-                $object->setUnreadCount($data['unread_count']);
-            } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
-                $object->setUnreadCount(null);
-            }
-            if (\array_key_exists('unread_count_display', $data) && null !== $data['unread_count_display']) {
-                $object->setUnreadCountDisplay($data['unread_count_display']);
-            } elseif (\array_key_exists('unread_count_display', $data) && null === $data['unread_count_display']) {
-                $object->setUnreadCountDisplay(null);
-            }
-            if (\array_key_exists('user', $data) && null !== $data['user']) {
-                $object->setUser($data['user']);
-            } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-                $object->setUser(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
+        if (\array_key_exists('unread_count', $data) && \is_int($data['unread_count'])) {
+            $data['unread_count'] = (float) $data['unread_count'];
+        }
+        if (\array_key_exists('unread_count_display', $data) && \is_int($data['unread_count_display'])) {
+            $data['unread_count_display'] = (float) $data['unread_count_display'];
+        }
+        if (\array_key_exists('is_im', $data) && \is_int($data['is_im'])) {
+            $data['is_im'] = (bool) $data['is_im'];
+        }
+        if (\array_key_exists('is_open', $data) && \is_int($data['is_open'])) {
+            $data['is_open'] = (bool) $data['is_open'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('created') && null !== $object->getCreated()) {
-                $data['created'] = $object->getCreated();
-            }
-            $data['id'] = $object->getId();
-            if ($object->isInitialized('isIm') && null !== $object->getIsIm()) {
-                $data['is_im'] = $object->getIsIm();
-            }
-            if ($object->isInitialized('isOpen') && null !== $object->getIsOpen()) {
-                $data['is_open'] = $object->getIsOpen();
-            }
-            if ($object->isInitialized('lastRead') && null !== $object->getLastRead()) {
-                $data['last_read'] = $object->getLastRead();
-            }
-            if ($object->isInitialized('latest') && null !== $object->getLatest()) {
-                $data['latest'] = $this->normalizer->normalize($object->getLatest(), 'json', $context);
-            }
-            if ($object->isInitialized('unreadCount') && null !== $object->getUnreadCount()) {
-                $data['unread_count'] = $object->getUnreadCount();
-            }
-            if ($object->isInitialized('unreadCountDisplay') && null !== $object->getUnreadCountDisplay()) {
-                $data['unread_count_display'] = $object->getUnreadCountDisplay();
-            }
-            if ($object->isInitialized('user') && null !== $object->getUser()) {
-                $data['user'] = $object->getUser();
-            }
-
-            return $data;
+        if (\array_key_exists('created', $data) && null !== $data['created']) {
+            $object->setCreated($data['created']);
+        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
+            $object->setCreated(null);
+        }
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('is_im', $data) && null !== $data['is_im']) {
+            $object->setIsIm($data['is_im']);
+        } elseif (\array_key_exists('is_im', $data) && null === $data['is_im']) {
+            $object->setIsIm(null);
+        }
+        if (\array_key_exists('is_open', $data) && null !== $data['is_open']) {
+            $object->setIsOpen($data['is_open']);
+        } elseif (\array_key_exists('is_open', $data) && null === $data['is_open']) {
+            $object->setIsOpen(null);
+        }
+        if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
+            $object->setLastRead($data['last_read']);
+        } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
+            $object->setLastRead(null);
+        }
+        if (\array_key_exists('latest', $data) && null !== $data['latest']) {
+            $object->setLatest($this->denormalizer->denormalize($data['latest'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
+        } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
+            $object->setLatest(null);
+        }
+        if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
+            $object->setUnreadCount($data['unread_count']);
+        } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
+            $object->setUnreadCount(null);
+        }
+        if (\array_key_exists('unread_count_display', $data) && null !== $data['unread_count_display']) {
+            $object->setUnreadCountDisplay($data['unread_count_display']);
+        } elseif (\array_key_exists('unread_count_display', $data) && null === $data['unread_count_display']) {
+            $object->setUnreadCountDisplay(null);
+        }
+        if (\array_key_exists('user', $data) && null !== $data['user']) {
+            $object->setUser($data['user']);
+        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
+            $object->setUser(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => false];
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('created') && null !== $data->getCreated()) {
+            $dataArray['created'] = $data->getCreated();
         }
+        $dataArray['id'] = $data->getId();
+        if ($data->isInitialized('isIm') && null !== $data->getIsIm()) {
+            $dataArray['is_im'] = $data->getIsIm();
+        }
+        if ($data->isInitialized('isOpen') && null !== $data->getIsOpen()) {
+            $dataArray['is_open'] = $data->getIsOpen();
+        }
+        if ($data->isInitialized('lastRead') && null !== $data->getLastRead()) {
+            $dataArray['last_read'] = $data->getLastRead();
+        }
+        if ($data->isInitialized('latest') && null !== $data->getLatest()) {
+            $dataArray['latest'] = $this->normalizer->normalize($data->getLatest(), 'json', $context);
+        }
+        if ($data->isInitialized('unreadCount') && null !== $data->getUnreadCount()) {
+            $dataArray['unread_count'] = $data->getUnreadCount();
+        }
+        if ($data->isInitialized('unreadCountDisplay') && null !== $data->getUnreadCountDisplay()) {
+            $dataArray['unread_count_display'] = $data->getUnreadCountDisplay();
+        }
+        if ($data->isInitialized('user') && null !== $data->getUser()) {
+            $dataArray['user'] = $data->getUser();
+        }
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1::class => false];
     }
 }

@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,143 +23,79 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class ConversationsClosePostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ConversationsClosePostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('already_closed', $data) && null !== $data['already_closed']) {
-                $object->setAlreadyClosed($data['already_closed']);
-            } elseif (\array_key_exists('already_closed', $data) && null === $data['already_closed']) {
-                $object->setAlreadyClosed(null);
-            }
-            if (\array_key_exists('no_op', $data) && null !== $data['no_op']) {
-                $object->setNoOp($data['no_op']);
-            } elseif (\array_key_exists('no_op', $data) && null === $data['no_op']) {
-                $object->setNoOp(null);
-            }
-            if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-                $object->setOk($data['ok']);
-            } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-                $object->setOk(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            if ($object->isInitialized('alreadyClosed') && null !== $object->getAlreadyClosed()) {
-                $data['already_closed'] = $object->getAlreadyClosed();
-            }
-            if ($object->isInitialized('noOp') && null !== $object->getNoOp()) {
-                $data['no_op'] = $object->getNoOp();
-            }
-            $data['ok'] = $object->getOk();
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class === $type;
     }
-} else {
-    class ConversationsClosePostResponse200Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('already_closed', $data) && null !== $data['already_closed']) {
-                $object->setAlreadyClosed($data['already_closed']);
-            } elseif (\array_key_exists('already_closed', $data) && null === $data['already_closed']) {
-                $object->setAlreadyClosed(null);
-            }
-            if (\array_key_exists('no_op', $data) && null !== $data['no_op']) {
-                $object->setNoOp($data['no_op']);
-            } elseif (\array_key_exists('no_op', $data) && null === $data['no_op']) {
-                $object->setNoOp(null);
-            }
-            if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-                $object->setOk($data['ok']);
-            } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-                $object->setOk(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200();
+        if (\array_key_exists('already_closed', $data) && \is_int($data['already_closed'])) {
+            $data['already_closed'] = (bool) $data['already_closed'];
+        }
+        if (\array_key_exists('no_op', $data) && \is_int($data['no_op'])) {
+            $data['no_op'] = (bool) $data['no_op'];
+        }
+        if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
+            $data['ok'] = (bool) $data['ok'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            if ($object->isInitialized('alreadyClosed') && null !== $object->getAlreadyClosed()) {
-                $data['already_closed'] = $object->getAlreadyClosed();
-            }
-            if ($object->isInitialized('noOp') && null !== $object->getNoOp()) {
-                $data['no_op'] = $object->getNoOp();
-            }
-            $data['ok'] = $object->getOk();
-
-            return $data;
+        if (\array_key_exists('already_closed', $data) && null !== $data['already_closed']) {
+            $object->setAlreadyClosed($data['already_closed']);
+        } elseif (\array_key_exists('already_closed', $data) && null === $data['already_closed']) {
+            $object->setAlreadyClosed(null);
+        }
+        if (\array_key_exists('no_op', $data) && null !== $data['no_op']) {
+            $object->setNoOp($data['no_op']);
+        } elseif (\array_key_exists('no_op', $data) && null === $data['no_op']) {
+            $object->setNoOp(null);
+        }
+        if (\array_key_exists('ok', $data) && null !== $data['ok']) {
+            $object->setOk($data['ok']);
+        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
+            $object->setOk(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => false];
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        if ($data->isInitialized('alreadyClosed') && null !== $data->getAlreadyClosed()) {
+            $dataArray['already_closed'] = $data->getAlreadyClosed();
         }
+        if ($data->isInitialized('noOp') && null !== $data->getNoOp()) {
+            $dataArray['no_op'] = $data->getNoOp();
+        }
+        $dataArray['ok'] = $data->getOk();
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\ConversationsClosePostResponse200::class => false];
     }
 }

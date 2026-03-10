@@ -170,6 +170,11 @@ class Client extends ApiClient
         );
     }
 
+    public function filesUpload(array $formParameters = [], string $fetch = ApiClient::FETCH_OBJECT)
+    {
+        throw new \RuntimeException("Method 'filesUpload' is not supported by Slack anymore. Use 'filesUploadV2' instead.");
+    }
+
     /**
      * @throws ClientExceptionInterface
      */

@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,139 +23,68 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('current', $data) && null !== $data['current']) {
-                $values = [];
-                foreach ($data['current'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class, 'json', $context);
-                }
-                $object->setCurrent($values);
-            } elseif (\array_key_exists('current', $data) && null === $data['current']) {
-                $object->setCurrent(null);
-            }
-            if (\array_key_exists('date_updated', $data) && null !== $data['date_updated']) {
-                $object->setDateUpdated($data['date_updated']);
-            } elseif (\array_key_exists('date_updated', $data) && null === $data['date_updated']) {
-                $object->setDateUpdated(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $values = [];
-            foreach ($object->getCurrent() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['current'] = $values;
-            $data['date_updated'] = $object->getDateUpdated();
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class === $type;
     }
-} else {
-    class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('current', $data) && null !== $data['current']) {
-                $values = [];
-                foreach ($data['current'] as $value) {
-                    $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class, 'json', $context);
-                }
-                $object->setCurrent($values);
-            } elseif (\array_key_exists('current', $data) && null === $data['current']) {
-                $object->setCurrent(null);
-            }
-            if (\array_key_exists('date_updated', $data) && null !== $data['date_updated']) {
-                $object->setDateUpdated($data['date_updated']);
-            } elseif (\array_key_exists('date_updated', $data) && null === $data['date_updated']) {
-                $object->setDateUpdated(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
+        if (\array_key_exists('current', $data) && null !== $data['current']) {
             $values = [];
-            foreach ($object->getCurrent() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data['current'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class, 'json', $context);
             }
-            $data['current'] = $values;
-            $data['date_updated'] = $object->getDateUpdated();
-
-            return $data;
+            $object->setCurrent($values);
+        } elseif (\array_key_exists('current', $data) && null === $data['current']) {
+            $object->setCurrent(null);
+        }
+        if (\array_key_exists('date_updated', $data) && null !== $data['date_updated']) {
+            $object->setDateUpdated($data['date_updated']);
+        } elseif (\array_key_exists('date_updated', $data) && null === $data['date_updated']) {
+            $object->setDateUpdated(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => false];
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $values = [];
+        foreach ($data->getCurrent() as $value) {
+            $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
+        $dataArray['current'] = $values;
+        $dataArray['date_updated'] = $data->getDateUpdated();
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\ObjsExternalOrgMigrations::class => false];
     }
 }

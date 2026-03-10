@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,231 +23,117 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('domain', $data) && null !== $data['domain']) {
-                $object->setDomain($data['domain']);
-            } elseif (\array_key_exists('domain', $data) && null === $data['domain']) {
-                $object->setDomain(null);
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('image_102', $data) && null !== $data['image_102']) {
-                $object->setImage102($data['image_102']);
-            } elseif (\array_key_exists('image_102', $data) && null === $data['image_102']) {
-                $object->setImage102(null);
-            }
-            if (\array_key_exists('image_132', $data) && null !== $data['image_132']) {
-                $object->setImage132($data['image_132']);
-            } elseif (\array_key_exists('image_132', $data) && null === $data['image_132']) {
-                $object->setImage132(null);
-            }
-            if (\array_key_exists('image_230', $data) && null !== $data['image_230']) {
-                $object->setImage230($data['image_230']);
-            } elseif (\array_key_exists('image_230', $data) && null === $data['image_230']) {
-                $object->setImage230(null);
-            }
-            if (\array_key_exists('image_34', $data) && null !== $data['image_34']) {
-                $object->setImage34($data['image_34']);
-            } elseif (\array_key_exists('image_34', $data) && null === $data['image_34']) {
-                $object->setImage34(null);
-            }
-            if (\array_key_exists('image_44', $data) && null !== $data['image_44']) {
-                $object->setImage44($data['image_44']);
-            } elseif (\array_key_exists('image_44', $data) && null === $data['image_44']) {
-                $object->setImage44(null);
-            }
-            if (\array_key_exists('image_68', $data) && null !== $data['image_68']) {
-                $object->setImage68($data['image_68']);
-            } elseif (\array_key_exists('image_68', $data) && null === $data['image_68']) {
-                $object->setImage68(null);
-            }
-            if (\array_key_exists('image_88', $data) && null !== $data['image_88']) {
-                $object->setImage88($data['image_88']);
-            } elseif (\array_key_exists('image_88', $data) && null === $data['image_88']) {
-                $object->setImage88(null);
-            }
-            if (\array_key_exists('image_default', $data) && null !== $data['image_default']) {
-                $object->setImageDefault($data['image_default']);
-            } elseif (\array_key_exists('image_default', $data) && null === $data['image_default']) {
-                $object->setImageDefault(null);
-            }
-            if (\array_key_exists('name', $data) && null !== $data['name']) {
-                $object->setName($data['name']);
-            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-                $object->setName(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['domain'] = $object->getDomain();
-            $data['id'] = $object->getId();
-            $data['image_102'] = $object->getImage102();
-            $data['image_132'] = $object->getImage132();
-            $data['image_230'] = $object->getImage230();
-            $data['image_34'] = $object->getImage34();
-            $data['image_44'] = $object->getImage44();
-            $data['image_68'] = $object->getImage68();
-            $data['image_88'] = $object->getImage88();
-            $data['image_default'] = $object->getImageDefault();
-            $data['name'] = $object->getName();
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class === $type;
     }
-} else {
-    class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('domain', $data) && null !== $data['domain']) {
-                $object->setDomain($data['domain']);
-            } elseif (\array_key_exists('domain', $data) && null === $data['domain']) {
-                $object->setDomain(null);
-            }
-            if (\array_key_exists('id', $data) && null !== $data['id']) {
-                $object->setId($data['id']);
-            } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-                $object->setId(null);
-            }
-            if (\array_key_exists('image_102', $data) && null !== $data['image_102']) {
-                $object->setImage102($data['image_102']);
-            } elseif (\array_key_exists('image_102', $data) && null === $data['image_102']) {
-                $object->setImage102(null);
-            }
-            if (\array_key_exists('image_132', $data) && null !== $data['image_132']) {
-                $object->setImage132($data['image_132']);
-            } elseif (\array_key_exists('image_132', $data) && null === $data['image_132']) {
-                $object->setImage132(null);
-            }
-            if (\array_key_exists('image_230', $data) && null !== $data['image_230']) {
-                $object->setImage230($data['image_230']);
-            } elseif (\array_key_exists('image_230', $data) && null === $data['image_230']) {
-                $object->setImage230(null);
-            }
-            if (\array_key_exists('image_34', $data) && null !== $data['image_34']) {
-                $object->setImage34($data['image_34']);
-            } elseif (\array_key_exists('image_34', $data) && null === $data['image_34']) {
-                $object->setImage34(null);
-            }
-            if (\array_key_exists('image_44', $data) && null !== $data['image_44']) {
-                $object->setImage44($data['image_44']);
-            } elseif (\array_key_exists('image_44', $data) && null === $data['image_44']) {
-                $object->setImage44(null);
-            }
-            if (\array_key_exists('image_68', $data) && null !== $data['image_68']) {
-                $object->setImage68($data['image_68']);
-            } elseif (\array_key_exists('image_68', $data) && null === $data['image_68']) {
-                $object->setImage68(null);
-            }
-            if (\array_key_exists('image_88', $data) && null !== $data['image_88']) {
-                $object->setImage88($data['image_88']);
-            } elseif (\array_key_exists('image_88', $data) && null === $data['image_88']) {
-                $object->setImage88(null);
-            }
-            if (\array_key_exists('image_default', $data) && null !== $data['image_default']) {
-                $object->setImageDefault($data['image_default']);
-            } elseif (\array_key_exists('image_default', $data) && null === $data['image_default']) {
-                $object->setImageDefault(null);
-            }
-            if (\array_key_exists('name', $data) && null !== $data['name']) {
-                $object->setName($data['name']);
-            } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-                $object->setName(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
+        if (\array_key_exists('image_default', $data) && \is_int($data['image_default'])) {
+            $data['image_default'] = (bool) $data['image_default'];
+        }
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['domain'] = $object->getDomain();
-            $data['id'] = $object->getId();
-            $data['image_102'] = $object->getImage102();
-            $data['image_132'] = $object->getImage132();
-            $data['image_230'] = $object->getImage230();
-            $data['image_34'] = $object->getImage34();
-            $data['image_44'] = $object->getImage44();
-            $data['image_68'] = $object->getImage68();
-            $data['image_88'] = $object->getImage88();
-            $data['image_default'] = $object->getImageDefault();
-            $data['name'] = $object->getName();
-
-            return $data;
+        if (\array_key_exists('domain', $data) && null !== $data['domain']) {
+            $object->setDomain($data['domain']);
+        } elseif (\array_key_exists('domain', $data) && null === $data['domain']) {
+            $object->setDomain(null);
+        }
+        if (\array_key_exists('id', $data) && null !== $data['id']) {
+            $object->setId($data['id']);
+        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
+            $object->setId(null);
+        }
+        if (\array_key_exists('image_102', $data) && null !== $data['image_102']) {
+            $object->setImage102($data['image_102']);
+        } elseif (\array_key_exists('image_102', $data) && null === $data['image_102']) {
+            $object->setImage102(null);
+        }
+        if (\array_key_exists('image_132', $data) && null !== $data['image_132']) {
+            $object->setImage132($data['image_132']);
+        } elseif (\array_key_exists('image_132', $data) && null === $data['image_132']) {
+            $object->setImage132(null);
+        }
+        if (\array_key_exists('image_230', $data) && null !== $data['image_230']) {
+            $object->setImage230($data['image_230']);
+        } elseif (\array_key_exists('image_230', $data) && null === $data['image_230']) {
+            $object->setImage230(null);
+        }
+        if (\array_key_exists('image_34', $data) && null !== $data['image_34']) {
+            $object->setImage34($data['image_34']);
+        } elseif (\array_key_exists('image_34', $data) && null === $data['image_34']) {
+            $object->setImage34(null);
+        }
+        if (\array_key_exists('image_44', $data) && null !== $data['image_44']) {
+            $object->setImage44($data['image_44']);
+        } elseif (\array_key_exists('image_44', $data) && null === $data['image_44']) {
+            $object->setImage44(null);
+        }
+        if (\array_key_exists('image_68', $data) && null !== $data['image_68']) {
+            $object->setImage68($data['image_68']);
+        } elseif (\array_key_exists('image_68', $data) && null === $data['image_68']) {
+            $object->setImage68(null);
+        }
+        if (\array_key_exists('image_88', $data) && null !== $data['image_88']) {
+            $object->setImage88($data['image_88']);
+        } elseif (\array_key_exists('image_88', $data) && null === $data['image_88']) {
+            $object->setImage88(null);
+        }
+        if (\array_key_exists('image_default', $data) && null !== $data['image_default']) {
+            $object->setImageDefault($data['image_default']);
+        } elseif (\array_key_exists('image_default', $data) && null === $data['image_default']) {
+            $object->setImageDefault(null);
+        }
+        if (\array_key_exists('name', $data) && null !== $data['name']) {
+            $object->setName($data['name']);
+        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
+            $object->setName(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => false];
-        }
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['domain'] = $data->getDomain();
+        $dataArray['id'] = $data->getId();
+        $dataArray['image_102'] = $data->getImage102();
+        $dataArray['image_132'] = $data->getImage132();
+        $dataArray['image_230'] = $data->getImage230();
+        $dataArray['image_34'] = $data->getImage34();
+        $dataArray['image_44'] = $data->getImage44();
+        $dataArray['image_68'] = $data->getImage68();
+        $dataArray['image_88'] = $data->getImage88();
+        $dataArray['image_default'] = $data->getImageDefault();
+        $dataArray['name'] = $data->getName();
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team::class => false];
     }
 }

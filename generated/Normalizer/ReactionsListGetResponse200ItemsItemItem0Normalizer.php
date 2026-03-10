@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Api\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use JoliCode\Slack\Api\Runtime\Normalizer\CheckArray;
 use JoliCode\Slack\Api\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -24,135 +23,66 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-if (!class_exists(Kernel::class) || (Kernel::MAJOR_VERSION >= 7 || Kernel::MAJOR_VERSION === 6 && Kernel::MINOR_VERSION === 4)) {
-    class ReactionsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ReactionsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+{
+    use CheckArray;
+    use DenormalizerAwareTrait;
+    use NormalizerAwareTrait;
+    use ValidatorTrait;
+
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
-
-        public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class === $type;
-        }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class === \get_class($data);
-        }
-
-        public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-                $object->setChannel($data['channel']);
-            } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-                $object->setChannel(null);
-            }
-            if (\array_key_exists('message', $data) && null !== $data['message']) {
-                $object->setMessage($this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-            } elseif (\array_key_exists('message', $data) && null === $data['message']) {
-                $object->setMessage(null);
-            }
-            if (\array_key_exists('type', $data) && null !== $data['type']) {
-                $object->setType($data['type']);
-            } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-                $object->setType(null);
-            }
-
-            return $object;
-        }
-
-        public function normalize(mixed $object, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-        {
-            $data = [];
-            $data['channel'] = $object->getChannel();
-            $data['message'] = $this->normalizer->normalize($object->getMessage(), 'json', $context);
-            $data['type'] = $object->getType();
-
-            return $data;
-        }
-
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => false];
-        }
+        return \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class === $type;
     }
-} else {
-    class ReactionsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        use CheckArray;
-        use DenormalizerAwareTrait;
-        use NormalizerAwareTrait;
-        use ValidatorTrait;
+        return \is_object($data) && \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class === \get_class($data);
+    }
 
-        public function supportsDenormalization($data, $type, ?string $format = null, array $context = []): bool
-        {
-            return \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class === $type;
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
+    {
+        if (isset($data['$ref'])) {
+            return new Reference($data['$ref'], $context['document-origin']);
         }
-
-        public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
-        {
-            return \is_object($data) && \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class === \get_class($data);
+        if (isset($data['$recursiveRef'])) {
+            return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-
-        public function denormalize($data, $type, $format = null, array $context = [])
-        {
-            if (isset($data['$ref'])) {
-                return new Reference($data['$ref'], $context['document-origin']);
-            }
-            if (isset($data['$recursiveRef'])) {
-                return new Reference($data['$recursiveRef'], $context['document-origin']);
-            }
-            $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0();
-            if (null === $data || false === \is_array($data)) {
-                return $object;
-            }
-            if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-                $object->setChannel($data['channel']);
-            } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-                $object->setChannel(null);
-            }
-            if (\array_key_exists('message', $data) && null !== $data['message']) {
-                $object->setMessage($this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-            } elseif (\array_key_exists('message', $data) && null === $data['message']) {
-                $object->setMessage(null);
-            }
-            if (\array_key_exists('type', $data) && null !== $data['type']) {
-                $object->setType($data['type']);
-            } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-                $object->setType(null);
-            }
-
+        $object = new \JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0();
+        if (null === $data || false === \is_array($data)) {
             return $object;
         }
-
-        /**
-         * @return array|string|int|float|bool|\ArrayObject|null
-         */
-        public function normalize($object, $format = null, array $context = [])
-        {
-            $data = [];
-            $data['channel'] = $object->getChannel();
-            $data['message'] = $this->normalizer->normalize($object->getMessage(), 'json', $context);
-            $data['type'] = $object->getType();
-
-            return $data;
+        if (\array_key_exists('channel', $data) && null !== $data['channel']) {
+            $object->setChannel($data['channel']);
+        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
+            $object->setChannel(null);
+        }
+        if (\array_key_exists('message', $data) && null !== $data['message']) {
+            $object->setMessage($this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
+        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
+            $object->setMessage(null);
+        }
+        if (\array_key_exists('type', $data) && null !== $data['type']) {
+            $object->setType($data['type']);
+        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
+            $object->setType(null);
         }
 
-        public function getSupportedTypes(?string $format = null): array
-        {
-            return [\JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => false];
-        }
+        return $object;
+    }
+
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    {
+        $dataArray = [];
+        $dataArray['channel'] = $data->getChannel();
+        $dataArray['message'] = $this->normalizer->normalize($data->getMessage(), 'json', $context);
+        $dataArray['type'] = $data->getType();
+
+        return $dataArray;
+    }
+
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\JoliCode\Slack\Api\Model\ReactionsListGetResponse200ItemsItemItem0::class => false];
     }
 }
