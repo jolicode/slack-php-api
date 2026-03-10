@@ -174,7 +174,7 @@ class WritingTest extends SlackTokenDependentTest
         $filePath = __DIR__ . '/resources/' . $fileName;
         $fileStream = Stream::create(fopen($filePath, 'r'));
         $fileSize = $fileStream->getSize();
-        $threadTs = 'ts.some-thread-ts';
+        $threadTs = $_SERVER['SLACK_TEST_THREAD_TS'];
 
         $response = $client->filesGetUploadUrlExternal(
             [
