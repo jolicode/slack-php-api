@@ -10,7 +10,10 @@
     <php>
         <ini name="error_reporting" value="-1" />
         <!--<server name="SLACK_TOKEN" value="edit_me" />-->
+        <!-- should be the channel ID, not name -->
         <!--<server name="SLACK_TEST_CHANNEL" value="edit_me" />-->
+        <!-- set this to test uploads in a thread -->
+        <!--<server name="SLACK_TEST_THREAD_TS" value="edit_me" />-->
     </php>
 
     <testsuites>

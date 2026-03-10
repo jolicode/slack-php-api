@@ -174,6 +174,7 @@ class WritingTest extends SlackTokenDependentTest
         $filePath = __DIR__ . '/resources/' . $fileName;
         $fileStream = Stream::create(fopen($filePath, 'r'));
         $fileSize = $fileStream->getSize();
+        $threadTs = $_SERVER['SLACK_TEST_THREAD_TS'] ?? null;
 
         $response = $client->filesGetUploadUrlExternal(
             [
@@ -191,7 +192,7 @@ class WritingTest extends SlackTokenDependentTest
 
         $uploadResponse = $client->filesUploadV2([
             ['path' => $filePath, 'title' => 'Test image', 'alt_text' => 'Test image'],
-        ], $_SERVER['SLACK_TEST_CHANNEL'], 'Uploaded with the 2025 API.');
+        ], $_SERVER['SLACK_TEST_CHANNEL'], 'Uploaded with the 2025 API.', $threadTs);
 
         self::assertTrue($uploadResponse->getOk());
     }
