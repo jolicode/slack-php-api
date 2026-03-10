@@ -221,7 +221,6 @@ class WritingTest extends SlackTokenDependentTest
         curl_setopt($ch, \CURLOPT_POSTFIELDS, $fileStream);
         curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
         curl_exec($ch);
-        curl_close($ch);
 
         $completeResponse = $client->filesCompleteUploadExternal(
             [
