@@ -42,21 +42,21 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsEnterpriseUser();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsEnterpriseUser();
         if (\array_key_exists('is_admin', $data) && \is_int($data['is_admin'])) {
             $data['is_admin'] = (bool) $data['is_admin'];
         }
         if (\array_key_exists('is_owner', $data) && \is_int($data['is_owner'])) {
             $data['is_owner'] = (bool) $data['is_owner'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('enterprise_id', $data) && null !== $data['enterprise_id']) {
             $object->setEnterpriseId($data['enterprise_id']);

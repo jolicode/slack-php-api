@@ -42,13 +42,16 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsConversation();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsConversation();
         if (\array_key_exists('priority', $data) && \is_int($data['priority'])) {
             $data['priority'] = (float) $data['priority'];
         }
@@ -120,9 +123,6 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('is_user_deleted', $data) && \is_int($data['is_user_deleted'])) {
             $data['is_user_deleted'] = (bool) $data['is_user_deleted'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
             $object->setAcceptedUser($data['accepted_user']);

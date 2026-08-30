@@ -42,21 +42,21 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200();
         if (\array_key_exists('has_more', $data) && \is_int($data['has_more'])) {
             $data['has_more'] = (bool) $data['has_more'];
         }
         if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
             $data['ok'] = (bool) $data['ok'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('channel_actions_count', $data) && null !== $data['channel_actions_count']) {
             $object->setChannelActionsCount($data['channel_actions_count']);

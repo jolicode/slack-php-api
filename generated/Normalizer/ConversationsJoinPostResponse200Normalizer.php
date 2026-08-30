@@ -42,18 +42,18 @@ class ConversationsJoinPostResponse200Normalizer implements DenormalizerInterfac
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200();
         if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
             $data['ok'] = (bool) $data['ok'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
             $object->setChannel($this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\ObjsConversation::class, 'json', $context));

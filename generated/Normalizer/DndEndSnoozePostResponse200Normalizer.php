@@ -42,13 +42,16 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\DndEndSnoozePostResponse200();
         if (\array_key_exists('dnd_enabled', $data) && \is_int($data['dnd_enabled'])) {
             $data['dnd_enabled'] = (bool) $data['dnd_enabled'];
         }
@@ -57,9 +60,6 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
         }
         if (\array_key_exists('snooze_enabled', $data) && \is_int($data['snooze_enabled'])) {
             $data['snooze_enabled'] = (bool) $data['snooze_enabled'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('dnd_enabled', $data) && null !== $data['dnd_enabled']) {
             $object->setDndEnabled($data['dnd_enabled']);

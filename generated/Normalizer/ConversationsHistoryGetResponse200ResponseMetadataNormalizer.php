@@ -42,15 +42,15 @@ class ConversationsHistoryGetResponse200ResponseMetadataNormalizer implements De
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \JoliCode\Slack\Api\Model\ConversationsHistoryGetResponse200ResponseMetadata();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
             $object->setNextCursor($data['next_cursor']);

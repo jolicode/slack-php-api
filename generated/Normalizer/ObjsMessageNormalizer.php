@@ -42,13 +42,16 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsMessage();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsMessage();
         if (\array_key_exists('display_as_bot', $data) && \is_int($data['display_as_bot'])) {
             $data['display_as_bot'] = (bool) $data['display_as_bot'];
         }
@@ -66,9 +69,6 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('upload', $data) && \is_int($data['upload'])) {
             $data['upload'] = (bool) $data['upload'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('attachments', $data) && null !== $data['attachments']) {
             $values = [];

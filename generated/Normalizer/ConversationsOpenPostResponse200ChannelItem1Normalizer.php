@@ -42,13 +42,16 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200ChannelItem1();
         if (\array_key_exists('unread_count', $data) && \is_int($data['unread_count'])) {
             $data['unread_count'] = (float) $data['unread_count'];
         }
@@ -60,9 +63,6 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
         }
         if (\array_key_exists('is_open', $data) && \is_int($data['is_open'])) {
             $data['is_open'] = (bool) $data['is_open'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
             $object->setCreated($data['created']);

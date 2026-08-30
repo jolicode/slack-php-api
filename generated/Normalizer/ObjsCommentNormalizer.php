@@ -42,21 +42,21 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsComment();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsComment();
         if (\array_key_exists('is_intro', $data) && \is_int($data['is_intro'])) {
             $data['is_intro'] = (bool) $data['is_intro'];
         }
         if (\array_key_exists('is_starred', $data) && \is_int($data['is_starred'])) {
             $data['is_starred'] = (bool) $data['is_starred'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('comment', $data) && null !== $data['comment']) {
             $object->setComment($data['comment']);

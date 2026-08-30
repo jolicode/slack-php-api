@@ -42,21 +42,21 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\AuthTestGetResponse200();
         if (\array_key_exists('is_enterprise_install', $data) && \is_int($data['is_enterprise_install'])) {
             $data['is_enterprise_install'] = (bool) $data['is_enterprise_install'];
         }
         if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
             $data['ok'] = (bool) $data['ok'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('bot_id', $data) && null !== $data['bot_id']) {
             $object->setBotId($data['bot_id']);

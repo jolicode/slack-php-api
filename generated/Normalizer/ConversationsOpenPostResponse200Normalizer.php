@@ -42,13 +42,16 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200();
         if (\array_key_exists('already_open', $data) && \is_int($data['already_open'])) {
             $data['already_open'] = (bool) $data['already_open'];
         }
@@ -57,9 +60,6 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
         }
         if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
             $data['ok'] = (bool) $data['ok'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('already_open', $data) && null !== $data['already_open']) {
             $object->setAlreadyOpen($data['already_open']);

@@ -42,13 +42,16 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsUser();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsUser();
         if (\array_key_exists('tz_offset', $data) && \is_int($data['tz_offset'])) {
             $data['tz_offset'] = (float) $data['tz_offset'];
         }
@@ -93,9 +96,6 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('is_ultra_restricted', $data) && \is_int($data['is_ultra_restricted'])) {
             $data['is_ultra_restricted'] = (bool) $data['is_ultra_restricted'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('color', $data) && null !== $data['color']) {
             $object->setColor($data['color']);

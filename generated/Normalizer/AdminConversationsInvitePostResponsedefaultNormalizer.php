@@ -42,18 +42,18 @@ class AdminConversationsInvitePostResponsedefaultNormalizer implements Denormali
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\AdminConversationsInvitePostResponsedefault();
         if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
             $data['ok'] = (bool) $data['ok'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
             $object->setError($data['error']);

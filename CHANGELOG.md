@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Upgrade JanePHP generated code
+
 ## 4.9.0 (2026-03-10)
 
 * Upgrade JanePHP generated code

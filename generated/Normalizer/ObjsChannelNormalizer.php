@@ -42,13 +42,16 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsChannel();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsChannel();
         if (\array_key_exists('priority', $data) && \is_int($data['priority'])) {
             $data['priority'] = (float) $data['priority'];
         }
@@ -90,9 +93,6 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('is_thread_only', $data) && \is_int($data['is_thread_only'])) {
             $data['is_thread_only'] = (bool) $data['is_thread_only'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
             $object->setAcceptedUser($data['accepted_user']);

@@ -42,13 +42,16 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsTeam();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsTeam();
         if (\array_key_exists('archived', $data) && \is_int($data['archived'])) {
             $data['archived'] = (bool) $data['archived'];
         }
@@ -69,9 +72,6 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('over_storage_limit', $data) && \is_int($data['over_storage_limit'])) {
             $data['over_storage_limit'] = (bool) $data['over_storage_limit'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('archived', $data) && null !== $data['archived']) {
             $object->setArchived($data['archived']);

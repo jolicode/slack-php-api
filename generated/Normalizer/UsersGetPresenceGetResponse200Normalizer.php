@@ -42,13 +42,16 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200();
         if (\array_key_exists('auto_away', $data) && \is_int($data['auto_away'])) {
             $data['auto_away'] = (bool) $data['auto_away'];
         }
@@ -60,9 +63,6 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
         }
         if (\array_key_exists('online', $data) && \is_int($data['online'])) {
             $data['online'] = (bool) $data['online'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('auto_away', $data) && null !== $data['auto_away']) {
             $object->setAutoAway($data['auto_away']);

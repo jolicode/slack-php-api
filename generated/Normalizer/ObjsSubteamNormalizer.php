@@ -42,13 +42,16 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsSubteam();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsSubteam();
         if (\array_key_exists('auto_provision', $data) && \is_int($data['auto_provision'])) {
             $data['auto_provision'] = (bool) $data['auto_provision'];
         }
@@ -60,9 +63,6 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (\array_key_exists('is_usergroup', $data) && \is_int($data['is_usergroup'])) {
             $data['is_usergroup'] = (bool) $data['is_usergroup'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('auto_provision', $data) && null !== $data['auto_provision']) {
             $object->setAutoProvision($data['auto_provision']);

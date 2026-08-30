@@ -42,13 +42,16 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsFile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsFile();
         if (\array_key_exists('display_as_bot', $data) && \is_int($data['display_as_bot'])) {
             $data['display_as_bot'] = (bool) $data['display_as_bot'];
         }
@@ -75,9 +78,6 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('public_url_shared', $data) && \is_int($data['public_url_shared'])) {
             $data['public_url_shared'] = (bool) $data['public_url_shared'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('channels', $data) && null !== $data['channels']) {
             $values = [];

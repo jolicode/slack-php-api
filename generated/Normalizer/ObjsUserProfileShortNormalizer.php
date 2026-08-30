@@ -42,21 +42,21 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsUserProfileShort();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsUserProfileShort();
         if (\array_key_exists('is_restricted', $data) && \is_int($data['is_restricted'])) {
             $data['is_restricted'] = (bool) $data['is_restricted'];
         }
         if (\array_key_exists('is_ultra_restricted', $data) && \is_int($data['is_ultra_restricted'])) {
             $data['is_ultra_restricted'] = (bool) $data['is_ultra_restricted'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('avatar_hash', $data) && null !== $data['avatar_hash']) {
             $object->setAvatarHash($data['avatar_hash']);

@@ -42,18 +42,18 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsMessageAttachmentsItemFieldsItem();
         if (\array_key_exists('short', $data) && \is_int($data['short'])) {
             $data['short'] = (bool) $data['short'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('short', $data) && null !== $data['short']) {
             $object->setShort($data['short']);

@@ -42,21 +42,21 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsTeamProfileField();
         if (\array_key_exists('ordering', $data) && \is_int($data['ordering'])) {
             $data['ordering'] = (float) $data['ordering'];
         }
         if (\array_key_exists('is_hidden', $data) && \is_int($data['is_hidden'])) {
             $data['is_hidden'] = (bool) $data['is_hidden'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('field_name', $data) && null !== $data['field_name']) {
             $value = $data['field_name'];

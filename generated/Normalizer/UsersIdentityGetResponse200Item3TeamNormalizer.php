@@ -42,18 +42,18 @@ class UsersIdentityGetResponse200Item3TeamNormalizer implements DenormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\UsersIdentityGetResponse200Item3Team();
         if (\array_key_exists('image_default', $data) && \is_int($data['image_default'])) {
             $data['image_default'] = (bool) $data['image_default'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('domain', $data) && null !== $data['domain']) {
             $object->setDomain($data['domain']);

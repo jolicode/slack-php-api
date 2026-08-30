@@ -42,13 +42,16 @@ class ConversationsClosePostResponse200Normalizer implements DenormalizerInterfa
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ConversationsClosePostResponse200();
         if (\array_key_exists('already_closed', $data) && \is_int($data['already_closed'])) {
             $data['already_closed'] = (bool) $data['already_closed'];
         }
@@ -57,9 +60,6 @@ class ConversationsClosePostResponse200Normalizer implements DenormalizerInterfa
         }
         if (\array_key_exists('ok', $data) && \is_int($data['ok'])) {
             $data['ok'] = (bool) $data['ok'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('already_closed', $data) && null !== $data['already_closed']) {
             $object->setAlreadyClosed($data['already_closed']);

@@ -42,13 +42,16 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
 
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \JoliCode\Slack\Api\Model\ObjsUserProfile();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \JoliCode\Slack\Api\Model\ObjsUserProfile();
         if (\array_key_exists('always_active', $data) && \is_int($data['always_active'])) {
             $data['always_active'] = (bool) $data['always_active'];
         }
@@ -57,9 +60,6 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (\array_key_exists('is_custom_image', $data) && \is_int($data['is_custom_image'])) {
             $data['is_custom_image'] = (bool) $data['is_custom_image'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('always_active', $data) && null !== $data['always_active']) {
             $object->setAlwaysActive($data['always_active']);
