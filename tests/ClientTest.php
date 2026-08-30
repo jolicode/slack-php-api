@@ -54,7 +54,7 @@ class ClientTest extends SlackTokenDependentTest
         $client->foobar();
     }
 
-    public function testAllCursorPaginationMethodExists()
+    public function testAllCursorPaginationMethodExists(): void
     {
         $client = $this->createClient();
 
