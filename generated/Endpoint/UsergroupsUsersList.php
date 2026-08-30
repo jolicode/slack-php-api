@@ -23,6 +23,7 @@ class UsergroupsUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
      * @param array $queryParameters {
      *
      * @var bool   $include_disabled allow results that involve disabled User Groups
+     * @var string $team_id The user group's encoded team ID. Required if org token is used.
      * @var string $token Authentication token. Requires scope: `usergroups:read`
      * @var string $usergroup The encoded ID of the User Group to read.
      *             }
@@ -60,10 +61,11 @@ class UsergroupsUsersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(['include_disabled', 'token', 'usergroup']);
+        $optionsResolver->setDefined(['include_disabled', 'team_id', 'token', 'usergroup']);
         $optionsResolver->setRequired(['usergroup']);
         $optionsResolver->setDefaults([]);
         $optionsResolver->addAllowedTypes('include_disabled', ['bool']);
+        $optionsResolver->addAllowedTypes('team_id', ['string']);
         $optionsResolver->addAllowedTypes('token', ['string']);
         $optionsResolver->addAllowedTypes('usergroup', ['string']);
 

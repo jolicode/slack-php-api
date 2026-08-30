@@ -4658,13 +4658,19 @@
                          "type": "string"
                      }
                  ],
-@@ -23504,25 +23905,24 @@
+@@ -23504,25 +23905,30 @@
                      {
                          "description": "Allow results that involve disabled User Groups.",
                          "in": "query",
                          "name": "include_disabled",
                          "type": "boolean"
                      },
++                    {
++                        "description": "The user group's encoded team ID. Required if org token is used.",
++                        "in": "query",
++                        "name": "team_id",
++                        "type": "string"
++                    },
                      {
                          "description": "Authentication token. Requires scope: `usergroups:read`",
                          "in": "query",
@@ -4685,7 +4691,7 @@
                      "application/json"
                  ],
                  "responses": {
-@@ -23644,21 +24044,20 @@
+@@ -23644,21 +24050,20 @@
                      {
                          "description": "Include the number of users in the User Group.",
                          "in": "formData",
@@ -4707,7 +4713,7 @@
                          "type": "string"
                      },
                      {
-@@ -24036,21 +24435,20 @@
+@@ -24036,21 +24441,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.deletePhoto"
@@ -4729,7 +4735,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -24147,21 +24545,20 @@
+@@ -24147,21 +24551,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.getPresence"
@@ -4751,7 +4757,7 @@
                      }
                  ],
                  "produces": [
-@@ -24630,21 +25027,20 @@
+@@ -24630,21 +25033,20 @@
                      {
                          "description": "Set this to `true` to receive the locale for this user. Defaults to `false`",
                          "in": "query",
@@ -4773,7 +4779,7 @@
                      }
                  ],
                  "produces": [
-@@ -24782,38 +25178,44 @@
+@@ -24782,38 +25184,44 @@
                      "application/x-www-form-urlencoded"
                  ],
                  "description": "Lists all users in a Slack team.",
@@ -4824,7 +4830,7 @@
                      "application/json"
                  ],
                  "responses": {
-@@ -25011,28 +25413,26 @@
+@@ -25011,28 +25419,26 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.lookupByEmail"
@@ -4853,7 +4859,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25175,21 +25575,20 @@
+@@ -25175,21 +25581,20 @@
                      {
                          "description": "Include labels for each ID in custom profile fields",
                          "in": "query",
@@ -4875,7 +4881,7 @@
                      }
                  ],
                  "produces": [
-@@ -25330,21 +25729,20 @@
+@@ -25330,21 +25735,20 @@
                      {
                          "description": "Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.",
                          "in": "formData",
@@ -4897,7 +4903,7 @@
                      },
                      {
                          "description": "Value to set a single key to. Usable only if `profile` is not passed.",
-@@ -25491,21 +25889,20 @@
+@@ -25491,21 +25895,20 @@
                  "externalDocs": {
                      "description": "API method documentation",
                      "url": "https://api.slack.com/methods/users.setActive"
@@ -4919,7 +4925,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25625,21 +26022,20 @@
+@@ -25625,21 +26028,20 @@
                      {
                          "description": "File contents via `multipart/form-data`.",
                          "in": "formData",
@@ -4941,7 +4947,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25814,21 +26210,20 @@
+@@ -25814,21 +26216,20 @@
                          "description": "Either `auto` or `away`",
                          "in": "formData",
                          "name": "presence",
@@ -4963,7 +4969,7 @@
                      "200": {
                          "description": "Typical success response",
                          "examples": {
-@@ -25910,49 +26305,48 @@
+@@ -25910,49 +26311,48 @@
                              "users:write"
                          ]
                      }
@@ -5016,7 +5022,7 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26053,55 +26447,54 @@
+@@ -26053,55 +26453,54 @@
                              "none"
                          ]
                      }
@@ -5076,7 +5082,7 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26192,49 +26585,48 @@
+@@ -26192,49 +26591,48 @@
                              "none"
                          ]
                      }
@@ -5129,7 +5135,7 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26341,60 +26733,59 @@
+@@ -26341,60 +26739,59 @@
                              "none"
                          ]
                      }
@@ -5195,7 +5201,7 @@
                  "responses": {
                      "200": {
                          "description": "Typical success response includes the updated view payload.",
-@@ -26496,48 +26887,47 @@
+@@ -26496,48 +26893,47 @@
                              "none"
                          ]
                      }
@@ -5247,7 +5253,7 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26592,49 +26982,48 @@
+@@ -26592,49 +26988,48 @@
                              "workflow.steps:execute"
                          ]
                      }
@@ -5300,7 +5306,7 @@
                  ],
                  "responses": {
                      "200": {
-@@ -26689,66 +27078,65 @@
+@@ -26689,66 +27084,65 @@
                              "workflow.steps:execute"
                          ]
                      }

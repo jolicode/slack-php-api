@@ -23909,6 +23909,12 @@
                         "type": "boolean"
                     },
                     {
+                        "description": "The user group's encoded team ID. Required if org token is used.",
+                        "in": "query",
+                        "name": "team_id",
+                        "type": "string"
+                    },
+                    {
                         "description": "Authentication token. Requires scope: `usergroups:read`",
                         "in": "query",
                         "name": "token",

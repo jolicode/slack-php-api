@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Upgrade JanePHP generated code
+* **Specification override** Add the missing `team_id` argument to the `usergroups.users.list` endpoint
 
 ## 4.9.0 (2026-03-10)
 
