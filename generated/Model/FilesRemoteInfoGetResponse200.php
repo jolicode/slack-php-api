@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class FilesRemoteInfoGetResponse200 extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class FilesRemoteInfoGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -40,5 +44,10 @@ class FilesRemoteInfoGetResponse200 extends \ArrayObject
         $this->ok = $ok;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['ok' => ['ok', 'getOk', 'setOk']];
     }
 }

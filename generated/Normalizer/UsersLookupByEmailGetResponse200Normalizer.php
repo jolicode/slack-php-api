@@ -60,12 +60,14 @@ class UsersLookupByEmailGetResponse200Normalizer implements DenormalizerInterfac
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
             $object->setUser($this->denormalizer->denormalize($data['user'], \JoliCode\Slack\Api\Model\ObjsUser::class, 'json', $context));
             unset($data['user']);
         } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
+            unset($data['user']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -80,8 +82,8 @@ class UsersLookupByEmailGetResponse200Normalizer implements DenormalizerInterfac
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['user'] = $this->normalizer->normalize($data->getUser(), 'json', $context);
-        foreach ($data as $key => $value) {
+        $dataArray['user'] = null === $data->getUser() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -75,7 +75,7 @@ class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, Norm
         $dataArray = [];
         $values = [];
         foreach ($data->getCurrent() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['current'] = $values;
         $dataArray['date_updated'] = $data->getDateUpdated();

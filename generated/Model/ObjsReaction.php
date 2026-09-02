@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsReaction extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class ObjsReaction implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -80,5 +84,10 @@ class ObjsReaction extends \ArrayObject
         $this->users = $users;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['count' => ['count', 'getCount', 'setCount'], 'name' => ['name', 'getName', 'setName'], 'users' => ['users', 'getUsers', 'setUsers']];
     }
 }

@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AdminConversationsRestrictAccessAddGroupPostResponse200 extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class AdminConversationsRestrictAccessAddGroupPostResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -40,5 +44,10 @@ class AdminConversationsRestrictAccessAddGroupPostResponse200 extends \ArrayObje
         $this->ok = $ok;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['ok' => ['ok', 'getOk', 'setOk']];
     }
 }

@@ -99,7 +99,7 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
         $dataArray['messages'] = $values;
         $dataArray['ok'] = $data->getOk();
         if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = $this->normalizer->normalize($data->getResponseMetadata(), 'json', $context);
+            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
         }
 
         return $dataArray;

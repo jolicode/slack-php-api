@@ -79,9 +79,9 @@ class StarsListGetResponse200ItemsItemItem2Normalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['comment'] = $this->normalizer->normalize($data->getComment(), 'json', $context);
+        $dataArray['comment'] = null === $data->getComment() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getComment(), 'json', $context));
         $dataArray['date_create'] = $data->getDateCreate();
-        $dataArray['file'] = $this->normalizer->normalize($data->getFile(), 'json', $context);
+        $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
         $dataArray['type'] = $data->getType();
 
         return $dataArray;

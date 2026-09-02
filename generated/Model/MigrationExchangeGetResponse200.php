@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class MigrationExchangeGetResponse200 extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class MigrationExchangeGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -120,5 +124,10 @@ class MigrationExchangeGetResponse200 extends \ArrayObject
         $this->userIdMap = $userIdMap;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['enterpriseId' => ['enterprise_id', 'getEnterpriseId', 'setEnterpriseId'], 'invalidUserIds' => ['invalid_user_ids', 'getInvalidUserIds', 'setInvalidUserIds'], 'ok' => ['ok', 'getOk', 'setOk'], 'teamId' => ['team_id', 'getTeamId', 'setTeamId'], 'userIdMap' => ['user_id_map', 'getUserIdMap', 'setUserIdMap']];
     }
 }

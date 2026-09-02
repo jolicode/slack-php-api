@@ -466,7 +466,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['creator'] = $data->getCreator();
         }
         if ($data->isInitialized('displayCounts') && null !== $data->getDisplayCounts()) {
-            $dataArray['display_counts'] = $this->normalizer->normalize($data->getDisplayCounts(), 'json', $context);
+            $dataArray['display_counts'] = null === $data->getDisplayCounts() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getDisplayCounts(), 'json', $context));
         }
         if ($data->isInitialized('enterpriseId') && null !== $data->getEnterpriseId()) {
             $dataArray['enterprise_id'] = $data->getEnterpriseId();
@@ -603,7 +603,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['priority'] = $data->getPriority();
         }
         if ($data->isInitialized('purpose') && null !== $data->getPurpose()) {
-            $dataArray['purpose'] = $this->normalizer->normalize($data->getPurpose(), 'json', $context);
+            $dataArray['purpose'] = null === $data->getPurpose() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPurpose(), 'json', $context));
         }
         if ($data->isInitialized('sharedTeamIds') && null !== $data->getSharedTeamIds()) {
             $values_6 = [];
@@ -615,7 +615,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('shares') && null !== $data->getShares()) {
             $values_7 = [];
             foreach ($data->getShares() as $value_7) {
-                $values_7[] = $this->normalizer->normalize($value_7, 'json', $context);
+                $values_7[] = null === $value_7 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_7, 'json', $context));
             }
             $dataArray['shares'] = $values_7;
         }
@@ -623,7 +623,7 @@ class ObjsConversationNormalizer implements DenormalizerInterface, NormalizerInt
             $dataArray['timezone_count'] = $data->getTimezoneCount();
         }
         if ($data->isInitialized('topic') && null !== $data->getTopic()) {
-            $dataArray['topic'] = $this->normalizer->normalize($data->getTopic(), 'json', $context);
+            $dataArray['topic'] = null === $data->getTopic() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTopic(), 'json', $context));
         }
         if ($data->isInitialized('unlinked') && null !== $data->getUnlinked()) {
             $dataArray['unlinked'] = $data->getUnlinked();

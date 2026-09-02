@@ -83,8 +83,8 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['self'] = $this->normalizer->normalize($data->getSelf(), 'json', $context);
-        $dataArray['team'] = $this->normalizer->normalize($data->getTeam(), 'json', $context);
+        $dataArray['self'] = null === $data->getSelf() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
+        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
         $dataArray['url'] = $data->getUrl();
 
         return $dataArray;

@@ -263,12 +263,12 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['enterprise_name'] = $data->getEnterpriseName();
         }
         if ($data->isInitialized('externalOrgMigrations') && null !== $data->getExternalOrgMigrations()) {
-            $dataArray['external_org_migrations'] = $this->normalizer->normalize($data->getExternalOrgMigrations(), 'json', $context);
+            $dataArray['external_org_migrations'] = null === $data->getExternalOrgMigrations() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getExternalOrgMigrations(), 'json', $context));
         }
         if ($data->isInitialized('hasComplianceExport') && null !== $data->getHasComplianceExport()) {
             $dataArray['has_compliance_export'] = $data->getHasComplianceExport();
         }
-        $dataArray['icon'] = $this->normalizer->normalize($data->getIcon(), 'json', $context);
+        $dataArray['icon'] = null === $data->getIcon() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIcon(), 'json', $context));
         $dataArray['id'] = $data->getId();
         if ($data->isInitialized('isAssigned') && null !== $data->getIsAssigned()) {
             $dataArray['is_assigned'] = $data->getIsAssigned();
@@ -305,10 +305,10 @@ class ObjsTeamNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['plan'] = $data->getPlan();
         }
         if ($data->isInitialized('primaryOwner') && null !== $data->getPrimaryOwner()) {
-            $dataArray['primary_owner'] = $this->normalizer->normalize($data->getPrimaryOwner(), 'json', $context);
+            $dataArray['primary_owner'] = null === $data->getPrimaryOwner() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPrimaryOwner(), 'json', $context));
         }
         if ($data->isInitialized('ssoProvider') && null !== $data->getSsoProvider()) {
-            $dataArray['sso_provider'] = $this->normalizer->normalize($data->getSsoProvider(), 'json', $context);
+            $dataArray['sso_provider'] = null === $data->getSsoProvider() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSsoProvider(), 'json', $context));
         }
 
         return $dataArray;

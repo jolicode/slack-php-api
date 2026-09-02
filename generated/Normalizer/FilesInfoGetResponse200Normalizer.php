@@ -112,13 +112,13 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
         if ($data->isInitialized('editor') && null !== $data->getEditor()) {
             $dataArray['editor'] = $data->getEditor();
         }
-        $dataArray['file'] = $this->normalizer->normalize($data->getFile(), 'json', $context);
+        $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
         $dataArray['ok'] = $data->getOk();
         if ($data->isInitialized('paging') && null !== $data->getPaging()) {
-            $dataArray['paging'] = $this->normalizer->normalize($data->getPaging(), 'json', $context);
+            $dataArray['paging'] = null === $data->getPaging() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
         }
         if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = $this->normalizer->normalize($data->getResponseMetadata(), 'json', $context);
+            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
         }
 
         return $dataArray;

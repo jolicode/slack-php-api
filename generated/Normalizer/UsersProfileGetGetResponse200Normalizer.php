@@ -73,7 +73,7 @@ class UsersProfileGetGetResponse200Normalizer implements DenormalizerInterface, 
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['profile'] = $this->normalizer->normalize($data->getProfile(), 'json', $context);
+        $dataArray['profile'] = null === $data->getProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProfile(), 'json', $context));
 
         return $dataArray;
     }

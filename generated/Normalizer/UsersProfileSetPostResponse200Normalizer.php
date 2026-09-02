@@ -86,7 +86,7 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
             $dataArray['email_pending'] = $data->getEmailPending();
         }
         $dataArray['ok'] = $data->getOk();
-        $dataArray['profile'] = $this->normalizer->normalize($data->getProfile(), 'json', $context);
+        $dataArray['profile'] = null === $data->getProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProfile(), 'json', $context));
         $dataArray['username'] = $data->getUsername();
 
         return $dataArray;

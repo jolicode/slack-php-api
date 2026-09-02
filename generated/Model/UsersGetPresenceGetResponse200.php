@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsersGetPresenceGetResponse200 extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class UsersGetPresenceGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -142,5 +146,10 @@ class UsersGetPresenceGetResponse200 extends \ArrayObject
         $this->presence = $presence;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['autoAway' => ['auto_away', 'getAutoAway', 'setAutoAway'], 'connectionCount' => ['connection_count', 'getConnectionCount', 'setConnectionCount'], 'lastActivity' => ['last_activity', 'getLastActivity', 'setLastActivity'], 'manualAway' => ['manual_away', 'getManualAway', 'setManualAway'], 'ok' => ['ok', 'getOk', 'setOk'], 'online' => ['online', 'getOnline', 'setOnline'], 'presence' => ['presence', 'getPresence', 'setPresence']];
     }
 }

@@ -60,6 +60,7 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             unset($data['enterprise_id']);
         } elseif (\array_key_exists('enterprise_id', $data) && null === $data['enterprise_id']) {
             $object->setEnterpriseId(null);
+            unset($data['enterprise_id']);
         }
         if (\array_key_exists('invalid_user_ids', $data) && null !== $data['invalid_user_ids']) {
             $values = [];
@@ -70,21 +71,24 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             unset($data['invalid_user_ids']);
         } elseif (\array_key_exists('invalid_user_ids', $data) && null === $data['invalid_user_ids']) {
             $object->setInvalidUserIds(null);
+            unset($data['invalid_user_ids']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
             $object->setTeamId($data['team_id']);
             unset($data['team_id']);
         } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
             $object->setTeamId(null);
+            unset($data['team_id']);
         }
         if (\array_key_exists('user_id_map', $data) && null !== $data['user_id_map']) {
-            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \JoliCode\Slack\Api\Runtime\JsonObject();
             foreach ($data['user_id_map'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
@@ -92,6 +96,7 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             unset($data['user_id_map']);
         } elseif (\array_key_exists('user_id_map', $data) && null === $data['user_id_map']) {
             $object->setUserIdMap(null);
+            unset($data['user_id_map']);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -116,13 +121,13 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
         $dataArray['ok'] = $data->getOk();
         $dataArray['team_id'] = $data->getTeamId();
         if ($data->isInitialized('userIdMap') && null !== $data->getUserIdMap()) {
-            $values_1 = [];
+            $values_1 = new \JoliCode\Slack\Api\Runtime\JsonObject();
             foreach ($data->getUserIdMap() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['user_id_map'] = $values_1;
         }
-        foreach ($data as $key_1 => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $dataArray[$key_1] = $value_2;
             }

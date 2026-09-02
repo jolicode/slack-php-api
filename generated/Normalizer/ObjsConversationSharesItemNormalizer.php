@@ -104,7 +104,7 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
         $dataArray['id'] = $data->getId();
         $dataArray['is_active'] = $data->getIsActive();
         $dataArray['name'] = $data->getName();
-        $dataArray['team'] = $this->normalizer->normalize($data->getTeam(), 'json', $context);
+        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
         if ($data->isInitialized('user') && null !== $data->getUser()) {
             $dataArray['user'] = $data->getUser();
         }

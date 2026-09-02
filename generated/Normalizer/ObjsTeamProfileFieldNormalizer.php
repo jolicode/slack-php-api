@@ -98,15 +98,11 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             $object->setOrdering(null);
         }
         if (\array_key_exists('possible_values', $data) && null !== $data['possible_values']) {
-            $value_1 = $data['possible_values'];
-            if (\is_array($data['possible_values']) && $this->isOnlyNumericKeys($data['possible_values'])) {
-                $values = [];
-                foreach ($data['possible_values'] as $value_2) {
-                    $values[] = $value_2;
-                }
-                $value_1 = $values;
+            $values = [];
+            foreach ($data['possible_values'] as $value_1) {
+                $values[] = $value_1;
             }
-            $object->setPossibleValues($value_1);
+            $object->setPossibleValues($values);
         } elseif (\array_key_exists('possible_values', $data) && null === $data['possible_values']) {
             $object->setPossibleValues(null);
         }
@@ -136,19 +132,15 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
         }
         $dataArray['label'] = $data->getLabel();
         if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
+            $dataArray['options'] = null === $data->getOptions() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
         }
         $dataArray['ordering'] = $data->getOrdering();
         if ($data->isInitialized('possibleValues') && null !== $data->getPossibleValues()) {
-            $value_1 = $data->getPossibleValues();
-            if (\is_array($data->getPossibleValues())) {
-                $values = [];
-                foreach ($data->getPossibleValues() as $value_2) {
-                    $values[] = $value_2;
-                }
-                $value_1 = $values;
+            $values = [];
+            foreach ($data->getPossibleValues() as $value_1) {
+                $values[] = $value_1;
             }
-            $dataArray['possible_values'] = $value_1;
+            $dataArray['possible_values'] = $values;
         }
         $dataArray['type'] = $data->getType();
 

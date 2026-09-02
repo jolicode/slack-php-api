@@ -607,12 +607,12 @@ class ObjsFileNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $values_4 = [];
             foreach ($data->getReactions() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = null === $value_4 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['reactions'] = $values_4;
         }
         if ($data->isInitialized('shares') && null !== $data->getShares()) {
-            $dataArray['shares'] = $this->normalizer->normalize($data->getShares(), 'json', $context);
+            $dataArray['shares'] = null === $data->getShares() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getShares(), 'json', $context));
         }
         if ($data->isInitialized('size') && null !== $data->getSize()) {
             $dataArray['size'] = $data->getSize();

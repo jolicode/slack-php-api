@@ -48,7 +48,7 @@ class ObjsUserProfile
      */
     protected $email;
     /**
-     * @var list<mixed>|mixed|null
+     * @var list<mixed>|null
      */
     protected $fields;
     /**
@@ -293,17 +293,17 @@ class ObjsUserProfile
     }
 
     /**
-     * @return list<mixed>|mixed
+     * @return list<mixed>|null
      */
-    public function getFields()
+    public function getFields(): ?array
     {
         return $this->fields;
     }
 
     /**
-     * @param list<mixed>|mixed $fields
+     * @param list<mixed>|null $fields
      */
-    public function setFields($fields): self
+    public function setFields(?array $fields): self
     {
         $this->initialized['fields'] = true;
         $this->fields = $fields;

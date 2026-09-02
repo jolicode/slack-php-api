@@ -73,7 +73,7 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['team'] = $this->normalizer->normalize($data->getTeam(), 'json', $context);
+        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
 
         return $dataArray;
     }

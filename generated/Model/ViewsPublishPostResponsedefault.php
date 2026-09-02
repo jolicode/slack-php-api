@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ViewsPublishPostResponsedefault extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class ViewsPublishPostResponsedefault implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -40,5 +44,10 @@ class ViewsPublishPostResponsedefault extends \ArrayObject
         $this->ok = $ok;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['ok' => ['ok', 'getOk', 'setOk']];
     }
 }

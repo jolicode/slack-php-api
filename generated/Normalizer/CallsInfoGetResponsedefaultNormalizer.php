@@ -60,6 +60,7 @@ class CallsInfoGetResponsedefaultNormalizer implements DenormalizerInterface, No
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -74,7 +75,7 @@ class CallsInfoGetResponsedefaultNormalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

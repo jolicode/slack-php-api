@@ -73,7 +73,7 @@ class RemindersInfoGetResponse200Normalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['reminder'] = $this->normalizer->normalize($data->getReminder(), 'json', $context);
+        $dataArray['reminder'] = null === $data->getReminder() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReminder(), 'json', $context));
 
         return $dataArray;
     }

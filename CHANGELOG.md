@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Upgrade JanePHP generated code
+* Opt out of the JanePHP-generated server plugins in `ClientFactory` so the `api.test` endpoint keeps its `/api` path prefix
 * **Specification override** Add the missing `team_id` argument to the `usergroups.users.list` endpoint
 
 ## 4.9.0 (2026-03-10)

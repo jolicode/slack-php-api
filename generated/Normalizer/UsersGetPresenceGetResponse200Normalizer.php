@@ -69,42 +69,49 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
             unset($data['auto_away']);
         } elseif (\array_key_exists('auto_away', $data) && null === $data['auto_away']) {
             $object->setAutoAway(null);
+            unset($data['auto_away']);
         }
         if (\array_key_exists('connection_count', $data) && null !== $data['connection_count']) {
             $object->setConnectionCount($data['connection_count']);
             unset($data['connection_count']);
         } elseif (\array_key_exists('connection_count', $data) && null === $data['connection_count']) {
             $object->setConnectionCount(null);
+            unset($data['connection_count']);
         }
         if (\array_key_exists('last_activity', $data) && null !== $data['last_activity']) {
             $object->setLastActivity($data['last_activity']);
             unset($data['last_activity']);
         } elseif (\array_key_exists('last_activity', $data) && null === $data['last_activity']) {
             $object->setLastActivity(null);
+            unset($data['last_activity']);
         }
         if (\array_key_exists('manual_away', $data) && null !== $data['manual_away']) {
             $object->setManualAway($data['manual_away']);
             unset($data['manual_away']);
         } elseif (\array_key_exists('manual_away', $data) && null === $data['manual_away']) {
             $object->setManualAway(null);
+            unset($data['manual_away']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         if (\array_key_exists('online', $data) && null !== $data['online']) {
             $object->setOnline($data['online']);
             unset($data['online']);
         } elseif (\array_key_exists('online', $data) && null === $data['online']) {
             $object->setOnline(null);
+            unset($data['online']);
         }
         if (\array_key_exists('presence', $data) && null !== $data['presence']) {
             $object->setPresence($data['presence']);
             unset($data['presence']);
         } elseif (\array_key_exists('presence', $data) && null === $data['presence']) {
             $object->setPresence(null);
+            unset($data['presence']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -135,7 +142,7 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
             $dataArray['online'] = $data->getOnline();
         }
         $dataArray['presence'] = $data->getPresence();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

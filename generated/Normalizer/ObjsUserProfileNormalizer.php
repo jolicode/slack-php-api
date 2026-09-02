@@ -101,116 +101,110 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setEmail(null);
         }
         if (\array_key_exists('fields', $data) && null !== $data['fields']) {
-            $value_1 = $data['fields'];
-            if (\is_array($data['fields']) && $this->isOnlyNumericKeys($data['fields'])) {
-                $values = [];
-                foreach ($data['fields'] as $value_2) {
-                    $values[] = $value_2;
-                }
-                $value_1 = $values;
-            } elseif (isset($data['fields'])) {
-                $value_1 = $data['fields'];
+            $values = [];
+            foreach ($data['fields'] as $value_1) {
+                $values[] = $value_1;
             }
-            $object->setFields($value_1);
+            $object->setFields($values);
         } elseif (\array_key_exists('fields', $data) && null === $data['fields']) {
             $object->setFields(null);
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
-            $value_3 = $data['first_name'];
+            $value_2 = $data['first_name'];
             if (\is_string($data['first_name'])) {
-                $value_3 = $data['first_name'];
+                $value_2 = $data['first_name'];
             }
-            $object->setFirstName($value_3);
+            $object->setFirstName($value_2);
         } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
             $object->setFirstName(null);
         }
         if (\array_key_exists('guest_expiration_ts', $data) && null !== $data['guest_expiration_ts']) {
-            $value_4 = $data['guest_expiration_ts'];
+            $value_3 = $data['guest_expiration_ts'];
             if (\is_int($data['guest_expiration_ts'])) {
-                $value_4 = $data['guest_expiration_ts'];
+                $value_3 = $data['guest_expiration_ts'];
             }
-            $object->setGuestExpirationTs($value_4);
+            $object->setGuestExpirationTs($value_3);
         } elseif (\array_key_exists('guest_expiration_ts', $data) && null === $data['guest_expiration_ts']) {
             $object->setGuestExpirationTs(null);
         }
         if (\array_key_exists('guest_invited_by', $data) && null !== $data['guest_invited_by']) {
-            $value_5 = $data['guest_invited_by'];
+            $value_4 = $data['guest_invited_by'];
             if (\is_string($data['guest_invited_by'])) {
-                $value_5 = $data['guest_invited_by'];
+                $value_4 = $data['guest_invited_by'];
             }
-            $object->setGuestInvitedBy($value_5);
+            $object->setGuestInvitedBy($value_4);
         } elseif (\array_key_exists('guest_invited_by', $data) && null === $data['guest_invited_by']) {
             $object->setGuestInvitedBy(null);
         }
         if (\array_key_exists('image_1024', $data) && null !== $data['image_1024']) {
-            $value_6 = $data['image_1024'];
+            $value_5 = $data['image_1024'];
             if (\is_string($data['image_1024'])) {
-                $value_6 = $data['image_1024'];
+                $value_5 = $data['image_1024'];
             }
-            $object->setImage1024($value_6);
+            $object->setImage1024($value_5);
         } elseif (\array_key_exists('image_1024', $data) && null === $data['image_1024']) {
             $object->setImage1024(null);
         }
         if (\array_key_exists('image_192', $data) && null !== $data['image_192']) {
-            $value_7 = $data['image_192'];
+            $value_6 = $data['image_192'];
             if (\is_string($data['image_192'])) {
-                $value_7 = $data['image_192'];
+                $value_6 = $data['image_192'];
             }
-            $object->setImage192($value_7);
+            $object->setImage192($value_6);
         } elseif (\array_key_exists('image_192', $data) && null === $data['image_192']) {
             $object->setImage192(null);
         }
         if (\array_key_exists('image_24', $data) && null !== $data['image_24']) {
-            $value_8 = $data['image_24'];
+            $value_7 = $data['image_24'];
             if (\is_string($data['image_24'])) {
-                $value_8 = $data['image_24'];
+                $value_7 = $data['image_24'];
             }
-            $object->setImage24($value_8);
+            $object->setImage24($value_7);
         } elseif (\array_key_exists('image_24', $data) && null === $data['image_24']) {
             $object->setImage24(null);
         }
         if (\array_key_exists('image_32', $data) && null !== $data['image_32']) {
-            $value_9 = $data['image_32'];
+            $value_8 = $data['image_32'];
             if (\is_string($data['image_32'])) {
-                $value_9 = $data['image_32'];
+                $value_8 = $data['image_32'];
             }
-            $object->setImage32($value_9);
+            $object->setImage32($value_8);
         } elseif (\array_key_exists('image_32', $data) && null === $data['image_32']) {
             $object->setImage32(null);
         }
         if (\array_key_exists('image_48', $data) && null !== $data['image_48']) {
-            $value_10 = $data['image_48'];
+            $value_9 = $data['image_48'];
             if (\is_string($data['image_48'])) {
-                $value_10 = $data['image_48'];
+                $value_9 = $data['image_48'];
             }
-            $object->setImage48($value_10);
+            $object->setImage48($value_9);
         } elseif (\array_key_exists('image_48', $data) && null === $data['image_48']) {
             $object->setImage48(null);
         }
         if (\array_key_exists('image_512', $data) && null !== $data['image_512']) {
-            $value_11 = $data['image_512'];
+            $value_10 = $data['image_512'];
             if (\is_string($data['image_512'])) {
-                $value_11 = $data['image_512'];
+                $value_10 = $data['image_512'];
             }
-            $object->setImage512($value_11);
+            $object->setImage512($value_10);
         } elseif (\array_key_exists('image_512', $data) && null === $data['image_512']) {
             $object->setImage512(null);
         }
         if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
-            $value_12 = $data['image_72'];
+            $value_11 = $data['image_72'];
             if (\is_string($data['image_72'])) {
-                $value_12 = $data['image_72'];
+                $value_11 = $data['image_72'];
             }
-            $object->setImage72($value_12);
+            $object->setImage72($value_11);
         } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
             $object->setImage72(null);
         }
         if (\array_key_exists('image_original', $data) && null !== $data['image_original']) {
-            $value_13 = $data['image_original'];
+            $value_12 = $data['image_original'];
             if (\is_string($data['image_original'])) {
-                $value_13 = $data['image_original'];
+                $value_12 = $data['image_original'];
             }
-            $object->setImageOriginal($value_13);
+            $object->setImageOriginal($value_12);
         } elseif (\array_key_exists('image_original', $data) && null === $data['image_original']) {
             $object->setImageOriginal(null);
         }
@@ -225,20 +219,20 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setIsCustomImage(null);
         }
         if (\array_key_exists('is_restricted', $data) && null !== $data['is_restricted']) {
-            $value_14 = $data['is_restricted'];
+            $value_13 = $data['is_restricted'];
             if (\is_bool($data['is_restricted'])) {
-                $value_14 = $data['is_restricted'];
+                $value_13 = $data['is_restricted'];
             }
-            $object->setIsRestricted($value_14);
+            $object->setIsRestricted($value_13);
         } elseif (\array_key_exists('is_restricted', $data) && null === $data['is_restricted']) {
             $object->setIsRestricted(null);
         }
         if (\array_key_exists('is_ultra_restricted', $data) && null !== $data['is_ultra_restricted']) {
-            $value_15 = $data['is_ultra_restricted'];
+            $value_14 = $data['is_ultra_restricted'];
             if (\is_bool($data['is_ultra_restricted'])) {
-                $value_15 = $data['is_ultra_restricted'];
+                $value_14 = $data['is_ultra_restricted'];
             }
-            $object->setIsUltraRestricted($value_15);
+            $object->setIsUltraRestricted($value_14);
         } elseif (\array_key_exists('is_ultra_restricted', $data) && null === $data['is_ultra_restricted']) {
             $object->setIsUltraRestricted(null);
         }
@@ -248,11 +242,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setLastAvatarImageHash(null);
         }
         if (\array_key_exists('last_name', $data) && null !== $data['last_name']) {
-            $value_16 = $data['last_name'];
+            $value_15 = $data['last_name'];
             if (\is_string($data['last_name'])) {
-                $value_16 = $data['last_name'];
+                $value_15 = $data['last_name'];
             }
-            $object->setLastName($value_16);
+            $object->setLastName($value_15);
         } elseif (\array_key_exists('last_name', $data) && null === $data['last_name']) {
             $object->setLastName(null);
         }
@@ -262,11 +256,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setMembershipsCount(null);
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $value_17 = $data['name'];
+            $value_16 = $data['name'];
             if (\is_string($data['name'])) {
-                $value_17 = $data['name'];
+                $value_16 = $data['name'];
             }
-            $object->setName($value_17);
+            $object->setName($value_16);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
         }
@@ -306,11 +300,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setStatusDefaultText(null);
         }
         if (\array_key_exists('status_default_text_canonical', $data) && null !== $data['status_default_text_canonical']) {
-            $value_18 = $data['status_default_text_canonical'];
+            $value_17 = $data['status_default_text_canonical'];
             if (\is_string($data['status_default_text_canonical'])) {
-                $value_18 = $data['status_default_text_canonical'];
+                $value_17 = $data['status_default_text_canonical'];
             }
-            $object->setStatusDefaultTextCanonical($value_18);
+            $object->setStatusDefaultTextCanonical($value_17);
         } elseif (\array_key_exists('status_default_text_canonical', $data) && null === $data['status_default_text_canonical']) {
             $object->setStatusDefaultTextCanonical(null);
         }
@@ -330,11 +324,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setStatusText(null);
         }
         if (\array_key_exists('status_text_canonical', $data) && null !== $data['status_text_canonical']) {
-            $value_19 = $data['status_text_canonical'];
+            $value_18 = $data['status_text_canonical'];
             if (\is_string($data['status_text_canonical'])) {
-                $value_19 = $data['status_text_canonical'];
+                $value_18 = $data['status_text_canonical'];
             }
-            $object->setStatusTextCanonical($value_19);
+            $object->setStatusTextCanonical($value_18);
         } elseif (\array_key_exists('status_text_canonical', $data) && null === $data['status_text_canonical']) {
             $object->setStatusTextCanonical(null);
         }
@@ -359,11 +353,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setUserId(null);
         }
         if (\array_key_exists('username', $data) && null !== $data['username']) {
-            $value_20 = $data['username'];
+            $value_19 = $data['username'];
             if (\is_string($data['username'])) {
-                $value_20 = $data['username'];
+                $value_19 = $data['username'];
             }
-            $object->setUsername($value_20);
+            $object->setUsername($value_19);
         } elseif (\array_key_exists('username', $data) && null === $data['username']) {
             $object->setUsername(null);
         }
@@ -393,93 +387,87 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $dataArray['email'] = $value;
         }
-        $value_1 = $data->getFields();
-        if (\is_array($data->getFields())) {
-            $values = [];
-            foreach ($data->getFields() as $value_2) {
-                $values[] = $value_2;
-            }
-            $value_1 = $values;
-        } elseif (null !== $data->getFields()) {
-            $value_1 = $data->getFields();
+        $values = [];
+        foreach ($data->getFields() as $value_1) {
+            $values[] = $value_1;
         }
-        $dataArray['fields'] = $value_1;
+        $dataArray['fields'] = $values;
         if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $value_3 = $data->getFirstName();
+            $value_2 = $data->getFirstName();
             if (\is_string($data->getFirstName())) {
-                $value_3 = $data->getFirstName();
+                $value_2 = $data->getFirstName();
             }
-            $dataArray['first_name'] = $value_3;
+            $dataArray['first_name'] = $value_2;
         }
         if ($data->isInitialized('guestExpirationTs') && null !== $data->getGuestExpirationTs()) {
-            $value_4 = $data->getGuestExpirationTs();
+            $value_3 = $data->getGuestExpirationTs();
             if (\is_int($data->getGuestExpirationTs())) {
-                $value_4 = $data->getGuestExpirationTs();
+                $value_3 = $data->getGuestExpirationTs();
             }
-            $dataArray['guest_expiration_ts'] = $value_4;
+            $dataArray['guest_expiration_ts'] = $value_3;
         }
         if ($data->isInitialized('guestInvitedBy') && null !== $data->getGuestInvitedBy()) {
-            $value_5 = $data->getGuestInvitedBy();
+            $value_4 = $data->getGuestInvitedBy();
             if (\is_string($data->getGuestInvitedBy())) {
-                $value_5 = $data->getGuestInvitedBy();
+                $value_4 = $data->getGuestInvitedBy();
             }
-            $dataArray['guest_invited_by'] = $value_5;
+            $dataArray['guest_invited_by'] = $value_4;
         }
         if ($data->isInitialized('image1024') && null !== $data->getImage1024()) {
-            $value_6 = $data->getImage1024();
+            $value_5 = $data->getImage1024();
             if (\is_string($data->getImage1024())) {
-                $value_6 = $data->getImage1024();
+                $value_5 = $data->getImage1024();
             }
-            $dataArray['image_1024'] = $value_6;
+            $dataArray['image_1024'] = $value_5;
         }
         if ($data->isInitialized('image192') && null !== $data->getImage192()) {
-            $value_7 = $data->getImage192();
+            $value_6 = $data->getImage192();
             if (\is_string($data->getImage192())) {
-                $value_7 = $data->getImage192();
+                $value_6 = $data->getImage192();
             }
-            $dataArray['image_192'] = $value_7;
+            $dataArray['image_192'] = $value_6;
         }
         if ($data->isInitialized('image24') && null !== $data->getImage24()) {
-            $value_8 = $data->getImage24();
+            $value_7 = $data->getImage24();
             if (\is_string($data->getImage24())) {
-                $value_8 = $data->getImage24();
+                $value_7 = $data->getImage24();
             }
-            $dataArray['image_24'] = $value_8;
+            $dataArray['image_24'] = $value_7;
         }
         if ($data->isInitialized('image32') && null !== $data->getImage32()) {
-            $value_9 = $data->getImage32();
+            $value_8 = $data->getImage32();
             if (\is_string($data->getImage32())) {
-                $value_9 = $data->getImage32();
+                $value_8 = $data->getImage32();
             }
-            $dataArray['image_32'] = $value_9;
+            $dataArray['image_32'] = $value_8;
         }
         if ($data->isInitialized('image48') && null !== $data->getImage48()) {
-            $value_10 = $data->getImage48();
+            $value_9 = $data->getImage48();
             if (\is_string($data->getImage48())) {
-                $value_10 = $data->getImage48();
+                $value_9 = $data->getImage48();
             }
-            $dataArray['image_48'] = $value_10;
+            $dataArray['image_48'] = $value_9;
         }
         if ($data->isInitialized('image512') && null !== $data->getImage512()) {
-            $value_11 = $data->getImage512();
+            $value_10 = $data->getImage512();
             if (\is_string($data->getImage512())) {
-                $value_11 = $data->getImage512();
+                $value_10 = $data->getImage512();
             }
-            $dataArray['image_512'] = $value_11;
+            $dataArray['image_512'] = $value_10;
         }
         if ($data->isInitialized('image72') && null !== $data->getImage72()) {
-            $value_12 = $data->getImage72();
+            $value_11 = $data->getImage72();
             if (\is_string($data->getImage72())) {
-                $value_12 = $data->getImage72();
+                $value_11 = $data->getImage72();
             }
-            $dataArray['image_72'] = $value_12;
+            $dataArray['image_72'] = $value_11;
         }
         if ($data->isInitialized('imageOriginal') && null !== $data->getImageOriginal()) {
-            $value_13 = $data->getImageOriginal();
+            $value_12 = $data->getImageOriginal();
             if (\is_string($data->getImageOriginal())) {
-                $value_13 = $data->getImageOriginal();
+                $value_12 = $data->getImageOriginal();
             }
-            $dataArray['image_original'] = $value_13;
+            $dataArray['image_original'] = $value_12;
         }
         if ($data->isInitialized('isAppUser') && null !== $data->getIsAppUser()) {
             $dataArray['is_app_user'] = $data->getIsAppUser();
@@ -488,38 +476,38 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['is_custom_image'] = $data->getIsCustomImage();
         }
         if ($data->isInitialized('isRestricted') && null !== $data->getIsRestricted()) {
-            $value_14 = $data->getIsRestricted();
+            $value_13 = $data->getIsRestricted();
             if (\is_bool($data->getIsRestricted())) {
-                $value_14 = $data->getIsRestricted();
+                $value_13 = $data->getIsRestricted();
             }
-            $dataArray['is_restricted'] = $value_14;
+            $dataArray['is_restricted'] = $value_13;
         }
         if ($data->isInitialized('isUltraRestricted') && null !== $data->getIsUltraRestricted()) {
-            $value_15 = $data->getIsUltraRestricted();
+            $value_14 = $data->getIsUltraRestricted();
             if (\is_bool($data->getIsUltraRestricted())) {
-                $value_15 = $data->getIsUltraRestricted();
+                $value_14 = $data->getIsUltraRestricted();
             }
-            $dataArray['is_ultra_restricted'] = $value_15;
+            $dataArray['is_ultra_restricted'] = $value_14;
         }
         if ($data->isInitialized('lastAvatarImageHash') && null !== $data->getLastAvatarImageHash()) {
             $dataArray['last_avatar_image_hash'] = $data->getLastAvatarImageHash();
         }
         if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $value_16 = $data->getLastName();
+            $value_15 = $data->getLastName();
             if (\is_string($data->getLastName())) {
-                $value_16 = $data->getLastName();
+                $value_15 = $data->getLastName();
             }
-            $dataArray['last_name'] = $value_16;
+            $dataArray['last_name'] = $value_15;
         }
         if ($data->isInitialized('membershipsCount') && null !== $data->getMembershipsCount()) {
             $dataArray['memberships_count'] = $data->getMembershipsCount();
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
-            $value_17 = $data->getName();
+            $value_16 = $data->getName();
             if (\is_string($data->getName())) {
-                $value_17 = $data->getName();
+                $value_16 = $data->getName();
             }
-            $dataArray['name'] = $value_17;
+            $dataArray['name'] = $value_16;
         }
         $dataArray['phone'] = $data->getPhone();
         if ($data->isInitialized('pronouns') && null !== $data->getPronouns()) {
@@ -535,11 +523,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['status_default_text'] = $data->getStatusDefaultText();
         }
         if ($data->isInitialized('statusDefaultTextCanonical') && null !== $data->getStatusDefaultTextCanonical()) {
-            $value_18 = $data->getStatusDefaultTextCanonical();
+            $value_17 = $data->getStatusDefaultTextCanonical();
             if (\is_string($data->getStatusDefaultTextCanonical())) {
-                $value_18 = $data->getStatusDefaultTextCanonical();
+                $value_17 = $data->getStatusDefaultTextCanonical();
             }
-            $dataArray['status_default_text_canonical'] = $value_18;
+            $dataArray['status_default_text_canonical'] = $value_17;
         }
         $dataArray['status_emoji'] = $data->getStatusEmoji();
         if ($data->isInitialized('statusExpiration') && null !== $data->getStatusExpiration()) {
@@ -547,11 +535,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
         }
         $dataArray['status_text'] = $data->getStatusText();
         if ($data->isInitialized('statusTextCanonical') && null !== $data->getStatusTextCanonical()) {
-            $value_19 = $data->getStatusTextCanonical();
+            $value_18 = $data->getStatusTextCanonical();
             if (\is_string($data->getStatusTextCanonical())) {
-                $value_19 = $data->getStatusTextCanonical();
+                $value_18 = $data->getStatusTextCanonical();
             }
-            $dataArray['status_text_canonical'] = $value_19;
+            $dataArray['status_text_canonical'] = $value_18;
         }
         if ($data->isInitialized('team') && null !== $data->getTeam()) {
             $dataArray['team'] = $data->getTeam();
@@ -564,11 +552,11 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $dataArray['user_id'] = $data->getUserId();
         }
         if ($data->isInitialized('username') && null !== $data->getUsername()) {
-            $value_20 = $data->getUsername();
+            $value_19 = $data->getUsername();
             if (\is_string($data->getUsername())) {
-                $value_20 = $data->getUsername();
+                $value_19 = $data->getUsername();
             }
-            $dataArray['username'] = $value_20;
+            $dataArray['username'] = $value_19;
         }
 
         return $dataArray;

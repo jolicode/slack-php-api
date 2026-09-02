@@ -72,7 +72,7 @@ class ConversationsInvitePostResponse200Normalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = $this->normalizer->normalize($data->getChannel(), 'json', $context);
+        $dataArray['channel'] = null === $data->getChannel() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getChannel(), 'json', $context));
         $dataArray['ok'] = $data->getOk();
 
         return $dataArray;

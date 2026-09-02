@@ -82,10 +82,10 @@ class ChatScheduledMessagesListGetResponse200Normalizer implements DenormalizerI
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['response_metadata'] = $this->normalizer->normalize($data->getResponseMetadata(), 'json', $context);
+        $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
         $values = [];
         foreach ($data->getScheduledMessages() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['scheduled_messages'] = $values;
 

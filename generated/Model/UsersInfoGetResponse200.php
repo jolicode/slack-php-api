@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class UsersInfoGetResponse200 extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class UsersInfoGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -65,5 +69,10 @@ class UsersInfoGetResponse200 extends \ArrayObject
         $this->user = $user;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['ok' => ['ok', 'getOk', 'setOk'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

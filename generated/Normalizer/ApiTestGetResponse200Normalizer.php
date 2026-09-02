@@ -60,12 +60,14 @@ class ApiTestGetResponse200Normalizer implements DenormalizerInterface, Normaliz
             unset($data['args']);
         } elseif (\array_key_exists('args', $data) && null === $data['args']) {
             $object->setArgs(null);
+            unset($data['args']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -83,7 +85,7 @@ class ApiTestGetResponse200Normalizer implements DenormalizerInterface, Normaliz
             $dataArray['args'] = $data->getArgs();
         }
         $dataArray['ok'] = $data->getOk();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

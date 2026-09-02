@@ -130,7 +130,7 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
             $dataArray['last_read'] = $data->getLastRead();
         }
         if ($data->isInitialized('latest') && null !== $data->getLatest()) {
-            $dataArray['latest'] = $this->normalizer->normalize($data->getLatest(), 'json', $context);
+            $dataArray['latest'] = null === $data->getLatest() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLatest(), 'json', $context));
         }
         if ($data->isInitialized('unreadCount') && null !== $data->getUnreadCount()) {
             $dataArray['unread_count'] = $data->getUnreadCount();

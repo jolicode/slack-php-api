@@ -83,11 +83,11 @@ class TeamAccessLogsGetResponse200Normalizer implements DenormalizerInterface, N
         $dataArray = [];
         $values = [];
         foreach ($data->getLogins() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['logins'] = $values;
         $dataArray['ok'] = $data->getOk();
-        $dataArray['paging'] = $this->normalizer->normalize($data->getPaging(), 'json', $context);
+        $dataArray['paging'] = null === $data->getPaging() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
 
         return $dataArray;
     }

@@ -60,12 +60,14 @@ class AppsPermissionsScopesListGetResponse200Normalizer implements DenormalizerI
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         if (\array_key_exists('scopes', $data) && null !== $data['scopes']) {
             $object->setScopes($this->denormalizer->denormalize($data['scopes'], \JoliCode\Slack\Api\Model\AppsPermissionsScopesListGetResponse200Scopes::class, 'json', $context));
             unset($data['scopes']);
         } elseif (\array_key_exists('scopes', $data) && null === $data['scopes']) {
             $object->setScopes(null);
+            unset($data['scopes']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -80,8 +82,8 @@ class AppsPermissionsScopesListGetResponse200Normalizer implements DenormalizerI
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['scopes'] = $this->normalizer->normalize($data->getScopes(), 'json', $context);
-        foreach ($data as $key => $value) {
+        $dataArray['scopes'] = null === $data->getScopes() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getScopes(), 'json', $context));
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

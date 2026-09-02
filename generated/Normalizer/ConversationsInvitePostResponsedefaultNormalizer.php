@@ -105,7 +105,7 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
         if ($data->isInitialized('errors') && null !== $data->getErrors()) {
             $values = [];
             foreach ($data->getErrors() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['errors'] = $values;
         }

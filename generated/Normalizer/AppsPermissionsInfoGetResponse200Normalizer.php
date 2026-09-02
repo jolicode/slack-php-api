@@ -72,7 +72,7 @@ class AppsPermissionsInfoGetResponse200Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['info'] = $this->normalizer->normalize($data->getInfo(), 'json', $context);
+        $dataArray['info'] = null === $data->getInfo() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getInfo(), 'json', $context));
         $dataArray['ok'] = $data->getOk();
 
         return $dataArray;

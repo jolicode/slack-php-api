@@ -60,12 +60,14 @@ class AdminConversationsInvitePostResponsedefaultNormalizer implements Denormali
             unset($data['error']);
         } elseif (\array_key_exists('error', $data) && null === $data['error']) {
             $object->setError(null);
+            unset($data['error']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
             $object->setOk($data['ok']);
             unset($data['ok']);
         } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
             $object->setOk(null);
+            unset($data['ok']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -81,7 +83,7 @@ class AdminConversationsInvitePostResponsedefaultNormalizer implements Denormali
         $dataArray = [];
         $dataArray['error'] = $data->getError();
         $dataArray['ok'] = $data->getOk();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

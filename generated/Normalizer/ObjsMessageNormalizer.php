@@ -314,14 +314,14 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('attachments') && null !== $data->getAttachments()) {
             $values = [];
             foreach ($data->getAttachments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['attachments'] = $values;
         }
         if ($data->isInitialized('blocks') && null !== $data->getBlocks()) {
             $values_1 = [];
             foreach ($data->getBlocks() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = null === $value_1 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['blocks'] = $values_1;
         }
@@ -329,29 +329,29 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['bot_id'] = $data->getBotId();
         }
         if ($data->isInitialized('botProfile') && null !== $data->getBotProfile()) {
-            $dataArray['bot_profile'] = $this->normalizer->normalize($data->getBotProfile(), 'json', $context);
+            $dataArray['bot_profile'] = null === $data->getBotProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getBotProfile(), 'json', $context));
         }
         if ($data->isInitialized('clientMsgId') && null !== $data->getClientMsgId()) {
             $dataArray['client_msg_id'] = $data->getClientMsgId();
         }
         if ($data->isInitialized('comment') && null !== $data->getComment()) {
-            $dataArray['comment'] = $this->normalizer->normalize($data->getComment(), 'json', $context);
+            $dataArray['comment'] = null === $data->getComment() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getComment(), 'json', $context));
         }
         if ($data->isInitialized('displayAsBot') && null !== $data->getDisplayAsBot()) {
             $dataArray['display_as_bot'] = $data->getDisplayAsBot();
         }
         if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['file'] = $this->normalizer->normalize($data->getFile(), 'json', $context);
+            $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
         }
         if ($data->isInitialized('files') && null !== $data->getFiles()) {
             $values_2 = [];
             foreach ($data->getFiles() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = null === $value_2 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $dataArray['files'] = $values_2;
         }
         if ($data->isInitialized('icons') && null !== $data->getIcons()) {
-            $dataArray['icons'] = $this->normalizer->normalize($data->getIcons(), 'json', $context);
+            $dataArray['icons'] = null === $data->getIcons() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIcons(), 'json', $context));
         }
         if ($data->isInitialized('inviter') && null !== $data->getInviter()) {
             $dataArray['inviter'] = $data->getInviter();
@@ -372,7 +372,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['latest_reply'] = $data->getLatestReply();
         }
         if ($data->isInitialized('metadata') && null !== $data->getMetadata()) {
-            $dataArray['metadata'] = $this->normalizer->normalize($data->getMetadata(), 'json', $context);
+            $dataArray['metadata'] = null === $data->getMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMetadata(), 'json', $context));
         }
         if ($data->isInitialized('name') && null !== $data->getName()) {
             $dataArray['name'] = $data->getName();
@@ -399,7 +399,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $values_4 = [];
             foreach ($data->getReactions() as $value_4) {
-                $values_4[] = $this->normalizer->normalize($value_4, 'json', $context);
+                $values_4[] = null === $value_4 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_4, 'json', $context));
             }
             $dataArray['reactions'] = $values_4;
         }
@@ -447,7 +447,7 @@ class ObjsMessageNormalizer implements DenormalizerInterface, NormalizerInterfac
             $dataArray['user'] = $data->getUser();
         }
         if ($data->isInitialized('userProfile') && null !== $data->getUserProfile()) {
-            $dataArray['user_profile'] = $this->normalizer->normalize($data->getUserProfile(), 'json', $context);
+            $dataArray['user_profile'] = null === $data->getUserProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUserProfile(), 'json', $context));
         }
         if ($data->isInitialized('userTeam') && null !== $data->getUserTeam()) {
             $dataArray['user_team'] = $data->getUserTeam();

@@ -70,10 +70,10 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer implem
     {
         $dataArray = [];
         if ($data->isInitialized('canThread') && null !== $data->getCanThread()) {
-            $dataArray['can_thread'] = $this->normalizer->normalize($data->getCanThread(), 'json', $context);
+            $dataArray['can_thread'] = null === $data->getCanThread() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getCanThread(), 'json', $context));
         }
         if ($data->isInitialized('whoCanPost') && null !== $data->getWhoCanPost()) {
-            $dataArray['who_can_post'] = $this->normalizer->normalize($data->getWhoCanPost(), 'json', $context);
+            $dataArray['who_can_post'] = null === $data->getWhoCanPost() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getWhoCanPost(), 'json', $context));
         }
 
         return $dataArray;

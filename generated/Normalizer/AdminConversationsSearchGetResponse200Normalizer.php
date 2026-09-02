@@ -75,7 +75,7 @@ class AdminConversationsSearchGetResponse200Normalizer implements DenormalizerIn
         $dataArray = [];
         $values = [];
         foreach ($data->getChannels() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['channels'] = $values;
         $dataArray['next_cursor'] = $data->getNextCursor();

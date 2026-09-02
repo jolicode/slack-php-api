@@ -57,6 +57,7 @@ class BlocksItemNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['type']);
         } elseif (\array_key_exists('type', $data) && null === $data['type']) {
             $object->setType(null);
+            unset($data['type']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -71,7 +72,7 @@ class BlocksItemNormalizer implements DenormalizerInterface, NormalizerInterface
     {
         $dataArray = [];
         $dataArray['type'] = $data->getType();
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

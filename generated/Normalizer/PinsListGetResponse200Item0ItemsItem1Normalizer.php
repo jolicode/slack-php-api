@@ -94,7 +94,7 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
             $dataArray['created_by'] = $data->getCreatedBy();
         }
         if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = $this->normalizer->normalize($data->getMessage(), 'json', $context);
+            $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
         }
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();

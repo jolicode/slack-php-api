@@ -72,7 +72,7 @@ class BotsInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['bot'] = $this->normalizer->normalize($data->getBot(), 'json', $context);
+        $dataArray['bot'] = null === $data->getBot() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getBot(), 'json', $context));
         $dataArray['ok'] = $data->getOk();
 
         return $dataArray;

@@ -83,7 +83,7 @@ class AdminConversationsGetTeamsGetResponse200Normalizer implements Denormalizer
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
         if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = $this->normalizer->normalize($data->getResponseMetadata(), 'json', $context);
+            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
         }
         $values = [];
         foreach ($data->getTeamIds() as $value) {

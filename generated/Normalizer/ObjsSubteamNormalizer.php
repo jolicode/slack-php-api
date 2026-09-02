@@ -198,7 +198,7 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
         $dataArray['is_subteam'] = $data->getIsSubteam();
         $dataArray['is_usergroup'] = $data->getIsUsergroup();
         $dataArray['name'] = $data->getName();
-        $dataArray['prefs'] = $this->normalizer->normalize($data->getPrefs(), 'json', $context);
+        $dataArray['prefs'] = null === $data->getPrefs() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPrefs(), 'json', $context));
         $dataArray['team_id'] = $data->getTeamId();
         $dataArray['updated_by'] = $data->getUpdatedBy();
         if ($data->isInitialized('userCount') && null !== $data->getUserCount()) {

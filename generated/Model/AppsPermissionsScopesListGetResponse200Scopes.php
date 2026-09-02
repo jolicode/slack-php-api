@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class AppsPermissionsScopesListGetResponse200Scopes implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -184,5 +188,10 @@ class AppsPermissionsScopesListGetResponse200Scopes extends \ArrayObject
         $this->user = $user;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['appHome' => ['app_home', 'getAppHome', 'setAppHome'], 'channel' => ['channel', 'getChannel', 'setChannel'], 'group' => ['group', 'getGroup', 'setGroup'], 'im' => ['im', 'getIm', 'setIm'], 'mpim' => ['mpim', 'getMpim', 'setMpim'], 'team' => ['team', 'getTeam', 'setTeam'], 'user' => ['user', 'getUser', 'setUser']];
     }
 }

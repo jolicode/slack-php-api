@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class AppsPermissionsResourcesListGetResponse200 implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -80,5 +84,10 @@ class AppsPermissionsResourcesListGetResponse200 extends \ArrayObject
         $this->responseMetadata = $responseMetadata;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['ok' => ['ok', 'getOk', 'setOk'], 'resources' => ['resources', 'getResources', 'setResources'], 'responseMetadata' => ['response_metadata', 'getResponseMetadata', 'setResponseMetadata']];
     }
 }

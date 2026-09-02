@@ -90,13 +90,13 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
         if (\is_array($data->getItems())) {
             $values = [];
             foreach ($data->getItems() as $value_1) {
-                $values[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = null === $value_1 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $value = $values;
         } elseif (\is_array($data->getItems())) {
             $values_1 = [];
             foreach ($data->getItems() as $value_2) {
-                $values_1[] = $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = null === $value_2 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
             }
             $value = $values_1;
         }

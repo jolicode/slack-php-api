@@ -99,7 +99,7 @@ class ObjsBotProfileNormalizer implements DenormalizerInterface, NormalizerInter
         $dataArray = [];
         $dataArray['app_id'] = $data->getAppId();
         $dataArray['deleted'] = $data->getDeleted();
-        $dataArray['icons'] = $this->normalizer->normalize($data->getIcons(), 'json', $context);
+        $dataArray['icons'] = null === $data->getIcons() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIcons(), 'json', $context));
         $dataArray['id'] = $data->getId();
         $dataArray['name'] = $data->getName();
         $dataArray['team_id'] = $data->getTeamId();

@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class AdminConversationsInvitePostResponsedefault extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class AdminConversationsInvitePostResponsedefault implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -57,5 +61,10 @@ class AdminConversationsInvitePostResponsedefault extends \ArrayObject
         $this->ok = $ok;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['error' => ['error', 'getError', 'setError'], 'ok' => ['ok', 'getOk', 'setOk']];
     }
 }

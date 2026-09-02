@@ -3916,26 +3916,28 @@ class Client extends Runtime\Client\Client
         return $this->executeEndpoint(new Endpoint\WorkflowsUpdateStep($formParameters, $headerParameters), $fetch);
     }
 
-    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [])
+    public static function create($httpClient = null, array $additionalPlugins = [], array $additionalNormalizers = [], bool $applyServerPlugins = true)
     {
+        $plugins = [];
         if (null === $httpClient) {
             $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
-            $plugins = [];
+        }
+        if ($applyServerPlugins) {
             $uri = \Http\Discovery\Psr17FactoryDiscovery::findUriFactory()->createUri('https://slack.com/api');
             $plugins[] = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
             $plugins[] = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
-            if (\count($additionalPlugins) > 0) {
-                $plugins = array_merge($plugins, $additionalPlugins);
-            }
-            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
+        if (\count($additionalPlugins) > 0) {
+            $plugins = array_merge($plugins, $additionalPlugins);
+        }
+        $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
         $streamFactory = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
         $normalizers = [new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new Normalizer\JaneObjectNormalizer()];
         if (\count($additionalNormalizers) > 0) {
             $normalizers = array_merge($normalizers, $additionalNormalizers);
         }
-        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true]))]);
+        $serializer = new \Symfony\Component\Serializer\Serializer($normalizers, [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode(['json_decode_associative' => true])), new Runtime\Client\FormEncoder()]);
 
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }

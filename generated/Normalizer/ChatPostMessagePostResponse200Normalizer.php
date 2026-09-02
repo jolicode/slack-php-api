@@ -83,7 +83,7 @@ class ChatPostMessagePostResponse200Normalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         $dataArray['channel'] = $data->getChannel();
-        $dataArray['message'] = $this->normalizer->normalize($data->getMessage(), 'json', $context);
+        $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
         $dataArray['ok'] = $data->getOk();
         $dataArray['ts'] = $data->getTs();
 

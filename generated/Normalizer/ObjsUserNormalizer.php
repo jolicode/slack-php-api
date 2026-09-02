@@ -265,7 +265,7 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['deleted'] = $data->getDeleted();
         }
         if ($data->isInitialized('enterpriseUser') && null !== $data->getEnterpriseUser()) {
-            $dataArray['enterprise_user'] = $this->normalizer->normalize($data->getEnterpriseUser(), 'json', $context);
+            $dataArray['enterprise_user'] = null === $data->getEnterpriseUser() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getEnterpriseUser(), 'json', $context));
         }
         if ($data->isInitialized('has2fa') && null !== $data->getHas2fa()) {
             $dataArray['has_2fa'] = $data->getHas2fa();
@@ -307,7 +307,7 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($data->isInitialized('presence') && null !== $data->getPresence()) {
             $dataArray['presence'] = $data->getPresence();
         }
-        $dataArray['profile'] = $this->normalizer->normalize($data->getProfile(), 'json', $context);
+        $dataArray['profile'] = null === $data->getProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProfile(), 'json', $context));
         if ($data->isInitialized('realName') && null !== $data->getRealName()) {
             $dataArray['real_name'] = $data->getRealName();
         }
@@ -318,7 +318,7 @@ class ObjsUserNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $dataArray['team_id'] = $data->getTeamId();
         }
         if ($data->isInitialized('teamProfile') && null !== $data->getTeamProfile()) {
-            $dataArray['team_profile'] = $this->normalizer->normalize($data->getTeamProfile(), 'json', $context);
+            $dataArray['team_profile'] = null === $data->getTeamProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeamProfile(), 'json', $context));
         }
         if ($data->isInitialized('teams') && null !== $data->getTeams()) {
             $values = [];

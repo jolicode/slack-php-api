@@ -111,13 +111,13 @@ class ChatScheduleMessagePostResponse200MessageNormalizer implements Denormalize
         if ($data->isInitialized('attachments') && null !== $data->getAttachments()) {
             $values = [];
             foreach ($data->getAttachments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['attachments'] = $values;
         }
         $dataArray['bot_id'] = $data->getBotId();
         if ($data->isInitialized('botProfile') && null !== $data->getBotProfile()) {
-            $dataArray['bot_profile'] = $this->normalizer->normalize($data->getBotProfile(), 'json', $context);
+            $dataArray['bot_profile'] = null === $data->getBotProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getBotProfile(), 'json', $context));
         }
         if ($data->isInitialized('subtype') && null !== $data->getSubtype()) {
             $dataArray['subtype'] = $data->getSubtype();

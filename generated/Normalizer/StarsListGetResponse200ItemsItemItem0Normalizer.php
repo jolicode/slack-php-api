@@ -81,7 +81,7 @@ class StarsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInt
         $dataArray = [];
         $dataArray['channel'] = $data->getChannel();
         $dataArray['date_create'] = $data->getDateCreate();
-        $dataArray['message'] = $this->normalizer->normalize($data->getMessage(), 'json', $context);
+        $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
         $dataArray['type'] = $data->getType();
 
         return $dataArray;

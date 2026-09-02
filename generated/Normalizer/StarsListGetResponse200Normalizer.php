@@ -88,7 +88,7 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
         $dataArray['items'] = $values;
         $dataArray['ok'] = $data->getOk();
         if ($data->isInitialized('paging') && null !== $data->getPaging()) {
-            $dataArray['paging'] = $this->normalizer->normalize($data->getPaging(), 'json', $context);
+            $dataArray['paging'] = null === $data->getPaging() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
         }
 
         return $dataArray;

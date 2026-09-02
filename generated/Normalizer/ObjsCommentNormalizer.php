@@ -157,7 +157,7 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
             $values_1 = [];
             foreach ($data->getReactions() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = null === $value_1 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['reactions'] = $values_1;
         }

@@ -73,7 +73,7 @@ class UsergroupsCreatePostResponse200Normalizer implements DenormalizerInterface
     {
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
-        $dataArray['usergroup'] = $this->normalizer->normalize($data->getUsergroup(), 'json', $context);
+        $dataArray['usergroup'] = null === $data->getUsergroup() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUsergroup(), 'json', $context));
 
         return $dataArray;
     }

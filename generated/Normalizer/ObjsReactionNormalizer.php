@@ -57,12 +57,14 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['count']);
         } elseif (\array_key_exists('count', $data) && null === $data['count']) {
             $object->setCount(null);
+            unset($data['count']);
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $object->setName($data['name']);
             unset($data['name']);
         } elseif (\array_key_exists('name', $data) && null === $data['name']) {
             $object->setName(null);
+            unset($data['name']);
         }
         if (\array_key_exists('users', $data) && null !== $data['users']) {
             $values = [];
@@ -73,6 +75,7 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['users']);
         } elseif (\array_key_exists('users', $data) && null === $data['users']) {
             $object->setUsers(null);
+            unset($data['users']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -93,7 +96,7 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
             $values[] = $value;
         }
         $dataArray['users'] = $values;
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

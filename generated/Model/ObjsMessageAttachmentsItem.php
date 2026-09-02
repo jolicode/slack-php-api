@@ -13,8 +13,12 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Model;
 
-class ObjsMessageAttachmentsItem extends \ArrayObject
+use JoliCode\Slack\Api\Runtime\AdditionalAndPatternProperties;
+use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
+
+class ObjsMessageAttachmentsItem implements AdditionalPropertiesInterface
 {
+    use AdditionalAndPatternProperties;
     /**
      * @var array
      */
@@ -398,5 +402,10 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
         $this->ts = $ts;
 
         return $this;
+    }
+
+    public function definedProperties(): array
+    {
+        return ['actions' => ['actions', 'getActions', 'setActions'], 'authorIcon' => ['author_icon', 'getAuthorIcon', 'setAuthorIcon'], 'authorLink' => ['author_link', 'getAuthorLink', 'setAuthorLink'], 'authorName' => ['author_name', 'getAuthorName', 'setAuthorName'], 'callbackId' => ['callback_id', 'getCallbackId', 'setCallbackId'], 'color' => ['color', 'getColor', 'setColor'], 'fallback' => ['fallback', 'getFallback', 'setFallback'], 'fields' => ['fields', 'getFields', 'setFields'], 'footer' => ['footer', 'getFooter', 'setFooter'], 'footerIcon' => ['footer_icon', 'getFooterIcon', 'setFooterIcon'], 'id' => ['id', 'getId', 'setId'], 'imageBytes' => ['image_bytes', 'getImageBytes', 'setImageBytes'], 'imageHeight' => ['image_height', 'getImageHeight', 'setImageHeight'], 'imageUrl' => ['image_url', 'getImageUrl', 'setImageUrl'], 'imageWidth' => ['image_width', 'getImageWidth', 'setImageWidth'], 'pretext' => ['pretext', 'getPretext', 'setPretext'], 'text' => ['text', 'getText', 'setText'], 'thumbUrl' => ['thumb_url', 'getThumbUrl', 'setThumbUrl'], 'title' => ['title', 'getTitle', 'setTitle'], 'titleLink' => ['title_link', 'getTitleLink', 'setTitleLink'], 'ts' => ['ts', 'getTs', 'setTs']];
     }
 }

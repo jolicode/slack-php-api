@@ -61,6 +61,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['app_home']);
         } elseif (\array_key_exists('app_home', $data) && null === $data['app_home']) {
             $object->setAppHome(null);
+            unset($data['app_home']);
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
             $values_1 = [];
@@ -71,6 +72,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['channel']);
         } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
             $object->setChannel(null);
+            unset($data['channel']);
         }
         if (\array_key_exists('group', $data) && null !== $data['group']) {
             $values_2 = [];
@@ -81,6 +83,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['group']);
         } elseif (\array_key_exists('group', $data) && null === $data['group']) {
             $object->setGroup(null);
+            unset($data['group']);
         }
         if (\array_key_exists('im', $data) && null !== $data['im']) {
             $values_3 = [];
@@ -91,6 +94,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['im']);
         } elseif (\array_key_exists('im', $data) && null === $data['im']) {
             $object->setIm(null);
+            unset($data['im']);
         }
         if (\array_key_exists('mpim', $data) && null !== $data['mpim']) {
             $values_4 = [];
@@ -101,6 +105,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['mpim']);
         } elseif (\array_key_exists('mpim', $data) && null === $data['mpim']) {
             $object->setMpim(null);
+            unset($data['mpim']);
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
             $values_5 = [];
@@ -111,6 +116,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['team']);
         } elseif (\array_key_exists('team', $data) && null === $data['team']) {
             $object->setTeam(null);
+            unset($data['team']);
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
             $values_6 = [];
@@ -121,6 +127,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             unset($data['user']);
         } elseif (\array_key_exists('user', $data) && null === $data['user']) {
             $object->setUser(null);
+            unset($data['user']);
         }
         foreach ($data as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
@@ -183,7 +190,7 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             }
             $dataArray['user'] = $values_6;
         }
-        foreach ($data as $key => $value_7) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_7) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_7;
             }

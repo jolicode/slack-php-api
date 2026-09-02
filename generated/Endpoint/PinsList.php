@@ -76,7 +76,11 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
-            return json_decode($body);
+            try {
+                return json_decode($body, false, 512, \JSON_THROW_ON_ERROR);
+            } catch (\JsonException $jsonException) {
+                throw new \Jane\Component\JsonSchemaRuntime\Exception\MalformedJsonException('Malformed JSON response body.', 0, $jsonException);
+            }
         }
 
         return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\PinsListGetResponsedefault', 'json');

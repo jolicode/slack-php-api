@@ -94,7 +94,7 @@ class ChatScheduleMessagePostResponse200Normalizer implements DenormalizerInterf
     {
         $dataArray = [];
         $dataArray['channel'] = $data->getChannel();
-        $dataArray['message'] = $this->normalizer->normalize($data->getMessage(), 'json', $context);
+        $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
         $dataArray['ok'] = $data->getOk();
         $value = $data->getPostAt();
         if (\is_int($data->getPostAt())) {

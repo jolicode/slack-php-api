@@ -75,7 +75,7 @@ class ReactionsListGetResponse200ItemsItemItem0Normalizer implements Denormalize
     {
         $dataArray = [];
         $dataArray['channel'] = $data->getChannel();
-        $dataArray['message'] = $this->normalizer->normalize($data->getMessage(), 'json', $context);
+        $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
         $dataArray['type'] = $data->getType();
 
         return $dataArray;

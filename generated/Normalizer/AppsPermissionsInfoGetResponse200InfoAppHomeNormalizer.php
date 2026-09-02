@@ -74,7 +74,7 @@ class AppsPermissionsInfoGetResponse200InfoAppHomeNormalizer implements Denormal
     {
         $dataArray = [];
         if ($data->isInitialized('resources') && null !== $data->getResources()) {
-            $dataArray['resources'] = $this->normalizer->normalize($data->getResources(), 'json', $context);
+            $dataArray['resources'] = null === $data->getResources() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
         }
         if ($data->isInitialized('scopes') && null !== $data->getScopes()) {
             $values = [];

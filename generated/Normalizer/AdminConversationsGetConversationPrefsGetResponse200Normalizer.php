@@ -74,7 +74,7 @@ class AdminConversationsGetConversationPrefsGetResponse200Normalizer implements 
         $dataArray = [];
         $dataArray['ok'] = $data->getOk();
         if ($data->isInitialized('prefs') && null !== $data->getPrefs()) {
-            $dataArray['prefs'] = $this->normalizer->normalize($data->getPrefs(), 'json', $context);
+            $dataArray['prefs'] = null === $data->getPrefs() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPrefs(), 'json', $context));
         }
 
         return $dataArray;

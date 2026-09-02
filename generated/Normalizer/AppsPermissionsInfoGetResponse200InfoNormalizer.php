@@ -89,12 +89,12 @@ class AppsPermissionsInfoGetResponse200InfoNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_home'] = $this->normalizer->normalize($data->getAppHome(), 'json', $context);
-        $dataArray['channel'] = $this->normalizer->normalize($data->getChannel(), 'json', $context);
-        $dataArray['group'] = $this->normalizer->normalize($data->getGroup(), 'json', $context);
-        $dataArray['im'] = $this->normalizer->normalize($data->getIm(), 'json', $context);
-        $dataArray['mpim'] = $this->normalizer->normalize($data->getMpim(), 'json', $context);
-        $dataArray['team'] = $this->normalizer->normalize($data->getTeam(), 'json', $context);
+        $dataArray['app_home'] = null === $data->getAppHome() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getAppHome(), 'json', $context));
+        $dataArray['channel'] = null === $data->getChannel() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getChannel(), 'json', $context));
+        $dataArray['group'] = null === $data->getGroup() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getGroup(), 'json', $context));
+        $dataArray['im'] = null === $data->getIm() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIm(), 'json', $context));
+        $dataArray['mpim'] = null === $data->getMpim() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMpim(), 'json', $context));
+        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
 
         return $dataArray;
     }

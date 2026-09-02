@@ -133,7 +133,7 @@ class ConversationsRepliesGetResponse200MessagesItemItem1Normalizer implements D
         $dataArray['type'] = $data->getType();
         $dataArray['user'] = $data->getUser();
         if ($data->isInitialized('userProfile') && null !== $data->getUserProfile()) {
-            $dataArray['user_profile'] = $this->normalizer->normalize($data->getUserProfile(), 'json', $context);
+            $dataArray['user_profile'] = null === $data->getUserProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUserProfile(), 'json', $context));
         }
         if ($data->isInitialized('userTeam') && null !== $data->getUserTeam()) {
             $dataArray['user_team'] = $data->getUserTeam();

@@ -344,8 +344,8 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('priority') && null !== $data->getPriority()) {
             $dataArray['priority'] = $data->getPriority();
         }
-        $dataArray['purpose'] = $this->normalizer->normalize($data->getPurpose(), 'json', $context);
-        $dataArray['topic'] = $this->normalizer->normalize($data->getTopic(), 'json', $context);
+        $dataArray['purpose'] = null === $data->getPurpose() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPurpose(), 'json', $context));
+        $dataArray['topic'] = null === $data->getTopic() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTopic(), 'json', $context));
         if ($data->isInitialized('unlinked') && null !== $data->getUnlinked()) {
             $dataArray['unlinked'] = $data->getUnlinked();
         }

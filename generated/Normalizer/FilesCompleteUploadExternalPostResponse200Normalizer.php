@@ -78,7 +78,7 @@ class FilesCompleteUploadExternalPostResponse200Normalizer implements Denormaliz
         $dataArray = [];
         $values = [];
         foreach ($data->getFiles() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
         }
         $dataArray['files'] = $values;
         $dataArray['ok'] = $data->getOk();

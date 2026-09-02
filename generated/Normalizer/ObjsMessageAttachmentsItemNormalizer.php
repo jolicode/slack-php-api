@@ -61,42 +61,49 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             unset($data['actions']);
         } elseif (\array_key_exists('actions', $data) && null === $data['actions']) {
             $object->setActions(null);
+            unset($data['actions']);
         }
         if (\array_key_exists('author_icon', $data) && null !== $data['author_icon']) {
             $object->setAuthorIcon($data['author_icon']);
             unset($data['author_icon']);
         } elseif (\array_key_exists('author_icon', $data) && null === $data['author_icon']) {
             $object->setAuthorIcon(null);
+            unset($data['author_icon']);
         }
         if (\array_key_exists('author_link', $data) && null !== $data['author_link']) {
             $object->setAuthorLink($data['author_link']);
             unset($data['author_link']);
         } elseif (\array_key_exists('author_link', $data) && null === $data['author_link']) {
             $object->setAuthorLink(null);
+            unset($data['author_link']);
         }
         if (\array_key_exists('author_name', $data) && null !== $data['author_name']) {
             $object->setAuthorName($data['author_name']);
             unset($data['author_name']);
         } elseif (\array_key_exists('author_name', $data) && null === $data['author_name']) {
             $object->setAuthorName(null);
+            unset($data['author_name']);
         }
         if (\array_key_exists('callback_id', $data) && null !== $data['callback_id']) {
             $object->setCallbackId($data['callback_id']);
             unset($data['callback_id']);
         } elseif (\array_key_exists('callback_id', $data) && null === $data['callback_id']) {
             $object->setCallbackId(null);
+            unset($data['callback_id']);
         }
         if (\array_key_exists('color', $data) && null !== $data['color']) {
             $object->setColor($data['color']);
             unset($data['color']);
         } elseif (\array_key_exists('color', $data) && null === $data['color']) {
             $object->setColor(null);
+            unset($data['color']);
         }
         if (\array_key_exists('fallback', $data) && null !== $data['fallback']) {
             $object->setFallback($data['fallback']);
             unset($data['fallback']);
         } elseif (\array_key_exists('fallback', $data) && null === $data['fallback']) {
             $object->setFallback(null);
+            unset($data['fallback']);
         }
         if (\array_key_exists('fields', $data) && null !== $data['fields']) {
             $values_1 = [];
@@ -107,78 +114,91 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             unset($data['fields']);
         } elseif (\array_key_exists('fields', $data) && null === $data['fields']) {
             $object->setFields(null);
+            unset($data['fields']);
         }
         if (\array_key_exists('footer', $data) && null !== $data['footer']) {
             $object->setFooter($data['footer']);
             unset($data['footer']);
         } elseif (\array_key_exists('footer', $data) && null === $data['footer']) {
             $object->setFooter(null);
+            unset($data['footer']);
         }
         if (\array_key_exists('footer_icon', $data) && null !== $data['footer_icon']) {
             $object->setFooterIcon($data['footer_icon']);
             unset($data['footer_icon']);
         } elseif (\array_key_exists('footer_icon', $data) && null === $data['footer_icon']) {
             $object->setFooterIcon(null);
+            unset($data['footer_icon']);
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
             $object->setId($data['id']);
             unset($data['id']);
         } elseif (\array_key_exists('id', $data) && null === $data['id']) {
             $object->setId(null);
+            unset($data['id']);
         }
         if (\array_key_exists('image_bytes', $data) && null !== $data['image_bytes']) {
             $object->setImageBytes($data['image_bytes']);
             unset($data['image_bytes']);
         } elseif (\array_key_exists('image_bytes', $data) && null === $data['image_bytes']) {
             $object->setImageBytes(null);
+            unset($data['image_bytes']);
         }
         if (\array_key_exists('image_height', $data) && null !== $data['image_height']) {
             $object->setImageHeight($data['image_height']);
             unset($data['image_height']);
         } elseif (\array_key_exists('image_height', $data) && null === $data['image_height']) {
             $object->setImageHeight(null);
+            unset($data['image_height']);
         }
         if (\array_key_exists('image_url', $data) && null !== $data['image_url']) {
             $object->setImageUrl($data['image_url']);
             unset($data['image_url']);
         } elseif (\array_key_exists('image_url', $data) && null === $data['image_url']) {
             $object->setImageUrl(null);
+            unset($data['image_url']);
         }
         if (\array_key_exists('image_width', $data) && null !== $data['image_width']) {
             $object->setImageWidth($data['image_width']);
             unset($data['image_width']);
         } elseif (\array_key_exists('image_width', $data) && null === $data['image_width']) {
             $object->setImageWidth(null);
+            unset($data['image_width']);
         }
         if (\array_key_exists('pretext', $data) && null !== $data['pretext']) {
             $object->setPretext($data['pretext']);
             unset($data['pretext']);
         } elseif (\array_key_exists('pretext', $data) && null === $data['pretext']) {
             $object->setPretext(null);
+            unset($data['pretext']);
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
             $object->setText($data['text']);
             unset($data['text']);
         } elseif (\array_key_exists('text', $data) && null === $data['text']) {
             $object->setText(null);
+            unset($data['text']);
         }
         if (\array_key_exists('thumb_url', $data) && null !== $data['thumb_url']) {
             $object->setThumbUrl($data['thumb_url']);
             unset($data['thumb_url']);
         } elseif (\array_key_exists('thumb_url', $data) && null === $data['thumb_url']) {
             $object->setThumbUrl(null);
+            unset($data['thumb_url']);
         }
         if (\array_key_exists('title', $data) && null !== $data['title']) {
             $object->setTitle($data['title']);
             unset($data['title']);
         } elseif (\array_key_exists('title', $data) && null === $data['title']) {
             $object->setTitle(null);
+            unset($data['title']);
         }
         if (\array_key_exists('title_link', $data) && null !== $data['title_link']) {
             $object->setTitleLink($data['title_link']);
             unset($data['title_link']);
         } elseif (\array_key_exists('title_link', $data) && null === $data['title_link']) {
             $object->setTitleLink(null);
+            unset($data['title_link']);
         }
         if (\array_key_exists('ts', $data) && null !== $data['ts']) {
             $value_2 = $data['ts'];
@@ -191,6 +211,7 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             unset($data['ts']);
         } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
             $object->setTs(null);
+            unset($data['ts']);
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
@@ -207,7 +228,7 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('actions') && null !== $data->getActions()) {
             $values = [];
             foreach ($data->getActions() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+                $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
             }
             $dataArray['actions'] = $values;
         }
@@ -232,7 +253,7 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         if ($data->isInitialized('fields') && null !== $data->getFields()) {
             $values_1 = [];
             foreach ($data->getFields() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = null === $value_1 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
             }
             $dataArray['fields'] = $values_1;
         }
@@ -279,7 +300,7 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
             }
             $dataArray['ts'] = $value_2;
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }
