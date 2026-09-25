@@ -1,6 +1,6 @@
 # Changes between versions
 
-## Unreleased
+## 4.10.0 (2026-09-25)
 
 * Upgrade JanePHP generated code
 * Opt out of the JanePHP-generated server plugins in `ClientFactory` so the `api.test` endpoint keeps its `/api` path prefix
