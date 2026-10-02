@@ -1,5 +1,13 @@
 # Changes between versions
 
+## 5.0.0 (2026-10-02)
+* Upgrade JanePHP to 8.0.0
+* Generated models now expose public typed properties instead of getters: use `$user->name` instead of `$user->getName()`
+* The HTTP layer is now built on Symfony HttpClient (`HttpClientInterface`) instead of PSR-7 / PSR-18 / HTTPlug
+* `ClientFactory::create()` now expects a `Symfony\Contracts\HttpClient\HttpClientInterface` instead of a PSR-18 client
+* GET and HEAD operations are now generated with the `preload` fetch mode (`default-fetch-mode` generation option)
+* New `JoliCode\Slack\Http\SlackAuthentication` & `JoliCode\Slack\Http\SlackErrorHttpClient` decorator factories replacing the HTTPlug plugins
+
 ## 4.10.0 (2026-09-25)
 
 * Upgrade JanePHP generated code

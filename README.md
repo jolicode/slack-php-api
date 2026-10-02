@@ -25,15 +25,15 @@ requests, and responses of the Slack Web API.
 
 ## Installation
 
-This library is built atop of [PSR-7](https://www.php-fig.org/psr/psr-7/) and
-[PSR-18](https://www.php-fig.org/psr/psr-18/). So you will need to install some
-implementations for those standard interfaces.
+This library is built on [Symfony HttpClient](https://symfony.com/doc/current/http_client.html)
+(`HttpClientInterface`). Any HTTP client implementing that interface may be
+provided to the `ClientFactory`.
 
-If no PSR-18 client or PSR-7 message factory is available yet in your project
-or you don't know or don't care which one to use, just install some default:
+If no HTTP client is available yet in your project or you don't know or don't
+care which one to use, just install the default one:
 
 ```bash
-composer require symfony/http-client nyholm/psr7
+composer require symfony/http-client
 ```
 
 You can now install the Slack client:
