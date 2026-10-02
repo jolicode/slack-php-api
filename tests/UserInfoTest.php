@@ -25,10 +25,10 @@ class UserInfoTest extends SlackTokenDependentTest
         $response = $client->usersList(['limit' => 2]);
 
         $this->assertInstanceOf(UsersListGetResponse200::class, $response);
-        $this->assertTrue($response->getOk());
-        $this->assertNotEmpty($response->getMembers());
+        $this->assertTrue($response->ok);
+        $this->assertNotEmpty($response->members);
 
-        foreach ($response->getMembers() as $member) {
+        foreach ($response->members ?? [] as $member) {
             $this->assertNotInstanceOf(\stdClass::class, $member);
         }
     }

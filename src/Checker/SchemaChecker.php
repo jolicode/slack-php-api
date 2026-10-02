@@ -82,7 +82,7 @@ class SchemaChecker
 
                         if ('error' === $property && 'enum' === $error->keyword() && isset($error->keywordArgs()['expected'])) {
                             // We know some endpoint miss description at the moment and does not even define the error field.
-                            // But because error are handled by JoliCode\Slack\HttpPlugin\SlackErrorPlugin, we don't care too much here
+                            // But because error are handled by JoliCode\Slack\Http\SlackErrorHttpClient, we don't care too much here
                             continue;
                         }
 

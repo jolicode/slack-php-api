@@ -26,7 +26,7 @@ class ApiTest extends TestCase
         $response = $client->apiTest();
 
         self::assertInstanceOf(ApiTestGetResponse200::class, $response);
-        self::assertTrue($response->getOk());
+        self::assertTrue($response->ok);
     }
 
     public function testItThrowsExceptionOnTestError(): void
