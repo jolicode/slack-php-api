@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Runtime\Client;
 
-use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 interface Endpoint
 {
@@ -24,7 +24,7 @@ interface Endpoint
      * Return value consist of an array where the first item will be a list of headers to add on the request (like the Content Type)
      * And the second value consist of the body object.
      */
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    public function getBody(SerializerInterface $serializer): array;
 
     /**
      * Get the query string of an endpoint without the starting ? (like foo=foo&bar=bar).
@@ -42,6 +42,20 @@ interface Endpoint
     public function getMethod(): string;
 
     /**
+     * Get the fetch mode of the endpoint: a FetchMode value ('lazy' by default
+     * on GET/HEAD operations, 'eager' on every other verb).
+     */
+    public function getFetchMode(): string;
+
+    /**
+     * The generated model class faked by the lazy ghost proxy for the endpoint's
+     * success response, or null when the response is not a single generated
+     * model (JSON arrays and maps, scalar bodies, multi-content-type
+     * responses...): deferred fetch modes degrade to the eager behavior then.
+     */
+    public function getTargetClass(): ?string;
+
+    /**
      * Get the headers of an endpoint.
      */
     public function getHeaders(array $baseHeaders = []): array;
@@ -52,9 +66,9 @@ interface Endpoint
     public function getAuthenticationScopes(): array;
 
     /**
-     * Parse and transform a PSR7 Response into a different object.
+     * Parse and transform an HTTP response into a different object.
      *
-     * Implementations may vary depending the status code of the response and the fetch mode used.
+     * Implementations may vary depending on the status code of the response.
      */
-    public function parseResponse(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT);
+    public function parseResponse(ResponseInterface $response, SerializerInterface $serializer);
 }

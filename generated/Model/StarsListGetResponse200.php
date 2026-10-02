@@ -16,69 +16,9 @@ namespace JoliCode\Slack\Api\Model;
 class StarsListGetResponse200
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var list<mixed>|null
      */
-    protected $items;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var ObjsPaging|null
-     */
-    protected $paging;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    /**
-     * @return list<mixed>|null
-     */
-    public function getItems(): ?array
-    {
-        return $this->items;
-    }
-
-    /**
-     * @param list<mixed>|null $items
-     */
-    public function setItems(?array $items): self
-    {
-        $this->initialized['items'] = true;
-        $this->items = $items;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getPaging(): ?ObjsPaging
-    {
-        return $this->paging;
-    }
-
-    public function setPaging(?ObjsPaging $paging): self
-    {
-        $this->initialized['paging'] = true;
-        $this->paging = $paging;
-
-        return $this;
-    }
+    public ?array $items;
+    public ?bool $ok;
+    public ?ObjsPaging $paging;
 }

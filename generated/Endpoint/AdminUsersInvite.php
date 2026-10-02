@@ -20,25 +20,22 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Invite a user to a workspace.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel_ids A comma-separated list of `channel_id`s for this user to join. At least one channel is required.
-     * @var string $custom_message an optional message to send to the user in the invite email
-     * @var string $email the email address of the person to invite
-     * @var string $guest_expiration_ts Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
-     * @var bool   $is_restricted Is this user a multi-channel guest user? (default: false)
-     * @var bool   $is_ultra_restricted Is this user a single channel guest user? (default: false)
-     * @var string $real_name full name of the user
-     * @var bool   $resend Allow this invite to be resent in the future if a user has not signed up yet. (default: false)
-     * @var string $team_id The ID (`T1234`) of the workspace.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.users:write`
-     *             }
+     * @param array{
+     *    "channel_ids": string, //A comma-separated list of `channel_id`s for this user to join. At least one channel is required.
+     *    "custom_message"?: string, //An optional message to send to the user in the invite email.
+     *    "email": string, //The email address of the person to invite.
+     *    "guest_expiration_ts"?: string, //Timestamp when guest account should be disabled. Only include this timestamp if you are inviting a guest user and you want their account to expire on a certain date.
+     *    "is_restricted"?: bool, //Is this user a multi-channel guest user? (default: false)
+     *    "is_ultra_restricted"?: bool, //Is this user a single channel guest user? (default: false)
+     *    "real_name"?: string, //Full name of the user.
+     *    "resend"?: bool, //Allow this invite to be resent in the future if a user has not signed up yet. (default: false)
+     *    "team_id": string, //The ID (`T1234`) of the workspace.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.users:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -54,7 +51,7 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/admin.users.invite';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -67,6 +64,16 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -100,12 +107,12 @@ class AdminUsersInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200|\JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200|\JoliCode\Slack\Api\Model\AdminUsersInvitePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminUsersInvitePostResponse200', 'json');
         }

@@ -57,18 +57,18 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormaliz
             foreach ($data['type'] as $value) {
                 $values[] = $value;
             }
-            $object->setType($values);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $values;
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
             $values_1 = [];
             foreach ($data['user'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setUser($values_1);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $values_1;
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
 
         return $object;
@@ -77,16 +77,16 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsCanThreadNormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if (\array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
             $values = [];
-            foreach ($data->getType() as $value) {
+            foreach ($data->type as $value) {
                 $values[] = $value;
             }
             $dataArray['type'] = $values;
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if (\array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
             $values_1 = [];
-            foreach ($data->getUser() as $value_1) {
+            foreach ($data->user as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['user'] = $values_1;

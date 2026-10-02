@@ -20,14 +20,13 @@ class OauthAccess extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     /**
      * Exchanges a temporary OAuth verifier code for an access token.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $client_id issued when you created your application
-     * @var string $client_secret issued when you created your application
-     * @var string $code the `code` param returned via the OAuth callback
-     * @var string $redirect_uri this must match the originally submitted URI (if one was sent)
-     * @var bool   $single_channel Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
-     *             }
+     * @param array{
+     *    "client_id"?: string, //Issued when you created your application.
+     *    "client_secret"?: string, //Issued when you created your application.
+     *    "code"?: string, //The `code` param returned via the OAuth callback.
+     *    "redirect_uri"?: string, //This must match the originally submitted URI (if one was sent).
+     *    "single_channel"?: bool, //Request the user to add your app only to a single channel. Only valid with a [legacy workspace app](https://api.slack.com/legacy-workspace-apps).
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -44,7 +43,7 @@ class OauthAccess extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         return '/oauth.access';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -57,6 +56,16 @@ class OauthAccess extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,12 +84,12 @@ class OauthAccess extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\OauthAccessGetResponse200|\JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\OauthAccessGetResponse200|\JoliCode\Slack\Api\Model\OauthAccessGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\OauthAccessGetResponse200', 'json');
         }

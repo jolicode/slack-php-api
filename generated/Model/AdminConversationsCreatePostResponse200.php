@@ -15,47 +15,6 @@ namespace JoliCode\Slack\Api\Model;
 
 class AdminConversationsCreatePostResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var string|null
-     */
-    protected $channelId;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getChannelId(): ?string
-    {
-        return $this->channelId;
-    }
-
-    public function setChannelId(?string $channelId): self
-    {
-        $this->initialized['channelId'] = true;
-        $this->channelId = $channelId;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
+    public ?string $channelId;
+    public ?bool $ok;
 }

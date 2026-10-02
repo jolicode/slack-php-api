@@ -53,17 +53,17 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data) && null !== $data['count']) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
-        } elseif (\array_key_exists('count', $data) && null === $data['count']) {
-            $object->setCount(null);
+        } elseif (\array_key_exists('count', $data)) {
+            $object->count = null;
             unset($data['count']);
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
             unset($data['name']);
         }
         if (\array_key_exists('users', $data) && null !== $data['users']) {
@@ -71,10 +71,10 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['users'] as $value) {
                 $values[] = $value;
             }
-            $object->setUsers($values);
+            $object->users = $values;
             unset($data['users']);
-        } elseif (\array_key_exists('users', $data) && null === $data['users']) {
-            $object->setUsers(null);
+        } elseif (\array_key_exists('users', $data)) {
+            $object->users = null;
             unset($data['users']);
         }
         foreach ($data as $key => $value_1) {
@@ -89,10 +89,10 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['count'] = $data->getCount();
-        $dataArray['name'] = $data->getName();
+        $dataArray['count'] = $data->count;
+        $dataArray['name'] = $data->name;
         $values = [];
-        foreach ($data->getUsers() as $value) {
+        foreach ($data->users as $value) {
             $values[] = $value;
         }
         $dataArray['users'] = $values;

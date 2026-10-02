@@ -56,24 +56,24 @@ class ConversationsJoinPostResponse200Normalizer implements DenormalizerInterfac
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\ObjsConversation::class, 'json', $context));
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\ObjsConversation::class, 'json', $context);
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ConversationsJoinPostResponse200ResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
         if (\array_key_exists('warning', $data) && null !== $data['warning']) {
-            $object->setWarning($data['warning']);
-        } elseif (\array_key_exists('warning', $data) && null === $data['warning']) {
-            $object->setWarning(null);
+            $object->warning = $data['warning'];
+        } elseif (\array_key_exists('warning', $data)) {
+            $object->warning = null;
         }
 
         return $object;
@@ -82,13 +82,15 @@ class ConversationsJoinPostResponse200Normalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = null === $data->getChannel() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getChannel(), 'json', $context));
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        $normalized = null === $data->channel ? null : $this->normalizer->normalize($data->channel, 'json', $context);
+        $dataArray['channel'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
-        if ($data->isInitialized('warning') && null !== $data->getWarning()) {
-            $dataArray['warning'] = $data->getWarning();
+        if (\array_key_exists('warning', get_object_vars($data)) && null !== ($data->warning ?? null)) {
+            $dataArray['warning'] = $data->warning;
         }
 
         return $dataArray;

@@ -30,9 +30,9 @@ class ReadingTest extends SlackTokenDependentTest
         $response = $client->usersList();
 
         self::assertInstanceOf(UsersListGetResponse200::class, $response);
-        self::assertTrue($response->getOk());
+        self::assertTrue($response->ok);
 
-        self::assertGreaterThan(2, \count($response->getMembers()));
+        self::assertGreaterThan(2, \count($response->members));
     }
 
     public function testItThrowsExceptionOnUserListWithoutToken(): void
@@ -57,15 +57,15 @@ class ReadingTest extends SlackTokenDependentTest
         self::assertInstanceOf(ConversationsHistoryGetResponse200::class, $results);
 
         $hadAFileMessage = false;
-        foreach ($results->getMessages() as $message) {
-            if ($message->getFiles()) {
+        foreach ($results->messages ?? [] as $message) {
+            if ($message->files ?? null) {
                 $hadAFileMessage = true;
-                self::assertInstanceOf(ObjsFile::class, $message->getFiles()[0]);
+                self::assertInstanceOf(ObjsFile::class, $message->files[0]);
 
                 if (method_exists($this, 'assertIsString')) {
-                    self::assertIsString($message->getTs());
+                    self::assertIsString($message->ts);
                 } else {
-                    self::assertInternalType('string', $message->getTs());
+                    self::assertInternalType('string', $message->ts);
                 }
             }
         }
@@ -80,7 +80,7 @@ class ReadingTest extends SlackTokenDependentTest
         $results = $client->conversationsList(['types' => 'im']);
 
         self::assertInstanceOf(ConversationsListGetResponse200::class, $results);
-        self::assertNotEmpty($results->getChannels());
+        self::assertNotEmpty($results->channels);
     }
 
     public function testItCanReadConversationsAndHydrateThem(): void
@@ -92,11 +92,11 @@ class ReadingTest extends SlackTokenDependentTest
             'limit' => 2,
         ]);
 
-        $this->assertTrue($response->getOk());
+        $this->assertTrue($response->ok);
         $this->assertInstanceOf(ConversationsListGetResponse200::class, $response);
-        $this->assertNotEmpty($response->getChannels());
+        $this->assertNotEmpty($response->channels);
 
-        foreach ($response->getChannels() as $channel) {
+        foreach ($response->channels as $channel) {
             $this->assertInstanceOf(ObjsConversation::class, $channel);
         }
     }
@@ -110,12 +110,12 @@ class ReadingTest extends SlackTokenDependentTest
             'include_locale' => true,
         ]);
 
-        $this->assertTrue($response->getOk());
+        $this->assertTrue($response->ok);
 
-        $channel = $response->getChannel();
+        $channel = $response->channel;
 
         $this->assertInstanceOf(ObjsConversation::class, $channel);
-        $this->assertNotNull($channel->getLocale());
+        $this->assertNotNull($channel->locale);
     }
 
     public function testItCanSearchMessages(): void
@@ -129,6 +129,6 @@ class ReadingTest extends SlackTokenDependentTest
         ]);
 
         self::assertInstanceOf(SearchMessagesGetResponse200::class, $results);
-        self::assertTrue($results->getOk());
+        self::assertTrue($results->ok);
     }
 }

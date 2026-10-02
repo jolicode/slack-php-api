@@ -56,44 +56,44 @@ class ObjsIconNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['image_default'] = (bool) $data['image_default'];
         }
         if (\array_key_exists('image_102', $data) && null !== $data['image_102']) {
-            $object->setImage102($data['image_102']);
-        } elseif (\array_key_exists('image_102', $data) && null === $data['image_102']) {
-            $object->setImage102(null);
+            $object->image102 = $data['image_102'];
+        } elseif (\array_key_exists('image_102', $data)) {
+            $object->image102 = null;
         }
         if (\array_key_exists('image_132', $data) && null !== $data['image_132']) {
-            $object->setImage132($data['image_132']);
-        } elseif (\array_key_exists('image_132', $data) && null === $data['image_132']) {
-            $object->setImage132(null);
+            $object->image132 = $data['image_132'];
+        } elseif (\array_key_exists('image_132', $data)) {
+            $object->image132 = null;
         }
         if (\array_key_exists('image_230', $data) && null !== $data['image_230']) {
-            $object->setImage230($data['image_230']);
-        } elseif (\array_key_exists('image_230', $data) && null === $data['image_230']) {
-            $object->setImage230(null);
+            $object->image230 = $data['image_230'];
+        } elseif (\array_key_exists('image_230', $data)) {
+            $object->image230 = null;
         }
         if (\array_key_exists('image_34', $data) && null !== $data['image_34']) {
-            $object->setImage34($data['image_34']);
-        } elseif (\array_key_exists('image_34', $data) && null === $data['image_34']) {
-            $object->setImage34(null);
+            $object->image34 = $data['image_34'];
+        } elseif (\array_key_exists('image_34', $data)) {
+            $object->image34 = null;
         }
         if (\array_key_exists('image_44', $data) && null !== $data['image_44']) {
-            $object->setImage44($data['image_44']);
-        } elseif (\array_key_exists('image_44', $data) && null === $data['image_44']) {
-            $object->setImage44(null);
+            $object->image44 = $data['image_44'];
+        } elseif (\array_key_exists('image_44', $data)) {
+            $object->image44 = null;
         }
         if (\array_key_exists('image_68', $data) && null !== $data['image_68']) {
-            $object->setImage68($data['image_68']);
-        } elseif (\array_key_exists('image_68', $data) && null === $data['image_68']) {
-            $object->setImage68(null);
+            $object->image68 = $data['image_68'];
+        } elseif (\array_key_exists('image_68', $data)) {
+            $object->image68 = null;
         }
         if (\array_key_exists('image_88', $data) && null !== $data['image_88']) {
-            $object->setImage88($data['image_88']);
-        } elseif (\array_key_exists('image_88', $data) && null === $data['image_88']) {
-            $object->setImage88(null);
+            $object->image88 = $data['image_88'];
+        } elseif (\array_key_exists('image_88', $data)) {
+            $object->image88 = null;
         }
         if (\array_key_exists('image_default', $data) && null !== $data['image_default']) {
-            $object->setImageDefault($data['image_default']);
-        } elseif (\array_key_exists('image_default', $data) && null === $data['image_default']) {
-            $object->setImageDefault(null);
+            $object->imageDefault = $data['image_default'];
+        } elseif (\array_key_exists('image_default', $data)) {
+            $object->imageDefault = null;
         }
 
         return $object;
@@ -102,29 +102,29 @@ class ObjsIconNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('image102') && null !== $data->getImage102()) {
-            $dataArray['image_102'] = $data->getImage102();
+        if (\array_key_exists('image102', get_object_vars($data)) && null !== ($data->image102 ?? null)) {
+            $dataArray['image_102'] = $data->image102;
         }
-        if ($data->isInitialized('image132') && null !== $data->getImage132()) {
-            $dataArray['image_132'] = $data->getImage132();
+        if (\array_key_exists('image132', get_object_vars($data)) && null !== ($data->image132 ?? null)) {
+            $dataArray['image_132'] = $data->image132;
         }
-        if ($data->isInitialized('image230') && null !== $data->getImage230()) {
-            $dataArray['image_230'] = $data->getImage230();
+        if (\array_key_exists('image230', get_object_vars($data)) && null !== ($data->image230 ?? null)) {
+            $dataArray['image_230'] = $data->image230;
         }
-        if ($data->isInitialized('image34') && null !== $data->getImage34()) {
-            $dataArray['image_34'] = $data->getImage34();
+        if (\array_key_exists('image34', get_object_vars($data)) && null !== ($data->image34 ?? null)) {
+            $dataArray['image_34'] = $data->image34;
         }
-        if ($data->isInitialized('image44') && null !== $data->getImage44()) {
-            $dataArray['image_44'] = $data->getImage44();
+        if (\array_key_exists('image44', get_object_vars($data)) && null !== ($data->image44 ?? null)) {
+            $dataArray['image_44'] = $data->image44;
         }
-        if ($data->isInitialized('image68') && null !== $data->getImage68()) {
-            $dataArray['image_68'] = $data->getImage68();
+        if (\array_key_exists('image68', get_object_vars($data)) && null !== ($data->image68 ?? null)) {
+            $dataArray['image_68'] = $data->image68;
         }
-        if ($data->isInitialized('image88') && null !== $data->getImage88()) {
-            $dataArray['image_88'] = $data->getImage88();
+        if (\array_key_exists('image88', get_object_vars($data)) && null !== ($data->image88 ?? null)) {
+            $dataArray['image_88'] = $data->image88;
         }
-        if ($data->isInitialized('imageDefault') && null !== $data->getImageDefault()) {
-            $dataArray['image_default'] = $data->getImageDefault();
+        if (\array_key_exists('imageDefault', get_object_vars($data)) && null !== ($data->imageDefault ?? null)) {
+            $dataArray['image_default'] = $data->imageDefault;
         }
 
         return $dataArray;

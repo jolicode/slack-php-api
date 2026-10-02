@@ -53,19 +53,19 @@ class ObjsChannelPurposeNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-            $object->setCreator($data['creator']);
-        } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
-            $object->setCreator(null);
+            $object->creator = $data['creator'];
+        } elseif (\array_key_exists('creator', $data)) {
+            $object->creator = null;
         }
         if (\array_key_exists('last_set', $data) && null !== $data['last_set']) {
-            $object->setLastSet($data['last_set']);
-        } elseif (\array_key_exists('last_set', $data) && null === $data['last_set']) {
-            $object->setLastSet(null);
+            $object->lastSet = $data['last_set'];
+        } elseif (\array_key_exists('last_set', $data)) {
+            $object->lastSet = null;
         }
         if (\array_key_exists('value', $data) && null !== $data['value']) {
-            $object->setValue($data['value']);
-        } elseif (\array_key_exists('value', $data) && null === $data['value']) {
-            $object->setValue(null);
+            $object->value = $data['value'];
+        } elseif (\array_key_exists('value', $data)) {
+            $object->value = null;
         }
 
         return $object;
@@ -74,9 +74,9 @@ class ObjsChannelPurposeNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['creator'] = $data->getCreator();
-        $dataArray['last_set'] = $data->getLastSet();
-        $dataArray['value'] = $data->getValue();
+        $dataArray['creator'] = $data->creator;
+        $dataArray['last_set'] = $data->lastSet;
+        $dataArray['value'] = $data->value;
 
         return $dataArray;
     }

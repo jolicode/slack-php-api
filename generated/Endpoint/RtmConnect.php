@@ -20,12 +20,11 @@ class RtmConnect extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * Starts a Real Time Messaging session.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $batch_presence_aware Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).
-     * @var bool   $presence_sub Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).
-     * @var string $token Authentication token. Requires scope: `rtm:stream`
-     *             }
+     * @param array{
+     *    "batch_presence_aware"?: bool, //Batch presence deliveries via subscription. Enabling changes the shape of `presence_change` events. See [batch presence](/docs/presence-and-status#batching).
+     *    "presence_sub"?: bool, //Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions).
+     *    "token"?: string, //Authentication token. Requires scope: `rtm:stream`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -42,7 +41,7 @@ class RtmConnect extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         return '/rtm.connect';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class RtmConnect extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class RtmConnect extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\RtmConnectGetResponse200|\JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\RtmConnectGetResponse200|\JoliCode\Slack\Api\Model\RtmConnectGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\RtmConnectGetResponse200', 'json');
         }

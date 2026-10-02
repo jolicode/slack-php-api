@@ -20,24 +20,21 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Registers a new Call.
      *
-     * @param array $formParameters {
-     *
-     * @var string $created_by The valid Slack user ID of the user who created this Call. When this method is called with a user token, the `created_by` field is optional and defaults to the authed user of the token. Otherwise, the field is required.
-     * @var int    $date_start Call start time in UTC UNIX timestamp format
-     * @var string $desktop_app_join_url when supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL
-     * @var string $external_display_id An optional, human-readable ID supplied by the 3rd-party Call provider. If supplied, this ID will be displayed in the Call object.
-     * @var string $external_unique_id An ID supplied by the 3rd-party Call provider. It must be unique across all Calls from that service.
-     * @var string $join_url the URL required for a client to join the Call
-     * @var string $title the name of the Call
-     * @var string $users The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/calls#users).
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `calls:write`
-     *             }
+     * @param array{
+     *    "created_by"?: string, //The valid Slack user ID of the user who created this Call. When this method is called with a user token, the `created_by` field is optional and defaults to the authed user of the token. Otherwise, the field is required.
+     *    "date_start"?: int, //Call start time in UTC UNIX timestamp format
+     *    "desktop_app_join_url"?: string, //When supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL.
+     *    "external_display_id"?: string, //An optional, human-readable ID supplied by the 3rd-party Call provider. If supplied, this ID will be displayed in the Call object.
+     *    "external_unique_id": string, //An ID supplied by the 3rd-party Call provider. It must be unique across all Calls from that service.
+     *    "join_url": string, //The URL required for a client to join the Call.
+     *    "title"?: string, //The name of the Call.
+     *    "users"?: string, //The list of users to register as participants in the Call. [Read more on how to specify users here](/apis/calls#users).
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `calls:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -53,7 +50,7 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         return '/calls.add';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -66,6 +63,16 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -98,12 +105,12 @@ class CallsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\CallsAddPostResponse200|\JoliCode\Slack\Api\Model\CallsAddPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\CallsAddPostResponse200|\JoliCode\Slack\Api\Model\CallsAddPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\CallsAddPostResponse200', 'json');
         }

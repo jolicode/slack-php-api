@@ -20,20 +20,17 @@ class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
     /**
      * Set the workspaces in an Enterprise grid org that connect to a public or private channel.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel_id the encoded `channel_id` to add or remove to workspaces
-     * @var bool   $org_channel True if channel has to be converted to an org channel
-     * @var string $target_team_ids A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide.
-     * @var string $team_id The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     *             }
+     * @param array{
+     *    "channel_id": string, //The encoded `channel_id` to add or remove to workspaces.
+     *    "org_channel"?: bool, //True if channel has to be converted to an org channel
+     *    "target_team_ids"?: string, //A comma-separated list of workspaces to which the channel should be shared. Not required if the channel is being shared org-wide.
+     *    "team_id"?: string, //The workspace to which the channel belongs. Omit this argument if the channel is a cross-workspace shared channel.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -49,7 +46,7 @@ class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
         return '/admin.conversations.setTeams';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -62,6 +59,16 @@ class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -90,12 +97,12 @@ class AdminConversationsSetTeams extends \JoliCode\Slack\Api\Runtime\Client\Base
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsSetTeamsPostResponse200', 'json');
         }

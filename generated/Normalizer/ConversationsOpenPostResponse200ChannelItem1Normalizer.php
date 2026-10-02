@@ -65,49 +65,49 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
             $data['is_open'] = (bool) $data['is_open'];
         }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
-            $object->setCreated($data['created']);
-        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-            $object->setCreated(null);
+            $object->created = $data['created'];
+        } elseif (\array_key_exists('created', $data)) {
+            $object->created = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_im', $data) && null !== $data['is_im']) {
-            $object->setIsIm($data['is_im']);
-        } elseif (\array_key_exists('is_im', $data) && null === $data['is_im']) {
-            $object->setIsIm(null);
+            $object->isIm = $data['is_im'];
+        } elseif (\array_key_exists('is_im', $data)) {
+            $object->isIm = null;
         }
         if (\array_key_exists('is_open', $data) && null !== $data['is_open']) {
-            $object->setIsOpen($data['is_open']);
-        } elseif (\array_key_exists('is_open', $data) && null === $data['is_open']) {
-            $object->setIsOpen(null);
+            $object->isOpen = $data['is_open'];
+        } elseif (\array_key_exists('is_open', $data)) {
+            $object->isOpen = null;
         }
         if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
-            $object->setLastRead($data['last_read']);
-        } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
-            $object->setLastRead(null);
+            $object->lastRead = $data['last_read'];
+        } elseif (\array_key_exists('last_read', $data)) {
+            $object->lastRead = null;
         }
         if (\array_key_exists('latest', $data) && null !== $data['latest']) {
-            $object->setLatest($this->denormalizer->denormalize($data['latest'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-        } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
-            $object->setLatest(null);
+            $object->latest = $this->denormalizer->denormalize($data['latest'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context);
+        } elseif (\array_key_exists('latest', $data)) {
+            $object->latest = null;
         }
         if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
-            $object->setUnreadCount($data['unread_count']);
-        } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
-            $object->setUnreadCount(null);
+            $object->unreadCount = $data['unread_count'];
+        } elseif (\array_key_exists('unread_count', $data)) {
+            $object->unreadCount = null;
         }
         if (\array_key_exists('unread_count_display', $data) && null !== $data['unread_count_display']) {
-            $object->setUnreadCountDisplay($data['unread_count_display']);
-        } elseif (\array_key_exists('unread_count_display', $data) && null === $data['unread_count_display']) {
-            $object->setUnreadCountDisplay(null);
+            $object->unreadCountDisplay = $data['unread_count_display'];
+        } elseif (\array_key_exists('unread_count_display', $data)) {
+            $object->unreadCountDisplay = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $data['user'];
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
 
         return $object;
@@ -116,30 +116,31 @@ class ConversationsOpenPostResponse200ChannelItem1Normalizer implements Denormal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('created') && null !== $data->getCreated()) {
-            $dataArray['created'] = $data->getCreated();
+        if (\array_key_exists('created', get_object_vars($data)) && null !== ($data->created ?? null)) {
+            $dataArray['created'] = $data->created;
         }
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('isIm') && null !== $data->getIsIm()) {
-            $dataArray['is_im'] = $data->getIsIm();
+        $dataArray['id'] = $data->id;
+        if (\array_key_exists('isIm', get_object_vars($data)) && null !== ($data->isIm ?? null)) {
+            $dataArray['is_im'] = $data->isIm;
         }
-        if ($data->isInitialized('isOpen') && null !== $data->getIsOpen()) {
-            $dataArray['is_open'] = $data->getIsOpen();
+        if (\array_key_exists('isOpen', get_object_vars($data)) && null !== ($data->isOpen ?? null)) {
+            $dataArray['is_open'] = $data->isOpen;
         }
-        if ($data->isInitialized('lastRead') && null !== $data->getLastRead()) {
-            $dataArray['last_read'] = $data->getLastRead();
+        if (\array_key_exists('lastRead', get_object_vars($data)) && null !== ($data->lastRead ?? null)) {
+            $dataArray['last_read'] = $data->lastRead;
         }
-        if ($data->isInitialized('latest') && null !== $data->getLatest()) {
-            $dataArray['latest'] = null === $data->getLatest() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getLatest(), 'json', $context));
+        if (\array_key_exists('latest', get_object_vars($data)) && null !== ($data->latest ?? null)) {
+            $normalized = $this->normalizer->normalize($data->latest, 'json', $context);
+            $dataArray['latest'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('unreadCount') && null !== $data->getUnreadCount()) {
-            $dataArray['unread_count'] = $data->getUnreadCount();
+        if (\array_key_exists('unreadCount', get_object_vars($data)) && null !== ($data->unreadCount ?? null)) {
+            $dataArray['unread_count'] = $data->unreadCount;
         }
-        if ($data->isInitialized('unreadCountDisplay') && null !== $data->getUnreadCountDisplay()) {
-            $dataArray['unread_count_display'] = $data->getUnreadCountDisplay();
+        if (\array_key_exists('unreadCountDisplay', get_object_vars($data)) && null !== ($data->unreadCountDisplay ?? null)) {
+            $dataArray['unread_count_display'] = $data->unreadCountDisplay;
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        if (\array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user;
         }
 
         return $dataArray;

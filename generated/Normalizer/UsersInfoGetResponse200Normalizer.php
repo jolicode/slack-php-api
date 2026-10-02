@@ -56,17 +56,17 @@ class UsersInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
+            $object->ok = $data['ok'];
             unset($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
             unset($data['ok']);
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($this->denormalizer->denormalize($data['user'], \JoliCode\Slack\Api\Model\ObjsUser::class, 'json', $context));
+            $object->user = $this->denormalizer->denormalize($data['user'], \JoliCode\Slack\Api\Model\ObjsUser::class, 'json', $context);
             unset($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
             unset($data['user']);
         }
         foreach ($data as $key => $value) {
@@ -81,8 +81,9 @@ class UsersInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['user'] = null === $data->getUser() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUser(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->user ? null : $this->normalizer->normalize($data->user, 'json', $context);
+        $dataArray['user'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

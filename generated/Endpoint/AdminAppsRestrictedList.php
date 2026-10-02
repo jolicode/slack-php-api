@@ -20,14 +20,13 @@ class AdminAppsRestrictedList extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
     /**
      * List restricted apps for an org or workspace.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     * @var string $enterprise_id
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-     * @var string $team_id
-     * @var string $token Authentication token. Requires scope: `admin.apps:read`
-     *             }
+     * @param array{
+     *    "cursor"?: string, //Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *    "enterprise_id"?: string,
+     *    "limit"?: int, //The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *    "team_id"?: string,
+     *    "token"?: string, //Authentication token. Requires scope: `admin.apps:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -44,7 +43,7 @@ class AdminAppsRestrictedList extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
         return '/admin.apps.restricted.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -57,6 +56,16 @@ class AdminAppsRestrictedList extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,12 +84,12 @@ class AdminAppsRestrictedList extends \JoliCode\Slack\Api\Runtime\Client\BaseEnd
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200|\JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200|\JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminAppsRestrictedListGetResponse200', 'json');
         }

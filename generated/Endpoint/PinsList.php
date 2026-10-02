@@ -20,11 +20,10 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Lists items pinned to a channel.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel channel to get pinned items for
-     * @var string $token Authentication token. Requires scope: `pins:read`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel to get pinned items for.
+     *    "token"?: string, //Authentication token. Requires scope: `pins:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         return '/pins.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return \JoliCode\Slack\Api\Model\PinsListGetResponsedefault::class;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,10 +80,10 @@ class PinsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * @return \JoliCode\Slack\Api\Model\PinsListGetResponsedefault|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             try {
                 return json_decode($body, false, 512, \JSON_THROW_ON_ERROR);

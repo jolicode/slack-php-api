@@ -15,70 +15,10 @@ namespace JoliCode\Slack\Api\Model;
 
 class AdminConversationsGetTeamsGetResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var AdminConversationsGetTeamsGetResponse200ResponseMetadata|null
-     */
-    protected $responseMetadata;
+    public ?bool $ok;
+    public ?AdminConversationsGetTeamsGetResponse200ResponseMetadata $responseMetadata;
     /**
      * @var list<string>|null
      */
-    protected $teamIds;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?AdminConversationsGetTeamsGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?AdminConversationsGetTeamsGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->initialized['responseMetadata'] = true;
-        $this->responseMetadata = $responseMetadata;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getTeamIds(): ?array
-    {
-        return $this->teamIds;
-    }
-
-    /**
-     * @param list<string>|null $teamIds
-     */
-    public function setTeamIds(?array $teamIds): self
-    {
-        $this->initialized['teamIds'] = true;
-        $this->teamIds = $teamIds;
-
-        return $this;
-    }
+    public ?array $teamIds;
 }

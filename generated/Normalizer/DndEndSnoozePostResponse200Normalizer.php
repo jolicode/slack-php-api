@@ -62,29 +62,29 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
             $data['snooze_enabled'] = (bool) $data['snooze_enabled'];
         }
         if (\array_key_exists('dnd_enabled', $data) && null !== $data['dnd_enabled']) {
-            $object->setDndEnabled($data['dnd_enabled']);
-        } elseif (\array_key_exists('dnd_enabled', $data) && null === $data['dnd_enabled']) {
-            $object->setDndEnabled(null);
+            $object->dndEnabled = $data['dnd_enabled'];
+        } elseif (\array_key_exists('dnd_enabled', $data)) {
+            $object->dndEnabled = null;
         }
         if (\array_key_exists('next_dnd_end_ts', $data) && null !== $data['next_dnd_end_ts']) {
-            $object->setNextDndEndTs($data['next_dnd_end_ts']);
-        } elseif (\array_key_exists('next_dnd_end_ts', $data) && null === $data['next_dnd_end_ts']) {
-            $object->setNextDndEndTs(null);
+            $object->nextDndEndTs = $data['next_dnd_end_ts'];
+        } elseif (\array_key_exists('next_dnd_end_ts', $data)) {
+            $object->nextDndEndTs = null;
         }
         if (\array_key_exists('next_dnd_start_ts', $data) && null !== $data['next_dnd_start_ts']) {
-            $object->setNextDndStartTs($data['next_dnd_start_ts']);
-        } elseif (\array_key_exists('next_dnd_start_ts', $data) && null === $data['next_dnd_start_ts']) {
-            $object->setNextDndStartTs(null);
+            $object->nextDndStartTs = $data['next_dnd_start_ts'];
+        } elseif (\array_key_exists('next_dnd_start_ts', $data)) {
+            $object->nextDndStartTs = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('snooze_enabled', $data) && null !== $data['snooze_enabled']) {
-            $object->setSnoozeEnabled($data['snooze_enabled']);
-        } elseif (\array_key_exists('snooze_enabled', $data) && null === $data['snooze_enabled']) {
-            $object->setSnoozeEnabled(null);
+            $object->snoozeEnabled = $data['snooze_enabled'];
+        } elseif (\array_key_exists('snooze_enabled', $data)) {
+            $object->snoozeEnabled = null;
         }
 
         return $object;
@@ -93,11 +93,11 @@ class DndEndSnoozePostResponse200Normalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['dnd_enabled'] = $data->getDndEnabled();
-        $dataArray['next_dnd_end_ts'] = $data->getNextDndEndTs();
-        $dataArray['next_dnd_start_ts'] = $data->getNextDndStartTs();
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['snooze_enabled'] = $data->getSnoozeEnabled();
+        $dataArray['dnd_enabled'] = $data->dndEnabled;
+        $dataArray['next_dnd_end_ts'] = $data->nextDndEndTs;
+        $dataArray['next_dnd_start_ts'] = $data->nextDndStartTs;
+        $dataArray['ok'] = $data->ok;
+        $dataArray['snooze_enabled'] = $data->snoozeEnabled;
 
         return $dataArray;
     }

@@ -20,17 +20,14 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
     /**
      * Get conversation preferences for a public or private channel.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel_id The channel to get preferences for.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.conversations:read`
-     *             }
+     * @param array{
+     *    "channel_id": string, //The channel to get preferences for.
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:read`
+     * } $headerParameters
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $queryParameters, array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -46,7 +43,7 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
         return '/admin.conversations.getConversationPrefs';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -59,6 +56,16 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -84,12 +91,12 @@ class AdminConversationsGetConversationPrefs extends \JoliCode\Slack\Api\Runtime
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200|\JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200|\JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200', 'json');
         }

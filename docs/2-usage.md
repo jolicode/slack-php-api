@@ -21,7 +21,7 @@ PHPdoc to know which option you can provide to each method:
 <?php
 //...
 
-$user = $client->usersInfo(['user' => 'U123AZER'])->getUser();
+$user = $client->usersInfo(['user' => 'U123AZER'])->user;
 
 dump($user);
 ```
@@ -51,7 +51,7 @@ $userNames = [];
 
 /** @var JoliCode\Slack\Api\Model\ObjsUser $user */
 foreach ($client->iterateUsersList() as $user) {
-    $userNames[] = $user->getName();
+    $userNames[] = $user->name;
 }
 ```
 
@@ -69,13 +69,28 @@ do {
     ]);
 
     /** @var JoliCode\Slack\Api\Model\ObjsUser $user */
-    foreach ($response->getUsers() as $user) {
-        $userNames[] = $user->getName();
+    foreach ($response->members ?? [] as $user) {
+        $userNames[] = $user->name;
     }
 
-    $cursor = $response->getResponseMetadata() ? $response->getResponseMetadata()->getNextCursor() : '';
+    $cursor = $response->responseMetadata?->nextCursor ?? '';
 } while (!empty($cursor));
 ```
+
+## Fetch modes
+
+Since JanePHP 8, GET and HEAD operations are generated with the `preload`
+fetch mode (`default-fetch-mode` generation option). The HTTP request is
+registered immediately when you call the method, and the response is parsed
+the same blocking way as before.
+
+On PHP >= 8.4, endpoints whose success response maps to a single generated
+model even return a lazy ghost proxy: the parsed model appears on first
+property read. Slack's specification always maps responses to two models
+(a `...Response200` and a `...Responsedefault` fallback), so parsing stays
+blocking in practice — but you can enable lazy proxies per operation by
+tuning the responses in the patched specification, and set a different
+fetch mode with the `x-fetch-mode` extension.
 
 ## Concrete examples
 

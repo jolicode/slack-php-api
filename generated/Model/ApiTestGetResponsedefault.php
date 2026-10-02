@@ -20,68 +20,14 @@ class ApiTestGetResponsedefault implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var mixed|null
      */
-    protected $args;
-    /**
-     * @var string|null
-     */
-    protected $error;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getArgs()
-    {
-        return $this->args;
-    }
-
-    public function setArgs($args): self
-    {
-        $this->initialized['args'] = true;
-        $this->args = $args;
-
-        return $this;
-    }
-
-    public function getError(): ?string
-    {
-        return $this->error;
-    }
-
-    public function setError(?string $error): self
-    {
-        $this->initialized['error'] = true;
-        $this->error = $error;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
+    public $args;
+    public ?string $error;
+    public ?bool $ok;
 
     public function definedProperties(): array
     {
-        return ['args' => ['args', 'getArgs', 'setArgs'], 'error' => ['error', 'getError', 'setError'], 'ok' => ['ok', 'getOk', 'setOk']];
+        return ['args' => 'args', 'error' => 'error', 'ok' => 'ok'];
     }
 }

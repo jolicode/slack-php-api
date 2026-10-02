@@ -15,64 +15,7 @@ namespace JoliCode\Slack\Api\Model;
 
 class ConversationsClosePostResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $alreadyClosed;
-    /**
-     * @var bool|null
-     */
-    protected $noOp;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getAlreadyClosed(): ?bool
-    {
-        return $this->alreadyClosed;
-    }
-
-    public function setAlreadyClosed(?bool $alreadyClosed): self
-    {
-        $this->initialized['alreadyClosed'] = true;
-        $this->alreadyClosed = $alreadyClosed;
-
-        return $this;
-    }
-
-    public function getNoOp(): ?bool
-    {
-        return $this->noOp;
-    }
-
-    public function setNoOp(?bool $noOp): self
-    {
-        $this->initialized['noOp'] = true;
-        $this->noOp = $noOp;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
+    public ?bool $alreadyClosed;
+    public ?bool $noOp;
+    public ?bool $ok;
 }

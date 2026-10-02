@@ -57,18 +57,18 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['channels'] as $value) {
                 $values[] = $value;
             }
-            $object->setChannels($values);
-        } elseif (\array_key_exists('channels', $data) && null === $data['channels']) {
-            $object->setChannels(null);
+            $object->channels = $values;
+        } elseif (\array_key_exists('channels', $data)) {
+            $object->channels = null;
         }
         if (\array_key_exists('groups', $data) && null !== $data['groups']) {
             $values_1 = [];
             foreach ($data['groups'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setGroups($values_1);
-        } elseif (\array_key_exists('groups', $data) && null === $data['groups']) {
-            $object->setGroups(null);
+            $object->groups = $values_1;
+        } elseif (\array_key_exists('groups', $data)) {
+            $object->groups = null;
         }
 
         return $object;
@@ -78,12 +78,12 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getChannels() as $value) {
+        foreach ($data->channels as $value) {
             $values[] = $value;
         }
         $dataArray['channels'] = $values;
         $values_1 = [];
-        foreach ($data->getGroups() as $value_1) {
+        foreach ($data->groups as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['groups'] = $values_1;

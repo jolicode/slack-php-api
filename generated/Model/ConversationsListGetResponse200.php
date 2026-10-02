@@ -16,69 +16,9 @@ namespace JoliCode\Slack\Api\Model;
 class ConversationsListGetResponse200
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var list<ObjsConversation>|null
      */
-    protected $channels;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var ConversationsListGetResponse200ResponseMetadata|null
-     */
-    protected $responseMetadata;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    /**
-     * @return list<ObjsConversation>|null
-     */
-    public function getChannels(): ?array
-    {
-        return $this->channels;
-    }
-
-    /**
-     * @param list<ObjsConversation>|null $channels
-     */
-    public function setChannels(?array $channels): self
-    {
-        $this->initialized['channels'] = true;
-        $this->channels = $channels;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?ConversationsListGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?ConversationsListGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->initialized['responseMetadata'] = true;
-        $this->responseMetadata = $responseMetadata;
-
-        return $this;
-    }
+    public ?array $channels;
+    public ?bool $ok;
+    public ?ConversationsListGetResponse200ResponseMetadata $responseMetadata;
 }

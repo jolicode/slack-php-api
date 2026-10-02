@@ -20,17 +20,14 @@ class AdminInviteRequestsDeniedList extends \JoliCode\Slack\Api\Runtime\Client\B
     /**
      * List all denied workspace invite requests.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $cursor Value of the `next_cursor` field sent as part of the previous api response
-     * @var int    $limit The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive
-     * @var string $team_id ID for the workspace where the invite requests were made.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.invites:read`
-     *             }
+     * @param array{
+     *    "cursor"?: string, //Value of the `next_cursor` field sent as part of the previous api response
+     *    "limit"?: int, //The number of results that will be returned by the API on each invocation. Must be between 1 - 1000 both inclusive
+     *    "team_id"?: string, //ID for the workspace where the invite requests were made.
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.invites:read`
+     * } $headerParameters
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
@@ -48,7 +45,7 @@ class AdminInviteRequestsDeniedList extends \JoliCode\Slack\Api\Runtime\Client\B
         return '/admin.inviteRequests.denied.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -61,6 +58,16 @@ class AdminInviteRequestsDeniedList extends \JoliCode\Slack\Api\Runtime\Client\B
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class AdminInviteRequestsDeniedList extends \JoliCode\Slack\Api\Runtime\Client\B
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200|\JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminInviteRequestsDeniedListGetResponse200', 'json');
         }

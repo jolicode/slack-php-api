@@ -59,63 +59,63 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
             $data['is_ultra_restricted'] = (bool) $data['is_ultra_restricted'];
         }
         if (\array_key_exists('avatar_hash', $data) && null !== $data['avatar_hash']) {
-            $object->setAvatarHash($data['avatar_hash']);
-        } elseif (\array_key_exists('avatar_hash', $data) && null === $data['avatar_hash']) {
-            $object->setAvatarHash(null);
+            $object->avatarHash = $data['avatar_hash'];
+        } elseif (\array_key_exists('avatar_hash', $data)) {
+            $object->avatarHash = null;
         }
         if (\array_key_exists('display_name', $data) && null !== $data['display_name']) {
-            $object->setDisplayName($data['display_name']);
-        } elseif (\array_key_exists('display_name', $data) && null === $data['display_name']) {
-            $object->setDisplayName(null);
+            $object->displayName = $data['display_name'];
+        } elseif (\array_key_exists('display_name', $data)) {
+            $object->displayName = null;
         }
         if (\array_key_exists('display_name_normalized', $data) && null !== $data['display_name_normalized']) {
-            $object->setDisplayNameNormalized($data['display_name_normalized']);
-        } elseif (\array_key_exists('display_name_normalized', $data) && null === $data['display_name_normalized']) {
-            $object->setDisplayNameNormalized(null);
+            $object->displayNameNormalized = $data['display_name_normalized'];
+        } elseif (\array_key_exists('display_name_normalized', $data)) {
+            $object->displayNameNormalized = null;
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
             $value = $data['first_name'];
             if (\is_string($data['first_name'])) {
                 $value = $data['first_name'];
             }
-            $object->setFirstName($value);
-        } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
-            $object->setFirstName(null);
+            $object->firstName = $value;
+        } elseif (\array_key_exists('first_name', $data)) {
+            $object->firstName = null;
         }
         if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
-            $object->setImage72($data['image_72']);
-        } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
-            $object->setImage72(null);
+            $object->image72 = $data['image_72'];
+        } elseif (\array_key_exists('image_72', $data)) {
+            $object->image72 = null;
         }
         if (\array_key_exists('is_restricted', $data) && null !== $data['is_restricted']) {
-            $object->setIsRestricted($data['is_restricted']);
-        } elseif (\array_key_exists('is_restricted', $data) && null === $data['is_restricted']) {
-            $object->setIsRestricted(null);
+            $object->isRestricted = $data['is_restricted'];
+        } elseif (\array_key_exists('is_restricted', $data)) {
+            $object->isRestricted = null;
         }
         if (\array_key_exists('is_ultra_restricted', $data) && null !== $data['is_ultra_restricted']) {
-            $object->setIsUltraRestricted($data['is_ultra_restricted']);
-        } elseif (\array_key_exists('is_ultra_restricted', $data) && null === $data['is_ultra_restricted']) {
-            $object->setIsUltraRestricted(null);
+            $object->isUltraRestricted = $data['is_ultra_restricted'];
+        } elseif (\array_key_exists('is_ultra_restricted', $data)) {
+            $object->isUltraRestricted = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('real_name', $data) && null !== $data['real_name']) {
-            $object->setRealName($data['real_name']);
-        } elseif (\array_key_exists('real_name', $data) && null === $data['real_name']) {
-            $object->setRealName(null);
+            $object->realName = $data['real_name'];
+        } elseif (\array_key_exists('real_name', $data)) {
+            $object->realName = null;
         }
         if (\array_key_exists('real_name_normalized', $data) && null !== $data['real_name_normalized']) {
-            $object->setRealNameNormalized($data['real_name_normalized']);
-        } elseif (\array_key_exists('real_name_normalized', $data) && null === $data['real_name_normalized']) {
-            $object->setRealNameNormalized(null);
+            $object->realNameNormalized = $data['real_name_normalized'];
+        } elseif (\array_key_exists('real_name_normalized', $data)) {
+            $object->realNameNormalized = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($data['team']);
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $data['team'];
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
 
         return $object;
@@ -124,25 +124,25 @@ class ObjsUserProfileShortNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['avatar_hash'] = $data->getAvatarHash();
-        $dataArray['display_name'] = $data->getDisplayName();
-        if ($data->isInitialized('displayNameNormalized') && null !== $data->getDisplayNameNormalized()) {
-            $dataArray['display_name_normalized'] = $data->getDisplayNameNormalized();
+        $dataArray['avatar_hash'] = $data->avatarHash;
+        $dataArray['display_name'] = $data->displayName;
+        if (\array_key_exists('displayNameNormalized', get_object_vars($data)) && null !== ($data->displayNameNormalized ?? null)) {
+            $dataArray['display_name_normalized'] = $data->displayNameNormalized;
         }
-        $value = $data->getFirstName();
-        if (\is_string($data->getFirstName())) {
-            $value = $data->getFirstName();
+        $value = $data->firstName;
+        if (\is_string($data->firstName)) {
+            $value = $data->firstName;
         }
         $dataArray['first_name'] = $value;
-        $dataArray['image_72'] = $data->getImage72();
-        $dataArray['is_restricted'] = $data->getIsRestricted();
-        $dataArray['is_ultra_restricted'] = $data->getIsUltraRestricted();
-        $dataArray['name'] = $data->getName();
-        $dataArray['real_name'] = $data->getRealName();
-        if ($data->isInitialized('realNameNormalized') && null !== $data->getRealNameNormalized()) {
-            $dataArray['real_name_normalized'] = $data->getRealNameNormalized();
+        $dataArray['image_72'] = $data->image72;
+        $dataArray['is_restricted'] = $data->isRestricted;
+        $dataArray['is_ultra_restricted'] = $data->isUltraRestricted;
+        $dataArray['name'] = $data->name;
+        $dataArray['real_name'] = $data->realName;
+        if (\array_key_exists('realNameNormalized', get_object_vars($data)) && null !== ($data->realNameNormalized ?? null)) {
+            $dataArray['real_name_normalized'] = $data->realNameNormalized;
         }
-        $dataArray['team'] = $data->getTeam();
+        $dataArray['team'] = $data->team;
 
         return $dataArray;
     }

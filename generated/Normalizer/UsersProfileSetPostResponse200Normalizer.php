@@ -56,24 +56,24 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('email_pending', $data) && null !== $data['email_pending']) {
-            $object->setEmailPending($data['email_pending']);
-        } elseif (\array_key_exists('email_pending', $data) && null === $data['email_pending']) {
-            $object->setEmailPending(null);
+            $object->emailPending = $data['email_pending'];
+        } elseif (\array_key_exists('email_pending', $data)) {
+            $object->emailPending = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('profile', $data) && null !== $data['profile']) {
-            $object->setProfile($this->denormalizer->denormalize($data['profile'], \JoliCode\Slack\Api\Model\ObjsUserProfile::class, 'json', $context));
-        } elseif (\array_key_exists('profile', $data) && null === $data['profile']) {
-            $object->setProfile(null);
+            $object->profile = $this->denormalizer->denormalize($data['profile'], \JoliCode\Slack\Api\Model\ObjsUserProfile::class, 'json', $context);
+        } elseif (\array_key_exists('profile', $data)) {
+            $object->profile = null;
         }
         if (\array_key_exists('username', $data) && null !== $data['username']) {
-            $object->setUsername($data['username']);
-        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
-            $object->setUsername(null);
+            $object->username = $data['username'];
+        } elseif (\array_key_exists('username', $data)) {
+            $object->username = null;
         }
 
         return $object;
@@ -82,12 +82,13 @@ class UsersProfileSetPostResponse200Normalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('emailPending') && null !== $data->getEmailPending()) {
-            $dataArray['email_pending'] = $data->getEmailPending();
+        if (\array_key_exists('emailPending', get_object_vars($data)) && null !== ($data->emailPending ?? null)) {
+            $dataArray['email_pending'] = $data->emailPending;
         }
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['profile'] = null === $data->getProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProfile(), 'json', $context));
-        $dataArray['username'] = $data->getUsername();
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->profile ? null : $this->normalizer->normalize($data->profile, 'json', $context);
+        $dataArray['profile'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['username'] = $data->username;
 
         return $dataArray;
     }

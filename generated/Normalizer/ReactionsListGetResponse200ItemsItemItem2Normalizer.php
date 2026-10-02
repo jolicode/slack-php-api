@@ -53,19 +53,19 @@ class ReactionsListGetResponse200ItemsItemItem2Normalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('comment', $data) && null !== $data['comment']) {
-            $object->setComment($this->denormalizer->denormalize($data['comment'], \JoliCode\Slack\Api\Model\ObjsComment::class, 'json', $context));
-        } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
-            $object->setComment(null);
+            $object->comment = $this->denormalizer->denormalize($data['comment'], \JoliCode\Slack\Api\Model\ObjsComment::class, 'json', $context);
+        } elseif (\array_key_exists('comment', $data)) {
+            $object->comment = null;
         }
         if (\array_key_exists('file', $data) && null !== $data['file']) {
-            $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
-        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
-            $object->setFile(null);
+            $object->file = $this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
+        } elseif (\array_key_exists('file', $data)) {
+            $object->file = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -74,9 +74,11 @@ class ReactionsListGetResponse200ItemsItemItem2Normalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['comment'] = null === $data->getComment() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getComment(), 'json', $context));
-        $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
-        $dataArray['type'] = $data->getType();
+        $normalized = null === $data->comment ? null : $this->normalizer->normalize($data->comment, 'json', $context);
+        $dataArray['comment'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $normalized_1 = null === $data->file ? null : $this->normalizer->normalize($data->file, 'json', $context);
+        $dataArray['file'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $dataArray['type'] = $data->type;
 
         return $dataArray;
     }

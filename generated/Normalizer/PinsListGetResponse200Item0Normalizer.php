@@ -70,14 +70,14 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
                 }
                 $value = $values_1;
             }
-            $object->setItems($value);
-        } elseif (\array_key_exists('items', $data) && null === $data['items']) {
-            $object->setItems(null);
+            $object->items = $value;
+        } elseif (\array_key_exists('items', $data)) {
+            $object->items = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -86,22 +86,24 @@ class PinsListGetResponse200Item0Normalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $value = $data->getItems();
-        if (\is_array($data->getItems())) {
+        $value = $data->items;
+        if (\is_array($data->items)) {
             $values = [];
-            foreach ($data->getItems() as $value_1) {
-                $values[] = null === $value_1 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            foreach ($data->items as $value_1) {
+                $normalized = null === $value_1 ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $value = $values;
-        } elseif (\is_array($data->getItems())) {
+        } elseif (\is_array($data->items)) {
             $values_1 = [];
-            foreach ($data->getItems() as $value_2) {
-                $values_1[] = null === $value_2 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_2, 'json', $context));
+            foreach ($data->items as $value_2) {
+                $normalized_1 = null === $value_2 ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $value = $values_1;
         }
         $dataArray['items'] = $value;
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

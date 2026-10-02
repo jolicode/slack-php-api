@@ -57,19 +57,19 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
             foreach ($data['attachments'] as $value) {
                 $values[] = $value;
             }
-            $object->setAttachments($values);
-        } elseif (\array_key_exists('attachments', $data) && null === $data['attachments']) {
-            $object->setAttachments(null);
+            $object->attachments = $values;
+        } elseif (\array_key_exists('attachments', $data)) {
+            $object->attachments = null;
         }
         if (\array_key_exists('blocks', $data) && null !== $data['blocks']) {
-            $object->setBlocks($data['blocks']);
-        } elseif (\array_key_exists('blocks', $data) && null === $data['blocks']) {
-            $object->setBlocks(null);
+            $object->blocks = $data['blocks'];
+        } elseif (\array_key_exists('blocks', $data)) {
+            $object->blocks = null;
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
-            $object->setText($data['text']);
-        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-            $object->setText(null);
+            $object->text = $data['text'];
+        } elseif (\array_key_exists('text', $data)) {
+            $object->text = null;
         }
 
         return $object;
@@ -78,17 +78,17 @@ class ChatUpdatePostResponse200MessageNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('attachments') && null !== $data->getAttachments()) {
+        if (\array_key_exists('attachments', get_object_vars($data)) && null !== ($data->attachments ?? null)) {
             $values = [];
-            foreach ($data->getAttachments() as $value) {
+            foreach ($data->attachments as $value) {
                 $values[] = $value;
             }
             $dataArray['attachments'] = $values;
         }
-        if ($data->isInitialized('blocks') && null !== $data->getBlocks()) {
-            $dataArray['blocks'] = $data->getBlocks();
+        if (\array_key_exists('blocks', get_object_vars($data)) && null !== ($data->blocks ?? null)) {
+            $dataArray['blocks'] = $data->blocks;
         }
-        $dataArray['text'] = $data->getText();
+        $dataArray['text'] = $data->text;
 
         return $dataArray;
     }

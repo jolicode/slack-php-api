@@ -60,39 +60,39 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
             foreach ($data['comments'] as $value) {
                 $values[] = $value;
             }
-            $object->setComments($values);
-        } elseif (\array_key_exists('comments', $data) && null === $data['comments']) {
-            $object->setComments(null);
+            $object->comments = $values;
+        } elseif (\array_key_exists('comments', $data)) {
+            $object->comments = null;
         }
         if (\array_key_exists('content_html', $data) && null !== $data['content_html']) {
-            $object->setContentHtml($data['content_html']);
-        } elseif (\array_key_exists('content_html', $data) && null === $data['content_html']) {
-            $object->setContentHtml(null);
+            $object->contentHtml = $data['content_html'];
+        } elseif (\array_key_exists('content_html', $data)) {
+            $object->contentHtml = null;
         }
         if (\array_key_exists('editor', $data) && null !== $data['editor']) {
-            $object->setEditor($data['editor']);
-        } elseif (\array_key_exists('editor', $data) && null === $data['editor']) {
-            $object->setEditor(null);
+            $object->editor = $data['editor'];
+        } elseif (\array_key_exists('editor', $data)) {
+            $object->editor = null;
         }
         if (\array_key_exists('file', $data) && null !== $data['file']) {
-            $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
-        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
-            $object->setFile(null);
+            $object->file = $this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
+        } elseif (\array_key_exists('file', $data)) {
+            $object->file = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-            $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
-        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
-            $object->setPaging(null);
+            $object->paging = $this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context);
+        } elseif (\array_key_exists('paging', $data)) {
+            $object->paging = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
 
         return $object;
@@ -102,23 +102,26 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getComments() as $value) {
+        foreach ($data->comments as $value) {
             $values[] = $value;
         }
         $dataArray['comments'] = $values;
-        if ($data->isInitialized('contentHtml') && null !== $data->getContentHtml()) {
-            $dataArray['content_html'] = $data->getContentHtml();
+        if (\array_key_exists('contentHtml', get_object_vars($data)) && null !== ($data->contentHtml ?? null)) {
+            $dataArray['content_html'] = $data->contentHtml;
         }
-        if ($data->isInitialized('editor') && null !== $data->getEditor()) {
-            $dataArray['editor'] = $data->getEditor();
+        if (\array_key_exists('editor', get_object_vars($data)) && null !== ($data->editor ?? null)) {
+            $dataArray['editor'] = $data->editor;
         }
-        $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('paging') && null !== $data->getPaging()) {
-            $dataArray['paging'] = null === $data->getPaging() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
+        $normalized = null === $data->file ? null : $this->normalizer->normalize($data->file, 'json', $context);
+        $dataArray['file'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->paging, 'json', $context);
+            $dataArray['paging'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized_2 = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized_2) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
 
         return $dataArray;

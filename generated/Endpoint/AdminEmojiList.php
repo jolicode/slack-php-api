@@ -20,12 +20,11 @@ class AdminEmojiList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     /**
      * List emoji for an Enterprise Grid organization.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $cursor Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-     * @var string $token Authentication token. Requires scope: `admin.teams:read`
-     *             }
+     * @param array{
+     *    "cursor"?: string, //Set `cursor` to `next_cursor` returned by the previous call to list items in the next page
+     *    "limit"?: int, //The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.teams:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -42,7 +41,7 @@ class AdminEmojiList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         return '/admin.emoji.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class AdminEmojiList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class AdminEmojiList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200|\JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200|\JoliCode\Slack\Api\Model\AdminEmojiListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminEmojiListGetResponse200', 'json');
         }

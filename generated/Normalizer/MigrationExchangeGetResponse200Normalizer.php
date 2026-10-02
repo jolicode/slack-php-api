@@ -56,10 +56,10 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('enterprise_id', $data) && null !== $data['enterprise_id']) {
-            $object->setEnterpriseId($data['enterprise_id']);
+            $object->enterpriseId = $data['enterprise_id'];
             unset($data['enterprise_id']);
-        } elseif (\array_key_exists('enterprise_id', $data) && null === $data['enterprise_id']) {
-            $object->setEnterpriseId(null);
+        } elseif (\array_key_exists('enterprise_id', $data)) {
+            $object->enterpriseId = null;
             unset($data['enterprise_id']);
         }
         if (\array_key_exists('invalid_user_ids', $data) && null !== $data['invalid_user_ids']) {
@@ -67,24 +67,24 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             foreach ($data['invalid_user_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setInvalidUserIds($values);
+            $object->invalidUserIds = $values;
             unset($data['invalid_user_ids']);
-        } elseif (\array_key_exists('invalid_user_ids', $data) && null === $data['invalid_user_ids']) {
-            $object->setInvalidUserIds(null);
+        } elseif (\array_key_exists('invalid_user_ids', $data)) {
+            $object->invalidUserIds = null;
             unset($data['invalid_user_ids']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
+            $object->ok = $data['ok'];
             unset($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
             unset($data['ok']);
         }
         if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
-            $object->setTeamId($data['team_id']);
+            $object->teamId = $data['team_id'];
             unset($data['team_id']);
-        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
-            $object->setTeamId(null);
+        } elseif (\array_key_exists('team_id', $data)) {
+            $object->teamId = null;
             unset($data['team_id']);
         }
         if (\array_key_exists('user_id_map', $data) && null !== $data['user_id_map']) {
@@ -92,10 +92,10 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
             foreach ($data['user_id_map'] as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
-            $object->setUserIdMap($values_1);
+            $object->userIdMap = $values_1;
             unset($data['user_id_map']);
-        } elseif (\array_key_exists('user_id_map', $data) && null === $data['user_id_map']) {
-            $object->setUserIdMap(null);
+        } elseif (\array_key_exists('user_id_map', $data)) {
+            $object->userIdMap = null;
             unset($data['user_id_map']);
         }
         foreach ($data as $key_1 => $value_2) {
@@ -110,19 +110,19 @@ class MigrationExchangeGetResponse200Normalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enterprise_id'] = $data->getEnterpriseId();
-        if ($data->isInitialized('invalidUserIds') && null !== $data->getInvalidUserIds()) {
+        $dataArray['enterprise_id'] = $data->enterpriseId;
+        if (\array_key_exists('invalidUserIds', get_object_vars($data)) && null !== ($data->invalidUserIds ?? null)) {
             $values = [];
-            foreach ($data->getInvalidUserIds() as $value) {
+            foreach ($data->invalidUserIds as $value) {
                 $values[] = $value;
             }
             $dataArray['invalid_user_ids'] = $values;
         }
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['team_id'] = $data->getTeamId();
-        if ($data->isInitialized('userIdMap') && null !== $data->getUserIdMap()) {
+        $dataArray['ok'] = $data->ok;
+        $dataArray['team_id'] = $data->teamId;
+        if (\array_key_exists('userIdMap', get_object_vars($data)) && null !== ($data->userIdMap ?? null)) {
             $values_1 = new \JoliCode\Slack\Api\Runtime\JsonObject();
-            foreach ($data->getUserIdMap() as $key => $value_1) {
+            foreach ($data->userIdMap as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['user_id_map'] = $values_1;

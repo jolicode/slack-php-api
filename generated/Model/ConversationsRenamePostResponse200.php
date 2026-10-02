@@ -15,47 +15,6 @@ namespace JoliCode\Slack\Api\Model;
 
 class ConversationsRenamePostResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var ObjsConversation|null
-     */
-    protected $channel;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getChannel(): ?ObjsConversation
-    {
-        return $this->channel;
-    }
-
-    public function setChannel(?ObjsConversation $channel): self
-    {
-        $this->initialized['channel'] = true;
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
+    public ?ObjsConversation $channel;
+    public ?bool $ok;
 }

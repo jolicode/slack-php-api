@@ -53,9 +53,9 @@ class ConversationsListGetResponse200ResponseMetadataNormalizer implements Denor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
-            $object->setNextCursor($data['next_cursor']);
-        } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
-            $object->setNextCursor(null);
+            $object->nextCursor = $data['next_cursor'];
+        } elseif (\array_key_exists('next_cursor', $data)) {
+            $object->nextCursor = null;
         }
 
         return $object;
@@ -64,7 +64,7 @@ class ConversationsListGetResponse200ResponseMetadataNormalizer implements Denor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['next_cursor'] = $data->getNextCursor();
+        $dataArray['next_cursor'] = $data->nextCursor;
 
         return $dataArray;
     }

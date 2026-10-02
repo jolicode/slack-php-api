@@ -20,13 +20,12 @@ class TeamAccessLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Gets the access logs for the current team.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $before end of time range of logs to include in results (inclusive)
-     * @var string $count
-     * @var string $page
-     * @var string $token Authentication token. Requires scope: `admin`
-     *             }
+     * @param array{
+     *    "before"?: string, //End of time range of logs to include in results (inclusive).
+     *    "count"?: string,
+     *    "page"?: string,
+     *    "token"?: string, //Authentication token. Requires scope: `admin`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -43,7 +42,7 @@ class TeamAccessLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         return '/team.accessLogs';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -56,6 +55,16 @@ class TeamAccessLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,12 +82,12 @@ class TeamAccessLogs extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200|\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200|\JoliCode\Slack\Api\Model\TeamAccessLogsGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\TeamAccessLogsGetResponse200', 'json');
         }

@@ -53,14 +53,14 @@ class ObjsFileSharesNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('private', $data) && null !== $data['private']) {
-            $object->setPrivate($data['private']);
-        } elseif (\array_key_exists('private', $data) && null === $data['private']) {
-            $object->setPrivate(null);
+            $object->private = $data['private'];
+        } elseif (\array_key_exists('private', $data)) {
+            $object->private = null;
         }
         if (\array_key_exists('public', $data) && null !== $data['public']) {
-            $object->setPublic($data['public']);
-        } elseif (\array_key_exists('public', $data) && null === $data['public']) {
-            $object->setPublic(null);
+            $object->public = $data['public'];
+        } elseif (\array_key_exists('public', $data)) {
+            $object->public = null;
         }
 
         return $object;
@@ -69,11 +69,11 @@ class ObjsFileSharesNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('private') && null !== $data->getPrivate()) {
-            $dataArray['private'] = $data->getPrivate();
+        if (\array_key_exists('private', get_object_vars($data)) && null !== ($data->private ?? null)) {
+            $dataArray['private'] = $data->private;
         }
-        if ($data->isInitialized('public') && null !== $data->getPublic()) {
-            $dataArray['public'] = $data->getPublic();
+        if (\array_key_exists('public', get_object_vars($data)) && null !== ($data->public ?? null)) {
+            $dataArray['public'] = $data->public;
         }
 
         return $dataArray;

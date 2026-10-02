@@ -53,19 +53,19 @@ class StarsListGetResponse200ItemsItemItem3Normalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('date_create', $data) && null !== $data['date_create']) {
-            $object->setDateCreate($data['date_create']);
-        } elseif (\array_key_exists('date_create', $data) && null === $data['date_create']) {
-            $object->setDateCreate(null);
+            $object->dateCreate = $data['date_create'];
+        } elseif (\array_key_exists('date_create', $data)) {
+            $object->dateCreate = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -74,9 +74,9 @@ class StarsListGetResponse200ItemsItemItem3Normalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = $data->getChannel();
-        $dataArray['date_create'] = $data->getDateCreate();
-        $dataArray['type'] = $data->getType();
+        $dataArray['channel'] = $data->channel;
+        $dataArray['date_create'] = $data->dateCreate;
+        $dataArray['type'] = $data->type;
 
         return $dataArray;
     }

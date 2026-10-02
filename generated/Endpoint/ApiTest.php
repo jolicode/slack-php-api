@@ -20,11 +20,10 @@ class ApiTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
     /**
      * Checks API calling code.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $error Error response to return
-     * @var string $foo example property to return
-     *             }
+     * @param array{
+     *    "error"?: string, //Error response to return
+     *    "foo"?: string, //example property to return
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class ApiTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
         return '/api.test';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class ApiTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class ApiTest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ApiTestGetResponse200|\JoliCode\Slack\Api\Model\ApiTestGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ApiTestGetResponse200|\JoliCode\Slack\Api\Model\ApiTestGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ApiTestGetResponse200', 'json');
         }

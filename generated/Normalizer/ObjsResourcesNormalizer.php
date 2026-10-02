@@ -60,23 +60,23 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['excluded_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setExcludedIds($values);
-        } elseif (\array_key_exists('excluded_ids', $data) && null === $data['excluded_ids']) {
-            $object->setExcludedIds(null);
+            $object->excludedIds = $values;
+        } elseif (\array_key_exists('excluded_ids', $data)) {
+            $object->excludedIds = null;
         }
         if (\array_key_exists('ids', $data) && null !== $data['ids']) {
             $values_1 = [];
             foreach ($data['ids'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setIds($values_1);
-        } elseif (\array_key_exists('ids', $data) && null === $data['ids']) {
-            $object->setIds(null);
+            $object->ids = $values_1;
+        } elseif (\array_key_exists('ids', $data)) {
+            $object->ids = null;
         }
         if (\array_key_exists('wildcard', $data) && null !== $data['wildcard']) {
-            $object->setWildcard($data['wildcard']);
-        } elseif (\array_key_exists('wildcard', $data) && null === $data['wildcard']) {
-            $object->setWildcard(null);
+            $object->wildcard = $data['wildcard'];
+        } elseif (\array_key_exists('wildcard', $data)) {
+            $object->wildcard = null;
         }
 
         return $object;
@@ -85,20 +85,20 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('excludedIds') && null !== $data->getExcludedIds()) {
+        if (\array_key_exists('excludedIds', get_object_vars($data)) && null !== ($data->excludedIds ?? null)) {
             $values = [];
-            foreach ($data->getExcludedIds() as $value) {
+            foreach ($data->excludedIds as $value) {
                 $values[] = $value;
             }
             $dataArray['excluded_ids'] = $values;
         }
         $values_1 = [];
-        foreach ($data->getIds() as $value_1) {
+        foreach ($data->ids as $value_1) {
             $values_1[] = $value_1;
         }
         $dataArray['ids'] = $values_1;
-        if ($data->isInitialized('wildcard') && null !== $data->getWildcard()) {
-            $dataArray['wildcard'] = $data->getWildcard();
+        if (\array_key_exists('wildcard', get_object_vars($data)) && null !== ($data->wildcard ?? null)) {
+            $dataArray['wildcard'] = $data->wildcard;
         }
 
         return $dataArray;

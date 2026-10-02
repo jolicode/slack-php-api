@@ -53,34 +53,34 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data) && null !== $data['count']) {
-            $object->setCount($data['count']);
-        } elseif (\array_key_exists('count', $data) && null === $data['count']) {
-            $object->setCount(null);
+            $object->count = $data['count'];
+        } elseif (\array_key_exists('count', $data)) {
+            $object->count = null;
         }
         if (\array_key_exists('page', $data) && null !== $data['page']) {
-            $object->setPage($data['page']);
-        } elseif (\array_key_exists('page', $data) && null === $data['page']) {
-            $object->setPage(null);
+            $object->page = $data['page'];
+        } elseif (\array_key_exists('page', $data)) {
+            $object->page = null;
         }
         if (\array_key_exists('pages', $data) && null !== $data['pages']) {
-            $object->setPages($data['pages']);
-        } elseif (\array_key_exists('pages', $data) && null === $data['pages']) {
-            $object->setPages(null);
+            $object->pages = $data['pages'];
+        } elseif (\array_key_exists('pages', $data)) {
+            $object->pages = null;
         }
         if (\array_key_exists('per_page', $data) && null !== $data['per_page']) {
-            $object->setPerPage($data['per_page']);
-        } elseif (\array_key_exists('per_page', $data) && null === $data['per_page']) {
-            $object->setPerPage(null);
+            $object->perPage = $data['per_page'];
+        } elseif (\array_key_exists('per_page', $data)) {
+            $object->perPage = null;
         }
         if (\array_key_exists('spill', $data) && null !== $data['spill']) {
-            $object->setSpill($data['spill']);
-        } elseif (\array_key_exists('spill', $data) && null === $data['spill']) {
-            $object->setSpill(null);
+            $object->spill = $data['spill'];
+        } elseif (\array_key_exists('spill', $data)) {
+            $object->spill = null;
         }
         if (\array_key_exists('total', $data) && null !== $data['total']) {
-            $object->setTotal($data['total']);
-        } elseif (\array_key_exists('total', $data) && null === $data['total']) {
-            $object->setTotal(null);
+            $object->total = $data['total'];
+        } elseif (\array_key_exists('total', $data)) {
+            $object->total = null;
         }
 
         return $object;
@@ -89,20 +89,20 @@ class ObjsPagingNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (\array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count;
         }
-        $dataArray['page'] = $data->getPage();
-        if ($data->isInitialized('pages') && null !== $data->getPages()) {
-            $dataArray['pages'] = $data->getPages();
+        $dataArray['page'] = $data->page;
+        if (\array_key_exists('pages', get_object_vars($data)) && null !== ($data->pages ?? null)) {
+            $dataArray['pages'] = $data->pages;
         }
-        if ($data->isInitialized('perPage') && null !== $data->getPerPage()) {
-            $dataArray['per_page'] = $data->getPerPage();
+        if (\array_key_exists('perPage', get_object_vars($data)) && null !== ($data->perPage ?? null)) {
+            $dataArray['per_page'] = $data->perPage;
         }
-        if ($data->isInitialized('spill') && null !== $data->getSpill()) {
-            $dataArray['spill'] = $data->getSpill();
+        if (\array_key_exists('spill', get_object_vars($data)) && null !== ($data->spill ?? null)) {
+            $dataArray['spill'] = $data->spill;
         }
-        $dataArray['total'] = $data->getTotal();
+        $dataArray['total'] = $data->total;
 
         return $dataArray;
     }

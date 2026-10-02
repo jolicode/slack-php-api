@@ -63,53 +63,53 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
             if (\is_string($data['field_name'])) {
                 $value = $data['field_name'];
             }
-            $object->setFieldName($value);
-        } elseif (\array_key_exists('field_name', $data) && null === $data['field_name']) {
-            $object->setFieldName(null);
+            $object->fieldName = $value;
+        } elseif (\array_key_exists('field_name', $data)) {
+            $object->fieldName = null;
         }
         if (\array_key_exists('hint', $data) && null !== $data['hint']) {
-            $object->setHint($data['hint']);
-        } elseif (\array_key_exists('hint', $data) && null === $data['hint']) {
-            $object->setHint(null);
+            $object->hint = $data['hint'];
+        } elseif (\array_key_exists('hint', $data)) {
+            $object->hint = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_hidden', $data) && null !== $data['is_hidden']) {
-            $object->setIsHidden($data['is_hidden']);
-        } elseif (\array_key_exists('is_hidden', $data) && null === $data['is_hidden']) {
-            $object->setIsHidden(null);
+            $object->isHidden = $data['is_hidden'];
+        } elseif (\array_key_exists('is_hidden', $data)) {
+            $object->isHidden = null;
         }
         if (\array_key_exists('label', $data) && null !== $data['label']) {
-            $object->setLabel($data['label']);
-        } elseif (\array_key_exists('label', $data) && null === $data['label']) {
-            $object->setLabel(null);
+            $object->label = $data['label'];
+        } elseif (\array_key_exists('label', $data)) {
+            $object->label = null;
         }
         if (\array_key_exists('options', $data) && null !== $data['options']) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption::class, 'json', $context));
-        } elseif (\array_key_exists('options', $data) && null === $data['options']) {
-            $object->setOptions(null);
+            $object->options = $this->denormalizer->denormalize($data['options'], \JoliCode\Slack\Api\Model\ObjsTeamProfileFieldOption::class, 'json', $context);
+        } elseif (\array_key_exists('options', $data)) {
+            $object->options = null;
         }
         if (\array_key_exists('ordering', $data) && null !== $data['ordering']) {
-            $object->setOrdering($data['ordering']);
-        } elseif (\array_key_exists('ordering', $data) && null === $data['ordering']) {
-            $object->setOrdering(null);
+            $object->ordering = $data['ordering'];
+        } elseif (\array_key_exists('ordering', $data)) {
+            $object->ordering = null;
         }
         if (\array_key_exists('possible_values', $data) && null !== $data['possible_values']) {
             $values = [];
             foreach ($data['possible_values'] as $value_1) {
                 $values[] = $value_1;
             }
-            $object->setPossibleValues($values);
-        } elseif (\array_key_exists('possible_values', $data) && null === $data['possible_values']) {
-            $object->setPossibleValues(null);
+            $object->possibleValues = $values;
+        } elseif (\array_key_exists('possible_values', $data)) {
+            $object->possibleValues = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -118,31 +118,32 @@ class ObjsTeamProfileFieldNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fieldName') && null !== $data->getFieldName()) {
-            $value = $data->getFieldName();
-            if (\is_string($data->getFieldName())) {
-                $value = $data->getFieldName();
+        if (\array_key_exists('fieldName', get_object_vars($data)) && null !== ($data->fieldName ?? null)) {
+            $value = $data->fieldName;
+            if (\is_string($data->fieldName)) {
+                $value = $data->fieldName;
             }
             $dataArray['field_name'] = $value;
         }
-        $dataArray['hint'] = $data->getHint();
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('isHidden') && null !== $data->getIsHidden()) {
-            $dataArray['is_hidden'] = $data->getIsHidden();
+        $dataArray['hint'] = $data->hint;
+        $dataArray['id'] = $data->id;
+        if (\array_key_exists('isHidden', get_object_vars($data)) && null !== ($data->isHidden ?? null)) {
+            $dataArray['is_hidden'] = $data->isHidden;
         }
-        $dataArray['label'] = $data->getLabel();
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = null === $data->getOptions() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getOptions(), 'json', $context));
+        $dataArray['label'] = $data->label;
+        if (\array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $normalized = $this->normalizer->normalize($data->options, 'json', $context);
+            $dataArray['options'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        $dataArray['ordering'] = $data->getOrdering();
-        if ($data->isInitialized('possibleValues') && null !== $data->getPossibleValues()) {
+        $dataArray['ordering'] = $data->ordering;
+        if (\array_key_exists('possibleValues', get_object_vars($data)) && null !== ($data->possibleValues ?? null)) {
             $values = [];
-            foreach ($data->getPossibleValues() as $value_1) {
+            foreach ($data->possibleValues as $value_1) {
                 $values[] = $value_1;
             }
             $dataArray['possible_values'] = $values;
         }
-        $dataArray['type'] = $data->getType();
+        $dataArray['type'] = $data->type;
 
         return $dataArray;
     }

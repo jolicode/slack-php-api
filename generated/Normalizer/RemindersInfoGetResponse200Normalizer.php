@@ -56,14 +56,14 @@ class RemindersInfoGetResponse200Normalizer implements DenormalizerInterface, No
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('reminder', $data) && null !== $data['reminder']) {
-            $object->setReminder($this->denormalizer->denormalize($data['reminder'], \JoliCode\Slack\Api\Model\ObjsReminder::class, 'json', $context));
-        } elseif (\array_key_exists('reminder', $data) && null === $data['reminder']) {
-            $object->setReminder(null);
+            $object->reminder = $this->denormalizer->denormalize($data['reminder'], \JoliCode\Slack\Api\Model\ObjsReminder::class, 'json', $context);
+        } elseif (\array_key_exists('reminder', $data)) {
+            $object->reminder = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class RemindersInfoGetResponse200Normalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['reminder'] = null === $data->getReminder() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getReminder(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->reminder ? null : $this->normalizer->normalize($data->reminder, 'json', $context);
+        $dataArray['reminder'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
 
         return $dataArray;
     }

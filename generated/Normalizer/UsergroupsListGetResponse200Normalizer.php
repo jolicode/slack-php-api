@@ -56,18 +56,18 @@ class UsergroupsListGetResponse200Normalizer implements DenormalizerInterface, N
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('usergroups', $data) && null !== $data['usergroups']) {
             $values = [];
             foreach ($data['usergroups'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsSubteam::class, 'json', $context);
             }
-            $object->setUsergroups($values);
-        } elseif (\array_key_exists('usergroups', $data) && null === $data['usergroups']) {
-            $object->setUsergroups(null);
+            $object->usergroups = $values;
+        } elseif (\array_key_exists('usergroups', $data)) {
+            $object->usergroups = null;
         }
 
         return $object;
@@ -76,10 +76,11 @@ class UsergroupsListGetResponse200Normalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
         $values = [];
-        foreach ($data->getUsergroups() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->usergroups as $value) {
+            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['usergroups'] = $values;
 

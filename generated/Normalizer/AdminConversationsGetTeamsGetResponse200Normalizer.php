@@ -56,23 +56,23 @@ class AdminConversationsGetTeamsGetResponse200Normalizer implements Denormalizer
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\AdminConversationsGetTeamsGetResponse200ResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
         if (\array_key_exists('team_ids', $data) && null !== $data['team_ids']) {
             $values = [];
             foreach ($data['team_ids'] as $value) {
                 $values[] = $value;
             }
-            $object->setTeamIds($values);
-        } elseif (\array_key_exists('team_ids', $data) && null === $data['team_ids']) {
-            $object->setTeamIds(null);
+            $object->teamIds = $values;
+        } elseif (\array_key_exists('team_ids', $data)) {
+            $object->teamIds = null;
         }
 
         return $object;
@@ -81,12 +81,13 @@ class AdminConversationsGetTeamsGetResponse200Normalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $values = [];
-        foreach ($data->getTeamIds() as $value) {
+        foreach ($data->teamIds as $value) {
             $values[] = $value;
         }
         $dataArray['team_ids'] = $values;

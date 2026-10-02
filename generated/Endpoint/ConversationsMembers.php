@@ -20,13 +20,12 @@ class ConversationsMembers extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     /**
      * Retrieve members of a conversation.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel ID of the conversation to retrieve members for
-     * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     * @var string $token Authentication token. Requires scope: `conversations:read`
-     *             }
+     * @param array{
+     *    "channel"?: string, //ID of the conversation to retrieve members for
+     *    "cursor"?: string, //Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     *    "limit"?: int, //The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -43,7 +42,7 @@ class ConversationsMembers extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
         return '/conversations.members';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -56,6 +55,16 @@ class ConversationsMembers extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,12 +82,12 @@ class ConversationsMembers extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200|\JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200|\JoliCode\Slack\Api\Model\ConversationsMembersGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsMembersGetResponse200', 'json');
         }

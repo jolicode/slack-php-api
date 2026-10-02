@@ -15,47 +15,6 @@ namespace JoliCode\Slack\Api\Model;
 
 class ReactionsListGetResponse200ItemsItemItem1
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var ObjsFile|null
-     */
-    protected $file;
-    /**
-     * @var string|null
-     */
-    protected $type;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getFile(): ?ObjsFile
-    {
-        return $this->file;
-    }
-
-    public function setFile(?ObjsFile $file): self
-    {
-        $this->initialized['file'] = true;
-        $this->file = $file;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-
-        return $this;
-    }
+    public ?ObjsFile $file;
+    public ?string $type;
 }
