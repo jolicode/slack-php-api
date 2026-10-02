@@ -20,18 +20,15 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     /**
      * Disable an existing User Group.
      *
-     * @param array $formParameters {
-     *
-     * @var bool   $include_count include the number of users in the User Group
-     * @var string $usergroup The encoded ID of the User Group to disable.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `usergroups:write`
-     *             }
+     * @param array{
+     *    "include_count"?: bool, //Include the number of users in the User Group.
+     *    "usergroup": string, //The encoded ID of the User Group to disable.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `usergroups:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         return '/usergroups.disable';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class UsergroupsDisable extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsDisablePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsergroupsDisablePostResponse200', 'json');
         }

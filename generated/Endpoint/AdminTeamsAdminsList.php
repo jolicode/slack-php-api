@@ -20,15 +20,14 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     /**
      * List all of the admins on a given workspace.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     * @var int    $limit the maximum number of items to return
-     * @var string $team_id
-     * @var string $token Authentication token. Requires scope: `admin.teams:read`
-     *             }
+     * @param array{
+     *    "cursor"?: string, //Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.
+     *    "limit"?: int, //The maximum number of items to return.
+     *    "team_id": string,
+     *    "token"?: string, //Authentication token. Requires scope: `admin.teams:read`
+     * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
@@ -43,7 +42,7 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
         return '/admin.teams.admins.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -56,6 +55,16 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,12 +82,12 @@ class AdminTeamsAdminsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200|\JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200|\JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminTeamsAdminsListGetResponse200', 'json');
         }

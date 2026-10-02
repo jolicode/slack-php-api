@@ -20,13 +20,12 @@ class DndSetSnooze extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * Turns on Do Not Disturb mode for the current user, or changes its duration.
      *
-     * @param array $formParameters {
-     *
-     * @var string $num_minutes number of minutes, from now, to snooze until
-     * @var string $token Authentication token. Requires scope: `dnd:write`
-     *             }
+     * @param array{
+     *    "num_minutes": string, //Number of minutes, from now, to snooze until.
+     *    "token"?: string, //Authentication token. Requires scope: `dnd:write`
+     * } $formParameters
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(array $formParameters)
     {
         $this->formParameters = $formParameters;
     }
@@ -41,7 +40,7 @@ class DndSetSnooze extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         return '/dnd.setSnooze';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -54,6 +53,16 @@ class DndSetSnooze extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class DndSetSnooze extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200|\JoliCode\Slack\Api\Model\DndSetSnoozePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\DndSetSnoozePostResponse200', 'json');
         }

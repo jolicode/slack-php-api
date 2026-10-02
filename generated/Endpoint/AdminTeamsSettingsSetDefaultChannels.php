@@ -20,14 +20,13 @@ class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\C
     /**
      * Set the default channels of a workspace.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel_ids an array of channel IDs
-     * @var string $team_id ID for the workspace to set the default channel for
-     * @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *             }
+     * @param array{
+     *    "channel_ids": string, //An array of channel IDs.
+     *    "team_id": string, //ID for the workspace to set the default channel for.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.teams:write`
+     * } $formParameters
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(array $formParameters)
     {
         $this->formParameters = $formParameters;
     }
@@ -42,7 +41,7 @@ class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\C
         return '/admin.teams.settings.setDefaultChannels';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -55,6 +54,16 @@ class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\C
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class AdminTeamsSettingsSetDefaultChannels extends \JoliCode\Slack\Api\Runtime\C
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetDefaultChannelsPostResponse200', 'json');
         }

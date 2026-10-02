@@ -56,28 +56,28 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('cache_ts', $data) && null !== $data['cache_ts']) {
-            $object->setCacheTs($data['cache_ts']);
-        } elseif (\array_key_exists('cache_ts', $data) && null === $data['cache_ts']) {
-            $object->setCacheTs(null);
+            $object->cacheTs = $data['cache_ts'];
+        } elseif (\array_key_exists('cache_ts', $data)) {
+            $object->cacheTs = null;
         }
         if (\array_key_exists('members', $data) && null !== $data['members']) {
             $values = [];
             foreach ($data['members'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsUser::class, 'json', $context);
             }
-            $object->setMembers($values);
-        } elseif (\array_key_exists('members', $data) && null === $data['members']) {
-            $object->setMembers(null);
+            $object->members = $values;
+        } elseif (\array_key_exists('members', $data)) {
+            $object->members = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
 
         return $object;
@@ -86,15 +86,17 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['cache_ts'] = $data->getCacheTs();
+        $dataArray['cache_ts'] = $data->cacheTs;
         $values = [];
-        foreach ($data->getMembers() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->members as $value) {
+            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['members'] = $values;
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
 
         return $dataArray;

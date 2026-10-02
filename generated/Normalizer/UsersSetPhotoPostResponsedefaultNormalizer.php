@@ -56,34 +56,34 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
-            $object->setCallstack($data['callstack']);
-        } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
-            $object->setCallstack(null);
+            $object->callstack = $data['callstack'];
+        } elseif (\array_key_exists('callstack', $data)) {
+            $object->callstack = null;
         }
         if (\array_key_exists('debug_step', $data) && null !== $data['debug_step']) {
-            $object->setDebugStep($data['debug_step']);
-        } elseif (\array_key_exists('debug_step', $data) && null === $data['debug_step']) {
-            $object->setDebugStep(null);
+            $object->debugStep = $data['debug_step'];
+        } elseif (\array_key_exists('debug_step', $data)) {
+            $object->debugStep = null;
         }
         if (\array_key_exists('dims', $data) && null !== $data['dims']) {
-            $object->setDims($data['dims']);
-        } elseif (\array_key_exists('dims', $data) && null === $data['dims']) {
-            $object->setDims(null);
+            $object->dims = $data['dims'];
+        } elseif (\array_key_exists('dims', $data)) {
+            $object->dims = null;
         }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
-            $object->setError($data['error']);
-        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
-            $object->setError(null);
+            $object->error = $data['error'];
+        } elseif (\array_key_exists('error', $data)) {
+            $object->error = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('time_ident', $data) && null !== $data['time_ident']) {
-            $object->setTimeIdent($data['time_ident']);
-        } elseif (\array_key_exists('time_ident', $data) && null === $data['time_ident']) {
-            $object->setTimeIdent(null);
+            $object->timeIdent = $data['time_ident'];
+        } elseif (\array_key_exists('time_ident', $data)) {
+            $object->timeIdent = null;
         }
 
         return $object;
@@ -92,19 +92,19 @@ class UsersSetPhotoPostResponsedefaultNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('callstack') && null !== $data->getCallstack()) {
-            $dataArray['callstack'] = $data->getCallstack();
+        if (\array_key_exists('callstack', get_object_vars($data)) && null !== ($data->callstack ?? null)) {
+            $dataArray['callstack'] = $data->callstack;
         }
-        if ($data->isInitialized('debugStep') && null !== $data->getDebugStep()) {
-            $dataArray['debug_step'] = $data->getDebugStep();
+        if (\array_key_exists('debugStep', get_object_vars($data)) && null !== ($data->debugStep ?? null)) {
+            $dataArray['debug_step'] = $data->debugStep;
         }
-        if ($data->isInitialized('dims') && null !== $data->getDims()) {
-            $dataArray['dims'] = $data->getDims();
+        if (\array_key_exists('dims', get_object_vars($data)) && null !== ($data->dims ?? null)) {
+            $dataArray['dims'] = $data->dims;
         }
-        $dataArray['error'] = $data->getError();
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('timeIdent') && null !== $data->getTimeIdent()) {
-            $dataArray['time_ident'] = $data->getTimeIdent();
+        $dataArray['error'] = $data->error;
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('timeIdent', get_object_vars($data)) && null !== ($data->timeIdent ?? null)) {
+            $dataArray['time_ident'] = $data->timeIdent;
         }
 
         return $dataArray;

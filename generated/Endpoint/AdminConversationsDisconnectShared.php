@@ -20,18 +20,15 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
     /**
      * Disconnect a connected channel from one or more workspaces.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel_id the channel to be disconnected from some workspaces
-     * @var string $leaving_team_ids The team to be removed from the channel. Currently only a single team id can be specified.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     *             }
+     * @param array{
+     *    "channel_id": string, //The channel to be disconnected from some workspaces.
+     *    "leaving_team_ids"?: string, //The team to be removed from the channel. Currently only a single team id can be specified.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
         return '/admin.conversations.disconnectShared';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class AdminConversationsDisconnectShared extends \JoliCode\Slack\Api\Runtime\Cli
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsDisconnectSharedPostResponse200', 'json');
         }

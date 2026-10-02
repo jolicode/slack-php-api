@@ -53,14 +53,14 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('display_counts', $data) && null !== $data['display_counts']) {
-            $object->setDisplayCounts($data['display_counts']);
-        } elseif (\array_key_exists('display_counts', $data) && null === $data['display_counts']) {
-            $object->setDisplayCounts(null);
+            $object->displayCounts = $data['display_counts'];
+        } elseif (\array_key_exists('display_counts', $data)) {
+            $object->displayCounts = null;
         }
         if (\array_key_exists('guest_counts', $data) && null !== $data['guest_counts']) {
-            $object->setGuestCounts($data['guest_counts']);
-        } elseif (\array_key_exists('guest_counts', $data) && null === $data['guest_counts']) {
-            $object->setGuestCounts(null);
+            $object->guestCounts = $data['guest_counts'];
+        } elseif (\array_key_exists('guest_counts', $data)) {
+            $object->guestCounts = null;
         }
 
         return $object;
@@ -69,8 +69,8 @@ class ObjsConversationDisplayCountsNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['display_counts'] = $data->getDisplayCounts();
-        $dataArray['guest_counts'] = $data->getGuestCounts();
+        $dataArray['display_counts'] = $data->displayCounts;
+        $dataArray['guest_counts'] = $data->guestCounts;
 
         return $dataArray;
     }

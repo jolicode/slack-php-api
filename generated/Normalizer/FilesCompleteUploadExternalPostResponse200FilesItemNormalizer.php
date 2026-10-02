@@ -53,14 +53,14 @@ class FilesCompleteUploadExternalPostResponse200FilesItemNormalizer implements D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('title', $data) && null !== $data['title']) {
-            $object->setTitle($data['title']);
-        } elseif (\array_key_exists('title', $data) && null === $data['title']) {
-            $object->setTitle(null);
+            $object->title = $data['title'];
+        } elseif (\array_key_exists('title', $data)) {
+            $object->title = null;
         }
 
         return $object;
@@ -69,11 +69,11 @@ class FilesCompleteUploadExternalPostResponse200FilesItemNormalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (\array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (\array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title;
         }
 
         return $dataArray;

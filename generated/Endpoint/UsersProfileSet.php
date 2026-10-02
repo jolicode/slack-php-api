@@ -20,18 +20,15 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     /**
      * Set the profile information for a user.
      *
-     * @param array $formParameters {
-     *
-     * @var string $name Name of a single key to set. Usable only if `profile` is not passed.
-     * @var string $profile Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.
-     * @var string $user ID of user to change. This argument may only be specified by team admins on paid teams.
-     * @var string $value Value to set a single key to. Usable only if `profile` is not passed.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `users.profile:write`
-     *             }
+     * @param array{
+     *    "name"?: string, //Name of a single key to set. Usable only if `profile` is not passed.
+     *    "profile"?: string, //Collection of key:value pairs presented as a URL-encoded JSON hash. At most 50 fields may be set. Each field name is limited to 255 characters.
+     *    "user"?: string, //ID of user to change. This argument may only be specified by team admins on paid teams.
+     *    "value"?: string, //Value to set a single key to. Usable only if `profile` is not passed.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `users.profile:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -49,7 +46,7 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         return '/users.profile.set';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -62,6 +59,16 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -90,12 +97,12 @@ class UsersProfileSet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200|\JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200|\JoliCode\Slack\Api\Model\UsersProfileSetPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsersProfileSetPostResponse200', 'json');
         }

@@ -20,18 +20,15 @@ class AdminUsersSetOwner extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     /**
      * Set an existing guest, regular user, or admin user to be a workspace owner.
      *
-     * @param array $formParameters {
-     *
-     * @var string $team_id the ID (`T1234`) of the workspace
-     * @var string $user_id Id of the user to promote to owner.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.users:write`
-     *             }
+     * @param array{
+     *    "team_id": string, //The ID (`T1234`) of the workspace.
+     *    "user_id": string, //Id of the user to promote to owner.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.users:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class AdminUsersSetOwner extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
         return '/admin.users.setOwner';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class AdminUsersSetOwner extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class AdminUsersSetOwner extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminUsersSetOwnerPostResponse200', 'json');
         }

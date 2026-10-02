@@ -13,17 +13,20 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Runtime\Client;
 
-use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 trait EndpointTrait
 {
-    public function parseResponse(ResponseInterface $response, SerializerInterface $serializer, string $fetchMode = Client::FETCH_OBJECT)
+    public function parseResponse(ResponseInterface $response, SerializerInterface $serializer)
     {
-        $contentType = $response->hasHeader('Content-Type') ? current($response->getHeader('Content-Type')) : null;
+        $contentType = $response->getHeaders(false)['content-type'][0] ?? null;
 
         return $this->transformResponseBody($response, $serializer, $contentType);
     }
 
+    /**
+     * Transform the response body into a value.
+     */
     abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
 }

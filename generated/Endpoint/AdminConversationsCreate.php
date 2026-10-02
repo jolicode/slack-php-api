@@ -20,21 +20,18 @@ class AdminConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
     /**
      * Create a public or private channel-based conversation.
      *
-     * @param array $formParameters {
-     *
-     * @var string $description description of the public or private channel to create
-     * @var bool   $is_private When `true`, creates a private channel instead of a public channel
-     * @var string $name name of the public or private channel to create
-     * @var bool   $org_wide When `true`, the channel will be available org-wide. Note: if the channel is not `org_wide=true`, you must specify a `team_id` for this channel
-     * @var string $team_id The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     *             }
+     * @param array{
+     *    "description"?: string, //Description of the public or private channel to create.
+     *    "is_private": bool, //When `true`, creates a private channel instead of a public channel
+     *    "name": string, //Name of the public or private channel to create.
+     *    "org_wide"?: bool, //When `true`, the channel will be available org-wide. Note: if the channel is not `org_wide=true`, you must specify a `team_id` for this channel
+     *    "team_id"?: string, //The workspace to create the channel in. Note: this argument is required unless you set `org_wide=true`.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -50,7 +47,7 @@ class AdminConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
         return '/admin.conversations.create';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -63,6 +60,16 @@ class AdminConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -92,12 +99,12 @@ class AdminConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsCreatePostResponse200', 'json');
         }

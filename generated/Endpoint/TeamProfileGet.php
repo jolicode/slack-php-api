@@ -20,11 +20,10 @@ class TeamProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Retrieve a team's profile.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `users.profile:read`
-     * @var string $visibility Filter by visibility.
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `users.profile:read`
+     *    "visibility"?: string, //Filter by visibility.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class TeamProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         return '/team.profile.get';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class TeamProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class TeamProfileGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200|\JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200|\JoliCode\Slack\Api\Model\TeamProfileGetGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\TeamProfileGetGetResponse200', 'json');
         }

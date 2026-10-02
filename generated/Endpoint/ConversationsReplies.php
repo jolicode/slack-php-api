@@ -20,17 +20,16 @@ class ConversationsReplies extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     /**
      * Retrieve a thread of messages posted to a conversation.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel conversation ID to fetch thread from
-     * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     * @var bool   $inclusive include messages with latest or oldest timestamp in results only when either timestamp is specified
-     * @var string $latest end of time range of messages to include in results
-     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
-     * @var string $oldest start of time range of messages to include in results
-     * @var string $token Authentication token. Requires scope: `conversations:history`
-     * @var string $ts Unique identifier of a thread's parent message. `ts` must be the timestamp of an existing message with 0 or more replies. If there are no replies then just the single message referenced by `ts` will return - it is just an ordinary, unthreaded message.
-     *             }
+     * @param array{
+     *    "channel"?: string, //Conversation ID to fetch thread from.
+     *    "cursor"?: string, //Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     *    "inclusive"?: bool, //Include messages with latest or oldest timestamp in results only when either timestamp is specified.
+     *    "latest"?: string, //End of time range of messages to include in results.
+     *    "limit"?: int, //The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the users list hasn't been reached.
+     *    "oldest"?: string, //Start of time range of messages to include in results.
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:history`
+     *    "ts"?: string, //Unique identifier of a thread's parent message. `ts` must be the timestamp of an existing message with 0 or more replies. If there are no replies then just the single message referenced by `ts` will return - it is just an ordinary, unthreaded message.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -47,7 +46,7 @@ class ConversationsReplies extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
         return '/conversations.replies';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -60,6 +59,16 @@ class ConversationsReplies extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -81,12 +90,12 @@ class ConversationsReplies extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200|\JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200|\JoliCode\Slack\Api\Model\ConversationsRepliesGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200', 'json');
         }

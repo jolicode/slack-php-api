@@ -59,38 +59,38 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
             $data['is_owner'] = (bool) $data['is_owner'];
         }
         if (\array_key_exists('enterprise_id', $data) && null !== $data['enterprise_id']) {
-            $object->setEnterpriseId($data['enterprise_id']);
-        } elseif (\array_key_exists('enterprise_id', $data) && null === $data['enterprise_id']) {
-            $object->setEnterpriseId(null);
+            $object->enterpriseId = $data['enterprise_id'];
+        } elseif (\array_key_exists('enterprise_id', $data)) {
+            $object->enterpriseId = null;
         }
         if (\array_key_exists('enterprise_name', $data) && null !== $data['enterprise_name']) {
-            $object->setEnterpriseName($data['enterprise_name']);
-        } elseif (\array_key_exists('enterprise_name', $data) && null === $data['enterprise_name']) {
-            $object->setEnterpriseName(null);
+            $object->enterpriseName = $data['enterprise_name'];
+        } elseif (\array_key_exists('enterprise_name', $data)) {
+            $object->enterpriseName = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_admin', $data) && null !== $data['is_admin']) {
-            $object->setIsAdmin($data['is_admin']);
-        } elseif (\array_key_exists('is_admin', $data) && null === $data['is_admin']) {
-            $object->setIsAdmin(null);
+            $object->isAdmin = $data['is_admin'];
+        } elseif (\array_key_exists('is_admin', $data)) {
+            $object->isAdmin = null;
         }
         if (\array_key_exists('is_owner', $data) && null !== $data['is_owner']) {
-            $object->setIsOwner($data['is_owner']);
-        } elseif (\array_key_exists('is_owner', $data) && null === $data['is_owner']) {
-            $object->setIsOwner(null);
+            $object->isOwner = $data['is_owner'];
+        } elseif (\array_key_exists('is_owner', $data)) {
+            $object->isOwner = null;
         }
         if (\array_key_exists('teams', $data) && null !== $data['teams']) {
             $values = [];
             foreach ($data['teams'] as $value) {
                 $values[] = $value;
             }
-            $object->setTeams($values);
-        } elseif (\array_key_exists('teams', $data) && null === $data['teams']) {
-            $object->setTeams(null);
+            $object->teams = $values;
+        } elseif (\array_key_exists('teams', $data)) {
+            $object->teams = null;
         }
 
         return $object;
@@ -99,13 +99,13 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['enterprise_id'] = $data->getEnterpriseId();
-        $dataArray['enterprise_name'] = $data->getEnterpriseName();
-        $dataArray['id'] = $data->getId();
-        $dataArray['is_admin'] = $data->getIsAdmin();
-        $dataArray['is_owner'] = $data->getIsOwner();
+        $dataArray['enterprise_id'] = $data->enterpriseId;
+        $dataArray['enterprise_name'] = $data->enterpriseName;
+        $dataArray['id'] = $data->id;
+        $dataArray['is_admin'] = $data->isAdmin;
+        $dataArray['is_owner'] = $data->isOwner;
         $values = [];
-        foreach ($data->getTeams() as $value) {
+        foreach ($data->teams as $value) {
             $values[] = $value;
         }
         $dataArray['teams'] = $values;

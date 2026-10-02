@@ -20,21 +20,18 @@ class ReactionsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     /**
      * Removes a reaction from an item.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel channel where the message to remove reaction from was posted
-     * @var string $file file to remove reaction from
-     * @var string $file_comment file comment to remove reaction from
-     * @var string $name reaction (emoji) name
-     * @var string $timestamp Timestamp of the message to remove reaction from.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `reactions:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel where the message to remove reaction from was posted.
+     *    "file"?: string, //File to remove reaction from.
+     *    "file_comment"?: string, //File comment to remove reaction from.
+     *    "name": string, //Reaction (emoji) name.
+     *    "timestamp"?: string, //Timestamp of the message to remove reaction from.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `reactions:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -50,7 +47,7 @@ class ReactionsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         return '/reactions.remove';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -63,6 +60,16 @@ class ReactionsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -92,12 +99,12 @@ class ReactionsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200|\JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200|\JoliCode\Slack\Api\Model\ReactionsRemovePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ReactionsRemovePostResponse200', 'json');
         }

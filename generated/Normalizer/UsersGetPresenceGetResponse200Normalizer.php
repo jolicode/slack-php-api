@@ -65,52 +65,52 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
             $data['online'] = (bool) $data['online'];
         }
         if (\array_key_exists('auto_away', $data) && null !== $data['auto_away']) {
-            $object->setAutoAway($data['auto_away']);
+            $object->autoAway = $data['auto_away'];
             unset($data['auto_away']);
-        } elseif (\array_key_exists('auto_away', $data) && null === $data['auto_away']) {
-            $object->setAutoAway(null);
+        } elseif (\array_key_exists('auto_away', $data)) {
+            $object->autoAway = null;
             unset($data['auto_away']);
         }
         if (\array_key_exists('connection_count', $data) && null !== $data['connection_count']) {
-            $object->setConnectionCount($data['connection_count']);
+            $object->connectionCount = $data['connection_count'];
             unset($data['connection_count']);
-        } elseif (\array_key_exists('connection_count', $data) && null === $data['connection_count']) {
-            $object->setConnectionCount(null);
+        } elseif (\array_key_exists('connection_count', $data)) {
+            $object->connectionCount = null;
             unset($data['connection_count']);
         }
         if (\array_key_exists('last_activity', $data) && null !== $data['last_activity']) {
-            $object->setLastActivity($data['last_activity']);
+            $object->lastActivity = $data['last_activity'];
             unset($data['last_activity']);
-        } elseif (\array_key_exists('last_activity', $data) && null === $data['last_activity']) {
-            $object->setLastActivity(null);
+        } elseif (\array_key_exists('last_activity', $data)) {
+            $object->lastActivity = null;
             unset($data['last_activity']);
         }
         if (\array_key_exists('manual_away', $data) && null !== $data['manual_away']) {
-            $object->setManualAway($data['manual_away']);
+            $object->manualAway = $data['manual_away'];
             unset($data['manual_away']);
-        } elseif (\array_key_exists('manual_away', $data) && null === $data['manual_away']) {
-            $object->setManualAway(null);
+        } elseif (\array_key_exists('manual_away', $data)) {
+            $object->manualAway = null;
             unset($data['manual_away']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
+            $object->ok = $data['ok'];
             unset($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
             unset($data['ok']);
         }
         if (\array_key_exists('online', $data) && null !== $data['online']) {
-            $object->setOnline($data['online']);
+            $object->online = $data['online'];
             unset($data['online']);
-        } elseif (\array_key_exists('online', $data) && null === $data['online']) {
-            $object->setOnline(null);
+        } elseif (\array_key_exists('online', $data)) {
+            $object->online = null;
             unset($data['online']);
         }
         if (\array_key_exists('presence', $data) && null !== $data['presence']) {
-            $object->setPresence($data['presence']);
+            $object->presence = $data['presence'];
             unset($data['presence']);
-        } elseif (\array_key_exists('presence', $data) && null === $data['presence']) {
-            $object->setPresence(null);
+        } elseif (\array_key_exists('presence', $data)) {
+            $object->presence = null;
             unset($data['presence']);
         }
         foreach ($data as $key => $value) {
@@ -125,23 +125,23 @@ class UsersGetPresenceGetResponse200Normalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoAway') && null !== $data->getAutoAway()) {
-            $dataArray['auto_away'] = $data->getAutoAway();
+        if (\array_key_exists('autoAway', get_object_vars($data)) && null !== ($data->autoAway ?? null)) {
+            $dataArray['auto_away'] = $data->autoAway;
         }
-        if ($data->isInitialized('connectionCount') && null !== $data->getConnectionCount()) {
-            $dataArray['connection_count'] = $data->getConnectionCount();
+        if (\array_key_exists('connectionCount', get_object_vars($data)) && null !== ($data->connectionCount ?? null)) {
+            $dataArray['connection_count'] = $data->connectionCount;
         }
-        if ($data->isInitialized('lastActivity') && null !== $data->getLastActivity()) {
-            $dataArray['last_activity'] = $data->getLastActivity();
+        if (\array_key_exists('lastActivity', get_object_vars($data)) && null !== ($data->lastActivity ?? null)) {
+            $dataArray['last_activity'] = $data->lastActivity;
         }
-        if ($data->isInitialized('manualAway') && null !== $data->getManualAway()) {
-            $dataArray['manual_away'] = $data->getManualAway();
+        if (\array_key_exists('manualAway', get_object_vars($data)) && null !== ($data->manualAway ?? null)) {
+            $dataArray['manual_away'] = $data->manualAway;
         }
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('online') && null !== $data->getOnline()) {
-            $dataArray['online'] = $data->getOnline();
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('online', get_object_vars($data)) && null !== ($data->online ?? null)) {
+            $dataArray['online'] = $data->online;
         }
-        $dataArray['presence'] = $data->getPresence();
+        $dataArray['presence'] = $data->presence;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

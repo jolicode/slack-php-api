@@ -20,22 +20,19 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
     /**
      * Finishes an upload started with files.getUploadURLExternal.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $blocks A JSON-based array of structured rich text blocks, presented as a URL-encoded string. If the `initial_comment` field is provided, the `blocks` field is ignored.
-     * @var string $channel_id Channel ID where the file will be shared. If not specified, the file will remain private.
-     * @var string $channels comma-separated list of channel IDs where the file will be shared
-     * @var string $files an array of file objects, each containing the `id` of the file to be completed
-     * @var string $initial_comment the message text introducing the file in specified channels
-     * @var string $thread_ts Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead. Also, make sure to provide only one channel when using `thread_ts`.
-     *             }
-     *
-     * @param array $formParameters {
-     *
-     * @var string $token Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.
-     *             }
+     * @param array{
+     *    "blocks"?: string, //A JSON-based array of structured rich text blocks, presented as a URL-encoded string. If the `initial_comment` field is provided, the `blocks` field is ignored.
+     *    "channel_id"?: string, //Channel ID where the file will be shared. If not specified, the file will remain private.
+     *    "channels"?: string, //Comma-separated list of channel IDs where the file will be shared.
+     *    "files": string, //An array of file objects, each containing the `id` of the file to be completed.
+     *    "initial_comment"?: string, //The message text introducing the file in specified channels.
+     *    "thread_ts"?: string, //Provide another message's `ts` value to upload this file as a reply. Never use a reply's `ts` value; use its parent instead. Also, make sure to provide only one channel when using `thread_ts`.
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter.
+     * } $formParameters
      */
-    public function __construct(array $queryParameters = [], array $formParameters = [])
+    public function __construct(array $queryParameters, array $formParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->formParameters = $formParameters;
@@ -51,7 +48,7 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
         return '/files.completeUploadExternal';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -64,6 +61,16 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -94,12 +101,12 @@ class FilesCompleteUploadExternal extends \JoliCode\Slack\Api\Runtime\Client\Bas
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200|\JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200|\JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200', 'json');
         }

@@ -95,176 +95,176 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['is_thread_only'] = (bool) $data['is_thread_only'];
         }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
-            $object->setAcceptedUser($data['accepted_user']);
-        } elseif (\array_key_exists('accepted_user', $data) && null === $data['accepted_user']) {
-            $object->setAcceptedUser(null);
+            $object->acceptedUser = $data['accepted_user'];
+        } elseif (\array_key_exists('accepted_user', $data)) {
+            $object->acceptedUser = null;
         }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
-            $object->setCreated($data['created']);
-        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-            $object->setCreated(null);
+            $object->created = $data['created'];
+        } elseif (\array_key_exists('created', $data)) {
+            $object->created = null;
         }
         if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-            $object->setCreator($data['creator']);
-        } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
-            $object->setCreator(null);
+            $object->creator = $data['creator'];
+        } elseif (\array_key_exists('creator', $data)) {
+            $object->creator = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_archived', $data) && null !== $data['is_archived']) {
-            $object->setIsArchived($data['is_archived']);
-        } elseif (\array_key_exists('is_archived', $data) && null === $data['is_archived']) {
-            $object->setIsArchived(null);
+            $object->isArchived = $data['is_archived'];
+        } elseif (\array_key_exists('is_archived', $data)) {
+            $object->isArchived = null;
         }
         if (\array_key_exists('is_channel', $data) && null !== $data['is_channel']) {
-            $object->setIsChannel($data['is_channel']);
-        } elseif (\array_key_exists('is_channel', $data) && null === $data['is_channel']) {
-            $object->setIsChannel(null);
+            $object->isChannel = $data['is_channel'];
+        } elseif (\array_key_exists('is_channel', $data)) {
+            $object->isChannel = null;
         }
         if (\array_key_exists('is_frozen', $data) && null !== $data['is_frozen']) {
-            $object->setIsFrozen($data['is_frozen']);
-        } elseif (\array_key_exists('is_frozen', $data) && null === $data['is_frozen']) {
-            $object->setIsFrozen(null);
+            $object->isFrozen = $data['is_frozen'];
+        } elseif (\array_key_exists('is_frozen', $data)) {
+            $object->isFrozen = null;
         }
         if (\array_key_exists('is_general', $data) && null !== $data['is_general']) {
-            $object->setIsGeneral($data['is_general']);
-        } elseif (\array_key_exists('is_general', $data) && null === $data['is_general']) {
-            $object->setIsGeneral(null);
+            $object->isGeneral = $data['is_general'];
+        } elseif (\array_key_exists('is_general', $data)) {
+            $object->isGeneral = null;
         }
         if (\array_key_exists('is_member', $data) && null !== $data['is_member']) {
-            $object->setIsMember($data['is_member']);
-        } elseif (\array_key_exists('is_member', $data) && null === $data['is_member']) {
-            $object->setIsMember(null);
+            $object->isMember = $data['is_member'];
+        } elseif (\array_key_exists('is_member', $data)) {
+            $object->isMember = null;
         }
         if (\array_key_exists('is_moved', $data) && null !== $data['is_moved']) {
-            $object->setIsMoved($data['is_moved']);
-        } elseif (\array_key_exists('is_moved', $data) && null === $data['is_moved']) {
-            $object->setIsMoved(null);
+            $object->isMoved = $data['is_moved'];
+        } elseif (\array_key_exists('is_moved', $data)) {
+            $object->isMoved = null;
         }
         if (\array_key_exists('is_mpim', $data) && null !== $data['is_mpim']) {
-            $object->setIsMpim($data['is_mpim']);
-        } elseif (\array_key_exists('is_mpim', $data) && null === $data['is_mpim']) {
-            $object->setIsMpim(null);
+            $object->isMpim = $data['is_mpim'];
+        } elseif (\array_key_exists('is_mpim', $data)) {
+            $object->isMpim = null;
         }
         if (\array_key_exists('is_non_threadable', $data) && null !== $data['is_non_threadable']) {
-            $object->setIsNonThreadable($data['is_non_threadable']);
-        } elseif (\array_key_exists('is_non_threadable', $data) && null === $data['is_non_threadable']) {
-            $object->setIsNonThreadable(null);
+            $object->isNonThreadable = $data['is_non_threadable'];
+        } elseif (\array_key_exists('is_non_threadable', $data)) {
+            $object->isNonThreadable = null;
         }
         if (\array_key_exists('is_org_shared', $data) && null !== $data['is_org_shared']) {
-            $object->setIsOrgShared($data['is_org_shared']);
-        } elseif (\array_key_exists('is_org_shared', $data) && null === $data['is_org_shared']) {
-            $object->setIsOrgShared(null);
+            $object->isOrgShared = $data['is_org_shared'];
+        } elseif (\array_key_exists('is_org_shared', $data)) {
+            $object->isOrgShared = null;
         }
         if (\array_key_exists('is_pending_ext_shared', $data) && null !== $data['is_pending_ext_shared']) {
-            $object->setIsPendingExtShared($data['is_pending_ext_shared']);
-        } elseif (\array_key_exists('is_pending_ext_shared', $data) && null === $data['is_pending_ext_shared']) {
-            $object->setIsPendingExtShared(null);
+            $object->isPendingExtShared = $data['is_pending_ext_shared'];
+        } elseif (\array_key_exists('is_pending_ext_shared', $data)) {
+            $object->isPendingExtShared = null;
         }
         if (\array_key_exists('is_private', $data) && null !== $data['is_private']) {
-            $object->setIsPrivate($data['is_private']);
-        } elseif (\array_key_exists('is_private', $data) && null === $data['is_private']) {
-            $object->setIsPrivate(null);
+            $object->isPrivate = $data['is_private'];
+        } elseif (\array_key_exists('is_private', $data)) {
+            $object->isPrivate = null;
         }
         if (\array_key_exists('is_read_only', $data) && null !== $data['is_read_only']) {
-            $object->setIsReadOnly($data['is_read_only']);
-        } elseif (\array_key_exists('is_read_only', $data) && null === $data['is_read_only']) {
-            $object->setIsReadOnly(null);
+            $object->isReadOnly = $data['is_read_only'];
+        } elseif (\array_key_exists('is_read_only', $data)) {
+            $object->isReadOnly = null;
         }
         if (\array_key_exists('is_shared', $data) && null !== $data['is_shared']) {
-            $object->setIsShared($data['is_shared']);
-        } elseif (\array_key_exists('is_shared', $data) && null === $data['is_shared']) {
-            $object->setIsShared(null);
+            $object->isShared = $data['is_shared'];
+        } elseif (\array_key_exists('is_shared', $data)) {
+            $object->isShared = null;
         }
         if (\array_key_exists('is_thread_only', $data) && null !== $data['is_thread_only']) {
-            $object->setIsThreadOnly($data['is_thread_only']);
-        } elseif (\array_key_exists('is_thread_only', $data) && null === $data['is_thread_only']) {
-            $object->setIsThreadOnly(null);
+            $object->isThreadOnly = $data['is_thread_only'];
+        } elseif (\array_key_exists('is_thread_only', $data)) {
+            $object->isThreadOnly = null;
         }
         if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
-            $object->setLastRead($data['last_read']);
-        } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
-            $object->setLastRead(null);
+            $object->lastRead = $data['last_read'];
+        } elseif (\array_key_exists('last_read', $data)) {
+            $object->lastRead = null;
         }
         if (\array_key_exists('latest', $data) && null !== $data['latest']) {
-            $object->setLatest($data['latest']);
-        } elseif (\array_key_exists('latest', $data) && null === $data['latest']) {
-            $object->setLatest(null);
+            $object->latest = $data['latest'];
+        } elseif (\array_key_exists('latest', $data)) {
+            $object->latest = null;
         }
         if (\array_key_exists('members', $data) && null !== $data['members']) {
             $values = [];
             foreach ($data['members'] as $value) {
                 $values[] = $value;
             }
-            $object->setMembers($values);
-        } elseif (\array_key_exists('members', $data) && null === $data['members']) {
-            $object->setMembers(null);
+            $object->members = $values;
+        } elseif (\array_key_exists('members', $data)) {
+            $object->members = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('name_normalized', $data) && null !== $data['name_normalized']) {
-            $object->setNameNormalized($data['name_normalized']);
-        } elseif (\array_key_exists('name_normalized', $data) && null === $data['name_normalized']) {
-            $object->setNameNormalized(null);
+            $object->nameNormalized = $data['name_normalized'];
+        } elseif (\array_key_exists('name_normalized', $data)) {
+            $object->nameNormalized = null;
         }
         if (\array_key_exists('num_members', $data) && null !== $data['num_members']) {
-            $object->setNumMembers($data['num_members']);
-        } elseif (\array_key_exists('num_members', $data) && null === $data['num_members']) {
-            $object->setNumMembers(null);
+            $object->numMembers = $data['num_members'];
+        } elseif (\array_key_exists('num_members', $data)) {
+            $object->numMembers = null;
         }
         if (\array_key_exists('pending_shared', $data) && null !== $data['pending_shared']) {
             $values_1 = [];
             foreach ($data['pending_shared'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setPendingShared($values_1);
-        } elseif (\array_key_exists('pending_shared', $data) && null === $data['pending_shared']) {
-            $object->setPendingShared(null);
+            $object->pendingShared = $values_1;
+        } elseif (\array_key_exists('pending_shared', $data)) {
+            $object->pendingShared = null;
         }
         if (\array_key_exists('previous_names', $data) && null !== $data['previous_names']) {
             $values_2 = [];
             foreach ($data['previous_names'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setPreviousNames($values_2);
-        } elseif (\array_key_exists('previous_names', $data) && null === $data['previous_names']) {
-            $object->setPreviousNames(null);
+            $object->previousNames = $values_2;
+        } elseif (\array_key_exists('previous_names', $data)) {
+            $object->previousNames = null;
         }
         if (\array_key_exists('priority', $data) && null !== $data['priority']) {
-            $object->setPriority($data['priority']);
-        } elseif (\array_key_exists('priority', $data) && null === $data['priority']) {
-            $object->setPriority(null);
+            $object->priority = $data['priority'];
+        } elseif (\array_key_exists('priority', $data)) {
+            $object->priority = null;
         }
         if (\array_key_exists('purpose', $data) && null !== $data['purpose']) {
-            $object->setPurpose($this->denormalizer->denormalize($data['purpose'], \JoliCode\Slack\Api\Model\ObjsChannelPurpose::class, 'json', $context));
-        } elseif (\array_key_exists('purpose', $data) && null === $data['purpose']) {
-            $object->setPurpose(null);
+            $object->purpose = $this->denormalizer->denormalize($data['purpose'], \JoliCode\Slack\Api\Model\ObjsChannelPurpose::class, 'json', $context);
+        } elseif (\array_key_exists('purpose', $data)) {
+            $object->purpose = null;
         }
         if (\array_key_exists('topic', $data) && null !== $data['topic']) {
-            $object->setTopic($this->denormalizer->denormalize($data['topic'], \JoliCode\Slack\Api\Model\ObjsChannelTopic::class, 'json', $context));
-        } elseif (\array_key_exists('topic', $data) && null === $data['topic']) {
-            $object->setTopic(null);
+            $object->topic = $this->denormalizer->denormalize($data['topic'], \JoliCode\Slack\Api\Model\ObjsChannelTopic::class, 'json', $context);
+        } elseif (\array_key_exists('topic', $data)) {
+            $object->topic = null;
         }
         if (\array_key_exists('unlinked', $data) && null !== $data['unlinked']) {
-            $object->setUnlinked($data['unlinked']);
-        } elseif (\array_key_exists('unlinked', $data) && null === $data['unlinked']) {
-            $object->setUnlinked(null);
+            $object->unlinked = $data['unlinked'];
+        } elseif (\array_key_exists('unlinked', $data)) {
+            $object->unlinked = null;
         }
         if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
-            $object->setUnreadCount($data['unread_count']);
-        } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
-            $object->setUnreadCount(null);
+            $object->unreadCount = $data['unread_count'];
+        } elseif (\array_key_exists('unread_count', $data)) {
+            $object->unreadCount = null;
         }
         if (\array_key_exists('unread_count_display', $data) && null !== $data['unread_count_display']) {
-            $object->setUnreadCountDisplay($data['unread_count_display']);
-        } elseif (\array_key_exists('unread_count_display', $data) && null === $data['unread_count_display']) {
-            $object->setUnreadCountDisplay(null);
+            $object->unreadCountDisplay = $data['unread_count_display'];
+        } elseif (\array_key_exists('unread_count_display', $data)) {
+            $object->unreadCountDisplay = null;
         }
 
         return $object;
@@ -273,87 +273,89 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('acceptedUser') && null !== $data->getAcceptedUser()) {
-            $dataArray['accepted_user'] = $data->getAcceptedUser();
+        if (\array_key_exists('acceptedUser', get_object_vars($data)) && null !== ($data->acceptedUser ?? null)) {
+            $dataArray['accepted_user'] = $data->acceptedUser;
         }
-        $dataArray['created'] = $data->getCreated();
-        $dataArray['creator'] = $data->getCreator();
-        $dataArray['id'] = $data->getId();
-        if ($data->isInitialized('isArchived') && null !== $data->getIsArchived()) {
-            $dataArray['is_archived'] = $data->getIsArchived();
+        $dataArray['created'] = $data->created;
+        $dataArray['creator'] = $data->creator;
+        $dataArray['id'] = $data->id;
+        if (\array_key_exists('isArchived', get_object_vars($data)) && null !== ($data->isArchived ?? null)) {
+            $dataArray['is_archived'] = $data->isArchived;
         }
-        $dataArray['is_channel'] = $data->getIsChannel();
-        if ($data->isInitialized('isFrozen') && null !== $data->getIsFrozen()) {
-            $dataArray['is_frozen'] = $data->getIsFrozen();
+        $dataArray['is_channel'] = $data->isChannel;
+        if (\array_key_exists('isFrozen', get_object_vars($data)) && null !== ($data->isFrozen ?? null)) {
+            $dataArray['is_frozen'] = $data->isFrozen;
         }
-        if ($data->isInitialized('isGeneral') && null !== $data->getIsGeneral()) {
-            $dataArray['is_general'] = $data->getIsGeneral();
+        if (\array_key_exists('isGeneral', get_object_vars($data)) && null !== ($data->isGeneral ?? null)) {
+            $dataArray['is_general'] = $data->isGeneral;
         }
-        if ($data->isInitialized('isMember') && null !== $data->getIsMember()) {
-            $dataArray['is_member'] = $data->getIsMember();
+        if (\array_key_exists('isMember', get_object_vars($data)) && null !== ($data->isMember ?? null)) {
+            $dataArray['is_member'] = $data->isMember;
         }
-        if ($data->isInitialized('isMoved') && null !== $data->getIsMoved()) {
-            $dataArray['is_moved'] = $data->getIsMoved();
+        if (\array_key_exists('isMoved', get_object_vars($data)) && null !== ($data->isMoved ?? null)) {
+            $dataArray['is_moved'] = $data->isMoved;
         }
-        $dataArray['is_mpim'] = $data->getIsMpim();
-        if ($data->isInitialized('isNonThreadable') && null !== $data->getIsNonThreadable()) {
-            $dataArray['is_non_threadable'] = $data->getIsNonThreadable();
+        $dataArray['is_mpim'] = $data->isMpim;
+        if (\array_key_exists('isNonThreadable', get_object_vars($data)) && null !== ($data->isNonThreadable ?? null)) {
+            $dataArray['is_non_threadable'] = $data->isNonThreadable;
         }
-        $dataArray['is_org_shared'] = $data->getIsOrgShared();
-        if ($data->isInitialized('isPendingExtShared') && null !== $data->getIsPendingExtShared()) {
-            $dataArray['is_pending_ext_shared'] = $data->getIsPendingExtShared();
+        $dataArray['is_org_shared'] = $data->isOrgShared;
+        if (\array_key_exists('isPendingExtShared', get_object_vars($data)) && null !== ($data->isPendingExtShared ?? null)) {
+            $dataArray['is_pending_ext_shared'] = $data->isPendingExtShared;
         }
-        $dataArray['is_private'] = $data->getIsPrivate();
-        if ($data->isInitialized('isReadOnly') && null !== $data->getIsReadOnly()) {
-            $dataArray['is_read_only'] = $data->getIsReadOnly();
+        $dataArray['is_private'] = $data->isPrivate;
+        if (\array_key_exists('isReadOnly', get_object_vars($data)) && null !== ($data->isReadOnly ?? null)) {
+            $dataArray['is_read_only'] = $data->isReadOnly;
         }
-        $dataArray['is_shared'] = $data->getIsShared();
-        if ($data->isInitialized('isThreadOnly') && null !== $data->getIsThreadOnly()) {
-            $dataArray['is_thread_only'] = $data->getIsThreadOnly();
+        $dataArray['is_shared'] = $data->isShared;
+        if (\array_key_exists('isThreadOnly', get_object_vars($data)) && null !== ($data->isThreadOnly ?? null)) {
+            $dataArray['is_thread_only'] = $data->isThreadOnly;
         }
-        if ($data->isInitialized('lastRead') && null !== $data->getLastRead()) {
-            $dataArray['last_read'] = $data->getLastRead();
+        if (\array_key_exists('lastRead', get_object_vars($data)) && null !== ($data->lastRead ?? null)) {
+            $dataArray['last_read'] = $data->lastRead;
         }
-        if ($data->isInitialized('latest') && null !== $data->getLatest()) {
-            $dataArray['latest'] = $data->getLatest();
+        if (\array_key_exists('latest', get_object_vars($data)) && null !== ($data->latest ?? null)) {
+            $dataArray['latest'] = $data->latest;
         }
         $values = [];
-        foreach ($data->getMembers() as $value) {
+        foreach ($data->members as $value) {
             $values[] = $value;
         }
         $dataArray['members'] = $values;
-        $dataArray['name'] = $data->getName();
-        $dataArray['name_normalized'] = $data->getNameNormalized();
-        if ($data->isInitialized('numMembers') && null !== $data->getNumMembers()) {
-            $dataArray['num_members'] = $data->getNumMembers();
+        $dataArray['name'] = $data->name;
+        $dataArray['name_normalized'] = $data->nameNormalized;
+        if (\array_key_exists('numMembers', get_object_vars($data)) && null !== ($data->numMembers ?? null)) {
+            $dataArray['num_members'] = $data->numMembers;
         }
-        if ($data->isInitialized('pendingShared') && null !== $data->getPendingShared()) {
+        if (\array_key_exists('pendingShared', get_object_vars($data)) && null !== ($data->pendingShared ?? null)) {
             $values_1 = [];
-            foreach ($data->getPendingShared() as $value_1) {
+            foreach ($data->pendingShared as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['pending_shared'] = $values_1;
         }
-        if ($data->isInitialized('previousNames') && null !== $data->getPreviousNames()) {
+        if (\array_key_exists('previousNames', get_object_vars($data)) && null !== ($data->previousNames ?? null)) {
             $values_2 = [];
-            foreach ($data->getPreviousNames() as $value_2) {
+            foreach ($data->previousNames as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['previous_names'] = $values_2;
         }
-        if ($data->isInitialized('priority') && null !== $data->getPriority()) {
-            $dataArray['priority'] = $data->getPriority();
+        if (\array_key_exists('priority', get_object_vars($data)) && null !== ($data->priority ?? null)) {
+            $dataArray['priority'] = $data->priority;
         }
-        $dataArray['purpose'] = null === $data->getPurpose() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPurpose(), 'json', $context));
-        $dataArray['topic'] = null === $data->getTopic() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTopic(), 'json', $context));
-        if ($data->isInitialized('unlinked') && null !== $data->getUnlinked()) {
-            $dataArray['unlinked'] = $data->getUnlinked();
+        $normalized = null === $data->purpose ? null : $this->normalizer->normalize($data->purpose, 'json', $context);
+        $dataArray['purpose'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $normalized_1 = null === $data->topic ? null : $this->normalizer->normalize($data->topic, 'json', $context);
+        $dataArray['topic'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
+        if (\array_key_exists('unlinked', get_object_vars($data)) && null !== ($data->unlinked ?? null)) {
+            $dataArray['unlinked'] = $data->unlinked;
         }
-        if ($data->isInitialized('unreadCount') && null !== $data->getUnreadCount()) {
-            $dataArray['unread_count'] = $data->getUnreadCount();
+        if (\array_key_exists('unreadCount', get_object_vars($data)) && null !== ($data->unreadCount ?? null)) {
+            $dataArray['unread_count'] = $data->unreadCount;
         }
-        if ($data->isInitialized('unreadCountDisplay') && null !== $data->getUnreadCountDisplay()) {
-            $dataArray['unread_count_display'] = $data->getUnreadCountDisplay();
+        if (\array_key_exists('unreadCountDisplay', get_object_vars($data)) && null !== ($data->unreadCountDisplay ?? null)) {
+            $dataArray['unread_count_display'] = $data->unreadCountDisplay;
         }
 
         return $dataArray;

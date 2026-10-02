@@ -20,18 +20,15 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Ends a Call.
      *
-     * @param array $formParameters {
-     *
-     * @var int    $duration Call duration in seconds
-     * @var string $id `id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `calls:write`
-     *             }
+     * @param array{
+     *    "duration"?: int, //Call duration in seconds
+     *    "id": string, //`id` returned when registering the call using the [`calls.add`](/methods/calls.add) method.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `calls:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         return '/calls.end';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class CallsEnd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\CallsEndPostResponse200|\JoliCode\Slack\Api\Model\CallsEndPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\CallsEndPostResponse200|\JoliCode\Slack\Api\Model\CallsEndPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\CallsEndPostResponse200', 'json');
         }

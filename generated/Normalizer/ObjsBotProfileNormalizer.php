@@ -56,39 +56,39 @@ class ObjsBotProfileNormalizer implements DenormalizerInterface, NormalizerInter
             $data['deleted'] = (bool) $data['deleted'];
         }
         if (\array_key_exists('app_id', $data) && null !== $data['app_id']) {
-            $object->setAppId($data['app_id']);
-        } elseif (\array_key_exists('app_id', $data) && null === $data['app_id']) {
-            $object->setAppId(null);
+            $object->appId = $data['app_id'];
+        } elseif (\array_key_exists('app_id', $data)) {
+            $object->appId = null;
         }
         if (\array_key_exists('deleted', $data) && null !== $data['deleted']) {
-            $object->setDeleted($data['deleted']);
-        } elseif (\array_key_exists('deleted', $data) && null === $data['deleted']) {
-            $object->setDeleted(null);
+            $object->deleted = $data['deleted'];
+        } elseif (\array_key_exists('deleted', $data)) {
+            $object->deleted = null;
         }
         if (\array_key_exists('icons', $data) && null !== $data['icons']) {
-            $object->setIcons($this->denormalizer->denormalize($data['icons'], \JoliCode\Slack\Api\Model\ObjsBotProfileIcons::class, 'json', $context));
-        } elseif (\array_key_exists('icons', $data) && null === $data['icons']) {
-            $object->setIcons(null);
+            $object->icons = $this->denormalizer->denormalize($data['icons'], \JoliCode\Slack\Api\Model\ObjsBotProfileIcons::class, 'json', $context);
+        } elseif (\array_key_exists('icons', $data)) {
+            $object->icons = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
-            $object->setTeamId($data['team_id']);
-        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
-            $object->setTeamId(null);
+            $object->teamId = $data['team_id'];
+        } elseif (\array_key_exists('team_id', $data)) {
+            $object->teamId = null;
         }
         if (\array_key_exists('updated', $data) && null !== $data['updated']) {
-            $object->setUpdated($data['updated']);
-        } elseif (\array_key_exists('updated', $data) && null === $data['updated']) {
-            $object->setUpdated(null);
+            $object->updated = $data['updated'];
+        } elseif (\array_key_exists('updated', $data)) {
+            $object->updated = null;
         }
 
         return $object;
@@ -97,13 +97,14 @@ class ObjsBotProfileNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_id'] = $data->getAppId();
-        $dataArray['deleted'] = $data->getDeleted();
-        $dataArray['icons'] = null === $data->getIcons() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIcons(), 'json', $context));
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
-        $dataArray['team_id'] = $data->getTeamId();
-        $dataArray['updated'] = $data->getUpdated();
+        $dataArray['app_id'] = $data->appId;
+        $dataArray['deleted'] = $data->deleted;
+        $normalized = null === $data->icons ? null : $this->normalizer->normalize($data->icons, 'json', $context);
+        $dataArray['icons'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
+        $dataArray['team_id'] = $data->teamId;
+        $dataArray['updated'] = $data->updated;
 
         return $dataArray;
     }

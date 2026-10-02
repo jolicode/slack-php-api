@@ -56,19 +56,19 @@ class ChatMeMessagePostResponse200Normalizer implements DenormalizerInterface, N
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('ts', $data) && null !== $data['ts']) {
-            $object->setTs($data['ts']);
-        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
-            $object->setTs(null);
+            $object->ts = $data['ts'];
+        } elseif (\array_key_exists('ts', $data)) {
+            $object->ts = null;
         }
 
         return $object;
@@ -77,12 +77,12 @@ class ChatMeMessagePostResponse200Normalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (\array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel;
         }
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('ts') && null !== $data->getTs()) {
-            $dataArray['ts'] = $data->getTs();
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('ts', get_object_vars($data)) && null !== ($data->ts ?? null)) {
+            $dataArray['ts'] = $data->ts;
         }
 
         return $dataArray;

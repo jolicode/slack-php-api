@@ -53,19 +53,19 @@ class ObjsBotProfileIconsNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('image_36', $data) && null !== $data['image_36']) {
-            $object->setImage36($data['image_36']);
-        } elseif (\array_key_exists('image_36', $data) && null === $data['image_36']) {
-            $object->setImage36(null);
+            $object->image36 = $data['image_36'];
+        } elseif (\array_key_exists('image_36', $data)) {
+            $object->image36 = null;
         }
         if (\array_key_exists('image_48', $data) && null !== $data['image_48']) {
-            $object->setImage48($data['image_48']);
-        } elseif (\array_key_exists('image_48', $data) && null === $data['image_48']) {
-            $object->setImage48(null);
+            $object->image48 = $data['image_48'];
+        } elseif (\array_key_exists('image_48', $data)) {
+            $object->image48 = null;
         }
         if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
-            $object->setImage72($data['image_72']);
-        } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
-            $object->setImage72(null);
+            $object->image72 = $data['image_72'];
+        } elseif (\array_key_exists('image_72', $data)) {
+            $object->image72 = null;
         }
 
         return $object;
@@ -74,9 +74,9 @@ class ObjsBotProfileIconsNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['image_36'] = $data->getImage36();
-        $dataArray['image_48'] = $data->getImage48();
-        $dataArray['image_72'] = $data->getImage72();
+        $dataArray['image_36'] = $data->image36;
+        $dataArray['image_48'] = $data->image48;
+        $dataArray['image_72'] = $data->image72;
 
         return $dataArray;
     }

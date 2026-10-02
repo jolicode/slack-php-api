@@ -56,24 +56,24 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('self', $data) && null !== $data['self']) {
-            $object->setSelf($this->denormalizer->denormalize($data['self'], \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self::class, 'json', $context));
-        } elseif (\array_key_exists('self', $data) && null === $data['self']) {
-            $object->setSelf(null);
+            $object->self = $this->denormalizer->denormalize($data['self'], \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Self::class, 'json', $context);
+        } elseif (\array_key_exists('self', $data)) {
+            $object->self = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team::class, 'json', $context));
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\RtmConnectGetResponse200Team::class, 'json', $context);
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
         if (\array_key_exists('url', $data) && null !== $data['url']) {
-            $object->setUrl($data['url']);
-        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
-            $object->setUrl(null);
+            $object->url = $data['url'];
+        } elseif (\array_key_exists('url', $data)) {
+            $object->url = null;
         }
 
         return $object;
@@ -82,10 +82,12 @@ class RtmConnectGetResponse200Normalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['self'] = null === $data->getSelf() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getSelf(), 'json', $context));
-        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
-        $dataArray['url'] = $data->getUrl();
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->self ? null : $this->normalizer->normalize($data->self, 'json', $context);
+        $dataArray['self'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $normalized_1 = null === $data->team ? null : $this->normalizer->normalize($data->team, 'json', $context);
+        $dataArray['team'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $dataArray['url'] = $data->url;
 
         return $dataArray;
     }

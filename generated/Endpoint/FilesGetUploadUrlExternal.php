@@ -20,20 +20,17 @@ class FilesGetUploadUrlExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     /**
      * Gets a URL for an edge external file upload.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $alt_txt description of image for screen-reader
-     * @var string $filename name of the file being uploaded
-     * @var int    $length size in bytes of the file being uploaded
-     * @var string $snippet_type Syntax type of the snippet being uploaded.
-     *             }
-     *
-     * @param array $formParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `files:write`
-     *             }
+     * @param array{
+     *    "alt_txt"?: string, //Description of image for screen-reader.
+     *    "filename": string, //Name of the file being uploaded.
+     *    "length": int, //Size in bytes of the file being uploaded.
+     *    "snippet_type"?: string, //Syntax type of the snippet being uploaded.
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `files:write`
+     * } $formParameters
      */
-    public function __construct(array $queryParameters = [], array $formParameters = [])
+    public function __construct(array $queryParameters, array $formParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->formParameters = $formParameters;
@@ -49,7 +46,7 @@ class FilesGetUploadUrlExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseE
         return '/files.getUploadURLExternal';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -62,6 +59,16 @@ class FilesGetUploadUrlExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -90,12 +97,12 @@ class FilesGetUploadUrlExternal extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200|\JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200|\JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200', 'json');
         }

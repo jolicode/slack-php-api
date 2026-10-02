@@ -20,11 +20,10 @@ class TeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Gets information about the current team.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $team Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels
-     * @var string $token Authentication token. Requires scope: `team:read`
-     *             }
+     * @param array{
+     *    "team"?: string, //Team to get info on, if omitted, will return information about the current team. Will only return team that the authenticated token is allowed to see through external shared channels
+     *    "token"?: string, //Authentication token. Requires scope: `team:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class TeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         return '/team.info';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class TeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class TeamInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\TeamInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\TeamInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\TeamInfoGetResponse200', 'json');
         }

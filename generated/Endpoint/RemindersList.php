@@ -20,10 +20,9 @@ class RemindersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     /**
      * Lists all reminders created by or for a given user.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `reminders:read`
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `reminders:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -40,7 +39,7 @@ class RemindersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         return '/reminders.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class RemindersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         return ['slackAuth'];
     }
 
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
+
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
@@ -67,12 +76,12 @@ class RemindersList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\RemindersListGetResponse200|\JoliCode\Slack\Api\Model\RemindersListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\RemindersListGetResponse200|\JoliCode\Slack\Api\Model\RemindersListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\RemindersListGetResponse200', 'json');
         }

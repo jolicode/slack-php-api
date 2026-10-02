@@ -56,14 +56,14 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('message_ts', $data) && null !== $data['message_ts']) {
-            $object->setMessageTs($data['message_ts']);
-        } elseif (\array_key_exists('message_ts', $data) && null === $data['message_ts']) {
-            $object->setMessageTs(null);
+            $object->messageTs = $data['message_ts'];
+        } elseif (\array_key_exists('message_ts', $data)) {
+            $object->messageTs = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -72,8 +72,8 @@ class ChatPostEphemeralPostResponse200Normalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['message_ts'] = $data->getMessageTs();
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['message_ts'] = $data->messageTs;
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

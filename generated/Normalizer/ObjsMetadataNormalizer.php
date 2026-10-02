@@ -53,14 +53,14 @@ class ObjsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('event_payload', $data) && null !== $data['event_payload']) {
-            $object->setEventPayload($data['event_payload']);
-        } elseif (\array_key_exists('event_payload', $data) && null === $data['event_payload']) {
-            $object->setEventPayload(null);
+            $object->eventPayload = $data['event_payload'];
+        } elseif (\array_key_exists('event_payload', $data)) {
+            $object->eventPayload = null;
         }
         if (\array_key_exists('event_type', $data) && null !== $data['event_type']) {
-            $object->setEventType($data['event_type']);
-        } elseif (\array_key_exists('event_type', $data) && null === $data['event_type']) {
-            $object->setEventType(null);
+            $object->eventType = $data['event_type'];
+        } elseif (\array_key_exists('event_type', $data)) {
+            $object->eventType = null;
         }
 
         return $object;
@@ -69,8 +69,8 @@ class ObjsMetadataNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['event_payload'] = $data->getEventPayload();
-        $dataArray['event_type'] = $data->getEventType();
+        $dataArray['event_payload'] = $data->eventPayload;
+        $dataArray['event_type'] = $data->eventType;
 
         return $dataArray;
     }

@@ -20,18 +20,15 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     /**
      * Set the name of a given workspace.
      *
-     * @param array $formParameters {
-     *
-     * @var string $name the new name of the workspace
-     * @var string $team_id ID for the workspace to set the name for.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *             }
+     * @param array{
+     *    "name": string, //The new name of the workspace.
+     *    "team_id": string, //ID for the workspace to set the name for.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.teams:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
         return '/admin.teams.settings.setName';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class AdminTeamsSettingsSetName extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetNamePostResponse200', 'json');
         }

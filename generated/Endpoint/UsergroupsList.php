@@ -20,14 +20,13 @@ class UsergroupsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     /**
      * List all User Groups for a team.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $include_count include the number of users in each User Group
-     * @var bool   $include_disabled include disabled User Groups
-     * @var bool   $include_users include the list of users for each User Group
-     * @var string $team_id Encoded team id to list user groups in, required if org token is used
-     * @var string $token Authentication token. Requires scope: `usergroups:read`
-     *             }
+     * @param array{
+     *    "include_count"?: bool, //Include the number of users in each User Group.
+     *    "include_disabled"?: bool, //Include disabled User Groups.
+     *    "include_users"?: bool, //Include the list of users for each User Group.
+     *    "team_id"?: string, //Encoded team id to list user groups in, required if org token is used
+     *    "token"?: string, //Authentication token. Requires scope: `usergroups:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -44,7 +43,7 @@ class UsergroupsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         return '/usergroups.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -57,6 +56,16 @@ class UsergroupsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,12 +84,12 @@ class UsergroupsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsergroupsListGetResponse200|\JoliCode\Slack\Api\Model\UsergroupsListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsergroupsListGetResponse200', 'json');
         }

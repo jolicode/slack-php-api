@@ -57,23 +57,23 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
             foreach ($data['messages'] as $value) {
                 $values[] = $value;
             }
-            $object->setMessages($values);
-        } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
-            $object->setMessages(null);
+            $object->messages = $values;
+        } elseif (\array_key_exists('messages', $data)) {
+            $object->messages = null;
         }
         if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
-            $object->setNextCursor($data['next_cursor']);
-        } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
-            $object->setNextCursor(null);
+            $object->nextCursor = $data['next_cursor'];
+        } elseif (\array_key_exists('next_cursor', $data)) {
+            $object->nextCursor = null;
         }
         if (\array_key_exists('warnings', $data) && null !== $data['warnings']) {
             $values_1 = [];
             foreach ($data['warnings'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setWarnings($values_1);
-        } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
-            $object->setWarnings(null);
+            $object->warnings = $values_1;
+        } elseif (\array_key_exists('warnings', $data)) {
+            $object->warnings = null;
         }
 
         return $object;
@@ -82,17 +82,17 @@ class ObjsResponseMetadataNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('messages') && null !== $data->getMessages()) {
+        if (\array_key_exists('messages', get_object_vars($data)) && null !== ($data->messages ?? null)) {
             $values = [];
-            foreach ($data->getMessages() as $value) {
+            foreach ($data->messages as $value) {
                 $values[] = $value;
             }
             $dataArray['messages'] = $values;
         }
-        $dataArray['next_cursor'] = $data->getNextCursor();
-        if ($data->isInitialized('warnings') && null !== $data->getWarnings()) {
+        $dataArray['next_cursor'] = $data->nextCursor;
+        if (\array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values_1 = [];
-            foreach ($data->getWarnings() as $value_1) {
+            foreach ($data->warnings as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['warnings'] = $values_1;

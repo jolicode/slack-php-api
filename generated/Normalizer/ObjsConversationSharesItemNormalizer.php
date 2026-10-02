@@ -56,39 +56,39 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
             $data['is_active'] = (bool) $data['is_active'];
         }
         if (\array_key_exists('accepted_user', $data) && null !== $data['accepted_user']) {
-            $object->setAcceptedUser($data['accepted_user']);
-        } elseif (\array_key_exists('accepted_user', $data) && null === $data['accepted_user']) {
-            $object->setAcceptedUser(null);
+            $object->acceptedUser = $data['accepted_user'];
+        } elseif (\array_key_exists('accepted_user', $data)) {
+            $object->acceptedUser = null;
         }
         if (\array_key_exists('date_create', $data) && null !== $data['date_create']) {
-            $object->setDateCreate($data['date_create']);
-        } elseif (\array_key_exists('date_create', $data) && null === $data['date_create']) {
-            $object->setDateCreate(null);
+            $object->dateCreate = $data['date_create'];
+        } elseif (\array_key_exists('date_create', $data)) {
+            $object->dateCreate = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_active', $data) && null !== $data['is_active']) {
-            $object->setIsActive($data['is_active']);
-        } elseif (\array_key_exists('is_active', $data) && null === $data['is_active']) {
-            $object->setIsActive(null);
+            $object->isActive = $data['is_active'];
+        } elseif (\array_key_exists('is_active', $data)) {
+            $object->isActive = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\ObjsTeam::class, 'json', $context));
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\ObjsTeam::class, 'json', $context);
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $data['user'];
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
 
         return $object;
@@ -97,16 +97,17 @@ class ObjsConversationSharesItemNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('acceptedUser') && null !== $data->getAcceptedUser()) {
-            $dataArray['accepted_user'] = $data->getAcceptedUser();
+        if (\array_key_exists('acceptedUser', get_object_vars($data)) && null !== ($data->acceptedUser ?? null)) {
+            $dataArray['accepted_user'] = $data->acceptedUser;
         }
-        $dataArray['date_create'] = $data->getDateCreate();
-        $dataArray['id'] = $data->getId();
-        $dataArray['is_active'] = $data->getIsActive();
-        $dataArray['name'] = $data->getName();
-        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
-            $dataArray['user'] = $data->getUser();
+        $dataArray['date_create'] = $data->dateCreate;
+        $dataArray['id'] = $data->id;
+        $dataArray['is_active'] = $data->isActive;
+        $dataArray['name'] = $data->name;
+        $normalized = null === $data->team ? null : $this->normalizer->normalize($data->team, 'json', $context);
+        $dataArray['team'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        if (\array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
+            $dataArray['user'] = $data->user;
         }
 
         return $dataArray;

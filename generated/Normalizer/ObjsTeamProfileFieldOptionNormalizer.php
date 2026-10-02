@@ -57,36 +57,36 @@ class ObjsTeamProfileFieldOptionNormalizer implements DenormalizerInterface, Nor
             if (\is_bool($data['is_custom'])) {
                 $value = $data['is_custom'];
             }
-            $object->setIsCustom($value);
-        } elseif (\array_key_exists('is_custom', $data) && null === $data['is_custom']) {
-            $object->setIsCustom(null);
+            $object->isCustom = $value;
+        } elseif (\array_key_exists('is_custom', $data)) {
+            $object->isCustom = null;
         }
         if (\array_key_exists('is_multiple_entry', $data) && null !== $data['is_multiple_entry']) {
             $value_1 = $data['is_multiple_entry'];
             if (\is_bool($data['is_multiple_entry'])) {
                 $value_1 = $data['is_multiple_entry'];
             }
-            $object->setIsMultipleEntry($value_1);
-        } elseif (\array_key_exists('is_multiple_entry', $data) && null === $data['is_multiple_entry']) {
-            $object->setIsMultipleEntry(null);
+            $object->isMultipleEntry = $value_1;
+        } elseif (\array_key_exists('is_multiple_entry', $data)) {
+            $object->isMultipleEntry = null;
         }
         if (\array_key_exists('is_protected', $data) && null !== $data['is_protected']) {
             $value_2 = $data['is_protected'];
             if (\is_bool($data['is_protected'])) {
                 $value_2 = $data['is_protected'];
             }
-            $object->setIsProtected($value_2);
-        } elseif (\array_key_exists('is_protected', $data) && null === $data['is_protected']) {
-            $object->setIsProtected(null);
+            $object->isProtected = $value_2;
+        } elseif (\array_key_exists('is_protected', $data)) {
+            $object->isProtected = null;
         }
         if (\array_key_exists('is_scim', $data) && null !== $data['is_scim']) {
             $value_3 = $data['is_scim'];
             if (\is_bool($data['is_scim'])) {
                 $value_3 = $data['is_scim'];
             }
-            $object->setIsScim($value_3);
-        } elseif (\array_key_exists('is_scim', $data) && null === $data['is_scim']) {
-            $object->setIsScim(null);
+            $object->isScim = $value_3;
+        } elseif (\array_key_exists('is_scim', $data)) {
+            $object->isScim = null;
         }
 
         return $object;
@@ -95,31 +95,31 @@ class ObjsTeamProfileFieldOptionNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('isCustom') && null !== $data->getIsCustom()) {
-            $value = $data->getIsCustom();
-            if (\is_bool($data->getIsCustom())) {
-                $value = $data->getIsCustom();
+        if (\array_key_exists('isCustom', get_object_vars($data)) && null !== ($data->isCustom ?? null)) {
+            $value = $data->isCustom;
+            if (\is_bool($data->isCustom)) {
+                $value = $data->isCustom;
             }
             $dataArray['is_custom'] = $value;
         }
-        if ($data->isInitialized('isMultipleEntry') && null !== $data->getIsMultipleEntry()) {
-            $value_1 = $data->getIsMultipleEntry();
-            if (\is_bool($data->getIsMultipleEntry())) {
-                $value_1 = $data->getIsMultipleEntry();
+        if (\array_key_exists('isMultipleEntry', get_object_vars($data)) && null !== ($data->isMultipleEntry ?? null)) {
+            $value_1 = $data->isMultipleEntry;
+            if (\is_bool($data->isMultipleEntry)) {
+                $value_1 = $data->isMultipleEntry;
             }
             $dataArray['is_multiple_entry'] = $value_1;
         }
-        if ($data->isInitialized('isProtected') && null !== $data->getIsProtected()) {
-            $value_2 = $data->getIsProtected();
-            if (\is_bool($data->getIsProtected())) {
-                $value_2 = $data->getIsProtected();
+        if (\array_key_exists('isProtected', get_object_vars($data)) && null !== ($data->isProtected ?? null)) {
+            $value_2 = $data->isProtected;
+            if (\is_bool($data->isProtected)) {
+                $value_2 = $data->isProtected;
             }
             $dataArray['is_protected'] = $value_2;
         }
-        if ($data->isInitialized('isScim') && null !== $data->getIsScim()) {
-            $value_3 = $data->getIsScim();
-            if (\is_bool($data->getIsScim())) {
-                $value_3 = $data->getIsScim();
+        if (\array_key_exists('isScim', get_object_vars($data)) && null !== ($data->isScim ?? null)) {
+            $value_3 = $data->isScim;
+            if (\is_bool($data->isScim)) {
+                $value_3 = $data->isScim;
             }
             $dataArray['is_scim'] = $value_3;
         }

@@ -20,19 +20,16 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * Creates a reminder.
      *
-     * @param array $formParameters {
-     *
-     * @var string $text The content of the reminder
-     * @var string $time When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday")
-     * @var string $user The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `reminders:write`
-     *             }
+     * @param array{
+     *    "text": string, //The content of the reminder
+     *    "time": string, //When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. "in 15 minutes," or "every Thursday")
+     *    "user"?: string, //The user who will receive the reminder. If no user is specified, the reminder will go to user who created it.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `reminders:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -48,7 +45,7 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         return '/reminders.add';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -61,6 +58,16 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class RemindersAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\RemindersAddPostResponse200|\JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\RemindersAddPostResponse200|\JoliCode\Slack\Api\Model\RemindersAddPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\RemindersAddPostResponse200', 'json');
         }

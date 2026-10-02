@@ -20,20 +20,17 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     /**
      * Updates information about a Call.
      *
-     * @param array $formParameters {
-     *
-     * @var string $desktop_app_join_url when supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL
-     * @var string $id `id` returned by the [`calls.add`](/methods/calls.add) method.
-     * @var string $join_url the URL required for a client to join the Call
-     * @var string $title The name of the Call.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `calls:write`
-     *             }
+     * @param array{
+     *    "desktop_app_join_url"?: string, //When supplied, available Slack clients will attempt to directly launch the 3rd-party Call with this URL.
+     *    "id": string, //`id` returned by the [`calls.add`](/methods/calls.add) method.
+     *    "join_url"?: string, //The URL required for a client to join the Call.
+     *    "title"?: string, //The name of the Call.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `calls:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -49,7 +46,7 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         return '/calls.update';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -62,6 +59,16 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -90,12 +97,12 @@ class CallsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\CallsUpdatePostResponse200|\JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\CallsUpdatePostResponse200|\JoliCode\Slack\Api\Model\CallsUpdatePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\CallsUpdatePostResponse200', 'json');
         }

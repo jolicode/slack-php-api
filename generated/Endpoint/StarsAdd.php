@@ -20,18 +20,15 @@ class StarsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Adds a star to an item.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel channel to add star to, or channel where the message to add star to was posted (used with `timestamp`)
-     * @var string $file file to add star to
-     * @var string $file_comment file comment to add star to
-     * @var string $timestamp Timestamp of the message to add star to.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `stars:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel to add star to, or channel where the message to add star to was posted (used with `timestamp`).
+     *    "file"?: string, //File to add star to.
+     *    "file_comment"?: string, //File comment to add star to.
+     *    "timestamp"?: string, //Timestamp of the message to add star to.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `stars:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -49,7 +46,7 @@ class StarsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         return '/stars.add';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -62,6 +59,16 @@ class StarsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -90,12 +97,12 @@ class StarsAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\StarsAddPostResponse200|\JoliCode\Slack\Api\Model\StarsAddPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\StarsAddPostResponse200|\JoliCode\Slack\Api\Model\StarsAddPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\StarsAddPostResponse200', 'json');
         }

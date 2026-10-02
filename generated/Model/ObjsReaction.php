@@ -19,75 +19,15 @@ use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
 class ObjsReaction implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var int|null
-     */
-    protected $count;
-    /**
-     * @var string|null
-     */
-    protected $name;
+    public ?int $count;
+    public ?string $name;
     /**
      * @var list<string>|null
      */
-    protected $users;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getCount(): ?int
-    {
-        return $this->count;
-    }
-
-    public function setCount(?int $count): self
-    {
-        $this->initialized['count'] = true;
-        $this->count = $count;
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(?string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getUsers(): ?array
-    {
-        return $this->users;
-    }
-
-    /**
-     * @param list<string>|null $users
-     */
-    public function setUsers(?array $users): self
-    {
-        $this->initialized['users'] = true;
-        $this->users = $users;
-
-        return $this;
-    }
+    public ?array $users;
 
     public function definedProperties(): array
     {
-        return ['count' => ['count', 'getCount', 'setCount'], 'name' => ['name', 'getName', 'setName'], 'users' => ['users', 'getUsers', 'setUsers']];
+        return ['count' => 'count', 'name' => 'name', 'users' => 'users'];
     }
 }

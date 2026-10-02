@@ -20,22 +20,19 @@ class UsergroupsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Update an existing User Group.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channels a comma separated string of encoded channel IDs for which the User Group uses as a default
-     * @var string $description a short description of the User Group
-     * @var string $handle A mention handle. Must be unique among channels, users and User Groups.
-     * @var bool   $include_count include the number of users in the User Group
-     * @var string $name A name for the User Group. Must be unique among User Groups.
-     * @var string $usergroup The encoded ID of the User Group to update.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `usergroups:write`
-     *             }
+     * @param array{
+     *    "channels"?: string, //A comma separated string of encoded channel IDs for which the User Group uses as a default.
+     *    "description"?: string, //A short description of the User Group.
+     *    "handle"?: string, //A mention handle. Must be unique among channels, users and User Groups.
+     *    "include_count"?: bool, //Include the number of users in the User Group.
+     *    "name"?: string, //A name for the User Group. Must be unique among User Groups.
+     *    "usergroup": string, //The encoded ID of the User Group to update.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `usergroups:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -51,7 +48,7 @@ class UsergroupsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/usergroups.update';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -64,6 +61,16 @@ class UsergroupsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -94,12 +101,12 @@ class UsergroupsUpdate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200|\JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsergroupsUpdatePostResponse200', 'json');
         }

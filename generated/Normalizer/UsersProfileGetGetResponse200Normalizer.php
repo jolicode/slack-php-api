@@ -56,14 +56,14 @@ class UsersProfileGetGetResponse200Normalizer implements DenormalizerInterface, 
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('profile', $data) && null !== $data['profile']) {
-            $object->setProfile($this->denormalizer->denormalize($data['profile'], \JoliCode\Slack\Api\Model\ObjsUserProfile::class, 'json', $context));
-        } elseif (\array_key_exists('profile', $data) && null === $data['profile']) {
-            $object->setProfile(null);
+            $object->profile = $this->denormalizer->denormalize($data['profile'], \JoliCode\Slack\Api\Model\ObjsUserProfile::class, 'json', $context);
+        } elseif (\array_key_exists('profile', $data)) {
+            $object->profile = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class UsersProfileGetGetResponse200Normalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['profile'] = null === $data->getProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getProfile(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->profile ? null : $this->normalizer->normalize($data->profile, 'json', $context);
+        $dataArray['profile'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
 
         return $dataArray;
     }

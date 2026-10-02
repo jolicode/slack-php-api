@@ -20,15 +20,14 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * Gets reactions for an item.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel channel where the message to get reactions for was posted
-     * @var string $file file to get reactions for
-     * @var string $file_comment file comment to get reactions for
-     * @var bool   $full if true always return the complete reaction list
-     * @var string $timestamp timestamp of the message to get reactions for
-     * @var string $token Authentication token. Requires scope: `reactions:read`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel where the message to get reactions for was posted.
+     *    "file"?: string, //File to get reactions for.
+     *    "file_comment"?: string, //File comment to get reactions for.
+     *    "full"?: bool, //If true always return the complete reaction list.
+     *    "timestamp"?: string, //Timestamp of the message to get reactions for.
+     *    "token"?: string, //Authentication token. Requires scope: `reactions:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -45,7 +44,7 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
         return '/reactions.get';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -58,6 +57,16 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault::class;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -79,10 +88,10 @@ class ReactionsGet extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imple
     /**
      * @return \JoliCode\Slack\Api\Model\ReactionsGetGetResponsedefault|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             try {
                 return json_decode($body, false, 512, \JSON_THROW_ON_ERROR);

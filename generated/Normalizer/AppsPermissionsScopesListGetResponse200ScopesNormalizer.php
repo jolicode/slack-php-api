@@ -57,10 +57,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['app_home'] as $value) {
                 $values[] = $value;
             }
-            $object->setAppHome($values);
+            $object->appHome = $values;
             unset($data['app_home']);
-        } elseif (\array_key_exists('app_home', $data) && null === $data['app_home']) {
-            $object->setAppHome(null);
+        } elseif (\array_key_exists('app_home', $data)) {
+            $object->appHome = null;
             unset($data['app_home']);
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
@@ -68,10 +68,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['channel'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setChannel($values_1);
+            $object->channel = $values_1;
             unset($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
             unset($data['channel']);
         }
         if (\array_key_exists('group', $data) && null !== $data['group']) {
@@ -79,10 +79,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['group'] as $value_2) {
                 $values_2[] = $value_2;
             }
-            $object->setGroup($values_2);
+            $object->group = $values_2;
             unset($data['group']);
-        } elseif (\array_key_exists('group', $data) && null === $data['group']) {
-            $object->setGroup(null);
+        } elseif (\array_key_exists('group', $data)) {
+            $object->group = null;
             unset($data['group']);
         }
         if (\array_key_exists('im', $data) && null !== $data['im']) {
@@ -90,10 +90,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['im'] as $value_3) {
                 $values_3[] = $value_3;
             }
-            $object->setIm($values_3);
+            $object->im = $values_3;
             unset($data['im']);
-        } elseif (\array_key_exists('im', $data) && null === $data['im']) {
-            $object->setIm(null);
+        } elseif (\array_key_exists('im', $data)) {
+            $object->im = null;
             unset($data['im']);
         }
         if (\array_key_exists('mpim', $data) && null !== $data['mpim']) {
@@ -101,10 +101,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['mpim'] as $value_4) {
                 $values_4[] = $value_4;
             }
-            $object->setMpim($values_4);
+            $object->mpim = $values_4;
             unset($data['mpim']);
-        } elseif (\array_key_exists('mpim', $data) && null === $data['mpim']) {
-            $object->setMpim(null);
+        } elseif (\array_key_exists('mpim', $data)) {
+            $object->mpim = null;
             unset($data['mpim']);
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
@@ -112,10 +112,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['team'] as $value_5) {
                 $values_5[] = $value_5;
             }
-            $object->setTeam($values_5);
+            $object->team = $values_5;
             unset($data['team']);
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
             unset($data['team']);
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
@@ -123,10 +123,10 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
             foreach ($data['user'] as $value_6) {
                 $values_6[] = $value_6;
             }
-            $object->setUser($values_6);
+            $object->user = $values_6;
             unset($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
             unset($data['user']);
         }
         foreach ($data as $key => $value_7) {
@@ -141,51 +141,51 @@ class AppsPermissionsScopesListGetResponse200ScopesNormalizer implements Denorma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('appHome') && null !== $data->getAppHome()) {
+        if (\array_key_exists('appHome', get_object_vars($data)) && null !== ($data->appHome ?? null)) {
             $values = [];
-            foreach ($data->getAppHome() as $value) {
+            foreach ($data->appHome as $value) {
                 $values[] = $value;
             }
             $dataArray['app_home'] = $values;
         }
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
+        if (\array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
             $values_1 = [];
-            foreach ($data->getChannel() as $value_1) {
+            foreach ($data->channel as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['channel'] = $values_1;
         }
-        if ($data->isInitialized('group') && null !== $data->getGroup()) {
+        if (\array_key_exists('group', get_object_vars($data)) && null !== ($data->group ?? null)) {
             $values_2 = [];
-            foreach ($data->getGroup() as $value_2) {
+            foreach ($data->group as $value_2) {
                 $values_2[] = $value_2;
             }
             $dataArray['group'] = $values_2;
         }
-        if ($data->isInitialized('im') && null !== $data->getIm()) {
+        if (\array_key_exists('im', get_object_vars($data)) && null !== ($data->im ?? null)) {
             $values_3 = [];
-            foreach ($data->getIm() as $value_3) {
+            foreach ($data->im as $value_3) {
                 $values_3[] = $value_3;
             }
             $dataArray['im'] = $values_3;
         }
-        if ($data->isInitialized('mpim') && null !== $data->getMpim()) {
+        if (\array_key_exists('mpim', get_object_vars($data)) && null !== ($data->mpim ?? null)) {
             $values_4 = [];
-            foreach ($data->getMpim() as $value_4) {
+            foreach ($data->mpim as $value_4) {
                 $values_4[] = $value_4;
             }
             $dataArray['mpim'] = $values_4;
         }
-        if ($data->isInitialized('team') && null !== $data->getTeam()) {
+        if (\array_key_exists('team', get_object_vars($data)) && null !== ($data->team ?? null)) {
             $values_5 = [];
-            foreach ($data->getTeam() as $value_5) {
+            foreach ($data->team as $value_5) {
                 $values_5[] = $value_5;
             }
             $dataArray['team'] = $values_5;
         }
-        if ($data->isInitialized('user') && null !== $data->getUser()) {
+        if (\array_key_exists('user', get_object_vars($data)) && null !== ($data->user ?? null)) {
             $values_6 = [];
-            foreach ($data->getUser() as $value_6) {
+            foreach ($data->user as $value_6) {
                 $values_6[] = $value_6;
             }
             $dataArray['user'] = $values_6;

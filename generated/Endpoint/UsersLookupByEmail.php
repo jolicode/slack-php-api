@@ -20,11 +20,10 @@ class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     /**
      * Find a user with an email address.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $email An email address belonging to a user in the workspace
-     * @var string $token Authentication token. Requires scope: `users:read.email`
-     *             }
+     * @param array{
+     *    "email"?: string, //An email address belonging to a user in the workspace
+     *    "token"?: string, //Authentication token. Requires scope: `users:read.email`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
         return '/users.lookupByEmail';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class UsersLookupByEmail extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200|\JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200|\JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsersLookupByEmailGetResponse200', 'json');
         }

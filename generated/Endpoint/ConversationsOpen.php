@@ -20,17 +20,14 @@ class ConversationsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     /**
      * Opens or resumes a direct message or multi-person direct message.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel Resume a conversation by supplying an `im` or `mpim`'s ID. Or provide the `users` field instead.
-     * @var bool   $return_im boolean, indicates you want the full IM channel definition in the response
-     * @var string $users Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a `channel` when not supplying `users`.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `conversations:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Resume a conversation by supplying an `im` or `mpim`'s ID. Or provide the `users` field instead.
+     *    "return_im"?: bool, //Boolean, indicates you want the full IM channel definition in the response.
+     *    "users"?: string, //Comma separated lists of users. If only one user is included, this creates a 1:1 DM.  The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a `channel` when not supplying `users`.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -48,7 +45,7 @@ class ConversationsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         return '/conversations.open';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -61,6 +58,16 @@ class ConversationsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class ConversationsOpen extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200|\JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200|\JoliCode\Slack\Api\Model\ConversationsOpenPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsOpenPostResponse200', 'json');
         }

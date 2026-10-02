@@ -53,18 +53,18 @@ class AppsPermissionsInfoGetResponse200InfoTeamNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('resources', $data) && null !== $data['resources']) {
-            $object->setResources($this->denormalizer->denormalize($data['resources'], \JoliCode\Slack\Api\Model\ObjsResources::class, 'json', $context));
-        } elseif (\array_key_exists('resources', $data) && null === $data['resources']) {
-            $object->setResources(null);
+            $object->resources = $this->denormalizer->denormalize($data['resources'], \JoliCode\Slack\Api\Model\ObjsResources::class, 'json', $context);
+        } elseif (\array_key_exists('resources', $data)) {
+            $object->resources = null;
         }
         if (\array_key_exists('scopes', $data) && null !== $data['scopes']) {
             $values = [];
             foreach ($data['scopes'] as $value) {
                 $values[] = $value;
             }
-            $object->setScopes($values);
-        } elseif (\array_key_exists('scopes', $data) && null === $data['scopes']) {
-            $object->setScopes(null);
+            $object->scopes = $values;
+        } elseif (\array_key_exists('scopes', $data)) {
+            $object->scopes = null;
         }
 
         return $object;
@@ -73,9 +73,10 @@ class AppsPermissionsInfoGetResponse200InfoTeamNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['resources'] = null === $data->getResources() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResources(), 'json', $context));
+        $normalized = null === $data->resources ? null : $this->normalizer->normalize($data->resources, 'json', $context);
+        $dataArray['resources'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         $values = [];
-        foreach ($data->getScopes() as $value) {
+        foreach ($data->scopes as $value) {
             $values[] = $value;
         }
         $dataArray['scopes'] = $values;
