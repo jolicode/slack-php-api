@@ -54,10 +54,12 @@ jobs:
                 php-version: [ '8.4', '8.5' ]
                 composer-flags: [ '' ]
                 name: [ '' ]
+                deprecations-helper: [ '' ]
                 include:
                     -   php-version: 8.4
                         composer-flags: '--prefer-lowest'
                         name: '(prefer lowest dependencies)'
+                        deprecations-helper: 'disabled'
 
         steps:
             - uses: actions/checkout@v2
@@ -76,4 +78,5 @@ jobs:
               env:
                   SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
                   SLACK_TEST_CHANNEL: ${{ secrets.SLACK_TEST_CHANNEL }}
+                  SYMFONY_DEPRECATIONS_HELPER: ${{ matrix.deprecations-helper }}
                   CI: true
