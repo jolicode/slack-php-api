@@ -102,8 +102,10 @@ class ClientTest extends SlackTokenDependentTest
         ])->messages ?? [];
 
         foreach ($messages as $message) {
-            if (\is_string($message->threadTs) && $message->threadTs === $message->ts) {
-                return $message->threadTs;
+            $threadTs = $message->threadTs ?? null;
+
+            if (\is_string($threadTs) && $threadTs === $message->ts) {
+                return $threadTs;
             }
         }
 
@@ -112,8 +114,7 @@ class ClientTest extends SlackTokenDependentTest
 
     private function findLastFileIdInChannel(Client $client): string
     {
-        return $client->filesList(['channel' => $_SERVER['SLACK_TEST_CHANNEL']])
-            ->files[0]
+        return ($client->filesList(['channel' => $_SERVER['SLACK_TEST_CHANNEL']])->files ?? [])[0]
             ?->id ?? throw new \RuntimeException('Unable to find file in your test channel')
         ;
     }

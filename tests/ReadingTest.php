@@ -58,7 +58,7 @@ class ReadingTest extends SlackTokenDependentTest
 
         $hadAFileMessage = false;
         foreach ($results->messages ?? [] as $message) {
-            if ($message->files) {
+            if ($message->files ?? null) {
                 $hadAFileMessage = true;
                 self::assertInstanceOf(ObjsFile::class, $message->files[0]);
 

@@ -76,7 +76,7 @@ class Client extends ApiClient
                 yield $item;
             }
 
-            $cursor = $response->responseMetadata?->nextCursor ?? '';
+            $cursor = ($response->responseMetadata ?? null)?->nextCursor ?? '';
         } while (!empty($cursor));
     }
 
