@@ -36,9 +36,9 @@ class WritingTest extends SlackTokenDependentTest
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
 
         if (method_exists($this, 'assertStringContainsString')) {
-            self::assertStringContainsString($response->message->attachments[0]->image_url, 'https://jolicode.com/images/valeurs_huma.png');
+            self::assertStringContainsString($response->message->attachments[0]->imageUrl, 'https://jolicode.com/images/valeurs_huma.png');
         } else {
-            self::assertContains($response->message->attachments[0]->image_url, 'https://jolicode.com/images/valeurs_huma.png');
+            self::assertContains($response->message->attachments[0]->imageUrl, 'https://jolicode.com/images/valeurs_huma.png');
         }
     }
 
