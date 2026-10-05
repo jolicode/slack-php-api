@@ -56,23 +56,23 @@ class ChatScheduledMessagesListGetResponse200Normalizer implements DenormalizerI
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
         if (\array_key_exists('scheduled_messages', $data) && null !== $data['scheduled_messages']) {
             $values = [];
             foreach ($data['scheduled_messages'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200ScheduledMessagesItem::class, 'json', $context);
             }
-            $object->setScheduledMessages($values);
-        } elseif (\array_key_exists('scheduled_messages', $data) && null === $data['scheduled_messages']) {
-            $object->setScheduledMessages(null);
+            $object->scheduledMessages = $values;
+        } elseif (\array_key_exists('scheduled_messages', $data)) {
+            $object->scheduledMessages = null;
         }
 
         return $object;
@@ -81,11 +81,13 @@ class ChatScheduledMessagesListGetResponse200Normalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->responseMetadata ? null : $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+        $dataArray['response_metadata'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         $values = [];
-        foreach ($data->getScheduledMessages() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->scheduledMessages as $value) {
+            $normalized_1 = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         $dataArray['scheduled_messages'] = $values;
 

@@ -19,35 +19,10 @@ use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
 class BlocksItem implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var string|null
-     */
-    protected $type;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-
-        return $this;
-    }
+    public ?string $type;
 
     public function definedProperties(): array
     {
-        return ['type' => ['type', 'getType', 'setType']];
+        return ['type' => 'type'];
     }
 }

@@ -20,18 +20,15 @@ class AdminConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
     /**
      * Rename a public or private channel.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel_id the channel to rename
-     * @var string $name
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     *             }
+     * @param array{
+     *    "channel_id": string, //The channel to rename.
+     *    "name": string,
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class AdminConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
         return '/admin.conversations.rename';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class AdminConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class AdminConversationsRename extends \JoliCode\Slack\Api\Runtime\Client\BaseEn
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsRenamePostResponse200', 'json');
         }

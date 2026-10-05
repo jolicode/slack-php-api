@@ -56,14 +56,14 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\ObjsTeam::class, 'json', $context));
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\ObjsTeam::class, 'json', $context);
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class TeamInfoGetResponse200Normalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->team ? null : $this->normalizer->normalize($data->team, 'json', $context);
+        $dataArray['team'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
 
         return $dataArray;
     }

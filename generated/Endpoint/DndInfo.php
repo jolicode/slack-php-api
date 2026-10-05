@@ -20,11 +20,10 @@ class DndInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
     /**
      * Retrieves a user's current Do Not Disturb status.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `dnd:read`
-     * @var string $user User to fetch status for (defaults to current user)
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `dnd:read`
+     *    "user"?: string, //User to fetch status for (defaults to current user)
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class DndInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
         return '/dnd.info';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class DndInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class DndInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implements
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\DndInfoGetResponse200|\JoliCode\Slack\Api\Model\DndInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\DndInfoGetResponse200|\JoliCode\Slack\Api\Model\DndInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\DndInfoGetResponse200', 'json');
         }

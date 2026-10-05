@@ -59,14 +59,14 @@ class ConversationsLeavePostResponse200Normalizer implements DenormalizerInterfa
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('not_in_channel', $data) && null !== $data['not_in_channel']) {
-            $object->setNotInChannel($data['not_in_channel']);
-        } elseif (\array_key_exists('not_in_channel', $data) && null === $data['not_in_channel']) {
-            $object->setNotInChannel(null);
+            $object->notInChannel = $data['not_in_channel'];
+        } elseif (\array_key_exists('not_in_channel', $data)) {
+            $object->notInChannel = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -75,10 +75,10 @@ class ConversationsLeavePostResponse200Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('notInChannel') && null !== $data->getNotInChannel()) {
-            $dataArray['not_in_channel'] = $data->getNotInChannel();
+        if (\array_key_exists('notInChannel', get_object_vars($data)) && null !== ($data->notInChannel ?? null)) {
+            $dataArray['not_in_channel'] = $data->notInChannel;
         }
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

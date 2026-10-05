@@ -20,15 +20,14 @@ class AdminConversationsRestrictAccessAddGroup extends \JoliCode\Slack\Api\Runti
     /**
      * Add an allowlist of IDP groups for accessing a channel.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel_id the channel to link this group to
-     * @var string $group_id The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel.
-     * @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
-     * @var string $token Authentication token. Requires scope: `admin.conversations:write`
-     *             }
+     * @param array{
+     *    "channel_id": string, //The channel to link this group to.
+     *    "group_id": string, //The [IDP Group](https://slack.com/help/articles/115001435788-Connect-identity-provider-groups-to-your-Enterprise-Grid-org) ID to be an allowlist for the private channel.
+     *    "team_id"?: string, //The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:write`
+     * } $formParameters
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(array $formParameters)
     {
         $this->formParameters = $formParameters;
     }
@@ -43,7 +42,7 @@ class AdminConversationsRestrictAccessAddGroup extends \JoliCode\Slack\Api\Runti
         return '/admin.conversations.restrictAccess.addGroup';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -56,6 +55,16 @@ class AdminConversationsRestrictAccessAddGroup extends \JoliCode\Slack\Api\Runti
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,12 +82,12 @@ class AdminConversationsRestrictAccessAddGroup extends \JoliCode\Slack\Api\Runti
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200|\JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessAddGroupPostResponse200', 'json');
         }

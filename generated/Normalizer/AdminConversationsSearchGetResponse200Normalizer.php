@@ -57,14 +57,14 @@ class AdminConversationsSearchGetResponse200Normalizer implements DenormalizerIn
             foreach ($data['channels'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsChannel::class, 'json', $context);
             }
-            $object->setChannels($values);
-        } elseif (\array_key_exists('channels', $data) && null === $data['channels']) {
-            $object->setChannels(null);
+            $object->channels = $values;
+        } elseif (\array_key_exists('channels', $data)) {
+            $object->channels = null;
         }
         if (\array_key_exists('next_cursor', $data) && null !== $data['next_cursor']) {
-            $object->setNextCursor($data['next_cursor']);
-        } elseif (\array_key_exists('next_cursor', $data) && null === $data['next_cursor']) {
-            $object->setNextCursor(null);
+            $object->nextCursor = $data['next_cursor'];
+        } elseif (\array_key_exists('next_cursor', $data)) {
+            $object->nextCursor = null;
         }
 
         return $object;
@@ -74,11 +74,12 @@ class AdminConversationsSearchGetResponse200Normalizer implements DenormalizerIn
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getChannels() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->channels as $value) {
+            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['channels'] = $values;
-        $dataArray['next_cursor'] = $data->getNextCursor();
+        $dataArray['next_cursor'] = $data->nextCursor;
 
         return $dataArray;
     }

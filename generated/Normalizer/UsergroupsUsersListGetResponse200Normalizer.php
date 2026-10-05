@@ -56,18 +56,18 @@ class UsergroupsUsersListGetResponse200Normalizer implements DenormalizerInterfa
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('users', $data) && null !== $data['users']) {
             $values = [];
             foreach ($data['users'] as $value) {
                 $values[] = $value;
             }
-            $object->setUsers($values);
-        } elseif (\array_key_exists('users', $data) && null === $data['users']) {
-            $object->setUsers(null);
+            $object->users = $values;
+        } elseif (\array_key_exists('users', $data)) {
+            $object->users = null;
         }
 
         return $object;
@@ -76,9 +76,9 @@ class UsergroupsUsersListGetResponse200Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
         $values = [];
-        foreach ($data->getUsers() as $value) {
+        foreach ($data->users as $value) {
             $values[] = $value;
         }
         $dataArray['users'] = $values;

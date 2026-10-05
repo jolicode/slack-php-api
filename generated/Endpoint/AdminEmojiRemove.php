@@ -20,13 +20,12 @@ class AdminEmojiRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Remove an emoji across an Enterprise Grid organization.
      *
-     * @param array $formParameters {
-     *
-     * @var string $name The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
-     * @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *             }
+     * @param array{
+     *    "name": string, //The name of the emoji to be removed. Colons (`:myemoji:`) around the value are not required, although they may be included.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.teams:write`
+     * } $formParameters
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(array $formParameters)
     {
         $this->formParameters = $formParameters;
     }
@@ -41,7 +40,7 @@ class AdminEmojiRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/admin.emoji.remove';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -54,6 +53,16 @@ class AdminEmojiRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class AdminEmojiRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200|\JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200|\JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminEmojiRemovePostResponse200', 'json');
         }

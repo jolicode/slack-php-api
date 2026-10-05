@@ -53,14 +53,14 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer implem
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('can_thread', $data) && null !== $data['can_thread']) {
-            $object->setCanThread($this->denormalizer->denormalize($data['can_thread'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class, 'json', $context));
-        } elseif (\array_key_exists('can_thread', $data) && null === $data['can_thread']) {
-            $object->setCanThread(null);
+            $object->canThread = $this->denormalizer->denormalize($data['can_thread'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread::class, 'json', $context);
+        } elseif (\array_key_exists('can_thread', $data)) {
+            $object->canThread = null;
         }
         if (\array_key_exists('who_can_post', $data) && null !== $data['who_can_post']) {
-            $object->setWhoCanPost($this->denormalizer->denormalize($data['who_can_post'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class, 'json', $context));
-        } elseif (\array_key_exists('who_can_post', $data) && null === $data['who_can_post']) {
-            $object->setWhoCanPost(null);
+            $object->whoCanPost = $this->denormalizer->denormalize($data['who_can_post'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost::class, 'json', $context);
+        } elseif (\array_key_exists('who_can_post', $data)) {
+            $object->whoCanPost = null;
         }
 
         return $object;
@@ -69,11 +69,13 @@ class AdminConversationsGetConversationPrefsGetResponse200PrefsNormalizer implem
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('canThread') && null !== $data->getCanThread()) {
-            $dataArray['can_thread'] = null === $data->getCanThread() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getCanThread(), 'json', $context));
+        if (\array_key_exists('canThread', get_object_vars($data)) && null !== ($data->canThread ?? null)) {
+            $normalized = $this->normalizer->normalize($data->canThread, 'json', $context);
+            $dataArray['can_thread'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('whoCanPost') && null !== $data->getWhoCanPost()) {
-            $dataArray['who_can_post'] = null === $data->getWhoCanPost() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getWhoCanPost(), 'json', $context));
+        if (\array_key_exists('whoCanPost', get_object_vars($data)) && null !== ($data->whoCanPost ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->whoCanPost, 'json', $context);
+            $dataArray['who_can_post'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
 
         return $dataArray;

@@ -16,7 +16,6 @@ namespace JoliCode\Slack\Tests;
 use JoliCode\Slack\Api\Model\ChatPostMessagePostResponse200;
 use JoliCode\Slack\Api\Model\FilesGetUploadURLExternalPostResponse200;
 use JoliCode\Slack\Api\Model\FilesUploadPostResponse200;
-use Nyholm\Psr7\Stream;
 
 class WritingTest extends SlackTokenDependentTest
 {
@@ -37,9 +36,9 @@ class WritingTest extends SlackTokenDependentTest
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
 
         if (method_exists($this, 'assertStringContainsString')) {
-            self::assertStringContainsString($response->getMessage()->getAttachments()[0]->getImageUrl(), 'https://jolicode.com/images/valeurs_huma.png');
+            self::assertStringContainsString($response->message->attachments[0]->imageUrl, 'https://jolicode.com/images/valeurs_huma.png');
         } else {
-            self::assertContains($response->getMessage()->getAttachments()[0]->getImageUrl(), 'https://jolicode.com/images/valeurs_huma.png');
+            self::assertContains($response->message->attachments[0]->imageUrl, 'https://jolicode.com/images/valeurs_huma.png');
         }
     }
 
@@ -75,7 +74,7 @@ class WritingTest extends SlackTokenDependentTest
         ]);
 
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
-        self::assertNotEmpty($response->getMessage()->getBlocks());
+        self::assertNotEmpty($response->message->blocks);
     }
 
     public function testItCanPostAMessageAndThenAThreadResponse(): void
@@ -97,10 +96,10 @@ class WritingTest extends SlackTokenDependentTest
             'username' => 'User B',
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
             'text' => 'First response in a Thread',
-            'thread_ts' => $response->getMessage()->getTs(),
+            'thread_ts' => $response->message->ts,
         ]);
 
-        $this->assertTrue($response2->getOk());
+        $this->assertTrue($response2->ok);
     }
 
     public function testItCanUploadFile(): void
@@ -116,7 +115,7 @@ class WritingTest extends SlackTokenDependentTest
             'filename' => 'test-image.png',
             'initial_comment' => 'This is a initial_comment in a filesUpload',
             'filetype' => 'png',
-            'file' => Stream::create(fopen(__DIR__ . '/resources/test-image.png', 'r')),
+            'file' => fopen(__DIR__ . '/resources/test-image.png', 'r'),
         ]);
     }
 
@@ -131,7 +130,7 @@ class WritingTest extends SlackTokenDependentTest
             'post_at' => $futureTs,
         ]);
 
-        $this->assertTrue($response->getOk());
+        $this->assertTrue($response->ok);
     }
 
     public function testItCanMarkConversation(): void
@@ -146,7 +145,7 @@ class WritingTest extends SlackTokenDependentTest
 
         self::assertInstanceOf(ChatPostMessagePostResponse200::class, $response);
 
-        $ts = $response->getTs();
+        $ts = $response->ts;
 
         if ($_SERVER['CI'] ?? false) {
             sleep(10); // @see https://github.com/jolicode/slack-php-api/issues/163
@@ -157,7 +156,7 @@ class WritingTest extends SlackTokenDependentTest
             'ts' => $ts,
         ]);
 
-        self::assertTrue($markResponse->getOk());
+        self::assertTrue($markResponse->ok);
     }
 
     public function testItCanFileGetUploadUrlExternal(): void
@@ -165,8 +164,7 @@ class WritingTest extends SlackTokenDependentTest
         $client = $this->createClient();
         $fileName = 'test-image.png';
         $filePath = __DIR__ . '/resources/' . $fileName;
-        $fileStream = Stream::create(fopen($filePath, 'r'));
-        $fileSize = $fileStream->getSize();
+        $fileSize = filesize($filePath);
         $threadTs = $_SERVER['SLACK_TEST_THREAD_TS'] ?? null;
 
         $response = $client->filesGetUploadUrlExternal(
@@ -177,17 +175,17 @@ class WritingTest extends SlackTokenDependentTest
         );
 
         self::assertInstanceOf(FilesGetUploadURLExternalPostResponse200::class, $response);
-        self::assertTrue($response->getOk());
-        self::assertNotEmpty($response->getUploadUrl());
-        self::assertIsString($response->getUploadUrl());
-        self::assertNotEmpty($response->getFileId());
-        self::assertIsString($response->getFileId());
+        self::assertTrue($response->ok);
+        self::assertNotEmpty($response->uploadUrl);
+        self::assertIsString($response->uploadUrl);
+        self::assertNotEmpty($response->fileId);
+        self::assertIsString($response->fileId);
 
         $uploadResponse = $client->filesUploadV2([
             ['path' => $filePath, 'title' => 'Test image', 'alt_text' => 'Test image'],
         ], $_SERVER['SLACK_TEST_CHANNEL'], 'Uploaded with the 2025 API.', $threadTs);
 
-        self::assertTrue($uploadResponse->getOk());
+        self::assertTrue($uploadResponse->ok);
     }
 
     public function testItCanFileCompleteUploadExternal(): void
@@ -195,8 +193,7 @@ class WritingTest extends SlackTokenDependentTest
         $client = $this->createClient();
         $fileName = 'test-image.png';
         $filePath = __DIR__ . '/resources/' . $fileName;
-        $fileStream = Stream::create(fopen($filePath, 'r'));
-        $fileSize = $fileStream->getSize();
+        $fileSize = filesize($filePath);
 
         $response = $client->filesGetUploadUrlExternal(
             [
@@ -206,19 +203,19 @@ class WritingTest extends SlackTokenDependentTest
         );
 
         self::assertInstanceOf(FilesGetUploadURLExternalPostResponse200::class, $response);
-        self::assertTrue($response->getOk());
-        self::assertNotEmpty($response->getUploadUrl());
-        self::assertIsString($response->getUploadUrl());
-        self::assertNotEmpty($response->getFileId());
-        self::assertIsString($response->getFileId());
+        self::assertTrue($response->ok);
+        self::assertNotEmpty($response->uploadUrl);
+        self::assertIsString($response->uploadUrl);
+        self::assertNotEmpty($response->fileId);
+        self::assertIsString($response->fileId);
 
-        $uploadUrl = $response->getUploadUrl();
-        $fileId = $response->getFileId();
+        $uploadUrl = $response->uploadUrl;
+        $fileId = $response->fileId;
 
         // Step 2: Upload file data to the URL
         $ch = curl_init($uploadUrl);
         curl_setopt($ch, \CURLOPT_POST, true);
-        curl_setopt($ch, \CURLOPT_POSTFIELDS, $fileStream);
+        curl_setopt($ch, \CURLOPT_POSTFIELDS, file_get_contents($filePath));
         curl_setopt($ch, \CURLOPT_RETURNTRANSFER, true);
         curl_exec($ch);
 
@@ -236,8 +233,8 @@ class WritingTest extends SlackTokenDependentTest
             ]
         );
 
-        self::assertTrue($completeResponse->getOk());
-        self::assertNotEmpty($completeResponse->getFiles());
+        self::assertTrue($completeResponse->ok);
+        self::assertNotEmpty($completeResponse->files);
     }
 
     public function testItCanUploadFilesViaFilesUploadV2(): void
@@ -263,8 +260,8 @@ class WritingTest extends SlackTokenDependentTest
             'test initial comment'
         );
 
-        self::assertTrue($response->getOk());
-        self::assertNotEmpty($response->getFiles());
-        self::assertCount(2, $response->getFiles());
+        self::assertTrue($response->ok);
+        self::assertNotEmpty($response->files);
+        self::assertCount(2, $response->files);
     }
 }

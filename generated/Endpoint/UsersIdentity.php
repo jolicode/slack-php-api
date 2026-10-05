@@ -20,10 +20,9 @@ class UsersIdentity extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     /**
      * Get a user's identity.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `identity.basic`
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `identity.basic`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -40,7 +39,7 @@ class UsersIdentity extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         return '/users.identity';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -53,6 +52,16 @@ class UsersIdentity extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault::class;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,10 +78,10 @@ class UsersIdentity extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     /**
      * @return \JoliCode\Slack\Api\Model\UsersIdentityGetResponsedefault|null
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             try {
                 return json_decode($body, false, 512, \JSON_THROW_ON_ERROR);

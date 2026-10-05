@@ -53,14 +53,14 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('emoji', $data) && null !== $data['emoji']) {
-            $object->setEmoji($data['emoji']);
-        } elseif (\array_key_exists('emoji', $data) && null === $data['emoji']) {
-            $object->setEmoji(null);
+            $object->emoji = $data['emoji'];
+        } elseif (\array_key_exists('emoji', $data)) {
+            $object->emoji = null;
         }
         if (\array_key_exists('image_64', $data) && null !== $data['image_64']) {
-            $object->setImage64($data['image_64']);
-        } elseif (\array_key_exists('image_64', $data) && null === $data['image_64']) {
-            $object->setImage64(null);
+            $object->image64 = $data['image_64'];
+        } elseif (\array_key_exists('image_64', $data)) {
+            $object->image64 = null;
         }
 
         return $object;
@@ -69,11 +69,11 @@ class ObjsMessageIconsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('emoji') && null !== $data->getEmoji()) {
-            $dataArray['emoji'] = $data->getEmoji();
+        if (\array_key_exists('emoji', get_object_vars($data)) && null !== ($data->emoji ?? null)) {
+            $dataArray['emoji'] = $data->emoji;
         }
-        if ($data->isInitialized('image64') && null !== $data->getImage64()) {
-            $dataArray['image_64'] = $data->getImage64();
+        if (\array_key_exists('image64', get_object_vars($data)) && null !== ($data->image64 ?? null)) {
+            $dataArray['image_64'] = $data->image64;
         }
 
         return $dataArray;

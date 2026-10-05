@@ -20,74 +20,14 @@ class UsersConversationsGetResponse200 implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var list<ObjsConversation>|null
      */
-    protected $channels;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var UsersConversationsGetResponse200ResponseMetadata|null
-     */
-    protected $responseMetadata;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    /**
-     * @return list<ObjsConversation>|null
-     */
-    public function getChannels(): ?array
-    {
-        return $this->channels;
-    }
-
-    /**
-     * @param list<ObjsConversation>|null $channels
-     */
-    public function setChannels(?array $channels): self
-    {
-        $this->initialized['channels'] = true;
-        $this->channels = $channels;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?UsersConversationsGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?UsersConversationsGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->initialized['responseMetadata'] = true;
-        $this->responseMetadata = $responseMetadata;
-
-        return $this;
-    }
+    public ?array $channels;
+    public ?bool $ok;
+    public ?UsersConversationsGetResponse200ResponseMetadata $responseMetadata;
 
     public function definedProperties(): array
     {
-        return ['channels' => ['channels', 'getChannels', 'setChannels'], 'ok' => ['ok', 'getOk', 'setOk'], 'responseMetadata' => ['response_metadata', 'getResponseMetadata', 'setResponseMetadata']];
+        return ['channels' => 'channels', 'ok' => 'ok', 'responseMetadata' => 'response_metadata'];
     }
 }

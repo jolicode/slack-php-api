@@ -56,14 +56,14 @@ class FilesUploadPostResponse200Normalizer implements DenormalizerInterface, Nor
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('file', $data) && null !== $data['file']) {
-            $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
-        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
-            $object->setFile(null);
+            $object->file = $this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
+        } elseif (\array_key_exists('file', $data)) {
+            $object->file = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class FilesUploadPostResponse200Normalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
-        $dataArray['ok'] = $data->getOk();
+        $normalized = null === $data->file ? null : $this->normalizer->normalize($data->file, 'json', $context);
+        $dataArray['file'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

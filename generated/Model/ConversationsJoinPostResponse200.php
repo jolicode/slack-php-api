@@ -15,81 +15,8 @@ namespace JoliCode\Slack\Api\Model;
 
 class ConversationsJoinPostResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var ObjsConversation|null
-     */
-    protected $channel;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var ConversationsJoinPostResponse200ResponseMetadata|null
-     */
-    protected $responseMetadata;
-    /**
-     * @var string|null
-     */
-    protected $warning;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getChannel(): ?ObjsConversation
-    {
-        return $this->channel;
-    }
-
-    public function setChannel(?ObjsConversation $channel): self
-    {
-        $this->initialized['channel'] = true;
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?ConversationsJoinPostResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?ConversationsJoinPostResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->initialized['responseMetadata'] = true;
-        $this->responseMetadata = $responseMetadata;
-
-        return $this;
-    }
-
-    public function getWarning(): ?string
-    {
-        return $this->warning;
-    }
-
-    public function setWarning(?string $warning): self
-    {
-        $this->initialized['warning'] = true;
-        $this->warning = $warning;
-
-        return $this;
-    }
+    public ?ObjsConversation $channel;
+    public ?bool $ok;
+    public ?ConversationsJoinPostResponse200ResponseMetadata $responseMetadata;
+    public ?string $warning;
 }

@@ -16,35 +16,7 @@ namespace JoliCode\Slack\Api\Model;
 class TeamProfileGetGetResponse200Profile
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var list<ObjsTeamProfileField>|null
      */
-    protected $fields;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    /**
-     * @return list<ObjsTeamProfileField>|null
-     */
-    public function getFields(): ?array
-    {
-        return $this->fields;
-    }
-
-    /**
-     * @param list<ObjsTeamProfileField>|null $fields
-     */
-    public function setFields(?array $fields): self
-    {
-        $this->initialized['fields'] = true;
-        $this->fields = $fields;
-
-        return $this;
-    }
+    public ?array $fields;
 }

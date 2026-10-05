@@ -56,24 +56,24 @@ class ChatPostMessagePostResponse200Normalizer implements DenormalizerInterface,
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('message', $data) && null !== $data['message']) {
-            $object->setMessage($this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
-            $object->setMessage(null);
+            $object->message = $this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context);
+        } elseif (\array_key_exists('message', $data)) {
+            $object->message = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('ts', $data) && null !== $data['ts']) {
-            $object->setTs($data['ts']);
-        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
-            $object->setTs(null);
+            $object->ts = $data['ts'];
+        } elseif (\array_key_exists('ts', $data)) {
+            $object->ts = null;
         }
 
         return $object;
@@ -82,10 +82,11 @@ class ChatPostMessagePostResponse200Normalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = $data->getChannel();
-        $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['ts'] = $data->getTs();
+        $dataArray['channel'] = $data->channel;
+        $normalized = null === $data->message ? null : $this->normalizer->normalize($data->message, 'json', $context);
+        $dataArray['message'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['ok'] = $data->ok;
+        $dataArray['ts'] = $data->ts;
 
         return $dataArray;
     }

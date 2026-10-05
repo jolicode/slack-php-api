@@ -20,11 +20,10 @@ class TeamBillableInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Gets billable users information for the current team.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin`
-     * @var string $user A user to retrieve the billable information for. Defaults to all users.
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin`
+     *    "user"?: string, //A user to retrieve the billable information for. Defaults to all users.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class TeamBillableInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/team.billableInfo';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class TeamBillableInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class TeamBillableInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200|\JoliCode\Slack\Api\Model\TeamBillableInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\TeamBillableInfoGetResponse200', 'json');
         }

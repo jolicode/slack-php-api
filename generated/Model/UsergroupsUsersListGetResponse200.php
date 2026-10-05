@@ -15,53 +15,9 @@ namespace JoliCode\Slack\Api\Model;
 
 class UsergroupsUsersListGetResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
+    public ?bool $ok;
     /**
      * @var list<string>|null
      */
-    protected $users;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getUsers(): ?array
-    {
-        return $this->users;
-    }
-
-    /**
-     * @param list<string>|null $users
-     */
-    public function setUsers(?array $users): self
-    {
-        $this->initialized['users'] = true;
-        $this->users = $users;
-
-        return $this;
-    }
+    public ?array $users;
 }

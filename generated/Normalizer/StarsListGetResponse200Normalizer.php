@@ -60,19 +60,19 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
             foreach ($data['items'] as $value) {
                 $values[] = $value;
             }
-            $object->setItems($values);
-        } elseif (\array_key_exists('items', $data) && null === $data['items']) {
-            $object->setItems(null);
+            $object->items = $values;
+        } elseif (\array_key_exists('items', $data)) {
+            $object->items = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-            $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
-        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
-            $object->setPaging(null);
+            $object->paging = $this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context);
+        } elseif (\array_key_exists('paging', $data)) {
+            $object->paging = null;
         }
 
         return $object;
@@ -82,13 +82,14 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getItems() as $value) {
+        foreach ($data->items as $value) {
             $values[] = $value;
         }
         $dataArray['items'] = $values;
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('paging') && null !== $data->getPaging()) {
-            $dataArray['paging'] = null === $data->getPaging() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
+            $normalized = $this->normalizer->normalize($data->paging, 'json', $context);
+            $dataArray['paging'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
 
         return $dataArray;

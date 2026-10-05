@@ -56,18 +56,18 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('reminders', $data) && null !== $data['reminders']) {
             $values = [];
             foreach ($data['reminders'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsReminder::class, 'json', $context);
             }
-            $object->setReminders($values);
-        } elseif (\array_key_exists('reminders', $data) && null === $data['reminders']) {
-            $object->setReminders(null);
+            $object->reminders = $values;
+        } elseif (\array_key_exists('reminders', $data)) {
+            $object->reminders = null;
         }
 
         return $object;
@@ -76,10 +76,11 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
         $values = [];
-        foreach ($data->getReminders() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->reminders as $value) {
+            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['reminders'] = $values;
 

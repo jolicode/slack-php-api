@@ -20,178 +20,36 @@ class AppsPermissionsScopesListGetResponse200Scopes implements AdditionalPropert
 {
     use AdditionalAndPatternProperties;
     /**
-     * @var array
+     * @var list<string>|null
      */
-    protected $initialized = [];
+    public ?array $appHome;
     /**
      * @var list<string>|null
      */
-    protected $appHome;
+    public ?array $channel;
     /**
      * @var list<string>|null
      */
-    protected $channel;
+    public ?array $group;
     /**
      * @var list<string>|null
      */
-    protected $group;
+    public ?array $im;
     /**
      * @var list<string>|null
      */
-    protected $im;
+    public ?array $mpim;
     /**
      * @var list<string>|null
      */
-    protected $mpim;
+    public ?array $team;
     /**
      * @var list<string>|null
      */
-    protected $team;
-    /**
-     * @var list<string>|null
-     */
-    protected $user;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getAppHome(): ?array
-    {
-        return $this->appHome;
-    }
-
-    /**
-     * @param list<string>|null $appHome
-     */
-    public function setAppHome(?array $appHome): self
-    {
-        $this->initialized['appHome'] = true;
-        $this->appHome = $appHome;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getChannel(): ?array
-    {
-        return $this->channel;
-    }
-
-    /**
-     * @param list<string>|null $channel
-     */
-    public function setChannel(?array $channel): self
-    {
-        $this->initialized['channel'] = true;
-        $this->channel = $channel;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getGroup(): ?array
-    {
-        return $this->group;
-    }
-
-    /**
-     * @param list<string>|null $group
-     */
-    public function setGroup(?array $group): self
-    {
-        $this->initialized['group'] = true;
-        $this->group = $group;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getIm(): ?array
-    {
-        return $this->im;
-    }
-
-    /**
-     * @param list<string>|null $im
-     */
-    public function setIm(?array $im): self
-    {
-        $this->initialized['im'] = true;
-        $this->im = $im;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getMpim(): ?array
-    {
-        return $this->mpim;
-    }
-
-    /**
-     * @param list<string>|null $mpim
-     */
-    public function setMpim(?array $mpim): self
-    {
-        $this->initialized['mpim'] = true;
-        $this->mpim = $mpim;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getTeam(): ?array
-    {
-        return $this->team;
-    }
-
-    /**
-     * @param list<string>|null $team
-     */
-    public function setTeam(?array $team): self
-    {
-        $this->initialized['team'] = true;
-        $this->team = $team;
-
-        return $this;
-    }
-
-    /**
-     * @return list<string>|null
-     */
-    public function getUser(): ?array
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param list<string>|null $user
-     */
-    public function setUser(?array $user): self
-    {
-        $this->initialized['user'] = true;
-        $this->user = $user;
-
-        return $this;
-    }
+    public ?array $user;
 
     public function definedProperties(): array
     {
-        return ['appHome' => ['app_home', 'getAppHome', 'setAppHome'], 'channel' => ['channel', 'getChannel', 'setChannel'], 'group' => ['group', 'getGroup', 'setGroup'], 'im' => ['im', 'getIm', 'setIm'], 'mpim' => ['mpim', 'getMpim', 'setMpim'], 'team' => ['team', 'getTeam', 'setTeam'], 'user' => ['user', 'getUser', 'setUser']];
+        return ['appHome' => 'app_home', 'channel' => 'channel', 'group' => 'group', 'im' => 'im', 'mpim' => 'mpim', 'team' => 'team', 'user' => 'user'];
     }
 }

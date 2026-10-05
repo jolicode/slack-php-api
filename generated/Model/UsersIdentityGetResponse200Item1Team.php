@@ -15,30 +15,5 @@ namespace JoliCode\Slack\Api\Model;
 
 class UsersIdentityGetResponse200Item1Team
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var string|null
-     */
-    protected $id;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
-
-    public function setId(?string $id): self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-
-        return $this;
-    }
+    public ?string $id;
 }

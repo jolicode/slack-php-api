@@ -59,24 +59,24 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
             $data['snooze_enabled'] = (bool) $data['snooze_enabled'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('snooze_enabled', $data) && null !== $data['snooze_enabled']) {
-            $object->setSnoozeEnabled($data['snooze_enabled']);
-        } elseif (\array_key_exists('snooze_enabled', $data) && null === $data['snooze_enabled']) {
-            $object->setSnoozeEnabled(null);
+            $object->snoozeEnabled = $data['snooze_enabled'];
+        } elseif (\array_key_exists('snooze_enabled', $data)) {
+            $object->snoozeEnabled = null;
         }
         if (\array_key_exists('snooze_endtime', $data) && null !== $data['snooze_endtime']) {
-            $object->setSnoozeEndtime($data['snooze_endtime']);
-        } elseif (\array_key_exists('snooze_endtime', $data) && null === $data['snooze_endtime']) {
-            $object->setSnoozeEndtime(null);
+            $object->snoozeEndtime = $data['snooze_endtime'];
+        } elseif (\array_key_exists('snooze_endtime', $data)) {
+            $object->snoozeEndtime = null;
         }
         if (\array_key_exists('snooze_remaining', $data) && null !== $data['snooze_remaining']) {
-            $object->setSnoozeRemaining($data['snooze_remaining']);
-        } elseif (\array_key_exists('snooze_remaining', $data) && null === $data['snooze_remaining']) {
-            $object->setSnoozeRemaining(null);
+            $object->snoozeRemaining = $data['snooze_remaining'];
+        } elseif (\array_key_exists('snooze_remaining', $data)) {
+            $object->snoozeRemaining = null;
         }
 
         return $object;
@@ -85,10 +85,10 @@ class DndSetSnoozePostResponse200Normalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['snooze_enabled'] = $data->getSnoozeEnabled();
-        $dataArray['snooze_endtime'] = $data->getSnoozeEndtime();
-        $dataArray['snooze_remaining'] = $data->getSnoozeRemaining();
+        $dataArray['ok'] = $data->ok;
+        $dataArray['snooze_enabled'] = $data->snoozeEnabled;
+        $dataArray['snooze_endtime'] = $data->snoozeEndtime;
+        $dataArray['snooze_remaining'] = $data->snoozeRemaining;
 
         return $dataArray;
     }

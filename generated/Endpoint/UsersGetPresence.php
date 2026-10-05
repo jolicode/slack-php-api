@@ -20,11 +20,10 @@ class UsersGetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Gets user presence information.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `users:read`
-     * @var string $user User to get presence info on. Defaults to the authed user.
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `users:read`
+     *    "user"?: string, //User to get presence info on. Defaults to the authed user.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class UsersGetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/users.getPresence';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class UsersGetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class UsersGetPresence extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200|\JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200|\JoliCode\Slack\Api\Model\UsersGetPresenceGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsersGetPresenceGetResponse200', 'json');
         }

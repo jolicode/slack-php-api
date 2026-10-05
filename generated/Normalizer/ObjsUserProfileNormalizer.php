@@ -62,304 +62,304 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             $data['is_custom_image'] = (bool) $data['is_custom_image'];
         }
         if (\array_key_exists('always_active', $data) && null !== $data['always_active']) {
-            $object->setAlwaysActive($data['always_active']);
-        } elseif (\array_key_exists('always_active', $data) && null === $data['always_active']) {
-            $object->setAlwaysActive(null);
+            $object->alwaysActive = $data['always_active'];
+        } elseif (\array_key_exists('always_active', $data)) {
+            $object->alwaysActive = null;
         }
         if (\array_key_exists('api_app_id', $data) && null !== $data['api_app_id']) {
-            $object->setApiAppId($data['api_app_id']);
-        } elseif (\array_key_exists('api_app_id', $data) && null === $data['api_app_id']) {
-            $object->setApiAppId(null);
+            $object->apiAppId = $data['api_app_id'];
+        } elseif (\array_key_exists('api_app_id', $data)) {
+            $object->apiAppId = null;
         }
         if (\array_key_exists('avatar_hash', $data) && null !== $data['avatar_hash']) {
-            $object->setAvatarHash($data['avatar_hash']);
-        } elseif (\array_key_exists('avatar_hash', $data) && null === $data['avatar_hash']) {
-            $object->setAvatarHash(null);
+            $object->avatarHash = $data['avatar_hash'];
+        } elseif (\array_key_exists('avatar_hash', $data)) {
+            $object->avatarHash = null;
         }
         if (\array_key_exists('bot_id', $data) && null !== $data['bot_id']) {
-            $object->setBotId($data['bot_id']);
-        } elseif (\array_key_exists('bot_id', $data) && null === $data['bot_id']) {
-            $object->setBotId(null);
+            $object->botId = $data['bot_id'];
+        } elseif (\array_key_exists('bot_id', $data)) {
+            $object->botId = null;
         }
         if (\array_key_exists('display_name', $data) && null !== $data['display_name']) {
-            $object->setDisplayName($data['display_name']);
-        } elseif (\array_key_exists('display_name', $data) && null === $data['display_name']) {
-            $object->setDisplayName(null);
+            $object->displayName = $data['display_name'];
+        } elseif (\array_key_exists('display_name', $data)) {
+            $object->displayName = null;
         }
         if (\array_key_exists('display_name_normalized', $data) && null !== $data['display_name_normalized']) {
-            $object->setDisplayNameNormalized($data['display_name_normalized']);
-        } elseif (\array_key_exists('display_name_normalized', $data) && null === $data['display_name_normalized']) {
-            $object->setDisplayNameNormalized(null);
+            $object->displayNameNormalized = $data['display_name_normalized'];
+        } elseif (\array_key_exists('display_name_normalized', $data)) {
+            $object->displayNameNormalized = null;
         }
         if (\array_key_exists('email', $data) && null !== $data['email']) {
             $value = $data['email'];
             if (\is_string($data['email'])) {
                 $value = $data['email'];
             }
-            $object->setEmail($value);
-        } elseif (\array_key_exists('email', $data) && null === $data['email']) {
-            $object->setEmail(null);
+            $object->email = $value;
+        } elseif (\array_key_exists('email', $data)) {
+            $object->email = null;
         }
         if (\array_key_exists('fields', $data) && null !== $data['fields']) {
             $values = [];
             foreach ($data['fields'] as $value_1) {
                 $values[] = $value_1;
             }
-            $object->setFields($values);
-        } elseif (\array_key_exists('fields', $data) && null === $data['fields']) {
-            $object->setFields(null);
+            $object->fields = $values;
+        } elseif (\array_key_exists('fields', $data)) {
+            $object->fields = null;
         }
         if (\array_key_exists('first_name', $data) && null !== $data['first_name']) {
             $value_2 = $data['first_name'];
             if (\is_string($data['first_name'])) {
                 $value_2 = $data['first_name'];
             }
-            $object->setFirstName($value_2);
-        } elseif (\array_key_exists('first_name', $data) && null === $data['first_name']) {
-            $object->setFirstName(null);
+            $object->firstName = $value_2;
+        } elseif (\array_key_exists('first_name', $data)) {
+            $object->firstName = null;
         }
         if (\array_key_exists('guest_expiration_ts', $data) && null !== $data['guest_expiration_ts']) {
             $value_3 = $data['guest_expiration_ts'];
             if (\is_int($data['guest_expiration_ts'])) {
                 $value_3 = $data['guest_expiration_ts'];
             }
-            $object->setGuestExpirationTs($value_3);
-        } elseif (\array_key_exists('guest_expiration_ts', $data) && null === $data['guest_expiration_ts']) {
-            $object->setGuestExpirationTs(null);
+            $object->guestExpirationTs = $value_3;
+        } elseif (\array_key_exists('guest_expiration_ts', $data)) {
+            $object->guestExpirationTs = null;
         }
         if (\array_key_exists('guest_invited_by', $data) && null !== $data['guest_invited_by']) {
             $value_4 = $data['guest_invited_by'];
             if (\is_string($data['guest_invited_by'])) {
                 $value_4 = $data['guest_invited_by'];
             }
-            $object->setGuestInvitedBy($value_4);
-        } elseif (\array_key_exists('guest_invited_by', $data) && null === $data['guest_invited_by']) {
-            $object->setGuestInvitedBy(null);
+            $object->guestInvitedBy = $value_4;
+        } elseif (\array_key_exists('guest_invited_by', $data)) {
+            $object->guestInvitedBy = null;
         }
         if (\array_key_exists('image_1024', $data) && null !== $data['image_1024']) {
             $value_5 = $data['image_1024'];
             if (\is_string($data['image_1024'])) {
                 $value_5 = $data['image_1024'];
             }
-            $object->setImage1024($value_5);
-        } elseif (\array_key_exists('image_1024', $data) && null === $data['image_1024']) {
-            $object->setImage1024(null);
+            $object->image1024 = $value_5;
+        } elseif (\array_key_exists('image_1024', $data)) {
+            $object->image1024 = null;
         }
         if (\array_key_exists('image_192', $data) && null !== $data['image_192']) {
             $value_6 = $data['image_192'];
             if (\is_string($data['image_192'])) {
                 $value_6 = $data['image_192'];
             }
-            $object->setImage192($value_6);
-        } elseif (\array_key_exists('image_192', $data) && null === $data['image_192']) {
-            $object->setImage192(null);
+            $object->image192 = $value_6;
+        } elseif (\array_key_exists('image_192', $data)) {
+            $object->image192 = null;
         }
         if (\array_key_exists('image_24', $data) && null !== $data['image_24']) {
             $value_7 = $data['image_24'];
             if (\is_string($data['image_24'])) {
                 $value_7 = $data['image_24'];
             }
-            $object->setImage24($value_7);
-        } elseif (\array_key_exists('image_24', $data) && null === $data['image_24']) {
-            $object->setImage24(null);
+            $object->image24 = $value_7;
+        } elseif (\array_key_exists('image_24', $data)) {
+            $object->image24 = null;
         }
         if (\array_key_exists('image_32', $data) && null !== $data['image_32']) {
             $value_8 = $data['image_32'];
             if (\is_string($data['image_32'])) {
                 $value_8 = $data['image_32'];
             }
-            $object->setImage32($value_8);
-        } elseif (\array_key_exists('image_32', $data) && null === $data['image_32']) {
-            $object->setImage32(null);
+            $object->image32 = $value_8;
+        } elseif (\array_key_exists('image_32', $data)) {
+            $object->image32 = null;
         }
         if (\array_key_exists('image_48', $data) && null !== $data['image_48']) {
             $value_9 = $data['image_48'];
             if (\is_string($data['image_48'])) {
                 $value_9 = $data['image_48'];
             }
-            $object->setImage48($value_9);
-        } elseif (\array_key_exists('image_48', $data) && null === $data['image_48']) {
-            $object->setImage48(null);
+            $object->image48 = $value_9;
+        } elseif (\array_key_exists('image_48', $data)) {
+            $object->image48 = null;
         }
         if (\array_key_exists('image_512', $data) && null !== $data['image_512']) {
             $value_10 = $data['image_512'];
             if (\is_string($data['image_512'])) {
                 $value_10 = $data['image_512'];
             }
-            $object->setImage512($value_10);
-        } elseif (\array_key_exists('image_512', $data) && null === $data['image_512']) {
-            $object->setImage512(null);
+            $object->image512 = $value_10;
+        } elseif (\array_key_exists('image_512', $data)) {
+            $object->image512 = null;
         }
         if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
             $value_11 = $data['image_72'];
             if (\is_string($data['image_72'])) {
                 $value_11 = $data['image_72'];
             }
-            $object->setImage72($value_11);
-        } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
-            $object->setImage72(null);
+            $object->image72 = $value_11;
+        } elseif (\array_key_exists('image_72', $data)) {
+            $object->image72 = null;
         }
         if (\array_key_exists('image_original', $data) && null !== $data['image_original']) {
             $value_12 = $data['image_original'];
             if (\is_string($data['image_original'])) {
                 $value_12 = $data['image_original'];
             }
-            $object->setImageOriginal($value_12);
-        } elseif (\array_key_exists('image_original', $data) && null === $data['image_original']) {
-            $object->setImageOriginal(null);
+            $object->imageOriginal = $value_12;
+        } elseif (\array_key_exists('image_original', $data)) {
+            $object->imageOriginal = null;
         }
         if (\array_key_exists('is_app_user', $data) && null !== $data['is_app_user']) {
-            $object->setIsAppUser($data['is_app_user']);
-        } elseif (\array_key_exists('is_app_user', $data) && null === $data['is_app_user']) {
-            $object->setIsAppUser(null);
+            $object->isAppUser = $data['is_app_user'];
+        } elseif (\array_key_exists('is_app_user', $data)) {
+            $object->isAppUser = null;
         }
         if (\array_key_exists('is_custom_image', $data) && null !== $data['is_custom_image']) {
-            $object->setIsCustomImage($data['is_custom_image']);
-        } elseif (\array_key_exists('is_custom_image', $data) && null === $data['is_custom_image']) {
-            $object->setIsCustomImage(null);
+            $object->isCustomImage = $data['is_custom_image'];
+        } elseif (\array_key_exists('is_custom_image', $data)) {
+            $object->isCustomImage = null;
         }
         if (\array_key_exists('is_restricted', $data) && null !== $data['is_restricted']) {
             $value_13 = $data['is_restricted'];
             if (\is_bool($data['is_restricted'])) {
                 $value_13 = $data['is_restricted'];
             }
-            $object->setIsRestricted($value_13);
-        } elseif (\array_key_exists('is_restricted', $data) && null === $data['is_restricted']) {
-            $object->setIsRestricted(null);
+            $object->isRestricted = $value_13;
+        } elseif (\array_key_exists('is_restricted', $data)) {
+            $object->isRestricted = null;
         }
         if (\array_key_exists('is_ultra_restricted', $data) && null !== $data['is_ultra_restricted']) {
             $value_14 = $data['is_ultra_restricted'];
             if (\is_bool($data['is_ultra_restricted'])) {
                 $value_14 = $data['is_ultra_restricted'];
             }
-            $object->setIsUltraRestricted($value_14);
-        } elseif (\array_key_exists('is_ultra_restricted', $data) && null === $data['is_ultra_restricted']) {
-            $object->setIsUltraRestricted(null);
+            $object->isUltraRestricted = $value_14;
+        } elseif (\array_key_exists('is_ultra_restricted', $data)) {
+            $object->isUltraRestricted = null;
         }
         if (\array_key_exists('last_avatar_image_hash', $data) && null !== $data['last_avatar_image_hash']) {
-            $object->setLastAvatarImageHash($data['last_avatar_image_hash']);
-        } elseif (\array_key_exists('last_avatar_image_hash', $data) && null === $data['last_avatar_image_hash']) {
-            $object->setLastAvatarImageHash(null);
+            $object->lastAvatarImageHash = $data['last_avatar_image_hash'];
+        } elseif (\array_key_exists('last_avatar_image_hash', $data)) {
+            $object->lastAvatarImageHash = null;
         }
         if (\array_key_exists('last_name', $data) && null !== $data['last_name']) {
             $value_15 = $data['last_name'];
             if (\is_string($data['last_name'])) {
                 $value_15 = $data['last_name'];
             }
-            $object->setLastName($value_15);
-        } elseif (\array_key_exists('last_name', $data) && null === $data['last_name']) {
-            $object->setLastName(null);
+            $object->lastName = $value_15;
+        } elseif (\array_key_exists('last_name', $data)) {
+            $object->lastName = null;
         }
         if (\array_key_exists('memberships_count', $data) && null !== $data['memberships_count']) {
-            $object->setMembershipsCount($data['memberships_count']);
-        } elseif (\array_key_exists('memberships_count', $data) && null === $data['memberships_count']) {
-            $object->setMembershipsCount(null);
+            $object->membershipsCount = $data['memberships_count'];
+        } elseif (\array_key_exists('memberships_count', $data)) {
+            $object->membershipsCount = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
             $value_16 = $data['name'];
             if (\is_string($data['name'])) {
                 $value_16 = $data['name'];
             }
-            $object->setName($value_16);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $value_16;
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('phone', $data) && null !== $data['phone']) {
-            $object->setPhone($data['phone']);
-        } elseif (\array_key_exists('phone', $data) && null === $data['phone']) {
-            $object->setPhone(null);
+            $object->phone = $data['phone'];
+        } elseif (\array_key_exists('phone', $data)) {
+            $object->phone = null;
         }
         if (\array_key_exists('pronouns', $data) && null !== $data['pronouns']) {
-            $object->setPronouns($data['pronouns']);
-        } elseif (\array_key_exists('pronouns', $data) && null === $data['pronouns']) {
-            $object->setPronouns(null);
+            $object->pronouns = $data['pronouns'];
+        } elseif (\array_key_exists('pronouns', $data)) {
+            $object->pronouns = null;
         }
         if (\array_key_exists('real_name', $data) && null !== $data['real_name']) {
-            $object->setRealName($data['real_name']);
-        } elseif (\array_key_exists('real_name', $data) && null === $data['real_name']) {
-            $object->setRealName(null);
+            $object->realName = $data['real_name'];
+        } elseif (\array_key_exists('real_name', $data)) {
+            $object->realName = null;
         }
         if (\array_key_exists('real_name_normalized', $data) && null !== $data['real_name_normalized']) {
-            $object->setRealNameNormalized($data['real_name_normalized']);
-        } elseif (\array_key_exists('real_name_normalized', $data) && null === $data['real_name_normalized']) {
-            $object->setRealNameNormalized(null);
+            $object->realNameNormalized = $data['real_name_normalized'];
+        } elseif (\array_key_exists('real_name_normalized', $data)) {
+            $object->realNameNormalized = null;
         }
         if (\array_key_exists('skype', $data) && null !== $data['skype']) {
-            $object->setSkype($data['skype']);
-        } elseif (\array_key_exists('skype', $data) && null === $data['skype']) {
-            $object->setSkype(null);
+            $object->skype = $data['skype'];
+        } elseif (\array_key_exists('skype', $data)) {
+            $object->skype = null;
         }
         if (\array_key_exists('status_default_emoji', $data) && null !== $data['status_default_emoji']) {
-            $object->setStatusDefaultEmoji($data['status_default_emoji']);
-        } elseif (\array_key_exists('status_default_emoji', $data) && null === $data['status_default_emoji']) {
-            $object->setStatusDefaultEmoji(null);
+            $object->statusDefaultEmoji = $data['status_default_emoji'];
+        } elseif (\array_key_exists('status_default_emoji', $data)) {
+            $object->statusDefaultEmoji = null;
         }
         if (\array_key_exists('status_default_text', $data) && null !== $data['status_default_text']) {
-            $object->setStatusDefaultText($data['status_default_text']);
-        } elseif (\array_key_exists('status_default_text', $data) && null === $data['status_default_text']) {
-            $object->setStatusDefaultText(null);
+            $object->statusDefaultText = $data['status_default_text'];
+        } elseif (\array_key_exists('status_default_text', $data)) {
+            $object->statusDefaultText = null;
         }
         if (\array_key_exists('status_default_text_canonical', $data) && null !== $data['status_default_text_canonical']) {
             $value_17 = $data['status_default_text_canonical'];
             if (\is_string($data['status_default_text_canonical'])) {
                 $value_17 = $data['status_default_text_canonical'];
             }
-            $object->setStatusDefaultTextCanonical($value_17);
-        } elseif (\array_key_exists('status_default_text_canonical', $data) && null === $data['status_default_text_canonical']) {
-            $object->setStatusDefaultTextCanonical(null);
+            $object->statusDefaultTextCanonical = $value_17;
+        } elseif (\array_key_exists('status_default_text_canonical', $data)) {
+            $object->statusDefaultTextCanonical = null;
         }
         if (\array_key_exists('status_emoji', $data) && null !== $data['status_emoji']) {
-            $object->setStatusEmoji($data['status_emoji']);
-        } elseif (\array_key_exists('status_emoji', $data) && null === $data['status_emoji']) {
-            $object->setStatusEmoji(null);
+            $object->statusEmoji = $data['status_emoji'];
+        } elseif (\array_key_exists('status_emoji', $data)) {
+            $object->statusEmoji = null;
         }
         if (\array_key_exists('status_expiration', $data) && null !== $data['status_expiration']) {
-            $object->setStatusExpiration($data['status_expiration']);
-        } elseif (\array_key_exists('status_expiration', $data) && null === $data['status_expiration']) {
-            $object->setStatusExpiration(null);
+            $object->statusExpiration = $data['status_expiration'];
+        } elseif (\array_key_exists('status_expiration', $data)) {
+            $object->statusExpiration = null;
         }
         if (\array_key_exists('status_text', $data) && null !== $data['status_text']) {
-            $object->setStatusText($data['status_text']);
-        } elseif (\array_key_exists('status_text', $data) && null === $data['status_text']) {
-            $object->setStatusText(null);
+            $object->statusText = $data['status_text'];
+        } elseif (\array_key_exists('status_text', $data)) {
+            $object->statusText = null;
         }
         if (\array_key_exists('status_text_canonical', $data) && null !== $data['status_text_canonical']) {
             $value_18 = $data['status_text_canonical'];
             if (\is_string($data['status_text_canonical'])) {
                 $value_18 = $data['status_text_canonical'];
             }
-            $object->setStatusTextCanonical($value_18);
-        } elseif (\array_key_exists('status_text_canonical', $data) && null === $data['status_text_canonical']) {
-            $object->setStatusTextCanonical(null);
+            $object->statusTextCanonical = $value_18;
+        } elseif (\array_key_exists('status_text_canonical', $data)) {
+            $object->statusTextCanonical = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($data['team']);
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $data['team'];
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
         if (\array_key_exists('title', $data) && null !== $data['title']) {
-            $object->setTitle($data['title']);
-        } elseif (\array_key_exists('title', $data) && null === $data['title']) {
-            $object->setTitle(null);
+            $object->title = $data['title'];
+        } elseif (\array_key_exists('title', $data)) {
+            $object->title = null;
         }
         if (\array_key_exists('updated', $data) && null !== $data['updated']) {
-            $object->setUpdated($data['updated']);
-        } elseif (\array_key_exists('updated', $data) && null === $data['updated']) {
-            $object->setUpdated(null);
+            $object->updated = $data['updated'];
+        } elseif (\array_key_exists('updated', $data)) {
+            $object->updated = null;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
-            $object->setUserId($data['user_id']);
-        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
-            $object->setUserId(null);
+            $object->userId = $data['user_id'];
+        } elseif (\array_key_exists('user_id', $data)) {
+            $object->userId = null;
         }
         if (\array_key_exists('username', $data) && null !== $data['username']) {
             $value_19 = $data['username'];
             if (\is_string($data['username'])) {
                 $value_19 = $data['username'];
             }
-            $object->setUsername($value_19);
-        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
-            $object->setUsername(null);
+            $object->username = $value_19;
+        } elseif (\array_key_exists('username', $data)) {
+            $object->username = null;
         }
 
         return $object;
@@ -368,193 +368,193 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('alwaysActive') && null !== $data->getAlwaysActive()) {
-            $dataArray['always_active'] = $data->getAlwaysActive();
+        if (\array_key_exists('alwaysActive', get_object_vars($data)) && null !== ($data->alwaysActive ?? null)) {
+            $dataArray['always_active'] = $data->alwaysActive;
         }
-        if ($data->isInitialized('apiAppId') && null !== $data->getApiAppId()) {
-            $dataArray['api_app_id'] = $data->getApiAppId();
+        if (\array_key_exists('apiAppId', get_object_vars($data)) && null !== ($data->apiAppId ?? null)) {
+            $dataArray['api_app_id'] = $data->apiAppId;
         }
-        $dataArray['avatar_hash'] = $data->getAvatarHash();
-        if ($data->isInitialized('botId') && null !== $data->getBotId()) {
-            $dataArray['bot_id'] = $data->getBotId();
+        $dataArray['avatar_hash'] = $data->avatarHash;
+        if (\array_key_exists('botId', get_object_vars($data)) && null !== ($data->botId ?? null)) {
+            $dataArray['bot_id'] = $data->botId;
         }
-        $dataArray['display_name'] = $data->getDisplayName();
-        $dataArray['display_name_normalized'] = $data->getDisplayNameNormalized();
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $value = $data->getEmail();
-            if (\is_string($data->getEmail())) {
-                $value = $data->getEmail();
+        $dataArray['display_name'] = $data->displayName;
+        $dataArray['display_name_normalized'] = $data->displayNameNormalized;
+        if (\array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $value = $data->email;
+            if (\is_string($data->email)) {
+                $value = $data->email;
             }
             $dataArray['email'] = $value;
         }
         $values = [];
-        foreach ($data->getFields() as $value_1) {
+        foreach ($data->fields as $value_1) {
             $values[] = $value_1;
         }
         $dataArray['fields'] = $values;
-        if ($data->isInitialized('firstName') && null !== $data->getFirstName()) {
-            $value_2 = $data->getFirstName();
-            if (\is_string($data->getFirstName())) {
-                $value_2 = $data->getFirstName();
+        if (\array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {
+            $value_2 = $data->firstName;
+            if (\is_string($data->firstName)) {
+                $value_2 = $data->firstName;
             }
             $dataArray['first_name'] = $value_2;
         }
-        if ($data->isInitialized('guestExpirationTs') && null !== $data->getGuestExpirationTs()) {
-            $value_3 = $data->getGuestExpirationTs();
-            if (\is_int($data->getGuestExpirationTs())) {
-                $value_3 = $data->getGuestExpirationTs();
+        if (\array_key_exists('guestExpirationTs', get_object_vars($data)) && null !== ($data->guestExpirationTs ?? null)) {
+            $value_3 = $data->guestExpirationTs;
+            if (\is_int($data->guestExpirationTs)) {
+                $value_3 = $data->guestExpirationTs;
             }
             $dataArray['guest_expiration_ts'] = $value_3;
         }
-        if ($data->isInitialized('guestInvitedBy') && null !== $data->getGuestInvitedBy()) {
-            $value_4 = $data->getGuestInvitedBy();
-            if (\is_string($data->getGuestInvitedBy())) {
-                $value_4 = $data->getGuestInvitedBy();
+        if (\array_key_exists('guestInvitedBy', get_object_vars($data)) && null !== ($data->guestInvitedBy ?? null)) {
+            $value_4 = $data->guestInvitedBy;
+            if (\is_string($data->guestInvitedBy)) {
+                $value_4 = $data->guestInvitedBy;
             }
             $dataArray['guest_invited_by'] = $value_4;
         }
-        if ($data->isInitialized('image1024') && null !== $data->getImage1024()) {
-            $value_5 = $data->getImage1024();
-            if (\is_string($data->getImage1024())) {
-                $value_5 = $data->getImage1024();
+        if (\array_key_exists('image1024', get_object_vars($data)) && null !== ($data->image1024 ?? null)) {
+            $value_5 = $data->image1024;
+            if (\is_string($data->image1024)) {
+                $value_5 = $data->image1024;
             }
             $dataArray['image_1024'] = $value_5;
         }
-        if ($data->isInitialized('image192') && null !== $data->getImage192()) {
-            $value_6 = $data->getImage192();
-            if (\is_string($data->getImage192())) {
-                $value_6 = $data->getImage192();
+        if (\array_key_exists('image192', get_object_vars($data)) && null !== ($data->image192 ?? null)) {
+            $value_6 = $data->image192;
+            if (\is_string($data->image192)) {
+                $value_6 = $data->image192;
             }
             $dataArray['image_192'] = $value_6;
         }
-        if ($data->isInitialized('image24') && null !== $data->getImage24()) {
-            $value_7 = $data->getImage24();
-            if (\is_string($data->getImage24())) {
-                $value_7 = $data->getImage24();
+        if (\array_key_exists('image24', get_object_vars($data)) && null !== ($data->image24 ?? null)) {
+            $value_7 = $data->image24;
+            if (\is_string($data->image24)) {
+                $value_7 = $data->image24;
             }
             $dataArray['image_24'] = $value_7;
         }
-        if ($data->isInitialized('image32') && null !== $data->getImage32()) {
-            $value_8 = $data->getImage32();
-            if (\is_string($data->getImage32())) {
-                $value_8 = $data->getImage32();
+        if (\array_key_exists('image32', get_object_vars($data)) && null !== ($data->image32 ?? null)) {
+            $value_8 = $data->image32;
+            if (\is_string($data->image32)) {
+                $value_8 = $data->image32;
             }
             $dataArray['image_32'] = $value_8;
         }
-        if ($data->isInitialized('image48') && null !== $data->getImage48()) {
-            $value_9 = $data->getImage48();
-            if (\is_string($data->getImage48())) {
-                $value_9 = $data->getImage48();
+        if (\array_key_exists('image48', get_object_vars($data)) && null !== ($data->image48 ?? null)) {
+            $value_9 = $data->image48;
+            if (\is_string($data->image48)) {
+                $value_9 = $data->image48;
             }
             $dataArray['image_48'] = $value_9;
         }
-        if ($data->isInitialized('image512') && null !== $data->getImage512()) {
-            $value_10 = $data->getImage512();
-            if (\is_string($data->getImage512())) {
-                $value_10 = $data->getImage512();
+        if (\array_key_exists('image512', get_object_vars($data)) && null !== ($data->image512 ?? null)) {
+            $value_10 = $data->image512;
+            if (\is_string($data->image512)) {
+                $value_10 = $data->image512;
             }
             $dataArray['image_512'] = $value_10;
         }
-        if ($data->isInitialized('image72') && null !== $data->getImage72()) {
-            $value_11 = $data->getImage72();
-            if (\is_string($data->getImage72())) {
-                $value_11 = $data->getImage72();
+        if (\array_key_exists('image72', get_object_vars($data)) && null !== ($data->image72 ?? null)) {
+            $value_11 = $data->image72;
+            if (\is_string($data->image72)) {
+                $value_11 = $data->image72;
             }
             $dataArray['image_72'] = $value_11;
         }
-        if ($data->isInitialized('imageOriginal') && null !== $data->getImageOriginal()) {
-            $value_12 = $data->getImageOriginal();
-            if (\is_string($data->getImageOriginal())) {
-                $value_12 = $data->getImageOriginal();
+        if (\array_key_exists('imageOriginal', get_object_vars($data)) && null !== ($data->imageOriginal ?? null)) {
+            $value_12 = $data->imageOriginal;
+            if (\is_string($data->imageOriginal)) {
+                $value_12 = $data->imageOriginal;
             }
             $dataArray['image_original'] = $value_12;
         }
-        if ($data->isInitialized('isAppUser') && null !== $data->getIsAppUser()) {
-            $dataArray['is_app_user'] = $data->getIsAppUser();
+        if (\array_key_exists('isAppUser', get_object_vars($data)) && null !== ($data->isAppUser ?? null)) {
+            $dataArray['is_app_user'] = $data->isAppUser;
         }
-        if ($data->isInitialized('isCustomImage') && null !== $data->getIsCustomImage()) {
-            $dataArray['is_custom_image'] = $data->getIsCustomImage();
+        if (\array_key_exists('isCustomImage', get_object_vars($data)) && null !== ($data->isCustomImage ?? null)) {
+            $dataArray['is_custom_image'] = $data->isCustomImage;
         }
-        if ($data->isInitialized('isRestricted') && null !== $data->getIsRestricted()) {
-            $value_13 = $data->getIsRestricted();
-            if (\is_bool($data->getIsRestricted())) {
-                $value_13 = $data->getIsRestricted();
+        if (\array_key_exists('isRestricted', get_object_vars($data)) && null !== ($data->isRestricted ?? null)) {
+            $value_13 = $data->isRestricted;
+            if (\is_bool($data->isRestricted)) {
+                $value_13 = $data->isRestricted;
             }
             $dataArray['is_restricted'] = $value_13;
         }
-        if ($data->isInitialized('isUltraRestricted') && null !== $data->getIsUltraRestricted()) {
-            $value_14 = $data->getIsUltraRestricted();
-            if (\is_bool($data->getIsUltraRestricted())) {
-                $value_14 = $data->getIsUltraRestricted();
+        if (\array_key_exists('isUltraRestricted', get_object_vars($data)) && null !== ($data->isUltraRestricted ?? null)) {
+            $value_14 = $data->isUltraRestricted;
+            if (\is_bool($data->isUltraRestricted)) {
+                $value_14 = $data->isUltraRestricted;
             }
             $dataArray['is_ultra_restricted'] = $value_14;
         }
-        if ($data->isInitialized('lastAvatarImageHash') && null !== $data->getLastAvatarImageHash()) {
-            $dataArray['last_avatar_image_hash'] = $data->getLastAvatarImageHash();
+        if (\array_key_exists('lastAvatarImageHash', get_object_vars($data)) && null !== ($data->lastAvatarImageHash ?? null)) {
+            $dataArray['last_avatar_image_hash'] = $data->lastAvatarImageHash;
         }
-        if ($data->isInitialized('lastName') && null !== $data->getLastName()) {
-            $value_15 = $data->getLastName();
-            if (\is_string($data->getLastName())) {
-                $value_15 = $data->getLastName();
+        if (\array_key_exists('lastName', get_object_vars($data)) && null !== ($data->lastName ?? null)) {
+            $value_15 = $data->lastName;
+            if (\is_string($data->lastName)) {
+                $value_15 = $data->lastName;
             }
             $dataArray['last_name'] = $value_15;
         }
-        if ($data->isInitialized('membershipsCount') && null !== $data->getMembershipsCount()) {
-            $dataArray['memberships_count'] = $data->getMembershipsCount();
+        if (\array_key_exists('membershipsCount', get_object_vars($data)) && null !== ($data->membershipsCount ?? null)) {
+            $dataArray['memberships_count'] = $data->membershipsCount;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $value_16 = $data->getName();
-            if (\is_string($data->getName())) {
-                $value_16 = $data->getName();
+        if (\array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $value_16 = $data->name;
+            if (\is_string($data->name)) {
+                $value_16 = $data->name;
             }
             $dataArray['name'] = $value_16;
         }
-        $dataArray['phone'] = $data->getPhone();
-        if ($data->isInitialized('pronouns') && null !== $data->getPronouns()) {
-            $dataArray['pronouns'] = $data->getPronouns();
+        $dataArray['phone'] = $data->phone;
+        if (\array_key_exists('pronouns', get_object_vars($data)) && null !== ($data->pronouns ?? null)) {
+            $dataArray['pronouns'] = $data->pronouns;
         }
-        $dataArray['real_name'] = $data->getRealName();
-        $dataArray['real_name_normalized'] = $data->getRealNameNormalized();
-        $dataArray['skype'] = $data->getSkype();
-        if ($data->isInitialized('statusDefaultEmoji') && null !== $data->getStatusDefaultEmoji()) {
-            $dataArray['status_default_emoji'] = $data->getStatusDefaultEmoji();
+        $dataArray['real_name'] = $data->realName;
+        $dataArray['real_name_normalized'] = $data->realNameNormalized;
+        $dataArray['skype'] = $data->skype;
+        if (\array_key_exists('statusDefaultEmoji', get_object_vars($data)) && null !== ($data->statusDefaultEmoji ?? null)) {
+            $dataArray['status_default_emoji'] = $data->statusDefaultEmoji;
         }
-        if ($data->isInitialized('statusDefaultText') && null !== $data->getStatusDefaultText()) {
-            $dataArray['status_default_text'] = $data->getStatusDefaultText();
+        if (\array_key_exists('statusDefaultText', get_object_vars($data)) && null !== ($data->statusDefaultText ?? null)) {
+            $dataArray['status_default_text'] = $data->statusDefaultText;
         }
-        if ($data->isInitialized('statusDefaultTextCanonical') && null !== $data->getStatusDefaultTextCanonical()) {
-            $value_17 = $data->getStatusDefaultTextCanonical();
-            if (\is_string($data->getStatusDefaultTextCanonical())) {
-                $value_17 = $data->getStatusDefaultTextCanonical();
+        if (\array_key_exists('statusDefaultTextCanonical', get_object_vars($data)) && null !== ($data->statusDefaultTextCanonical ?? null)) {
+            $value_17 = $data->statusDefaultTextCanonical;
+            if (\is_string($data->statusDefaultTextCanonical)) {
+                $value_17 = $data->statusDefaultTextCanonical;
             }
             $dataArray['status_default_text_canonical'] = $value_17;
         }
-        $dataArray['status_emoji'] = $data->getStatusEmoji();
-        if ($data->isInitialized('statusExpiration') && null !== $data->getStatusExpiration()) {
-            $dataArray['status_expiration'] = $data->getStatusExpiration();
+        $dataArray['status_emoji'] = $data->statusEmoji;
+        if (\array_key_exists('statusExpiration', get_object_vars($data)) && null !== ($data->statusExpiration ?? null)) {
+            $dataArray['status_expiration'] = $data->statusExpiration;
         }
-        $dataArray['status_text'] = $data->getStatusText();
-        if ($data->isInitialized('statusTextCanonical') && null !== $data->getStatusTextCanonical()) {
-            $value_18 = $data->getStatusTextCanonical();
-            if (\is_string($data->getStatusTextCanonical())) {
-                $value_18 = $data->getStatusTextCanonical();
+        $dataArray['status_text'] = $data->statusText;
+        if (\array_key_exists('statusTextCanonical', get_object_vars($data)) && null !== ($data->statusTextCanonical ?? null)) {
+            $value_18 = $data->statusTextCanonical;
+            if (\is_string($data->statusTextCanonical)) {
+                $value_18 = $data->statusTextCanonical;
             }
             $dataArray['status_text_canonical'] = $value_18;
         }
-        if ($data->isInitialized('team') && null !== $data->getTeam()) {
-            $dataArray['team'] = $data->getTeam();
+        if (\array_key_exists('team', get_object_vars($data)) && null !== ($data->team ?? null)) {
+            $dataArray['team'] = $data->team;
         }
-        $dataArray['title'] = $data->getTitle();
-        if ($data->isInitialized('updated') && null !== $data->getUpdated()) {
-            $dataArray['updated'] = $data->getUpdated();
+        $dataArray['title'] = $data->title;
+        if (\array_key_exists('updated', get_object_vars($data)) && null !== ($data->updated ?? null)) {
+            $dataArray['updated'] = $data->updated;
         }
-        if ($data->isInitialized('userId') && null !== $data->getUserId()) {
-            $dataArray['user_id'] = $data->getUserId();
+        if (\array_key_exists('userId', get_object_vars($data)) && null !== ($data->userId ?? null)) {
+            $dataArray['user_id'] = $data->userId;
         }
-        if ($data->isInitialized('username') && null !== $data->getUsername()) {
-            $value_19 = $data->getUsername();
-            if (\is_string($data->getUsername())) {
-                $value_19 = $data->getUsername();
+        if (\array_key_exists('username', get_object_vars($data)) && null !== ($data->username ?? null)) {
+            $value_19 = $data->username;
+            if (\is_string($data->username)) {
+                $value_19 = $data->username;
             }
             $dataArray['username'] = $value_19;
         }

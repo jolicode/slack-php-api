@@ -56,14 +56,14 @@ class AdminConversationsCreatePostResponse200Normalizer implements DenormalizerI
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('channel_id', $data) && null !== $data['channel_id']) {
-            $object->setChannelId($data['channel_id']);
-        } elseif (\array_key_exists('channel_id', $data) && null === $data['channel_id']) {
-            $object->setChannelId(null);
+            $object->channelId = $data['channel_id'];
+        } elseif (\array_key_exists('channel_id', $data)) {
+            $object->channelId = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -72,10 +72,10 @@ class AdminConversationsCreatePostResponse200Normalizer implements DenormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('channelId') && null !== $data->getChannelId()) {
-            $dataArray['channel_id'] = $data->getChannelId();
+        if (\array_key_exists('channelId', get_object_vars($data)) && null !== ($data->channelId ?? null)) {
+            $dataArray['channel_id'] = $data->channelId;
         }
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

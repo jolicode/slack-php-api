@@ -53,34 +53,34 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('style', $data) && null !== $data['style']) {
-            $object->setStyle($data['style']);
-        } elseif (\array_key_exists('style', $data) && null === $data['style']) {
-            $object->setStyle(null);
+            $object->style = $data['style'];
+        } elseif (\array_key_exists('style', $data)) {
+            $object->style = null;
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
-            $object->setText($data['text']);
-        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-            $object->setText(null);
+            $object->text = $data['text'];
+        } elseif (\array_key_exists('text', $data)) {
+            $object->text = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
         if (\array_key_exists('value', $data) && null !== $data['value']) {
-            $object->setValue($data['value']);
-        } elseif (\array_key_exists('value', $data) && null === $data['value']) {
-            $object->setValue(null);
+            $object->value = $data['value'];
+        } elseif (\array_key_exists('value', $data)) {
+            $object->value = null;
         }
 
         return $object;
@@ -89,23 +89,23 @@ class ObjsMessageAttachmentsItemActionsItemNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (\array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (\array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name;
         }
-        if ($data->isInitialized('style') && null !== $data->getStyle()) {
-            $dataArray['style'] = $data->getStyle();
+        if (\array_key_exists('style', get_object_vars($data)) && null !== ($data->style ?? null)) {
+            $dataArray['style'] = $data->style;
         }
-        if ($data->isInitialized('text') && null !== $data->getText()) {
-            $dataArray['text'] = $data->getText();
+        if (\array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
+            $dataArray['text'] = $data->text;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (\array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (\array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value;
         }
 
         return $dataArray;

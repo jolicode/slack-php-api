@@ -56,24 +56,24 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('args', $data) && null !== $data['args']) {
-            $object->setArgs($data['args']);
+            $object->args = $data['args'];
             unset($data['args']);
-        } elseif (\array_key_exists('args', $data) && null === $data['args']) {
-            $object->setArgs(null);
+        } elseif (\array_key_exists('args', $data)) {
+            $object->args = null;
             unset($data['args']);
         }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
-            $object->setError($data['error']);
+            $object->error = $data['error'];
             unset($data['error']);
-        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
-            $object->setError(null);
+        } elseif (\array_key_exists('error', $data)) {
+            $object->error = null;
             unset($data['error']);
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
+            $object->ok = $data['ok'];
             unset($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
             unset($data['ok']);
         }
         foreach ($data as $key => $value) {
@@ -88,11 +88,11 @@ class ApiTestGetResponsedefaultNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('args') && null !== $data->getArgs()) {
-            $dataArray['args'] = $data->getArgs();
+        if (\array_key_exists('args', get_object_vars($data)) && null !== ($data->args ?? null)) {
+            $dataArray['args'] = $data->args;
         }
-        $dataArray['error'] = $data->getError();
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['error'] = $data->error;
+        $dataArray['ok'] = $data->ok;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

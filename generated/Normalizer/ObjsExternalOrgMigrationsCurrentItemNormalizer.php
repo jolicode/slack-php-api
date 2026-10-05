@@ -53,14 +53,14 @@ class ObjsExternalOrgMigrationsCurrentItemNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('date_started', $data) && null !== $data['date_started']) {
-            $object->setDateStarted($data['date_started']);
-        } elseif (\array_key_exists('date_started', $data) && null === $data['date_started']) {
-            $object->setDateStarted(null);
+            $object->dateStarted = $data['date_started'];
+        } elseif (\array_key_exists('date_started', $data)) {
+            $object->dateStarted = null;
         }
         if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
-            $object->setTeamId($data['team_id']);
-        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
-            $object->setTeamId(null);
+            $object->teamId = $data['team_id'];
+        } elseif (\array_key_exists('team_id', $data)) {
+            $object->teamId = null;
         }
 
         return $object;
@@ -69,8 +69,8 @@ class ObjsExternalOrgMigrationsCurrentItemNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['date_started'] = $data->getDateStarted();
-        $dataArray['team_id'] = $data->getTeamId();
+        $dataArray['date_started'] = $data->dateStarted;
+        $dataArray['team_id'] = $data->teamId;
 
         return $dataArray;
     }

@@ -16,52 +16,8 @@ namespace JoliCode\Slack\Api\Model;
 class FilesCompleteUploadExternalPostResponse200
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var list<FilesCompleteUploadExternalPostResponse200FilesItem>|null
      */
-    protected $files;
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    /**
-     * @return list<FilesCompleteUploadExternalPostResponse200FilesItem>|null
-     */
-    public function getFiles(): ?array
-    {
-        return $this->files;
-    }
-
-    /**
-     * @param list<FilesCompleteUploadExternalPostResponse200FilesItem>|null $files
-     */
-    public function setFiles(?array $files): self
-    {
-        $this->initialized['files'] = true;
-        $this->files = $files;
-
-        return $this;
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
+    public ?array $files;
+    public ?bool $ok;
 }

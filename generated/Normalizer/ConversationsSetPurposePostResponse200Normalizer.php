@@ -56,14 +56,14 @@ class ConversationsSetPurposePostResponse200Normalizer implements DenormalizerIn
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\ObjsConversation::class, 'json', $context));
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\ObjsConversation::class, 'json', $context);
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class ConversationsSetPurposePostResponse200Normalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = null === $data->getChannel() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getChannel(), 'json', $context));
-        $dataArray['ok'] = $data->getOk();
+        $normalized = null === $data->channel ? null : $this->normalizer->normalize($data->channel, 'json', $context);
+        $dataArray['channel'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

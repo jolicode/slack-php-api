@@ -19,60 +19,14 @@ use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
 class UsersInfoGetResponse200 implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * Merged user object for non enterprise type and enterprise user.
-     *
-     * @var ObjsUser|null
-     */
-    protected $user;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
+    public ?bool $ok;
     /**
      * Merged user object for non enterprise type and enterprise user.
      */
-    public function getUser(): ?ObjsUser
-    {
-        return $this->user;
-    }
-
-    /**
-     * Merged user object for non enterprise type and enterprise user.
-     */
-    public function setUser(?ObjsUser $user): self
-    {
-        $this->initialized['user'] = true;
-        $this->user = $user;
-
-        return $this;
-    }
+    public ?ObjsUser $user;
 
     public function definedProperties(): array
     {
-        return ['ok' => ['ok', 'getOk', 'setOk'], 'user' => ['user', 'getUser', 'setUser']];
+        return ['ok' => 'ok', 'user' => 'user'];
     }
 }

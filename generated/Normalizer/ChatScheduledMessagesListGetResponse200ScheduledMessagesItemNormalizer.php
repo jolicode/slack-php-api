@@ -53,19 +53,19 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('channel_id', $data) && null !== $data['channel_id']) {
-            $object->setChannelId($data['channel_id']);
-        } elseif (\array_key_exists('channel_id', $data) && null === $data['channel_id']) {
-            $object->setChannelId(null);
+            $object->channelId = $data['channel_id'];
+        } elseif (\array_key_exists('channel_id', $data)) {
+            $object->channelId = null;
         }
         if (\array_key_exists('date_created', $data) && null !== $data['date_created']) {
-            $object->setDateCreated($data['date_created']);
-        } elseif (\array_key_exists('date_created', $data) && null === $data['date_created']) {
-            $object->setDateCreated(null);
+            $object->dateCreated = $data['date_created'];
+        } elseif (\array_key_exists('date_created', $data)) {
+            $object->dateCreated = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('post_at', $data) && null !== $data['post_at']) {
             $value = $data['post_at'];
@@ -74,14 +74,14 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
             } elseif (\is_string($data['post_at'])) {
                 $value = $data['post_at'];
             }
-            $object->setPostAt($value);
-        } elseif (\array_key_exists('post_at', $data) && null === $data['post_at']) {
-            $object->setPostAt(null);
+            $object->postAt = $value;
+        } elseif (\array_key_exists('post_at', $data)) {
+            $object->postAt = null;
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
-            $object->setText($data['text']);
-        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-            $object->setText(null);
+            $object->text = $data['text'];
+        } elseif (\array_key_exists('text', $data)) {
+            $object->text = null;
         }
 
         return $object;
@@ -90,18 +90,18 @@ class ChatScheduledMessagesListGetResponse200ScheduledMessagesItemNormalizer imp
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel_id'] = $data->getChannelId();
-        $dataArray['date_created'] = $data->getDateCreated();
-        $dataArray['id'] = $data->getId();
-        $value = $data->getPostAt();
-        if (\is_int($data->getPostAt())) {
-            $value = $data->getPostAt();
-        } elseif (\is_string($data->getPostAt())) {
-            $value = $data->getPostAt();
+        $dataArray['channel_id'] = $data->channelId;
+        $dataArray['date_created'] = $data->dateCreated;
+        $dataArray['id'] = $data->id;
+        $value = $data->postAt;
+        if (\is_int($data->postAt)) {
+            $value = $data->postAt;
+        } elseif (\is_string($data->postAt)) {
+            $value = $data->postAt;
         }
         $dataArray['post_at'] = $value;
-        if ($data->isInitialized('text') && null !== $data->getText()) {
-            $dataArray['text'] = $data->getText();
+        if (\array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
+            $dataArray['text'] = $data->text;
         }
 
         return $dataArray;

@@ -53,24 +53,24 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
-            $object->setCreated($data['created']);
-        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-            $object->setCreated(null);
+            $object->created = $data['created'];
+        } elseif (\array_key_exists('created', $data)) {
+            $object->created = null;
         }
         if (\array_key_exists('created_by', $data) && null !== $data['created_by']) {
-            $object->setCreatedBy($data['created_by']);
-        } elseif (\array_key_exists('created_by', $data) && null === $data['created_by']) {
-            $object->setCreatedBy(null);
+            $object->createdBy = $data['created_by'];
+        } elseif (\array_key_exists('created_by', $data)) {
+            $object->createdBy = null;
         }
         if (\array_key_exists('file', $data) && null !== $data['file']) {
-            $object->setFile($this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context));
-        } elseif (\array_key_exists('file', $data) && null === $data['file']) {
-            $object->setFile(null);
+            $object->file = $this->denormalizer->denormalize($data['file'], \JoliCode\Slack\Api\Model\ObjsFile::class, 'json', $context);
+        } elseif (\array_key_exists('file', $data)) {
+            $object->file = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -79,17 +79,18 @@ class PinsListGetResponse200Item0ItemsItem0Normalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('created') && null !== $data->getCreated()) {
-            $dataArray['created'] = $data->getCreated();
+        if (\array_key_exists('created', get_object_vars($data)) && null !== ($data->created ?? null)) {
+            $dataArray['created'] = $data->created;
         }
-        if ($data->isInitialized('createdBy') && null !== $data->getCreatedBy()) {
-            $dataArray['created_by'] = $data->getCreatedBy();
+        if (\array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
+            $dataArray['created_by'] = $data->createdBy;
         }
-        if ($data->isInitialized('file') && null !== $data->getFile()) {
-            $dataArray['file'] = null === $data->getFile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getFile(), 'json', $context));
+        if (\array_key_exists('file', get_object_vars($data)) && null !== ($data->file ?? null)) {
+            $normalized = $this->normalizer->normalize($data->file, 'json', $context);
+            $dataArray['file'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (\array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type;
         }
 
         return $dataArray;

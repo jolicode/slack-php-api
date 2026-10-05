@@ -56,14 +56,14 @@ class AppsPermissionsInfoGetResponse200Normalizer implements DenormalizerInterfa
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('info', $data) && null !== $data['info']) {
-            $object->setInfo($this->denormalizer->denormalize($data['info'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info::class, 'json', $context));
-        } elseif (\array_key_exists('info', $data) && null === $data['info']) {
-            $object->setInfo(null);
+            $object->info = $this->denormalizer->denormalize($data['info'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200Info::class, 'json', $context);
+        } elseif (\array_key_exists('info', $data)) {
+            $object->info = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class AppsPermissionsInfoGetResponse200Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['info'] = null === $data->getInfo() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getInfo(), 'json', $context));
-        $dataArray['ok'] = $data->getOk();
+        $normalized = null === $data->info ? null : $this->normalizer->normalize($data->info, 'json', $context);
+        $dataArray['info'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

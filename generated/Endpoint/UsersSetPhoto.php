@@ -20,14 +20,13 @@ class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     /**
      * Set the user profile photo.
      *
-     * @param array $formParameters {
-     *
-     * @var string $crop_w Width/height of crop box (always square)
-     * @var string $crop_x X coordinate of top-left corner of crop box
-     * @var string $crop_y Y coordinate of top-left corner of crop box
-     * @var string $image file contents via `multipart/form-data`
-     * @var string $token Authentication token. Requires scope: `users.profile:write`
-     *             }
+     * @param array{
+     *    "crop_w"?: string, //Width/height of crop box (always square)
+     *    "crop_x"?: string, //X coordinate of top-left corner of crop box
+     *    "crop_y"?: string, //Y coordinate of top-left corner of crop box
+     *    "image"?: string, //File contents via `multipart/form-data`.
+     *    "token"?: string, //Authentication token. Requires scope: `users.profile:write`
+     * } $formParameters
      */
     public function __construct(array $formParameters = [])
     {
@@ -44,7 +43,7 @@ class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         return '/users.setPhoto';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -57,6 +56,16 @@ class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,12 +84,12 @@ class UsersSetPhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200|\JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200|\JoliCode\Slack\Api\Model\UsersSetPhotoPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsersSetPhotoPostResponse200', 'json');
         }

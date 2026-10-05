@@ -62,24 +62,24 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('already_open', $data) && null !== $data['already_open']) {
-            $object->setAlreadyOpen($data['already_open']);
-        } elseif (\array_key_exists('already_open', $data) && null === $data['already_open']) {
-            $object->setAlreadyOpen(null);
+            $object->alreadyOpen = $data['already_open'];
+        } elseif (\array_key_exists('already_open', $data)) {
+            $object->alreadyOpen = null;
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('no_op', $data) && null !== $data['no_op']) {
-            $object->setNoOp($data['no_op']);
-        } elseif (\array_key_exists('no_op', $data) && null === $data['no_op']) {
-            $object->setNoOp(null);
+            $object->noOp = $data['no_op'];
+        } elseif (\array_key_exists('no_op', $data)) {
+            $object->noOp = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -88,14 +88,14 @@ class ConversationsOpenPostResponse200Normalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('alreadyOpen') && null !== $data->getAlreadyOpen()) {
-            $dataArray['already_open'] = $data->getAlreadyOpen();
+        if (\array_key_exists('alreadyOpen', get_object_vars($data)) && null !== ($data->alreadyOpen ?? null)) {
+            $dataArray['already_open'] = $data->alreadyOpen;
         }
-        $dataArray['channel'] = $data->getChannel();
-        if ($data->isInitialized('noOp') && null !== $data->getNoOp()) {
-            $dataArray['no_op'] = $data->getNoOp();
+        $dataArray['channel'] = $data->channel;
+        if (\array_key_exists('noOp', get_object_vars($data)) && null !== ($data->noOp ?? null)) {
+            $dataArray['no_op'] = $data->noOp;
         }
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

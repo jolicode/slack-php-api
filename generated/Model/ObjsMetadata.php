@@ -16,46 +16,8 @@ namespace JoliCode\Slack\Api\Model;
 class ObjsMetadata
 {
     /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
      * @var mixed|null
      */
-    protected $eventPayload;
-    /**
-     * @var string|null
-     */
-    protected $eventType;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getEventPayload()
-    {
-        return $this->eventPayload;
-    }
-
-    public function setEventPayload($eventPayload): self
-    {
-        $this->initialized['eventPayload'] = true;
-        $this->eventPayload = $eventPayload;
-
-        return $this;
-    }
-
-    public function getEventType(): ?string
-    {
-        return $this->eventType;
-    }
-
-    public function setEventType(?string $eventType): self
-    {
-        $this->initialized['eventType'] = true;
-        $this->eventType = $eventType;
-
-        return $this;
-    }
+    public $eventPayload;
+    public ?string $eventType;
 }

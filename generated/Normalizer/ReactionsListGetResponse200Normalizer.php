@@ -60,24 +60,24 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
             foreach ($data['items'] as $value) {
                 $values[] = $value;
             }
-            $object->setItems($values);
-        } elseif (\array_key_exists('items', $data) && null === $data['items']) {
-            $object->setItems(null);
+            $object->items = $values;
+        } elseif (\array_key_exists('items', $data)) {
+            $object->items = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('paging', $data) && null !== $data['paging']) {
-            $object->setPaging($this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context));
-        } elseif (\array_key_exists('paging', $data) && null === $data['paging']) {
-            $object->setPaging(null);
+            $object->paging = $this->denormalizer->denormalize($data['paging'], \JoliCode\Slack\Api\Model\ObjsPaging::class, 'json', $context);
+        } elseif (\array_key_exists('paging', $data)) {
+            $object->paging = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ObjsResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
 
         return $object;
@@ -87,16 +87,18 @@ class ReactionsListGetResponse200Normalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getItems() as $value) {
+        foreach ($data->items as $value) {
             $values[] = $value;
         }
         $dataArray['items'] = $values;
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('paging') && null !== $data->getPaging()) {
-            $dataArray['paging'] = null === $data->getPaging() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPaging(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('paging', get_object_vars($data)) && null !== ($data->paging ?? null)) {
+            $normalized = $this->normalizer->normalize($data->paging, 'json', $context);
+            $dataArray['paging'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
 
         return $dataArray;

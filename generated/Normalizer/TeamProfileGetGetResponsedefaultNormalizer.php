@@ -56,19 +56,19 @@ class TeamProfileGetGetResponsedefaultNormalizer implements DenormalizerInterfac
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
-            $object->setCallstack($data['callstack']);
-        } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
-            $object->setCallstack(null);
+            $object->callstack = $data['callstack'];
+        } elseif (\array_key_exists('callstack', $data)) {
+            $object->callstack = null;
         }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
-            $object->setError($data['error']);
-        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
-            $object->setError(null);
+            $object->error = $data['error'];
+        } elseif (\array_key_exists('error', $data)) {
+            $object->error = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -77,11 +77,11 @@ class TeamProfileGetGetResponsedefaultNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('callstack') && null !== $data->getCallstack()) {
-            $dataArray['callstack'] = $data->getCallstack();
+        if (\array_key_exists('callstack', get_object_vars($data)) && null !== ($data->callstack ?? null)) {
+            $dataArray['callstack'] = $data->callstack;
         }
-        $dataArray['error'] = $data->getError();
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['error'] = $data->error;
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

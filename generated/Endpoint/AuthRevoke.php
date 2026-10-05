@@ -20,11 +20,10 @@ class AuthRevoke extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
     /**
      * Revokes a token.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $test setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked
-     * @var string $token Authentication token. Requires scope: `none`
-     *             }
+     * @param array{
+     *    "test"?: bool, //Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked.
+     *    "token"?: string, //Authentication token. Requires scope: `none`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class AuthRevoke extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
         return '/auth.revoke';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class AuthRevoke extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class AuthRevoke extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impleme
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AuthRevokeGetResponse200|\JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AuthRevokeGetResponse200|\JoliCode\Slack\Api\Model\AuthRevokeGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AuthRevokeGetResponse200', 'json');
         }

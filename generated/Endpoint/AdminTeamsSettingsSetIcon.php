@@ -20,14 +20,13 @@ class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     /**
      * Sets the icon of a workspace.
      *
-     * @param array $formParameters {
-     *
-     * @var string $image_url Image URL for the icon
-     * @var string $team_id ID for the workspace to set the icon for
-     * @var string $token Authentication token. Requires scope: `admin.teams:write`
-     *             }
+     * @param array{
+     *    "image_url": string, //Image URL for the icon
+     *    "team_id": string, //ID for the workspace to set the icon for.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.teams:write`
+     * } $formParameters
      */
-    public function __construct(array $formParameters = [])
+    public function __construct(array $formParameters)
     {
         $this->formParameters = $formParameters;
     }
@@ -42,7 +41,7 @@ class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseE
         return '/admin.teams.settings.setIcon';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -55,6 +54,16 @@ class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class AdminTeamsSettingsSetIcon extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200|\JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminTeamsSettingsSetIconPostResponse200', 'json');
         }

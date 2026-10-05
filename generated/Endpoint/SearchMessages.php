@@ -20,18 +20,17 @@ class SearchMessages extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Searches for messages matching a query.
      *
-     * @param array $queryParameters {
-     *
-     * @var int    $count Pass the number of results you want per "page". Maximum of `100`.
-     * @var bool   $highlight pass a value of `true` to enable query highlight markers (see below)
-     * @var int    $page
-     * @var string $query search query
-     * @var string $sort return matches sorted by either `score` or `timestamp`
-     * @var string $sort_dir change sort direction to ascending (`asc`) or descending (`desc`)
-     * @var string $token Authentication token. Requires scope: `search:read`
-     *             }
+     * @param array{
+     *    "count"?: int, //Pass the number of results you want per "page". Maximum of `100`.
+     *    "highlight"?: bool, //Pass a value of `true` to enable query highlight markers (see below).
+     *    "page"?: int,
+     *    "query": string, //Search query.
+     *    "sort"?: string, //Return matches sorted by either `score` or `timestamp`.
+     *    "sort_dir"?: string, //Change sort direction to ascending (`asc`) or descending (`desc`).
+     *    "token"?: string, //Authentication token. Requires scope: `search:read`
+     * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
@@ -46,7 +45,7 @@ class SearchMessages extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         return '/search.messages';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -59,6 +58,16 @@ class SearchMessages extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -79,12 +88,12 @@ class SearchMessages extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\SearchMessagesGetResponse200|\JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\SearchMessagesGetResponse200|\JoliCode\Slack\Api\Model\SearchMessagesGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\SearchMessagesGetResponse200', 'json');
         }

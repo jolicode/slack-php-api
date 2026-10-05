@@ -59,28 +59,28 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('has_more', $data) && null !== $data['has_more']) {
-            $object->setHasMore($data['has_more']);
-        } elseif (\array_key_exists('has_more', $data) && null === $data['has_more']) {
-            $object->setHasMore(null);
+            $object->hasMore = $data['has_more'];
+        } elseif (\array_key_exists('has_more', $data)) {
+            $object->hasMore = null;
         }
         if (\array_key_exists('messages', $data) && null !== $data['messages']) {
             $values = [];
             foreach ($data['messages'] as $value) {
                 $values[] = $value;
             }
-            $object->setMessages($values);
-        } elseif (\array_key_exists('messages', $data) && null === $data['messages']) {
-            $object->setMessages(null);
+            $object->messages = $values;
+        } elseif (\array_key_exists('messages', $data)) {
+            $object->messages = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata::class, 'json', $context));
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\ConversationsRepliesGetResponse200ResponseMetadata::class, 'json', $context);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
         }
 
         return $object;
@@ -89,17 +89,18 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('hasMore') && null !== $data->getHasMore()) {
-            $dataArray['has_more'] = $data->getHasMore();
+        if (\array_key_exists('hasMore', get_object_vars($data)) && null !== ($data->hasMore ?? null)) {
+            $dataArray['has_more'] = $data->hasMore;
         }
         $values = [];
-        foreach ($data->getMessages() as $value) {
+        foreach ($data->messages as $value) {
             $values[] = $value;
         }
         $dataArray['messages'] = $values;
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
 
         return $dataArray;

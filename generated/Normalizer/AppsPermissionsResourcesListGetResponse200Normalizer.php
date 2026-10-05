@@ -56,10 +56,10 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
+            $object->ok = $data['ok'];
             unset($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
             unset($data['ok']);
         }
         if (\array_key_exists('resources', $data) && null !== $data['resources']) {
@@ -67,17 +67,17 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
             foreach ($data['resources'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResourcesItem::class, 'json', $context);
             }
-            $object->setResources($values);
+            $object->resources = $values;
             unset($data['resources']);
-        } elseif (\array_key_exists('resources', $data) && null === $data['resources']) {
-            $object->setResources(null);
+        } elseif (\array_key_exists('resources', $data)) {
+            $object->resources = null;
             unset($data['resources']);
         }
         if (\array_key_exists('response_metadata', $data) && null !== $data['response_metadata']) {
-            $object->setResponseMetadata($this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata::class, 'json', $context));
+            $object->responseMetadata = $this->denormalizer->denormalize($data['response_metadata'], \JoliCode\Slack\Api\Model\AppsPermissionsResourcesListGetResponse200ResponseMetadata::class, 'json', $context);
             unset($data['response_metadata']);
-        } elseif (\array_key_exists('response_metadata', $data) && null === $data['response_metadata']) {
-            $object->setResponseMetadata(null);
+        } elseif (\array_key_exists('response_metadata', $data)) {
+            $object->responseMetadata = null;
             unset($data['response_metadata']);
         }
         foreach ($data as $key => $value_1) {
@@ -92,14 +92,16 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
         $values = [];
-        foreach ($data->getResources() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->resources as $value) {
+            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['resources'] = $values;
-        if ($data->isInitialized('responseMetadata') && null !== $data->getResponseMetadata()) {
-            $dataArray['response_metadata'] = null === $data->getResponseMetadata() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getResponseMetadata(), 'json', $context));
+        if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->responseMetadata, 'json', $context);
+            $dataArray['response_metadata'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

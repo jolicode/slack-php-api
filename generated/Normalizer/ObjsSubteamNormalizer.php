@@ -65,113 +65,113 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['is_usergroup'] = (bool) $data['is_usergroup'];
         }
         if (\array_key_exists('auto_provision', $data) && null !== $data['auto_provision']) {
-            $object->setAutoProvision($data['auto_provision']);
-        } elseif (\array_key_exists('auto_provision', $data) && null === $data['auto_provision']) {
-            $object->setAutoProvision(null);
+            $object->autoProvision = $data['auto_provision'];
+        } elseif (\array_key_exists('auto_provision', $data)) {
+            $object->autoProvision = null;
         }
         if (\array_key_exists('auto_type', $data) && null !== $data['auto_type']) {
-            $object->setAutoType($data['auto_type']);
-        } elseif (\array_key_exists('auto_type', $data) && null === $data['auto_type']) {
-            $object->setAutoType(null);
+            $object->autoType = $data['auto_type'];
+        } elseif (\array_key_exists('auto_type', $data)) {
+            $object->autoType = null;
         }
         if (\array_key_exists('channel_count', $data) && null !== $data['channel_count']) {
-            $object->setChannelCount($data['channel_count']);
-        } elseif (\array_key_exists('channel_count', $data) && null === $data['channel_count']) {
-            $object->setChannelCount(null);
+            $object->channelCount = $data['channel_count'];
+        } elseif (\array_key_exists('channel_count', $data)) {
+            $object->channelCount = null;
         }
         if (\array_key_exists('created_by', $data) && null !== $data['created_by']) {
-            $object->setCreatedBy($data['created_by']);
-        } elseif (\array_key_exists('created_by', $data) && null === $data['created_by']) {
-            $object->setCreatedBy(null);
+            $object->createdBy = $data['created_by'];
+        } elseif (\array_key_exists('created_by', $data)) {
+            $object->createdBy = null;
         }
         if (\array_key_exists('date_create', $data) && null !== $data['date_create']) {
-            $object->setDateCreate($data['date_create']);
-        } elseif (\array_key_exists('date_create', $data) && null === $data['date_create']) {
-            $object->setDateCreate(null);
+            $object->dateCreate = $data['date_create'];
+        } elseif (\array_key_exists('date_create', $data)) {
+            $object->dateCreate = null;
         }
         if (\array_key_exists('date_delete', $data) && null !== $data['date_delete']) {
-            $object->setDateDelete($data['date_delete']);
-        } elseif (\array_key_exists('date_delete', $data) && null === $data['date_delete']) {
-            $object->setDateDelete(null);
+            $object->dateDelete = $data['date_delete'];
+        } elseif (\array_key_exists('date_delete', $data)) {
+            $object->dateDelete = null;
         }
         if (\array_key_exists('date_update', $data) && null !== $data['date_update']) {
-            $object->setDateUpdate($data['date_update']);
-        } elseif (\array_key_exists('date_update', $data) && null === $data['date_update']) {
-            $object->setDateUpdate(null);
+            $object->dateUpdate = $data['date_update'];
+        } elseif (\array_key_exists('date_update', $data)) {
+            $object->dateUpdate = null;
         }
         if (\array_key_exists('deleted_by', $data) && null !== $data['deleted_by']) {
-            $object->setDeletedBy($data['deleted_by']);
-        } elseif (\array_key_exists('deleted_by', $data) && null === $data['deleted_by']) {
-            $object->setDeletedBy(null);
+            $object->deletedBy = $data['deleted_by'];
+        } elseif (\array_key_exists('deleted_by', $data)) {
+            $object->deletedBy = null;
         }
         if (\array_key_exists('description', $data) && null !== $data['description']) {
-            $object->setDescription($data['description']);
-        } elseif (\array_key_exists('description', $data) && null === $data['description']) {
-            $object->setDescription(null);
+            $object->description = $data['description'];
+        } elseif (\array_key_exists('description', $data)) {
+            $object->description = null;
         }
         if (\array_key_exists('enterprise_subteam_id', $data) && null !== $data['enterprise_subteam_id']) {
-            $object->setEnterpriseSubteamId($data['enterprise_subteam_id']);
-        } elseif (\array_key_exists('enterprise_subteam_id', $data) && null === $data['enterprise_subteam_id']) {
-            $object->setEnterpriseSubteamId(null);
+            $object->enterpriseSubteamId = $data['enterprise_subteam_id'];
+        } elseif (\array_key_exists('enterprise_subteam_id', $data)) {
+            $object->enterpriseSubteamId = null;
         }
         if (\array_key_exists('handle', $data) && null !== $data['handle']) {
-            $object->setHandle($data['handle']);
-        } elseif (\array_key_exists('handle', $data) && null === $data['handle']) {
-            $object->setHandle(null);
+            $object->handle = $data['handle'];
+        } elseif (\array_key_exists('handle', $data)) {
+            $object->handle = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_external', $data) && null !== $data['is_external']) {
-            $object->setIsExternal($data['is_external']);
-        } elseif (\array_key_exists('is_external', $data) && null === $data['is_external']) {
-            $object->setIsExternal(null);
+            $object->isExternal = $data['is_external'];
+        } elseif (\array_key_exists('is_external', $data)) {
+            $object->isExternal = null;
         }
         if (\array_key_exists('is_subteam', $data) && null !== $data['is_subteam']) {
-            $object->setIsSubteam($data['is_subteam']);
-        } elseif (\array_key_exists('is_subteam', $data) && null === $data['is_subteam']) {
-            $object->setIsSubteam(null);
+            $object->isSubteam = $data['is_subteam'];
+        } elseif (\array_key_exists('is_subteam', $data)) {
+            $object->isSubteam = null;
         }
         if (\array_key_exists('is_usergroup', $data) && null !== $data['is_usergroup']) {
-            $object->setIsUsergroup($data['is_usergroup']);
-        } elseif (\array_key_exists('is_usergroup', $data) && null === $data['is_usergroup']) {
-            $object->setIsUsergroup(null);
+            $object->isUsergroup = $data['is_usergroup'];
+        } elseif (\array_key_exists('is_usergroup', $data)) {
+            $object->isUsergroup = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('prefs', $data) && null !== $data['prefs']) {
-            $object->setPrefs($this->denormalizer->denormalize($data['prefs'], \JoliCode\Slack\Api\Model\ObjsSubteamPrefs::class, 'json', $context));
-        } elseif (\array_key_exists('prefs', $data) && null === $data['prefs']) {
-            $object->setPrefs(null);
+            $object->prefs = $this->denormalizer->denormalize($data['prefs'], \JoliCode\Slack\Api\Model\ObjsSubteamPrefs::class, 'json', $context);
+        } elseif (\array_key_exists('prefs', $data)) {
+            $object->prefs = null;
         }
         if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
-            $object->setTeamId($data['team_id']);
-        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
-            $object->setTeamId(null);
+            $object->teamId = $data['team_id'];
+        } elseif (\array_key_exists('team_id', $data)) {
+            $object->teamId = null;
         }
         if (\array_key_exists('updated_by', $data) && null !== $data['updated_by']) {
-            $object->setUpdatedBy($data['updated_by']);
-        } elseif (\array_key_exists('updated_by', $data) && null === $data['updated_by']) {
-            $object->setUpdatedBy(null);
+            $object->updatedBy = $data['updated_by'];
+        } elseif (\array_key_exists('updated_by', $data)) {
+            $object->updatedBy = null;
         }
         if (\array_key_exists('user_count', $data) && null !== $data['user_count']) {
-            $object->setUserCount($data['user_count']);
-        } elseif (\array_key_exists('user_count', $data) && null === $data['user_count']) {
-            $object->setUserCount(null);
+            $object->userCount = $data['user_count'];
+        } elseif (\array_key_exists('user_count', $data)) {
+            $object->userCount = null;
         }
         if (\array_key_exists('users', $data) && null !== $data['users']) {
             $values = [];
             foreach ($data['users'] as $value) {
                 $values[] = $value;
             }
-            $object->setUsers($values);
-        } elseif (\array_key_exists('users', $data) && null === $data['users']) {
-            $object->setUsers(null);
+            $object->users = $values;
+        } elseif (\array_key_exists('users', $data)) {
+            $object->users = null;
         }
 
         return $object;
@@ -180,33 +180,34 @@ class ObjsSubteamNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['auto_provision'] = $data->getAutoProvision();
-        $dataArray['auto_type'] = $data->getAutoType();
-        if ($data->isInitialized('channelCount') && null !== $data->getChannelCount()) {
-            $dataArray['channel_count'] = $data->getChannelCount();
+        $dataArray['auto_provision'] = $data->autoProvision;
+        $dataArray['auto_type'] = $data->autoType;
+        if (\array_key_exists('channelCount', get_object_vars($data)) && null !== ($data->channelCount ?? null)) {
+            $dataArray['channel_count'] = $data->channelCount;
         }
-        $dataArray['created_by'] = $data->getCreatedBy();
-        $dataArray['date_create'] = $data->getDateCreate();
-        $dataArray['date_delete'] = $data->getDateDelete();
-        $dataArray['date_update'] = $data->getDateUpdate();
-        $dataArray['deleted_by'] = $data->getDeletedBy();
-        $dataArray['description'] = $data->getDescription();
-        $dataArray['enterprise_subteam_id'] = $data->getEnterpriseSubteamId();
-        $dataArray['handle'] = $data->getHandle();
-        $dataArray['id'] = $data->getId();
-        $dataArray['is_external'] = $data->getIsExternal();
-        $dataArray['is_subteam'] = $data->getIsSubteam();
-        $dataArray['is_usergroup'] = $data->getIsUsergroup();
-        $dataArray['name'] = $data->getName();
-        $dataArray['prefs'] = null === $data->getPrefs() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPrefs(), 'json', $context));
-        $dataArray['team_id'] = $data->getTeamId();
-        $dataArray['updated_by'] = $data->getUpdatedBy();
-        if ($data->isInitialized('userCount') && null !== $data->getUserCount()) {
-            $dataArray['user_count'] = $data->getUserCount();
+        $dataArray['created_by'] = $data->createdBy;
+        $dataArray['date_create'] = $data->dateCreate;
+        $dataArray['date_delete'] = $data->dateDelete;
+        $dataArray['date_update'] = $data->dateUpdate;
+        $dataArray['deleted_by'] = $data->deletedBy;
+        $dataArray['description'] = $data->description;
+        $dataArray['enterprise_subteam_id'] = $data->enterpriseSubteamId;
+        $dataArray['handle'] = $data->handle;
+        $dataArray['id'] = $data->id;
+        $dataArray['is_external'] = $data->isExternal;
+        $dataArray['is_subteam'] = $data->isSubteam;
+        $dataArray['is_usergroup'] = $data->isUsergroup;
+        $dataArray['name'] = $data->name;
+        $normalized = null === $data->prefs ? null : $this->normalizer->normalize($data->prefs, 'json', $context);
+        $dataArray['prefs'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['team_id'] = $data->teamId;
+        $dataArray['updated_by'] = $data->updatedBy;
+        if (\array_key_exists('userCount', get_object_vars($data)) && null !== ($data->userCount ?? null)) {
+            $dataArray['user_count'] = $data->userCount;
         }
-        if ($data->isInitialized('users') && null !== $data->getUsers()) {
+        if (\array_key_exists('users', get_object_vars($data)) && null !== ($data->users ?? null)) {
             $values = [];
-            foreach ($data->getUsers() as $value) {
+            foreach ($data->users as $value) {
                 $values[] = $value;
             }
             $dataArray['users'] = $values;

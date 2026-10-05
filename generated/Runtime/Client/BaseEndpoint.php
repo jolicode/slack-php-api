@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack\Api\Runtime\Client;
 
-use Http\Message\MultipartStream\MultipartStreamBuilder;
-use Psr\Http\Message\ResponseInterface;
+use Jane\Component\OpenApiRuntime\Client\MultipartStreamBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 abstract class BaseEndpoint implements Endpoint
 {
@@ -27,7 +27,7 @@ abstract class BaseEndpoint implements Endpoint
 
     abstract public function getMethod(): string;
 
-    abstract public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    abstract public function getBody(SerializerInterface $serializer): array;
 
     abstract public function getUri(): string;
 
@@ -50,6 +50,11 @@ abstract class BaseEndpoint implements Endpoint
 
                 continue;
             }
+            // Unset optional parameters resolve to null, which is sent as an
+            // empty value ("?foo=") rather than being dropped: this keeps the
+            // emitted query string stable regardless of whether an optional
+            // parameter was provided. Parameters declaring an OpenAPI query
+            // style skip this mapping (see the $styles branch above).
             $value ??= '';
             $allowReservedKey = \in_array($key, $allowReserved, true);
             $queryParameters[] = $this->encodeValue($key, $value, $allowReservedKey);
@@ -77,6 +82,9 @@ abstract class BaseEndpoint implements Endpoint
         return array_merge($this->getExtraHeaders(), $baseHeaders, $headersResolver->resolve($headerParameters));
     }
 
+    /**
+     * Transform the response body into a value.
+     */
     abstract protected function transformResponseBody(ResponseInterface $response, SerializerInterface $serializer, ?string $contentType = null);
 
     protected function getExtraHeaders(): array
@@ -121,20 +129,55 @@ abstract class BaseEndpoint implements Endpoint
         return [['Content-Type' => ['application/x-www-form-urlencoded']], http_build_query($this->getFormOptionsResolver()->resolve($this->formParameters))];
     }
 
-    protected function getMultipartBody($streamFactory = null): array
+    protected function getMultipartBody(): array
     {
-        $bodyBuilder = new MultipartStreamBuilder($streamFactory);
+        $bodyBuilder = new MultipartStreamBuilder();
         $formParameters = $this->getFormOptionsResolver()->resolve($this->formParameters);
         foreach ($formParameters as $key => $value) {
             $bodyBuilder->addResource($key, $value);
         }
 
-        return [['Content-Type' => ['multipart/form-data; boundary="' . ($bodyBuilder->getBoundary() . '"')]], $bodyBuilder->build()];
+        return [['Content-Type' => ['multipart/form-data; boundary="' . $bodyBuilder->getBoundary() . '"']], $bodyBuilder->build()];
     }
 
     protected function getFormOptionsResolver(): OptionsResolver
     {
         return new OptionsResolver();
+    }
+
+    /**
+     * Deserialize a list-typed response body.
+     *
+     * Generated endpoints deserialize list responses through a class-string
+     * with an array suffix (e.g. 'Acme\Item[]'): no static analyser maps
+     * that string back to the documented array<array-key, Item> shape, and
+     * the serializer interfaces promise returned values beyond `mixed` at
+     * best. The deserialization is delegated here so the generated return
+     * statement carries a statically verifiable array type; the helper
+     * requires the serializer to yield an iterable or array for list types
+     * (iterator_to_array throws a TypeError otherwise, failing loudly on a
+     * misconfigured serializer instead of leaking an unexpected shape).
+     */
+    protected function deserializeListResponse(SerializerInterface $serializer, string $body, string $type, string $format = 'json'): array
+    {
+        return iterator_to_array($serializer->deserialize($body, $type, $format));
+    }
+
+    /**
+     * Normalize a form or multipart body.
+     *
+     * Generated form/multipart bodies normalize their payload through the
+     * serializer, whose normalize() method lives on NormalizerInterface
+     * (SerializerInterface does not promise it): delegating here lets the
+     * runtime check the capability once and statically narrow the call.
+     */
+    protected function normalizeBody(SerializerInterface $serializer, mixed $body)
+    {
+        if (!$serializer instanceof \Symfony\Component\Serializer\Normalizer\NormalizerInterface) {
+            throw new \RuntimeException('The serializer used by this endpoint must support normalization.');
+        }
+
+        return $serializer->normalize($body, 'json');
     }
 
     protected function getSerializedBody(SerializerInterface $serializer): array

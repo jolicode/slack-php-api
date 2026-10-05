@@ -56,38 +56,38 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('callstack', $data) && null !== $data['callstack']) {
-            $object->setCallstack($data['callstack']);
-        } elseif (\array_key_exists('callstack', $data) && null === $data['callstack']) {
-            $object->setCallstack(null);
+            $object->callstack = $data['callstack'];
+        } elseif (\array_key_exists('callstack', $data)) {
+            $object->callstack = null;
         }
         if (\array_key_exists('error', $data) && null !== $data['error']) {
-            $object->setError($data['error']);
-        } elseif (\array_key_exists('error', $data) && null === $data['error']) {
-            $object->setError(null);
+            $object->error = $data['error'];
+        } elseif (\array_key_exists('error', $data)) {
+            $object->error = null;
         }
         if (\array_key_exists('errors', $data) && null !== $data['errors']) {
             $values = [];
             foreach ($data['errors'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefaultErrorsItem::class, 'json', $context);
             }
-            $object->setErrors($values);
-        } elseif (\array_key_exists('errors', $data) && null === $data['errors']) {
-            $object->setErrors(null);
+            $object->errors = $values;
+        } elseif (\array_key_exists('errors', $data)) {
+            $object->errors = null;
         }
         if (\array_key_exists('needed', $data) && null !== $data['needed']) {
-            $object->setNeeded($data['needed']);
-        } elseif (\array_key_exists('needed', $data) && null === $data['needed']) {
-            $object->setNeeded(null);
+            $object->needed = $data['needed'];
+        } elseif (\array_key_exists('needed', $data)) {
+            $object->needed = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('provided', $data) && null !== $data['provided']) {
-            $object->setProvided($data['provided']);
-        } elseif (\array_key_exists('provided', $data) && null === $data['provided']) {
-            $object->setProvided(null);
+            $object->provided = $data['provided'];
+        } elseif (\array_key_exists('provided', $data)) {
+            $object->provided = null;
         }
 
         return $object;
@@ -96,25 +96,26 @@ class ConversationsInvitePostResponsedefaultNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('callstack') && null !== $data->getCallstack()) {
-            $dataArray['callstack'] = $data->getCallstack();
+        if (\array_key_exists('callstack', get_object_vars($data)) && null !== ($data->callstack ?? null)) {
+            $dataArray['callstack'] = $data->callstack;
         }
-        if ($data->isInitialized('error') && null !== $data->getError()) {
-            $dataArray['error'] = $data->getError();
+        if (\array_key_exists('error', get_object_vars($data)) && null !== ($data->error ?? null)) {
+            $dataArray['error'] = $data->error;
         }
-        if ($data->isInitialized('errors') && null !== $data->getErrors()) {
+        if (\array_key_exists('errors', get_object_vars($data)) && null !== ($data->errors ?? null)) {
             $values = [];
-            foreach ($data->getErrors() as $value) {
-                $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+            foreach ($data->errors as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['errors'] = $values;
         }
-        if ($data->isInitialized('needed') && null !== $data->getNeeded()) {
-            $dataArray['needed'] = $data->getNeeded();
+        if (\array_key_exists('needed', get_object_vars($data)) && null !== ($data->needed ?? null)) {
+            $dataArray['needed'] = $data->needed;
         }
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('provided') && null !== $data->getProvided()) {
-            $dataArray['provided'] = $data->getProvided();
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('provided', get_object_vars($data)) && null !== ($data->provided ?? null)) {
+            $dataArray['provided'] = $data->provided;
         }
 
         return $dataArray;

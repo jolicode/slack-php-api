@@ -20,16 +20,15 @@ class FilesRemoteAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     /**
      * Adds a file from a remote service.
      *
-     * @param array $formParameters {
-     *
-     * @var string $external_id creator defined GUID for the file
-     * @var string $external_url URL of the remote file
-     * @var string $filetype type of file
-     * @var string $indexable_file_contents A text file (txt, pdf, doc, etc.) containing textual search terms that are used to improve discovery of the remote file.
-     * @var string $preview_image preview of the document via `multipart/form-data`
-     * @var string $title title of the file being shared
-     * @var string $token Authentication token. Requires scope: `remote_files:write`
-     *             }
+     * @param array{
+     *    "external_id"?: string, //Creator defined GUID for the file.
+     *    "external_url"?: string, //URL of the remote file.
+     *    "filetype"?: string, //type of file
+     *    "indexable_file_contents"?: string, //A text file (txt, pdf, doc, etc.) containing textual search terms that are used to improve discovery of the remote file.
+     *    "preview_image"?: string, //Preview of the document via `multipart/form-data`.
+     *    "title"?: string, //Title of the file being shared.
+     *    "token"?: string, //Authentication token. Requires scope: `remote_files:write`
+     * } $formParameters
      */
     public function __construct(array $formParameters = [])
     {
@@ -46,7 +45,7 @@ class FilesRemoteAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
         return '/files.remote.add';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -59,6 +58,16 @@ class FilesRemoteAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -79,12 +88,12 @@ class FilesRemoteAdd extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint imp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200|\JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200|\JoliCode\Slack\Api\Model\FilesRemoteAddPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesRemoteAddPostResponse200', 'json');
         }

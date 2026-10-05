@@ -20,14 +20,13 @@ class StarsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * Lists stars for a user.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $count
-     * @var string $cursor Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
-     * @var int    $limit The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
-     * @var string $page
-     * @var string $token Authentication token. Requires scope: `stars:read`
-     *             }
+     * @param array{
+     *    "count"?: string,
+     *    "cursor"?: string, //Parameter for pagination. Set `cursor` equal to the `next_cursor` attribute returned by the previous request's `response_metadata`. This parameter is optional, but pagination is mandatory: the default value simply fetches the first "page" of the collection. See [pagination](/docs/pagination) for more details.
+     *    "limit"?: int, //The maximum number of items to return. Fewer than the requested number of items may be returned, even if the end of the list hasn't been reached.
+     *    "page"?: string,
+     *    "token"?: string, //Authentication token. Requires scope: `stars:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -44,7 +43,7 @@ class StarsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         return '/stars.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -57,6 +56,16 @@ class StarsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,12 +84,12 @@ class StarsList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\StarsListGetResponse200|\JoliCode\Slack\Api\Model\StarsListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\StarsListGetResponse200|\JoliCode\Slack\Api\Model\StarsListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\StarsListGetResponse200', 'json');
         }

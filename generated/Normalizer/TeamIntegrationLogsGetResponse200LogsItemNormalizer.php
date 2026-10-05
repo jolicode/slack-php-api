@@ -53,59 +53,59 @@ class TeamIntegrationLogsGetResponse200LogsItemNormalizer implements Denormalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('admin_app_id', $data) && null !== $data['admin_app_id']) {
-            $object->setAdminAppId($data['admin_app_id']);
-        } elseif (\array_key_exists('admin_app_id', $data) && null === $data['admin_app_id']) {
-            $object->setAdminAppId(null);
+            $object->adminAppId = $data['admin_app_id'];
+        } elseif (\array_key_exists('admin_app_id', $data)) {
+            $object->adminAppId = null;
         }
         if (\array_key_exists('app_id', $data) && null !== $data['app_id']) {
-            $object->setAppId($data['app_id']);
-        } elseif (\array_key_exists('app_id', $data) && null === $data['app_id']) {
-            $object->setAppId(null);
+            $object->appId = $data['app_id'];
+        } elseif (\array_key_exists('app_id', $data)) {
+            $object->appId = null;
         }
         if (\array_key_exists('app_type', $data) && null !== $data['app_type']) {
-            $object->setAppType($data['app_type']);
-        } elseif (\array_key_exists('app_type', $data) && null === $data['app_type']) {
-            $object->setAppType(null);
+            $object->appType = $data['app_type'];
+        } elseif (\array_key_exists('app_type', $data)) {
+            $object->appType = null;
         }
         if (\array_key_exists('change_type', $data) && null !== $data['change_type']) {
-            $object->setChangeType($data['change_type']);
-        } elseif (\array_key_exists('change_type', $data) && null === $data['change_type']) {
-            $object->setChangeType(null);
+            $object->changeType = $data['change_type'];
+        } elseif (\array_key_exists('change_type', $data)) {
+            $object->changeType = null;
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('date', $data) && null !== $data['date']) {
-            $object->setDate($data['date']);
-        } elseif (\array_key_exists('date', $data) && null === $data['date']) {
-            $object->setDate(null);
+            $object->date = $data['date'];
+        } elseif (\array_key_exists('date', $data)) {
+            $object->date = null;
         }
         if (\array_key_exists('scope', $data) && null !== $data['scope']) {
-            $object->setScope($data['scope']);
-        } elseif (\array_key_exists('scope', $data) && null === $data['scope']) {
-            $object->setScope(null);
+            $object->scope = $data['scope'];
+        } elseif (\array_key_exists('scope', $data)) {
+            $object->scope = null;
         }
         if (\array_key_exists('service_id', $data) && null !== $data['service_id']) {
-            $object->setServiceId($data['service_id']);
-        } elseif (\array_key_exists('service_id', $data) && null === $data['service_id']) {
-            $object->setServiceId(null);
+            $object->serviceId = $data['service_id'];
+        } elseif (\array_key_exists('service_id', $data)) {
+            $object->serviceId = null;
         }
         if (\array_key_exists('service_type', $data) && null !== $data['service_type']) {
-            $object->setServiceType($data['service_type']);
-        } elseif (\array_key_exists('service_type', $data) && null === $data['service_type']) {
-            $object->setServiceType(null);
+            $object->serviceType = $data['service_type'];
+        } elseif (\array_key_exists('service_type', $data)) {
+            $object->serviceType = null;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
-            $object->setUserId($data['user_id']);
-        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
-            $object->setUserId(null);
+            $object->userId = $data['user_id'];
+        } elseif (\array_key_exists('user_id', $data)) {
+            $object->userId = null;
         }
         if (\array_key_exists('user_name', $data) && null !== $data['user_name']) {
-            $object->setUserName($data['user_name']);
-        } elseif (\array_key_exists('user_name', $data) && null === $data['user_name']) {
-            $object->setUserName(null);
+            $object->userName = $data['user_name'];
+        } elseif (\array_key_exists('user_name', $data)) {
+            $object->userName = null;
         }
 
         return $object;
@@ -114,25 +114,25 @@ class TeamIntegrationLogsGetResponse200LogsItemNormalizer implements Denormalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('adminAppId') && null !== $data->getAdminAppId()) {
-            $dataArray['admin_app_id'] = $data->getAdminAppId();
+        if (\array_key_exists('adminAppId', get_object_vars($data)) && null !== ($data->adminAppId ?? null)) {
+            $dataArray['admin_app_id'] = $data->adminAppId;
         }
-        $dataArray['app_id'] = $data->getAppId();
-        $dataArray['app_type'] = $data->getAppType();
-        $dataArray['change_type'] = $data->getChangeType();
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        $dataArray['app_id'] = $data->appId;
+        $dataArray['app_type'] = $data->appType;
+        $dataArray['change_type'] = $data->changeType;
+        if (\array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel;
         }
-        $dataArray['date'] = $data->getDate();
-        $dataArray['scope'] = $data->getScope();
-        if ($data->isInitialized('serviceId') && null !== $data->getServiceId()) {
-            $dataArray['service_id'] = $data->getServiceId();
+        $dataArray['date'] = $data->date;
+        $dataArray['scope'] = $data->scope;
+        if (\array_key_exists('serviceId', get_object_vars($data)) && null !== ($data->serviceId ?? null)) {
+            $dataArray['service_id'] = $data->serviceId;
         }
-        if ($data->isInitialized('serviceType') && null !== $data->getServiceType()) {
-            $dataArray['service_type'] = $data->getServiceType();
+        if (\array_key_exists('serviceType', get_object_vars($data)) && null !== ($data->serviceType ?? null)) {
+            $dataArray['service_type'] = $data->serviceType;
         }
-        $dataArray['user_id'] = $data->getUserId();
-        $dataArray['user_name'] = $data->getUserName();
+        $dataArray['user_id'] = $data->userId;
+        $dataArray['user_name'] = $data->userName;
 
         return $dataArray;
     }

@@ -53,10 +53,10 @@ class BlocksItemNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
             unset($data['type']);
         }
         foreach ($data as $key => $value) {
@@ -71,7 +71,7 @@ class BlocksItemNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['type'] = $data->getType();
+        $dataArray['type'] = $data->type;
         foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

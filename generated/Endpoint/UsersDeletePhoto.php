@@ -20,10 +20,9 @@ class UsersDeletePhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Delete the user profile photo.
      *
-     * @param array $formParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `users.profile:write`
-     *             }
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `users.profile:write`
+     * } $formParameters
      */
     public function __construct(array $formParameters = [])
     {
@@ -40,7 +39,7 @@ class UsersDeletePhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/users.deletePhoto';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -55,6 +54,16 @@ class UsersDeletePhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return ['slackAuth'];
     }
 
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
+    }
+
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getFormOptionsResolver();
@@ -67,12 +76,12 @@ class UsersDeletePhoto extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200|\JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200|\JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsersDeletePhotoPostResponse200', 'json');
         }

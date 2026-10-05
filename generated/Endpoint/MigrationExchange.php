@@ -20,15 +20,14 @@ class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     /**
      * For Enterprise Grid workspaces, map local user IDs to global user IDs.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $team_id Specify team_id starts with `T` in case of Org Token
-     * @var bool   $to_old Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
-     * @var string $token Authentication token. Requires scope: `tokens.basic`
-     * @var string $users A comma-separated list of user ids, up to 400 per request
-     *             }
+     * @param array{
+     *    "team_id"?: string, //Specify team_id starts with `T` in case of Org Token
+     *    "to_old"?: bool, //Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`.
+     *    "token"?: string, //Authentication token. Requires scope: `tokens.basic`
+     *    "users": string, //A comma-separated list of user ids, up to 400 per request
+     * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
@@ -43,7 +42,7 @@ class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         return '/migration.exchange';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -56,6 +55,16 @@ class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,12 +82,12 @@ class MigrationExchange extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200|\JoliCode\Slack\Api\Model\MigrationExchangeGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\MigrationExchangeGetResponse200', 'json');
         }

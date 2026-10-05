@@ -20,16 +20,13 @@ class ConversationsInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     /**
      * Invites users to a channel.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel the ID of the public or private channel to invite user(s) to
-     * @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `conversations:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //The ID of the public or private channel to invite user(s) to.
+     *    "users"?: string, //A comma separated list of user IDs. Up to 1000 users may be listed.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -47,7 +44,7 @@ class ConversationsInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         return '/conversations.invite';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class ConversationsInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class ConversationsInvite extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200|\JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200|\JoliCode\Slack\Api\Model\ConversationsInvitePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsInvitePostResponse200', 'json');
         }

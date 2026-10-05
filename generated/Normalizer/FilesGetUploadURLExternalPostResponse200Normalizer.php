@@ -56,19 +56,19 @@ class FilesGetUploadURLExternalPostResponse200Normalizer implements Denormalizer
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('file_id', $data) && null !== $data['file_id']) {
-            $object->setFileId($data['file_id']);
-        } elseif (\array_key_exists('file_id', $data) && null === $data['file_id']) {
-            $object->setFileId(null);
+            $object->fileId = $data['file_id'];
+        } elseif (\array_key_exists('file_id', $data)) {
+            $object->fileId = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('upload_url', $data) && null !== $data['upload_url']) {
-            $object->setUploadUrl($data['upload_url']);
-        } elseif (\array_key_exists('upload_url', $data) && null === $data['upload_url']) {
-            $object->setUploadUrl(null);
+            $object->uploadUrl = $data['upload_url'];
+        } elseif (\array_key_exists('upload_url', $data)) {
+            $object->uploadUrl = null;
         }
 
         return $object;
@@ -77,9 +77,9 @@ class FilesGetUploadURLExternalPostResponse200Normalizer implements Denormalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['file_id'] = $data->getFileId();
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['upload_url'] = $data->getUploadUrl();
+        $dataArray['file_id'] = $data->fileId;
+        $dataArray['ok'] = $data->ok;
+        $dataArray['upload_url'] = $data->uploadUrl;
 
         return $dataArray;
     }

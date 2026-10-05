@@ -56,39 +56,39 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['recurring'] = (bool) $data['recurring'];
         }
         if (\array_key_exists('complete_ts', $data) && null !== $data['complete_ts']) {
-            $object->setCompleteTs($data['complete_ts']);
-        } elseif (\array_key_exists('complete_ts', $data) && null === $data['complete_ts']) {
-            $object->setCompleteTs(null);
+            $object->completeTs = $data['complete_ts'];
+        } elseif (\array_key_exists('complete_ts', $data)) {
+            $object->completeTs = null;
         }
         if (\array_key_exists('creator', $data) && null !== $data['creator']) {
-            $object->setCreator($data['creator']);
-        } elseif (\array_key_exists('creator', $data) && null === $data['creator']) {
-            $object->setCreator(null);
+            $object->creator = $data['creator'];
+        } elseif (\array_key_exists('creator', $data)) {
+            $object->creator = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('recurring', $data) && null !== $data['recurring']) {
-            $object->setRecurring($data['recurring']);
-        } elseif (\array_key_exists('recurring', $data) && null === $data['recurring']) {
-            $object->setRecurring(null);
+            $object->recurring = $data['recurring'];
+        } elseif (\array_key_exists('recurring', $data)) {
+            $object->recurring = null;
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
-            $object->setText($data['text']);
-        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-            $object->setText(null);
+            $object->text = $data['text'];
+        } elseif (\array_key_exists('text', $data)) {
+            $object->text = null;
         }
         if (\array_key_exists('time', $data) && null !== $data['time']) {
-            $object->setTime($data['time']);
-        } elseif (\array_key_exists('time', $data) && null === $data['time']) {
-            $object->setTime(null);
+            $object->time = $data['time'];
+        } elseif (\array_key_exists('time', $data)) {
+            $object->time = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $data['user'];
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
 
         return $object;
@@ -97,17 +97,17 @@ class ObjsReminderNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('completeTs') && null !== $data->getCompleteTs()) {
-            $dataArray['complete_ts'] = $data->getCompleteTs();
+        if (\array_key_exists('completeTs', get_object_vars($data)) && null !== ($data->completeTs ?? null)) {
+            $dataArray['complete_ts'] = $data->completeTs;
         }
-        $dataArray['creator'] = $data->getCreator();
-        $dataArray['id'] = $data->getId();
-        $dataArray['recurring'] = $data->getRecurring();
-        $dataArray['text'] = $data->getText();
-        if ($data->isInitialized('time') && null !== $data->getTime()) {
-            $dataArray['time'] = $data->getTime();
+        $dataArray['creator'] = $data->creator;
+        $dataArray['id'] = $data->id;
+        $dataArray['recurring'] = $data->recurring;
+        $dataArray['text'] = $data->text;
+        if (\array_key_exists('time', get_object_vars($data)) && null !== ($data->time ?? null)) {
+            $dataArray['time'] = $data->time;
         }
-        $dataArray['user'] = $data->getUser();
+        $dataArray['user'] = $data->user;
 
         return $dataArray;
     }

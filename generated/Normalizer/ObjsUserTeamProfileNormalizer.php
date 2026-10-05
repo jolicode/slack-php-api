@@ -57,9 +57,9 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
             foreach ($data['fields'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsTeamProfileField::class, 'json', $context);
             }
-            $object->setFields($values);
-        } elseif (\array_key_exists('fields', $data) && null === $data['fields']) {
-            $object->setFields(null);
+            $object->fields = $values;
+        } elseif (\array_key_exists('fields', $data)) {
+            $object->fields = null;
         }
 
         return $object;
@@ -69,8 +69,9 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
     {
         $dataArray = [];
         $values = [];
-        foreach ($data->getFields() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        foreach ($data->fields as $value) {
+            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['fields'] = $values;
 

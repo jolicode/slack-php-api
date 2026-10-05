@@ -56,88 +56,88 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
             $data['subscribed'] = (bool) $data['subscribed'];
         }
         if (\array_key_exists('last_read', $data) && null !== $data['last_read']) {
-            $object->setLastRead($data['last_read']);
-        } elseif (\array_key_exists('last_read', $data) && null === $data['last_read']) {
-            $object->setLastRead(null);
+            $object->lastRead = $data['last_read'];
+        } elseif (\array_key_exists('last_read', $data)) {
+            $object->lastRead = null;
         }
         if (\array_key_exists('latest_reply', $data) && null !== $data['latest_reply']) {
-            $object->setLatestReply($data['latest_reply']);
-        } elseif (\array_key_exists('latest_reply', $data) && null === $data['latest_reply']) {
-            $object->setLatestReply(null);
+            $object->latestReply = $data['latest_reply'];
+        } elseif (\array_key_exists('latest_reply', $data)) {
+            $object->latestReply = null;
         }
         if (\array_key_exists('reply_count', $data) && null !== $data['reply_count']) {
-            $object->setReplyCount($data['reply_count']);
-        } elseif (\array_key_exists('reply_count', $data) && null === $data['reply_count']) {
-            $object->setReplyCount(null);
+            $object->replyCount = $data['reply_count'];
+        } elseif (\array_key_exists('reply_count', $data)) {
+            $object->replyCount = null;
         }
         if (\array_key_exists('reply_users', $data) && null !== $data['reply_users']) {
             $values = [];
             foreach ($data['reply_users'] as $value) {
                 $values[] = $value;
             }
-            $object->setReplyUsers($values);
-        } elseif (\array_key_exists('reply_users', $data) && null === $data['reply_users']) {
-            $object->setReplyUsers(null);
+            $object->replyUsers = $values;
+        } elseif (\array_key_exists('reply_users', $data)) {
+            $object->replyUsers = null;
         }
         if (\array_key_exists('reply_users_count', $data) && null !== $data['reply_users_count']) {
-            $object->setReplyUsersCount($data['reply_users_count']);
-        } elseif (\array_key_exists('reply_users_count', $data) && null === $data['reply_users_count']) {
-            $object->setReplyUsersCount(null);
+            $object->replyUsersCount = $data['reply_users_count'];
+        } elseif (\array_key_exists('reply_users_count', $data)) {
+            $object->replyUsersCount = null;
         }
         if (\array_key_exists('source_team', $data) && null !== $data['source_team']) {
-            $object->setSourceTeam($data['source_team']);
-        } elseif (\array_key_exists('source_team', $data) && null === $data['source_team']) {
-            $object->setSourceTeam(null);
+            $object->sourceTeam = $data['source_team'];
+        } elseif (\array_key_exists('source_team', $data)) {
+            $object->sourceTeam = null;
         }
         if (\array_key_exists('subscribed', $data) && null !== $data['subscribed']) {
-            $object->setSubscribed($data['subscribed']);
-        } elseif (\array_key_exists('subscribed', $data) && null === $data['subscribed']) {
-            $object->setSubscribed(null);
+            $object->subscribed = $data['subscribed'];
+        } elseif (\array_key_exists('subscribed', $data)) {
+            $object->subscribed = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($data['team']);
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $data['team'];
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
-            $object->setText($data['text']);
-        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-            $object->setText(null);
+            $object->text = $data['text'];
+        } elseif (\array_key_exists('text', $data)) {
+            $object->text = null;
         }
         if (\array_key_exists('thread_ts', $data) && null !== $data['thread_ts']) {
-            $object->setThreadTs($data['thread_ts']);
-        } elseif (\array_key_exists('thread_ts', $data) && null === $data['thread_ts']) {
-            $object->setThreadTs(null);
+            $object->threadTs = $data['thread_ts'];
+        } elseif (\array_key_exists('thread_ts', $data)) {
+            $object->threadTs = null;
         }
         if (\array_key_exists('ts', $data) && null !== $data['ts']) {
-            $object->setTs($data['ts']);
-        } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
-            $object->setTs(null);
+            $object->ts = $data['ts'];
+        } elseif (\array_key_exists('ts', $data)) {
+            $object->ts = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
         if (\array_key_exists('unread_count', $data) && null !== $data['unread_count']) {
-            $object->setUnreadCount($data['unread_count']);
-        } elseif (\array_key_exists('unread_count', $data) && null === $data['unread_count']) {
-            $object->setUnreadCount(null);
+            $object->unreadCount = $data['unread_count'];
+        } elseif (\array_key_exists('unread_count', $data)) {
+            $object->unreadCount = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $data['user'];
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
         if (\array_key_exists('user_profile', $data) && null !== $data['user_profile']) {
-            $object->setUserProfile($this->denormalizer->denormalize($data['user_profile'], \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class, 'json', $context));
-        } elseif (\array_key_exists('user_profile', $data) && null === $data['user_profile']) {
-            $object->setUserProfile(null);
+            $object->userProfile = $this->denormalizer->denormalize($data['user_profile'], \JoliCode\Slack\Api\Model\ObjsUserProfileShort::class, 'json', $context);
+        } elseif (\array_key_exists('user_profile', $data)) {
+            $object->userProfile = null;
         }
         if (\array_key_exists('user_team', $data) && null !== $data['user_team']) {
-            $object->setUserTeam($data['user_team']);
-        } elseif (\array_key_exists('user_team', $data) && null === $data['user_team']) {
-            $object->setUserTeam(null);
+            $object->userTeam = $data['user_team'];
+        } elseif (\array_key_exists('user_team', $data)) {
+            $object->userTeam = null;
         }
 
         return $object;
@@ -146,43 +146,44 @@ class ConversationsRepliesGetResponse200MessagesItemItem0Normalizer implements D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('lastRead') && null !== $data->getLastRead()) {
-            $dataArray['last_read'] = $data->getLastRead();
+        if (\array_key_exists('lastRead', get_object_vars($data)) && null !== ($data->lastRead ?? null)) {
+            $dataArray['last_read'] = $data->lastRead;
         }
-        if ($data->isInitialized('latestReply') && null !== $data->getLatestReply()) {
-            $dataArray['latest_reply'] = $data->getLatestReply();
+        if (\array_key_exists('latestReply', get_object_vars($data)) && null !== ($data->latestReply ?? null)) {
+            $dataArray['latest_reply'] = $data->latestReply;
         }
-        $dataArray['reply_count'] = $data->getReplyCount();
-        if ($data->isInitialized('replyUsers') && null !== $data->getReplyUsers()) {
+        $dataArray['reply_count'] = $data->replyCount;
+        if (\array_key_exists('replyUsers', get_object_vars($data)) && null !== ($data->replyUsers ?? null)) {
             $values = [];
-            foreach ($data->getReplyUsers() as $value) {
+            foreach ($data->replyUsers as $value) {
                 $values[] = $value;
             }
             $dataArray['reply_users'] = $values;
         }
-        if ($data->isInitialized('replyUsersCount') && null !== $data->getReplyUsersCount()) {
-            $dataArray['reply_users_count'] = $data->getReplyUsersCount();
+        if (\array_key_exists('replyUsersCount', get_object_vars($data)) && null !== ($data->replyUsersCount ?? null)) {
+            $dataArray['reply_users_count'] = $data->replyUsersCount;
         }
-        if ($data->isInitialized('sourceTeam') && null !== $data->getSourceTeam()) {
-            $dataArray['source_team'] = $data->getSourceTeam();
+        if (\array_key_exists('sourceTeam', get_object_vars($data)) && null !== ($data->sourceTeam ?? null)) {
+            $dataArray['source_team'] = $data->sourceTeam;
         }
-        $dataArray['subscribed'] = $data->getSubscribed();
-        if ($data->isInitialized('team') && null !== $data->getTeam()) {
-            $dataArray['team'] = $data->getTeam();
+        $dataArray['subscribed'] = $data->subscribed;
+        if (\array_key_exists('team', get_object_vars($data)) && null !== ($data->team ?? null)) {
+            $dataArray['team'] = $data->team;
         }
-        $dataArray['text'] = $data->getText();
-        $dataArray['thread_ts'] = $data->getThreadTs();
-        $dataArray['ts'] = $data->getTs();
-        $dataArray['type'] = $data->getType();
-        if ($data->isInitialized('unreadCount') && null !== $data->getUnreadCount()) {
-            $dataArray['unread_count'] = $data->getUnreadCount();
+        $dataArray['text'] = $data->text;
+        $dataArray['thread_ts'] = $data->threadTs;
+        $dataArray['ts'] = $data->ts;
+        $dataArray['type'] = $data->type;
+        if (\array_key_exists('unreadCount', get_object_vars($data)) && null !== ($data->unreadCount ?? null)) {
+            $dataArray['unread_count'] = $data->unreadCount;
         }
-        $dataArray['user'] = $data->getUser();
-        if ($data->isInitialized('userProfile') && null !== $data->getUserProfile()) {
-            $dataArray['user_profile'] = null === $data->getUserProfile() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUserProfile(), 'json', $context));
+        $dataArray['user'] = $data->user;
+        if (\array_key_exists('userProfile', get_object_vars($data)) && null !== ($data->userProfile ?? null)) {
+            $normalized = $this->normalizer->normalize($data->userProfile, 'json', $context);
+            $dataArray['user_profile'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('userTeam') && null !== $data->getUserTeam()) {
-            $dataArray['user_team'] = $data->getUserTeam();
+        if (\array_key_exists('userTeam', get_object_vars($data)) && null !== ($data->userTeam ?? null)) {
+            $dataArray['user_team'] = $data->userTeam;
         }
 
         return $dataArray;

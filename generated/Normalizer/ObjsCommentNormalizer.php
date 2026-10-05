@@ -59,57 +59,57 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             $data['is_starred'] = (bool) $data['is_starred'];
         }
         if (\array_key_exists('comment', $data) && null !== $data['comment']) {
-            $object->setComment($data['comment']);
-        } elseif (\array_key_exists('comment', $data) && null === $data['comment']) {
-            $object->setComment(null);
+            $object->comment = $data['comment'];
+        } elseif (\array_key_exists('comment', $data)) {
+            $object->comment = null;
         }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
-            $object->setCreated($data['created']);
-        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-            $object->setCreated(null);
+            $object->created = $data['created'];
+        } elseif (\array_key_exists('created', $data)) {
+            $object->created = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('is_intro', $data) && null !== $data['is_intro']) {
-            $object->setIsIntro($data['is_intro']);
-        } elseif (\array_key_exists('is_intro', $data) && null === $data['is_intro']) {
-            $object->setIsIntro(null);
+            $object->isIntro = $data['is_intro'];
+        } elseif (\array_key_exists('is_intro', $data)) {
+            $object->isIntro = null;
         }
         if (\array_key_exists('is_starred', $data) && null !== $data['is_starred']) {
-            $object->setIsStarred($data['is_starred']);
-        } elseif (\array_key_exists('is_starred', $data) && null === $data['is_starred']) {
-            $object->setIsStarred(null);
+            $object->isStarred = $data['is_starred'];
+        } elseif (\array_key_exists('is_starred', $data)) {
+            $object->isStarred = null;
         }
         if (\array_key_exists('num_stars', $data) && null !== $data['num_stars']) {
-            $object->setNumStars($data['num_stars']);
-        } elseif (\array_key_exists('num_stars', $data) && null === $data['num_stars']) {
-            $object->setNumStars(null);
+            $object->numStars = $data['num_stars'];
+        } elseif (\array_key_exists('num_stars', $data)) {
+            $object->numStars = null;
         }
         if (\array_key_exists('pinned_info', $data) && null !== $data['pinned_info']) {
-            $object->setPinnedInfo($data['pinned_info']);
-        } elseif (\array_key_exists('pinned_info', $data) && null === $data['pinned_info']) {
-            $object->setPinnedInfo(null);
+            $object->pinnedInfo = $data['pinned_info'];
+        } elseif (\array_key_exists('pinned_info', $data)) {
+            $object->pinnedInfo = null;
         }
         if (\array_key_exists('pinned_to', $data) && null !== $data['pinned_to']) {
             $values = [];
             foreach ($data['pinned_to'] as $value) {
                 $values[] = $value;
             }
-            $object->setPinnedTo($values);
-        } elseif (\array_key_exists('pinned_to', $data) && null === $data['pinned_to']) {
-            $object->setPinnedTo(null);
+            $object->pinnedTo = $values;
+        } elseif (\array_key_exists('pinned_to', $data)) {
+            $object->pinnedTo = null;
         }
         if (\array_key_exists('reactions', $data) && null !== $data['reactions']) {
             $values_1 = [];
             foreach ($data['reactions'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \JoliCode\Slack\Api\Model\ObjsReaction::class, 'json', $context);
             }
-            $object->setReactions($values_1);
-        } elseif (\array_key_exists('reactions', $data) && null === $data['reactions']) {
-            $object->setReactions(null);
+            $object->reactions = $values_1;
+        } elseif (\array_key_exists('reactions', $data)) {
+            $object->reactions = null;
         }
         if (\array_key_exists('timestamp', $data) && null !== $data['timestamp']) {
             $value_2 = $data['timestamp'];
@@ -118,14 +118,14 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
             } elseif (\is_string($data['timestamp'])) {
                 $value_2 = $data['timestamp'];
             }
-            $object->setTimestamp($value_2);
-        } elseif (\array_key_exists('timestamp', $data) && null === $data['timestamp']) {
-            $object->setTimestamp(null);
+            $object->timestamp = $value_2;
+        } elseif (\array_key_exists('timestamp', $data)) {
+            $object->timestamp = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $data['user'];
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
 
         return $object;
@@ -134,41 +134,42 @@ class ObjsCommentNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['comment'] = $data->getComment();
-        $dataArray['created'] = $data->getCreated();
-        $dataArray['id'] = $data->getId();
-        $dataArray['is_intro'] = $data->getIsIntro();
-        if ($data->isInitialized('isStarred') && null !== $data->getIsStarred()) {
-            $dataArray['is_starred'] = $data->getIsStarred();
+        $dataArray['comment'] = $data->comment;
+        $dataArray['created'] = $data->created;
+        $dataArray['id'] = $data->id;
+        $dataArray['is_intro'] = $data->isIntro;
+        if (\array_key_exists('isStarred', get_object_vars($data)) && null !== ($data->isStarred ?? null)) {
+            $dataArray['is_starred'] = $data->isStarred;
         }
-        if ($data->isInitialized('numStars') && null !== $data->getNumStars()) {
-            $dataArray['num_stars'] = $data->getNumStars();
+        if (\array_key_exists('numStars', get_object_vars($data)) && null !== ($data->numStars ?? null)) {
+            $dataArray['num_stars'] = $data->numStars;
         }
-        if ($data->isInitialized('pinnedInfo') && null !== $data->getPinnedInfo()) {
-            $dataArray['pinned_info'] = $data->getPinnedInfo();
+        if (\array_key_exists('pinnedInfo', get_object_vars($data)) && null !== ($data->pinnedInfo ?? null)) {
+            $dataArray['pinned_info'] = $data->pinnedInfo;
         }
-        if ($data->isInitialized('pinnedTo') && null !== $data->getPinnedTo()) {
+        if (\array_key_exists('pinnedTo', get_object_vars($data)) && null !== ($data->pinnedTo ?? null)) {
             $values = [];
-            foreach ($data->getPinnedTo() as $value) {
+            foreach ($data->pinnedTo as $value) {
                 $values[] = $value;
             }
             $dataArray['pinned_to'] = $values;
         }
-        if ($data->isInitialized('reactions') && null !== $data->getReactions()) {
+        if (\array_key_exists('reactions', get_object_vars($data)) && null !== ($data->reactions ?? null)) {
             $values_1 = [];
-            foreach ($data->getReactions() as $value_1) {
-                $values_1[] = null === $value_1 ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value_1, 'json', $context));
+            foreach ($data->reactions as $value_1) {
+                $normalized = null === $value_1 ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['reactions'] = $values_1;
         }
-        $value_2 = $data->getTimestamp();
-        if (\is_int($data->getTimestamp())) {
-            $value_2 = $data->getTimestamp();
-        } elseif (\is_string($data->getTimestamp())) {
-            $value_2 = $data->getTimestamp();
+        $value_2 = $data->timestamp;
+        if (\is_int($data->timestamp)) {
+            $value_2 = $data->timestamp;
+        } elseif (\is_string($data->timestamp)) {
+            $value_2 = $data->timestamp;
         }
         $dataArray['timestamp'] = $value_2;
-        $dataArray['user'] = $data->getUser();
+        $dataArray['user'] = $data->user;
 
         return $dataArray;
     }

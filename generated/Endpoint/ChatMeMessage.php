@@ -20,16 +20,13 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     /**
      * Share a me message into a channel.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.
-     * @var string $text Text of the message to send.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `chat:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name.
+     *    "text"?: string, //Text of the message to send.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `chat:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -47,7 +44,7 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         return '/chat.meMessage';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class ChatMeMessage extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatMeMessagePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ChatMeMessagePostResponse200', 'json');
         }
