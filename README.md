@@ -48,7 +48,7 @@ composer require jolicode/slack-php-api
 // $client contains all the methods to interact with the API
 $client = JoliCode\Slack\ClientFactory::create($yourSlackToken);
 
-$user = $client->usersInfo(['user' => 'U123AZER'])->getUser();
+$user = $client->usersInfo(['user' => 'U123AZER'])->user;
 ```
 
 ## Documentation
