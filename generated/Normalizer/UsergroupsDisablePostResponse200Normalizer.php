@@ -56,14 +56,14 @@ class UsergroupsDisablePostResponse200Normalizer implements DenormalizerInterfac
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('usergroup', $data) && null !== $data['usergroup']) {
-            $object->setUsergroup($this->denormalizer->denormalize($data['usergroup'], \JoliCode\Slack\Api\Model\ObjsSubteam::class, 'json', $context));
-        } elseif (\array_key_exists('usergroup', $data) && null === $data['usergroup']) {
-            $object->setUsergroup(null);
+            $object->usergroup = $this->denormalizer->denormalize($data['usergroup'], \JoliCode\Slack\Api\Model\ObjsSubteam::class, 'json', $context);
+        } elseif (\array_key_exists('usergroup', $data)) {
+            $object->usergroup = null;
         }
 
         return $object;
@@ -72,8 +72,9 @@ class UsergroupsDisablePostResponse200Normalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['usergroup'] = null === $data->getUsergroup() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getUsergroup(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        $normalized = null === $data->usergroup ? null : $this->normalizer->normalize($data->usergroup, 'json', $context);
+        $dataArray['usergroup'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
 
         return $dataArray;
     }

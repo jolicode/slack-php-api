@@ -20,16 +20,13 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     /**
      * Initiates a public or private channel-based conversation.
      *
-     * @param array $formParameters {
-     *
-     * @var bool   $is_private Create a private channel instead of a public one
-     * @var string $name Name of the public or private channel to create
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `conversations:write`
-     *             }
+     * @param array{
+     *    "is_private"?: bool, //Create a private channel instead of a public one
+     *    "name"?: string, //Name of the public or private channel to create
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -47,7 +44,7 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
         return '/conversations.create';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class ConversationsCreate extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoin
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200|\JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200|\JoliCode\Slack\Api\Model\ConversationsCreatePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsCreatePostResponse200', 'json');
         }

@@ -19,75 +19,15 @@ use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
 class AppsPermissionsResourcesListGetResponse200 implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
+    public ?bool $ok;
     /**
      * @var list<AppsPermissionsResourcesListGetResponse200ResourcesItem>|null
      */
-    protected $resources;
-    /**
-     * @var AppsPermissionsResourcesListGetResponse200ResponseMetadata|null
-     */
-    protected $responseMetadata;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    /**
-     * @return list<AppsPermissionsResourcesListGetResponse200ResourcesItem>|null
-     */
-    public function getResources(): ?array
-    {
-        return $this->resources;
-    }
-
-    /**
-     * @param list<AppsPermissionsResourcesListGetResponse200ResourcesItem>|null $resources
-     */
-    public function setResources(?array $resources): self
-    {
-        $this->initialized['resources'] = true;
-        $this->resources = $resources;
-
-        return $this;
-    }
-
-    public function getResponseMetadata(): ?AppsPermissionsResourcesListGetResponse200ResponseMetadata
-    {
-        return $this->responseMetadata;
-    }
-
-    public function setResponseMetadata(?AppsPermissionsResourcesListGetResponse200ResponseMetadata $responseMetadata): self
-    {
-        $this->initialized['responseMetadata'] = true;
-        $this->responseMetadata = $responseMetadata;
-
-        return $this;
-    }
+    public ?array $resources;
+    public ?AppsPermissionsResourcesListGetResponse200ResponseMetadata $responseMetadata;
 
     public function definedProperties(): array
     {
-        return ['ok' => ['ok', 'getOk', 'setOk'], 'resources' => ['resources', 'getResources', 'setResources'], 'responseMetadata' => ['response_metadata', 'getResponseMetadata', 'setResponseMetadata']];
+        return ['ok' => 'ok', 'resources' => 'resources', 'responseMetadata' => 'response_metadata'];
     }
 }

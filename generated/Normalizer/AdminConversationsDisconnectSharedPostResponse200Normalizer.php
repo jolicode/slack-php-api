@@ -56,9 +56,9 @@ class AdminConversationsDisconnectSharedPostResponse200Normalizer implements Den
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -67,7 +67,7 @@ class AdminConversationsDisconnectSharedPostResponse200Normalizer implements Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

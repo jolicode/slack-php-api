@@ -53,29 +53,29 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('created', $data) && null !== $data['created']) {
-            $object->setCreated($data['created']);
-        } elseif (\array_key_exists('created', $data) && null === $data['created']) {
-            $object->setCreated(null);
+            $object->created = $data['created'];
+        } elseif (\array_key_exists('created', $data)) {
+            $object->created = null;
         }
         if (\array_key_exists('created_by', $data) && null !== $data['created_by']) {
-            $object->setCreatedBy($data['created_by']);
-        } elseif (\array_key_exists('created_by', $data) && null === $data['created_by']) {
-            $object->setCreatedBy(null);
+            $object->createdBy = $data['created_by'];
+        } elseif (\array_key_exists('created_by', $data)) {
+            $object->createdBy = null;
         }
         if (\array_key_exists('message', $data) && null !== $data['message']) {
-            $object->setMessage($this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
-            $object->setMessage(null);
+            $object->message = $this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context);
+        } elseif (\array_key_exists('message', $data)) {
+            $object->message = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -84,20 +84,21 @@ class PinsListGetResponse200Item0ItemsItem1Normalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('channel') && null !== $data->getChannel()) {
-            $dataArray['channel'] = $data->getChannel();
+        if (\array_key_exists('channel', get_object_vars($data)) && null !== ($data->channel ?? null)) {
+            $dataArray['channel'] = $data->channel;
         }
-        if ($data->isInitialized('created') && null !== $data->getCreated()) {
-            $dataArray['created'] = $data->getCreated();
+        if (\array_key_exists('created', get_object_vars($data)) && null !== ($data->created ?? null)) {
+            $dataArray['created'] = $data->created;
         }
-        if ($data->isInitialized('createdBy') && null !== $data->getCreatedBy()) {
-            $dataArray['created_by'] = $data->getCreatedBy();
+        if (\array_key_exists('createdBy', get_object_vars($data)) && null !== ($data->createdBy ?? null)) {
+            $dataArray['created_by'] = $data->createdBy;
         }
-        if ($data->isInitialized('message') && null !== $data->getMessage()) {
-            $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
+        if (\array_key_exists('message', get_object_vars($data)) && null !== ($data->message ?? null)) {
+            $normalized = $this->normalizer->normalize($data->message, 'json', $context);
+            $dataArray['message'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (\array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type;
         }
 
         return $dataArray;

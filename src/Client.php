@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace JoliCode\Slack;
 
-use Http\Discovery\Psr17FactoryDiscovery;
 use JoliCode\Slack\Api\Client as ApiClient;
 use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200;
 use JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponsedefault;
@@ -21,8 +20,7 @@ use JoliCode\Slack\Api\Model\ObjsConversation;
 use JoliCode\Slack\Api\Model\ObjsMessage;
 use JoliCode\Slack\Api\Model\ObjsSubteam;
 use JoliCode\Slack\Api\Model\ObjsUser;
-use Nyholm\Psr7\Stream;
-use Psr\Http\Client\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
  * @method iterable<ObjsMessage>      iterateConversationsHistory(array $arguments = [])
@@ -62,7 +60,7 @@ class Client extends ApiClient
 
     public function iterate(string $method, array $arguments): iterable
     {
-        $getter = 'get' . self::CURSOR_PAGINATION[$method];
+        $property = self::CURSOR_PAGINATION[$method];
 
         $arguments[0] ??= [];
         $arguments[0]['limit'] ??= 1000;
@@ -74,11 +72,11 @@ class Client extends ApiClient
 
             $response = $this->{$method}(...$arguments);
 
-            foreach ($response->{$getter}() as $item) {
+            foreach ($response->{$property} ?? [] as $item) {
                 yield $item;
             }
 
-            $cursor = $response->getResponseMetadata() ? $response->getResponseMetadata()->getNextCursor() : '';
+            $cursor = ($response->responseMetadata ?? null)?->nextCursor ?? '';
         } while (!empty($cursor));
     }
 
@@ -101,9 +99,9 @@ class Client extends ApiClient
      * @param string|null $initialComment optional comment to add with the upload
      * @param string|null $threadTs       optional thread_ts (Slack thread timestamp) to attach the upload to a thread
      *
-     * @throws \RuntimeException        if upload or Slack API interaction fails
+     * @throws \RuntimeException           if upload or Slack API interaction fails
      * @throws \JsonException
-     * @throws ClientExceptionInterface
+     * @throws TransportExceptionInterface
      *
      * @example
      * $this->filesUploadV2([
@@ -116,7 +114,7 @@ class Client extends ApiClient
         string $channelId,
         ?string $initialComment = null,
         ?string $threadTs = null,
-    ): FilesCompleteUploadExternalPostResponsedefault|FilesCompleteUploadExternalPostResponse200|null {
+    ): FilesCompleteUploadExternalPostResponsedefault|FilesCompleteUploadExternalPostResponse200 {
         $filesPayload = [];
 
         foreach ($files as $file) {
@@ -126,8 +124,11 @@ class Client extends ApiClient
             $altText = $file['alt_text'] ?? null;
             $snippetType = $file['snippet_type'] ?? null;
 
-            $fileStream = Stream::create(fopen($filePath, 'r'));
-            $fileSize = $fileStream->getSize();
+            $fileSize = filesize($filePath);
+
+            if (false === $fileSize) {
+                throw new \RuntimeException("Could not read the file {$filePath}");
+            }
 
             // Step 1: Get upload URL from Slack
             $queryParams = array_filter(
@@ -140,14 +141,14 @@ class Client extends ApiClient
             );
 
             $uploadInfo = $this->filesGetUploadUrlExternal($queryParams);
-            $uploadUrl = $uploadInfo?->getUploadUrl();
-            $fileId = $uploadInfo?->getFileId();
+            $uploadUrl = $uploadInfo?->uploadUrl;
+            $fileId = $uploadInfo?->fileId;
 
             if (null === $uploadUrl || null === $fileId) {
                 throw new \RuntimeException("Slack did not return upload URL or file ID for {$fileName}");
             }
 
-            // Step 2: Upload file data using cURL
+            // Step 2: Upload file data
             $this->uploadToSlackUrl($uploadUrl, $filePath);
 
             // Step 3: Build file metadata
@@ -170,27 +171,28 @@ class Client extends ApiClient
         );
     }
 
-    public function filesUpload(array $formParameters = [], string $fetch = ApiClient::FETCH_OBJECT): void
+    public function filesUpload(array $formParameters = []): void
     {
         throw new \RuntimeException("Method 'filesUpload' is not supported by Slack anymore. Use 'filesUploadV2' instead.");
     }
 
     /**
-     * @throws ClientExceptionInterface
+     * @throws TransportExceptionInterface
      */
     private function uploadToSlackUrl(string $uploadUrl, string $filePath): void
     {
-        $uriFactory = Psr17FactoryDiscovery::findUriFactory();
-        $uri = $uriFactory->createUri($uploadUrl);
+        $resource = fopen($filePath, 'r');
 
-        $stream = $this->streamFactory->createStreamFromFile($filePath);
-        $request = $this->requestFactory->createRequest('POST', $uri);
-        $request = $request->withBody($stream);
+        if (false === $resource) {
+            throw new \RuntimeException("Could not read the file {$filePath}");
+        }
 
-        $response = $this->httpClient->sendRequest($request);
-        $responseStatusCode = $response->getStatusCode();
-        if ($responseStatusCode >= 400) {
-            throw new \RuntimeException(\sprintf('Upload failed: %s - %s', $response->getStatusCode(), $response->getBody()));
+        $response = $this->httpClient->request('POST', $uploadUrl, [
+            'body' => $resource,
+        ]);
+
+        if ($response->getStatusCode() >= 400) {
+            throw new \RuntimeException(\sprintf('Upload failed: %s - %s', $response->getStatusCode(), $response->getContent(false)));
         }
     }
 }

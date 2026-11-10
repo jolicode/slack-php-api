@@ -59,14 +59,14 @@ class AuthRevokeGetResponse200Normalizer implements DenormalizerInterface, Norma
             $data['revoked'] = (bool) $data['revoked'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('revoked', $data) && null !== $data['revoked']) {
-            $object->setRevoked($data['revoked']);
-        } elseif (\array_key_exists('revoked', $data) && null === $data['revoked']) {
-            $object->setRevoked(null);
+            $object->revoked = $data['revoked'];
+        } elseif (\array_key_exists('revoked', $data)) {
+            $object->revoked = null;
         }
 
         return $object;
@@ -75,8 +75,8 @@ class AuthRevokeGetResponse200Normalizer implements DenormalizerInterface, Norma
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['revoked'] = $data->getRevoked();
+        $dataArray['ok'] = $data->ok;
+        $dataArray['revoked'] = $data->revoked;
 
         return $dataArray;
     }

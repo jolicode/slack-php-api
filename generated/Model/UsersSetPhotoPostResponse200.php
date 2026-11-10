@@ -15,47 +15,6 @@ namespace JoliCode\Slack\Api\Model;
 
 class UsersSetPhotoPostResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var UsersSetPhotoPostResponse200Profile|null
-     */
-    protected $profile;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getProfile(): ?UsersSetPhotoPostResponse200Profile
-    {
-        return $this->profile;
-    }
-
-    public function setProfile(?UsersSetPhotoPostResponse200Profile $profile): self
-    {
-        $this->initialized['profile'] = true;
-        $this->profile = $profile;
-
-        return $this;
-    }
+    public ?bool $ok;
+    public ?UsersSetPhotoPostResponse200Profile $profile;
 }

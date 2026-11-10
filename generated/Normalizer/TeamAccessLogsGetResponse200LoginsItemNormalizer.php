@@ -53,70 +53,70 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data) && null !== $data['count']) {
-            $object->setCount($data['count']);
-        } elseif (\array_key_exists('count', $data) && null === $data['count']) {
-            $object->setCount(null);
+            $object->count = $data['count'];
+        } elseif (\array_key_exists('count', $data)) {
+            $object->count = null;
         }
         if (\array_key_exists('country', $data) && null !== $data['country']) {
             $value = $data['country'];
             if (\is_string($data['country'])) {
                 $value = $data['country'];
             }
-            $object->setCountry($value);
-        } elseif (\array_key_exists('country', $data) && null === $data['country']) {
-            $object->setCountry(null);
+            $object->country = $value;
+        } elseif (\array_key_exists('country', $data)) {
+            $object->country = null;
         }
         if (\array_key_exists('date_first', $data) && null !== $data['date_first']) {
-            $object->setDateFirst($data['date_first']);
-        } elseif (\array_key_exists('date_first', $data) && null === $data['date_first']) {
-            $object->setDateFirst(null);
+            $object->dateFirst = $data['date_first'];
+        } elseif (\array_key_exists('date_first', $data)) {
+            $object->dateFirst = null;
         }
         if (\array_key_exists('date_last', $data) && null !== $data['date_last']) {
-            $object->setDateLast($data['date_last']);
-        } elseif (\array_key_exists('date_last', $data) && null === $data['date_last']) {
-            $object->setDateLast(null);
+            $object->dateLast = $data['date_last'];
+        } elseif (\array_key_exists('date_last', $data)) {
+            $object->dateLast = null;
         }
         if (\array_key_exists('ip', $data) && null !== $data['ip']) {
             $value_1 = $data['ip'];
             if (\is_string($data['ip'])) {
                 $value_1 = $data['ip'];
             }
-            $object->setIp($value_1);
-        } elseif (\array_key_exists('ip', $data) && null === $data['ip']) {
-            $object->setIp(null);
+            $object->ip = $value_1;
+        } elseif (\array_key_exists('ip', $data)) {
+            $object->ip = null;
         }
         if (\array_key_exists('isp', $data) && null !== $data['isp']) {
             $value_2 = $data['isp'];
             if (\is_string($data['isp'])) {
                 $value_2 = $data['isp'];
             }
-            $object->setIsp($value_2);
-        } elseif (\array_key_exists('isp', $data) && null === $data['isp']) {
-            $object->setIsp(null);
+            $object->isp = $value_2;
+        } elseif (\array_key_exists('isp', $data)) {
+            $object->isp = null;
         }
         if (\array_key_exists('region', $data) && null !== $data['region']) {
             $value_3 = $data['region'];
             if (\is_string($data['region'])) {
                 $value_3 = $data['region'];
             }
-            $object->setRegion($value_3);
-        } elseif (\array_key_exists('region', $data) && null === $data['region']) {
-            $object->setRegion(null);
+            $object->region = $value_3;
+        } elseif (\array_key_exists('region', $data)) {
+            $object->region = null;
         }
         if (\array_key_exists('user_agent', $data) && null !== $data['user_agent']) {
-            $object->setUserAgent($data['user_agent']);
-        } elseif (\array_key_exists('user_agent', $data) && null === $data['user_agent']) {
-            $object->setUserAgent(null);
+            $object->userAgent = $data['user_agent'];
+        } elseif (\array_key_exists('user_agent', $data)) {
+            $object->userAgent = null;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
-            $object->setUserId($data['user_id']);
-        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
-            $object->setUserId(null);
+            $object->userId = $data['user_id'];
+        } elseif (\array_key_exists('user_id', $data)) {
+            $object->userId = null;
         }
         if (\array_key_exists('username', $data) && null !== $data['username']) {
-            $object->setUsername($data['username']);
-        } elseif (\array_key_exists('username', $data) && null === $data['username']) {
-            $object->setUsername(null);
+            $object->username = $data['username'];
+        } elseif (\array_key_exists('username', $data)) {
+            $object->username = null;
         }
 
         return $object;
@@ -125,32 +125,32 @@ class TeamAccessLogsGetResponse200LoginsItemNormalizer implements DenormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['count'] = $data->getCount();
-        $value = $data->getCountry();
-        if (\is_string($data->getCountry())) {
-            $value = $data->getCountry();
+        $dataArray['count'] = $data->count;
+        $value = $data->country;
+        if (\is_string($data->country)) {
+            $value = $data->country;
         }
         $dataArray['country'] = $value;
-        $dataArray['date_first'] = $data->getDateFirst();
-        $dataArray['date_last'] = $data->getDateLast();
-        $value_1 = $data->getIp();
-        if (\is_string($data->getIp())) {
-            $value_1 = $data->getIp();
+        $dataArray['date_first'] = $data->dateFirst;
+        $dataArray['date_last'] = $data->dateLast;
+        $value_1 = $data->ip;
+        if (\is_string($data->ip)) {
+            $value_1 = $data->ip;
         }
         $dataArray['ip'] = $value_1;
-        $value_2 = $data->getIsp();
-        if (\is_string($data->getIsp())) {
-            $value_2 = $data->getIsp();
+        $value_2 = $data->isp;
+        if (\is_string($data->isp)) {
+            $value_2 = $data->isp;
         }
         $dataArray['isp'] = $value_2;
-        $value_3 = $data->getRegion();
-        if (\is_string($data->getRegion())) {
-            $value_3 = $data->getRegion();
+        $value_3 = $data->region;
+        if (\is_string($data->region)) {
+            $value_3 = $data->region;
         }
         $dataArray['region'] = $value_3;
-        $dataArray['user_agent'] = $data->getUserAgent();
-        $dataArray['user_id'] = $data->getUserId();
-        $dataArray['username'] = $data->getUsername();
+        $dataArray['user_agent'] = $data->userAgent;
+        $dataArray['user_id'] = $data->userId;
+        $dataArray['username'] = $data->username;
 
         return $dataArray;
     }

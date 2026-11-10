@@ -59,44 +59,44 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('bot_id', $data) && null !== $data['bot_id']) {
-            $object->setBotId($data['bot_id']);
-        } elseif (\array_key_exists('bot_id', $data) && null === $data['bot_id']) {
-            $object->setBotId(null);
+            $object->botId = $data['bot_id'];
+        } elseif (\array_key_exists('bot_id', $data)) {
+            $object->botId = null;
         }
         if (\array_key_exists('is_enterprise_install', $data) && null !== $data['is_enterprise_install']) {
-            $object->setIsEnterpriseInstall($data['is_enterprise_install']);
-        } elseif (\array_key_exists('is_enterprise_install', $data) && null === $data['is_enterprise_install']) {
-            $object->setIsEnterpriseInstall(null);
+            $object->isEnterpriseInstall = $data['is_enterprise_install'];
+        } elseif (\array_key_exists('is_enterprise_install', $data)) {
+            $object->isEnterpriseInstall = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($data['team']);
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $data['team'];
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
         if (\array_key_exists('team_id', $data) && null !== $data['team_id']) {
-            $object->setTeamId($data['team_id']);
-        } elseif (\array_key_exists('team_id', $data) && null === $data['team_id']) {
-            $object->setTeamId(null);
+            $object->teamId = $data['team_id'];
+        } elseif (\array_key_exists('team_id', $data)) {
+            $object->teamId = null;
         }
         if (\array_key_exists('url', $data) && null !== $data['url']) {
-            $object->setUrl($data['url']);
-        } elseif (\array_key_exists('url', $data) && null === $data['url']) {
-            $object->setUrl(null);
+            $object->url = $data['url'];
+        } elseif (\array_key_exists('url', $data)) {
+            $object->url = null;
         }
         if (\array_key_exists('user', $data) && null !== $data['user']) {
-            $object->setUser($data['user']);
-        } elseif (\array_key_exists('user', $data) && null === $data['user']) {
-            $object->setUser(null);
+            $object->user = $data['user'];
+        } elseif (\array_key_exists('user', $data)) {
+            $object->user = null;
         }
         if (\array_key_exists('user_id', $data) && null !== $data['user_id']) {
-            $object->setUserId($data['user_id']);
-        } elseif (\array_key_exists('user_id', $data) && null === $data['user_id']) {
-            $object->setUserId(null);
+            $object->userId = $data['user_id'];
+        } elseif (\array_key_exists('user_id', $data)) {
+            $object->userId = null;
         }
 
         return $object;
@@ -105,18 +105,18 @@ class AuthTestGetResponse200Normalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('botId') && null !== $data->getBotId()) {
-            $dataArray['bot_id'] = $data->getBotId();
+        if (\array_key_exists('botId', get_object_vars($data)) && null !== ($data->botId ?? null)) {
+            $dataArray['bot_id'] = $data->botId;
         }
-        if ($data->isInitialized('isEnterpriseInstall') && null !== $data->getIsEnterpriseInstall()) {
-            $dataArray['is_enterprise_install'] = $data->getIsEnterpriseInstall();
+        if (\array_key_exists('isEnterpriseInstall', get_object_vars($data)) && null !== ($data->isEnterpriseInstall ?? null)) {
+            $dataArray['is_enterprise_install'] = $data->isEnterpriseInstall;
         }
-        $dataArray['ok'] = $data->getOk();
-        $dataArray['team'] = $data->getTeam();
-        $dataArray['team_id'] = $data->getTeamId();
-        $dataArray['url'] = $data->getUrl();
-        $dataArray['user'] = $data->getUser();
-        $dataArray['user_id'] = $data->getUserId();
+        $dataArray['ok'] = $data->ok;
+        $dataArray['team'] = $data->team;
+        $dataArray['team_id'] = $data->teamId;
+        $dataArray['url'] = $data->url;
+        $dataArray['user'] = $data->user;
+        $dataArray['user_id'] = $data->userId;
 
         return $dataArray;
     }

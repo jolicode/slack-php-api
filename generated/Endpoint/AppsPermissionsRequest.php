@@ -20,14 +20,13 @@ class AppsPermissionsRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
     /**
      * Allows an app to request additional scopes.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $scopes A comma separated list of scopes to request for
-     * @var string $token Authentication token. Requires scope: `none`
-     * @var string $trigger_id Token used to trigger the permissions API
-     *             }
+     * @param array{
+     *    "scopes": string, //A comma separated list of scopes to request for
+     *    "token"?: string, //Authentication token. Requires scope: `none`
+     *    "trigger_id": string, //Token used to trigger the permissions API
+     * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
@@ -42,7 +41,7 @@ class AppsPermissionsRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         return '/apps.permissions.request';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class AppsPermissionsRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class AppsPermissionsRequest extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200|\JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AppsPermissionsRequestGetResponse200', 'json');
         }

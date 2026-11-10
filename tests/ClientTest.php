@@ -58,8 +58,7 @@ class ClientTest extends SlackTokenDependentTest
     {
         $client = $this->createClient();
 
-        foreach (Client::CURSOR_PAGINATION as $methodName => $getterMethod) {
-            $getterMethod = 'get' . $getterMethod;
+        foreach (Client::CURSOR_PAGINATION as $methodName => $propertyName) {
             $method = lcfirst(str_replace('iterate', '', $methodName));
 
             if ($_SERVER['CI'] ?? false) {
@@ -69,8 +68,8 @@ class ClientTest extends SlackTokenDependentTest
             $responseFromMethod = $client->{$method}($this->argumentsForCursorPaginationRequest($method, $client));
 
             self::assertTrue(
-                method_exists($responseFromMethod, $getterMethod),
-                \sprintf('Expected that response from %s would contain method %s', $method, $getterMethod)
+                property_exists($responseFromMethod, $propertyName),
+                \sprintf('Expected that response from %s would contain property %s', $method, $propertyName)
             );
         }
     }
@@ -100,11 +99,13 @@ class ClientTest extends SlackTokenDependentTest
         $messages = $client->conversationsHistory([
             'channel' => $_SERVER['SLACK_TEST_CHANNEL'],
             'limit' => 100,
-        ])->getMessages();
+        ])->messages ?? [];
 
         foreach ($messages as $message) {
-            if (\is_string($message->getThreadTs()) && $message->getThreadTs() === $message->getTs()) {
-                return $message->getThreadTs();
+            $threadTs = $message->threadTs ?? null;
+
+            if (\is_string($threadTs) && $threadTs === $message->ts) {
+                return $threadTs;
             }
         }
 
@@ -113,9 +114,8 @@ class ClientTest extends SlackTokenDependentTest
 
     private function findLastFileIdInChannel(Client $client): string
     {
-        return $client->filesList(['channel' => $_SERVER['SLACK_TEST_CHANNEL']])
-            ->getFiles()[0]
-            ?->getId() ?? throw new \RuntimeException('Unable to find file in your test channel')
+        return ($client->filesList(['channel' => $_SERVER['SLACK_TEST_CHANNEL']])->files ?? [])[0]
+            ?->id ?? throw new \RuntimeException('Unable to find file in your test channel')
         ;
     }
 }

@@ -62,19 +62,19 @@ class ConversationsClosePostResponse200Normalizer implements DenormalizerInterfa
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('already_closed', $data) && null !== $data['already_closed']) {
-            $object->setAlreadyClosed($data['already_closed']);
-        } elseif (\array_key_exists('already_closed', $data) && null === $data['already_closed']) {
-            $object->setAlreadyClosed(null);
+            $object->alreadyClosed = $data['already_closed'];
+        } elseif (\array_key_exists('already_closed', $data)) {
+            $object->alreadyClosed = null;
         }
         if (\array_key_exists('no_op', $data) && null !== $data['no_op']) {
-            $object->setNoOp($data['no_op']);
-        } elseif (\array_key_exists('no_op', $data) && null === $data['no_op']) {
-            $object->setNoOp(null);
+            $object->noOp = $data['no_op'];
+        } elseif (\array_key_exists('no_op', $data)) {
+            $object->noOp = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -83,13 +83,13 @@ class ConversationsClosePostResponse200Normalizer implements DenormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('alreadyClosed') && null !== $data->getAlreadyClosed()) {
-            $dataArray['already_closed'] = $data->getAlreadyClosed();
+        if (\array_key_exists('alreadyClosed', get_object_vars($data)) && null !== ($data->alreadyClosed ?? null)) {
+            $dataArray['already_closed'] = $data->alreadyClosed;
         }
-        if ($data->isInitialized('noOp') && null !== $data->getNoOp()) {
-            $dataArray['no_op'] = $data->getNoOp();
+        if (\array_key_exists('noOp', get_object_vars($data)) && null !== ($data->noOp ?? null)) {
+            $dataArray['no_op'] = $data->noOp;
         }
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

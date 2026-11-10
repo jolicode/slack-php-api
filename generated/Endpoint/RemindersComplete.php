@@ -20,15 +20,12 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     /**
      * Marks a reminder as complete.
      *
-     * @param array $formParameters {
-     *
-     * @var string $reminder The ID of the reminder to be marked as complete
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `reminders:write`
-     *             }
+     * @param array{
+     *    "reminder"?: string, //The ID of the reminder to be marked as complete
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `reminders:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -46,7 +43,7 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         return '/reminders.complete';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -59,6 +56,16 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -84,12 +91,12 @@ class RemindersComplete extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\RemindersCompletePostResponse200|\JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\RemindersCompletePostResponse200|\JoliCode\Slack\Api\Model\RemindersCompletePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\RemindersCompletePostResponse200', 'json');
         }

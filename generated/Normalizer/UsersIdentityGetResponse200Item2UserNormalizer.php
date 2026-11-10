@@ -53,44 +53,44 @@ class UsersIdentityGetResponse200Item2UserNormalizer implements DenormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('image_192', $data) && null !== $data['image_192']) {
-            $object->setImage192($data['image_192']);
-        } elseif (\array_key_exists('image_192', $data) && null === $data['image_192']) {
-            $object->setImage192(null);
+            $object->image192 = $data['image_192'];
+        } elseif (\array_key_exists('image_192', $data)) {
+            $object->image192 = null;
         }
         if (\array_key_exists('image_24', $data) && null !== $data['image_24']) {
-            $object->setImage24($data['image_24']);
-        } elseif (\array_key_exists('image_24', $data) && null === $data['image_24']) {
-            $object->setImage24(null);
+            $object->image24 = $data['image_24'];
+        } elseif (\array_key_exists('image_24', $data)) {
+            $object->image24 = null;
         }
         if (\array_key_exists('image_32', $data) && null !== $data['image_32']) {
-            $object->setImage32($data['image_32']);
-        } elseif (\array_key_exists('image_32', $data) && null === $data['image_32']) {
-            $object->setImage32(null);
+            $object->image32 = $data['image_32'];
+        } elseif (\array_key_exists('image_32', $data)) {
+            $object->image32 = null;
         }
         if (\array_key_exists('image_48', $data) && null !== $data['image_48']) {
-            $object->setImage48($data['image_48']);
-        } elseif (\array_key_exists('image_48', $data) && null === $data['image_48']) {
-            $object->setImage48(null);
+            $object->image48 = $data['image_48'];
+        } elseif (\array_key_exists('image_48', $data)) {
+            $object->image48 = null;
         }
         if (\array_key_exists('image_512', $data) && null !== $data['image_512']) {
-            $object->setImage512($data['image_512']);
-        } elseif (\array_key_exists('image_512', $data) && null === $data['image_512']) {
-            $object->setImage512(null);
+            $object->image512 = $data['image_512'];
+        } elseif (\array_key_exists('image_512', $data)) {
+            $object->image512 = null;
         }
         if (\array_key_exists('image_72', $data) && null !== $data['image_72']) {
-            $object->setImage72($data['image_72']);
-        } elseif (\array_key_exists('image_72', $data) && null === $data['image_72']) {
-            $object->setImage72(null);
+            $object->image72 = $data['image_72'];
+        } elseif (\array_key_exists('image_72', $data)) {
+            $object->image72 = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
 
         return $object;
@@ -99,14 +99,14 @@ class UsersIdentityGetResponse200Item2UserNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['id'] = $data->getId();
-        $dataArray['image_192'] = $data->getImage192();
-        $dataArray['image_24'] = $data->getImage24();
-        $dataArray['image_32'] = $data->getImage32();
-        $dataArray['image_48'] = $data->getImage48();
-        $dataArray['image_512'] = $data->getImage512();
-        $dataArray['image_72'] = $data->getImage72();
-        $dataArray['name'] = $data->getName();
+        $dataArray['id'] = $data->id;
+        $dataArray['image_192'] = $data->image192;
+        $dataArray['image_24'] = $data->image24;
+        $dataArray['image_32'] = $data->image32;
+        $dataArray['image_48'] = $data->image48;
+        $dataArray['image_512'] = $data->image512;
+        $dataArray['image_72'] = $data->image72;
+        $dataArray['name'] = $data->name;
 
         return $dataArray;
     }

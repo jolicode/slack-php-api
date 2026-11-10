@@ -20,13 +20,12 @@ class ConversationsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     /**
      * Retrieve information about a conversation.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel Conversation ID to learn more about
-     * @var bool   $include_locale Set this to `true` to receive the locale for this conversation. Defaults to `false`
-     * @var bool   $include_num_members Set to `true` to include the member count for the specified conversation. Defaults to `false`
-     * @var string $token Authentication token. Requires scope: `conversations:read`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Conversation ID to learn more about
+     *    "include_locale"?: bool, //Set this to `true` to receive the locale for this conversation. Defaults to `false`
+     *    "include_num_members"?: bool, //Set to `true` to include the member count for the specified conversation. Defaults to `false`
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -43,7 +42,7 @@ class ConversationsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         return '/conversations.info';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -56,6 +55,16 @@ class ConversationsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -73,12 +82,12 @@ class ConversationsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200|\JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200|\JoliCode\Slack\Api\Model\ConversationsInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsInfoGetResponse200', 'json');
         }

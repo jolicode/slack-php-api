@@ -20,19 +20,16 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
     /**
      * Wipes all valid sessions on all devices for a given user.
      *
-     * @param array $formParameters {
-     *
-     * @var bool   $mobile_only Only expire mobile sessions (default: false)
-     * @var string $user_id The ID of the user to wipe sessions for
-     * @var bool   $web_only Only expire web sessions (default: false)
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.users:write`
-     *             }
+     * @param array{
+     *    "mobile_only"?: bool, //Only expire mobile sessions (default: false)
+     *    "user_id": string, //The ID of the user to wipe sessions for
+     *    "web_only"?: bool, //Only expire web sessions (default: false)
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.users:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -48,7 +45,7 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
         return '/admin.users.session.reset';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -61,6 +58,16 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class AdminUsersSessionReset extends \JoliCode\Slack\Api\Runtime\Client\BaseEndp
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminUsersSessionResetPostResponse200', 'json');
         }

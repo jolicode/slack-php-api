@@ -20,16 +20,13 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     /**
      * Sets the read cursor in a channel.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel channel or conversation to set the read cursor for
-     * @var string $ts Unique identifier of message you want marked as most recently seen in this conversation.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `conversations:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel or conversation to set the read cursor for.
+     *    "ts"?: string, //Unique identifier of message you want marked as most recently seen in this conversation.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `conversations:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -47,7 +44,7 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
         return '/conversations.mark';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class ConversationsMark extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint 
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200|\JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200|\JoliCode\Slack\Api\Model\ConversationsMarkPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ConversationsMarkPostResponse200', 'json');
         }

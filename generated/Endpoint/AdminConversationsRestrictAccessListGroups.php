@@ -20,14 +20,13 @@ class AdminConversationsRestrictAccessListGroups extends \JoliCode\Slack\Api\Run
     /**
      * List all IDP Groups linked to a channel.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel_id
-     * @var string $team_id The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
-     * @var string $token Authentication token. Requires scope: `admin.conversations:read`
-     *             }
+     * @param array{
+     *    "channel_id": string,
+     *    "team_id"?: string, //The workspace where the channel exists. This argument is required for channels only tied to one workspace, and optional for channels that are shared across an organization.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:read`
+     * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
@@ -42,7 +41,7 @@ class AdminConversationsRestrictAccessListGroups extends \JoliCode\Slack\Api\Run
         return '/admin.conversations.restrictAccess.listGroups';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class AdminConversationsRestrictAccessListGroups extends \JoliCode\Slack\Api\Run
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class AdminConversationsRestrictAccessListGroups extends \JoliCode\Slack\Api\Run
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200|\JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200|\JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsRestrictAccessListGroupsGetResponse200', 'json');
         }

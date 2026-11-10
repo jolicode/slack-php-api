@@ -53,19 +53,19 @@ class ObjsTeamSsoProviderNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('label', $data) && null !== $data['label']) {
-            $object->setLabel($data['label']);
-        } elseif (\array_key_exists('label', $data) && null === $data['label']) {
-            $object->setLabel(null);
+            $object->label = $data['label'];
+        } elseif (\array_key_exists('label', $data)) {
+            $object->label = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -74,14 +74,14 @@ class ObjsTeamSsoProviderNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('label') && null !== $data->getLabel()) {
-            $dataArray['label'] = $data->getLabel();
+        if (\array_key_exists('label', get_object_vars($data)) && null !== ($data->label ?? null)) {
+            $dataArray['label'] = $data->label;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (\array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name;
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
-            $dataArray['type'] = $data->getType();
+        if (\array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type;
         }
 
         return $dataArray;

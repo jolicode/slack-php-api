@@ -27,7 +27,7 @@ $results = $client->searchMessages([
     'query' => 'test'
 ]);
 
-var_dump($results->getOk()); // ok property is mapped
+var_dump($results->ok); // ok property is mapped
 var_dump($results['messages']); // messages property is not mapped but still readable
 ```
 

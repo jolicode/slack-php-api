@@ -20,14 +20,13 @@ class AdminConversationsEkmListOriginalConnectedChannelInfo extends \JoliCode\Sl
     /**
      * List all disconnected channels—i.e., channels that were once connected to other workspaces and then disconnected—and the corresponding original channel IDs for key revocation with EKM.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel_ids a comma-separated list of channels to filter to
-     * @var string $cursor set `cursor` to `next_cursor` returned by the previous call to list items in the next page
-     * @var int    $limit The maximum number of items to return. Must be between 1 - 1000 both inclusive.
-     * @var string $team_ids a comma-separated list of the workspaces to which the channels you would like returned belong
-     * @var string $token Authentication token. Requires scope: `admin.conversations:read`
-     *             }
+     * @param array{
+     *    "channel_ids"?: string, //A comma-separated list of channels to filter to.
+     *    "cursor"?: string, //Set `cursor` to `next_cursor` returned by the previous call to list items in the next page.
+     *    "limit"?: int, //The maximum number of items to return. Must be between 1 - 1000 both inclusive.
+     *    "team_ids"?: string, //A comma-separated list of the workspaces to which the channels you would like returned belong.
+     *    "token"?: string, //Authentication token. Requires scope: `admin.conversations:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -44,7 +43,7 @@ class AdminConversationsEkmListOriginalConnectedChannelInfo extends \JoliCode\Sl
         return '/admin.conversations.ekm.listOriginalConnectedChannelInfo';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -57,6 +56,16 @@ class AdminConversationsEkmListOriginalConnectedChannelInfo extends \JoliCode\Sl
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -75,12 +84,12 @@ class AdminConversationsEkmListOriginalConnectedChannelInfo extends \JoliCode\Sl
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200|\JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200|\JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminConversationsEkmListOriginalConnectedChannelInfoGetResponse200', 'json');
         }

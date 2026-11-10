@@ -20,19 +20,16 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
     /**
      * Get a list of authorizations for the given event context. Each authorization represents an app installation that the event is visible to.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $cursor
-     * @var string $event_context
-     * @var int    $limit
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `authorizations:read`
-     *             }
+     * @param array{
+     *    "cursor"?: string,
+     *    "event_context": string,
+     *    "limit"?: int,
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `authorizations:read`
+     * } $headerParameters
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $queryParameters, array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -48,7 +45,7 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
         return '/apps.event.authorizations.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -61,6 +58,16 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class AppsEventAuthorizationsList extends \JoliCode\Slack\Api\Runtime\Client\Bas
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200|\JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200|\JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AppsEventAuthorizationsListGetResponse200', 'json');
         }

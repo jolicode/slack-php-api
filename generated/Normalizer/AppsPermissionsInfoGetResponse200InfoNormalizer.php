@@ -53,34 +53,34 @@ class AppsPermissionsInfoGetResponse200InfoNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('app_home', $data) && null !== $data['app_home']) {
-            $object->setAppHome($this->denormalizer->denormalize($data['app_home'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome::class, 'json', $context));
-        } elseif (\array_key_exists('app_home', $data) && null === $data['app_home']) {
-            $object->setAppHome(null);
+            $object->appHome = $this->denormalizer->denormalize($data['app_home'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoAppHome::class, 'json', $context);
+        } elseif (\array_key_exists('app_home', $data)) {
+            $object->appHome = null;
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel::class, 'json', $context));
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $this->denormalizer->denormalize($data['channel'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoChannel::class, 'json', $context);
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('group', $data) && null !== $data['group']) {
-            $object->setGroup($this->denormalizer->denormalize($data['group'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup::class, 'json', $context));
-        } elseif (\array_key_exists('group', $data) && null === $data['group']) {
-            $object->setGroup(null);
+            $object->group = $this->denormalizer->denormalize($data['group'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoGroup::class, 'json', $context);
+        } elseif (\array_key_exists('group', $data)) {
+            $object->group = null;
         }
         if (\array_key_exists('im', $data) && null !== $data['im']) {
-            $object->setIm($this->denormalizer->denormalize($data['im'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm::class, 'json', $context));
-        } elseif (\array_key_exists('im', $data) && null === $data['im']) {
-            $object->setIm(null);
+            $object->im = $this->denormalizer->denormalize($data['im'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoIm::class, 'json', $context);
+        } elseif (\array_key_exists('im', $data)) {
+            $object->im = null;
         }
         if (\array_key_exists('mpim', $data) && null !== $data['mpim']) {
-            $object->setMpim($this->denormalizer->denormalize($data['mpim'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim::class, 'json', $context));
-        } elseif (\array_key_exists('mpim', $data) && null === $data['mpim']) {
-            $object->setMpim(null);
+            $object->mpim = $this->denormalizer->denormalize($data['mpim'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoMpim::class, 'json', $context);
+        } elseif (\array_key_exists('mpim', $data)) {
+            $object->mpim = null;
         }
         if (\array_key_exists('team', $data) && null !== $data['team']) {
-            $object->setTeam($this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam::class, 'json', $context));
-        } elseif (\array_key_exists('team', $data) && null === $data['team']) {
-            $object->setTeam(null);
+            $object->team = $this->denormalizer->denormalize($data['team'], \JoliCode\Slack\Api\Model\AppsPermissionsInfoGetResponse200InfoTeam::class, 'json', $context);
+        } elseif (\array_key_exists('team', $data)) {
+            $object->team = null;
         }
 
         return $object;
@@ -89,12 +89,18 @@ class AppsPermissionsInfoGetResponse200InfoNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['app_home'] = null === $data->getAppHome() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getAppHome(), 'json', $context));
-        $dataArray['channel'] = null === $data->getChannel() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getChannel(), 'json', $context));
-        $dataArray['group'] = null === $data->getGroup() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getGroup(), 'json', $context));
-        $dataArray['im'] = null === $data->getIm() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getIm(), 'json', $context));
-        $dataArray['mpim'] = null === $data->getMpim() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMpim(), 'json', $context));
-        $dataArray['team'] = null === $data->getTeam() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getTeam(), 'json', $context));
+        $normalized = null === $data->appHome ? null : $this->normalizer->normalize($data->appHome, 'json', $context);
+        $dataArray['app_home'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $normalized_1 = null === $data->channel ? null : $this->normalizer->normalize($data->channel, 'json', $context);
+        $dataArray['channel'] = is_iterable($normalized_1) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_1) : $normalized_1;
+        $normalized_2 = null === $data->group ? null : $this->normalizer->normalize($data->group, 'json', $context);
+        $dataArray['group'] = is_iterable($normalized_2) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_2) : $normalized_2;
+        $normalized_3 = null === $data->im ? null : $this->normalizer->normalize($data->im, 'json', $context);
+        $dataArray['im'] = is_iterable($normalized_3) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_3) : $normalized_3;
+        $normalized_4 = null === $data->mpim ? null : $this->normalizer->normalize($data->mpim, 'json', $context);
+        $dataArray['mpim'] = is_iterable($normalized_4) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_4) : $normalized_4;
+        $normalized_5 = null === $data->team ? null : $this->normalizer->normalize($data->team, 'json', $context);
+        $dataArray['team'] = is_iterable($normalized_5) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized_5) : $normalized_5;
 
         return $dataArray;
     }

@@ -20,19 +20,16 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
     /**
      * List the channels linked to an org-level IDP group (user group).
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $include_num_members flag to include or exclude the count of members per channel
-     * @var string $team_id ID of the the workspace
-     * @var string $usergroup_id ID of the IDP group to list default channels for.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.usergroups:read`
-     *             }
+     * @param array{
+     *    "include_num_members"?: bool, //Flag to include or exclude the count of members per channel.
+     *    "team_id"?: string, //ID of the the workspace.
+     *    "usergroup_id": string, //ID of the IDP group to list default channels for.
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.usergroups:read`
+     * } $headerParameters
      */
-    public function __construct(array $queryParameters = [], array $headerParameters = [])
+    public function __construct(array $queryParameters, array $headerParameters = [])
     {
         $this->queryParameters = $queryParameters;
         $this->headerParameters = $headerParameters;
@@ -48,7 +45,7 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
         return '/admin.usergroups.listChannels';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -61,6 +58,16 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class AdminUsergroupsListChannels extends \JoliCode\Slack\Api\Runtime\Client\Bas
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200|\JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200|\JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminUsergroupsListChannelsGetResponse200', 'json');
         }

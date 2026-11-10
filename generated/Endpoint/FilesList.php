@@ -20,18 +20,17 @@ class FilesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * List for a team, in a channel, or from a user with applied filters.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel filter files appearing in a specific channel, indicated by its ID
-     * @var string $count
-     * @var string $page
-     * @var bool   $show_files_hidden_by_limit show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit
-     * @var string $token Authentication token. Requires scope: `files:read`
-     * @var string $ts_from filter files created after this timestamp (inclusive)
-     * @var string $ts_to filter files created before this timestamp (inclusive)
-     * @var string $types Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
-     * @var string $user Filter files created by a single user.
-     *             }
+     * @param array{
+     *    "channel"?: string, //Filter files appearing in a specific channel, indicated by its ID.
+     *    "count"?: string,
+     *    "page"?: string,
+     *    "show_files_hidden_by_limit"?: bool, //Show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit.
+     *    "token"?: string, //Authentication token. Requires scope: `files:read`
+     *    "ts_from"?: string, //Filter files created after this timestamp (inclusive).
+     *    "ts_to"?: string, //Filter files created before this timestamp (inclusive).
+     *    "types"?: string, //Filter files by type ([see below](#file_types)). You can pass multiple values in the types argument, like `types=spaces,snippets`.The default value is `all`, which does not filter the list.
+     *    "user"?: string, //Filter files created by a single user.
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -48,7 +47,7 @@ class FilesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         return '/files.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -61,6 +60,16 @@ class FilesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -83,12 +92,12 @@ class FilesList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\FilesListGetResponse200|\JoliCode\Slack\Api\Model\FilesListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\FilesListGetResponse200|\JoliCode\Slack\Api\Model\FilesListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesListGetResponse200', 'json');
         }

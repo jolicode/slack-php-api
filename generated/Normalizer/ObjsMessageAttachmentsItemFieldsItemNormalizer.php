@@ -56,19 +56,19 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
             $data['short'] = (bool) $data['short'];
         }
         if (\array_key_exists('short', $data) && null !== $data['short']) {
-            $object->setShort($data['short']);
-        } elseif (\array_key_exists('short', $data) && null === $data['short']) {
-            $object->setShort(null);
+            $object->short = $data['short'];
+        } elseif (\array_key_exists('short', $data)) {
+            $object->short = null;
         }
         if (\array_key_exists('title', $data) && null !== $data['title']) {
-            $object->setTitle($data['title']);
-        } elseif (\array_key_exists('title', $data) && null === $data['title']) {
-            $object->setTitle(null);
+            $object->title = $data['title'];
+        } elseif (\array_key_exists('title', $data)) {
+            $object->title = null;
         }
         if (\array_key_exists('value', $data) && null !== $data['value']) {
-            $object->setValue($data['value']);
-        } elseif (\array_key_exists('value', $data) && null === $data['value']) {
-            $object->setValue(null);
+            $object->value = $data['value'];
+        } elseif (\array_key_exists('value', $data)) {
+            $object->value = null;
         }
 
         return $object;
@@ -77,14 +77,14 @@ class ObjsMessageAttachmentsItemFieldsItemNormalizer implements DenormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('short') && null !== $data->getShort()) {
-            $dataArray['short'] = $data->getShort();
+        if (\array_key_exists('short', get_object_vars($data)) && null !== ($data->short ?? null)) {
+            $dataArray['short'] = $data->short;
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
-            $dataArray['title'] = $data->getTitle();
+        if (\array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title;
         }
-        if ($data->isInitialized('value') && null !== $data->getValue()) {
-            $dataArray['value'] = $data->getValue();
+        if (\array_key_exists('value', get_object_vars($data)) && null !== ($data->value ?? null)) {
+            $dataArray['value'] = $data->value;
         }
 
         return $dataArray;

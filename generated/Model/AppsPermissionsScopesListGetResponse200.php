@@ -19,52 +19,11 @@ use JoliCode\Slack\Api\Runtime\AdditionalPropertiesInterface;
 class AppsPermissionsScopesListGetResponse200 implements AdditionalPropertiesInterface
 {
     use AdditionalAndPatternProperties;
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var AppsPermissionsScopesListGetResponse200Scopes|null
-     */
-    protected $scopes;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getScopes(): ?AppsPermissionsScopesListGetResponse200Scopes
-    {
-        return $this->scopes;
-    }
-
-    public function setScopes(?AppsPermissionsScopesListGetResponse200Scopes $scopes): self
-    {
-        $this->initialized['scopes'] = true;
-        $this->scopes = $scopes;
-
-        return $this;
-    }
+    public ?bool $ok;
+    public ?AppsPermissionsScopesListGetResponse200Scopes $scopes;
 
     public function definedProperties(): array
     {
-        return ['ok' => ['ok', 'getOk', 'setOk'], 'scopes' => ['scopes', 'getScopes', 'setScopes']];
+        return ['ok' => 'ok', 'scopes' => 'scopes'];
     }
 }

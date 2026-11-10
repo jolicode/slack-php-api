@@ -20,19 +20,16 @@ class ChatScheduledMessagesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     /**
      * Returns a list of scheduled messages.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel The channel of the scheduled messages
-     * @var string $cursor For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
-     * @var string $latest A UNIX timestamp of the latest value in the time range
-     * @var int    $limit maximum number of original entries to return
-     * @var string $oldest A UNIX timestamp of the oldest value in the time range
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `none`
-     *             }
+     * @param array{
+     *    "channel"?: string, //The channel of the scheduled messages
+     *    "cursor"?: string, //For pagination purposes, this is the `cursor` value returned from a previous call to `chat.scheduledmessages.list` indicating where you want to start this call from.
+     *    "latest"?: string, //A UNIX timestamp of the latest value in the time range
+     *    "limit"?: int, //Maximum number of original entries to return.
+     *    "oldest"?: string, //A UNIX timestamp of the oldest value in the time range
+     * } $queryParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `none`
+     * } $headerParameters
      */
     public function __construct(array $queryParameters = [], array $headerParameters = [])
     {
@@ -50,7 +47,7 @@ class ChatScheduledMessagesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
         return '/chat.scheduledMessages.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -63,6 +60,16 @@ class ChatScheduledMessagesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -92,12 +99,12 @@ class ChatScheduledMessagesList extends \JoliCode\Slack\Api\Runtime\Client\BaseE
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200|\JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200|\JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ChatScheduledMessagesListGetResponse200', 'json');
         }

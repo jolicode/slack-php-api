@@ -20,11 +20,10 @@ class BotsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     /**
      * Gets information about a bot user.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $bot Bot user to get info on
-     * @var string $token Authentication token. Requires scope: `users:read`
-     *             }
+     * @param array{
+     *    "bot"?: string, //Bot user to get info on
+     *    "token"?: string, //Authentication token. Requires scope: `users:read`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -41,7 +40,7 @@ class BotsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
         return '/bots.info';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -54,6 +53,16 @@ class BotsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -69,12 +78,12 @@ class BotsInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implement
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\BotsInfoGetResponse200|\JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\BotsInfoGetResponse200|\JoliCode\Slack\Api\Model\BotsInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\BotsInfoGetResponse200', 'json');
         }

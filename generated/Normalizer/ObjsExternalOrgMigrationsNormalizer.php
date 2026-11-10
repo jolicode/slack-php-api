@@ -57,14 +57,14 @@ class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, Norm
             foreach ($data['current'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\ObjsExternalOrgMigrationsCurrentItem::class, 'json', $context);
             }
-            $object->setCurrent($values);
-        } elseif (\array_key_exists('current', $data) && null === $data['current']) {
-            $object->setCurrent(null);
+            $object->current = $values;
+        } elseif (\array_key_exists('current', $data)) {
+            $object->current = null;
         }
         if (\array_key_exists('date_updated', $data) && null !== $data['date_updated']) {
-            $object->setDateUpdated($data['date_updated']);
-        } elseif (\array_key_exists('date_updated', $data) && null === $data['date_updated']) {
-            $object->setDateUpdated(null);
+            $object->dateUpdated = $data['date_updated'];
+        } elseif (\array_key_exists('date_updated', $data)) {
+            $object->dateUpdated = null;
         }
 
         return $object;
@@ -73,12 +73,16 @@ class ObjsExternalOrgMigrationsNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->getCurrent() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        $values = null;
+        if (null !== $data->current) {
+            $values = [];
+            foreach ($data->current as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['current'] = $values;
-        $dataArray['date_updated'] = $data->getDateUpdated();
+        $dataArray['date_updated'] = $data->dateUpdated;
 
         return $dataArray;
     }

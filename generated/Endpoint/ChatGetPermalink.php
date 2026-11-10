@@ -20,14 +20,13 @@ class ChatGetPermalink extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     /**
      * Retrieve a permalink URL for a specific extant message.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel The ID of the conversation or channel containing the message
-     * @var string $message_ts A message's `ts` value, uniquely identifying it within a channel
-     * @var string $token Authentication token. Requires scope: `none`
-     *             }
+     * @param array{
+     *    "channel": string, //The ID of the conversation or channel containing the message
+     *    "message_ts": string, //A message's `ts` value, uniquely identifying it within a channel
+     *    "token"?: string, //Authentication token. Requires scope: `none`
+     * } $queryParameters
      */
-    public function __construct(array $queryParameters = [])
+    public function __construct(array $queryParameters)
     {
         $this->queryParameters = $queryParameters;
     }
@@ -42,7 +41,7 @@ class ChatGetPermalink extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
         return '/chat.getPermalink';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class ChatGetPermalink extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class ChatGetPermalink extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint i
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200|\JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200|\JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ChatGetPermalinkGetResponse200', 'json');
         }

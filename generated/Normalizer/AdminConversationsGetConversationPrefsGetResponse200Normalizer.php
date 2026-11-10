@@ -56,14 +56,14 @@ class AdminConversationsGetConversationPrefsGetResponse200Normalizer implements 
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
         if (\array_key_exists('prefs', $data) && null !== $data['prefs']) {
-            $object->setPrefs($this->denormalizer->denormalize($data['prefs'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class, 'json', $context));
-        } elseif (\array_key_exists('prefs', $data) && null === $data['prefs']) {
-            $object->setPrefs(null);
+            $object->prefs = $this->denormalizer->denormalize($data['prefs'], \JoliCode\Slack\Api\Model\AdminConversationsGetConversationPrefsGetResponse200Prefs::class, 'json', $context);
+        } elseif (\array_key_exists('prefs', $data)) {
+            $object->prefs = null;
         }
 
         return $object;
@@ -72,9 +72,10 @@ class AdminConversationsGetConversationPrefsGetResponse200Normalizer implements 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['ok'] = $data->getOk();
-        if ($data->isInitialized('prefs') && null !== $data->getPrefs()) {
-            $dataArray['prefs'] = null === $data->getPrefs() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getPrefs(), 'json', $context));
+        $dataArray['ok'] = $data->ok;
+        if (\array_key_exists('prefs', get_object_vars($data)) && null !== ($data->prefs ?? null)) {
+            $normalized = $this->normalizer->normalize($data->prefs, 'json', $context);
+            $dataArray['prefs'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
         }
 
         return $dataArray;

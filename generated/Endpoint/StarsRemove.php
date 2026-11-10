@@ -20,18 +20,15 @@ class StarsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     /**
      * Removes a star from an item.
      *
-     * @param array $formParameters {
-     *
-     * @var string $channel channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`)
-     * @var string $file file to remove star from
-     * @var string $file_comment file comment to remove star from
-     * @var string $timestamp Timestamp of the message to remove star from.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `stars:write`
-     *             }
+     * @param array{
+     *    "channel"?: string, //Channel to remove star from, or channel where the message to remove star from was posted (used with `timestamp`).
+     *    "file"?: string, //File to remove star from.
+     *    "file_comment"?: string, //File comment to remove star from.
+     *    "timestamp"?: string, //Timestamp of the message to remove star from.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `stars:write`
+     * } $headerParameters
      */
     public function __construct(array $formParameters = [], array $headerParameters = [])
     {
@@ -49,7 +46,7 @@ class StarsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
         return '/stars.remove';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -62,6 +59,16 @@ class StarsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -90,12 +97,12 @@ class StarsRemove extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implem
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\StarsRemovePostResponse200|\JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\StarsRemovePostResponse200|\JoliCode\Slack\Api\Model\StarsRemovePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\StarsRemovePostResponse200', 'json');
         }

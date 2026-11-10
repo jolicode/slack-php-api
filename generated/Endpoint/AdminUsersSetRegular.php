@@ -20,18 +20,15 @@ class AdminUsersSetRegular extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     /**
      * Set an existing guest user, admin user, or owner to be a regular user.
      *
-     * @param array $formParameters {
-     *
-     * @var string $team_id the ID (`T1234`) of the workspace
-     * @var string $user_id The ID of the user to designate as a regular user.
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `admin.users:write`
-     *             }
+     * @param array{
+     *    "team_id": string, //The ID (`T1234`) of the workspace.
+     *    "user_id": string, //The ID of the user to designate as a regular user.
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `admin.users:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -47,7 +44,7 @@ class AdminUsersSetRegular extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
         return '/admin.users.setRegular';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -60,6 +57,16 @@ class AdminUsersSetRegular extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -86,12 +93,12 @@ class AdminUsersSetRegular extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoi
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200|\JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AdminUsersSetRegularPostResponse200', 'json');
         }

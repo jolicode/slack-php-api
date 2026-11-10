@@ -20,15 +20,14 @@ class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     /**
      * Retrieve information about a remote file added to Slack.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $channel filter files appearing in a specific channel, indicated by its ID
-     * @var string $cursor Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
-     * @var int    $limit the maximum number of items to return
-     * @var string $token Authentication token. Requires scope: `remote_files:read`
-     * @var string $ts_from filter files created after this timestamp (inclusive)
-     * @var string $ts_to Filter files created before this timestamp (inclusive).
-     *             }
+     * @param array{
+     *    "channel"?: string, //Filter files appearing in a specific channel, indicated by its ID.
+     *    "cursor"?: string, //Paginate through collections of data by setting the `cursor` parameter to a `next_cursor` attribute returned by a previous request's `response_metadata`. Default value fetches the first "page" of the collection. See [pagination](/docs/pagination) for more detail.
+     *    "limit"?: int, //The maximum number of items to return.
+     *    "token"?: string, //Authentication token. Requires scope: `remote_files:read`
+     *    "ts_from"?: string, //Filter files created after this timestamp (inclusive).
+     *    "ts_to"?: string, //Filter files created before this timestamp (inclusive).
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -45,7 +44,7 @@ class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
         return '/files.remote.list';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -58,6 +57,16 @@ class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -77,12 +86,12 @@ class FilesRemoteList extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint im
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200|\JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200|\JoliCode\Slack\Api\Model\FilesRemoteListGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\FilesRemoteListGetResponse200', 'json');
         }

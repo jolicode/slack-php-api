@@ -20,12 +20,11 @@ class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     /**
      * Uninstalls your app from a workspace.
      *
-     * @param array $queryParameters {
-     *
-     * @var string $client_id issued when you created your application
-     * @var string $client_secret issued when you created your application
-     * @var string $token Authentication token. Requires scope: `none`
-     *             }
+     * @param array{
+     *    "client_id"?: string, //Issued when you created your application.
+     *    "client_secret"?: string, //Issued when you created your application.
+     *    "token"?: string, //Authentication token. Requires scope: `none`
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -42,7 +41,7 @@ class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
         return '/apps.uninstall';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class AppsUninstall extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint impl
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200|\JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\AppsUninstallGetResponse200|\JoliCode\Slack\Api\Model\AppsUninstallGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\AppsUninstallGetResponse200', 'json');
         }

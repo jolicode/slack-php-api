@@ -53,24 +53,24 @@ class StarsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('channel', $data) && null !== $data['channel']) {
-            $object->setChannel($data['channel']);
-        } elseif (\array_key_exists('channel', $data) && null === $data['channel']) {
-            $object->setChannel(null);
+            $object->channel = $data['channel'];
+        } elseif (\array_key_exists('channel', $data)) {
+            $object->channel = null;
         }
         if (\array_key_exists('date_create', $data) && null !== $data['date_create']) {
-            $object->setDateCreate($data['date_create']);
-        } elseif (\array_key_exists('date_create', $data) && null === $data['date_create']) {
-            $object->setDateCreate(null);
+            $object->dateCreate = $data['date_create'];
+        } elseif (\array_key_exists('date_create', $data)) {
+            $object->dateCreate = null;
         }
         if (\array_key_exists('message', $data) && null !== $data['message']) {
-            $object->setMessage($this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context));
-        } elseif (\array_key_exists('message', $data) && null === $data['message']) {
-            $object->setMessage(null);
+            $object->message = $this->denormalizer->denormalize($data['message'], \JoliCode\Slack\Api\Model\ObjsMessage::class, 'json', $context);
+        } elseif (\array_key_exists('message', $data)) {
+            $object->message = null;
         }
         if (\array_key_exists('type', $data) && null !== $data['type']) {
-            $object->setType($data['type']);
-        } elseif (\array_key_exists('type', $data) && null === $data['type']) {
-            $object->setType(null);
+            $object->type = $data['type'];
+        } elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
         }
 
         return $object;
@@ -79,10 +79,11 @@ class StarsListGetResponse200ItemsItemItem0Normalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['channel'] = $data->getChannel();
-        $dataArray['date_create'] = $data->getDateCreate();
-        $dataArray['message'] = null === $data->getMessage() ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($data->getMessage(), 'json', $context));
-        $dataArray['type'] = $data->getType();
+        $dataArray['channel'] = $data->channel;
+        $dataArray['date_create'] = $data->dateCreate;
+        $normalized = null === $data->message ? null : $this->normalizer->normalize($data->message, 'json', $context);
+        $dataArray['message'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $dataArray['type'] = $data->type;
 
         return $dataArray;
     }

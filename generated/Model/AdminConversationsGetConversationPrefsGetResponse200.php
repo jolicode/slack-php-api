@@ -15,47 +15,6 @@ namespace JoliCode\Slack\Api\Model;
 
 class AdminConversationsGetConversationPrefsGetResponse200
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var bool|null
-     */
-    protected $ok;
-    /**
-     * @var AdminConversationsGetConversationPrefsGetResponse200Prefs|null
-     */
-    protected $prefs;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getOk(): ?bool
-    {
-        return $this->ok;
-    }
-
-    public function setOk(?bool $ok): self
-    {
-        $this->initialized['ok'] = true;
-        $this->ok = $ok;
-
-        return $this;
-    }
-
-    public function getPrefs(): ?AdminConversationsGetConversationPrefsGetResponse200Prefs
-    {
-        return $this->prefs;
-    }
-
-    public function setPrefs(?AdminConversationsGetConversationPrefsGetResponse200Prefs $prefs): self
-    {
-        $this->initialized['prefs'] = true;
-        $this->prefs = $prefs;
-
-        return $this;
-    }
+    public ?bool $ok;
+    public ?AdminConversationsGetConversationPrefsGetResponse200Prefs $prefs;
 }

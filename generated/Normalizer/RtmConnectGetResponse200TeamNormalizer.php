@@ -53,19 +53,19 @@ class RtmConnectGetResponse200TeamNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('domain', $data) && null !== $data['domain']) {
-            $object->setDomain($data['domain']);
-        } elseif (\array_key_exists('domain', $data) && null === $data['domain']) {
-            $object->setDomain(null);
+            $object->domain = $data['domain'];
+        } elseif (\array_key_exists('domain', $data)) {
+            $object->domain = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('name', $data) && null !== $data['name']) {
-            $object->setName($data['name']);
-        } elseif (\array_key_exists('name', $data) && null === $data['name']) {
-            $object->setName(null);
+            $object->name = $data['name'];
+        } elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
         }
 
         return $object;
@@ -74,9 +74,9 @@ class RtmConnectGetResponse200TeamNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['domain'] = $data->getDomain();
-        $dataArray['id'] = $data->getId();
-        $dataArray['name'] = $data->getName();
+        $dataArray['domain'] = $data->domain;
+        $dataArray['id'] = $data->id;
+        $dataArray['name'] = $data->name;
 
         return $dataArray;
     }

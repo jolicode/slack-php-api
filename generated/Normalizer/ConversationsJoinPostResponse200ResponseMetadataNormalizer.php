@@ -57,9 +57,9 @@ class ConversationsJoinPostResponse200ResponseMetadataNormalizer implements Deno
             foreach ($data['warnings'] as $value) {
                 $values[] = $value;
             }
-            $object->setWarnings($values);
-        } elseif (\array_key_exists('warnings', $data) && null === $data['warnings']) {
-            $object->setWarnings(null);
+            $object->warnings = $values;
+        } elseif (\array_key_exists('warnings', $data)) {
+            $object->warnings = null;
         }
 
         return $object;
@@ -68,9 +68,9 @@ class ConversationsJoinPostResponse200ResponseMetadataNormalizer implements Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('warnings') && null !== $data->getWarnings()) {
+        if (\array_key_exists('warnings', get_object_vars($data)) && null !== ($data->warnings ?? null)) {
             $values = [];
-            foreach ($data->getWarnings() as $value) {
+            foreach ($data->warnings as $value) {
                 $values[] = $value;
             }
             $dataArray['warnings'] = $values;

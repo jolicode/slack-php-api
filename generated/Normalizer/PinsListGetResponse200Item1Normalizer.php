@@ -56,14 +56,14 @@ class PinsListGetResponse200Item1Normalizer implements DenormalizerInterface, No
             $data['ok'] = (bool) $data['ok'];
         }
         if (\array_key_exists('count', $data) && null !== $data['count']) {
-            $object->setCount($data['count']);
-        } elseif (\array_key_exists('count', $data) && null === $data['count']) {
-            $object->setCount(null);
+            $object->count = $data['count'];
+        } elseif (\array_key_exists('count', $data)) {
+            $object->count = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -72,8 +72,8 @@ class PinsListGetResponse200Item1Normalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['count'] = $data->getCount();
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['count'] = $data->count;
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

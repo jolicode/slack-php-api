@@ -20,12 +20,11 @@ class UsersInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     /**
      * Gets information about a user.
      *
-     * @param array $queryParameters {
-     *
-     * @var bool   $include_locale Set this to `true` to receive the locale for this user. Defaults to `false`
-     * @var string $token Authentication token. Requires scope: `users:read`
-     * @var string $user User to get info on
-     *             }
+     * @param array{
+     *    "include_locale"?: bool, //Set this to `true` to receive the locale for this user. Defaults to `false`
+     *    "token"?: string, //Authentication token. Requires scope: `users:read`
+     *    "user"?: string, //User to get info on
+     * } $queryParameters
      */
     public function __construct(array $queryParameters = [])
     {
@@ -42,7 +41,7 @@ class UsersInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
         return '/users.info';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -55,6 +54,16 @@ class UsersInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Preload->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -71,12 +80,12 @@ class UsersInfo extends \JoliCode\Slack\Api\Runtime\Client\BaseEndpoint implemen
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\UsersInfoGetResponse200|\JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\UsersInfoGetResponse200|\JoliCode\Slack\Api\Model\UsersInfoGetResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\UsersInfoGetResponse200', 'json');
         }

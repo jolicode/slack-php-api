@@ -15,47 +15,6 @@ namespace JoliCode\Slack\Api\Model;
 
 class AdminConversationsGetConversationPrefsGetResponse200Prefs
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    /**
-     * @var AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread|null
-     */
-    protected $canThread;
-    /**
-     * @var AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost|null
-     */
-    protected $whoCanPost;
-
-    public function isInitialized($property): bool
-    {
-        return \array_key_exists($property, $this->initialized);
-    }
-
-    public function getCanThread(): ?AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread
-    {
-        return $this->canThread;
-    }
-
-    public function setCanThread(?AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread $canThread): self
-    {
-        $this->initialized['canThread'] = true;
-        $this->canThread = $canThread;
-
-        return $this;
-    }
-
-    public function getWhoCanPost(): ?AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost
-    {
-        return $this->whoCanPost;
-    }
-
-    public function setWhoCanPost(?AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost $whoCanPost): self
-    {
-        $this->initialized['whoCanPost'] = true;
-        $this->whoCanPost = $whoCanPost;
-
-        return $this;
-    }
+    public ?AdminConversationsGetConversationPrefsGetResponse200PrefsCanThread $canThread;
+    public ?AdminConversationsGetConversationPrefsGetResponse200PrefsWhoCanPost $whoCanPost;
 }

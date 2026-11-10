@@ -20,19 +20,16 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
     /**
      * Deletes a pending scheduled message from the queue.
      *
-     * @param array $formParameters {
-     *
-     * @var bool   $as_user Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
-     * @var string $channel The channel the scheduled_message is posting to
-     * @var string $scheduled_message_id `scheduled_message_id` returned from call to chat.scheduleMessage
-     *             }
-     *
-     * @param array $headerParameters {
-     *
-     * @var string $token Authentication token. Requires scope: `chat:write`
-     *             }
+     * @param array{
+     *    "as_user"?: bool, //Pass true to delete the message as the authed user with `chat:write:user` scope. [Bot users](/bot-users) in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope.
+     *    "channel": string, //The channel the scheduled_message is posting to
+     *    "scheduled_message_id": string, //`scheduled_message_id` returned from call to chat.scheduleMessage
+     * } $formParameters
+     * @param array{
+     *    "token"?: string, //Authentication token. Requires scope: `chat:write`
+     * } $headerParameters
      */
-    public function __construct(array $formParameters = [], array $headerParameters = [])
+    public function __construct(array $formParameters, array $headerParameters = [])
     {
         $this->formParameters = $formParameters;
         $this->headerParameters = $headerParameters;
@@ -48,7 +45,7 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
         return '/chat.deleteScheduledMessage';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return $this->getFormBody();
     }
@@ -61,6 +58,16 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
     public function getAuthenticationScopes(): array
     {
         return ['slackAuth'];
+    }
+
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 
     protected function getFormOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
@@ -88,12 +95,12 @@ class ChatDeleteScheduledMessage extends \JoliCode\Slack\Api\Runtime\Client\Base
     }
 
     /**
-     * @return \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault|null
+     * @return \JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200|\JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponsedefault
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
+        $body = $response->getContent(false);
         if (200 === $status) {
             return $serializer->deserialize($body, 'JoliCode\Slack\Api\Model\ChatDeleteScheduledMessagePostResponse200', 'json');
         }

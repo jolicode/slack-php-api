@@ -60,14 +60,14 @@ class FilesCompleteUploadExternalPostResponse200Normalizer implements Denormaliz
             foreach ($data['files'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \JoliCode\Slack\Api\Model\FilesCompleteUploadExternalPostResponse200FilesItem::class, 'json', $context);
             }
-            $object->setFiles($values);
-        } elseif (\array_key_exists('files', $data) && null === $data['files']) {
-            $object->setFiles(null);
+            $object->files = $values;
+        } elseif (\array_key_exists('files', $data)) {
+            $object->files = null;
         }
         if (\array_key_exists('ok', $data) && null !== $data['ok']) {
-            $object->setOk($data['ok']);
-        } elseif (\array_key_exists('ok', $data) && null === $data['ok']) {
-            $object->setOk(null);
+            $object->ok = $data['ok'];
+        } elseif (\array_key_exists('ok', $data)) {
+            $object->ok = null;
         }
 
         return $object;
@@ -76,12 +76,16 @@ class FilesCompleteUploadExternalPostResponse200Normalizer implements Denormaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->getFiles() as $value) {
-            $values[] = null === $value ? null : new \JoliCode\Slack\Api\Runtime\JsonObject($this->normalizer->normalize($value, 'json', $context));
+        $values = null;
+        if (null !== $data->files) {
+            $values = [];
+            foreach ($data->files as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['files'] = $values;
-        $dataArray['ok'] = $data->getOk();
+        $dataArray['ok'] = $data->ok;
 
         return $dataArray;
     }

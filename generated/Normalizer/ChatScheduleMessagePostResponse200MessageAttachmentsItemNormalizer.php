@@ -53,19 +53,19 @@ class ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer impleme
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('fallback', $data) && null !== $data['fallback']) {
-            $object->setFallback($data['fallback']);
-        } elseif (\array_key_exists('fallback', $data) && null === $data['fallback']) {
-            $object->setFallback(null);
+            $object->fallback = $data['fallback'];
+        } elseif (\array_key_exists('fallback', $data)) {
+            $object->fallback = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
         if (\array_key_exists('text', $data) && null !== $data['text']) {
-            $object->setText($data['text']);
-        } elseif (\array_key_exists('text', $data) && null === $data['text']) {
-            $object->setText(null);
+            $object->text = $data['text'];
+        } elseif (\array_key_exists('text', $data)) {
+            $object->text = null;
         }
 
         return $object;
@@ -74,14 +74,14 @@ class ChatScheduleMessagePostResponse200MessageAttachmentsItemNormalizer impleme
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('fallback') && null !== $data->getFallback()) {
-            $dataArray['fallback'] = $data->getFallback();
+        if (\array_key_exists('fallback', get_object_vars($data)) && null !== ($data->fallback ?? null)) {
+            $dataArray['fallback'] = $data->fallback;
         }
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (\array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id;
         }
-        if ($data->isInitialized('text') && null !== $data->getText()) {
-            $dataArray['text'] = $data->getText();
+        if (\array_key_exists('text', get_object_vars($data)) && null !== ($data->text ?? null)) {
+            $dataArray['text'] = $data->text;
         }
 
         return $dataArray;

@@ -53,14 +53,14 @@ class ObjsPrimaryOwnerNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('email', $data) && null !== $data['email']) {
-            $object->setEmail($data['email']);
-        } elseif (\array_key_exists('email', $data) && null === $data['email']) {
-            $object->setEmail(null);
+            $object->email = $data['email'];
+        } elseif (\array_key_exists('email', $data)) {
+            $object->email = null;
         }
         if (\array_key_exists('id', $data) && null !== $data['id']) {
-            $object->setId($data['id']);
-        } elseif (\array_key_exists('id', $data) && null === $data['id']) {
-            $object->setId(null);
+            $object->id = $data['id'];
+        } elseif (\array_key_exists('id', $data)) {
+            $object->id = null;
         }
 
         return $object;
@@ -69,8 +69,8 @@ class ObjsPrimaryOwnerNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['email'] = $data->getEmail();
-        $dataArray['id'] = $data->getId();
+        $dataArray['email'] = $data->email;
+        $dataArray['id'] = $data->id;
 
         return $dataArray;
     }

@@ -9,4 +9,5 @@ return [
     'clean-generated' => true,
     'use-fixer' => true,
     'fixer-config-file' => __DIR__ . '/.php-cs-fixer.php',
+    'default-fetch-mode' => 'preload',
 ];
