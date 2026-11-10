@@ -91,9 +91,12 @@ class ObjsReactionNormalizer implements DenormalizerInterface, NormalizerInterfa
         $dataArray = [];
         $dataArray['count'] = $data->count;
         $dataArray['name'] = $data->name;
-        $values = [];
-        foreach ($data->users as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->users) {
+            $values = [];
+            foreach ($data->users as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['users'] = $values;
         foreach ($data->additionalPropertyEntries() as $key => $value_1) {

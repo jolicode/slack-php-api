@@ -317,9 +317,12 @@ class ObjsChannelNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('latest', get_object_vars($data)) && null !== ($data->latest ?? null)) {
             $dataArray['latest'] = $data->latest;
         }
-        $values = [];
-        foreach ($data->members as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->members) {
+            $values = [];
+            foreach ($data->members as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['members'] = $values;
         $dataArray['name'] = $data->name;

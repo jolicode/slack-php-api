@@ -28,11 +28,11 @@
     "require": {
         "php": ">=8.4",
         "ext-curl": "*",
-        "jane-php/open-api-runtime": "^8.0",
+        "jane-php/open-api-runtime": "^8.1.2",
         "symfony/http-client": "^6.4 || ^7.0 || ^8.0"
     },
     "require-dev": {
-        "jane-php/open-api-2": "^8.0",
+        "jane-php/open-api-2": "^8.1.2",
         "symfony/http-client": "^6.4 || ^7.0 || ^8.0",
         "friendsofphp/php-cs-fixer": "^3.2.2",
         "symfony/phpunit-bridge": "^6.0 || ^7.0 || ^8.0",

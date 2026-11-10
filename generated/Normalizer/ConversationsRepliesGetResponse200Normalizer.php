@@ -92,9 +92,12 @@ class ConversationsRepliesGetResponse200Normalizer implements DenormalizerInterf
         if (\array_key_exists('hasMore', get_object_vars($data)) && null !== ($data->hasMore ?? null)) {
             $dataArray['has_more'] = $data->hasMore;
         }
-        $values = [];
-        foreach ($data->messages as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->messages) {
+            $values = [];
+            foreach ($data->messages as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['messages'] = $values;
         $dataArray['ok'] = $data->ok;

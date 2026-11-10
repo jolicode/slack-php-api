@@ -101,9 +101,12 @@ class FilesInfoGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->comments as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->comments) {
+            $values = [];
+            foreach ($data->comments as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['comments'] = $values;
         if (\array_key_exists('contentHtml', get_object_vars($data)) && null !== ($data->contentHtml ?? null)) {

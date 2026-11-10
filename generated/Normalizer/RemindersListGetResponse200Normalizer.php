@@ -77,10 +77,13 @@ class RemindersListGetResponse200Normalizer implements DenormalizerInterface, No
     {
         $dataArray = [];
         $dataArray['ok'] = $data->ok;
-        $values = [];
-        foreach ($data->reminders as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->reminders) {
+            $values = [];
+            foreach ($data->reminders as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['reminders'] = $values;
 

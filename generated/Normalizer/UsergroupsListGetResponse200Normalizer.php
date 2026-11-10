@@ -77,10 +77,13 @@ class UsergroupsListGetResponse200Normalizer implements DenormalizerInterface, N
     {
         $dataArray = [];
         $dataArray['ok'] = $data->ok;
-        $values = [];
-        foreach ($data->usergroups as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->usergroups) {
+            $values = [];
+            foreach ($data->usergroups as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['usergroups'] = $values;
 

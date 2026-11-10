@@ -75,9 +75,12 @@ class AppsPermissionsInfoGetResponse200InfoTeamNormalizer implements Denormalize
         $dataArray = [];
         $normalized = null === $data->resources ? null : $this->normalizer->normalize($data->resources, 'json', $context);
         $dataArray['resources'] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
-        $values = [];
-        foreach ($data->scopes as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->scopes) {
+            $values = [];
+            foreach ($data->scopes as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['scopes'] = $values;
 

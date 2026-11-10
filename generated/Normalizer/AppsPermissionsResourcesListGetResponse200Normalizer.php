@@ -93,10 +93,13 @@ class AppsPermissionsResourcesListGetResponse200Normalizer implements Denormaliz
     {
         $dataArray = [];
         $dataArray['ok'] = $data->ok;
-        $values = [];
-        foreach ($data->resources as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->resources) {
+            $values = [];
+            foreach ($data->resources as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['resources'] = $values;
         if (\array_key_exists('responseMetadata', get_object_vars($data)) && null !== ($data->responseMetadata ?? null)) {

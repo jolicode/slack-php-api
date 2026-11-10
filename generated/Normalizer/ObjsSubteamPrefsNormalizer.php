@@ -77,14 +77,20 @@ class ObjsSubteamPrefsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->channels as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->channels) {
+            $values = [];
+            foreach ($data->channels as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['channels'] = $values;
-        $values_1 = [];
-        foreach ($data->groups as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->groups) {
+            $values_1 = [];
+            foreach ($data->groups as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['groups'] = $values_1;
 

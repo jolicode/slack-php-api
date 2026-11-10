@@ -92,9 +92,12 @@ class ObjsResourcesNormalizer implements DenormalizerInterface, NormalizerInterf
             }
             $dataArray['excluded_ids'] = $values;
         }
-        $values_1 = [];
-        foreach ($data->ids as $value_1) {
-            $values_1[] = $value_1;
+        $values_1 = null;
+        if (null !== $data->ids) {
+            $values_1 = [];
+            foreach ($data->ids as $value_1) {
+                $values_1[] = $value_1;
+            }
         }
         $dataArray['ids'] = $values_1;
         if (\array_key_exists('wildcard', get_object_vars($data)) && null !== ($data->wildcard ?? null)) {

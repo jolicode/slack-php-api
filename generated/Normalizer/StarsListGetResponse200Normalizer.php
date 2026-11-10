@@ -81,9 +81,12 @@ class StarsListGetResponse200Normalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->items as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->items) {
+            $values = [];
+            foreach ($data->items as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['items'] = $values;
         $dataArray['ok'] = $data->ok;

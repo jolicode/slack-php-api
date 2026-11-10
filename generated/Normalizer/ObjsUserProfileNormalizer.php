@@ -387,9 +387,12 @@ class ObjsUserProfileNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $dataArray['email'] = $value;
         }
-        $values = [];
-        foreach ($data->fields as $value_1) {
-            $values[] = $value_1;
+        $values = null;
+        if (null !== $data->fields) {
+            $values = [];
+            foreach ($data->fields as $value_1) {
+                $values[] = $value_1;
+            }
         }
         $dataArray['fields'] = $values;
         if (\array_key_exists('firstName', get_object_vars($data)) && null !== ($data->firstName ?? null)) {

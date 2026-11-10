@@ -92,10 +92,13 @@ class UsersConversationsGetResponse200Normalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->channels as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->channels) {
+            $values = [];
+            foreach ($data->channels as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['channels'] = $values;
         $dataArray['ok'] = $data->ok;

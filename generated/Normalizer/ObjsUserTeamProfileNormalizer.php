@@ -68,10 +68,13 @@ class ObjsUserTeamProfileNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $values = [];
-        foreach ($data->fields as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->fields) {
+            $values = [];
+            foreach ($data->fields as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['fields'] = $values;
 

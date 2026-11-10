@@ -87,10 +87,13 @@ class UsersListGetResponse200Normalizer implements DenormalizerInterface, Normal
     {
         $dataArray = [];
         $dataArray['cache_ts'] = $data->cacheTs;
-        $values = [];
-        foreach ($data->members as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->members) {
+            $values = [];
+            foreach ($data->members as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['members'] = $values;
         $dataArray['ok'] = $data->ok;

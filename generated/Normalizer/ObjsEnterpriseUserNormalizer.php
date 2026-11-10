@@ -104,9 +104,12 @@ class ObjsEnterpriseUserNormalizer implements DenormalizerInterface, NormalizerI
         $dataArray['id'] = $data->id;
         $dataArray['is_admin'] = $data->isAdmin;
         $dataArray['is_owner'] = $data->isOwner;
-        $values = [];
-        foreach ($data->teams as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->teams) {
+            $values = [];
+            foreach ($data->teams as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['teams'] = $values;
 

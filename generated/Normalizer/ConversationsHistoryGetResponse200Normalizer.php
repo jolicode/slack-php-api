@@ -107,10 +107,13 @@ class ConversationsHistoryGetResponse200Normalizer implements DenormalizerInterf
         $dataArray['channel_actions_count'] = $data->channelActionsCount;
         $dataArray['channel_actions_ts'] = $data->channelActionsTs;
         $dataArray['has_more'] = $data->hasMore;
-        $values = [];
-        foreach ($data->messages as $value) {
-            $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
-            $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+        $values = null;
+        if (null !== $data->messages) {
+            $values = [];
+            foreach ($data->messages as $value) {
+                $normalized = null === $value ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = is_iterable($normalized) ? new \JoliCode\Slack\Api\Runtime\JsonObject($normalized) : $normalized;
+            }
         }
         $dataArray['messages'] = $values;
         $dataArray['ok'] = $data->ok;

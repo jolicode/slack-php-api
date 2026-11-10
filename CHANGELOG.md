@@ -1,7 +1,7 @@
 # Changes between versions
 
 ## 5.0.0 (2026-10-02)
-* Upgrade JanePHP to 8.0.0
+* Upgrade JanePHP to 8.1.2
 * Require PHP >= 8.4
 * Generated models now expose public typed properties instead of getters: use `$user->name` instead of `$user->getName()`
 * The HTTP layer is now built on Symfony HttpClient (`HttpClientInterface`) instead of PSR-7 / PSR-18 / HTTPlug

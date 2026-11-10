@@ -77,9 +77,12 @@ class UsergroupsUsersListGetResponse200Normalizer implements DenormalizerInterfa
     {
         $dataArray = [];
         $dataArray['ok'] = $data->ok;
-        $values = [];
-        foreach ($data->users as $value) {
-            $values[] = $value;
+        $values = null;
+        if (null !== $data->users) {
+            $values = [];
+            foreach ($data->users as $value) {
+                $values[] = $value;
+            }
         }
         $dataArray['users'] = $values;
 
